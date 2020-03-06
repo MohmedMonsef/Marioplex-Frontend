@@ -27,3 +27,8 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+# Marioplex
+Software Engineering project(a spotify mimic)
+Frontend Team Repo.
+
