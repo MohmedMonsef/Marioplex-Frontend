@@ -1,12 +1,21 @@
 <template>
-  <div class="home"><h1>hii</h1></div>
+  <div class="home">
+    <home-navigation-bar />
+    <h2>hiiii</h2>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import HomeNavigationBar from "@/components/home-navigation-bar.vue";
 export default {
   name: "Home",
-  components: {}
+  components: {
+    HomeNavigationBar
+  }
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>
