@@ -50,6 +50,28 @@ export default new Vuex.Store({
           localStorage.removeItem('token');
           console.log(error);
         });
+    },
+    login({ commit },user) {
+      commit('auth_request')
+      axios
+        .post("/api/login",
+         {
+            data: user
+         }
+         )
+        .then(response => {
+          const token = response.data.token;
+          localStorage.setItem('token', token);
+          console.log(token);
+          const user = response.data.user;
+          axios.defaults.headers.common['Authorization'] = token;
+          commit("auth_success", token, user);
+        })
+        .catch(error => {
+          commit('auth_error', error);
+          localStorage.removeItem('token');
+          console.log(error);
+        });
     }
   },
     getters: {
