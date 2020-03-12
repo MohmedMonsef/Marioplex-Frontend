@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div class="conatiner-fluid logo-bar">
-      <div class="row justify-content-center">
-        <img src="../assets/logo-black.png" />
-      </div>
-    </div>
+    <logo-header/>
     <!-- login form -->
     <div class="conatiner-fluid justify-content-center login-form">
       <div class="row justify-content-center">
@@ -114,9 +110,13 @@
 
 <script>
 // @ is an alias to /src
+ import LogoHeader from "@/components/logo-header.vue";
 
 export default {
   name: "Login",
+  components: {
+    LogoHeader,
+  },
   data: function() {
     return {
       //User's data that will be passed from the v-model

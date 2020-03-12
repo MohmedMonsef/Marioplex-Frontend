@@ -1,20 +1,15 @@
 <template>
-  <div>
-    <div class="conatiner px-0">
-      <div class="row justify-content-center  logo-bar m-0">
-        <img src="../assets/logo-black.png" />
-      </div>
-    </div>
+   <div>
+     <logo-header/>
     <!-- Sign Up form -->
     <div class="conatiner signup-form px-0">
       <div class="row justify-content-center  m-0">
         <div class="col-4" align="center">
-          <button class="signup-btn" id="facebook-btn">
+          <button class="costum-btn" id="facebook-btn">
             SIGN UP WITH FACEBOOK
           </button>
           <br />
-          <div id="divider"></div>
-          <strong>or</strong>
+          <divider/>
           <h2>Sign up with your email address</h2>
 
           <form>
@@ -23,25 +18,30 @@
               type="email"
               placeholder="Email"
               v-model="email"
-              required
             />
             <br />
+            <p v-if="req_email == 'true'" class="invalid">Please enter your email.</p>
+            <p v-if="invalid_email == 'true'" class="invalid">The email address you supplied is invalid.</p>
             <input
               class="input_field"
               type="email"
               placeholder="Confirm email"
               v-model="email_confirmation"
-              required
             />
             <br />
+            <p v-if="req_email == 'true'" class="invalid">Please enter your email.</p>
+            <p v-if="invalid_email == 'true'" class="invalid">The email address you supplied is invalid.</p>
+            <p v-if="invalid_email == 'false' && invalid_email == 'false' && matched_email =='true'" class="invalid">Email address doesn't match.</p>
+
             <input
               class="input_field"
               type="password"
               placeholder="Password"
               v-model="password"
-              required
             />
             <br />
+            <p v-if="req_password == 'true'" class="invalid">Enter a password to continue.</p>
+            <p v-if="short_password == 'true'" class="invalid">Your password is too short.</p>
             <input
               class="input_field"
               type="text"
@@ -49,8 +49,8 @@
               v-model="username"
               required
             />
+            <p v-if="req_username == 'true'" class="invalid">What should we call you?</p>
             <br />
-
             <!-- country -->
             <select v-model="country" class="country_select">
               <option
@@ -60,7 +60,7 @@
                 >{{ country.text }}</option
               >
             </select>
-
+            <p v-if="req_country== 'true'" class="invalid">Please enter your country.</p>
             <!-- country -->
             <!-- take the date of birth -->
             <div id="birthdate" class="input_field">
@@ -78,6 +78,10 @@
 
               <input type="text" placeholder="Year" v-model="year" />
             </div>
+            
+            <p v-if="valid_day =='true'" class="invalid">Please enter a valid day of the month.</p>
+            <p v-if="valid_month== 'true'" class="invalid">Please enter your birth month.</p>
+            <p v-if="valid_year =='true'" class="invalid">Please enter a valid year.</p>
             <!-- take the date of birth -->
 
             <!-- Gender -->
@@ -101,10 +105,12 @@
             </div>
             <!-- Gender -->
             <br />
+            
+             <p v-if="req_gender =='true'" class="invalid">Please indicate your gender.</p>
             <button
               @click.prevent="signUp()"
-              class="signup-btn"
-              id="ordinary-btn"
+              class="costum-btn"
+              id="signup-btn"
               type="submit"
             >
               Sign Up
@@ -124,40 +130,15 @@
 </template>
 
 <style lang="scss" scoped>
-.logo-bar {
-  box-sizing: border-box;
-  margin: 0%;
-  width: auto;
-  padding: 0%;
-  border-bottom: 1px solid #dfe0e6;
-  padding: 28px 0px;
-  img {
-    width: 180px;
-  }
-}
-#divider {
-  width: 91%;
-  height: 1px;
-  background-color: #dfe0e6;
-  margin: 12px 0px;
-  z-index: -2;
+ @import '../css/global.css';
 
-  position: absolute;
-}
-strong {
-  //position: absolute;
-  margin-top: -14px;
-  z-index: 100;
-  background-color: #fff;
-  padding: 10px;
-}
 .signup-form {
   .input_field {
     width: 100%;
+    margin-bottom: 16px;
   }
   h2 {
     font-family: Circular, Helvetica, Arial, sans-serif;
-
     font-size: 18px;
     line-height: 1.2;
     font-weight: 900;
@@ -165,50 +146,20 @@ strong {
     text-align: center;
     margin-bottom: 18px;
   }
-  input {
-    padding: 0px 11.25px;
-    margin-bottom: 16px;
-    height: 45px;
-    border-radius: 2px;
-    border: 1px solid #dfe0e6;
-    color: #1c1c1f;
-  }
+ 
 }
-.signup-btn {
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 500px;
-  padding: 16px 48px 18px;
-  margin-bottom: 14px;
-  margin-top: 30.4px;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #fff;
-
-  text-decoration: none;
-  font-weight: 700;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  transition-duration: 0.3s;
-  border-width: 0;
-  letter-spacing: 2px;
-  min-width: 160px;
-  text-transform: uppercase;
-  white-space: normal;
-}
-
 #facebook-btn {
   background-color: #3b5998;
+  width: 100%;
 }
 #facebook-btn:hover {
   background-color: #3a61b3;
 }
-#ordinary-btn {
+#signup-btn {
   background-color: #1db954;
+  width: 100%;
 }
-#ordinary-btn:hover {
+#signup-btn:hover {
   background-color: #1ed760;
 }
 #birthdate {
@@ -231,18 +182,7 @@ strong {
     width: 25%;
   }
 }
-select {
-  border-radius: 2px;
-  background-color: #fff;
-  border: 1px solid #dfe0e6;
-  color: #88898c;
-  font-size: 0.9375em;
-  height: 3em;
-  padding: 0.625em 0.625em 0.625em;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
+
 .country_select {
   width: 100%;
   background: url("../assets/arrow.png") 90% / 5% no-repeat;
@@ -266,25 +206,27 @@ select {
     padding-left: 5px;
   }
 }
-
-.highlight {
-  color: #1db954;
-  display: inline-block;
-}
-.highlight:hover {
-  color: #1ed760;
-  cursor: pointer;
+.invalid{
+  color: #bd3200;
+  text-align: left;
 }
 </style>
 
 <script>
 // @ is an alias to /src
-
+import LogoHeader from "@/components/logo-header.vue";
+import Divider from "@/components/divider.vue";
 export default {
   name: "SignUp",
+  components: {
+    LogoHeader,
+    Divider
+  },
   data: function() {
     return {
       //User's data that will be passed from the v-model
+      trigger_validation:"false",
+      can_submit:true,
       email: "",
       email_confirmation: "",
       password: "",
@@ -328,7 +270,22 @@ export default {
     };
   },
   methods: {
+   
     signUp() {
+      this.trigger_validation="true";
+      this.can_submit=true;
+      this.req_email;
+      this.invalid_email;
+      this.matched_email;
+       this.req_password;
+        this.short_password;
+        this.req_username;
+        this.req_country;
+        this.req_gender;
+        this.valid_day;
+        this.valid_month;
+        this.valid_year;
+      if( this.can_submit == true){
       this.birthday = this.day + "/" + this.month + "/" + this.year; //check date format with back
       let newuser = {
         username: this.username,
@@ -343,6 +300,192 @@ export default {
         .then(() => this.$router.push("/"))
         .catch(err => console.log(err));
     }
+    else
+          return;
+    }
+    
+  },
+  computed:{
+     req_email: function(){
+      if(this.trigger_validation =="true"){
+      if(this.email==""){
+         this.can_submit=false;
+        return "true";
+      }
+      else{
+         this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+        return "false";
+      }
+    },
+    invalid_email: function(){
+      if(this.trigger_validation=="true"){
+      var to_check=this.email;
+      if(this.email !="" && 
+      (to_check.indexOf('@')==-1 || to_check.indexOf('@') == to_check.length -1
+       ||to_check.indexOf('.com')== -1 || to_check.indexOf('.com')+4 != to_check.length )){
+          this.can_submit=false;
+        return "true";
+      }
+       else{
+          this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+        return "false";
+      }
+      
+    },
+    matched_email: function(){
+      if(this.trigger_validation=="true"){
+      var to_check=this.email;
+      if(this.email != this.email_confirmation){
+         this.can_submit=false;
+        return "true";
+      }
+       else{
+         this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+        return "false";
+      }
+     
+    },
+     req_password: function(){
+      if(this.trigger_validation=="true"){
+     
+      if(this.password == ""){
+         this.can_submit=false;
+        return "true";
+      }
+       else{
+         this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+        return "false";
+      }
+     
+      },
+       short_password: function(){
+             if(this.trigger_validation=="true"){
+     
+      if(this.password.length <= 7 && this.password !=""){
+         this.can_submit=false;
+        return "true";
+      }
+       else{
+          this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+        return "false";
+      }
+      },
+      req_username: function(){
+     if(this.trigger_validation=="true"){
+     
+      if(this.username == ""){
+         this.can_submit=false;
+         return "true";
+      }
+      else{
+         this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+         return "false";
+      }
+      },
+         req_country: function(){
+     if(this.trigger_validation=="true"){
+     
+      if(this.country == "Choose a country"){
+         this.can_submit=false;
+         return "true";
+      }
+         else{
+          this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+         return "false";
+      }
+      },
+      valid_day: function(){
+     if(this.trigger_validation=="true"){
+     
+      if(this.day == "" || isNaN(this.day) || Number(this.day) <1 || Number(this.day) > 31){
+         this.can_submit=false;
+         return "true";
+      }
+       else{
+          this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+         return "false";
+      }
+      },
+      valid_month: function(){
+     if(this.trigger_validation=="true"){
+     
+      if(this.month == "0"){
+         this.can_submit=false;
+         return "true";
+      }
+         else{
+          this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+         return "false";
+      }
+      },
+      valid_year: function(){
+     if(this.trigger_validation=="true"){
+      var d = new Date();
+      if(this.year == "" || isNaN(this.year) || Number(this.year) <1900 || Number(this.year) > d.getFullYear()){
+          this.can_submit=false;
+         return "true";
+      }
+          else{
+          this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+         return "false";
+      }
+      },
+      req_gender: function(){
+     if(this.trigger_validation=="true"){
+     
+      if(this.gender == ""){
+         this.can_submit=false;
+         return "true";
+      }
+          else{
+         this.can_submit= this.can_submit && true;
+      return "false";
+      }
+      }
+      else{
+         return "false";
+      }
+      },
   }
 };
 </script>
