@@ -1,6 +1,6 @@
 <template>
-   <div>
-     <logo-header/>
+  <div>
+    <logo-header />
     <!-- Sign Up form -->
     <div class="conatiner signup-form px-0">
       <div class="row justify-content-center  m-0">
@@ -9,7 +9,7 @@
             SIGN UP WITH FACEBOOK
           </button>
           <br />
-          <divider/>
+          <divider />
           <h2>Sign up with your email address</h2>
 
           <form>
@@ -20,8 +20,12 @@
               v-model="email"
             />
             <br />
-            <p v-if="req_email == 'true'" class="invalid">Please enter your email.</p>
-            <p v-if="invalid_email == 'true'" class="invalid">The email address you supplied is invalid.</p>
+            <p v-if="req_email == 'true'" class="invalid">
+              Please enter your email.
+            </p>
+            <p v-if="invalid_email == 'true'" class="invalid">
+              The email address you supplied is invalid.
+            </p>
             <input
               class="input_field"
               type="email"
@@ -29,9 +33,22 @@
               v-model="email_confirmation"
             />
             <br />
-            <p v-if="req_email == 'true'" class="invalid">Please enter your email.</p>
-            <p v-if="invalid_email == 'true'" class="invalid">The email address you supplied is invalid.</p>
-            <p v-if="invalid_email == 'false' && invalid_email == 'false' && matched_email =='true'" class="invalid">Email address doesn't match.</p>
+            <p v-if="req_confirm_email == 'true'" class="invalid">
+              Please enter your email.
+            </p>
+            <p v-if="invalid_confirm_email == 'true'" class="invalid">
+              The email address you supplied is invalid.
+            </p>
+            <p
+              v-if="
+                invalid_email == 'false' &&
+                  invalid_email == 'false' &&
+                  matched_email == 'true'
+              "
+              class="invalid"
+            >
+              Email address doesn't match.
+            </p>
 
             <input
               class="input_field"
@@ -40,8 +57,12 @@
               v-model="password"
             />
             <br />
-            <p v-if="req_password == 'true'" class="invalid">Enter a password to continue.</p>
-            <p v-if="short_password == 'true'" class="invalid">Your password is too short.</p>
+            <p v-if="req_password == 'true'" class="invalid">
+              Enter a password to continue.
+            </p>
+            <p v-if="short_password == 'true'" class="invalid">
+              Your password is too short.
+            </p>
             <input
               class="input_field"
               type="text"
@@ -49,7 +70,9 @@
               v-model="username"
               required
             />
-            <p v-if="req_username == 'true'" class="invalid">What should we call you?</p>
+            <p v-if="req_username == 'true'" class="invalid">
+              What should we call you?
+            </p>
             <br />
             <!-- country -->
             <select v-model="country" class="country_select">
@@ -60,7 +83,9 @@
                 >{{ country.text }}</option
               >
             </select>
-            <p v-if="req_country== 'true'" class="invalid">Please enter your country.</p>
+            <p v-if="req_country == 'true'" class="invalid">
+              Please enter your country.
+            </p>
             <!-- country -->
             <!-- take the date of birth -->
             <div id="birthdate" class="input_field">
@@ -78,10 +103,16 @@
 
               <input type="text" placeholder="Year" v-model="year" />
             </div>
-            
-            <p v-if="valid_day =='true'" class="invalid">Please enter a valid day of the month.</p>
-            <p v-if="valid_month== 'true'" class="invalid">Please enter your birth month.</p>
-            <p v-if="valid_year =='true'" class="invalid">Please enter a valid year.</p>
+
+            <p v-if="valid_day == 'true'" class="invalid">
+              Please enter a valid day of the month.
+            </p>
+            <p v-if="valid_month == 'true'" class="invalid">
+              Please enter your birth month.
+            </p>
+            <p v-if="valid_year == 'true'" class="invalid">
+              Please enter a valid year.
+            </p>
             <!-- take the date of birth -->
 
             <!-- Gender -->
@@ -105,8 +136,10 @@
             </div>
             <!-- Gender -->
             <br />
-            
-             <p v-if="req_gender =='true'" class="invalid">Please indicate your gender.</p>
+
+            <p v-if="req_gender == 'true'" class="invalid">
+              Please indicate your gender.
+            </p>
             <button
               @click.prevent="signUp()"
               class="costum-btn"
@@ -130,7 +163,7 @@
 </template>
 
 <style lang="scss" scoped>
- @import '../css/global.css';
+@import "../css/global.css";
 
 .signup-form {
   .input_field {
@@ -146,7 +179,6 @@
     text-align: center;
     margin-bottom: 18px;
   }
- 
 }
 #facebook-btn {
   background-color: #3b5998;
@@ -206,7 +238,7 @@
     padding-left: 5px;
   }
 }
-.invalid{
+.invalid {
   color: #bd3200;
   text-align: left;
 }
@@ -225,8 +257,8 @@ export default {
   data: function() {
     return {
       //User's data that will be passed from the v-model
-      trigger_validation:"false",
-      can_submit:true,
+      trigger_validation: "false",
+      can_submit: true,
       email: "",
       email_confirmation: "",
       password: "",
@@ -270,222 +302,238 @@ export default {
     };
   },
   methods: {
-   
     signUp() {
-      this.trigger_validation="true";
-      this.can_submit=true;
+      this.trigger_validation = "true";
+      this.can_submit = true;
       this.req_email;
       this.invalid_email;
       this.matched_email;
-       this.req_password;
-        this.short_password;
-        this.req_username;
-        this.req_country;
-        this.req_gender;
-        this.valid_day;
-        this.valid_month;
-        this.valid_year;
-      if( this.can_submit == true){
-      this.birthday = this.day + "/" + this.month + "/" + this.year; //check date format with back
-      let newuser = {
-        username: this.username,
-        password: this.password,
-        country: this.country,
-        email: this.email,
-        gender: this.gender,
-        birthday: this.birthday
-      };
-      this.$store
-        .dispatch("signUp", newuser)
-        .then(() => this.$router.push("/"))
-        .catch(err => console.log(err));
+      this.req_password;
+      this.short_password;
+      this.req_username;
+      this.req_country;
+      this.req_gender;
+      this.valid_day;
+      this.valid_month;
+      this.valid_year;
+      if (this.can_submit == true) {
+        this.birthday = this.day + "/" + this.month + "/" + this.year; //check date format with back
+        let newuser = {
+          username: this.username,
+          password: this.password,
+          country: this.country,
+          email: this.email,
+          gender: this.gender,
+          birthday: this.birthday
+        };
+        this.$store
+          .dispatch("signUp", newuser)
+          .then(() => this.$router.push("/"))
+          .catch(err => console.log(err));
+      } else return;
+    },
+    cannotSubmit() {
+      this.can_submit = false;
+    },
+    canSubmit() {
+      this.can_submit = this.can_submit && true;
     }
-    else
-          return;
-    }
-    
   },
-  computed:{
-     req_email: function(){
-      if(this.trigger_validation =="true"){
-      if(this.email==""){
-         this.can_submit=false;
-        return "true";
-      }
-      else{
-         this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
+  computed: {
+    req_email: function() {
+      if (this.trigger_validation == "true") {
+        if (this.email == "") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
         return "false";
       }
     },
-    invalid_email: function(){
-      if(this.trigger_validation=="true"){
-      var to_check=this.email;
-      if(this.email !="" && 
-      (to_check.indexOf('@')==-1 || to_check.indexOf('@') == to_check.length -1
-       ||to_check.indexOf('.com')== -1 || to_check.indexOf('.com')+4 != to_check.length )){
-          this.can_submit=false;
-        return "true";
-      }
-       else{
-          this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
+    invalid_email: function() {
+      if (this.trigger_validation == "true") {
+        var to_check = this.email;
+        if (
+          this.email != "" &&
+          (to_check.indexOf("@") == -1 ||
+            to_check.indexOf("@") == to_check.length - 1 ||
+            to_check.indexOf(".com") == -1 ||
+            to_check.indexOf(".com") + 4 != to_check.length)
+        ) {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
         return "false";
       }
-      
     },
-    matched_email: function(){
-      if(this.trigger_validation=="true"){
-      var to_check=this.email;
-      if(this.email != this.email_confirmation){
-         this.can_submit=false;
-        return "true";
-      }
-       else{
-         this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
+    req_confirm_email: function() {
+      if (this.trigger_validation == "true") {
+        if (this.email_confirmation == "") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
         return "false";
       }
-     
     },
-     req_password: function(){
-      if(this.trigger_validation=="true"){
-     
-      if(this.password == ""){
-         this.can_submit=false;
-        return "true";
-      }
-       else{
-         this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
+    invalid_confirm_email: function() {
+      if (this.trigger_validation == "true") {
+        var to_check = this.email_confirmation;
+        if (
+          to_check != "" &&
+          (to_check.indexOf("@") == -1 ||
+            to_check.indexOf("@") == to_check.length - 1 ||
+            to_check.indexOf(".com") == -1 ||
+            to_check.indexOf(".com") + 4 != to_check.length)
+        ) {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
         return "false";
       }
-     
-      },
-       short_password: function(){
-             if(this.trigger_validation=="true"){
-     
-      if(this.password.length <= 7 && this.password !=""){
-         this.can_submit=false;
-        return "true";
-      }
-       else{
-          this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
+    },
+    matched_email: function() {
+      if (this.trigger_validation == "true") {
+        if (this.email != this.email_confirmation) {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
         return "false";
       }
-      },
-      req_username: function(){
-     if(this.trigger_validation=="true"){
-     
-      if(this.username == ""){
-         this.can_submit=false;
-         return "true";
+    },
+    req_password: function() {
+      if (this.trigger_validation == "true") {
+        if (this.password == "") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
-      else{
-         this.can_submit= this.can_submit && true;
-      return "false";
+    },
+    short_password: function() {
+      if (this.trigger_validation == "true") {
+        if (this.password.length <= 7 && this.password != "") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
+    },
+    req_username: function() {
+      if (this.trigger_validation == "true") {
+        if (this.username == "") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
-      else{
-         return "false";
+    },
+    req_country: function() {
+      if (this.trigger_validation == "true") {
+        if (this.country == "Choose a country") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
-      },
-         req_country: function(){
-     if(this.trigger_validation=="true"){
-     
-      if(this.country == "Choose a country"){
-         this.can_submit=false;
-         return "true";
+    },
+    valid_day: function() {
+      if (this.trigger_validation == "true") {
+        if (
+          this.day == "" ||
+          isNaN(this.day) ||
+          Number(this.day) < 1 ||
+          Number(this.day) > 31
+        ) {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
-         else{
-          this.can_submit= this.can_submit && true;
-      return "false";
+    },
+    valid_month: function() {
+      if (this.trigger_validation == "true") {
+        if (this.month == "0") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
+    },
+    valid_year: function() {
+      if (this.trigger_validation == "true") {
+        var d = new Date();
+        if (
+          this.year == "" ||
+          isNaN(this.year) ||
+          Number(this.year) < 1900 ||
+          Number(this.year) > d.getFullYear()
+        ) {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
-      else{
-         return "false";
+    },
+    req_gender: function() {
+      if (this.trigger_validation == "true") {
+        if (this.gender == "") {
+          this.cannotSubmit();
+          return "true";
+        } else {
+          this.canSubmit();
+          return "false";
+        }
+      } else {
+        return "false";
       }
-      },
-      valid_day: function(){
-     if(this.trigger_validation=="true"){
-     
-      if(this.day == "" || isNaN(this.day) || Number(this.day) <1 || Number(this.day) > 31){
-         this.can_submit=false;
-         return "true";
-      }
-       else{
-          this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
-         return "false";
-      }
-      },
-      valid_month: function(){
-     if(this.trigger_validation=="true"){
-     
-      if(this.month == "0"){
-         this.can_submit=false;
-         return "true";
-      }
-         else{
-          this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
-         return "false";
-      }
-      },
-      valid_year: function(){
-     if(this.trigger_validation=="true"){
-      var d = new Date();
-      if(this.year == "" || isNaN(this.year) || Number(this.year) <1900 || Number(this.year) > d.getFullYear()){
-          this.can_submit=false;
-         return "true";
-      }
-          else{
-          this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
-         return "false";
-      }
-      },
-      req_gender: function(){
-     if(this.trigger_validation=="true"){
-     
-      if(this.gender == ""){
-         this.can_submit=false;
-         return "true";
-      }
-          else{
-         this.can_submit= this.can_submit && true;
-      return "false";
-      }
-      }
-      else{
-         return "false";
-      }
-      },
+    }
   }
 };
 </script>

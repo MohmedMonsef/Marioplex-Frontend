@@ -1,19 +1,24 @@
 <template>
   <div>
-    <logo-header/>
+    <logo-header />
     <!-- login form -->
     <div class="conatiner-fluid justify-content-center login-form">
       <div class="row justify-content-center">
         <div class="col-sm-4" align="center">
           <h2>To continue,log in to Spotify</h2>
           <button class="login-btn" id="facebook-btn">
-           CONTINUE WITH FACEBOOK
+            CONTINUE WITH FACEBOOK
           </button>
           <button class="login-btn" id="apple-btn">
             CONTINUE WITH APPLE
           </button>
           <form>
-            <input type="text" placeholder="Email address or Username" v-model="email" required />
+            <input
+              type="text"
+              placeholder="Email address or Username"
+              v-model="email"
+              required
+            />
             <br />
             <input
               type="password"
@@ -88,7 +93,8 @@
   white-space: normal;
 }
 
-#facebook-btn, .ordinary-btn {
+#facebook-btn,
+.ordinary-btn {
   background-color: #3b5998;
 }
 #facebook-btn:hover {
@@ -104,26 +110,25 @@
   background-color: #1db954;
 }
 #ordinary-btn:hover {
-  background-color:  #1ed760;
+  background-color: #1ed760;
 }
 </style>
 
 <script>
 // @ is an alias to /src
- import LogoHeader from "@/components/logo-header.vue";
+import LogoHeader from "@/components/logo-header.vue";
 
 export default {
   name: "Login",
   components: {
-    LogoHeader,
+    LogoHeader
   },
   data: function() {
     return {
       //User's data that will be passed from the v-model
       email: "",
-       username: "",
+      username: "",
       password: ""
-     
     };
   },
   methods: {
