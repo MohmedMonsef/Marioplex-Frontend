@@ -127,22 +127,10 @@ export default {
     return {
       //User's data that will be passed from the v-model
       email: "",
-      username: "",
       password: ""
     };
   },
   methods: {
-    signUp() {
-      let newuser = {
-        email: this.email,
-        password: this.password,
-        username: this.username
-      };
-      this.$store
-        .dispatch("signUp", newuser)
-        .then(() => this.$router.push("/"))
-        .catch(err => console.log(err));
-    },
     login() {
       let user = {
         email: this.email,

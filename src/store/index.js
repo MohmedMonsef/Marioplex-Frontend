@@ -38,16 +38,18 @@ export default new Vuex.Store({
          }
          )
         .then(response => {
-          const token = response.data.token;
+          if(response.status == 200){
+          const token = response.headers.token;
           localStorage.setItem('token', token);
-          console.log(token);
+          console.log(response);
           const user = response.data.user;
           axios.defaults.headers.common['Authorization'] = token;
-          commit("auth_success", token, user);
+          commit("auth_success", token, user);}
         })
         .catch(error => {
           commit('auth_error', error);
           localStorage.removeItem('token');
+          console.log("axios cought it");
           console.log(error);
         });
     },
@@ -76,6 +78,7 @@ export default new Vuex.Store({
   },
     getters: {
      UserName: state => state.user.username,
+     GetStatus:state =>state.status
     },
     modules: {}
 });
