@@ -52,3 +52,8 @@ select {
     color: #1ed760;
     cursor: pointer;
   }
+
+  .invalid {
+    color: #bd3200;
+    text-align: left;
+  }

@@ -42,7 +42,7 @@
             <p
               v-if="
                 invalid_email == 'false' &&
-                  invalid_email == 'false' &&
+                  invalid_confirm_email == 'false' &&
                   matched_email == 'true'
               "
               class="invalid"
@@ -182,7 +182,7 @@
 }
 #facebook-btn {
   background-color: #3b5998;
-  max-width: 320px; 
+  max-width: 320px;
   width: 100%;
 }
 #facebook-btn:hover {
@@ -190,7 +190,7 @@
 }
 #signup-btn {
   background-color: #1db954;
-  max-width: 320px; 
+  max-width: 320px;
   width: 100%;
 }
 #signup-btn:hover {
@@ -239,10 +239,6 @@
     margin-right: 15px;
     padding-left: 5px;
   }
-}
-.invalid {
-  color: #bd3200;
-  text-align: left;
 }
 </style>
 
@@ -318,33 +314,45 @@ export default {
       this.valid_day;
       this.valid_month;
       this.valid_year;
-      if (this.can_submit == true) {
-        this.birthday = this.day + "/" + this.month + "/" + this.year; //check date format with back
-        let newuser = {
-          username: this.username,
-          password: this.password,
-          country: this.country,
-          email: this.email,
-          gender: this.gender,
-          birthday: this.birthday
-        };
-        this.$store
-          .dispatch("signUp", newuser)
-          .then(() => this.$router.push("/"))
-          .catch(err => console.log(err));
-      } else return;
+      setTimeout(() => {
+        if (this.can_submit) {
+          this.birthday = this.day + "/" + this.month + "/" + this.year; //check date format with back
+          let newuser = {
+            username: this.username,
+            password: this.password,
+            country: this.country,
+            email: this.email,
+            gender: this.gender,
+            birthday: this.birthday
+          };
+          this.$store
+            .dispatch("signUp", newuser)
+            .then(() => this.$router.push("/"))
+            .catch(err => console.log(err));
+        } else return;
+      }, 500);
     },
     cannotSubmit() {
+      console.log("cannot sub");
+      console.log(this.can_submit);
       this.can_submit = false;
+      console.log(this.can_submit);
     },
     canSubmit() {
+      console.log("can sub");
+      console.log(this.can_submit);
       this.can_submit = this.can_submit && true;
+      console.log(this.can_submit);
     }
   },
   computed: {
     req_email: function() {
+      console.log(this.email);
       if (this.trigger_validation == "true") {
+        console.log(this.email);
         if (this.email == "") {
+          console.log(this.email);
+          console.log("required email not found");
           this.cannotSubmit();
           return "true";
         } else {

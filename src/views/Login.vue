@@ -21,6 +21,9 @@
               required
             />
             <br />
+            <p v-if="req_email" class="invalid">
+             Please enter your Spotify email address.
+            </p>
             <input
               type="password"
               placeholder="Password"
@@ -28,6 +31,9 @@
               required
             />
             <br />
+            <p v-if="req_password" class="invalid">
+             Please enter your password.
+            </p>
             <div id="wrap">
             <button
               @click.prevent="login()"
@@ -162,11 +168,20 @@ export default {
     return {
       //User's data that will be passed from the v-model
       email: "",
-      password: ""
+      password: "",
+      //required for validation
+      trigger_validation: false,
+      can_submit: true,
     };
   },
   methods: {
     login() {
+      this.trigger_validation = true;
+      this.can_submit = true;
+      this.req_email;
+      this.req_password;
+      setTimeout(() => {
+         if (this.can_submit) {
       let user = {
         email: this.email,
         password: this.password
@@ -175,6 +190,49 @@ export default {
         .dispatch("login", user)
         .then(() => this.$router.push("/"))
         .catch(err => console.log(err));
+        }
+      }, 500);
+     
+    },
+      cannotSubmit() {
+      console.log("cannot sub");
+      console.log(this.can_submit);
+      this.can_submit = false;
+      console.log(this.can_submit);
+    },
+    canSubmit() {
+     console.log("can sub");
+      console.log(this.can_submit);
+      this.can_submit = this.can_submit && true;
+      console.log(this.can_submit);
+    }
+  },
+  computed:{
+    req_email: function() {
+      if (this.trigger_validation) {
+        if (this.email == "") {
+          this.cannotSubmit();
+          return true;
+        } else {
+          this.canSubmit();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    },
+     req_password: function() {
+      if (this.trigger_validation) {
+        if (this.password == "") {
+          this.cannotSubmit();
+          return true;
+        } else {
+          this.canSubmit();
+          return false;
+        }
+      } else {
+        return false;
+      }
     }
   }
 };
