@@ -1,21 +1,22 @@
-<template>
+ <template>
   <div>
     <logo-header />
     <!-- login form -->
-    <div class="conatiner-fluid justify-content-center login-form">
-      <div class="row justify-content-center">
-        <div class="col-sm-4" align="center">
+    <div class="conatiner login-form px-0">
+      <div class="row justify-content-center m-0">
+        <div class="col-4 m-0" align="center">
           <h2>To continue,log in to Spotify</h2>
-          <button class="login-btn" id="facebook-btn">
+          <button class="costum-btn" id="facebook-btn">
             CONTINUE WITH FACEBOOK
           </button>
-          <button class="login-btn" id="apple-btn">
+          <button class="costum-btn" id="apple-btn">
             CONTINUE WITH APPLE
           </button>
+          <divider/>
           <form>
             <input
               type="text"
-              placeholder="Email address or Username"
+              placeholder="Email address"
               v-model="email"
               required
             />
@@ -27,34 +28,39 @@
               required
             />
             <br />
+            <div id="wrap">
             <button
               @click.prevent="login()"
-              class="login-btn"
-              id="ordinary-btn"
+              class="costum-btn"
+              id="login-btn"
               type="submit"
             >
-              Sign Up
+              LOG IN
             </button>
+         
+            </div>
+           <div id="forget_pass">
+              <router-link class="highlight" to="/" tag="p">
+                Forget your password?
+              </router-link>
+           </div>
+           <h2>Don't have an account?</h2>
+            <router-link class="costum-btn" id="signup_btn" to="/signup" tag="button">
+               SIGN up for spotify
+              </router-link>
           </form>
         </div>
       </div>
     </div>
-    <!-- Sign Up form -->
+    <!-- Login form -->
   </div>
 </template>
 
 <style lang="scss" scoped>
-.logo-bar {
-  border-bottom: 1px solid black;
-  padding: 28px 0px;
-  img {
-    width: 150px;
-  }
-}
+@import "../css/global.css";
 .login-form {
   h2 {
     font-family: Circular, Helvetica, Arial, sans-serif;
-
     font-size: 18px;
     line-height: 1.2;
     font-weight: 900;
@@ -66,62 +72,91 @@
     width: 100%;
     height: 45px;
     padding: 0px 11.25px;
+    margin-top: 16px;
     margin-bottom: 16px;
   }
 }
-.login-btn {
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 500px;
-  padding: 14px 14px 18px;
-  margin-bottom: 14px;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #fff;
 
-  text-decoration: none;
-  font-weight: 700;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  transition-duration: 0.3s;
-  border-width: 0;
-  letter-spacing: 2px;
-  min-width: 160px;
-  text-transform: uppercase;
-  white-space: normal;
-}
-
-#facebook-btn,
-.ordinary-btn {
+#facebook-btn {
   background-color: #3b5998;
+  
+  padding: 14px 14px 18px 14px;
+  margin:16px 0px;
+  //height: 50px;
+   display: block;
+
+  width: 100%;
 }
 #facebook-btn:hover {
   background-color: #3a61b3;
 }
 #apple-btn {
   background-color: #000000;
+  padding: 14px 14px 14px 18px;
+  margin:16px 0px;
+   display: block;
+
+  width: 100%;
+ 
 }
 #apple-btn:hover {
   background-color: #333;
 }
-#ordinary-btn {
-  background-color: #1db954;
+#wrap{
+  overflow: auto;
 }
-#ordinary-btn:hover {
+#login-btn {
+  background-color: #1db954;
+  width: 50%;
+  float: right;
+  display: inline-block;
+}
+#login-btn:hover {
   background-color: #1ed760;
 }
+// #rem{
+//    background-color: #1db954;
+//   width: 50%;
+//   float: left;
+//   display: inline-block;
+// }
+#forget_pass{
+  align-content: center;
+  display: block;
+  
+  padding: 30px;
+  border-bottom: 1px solid #dfe0e6;
+  margin-bottom: 15px;
+}
+
+#signup_btn {
+color: #333;
+background-color: #ffffff;
+border:solid #adadad 2px;
+  padding: 14px 14px 14px 18px;
+  margin:16px 0px 42px 0px;
+  display: block;
+   
+  width: 100%;
+}
+#signup_btn:hover {
+  color: #fff;
+background-color: #616467;
+border:solid  #616467 2px;
+}
+
 </style>
 
 <script>
 // @ is an alias to /src
 import LogoHeader from "@/components/logo-header.vue";
+import Divider from "@/components/divider.vue";
 
 export default {
   name: "Login",
   components: {
-    LogoHeader
+    LogoHeader,
+    Divider
   },
   data: function() {
     return {

@@ -1,6 +1,5 @@
 input {
     padding: 0px 11.25px;
-   
     height: 48px;
     border-radius: 2px;
     border: 1px solid #dfe0e6;
@@ -13,7 +12,7 @@ input {
   padding: 16px 48px 18px;
   margin-bottom: 14px;
   margin-top: 31px;
-  max-width: 320px;
+  
   margin-left: auto;
   margin-right: auto;
   color: #fff;

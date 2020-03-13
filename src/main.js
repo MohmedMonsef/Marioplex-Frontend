@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
 //import "normalize.css";
-import { Server,Response } from "miragejs"; //uncomment you mirage code goes here
+import { Server, Response } from "miragejs"; //uncomment you mirage code goes here
 
 new Server({
   seeds(server) {
@@ -36,16 +36,18 @@ new Server({
   routes() {
     this.post("/api/signup", (schema, request) => {
       const user = JSON.parse(request.requestBody).data;
-      if(schema.db.users.findBy({email:user.email}) ==null)
-     {
-        return new Response(201,{token:"menna"}, schema.db.users.insert({
-        username: user.username,
-        email: user.email,
-        password: user.password,
-      }));
-    }
-      else{
-        return new Response(403,{error:"email not unique"});
+      if (schema.db.users.findBy({ email: user.email }) == null) {
+        return new Response(
+          201,
+          { token: "menna" },
+          schema.db.users.insert({
+            username: user.username,
+            email: user.email,
+            password: user.password
+          })
+        );
+      } else {
+        return new Response(403, { error: "email not unique" });
       }
     });
   }

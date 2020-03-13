@@ -182,6 +182,7 @@
 }
 #facebook-btn {
   background-color: #3b5998;
+  max-width: 320px; 
   width: 100%;
 }
 #facebook-btn:hover {
@@ -189,6 +190,7 @@
 }
 #signup-btn {
   background-color: #1db954;
+  max-width: 320px; 
   width: 100%;
 }
 #signup-btn:hover {
