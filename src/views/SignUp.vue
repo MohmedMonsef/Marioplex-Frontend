@@ -26,6 +26,9 @@
             <p v-if="invalid_email == 'true'" class="invalid">
               The email address you supplied is invalid.
             </p>
+            <p v-if="isLoggedIn == 'error'" class="invalid">
+              This email address is already in use.
+            </p>
             <input
               class="input_field"
               type="email"
@@ -42,8 +45,10 @@
             <p
               v-if="
                 invalid_email == 'false' &&
-                  invalid_confirm_email == 'false' &&
-                  matched_email == 'true'
+                invalid_confirm_email == 'false' &&
+                req_email =='false' &&
+                req_confirm_email =='false' &&
+                matched_email == 'true'
               "
               class="invalid"
             >
@@ -254,6 +259,7 @@ export default {
   },
   data: function() {
     return {
+      
       //User's data that will be passed from the v-model
       trigger_validation: "false",
       can_submit: true,
@@ -327,10 +333,22 @@ export default {
           };
           this.$store
             .dispatch("signUp", newuser)
-            .then(() => this.$router.push("/"))
+            .then(() =>{ 
+                setTimeout(() => {
+                var check = this.isLoggedIn;
+                console.log("after the request is executed");
+                console.log(check);
+
+                if (check == "success") {
+                  console.log("sss");
+                  this.$router.push("/");
+                  console.log(check);
+                }
+              }, 500);
+            })
             .catch(err => console.log(err));
         } else return;
-      }, 500);
+      }, 200);
     },
     cannotSubmit() {
       console.log("cannot sub");
@@ -382,6 +400,11 @@ export default {
       } else {
         return "false";
       }
+    },
+    isLoggedIn : function(){ 
+       console.log("in fun")
+      console.log(this.$store.getters.GetStatus)
+      return this.$store.getters.GetStatus
     },
     req_confirm_email: function() {
       if (this.trigger_validation == "true") {

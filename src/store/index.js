@@ -57,12 +57,17 @@ export default new Vuex.Store({
           data: user
         })
         .then(response => {
-          const token = response.data.token;
+          
+          const token = response.headers.token;
+          const user = response.data.user;
+          commit("auth_success", token, user);
+          console.log("in Response vuex");
+          console.log(this.state.status);
           localStorage.setItem("token", token);
           console.log(token);
-          const user = response.data.user;
+          
           axios.defaults.headers.common["Authorization"] = token;
-          commit("auth_success", token, user);
+          
         })
         .catch(error => {
           commit("auth_error", error);

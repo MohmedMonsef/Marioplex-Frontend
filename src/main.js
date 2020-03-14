@@ -50,6 +50,25 @@ new Server({
         return new Response(403, { error: "email not unique" });
       }
     });
+    this.post("/api/login", (schema, request) => {
+      const user = JSON.parse(request.requestBody).data;
+      if (
+        schema.db.users.findBy({ email: user.email }) != null &&
+        schema.db.users.findBy({ password: user.password }) != null
+      ) {
+        return new Response(
+          201,
+          { token: "menna" },
+          schema.db.users.insert({
+            username: user.username,
+            email: user.email,
+            password: user.password
+          })
+        );
+      } else {
+        return new Response(403, { error: "no user with such data" });
+      }
+    });
   }
 });
 Vue.config.productionTip = false;

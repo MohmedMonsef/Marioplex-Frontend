@@ -1,4 +1,4 @@
- <template>
+<template>
   <div>
     <logo-header />
     <!-- login form -->
@@ -6,13 +6,16 @@
       <div class="row justify-content-center m-0">
         <div class="col-4 m-0" align="center">
           <h2>To continue,log in to Spotify</h2>
+          <div class="unlogged" v-if="isLoggedIn == 'error'">
+            incorrect email or password
+          </div>
           <button class="costum-btn" id="facebook-btn">
             CONTINUE WITH FACEBOOK
           </button>
           <button class="costum-btn" id="apple-btn">
             CONTINUE WITH APPLE
           </button>
-          <divider/>
+          <divider />
           <form>
             <input
               type="text"
@@ -22,7 +25,7 @@
             />
             <br />
             <p v-if="req_email" class="invalid">
-             Please enter your Spotify email address.
+              Please enter your Spotify email address.
             </p>
             <input
               type="password"
@@ -32,28 +35,32 @@
             />
             <br />
             <p v-if="req_password" class="invalid">
-             Please enter your password.
+              Please enter your password.
             </p>
             <div id="wrap">
-            <button
-              @click.prevent="login()"
-              class="costum-btn"
-              id="login-btn"
-              type="submit"
-            >
-              LOG IN
-            </button>
-         
+              <button
+                @click.prevent="login()"
+                class="costum-btn"
+                id="login-btn"
+                type="submit"
+              >
+                LOG IN
+              </button>
             </div>
-           <div id="forget_pass">
+            <div id="forget_pass">
               <router-link class="highlight" to="/" tag="p">
                 Forget your password?
               </router-link>
-           </div>
-           <h2>Don't have an account?</h2>
-            <router-link class="costum-btn" id="signup_btn" to="/signup" tag="button">
-               SIGN up for spotify
-              </router-link>
+            </div>
+            <h2>Don't have an account?</h2>
+            <router-link
+              class="costum-btn"
+              id="signup_btn"
+              to="/signup"
+              tag="button"
+            >
+              SIGN up for spotify
+            </router-link>
           </form>
         </div>
       </div>
@@ -74,6 +81,15 @@
     text-align: center;
     margin-bottom: 18px;
   }
+  .unlogged {
+    width: 100%;
+    text-align: center;
+    background-color: #e22134;
+    color: #fff;
+    font-size: 12px;
+    padding: 14px 14px 12px;
+    font-weight: 400;
+  }
   input {
     width: 100%;
     height: 45px;
@@ -85,11 +101,11 @@
 
 #facebook-btn {
   background-color: #3b5998;
-  
+
   padding: 14px 14px 18px 14px;
-  margin:16px 0px;
+  margin: 16px 0px;
   //height: 50px;
-   display: block;
+  display: block;
 
   width: 100%;
 }
@@ -99,16 +115,15 @@
 #apple-btn {
   background-color: #000000;
   padding: 14px 14px 14px 18px;
-  margin:16px 0px;
-   display: block;
+  margin: 16px 0px;
+  display: block;
 
   width: 100%;
- 
 }
 #apple-btn:hover {
   background-color: #333;
 }
-#wrap{
+#wrap {
   overflow: auto;
 }
 #login-btn {
@@ -120,43 +135,37 @@
 #login-btn:hover {
   background-color: #1ed760;
 }
-// #rem{
-//    background-color: #1db954;
-//   width: 50%;
-//   float: left;
-//   display: inline-block;
-// }
-#forget_pass{
+#forget_pass {
   align-content: center;
   display: block;
-  
+
   padding: 30px;
   border-bottom: 1px solid #dfe0e6;
   margin-bottom: 15px;
 }
 
 #signup_btn {
-color: #333;
-background-color: #ffffff;
-border:solid #adadad 2px;
+  color: #333;
+  background-color: #ffffff;
+  border: solid #adadad 2px;
   padding: 14px 14px 14px 18px;
-  margin:16px 0px 42px 0px;
+  margin: 16px 0px 42px 0px;
   display: block;
-   
+
   width: 100%;
 }
 #signup_btn:hover {
   color: #fff;
-background-color: #616467;
-border:solid  #616467 2px;
+  background-color: #616467;
+  border: solid #616467 2px;
 }
-
 </style>
 
 <script>
 // @ is an alias to /src
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
+//import { mapGetters } from 'vuex'
 
 export default {
   name: "Login",
@@ -171,7 +180,7 @@ export default {
       password: "",
       //required for validation
       trigger_validation: false,
-      can_submit: true,
+      can_submit: true
     };
   },
   methods: {
@@ -180,34 +189,41 @@ export default {
       this.can_submit = true;
       this.req_email;
       this.req_password;
+
+      console.log("in log");
       setTimeout(() => {
-         if (this.can_submit) {
-      let user = {
-        email: this.email,
-        password: this.password
-      };
-      this.$store
-        .dispatch("login", user)
-        .then(() => this.$router.push("/"))
-        .catch(err => console.log(err));
+        if (this.can_submit) {
+          let user = {
+            email: this.email,
+            password: this.password
+          };
+          this.$store
+            .dispatch("login", user)
+            .then(() => {
+              setTimeout(() => {
+                var check = this.isLoggedIn;
+                console.log("after the request is executed");
+                console.log(check);
+
+                if (check == "success") {
+                  console.log("sss");
+                  this.$router.push("/");
+                  console.log(check);
+                }
+              }, 500);
+            })
+            .catch(err => console.log(err));
         }
-      }, 500);
-     
+      }, 200);
     },
-      cannotSubmit() {
-      console.log("cannot sub");
-      console.log(this.can_submit);
+    cannotSubmit() {
       this.can_submit = false;
-      console.log(this.can_submit);
     },
     canSubmit() {
-     console.log("can sub");
-      console.log(this.can_submit);
       this.can_submit = this.can_submit && true;
-      console.log(this.can_submit);
     }
   },
-  computed:{
+  computed: {
     req_email: function() {
       if (this.trigger_validation) {
         if (this.email == "") {
@@ -221,7 +237,7 @@ export default {
         return false;
       }
     },
-     req_password: function() {
+    req_password: function() {
       if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();
@@ -233,6 +249,11 @@ export default {
       } else {
         return false;
       }
+    },
+    isLoggedIn: function() {
+      console.log("in fun");
+      console.log(this.$store.getters.GetStatus);
+      return this.$store.getters.GetStatus;
     }
   }
 };
