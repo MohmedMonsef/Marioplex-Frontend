@@ -74,6 +74,11 @@ new Server({
         return new Response(200);
       
     });
+    this.post("/api/logout", () => {
+     
+      return new Response(200);
+    
+  });
   }
 });
 Vue.config.productionTip = false;

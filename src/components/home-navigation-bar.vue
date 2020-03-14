@@ -10,17 +10,22 @@
       <div class=" navbar-list ">
         <ul>
           <router-link to="/premium" tag="li">
-            <a href="#">Premium <span class="sr-only">(current)</span></a>
+           <a> Premium</a>
           </router-link>
           <router-link to="/Help" tag="li">
-            <a href="#">Help</a>
+            <a>Help</a>
           </router-link>
-          <router-link to="/Login" tag="li">
-            <a href="#">Login</a>
+          <router-link to="/Login" v-if="this.isLoggedIn == '' " tag="li">
+            <a>Login</a>
           </router-link>
-          <router-link to="/SignUp" tag="li">
-            <a href="#">SignUp</a>
+          <router-link to="/SignUp" v-if="this.isLoggedIn==''" tag="li">
+          <a>  SignUp</a>
           </router-link>
+          <router-link to="/" v-if="this.isLoggedIn=='success'" tag="li">
+          <a  @click="logout()" > Logout</a>
+           
+          </router-link>
+         
         </ul>
       </div>
       <!-- nav items -->
@@ -160,9 +165,15 @@ export default {
   name: "home-navigation-bar",
   data: function() {
     return {
-      togglelength: false
+      togglelength: false,
+      isLogged:false
     };
   },
+//  mounted() {
+//     this.isLogged =this.$store.getters.GetStatus;
+//     console.log("in mouted")
+//     console.log( this.isLogged )
+//   },
   methods: {
     collapseBar() {
       this.togglelength = !this.togglelength;
@@ -172,7 +183,18 @@ export default {
       element = document.getElementById("collapsed");
       if (this.togglelength) element.style.width = 450 + "px";
       else element.style.width = 0 + "px";
+    },
+    logout(){
+      this.$store.dispatch("logout");
+       console.log("logout");
     }
+  },
+  computed:{
+    isLoggedIn : function(){
+       console.log("in computed")
+       console.log(this.$store.getters.GetStatus)
+       return this.$store.getters.GetStatus
+       }
   }
 };
 </script>

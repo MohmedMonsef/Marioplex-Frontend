@@ -85,8 +85,26 @@ export default new Vuex.Store({
         })
         .catch(error => {
           commit("auth_error", error);
+          console.log(error);
           localStorage.removeItem("token");
         });
+    },
+    logout({commit}){
+      commit("auth_request");
+      axios
+      .post("/api/logout",{
+        // data:this.state.user.id
+      })
+      .then(()=>{
+        commit("logout");
+        localStorage.removeItem('token');
+        delete axios.defaults.headers.common['Authorization'];
+      }
+      ).catch(error => {
+        commit("auth_error", error);
+        console.log(error);
+        localStorage.removeItem("token");
+      });
     }
   },
   getters: {
