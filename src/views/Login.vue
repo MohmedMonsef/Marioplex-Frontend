@@ -48,7 +48,7 @@
               </button>
             </div>
             <div id="forget_pass">
-              <router-link class="highlight" to="/" tag="p">
+              <router-link class="highlight" to="/ForgetPassword" tag="p">
                 Forget your password?
               </router-link>
             </div>

@@ -69,6 +69,11 @@ new Server({
         return new Response(403, { error: "no user with such data" });
       }
     });
+    this.post("/api/reset", () => {
+     
+        return new Response(200);
+      
+    });
   }
 });
 Vue.config.productionTip = false;

@@ -74,6 +74,19 @@ export default new Vuex.Store({
           localStorage.removeItem("token");
           console.log(error);
         });
+    },
+    reset({ commit }, user) {
+      axios
+        .post("/api/reset", {
+          data: user
+        })
+        .then(() => {      
+          commit("logout");         
+        })
+        .catch(error => {
+          commit("auth_error", error);
+          localStorage.removeItem("token");
+        });
     }
   },
   getters: {
