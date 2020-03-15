@@ -9,7 +9,9 @@
           <div class="unlogged" v-if="isLoggedIn == 'error'">
             incorrect email or password
           </div>
-          <button class="costum-btn" id="facebook-btn">
+          <button class="costum-btn" id="facebook-btn"
+          testid="login facebook button"
+          >
             CONTINUE WITH FACEBOOK
           </button>
           <button class="costum-btn" id="apple-btn">
@@ -22,9 +24,13 @@
               placeholder="Email address"
               v-model="email"
               required
+              testid="email input"
+              
             />
             <br />
-            <p v-if="req_email" class="invalid">
+            <p v-if="req_email" class="invalid"
+            testid="email required error"
+            >
               Please enter your Spotify email address.
             </p>
             <input
@@ -32,9 +38,12 @@
               placeholder="Password"
               v-model="password"
               required
+              testid="password input"
             />
             <br />
-            <p v-if="req_password" class="invalid">
+            <p v-if="req_password" class="invalid"
+            testid="password required error"
+            >
               Please enter your password.
             </p>
             <div id="wrap">
@@ -43,6 +52,7 @@
                 class="costum-btn"
                 id="login-btn"
                 type="submit"
+                 testid="log in button"
               >
                 LOG IN
               </button>

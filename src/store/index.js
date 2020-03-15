@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     status: "",
     token: localStorage.getItem("token") || "",
-    user: []
+    User: []
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -17,8 +17,10 @@ export default new Vuex.Store({
     },
     auth_success(state, token, user) {
       state.status = "success";
-      state.token = token;
-      state.user = user;
+      state.token = token;   
+      state.User= user;
+      console.log("this is the user state");
+     console.log(state.user);
     },
     auth_error(state) {
       state.status = "error";
@@ -30,8 +32,8 @@ export default new Vuex.Store({
   },
   actions: {
     signUp({ commit }, user) {
-      commit("auth_request");
-      axios
+       commit("auth_request");
+       axios
         .post("/api/signup", {
           data: user
         })
@@ -57,17 +59,16 @@ export default new Vuex.Store({
           data: user
         })
         .then(response => {
-          
           const token = response.headers.token;
           const user = response.data.user;
-          commit("auth_success", token, user);
           console.log("in Response vuex");
-          console.log(this.state.status);
+          console.log(JSON.stringify(user));
+          commit("auth_success",token, user);
+          console.log("STATUS",user);
           localStorage.setItem("token", token);
           console.log(token);
-          
+
           axios.defaults.headers.common["Authorization"] = token;
-          
         })
         .catch(error => {
           commit("auth_error", error);
@@ -80,35 +81,36 @@ export default new Vuex.Store({
         .post("/api/reset", {
           data: user
         })
-        .then(() => {      
-          commit("logout");         
+        .then(() => {
+          commit("logout");
         })
         .catch(error => {
           commit("auth_error", error);
           console.log(error);
           localStorage.removeItem("token");
         });
+      console.log(Request.headers);
     },
-    logout({commit}){
+    logout({ commit }) {
       commit("auth_request");
       axios
-      .post("/api/logout",{
-        // data:this.state.user.id
-      })
-      .then(()=>{
-        commit("logout");
-        localStorage.removeItem('token');
-        delete axios.defaults.headers.common['Authorization'];
-      }
-      ).catch(error => {
-        commit("auth_error", error);
-        console.log(error);
-        localStorage.removeItem("token");
-      });
+        .post("/api/logout",()=> {
+         
+        })
+        .then(() => { 
+          commit("logout");
+          localStorage.removeItem("token");
+          delete axios.defaults.headers.common["Authorization"];
+        })
+        .catch(error => {
+          commit("auth_error", error);
+          console.log(error);
+          localStorage.removeItem("token");
+        });
     }
   },
   getters: {
-    UserName: state => state.user.username,
+    CurrentUser: state => state.User,
     GetStatus: state => state.status
   },
   modules: {}

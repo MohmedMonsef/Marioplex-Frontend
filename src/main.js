@@ -40,7 +40,7 @@ new Server({
         return new Response(
           201,
           { token: "menna" },
-          schema.db.users.insert({
+            schema.db.users.insert({
             username: user.username,
             email: user.email,
             password: user.password
@@ -56,29 +56,23 @@ new Server({
         schema.db.users.findBy({ email: user.email }) != null &&
         schema.db.users.findBy({ password: user.password }) != null
       ) {
+        console.log("in main", schema.db.users.findBy({ email: user.email }))
         return new Response(
           201,
           { token: "menna" },
-          schema.db.users.insert({
-            username: user.username,
-            email: user.email,
-            password: user.password
-          })
+          { user: schema.db.users.findBy({ email: user.email })}
         );
       } else {
         return new Response(403, { error: "no user with such data" });
       }
     });
     this.post("/api/reset", () => {
-     
-        return new Response(200);
-      
+      return new Response(200);
     });
     this.post("/api/logout", () => {
-     
+      
       return new Response(200);
-    
-  });
+    });
   }
 });
 Vue.config.productionTip = false;

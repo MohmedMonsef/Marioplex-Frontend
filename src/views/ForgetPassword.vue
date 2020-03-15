@@ -19,16 +19,23 @@
             <label>Email address</label>
           </div>
           <br />
-          <input type="text" v-model="email" />
-            <p class="invalid" id="req_error" v-if="error">
-           This field is required
+          <input type="text" v-model="email" 
+          testid="email input"
+           />
+          <p class="invalid" id="req_error" 
+          v-if="error"
+          testid="email required error"
+          >
+            This field is required
           </p>
-          <button class="costum-btn" id="send-btn"  @click.prevent="send()">
+          <button class="costum-btn" id="send-btn" @click.prevent="send()"
+          testid="forget password button"
+          >
             send
           </button>
           <div>
             If you still need help, contact
-            <router-link class="highlight" to="/" tag="p" replace>
+            <router-link class="highlight" to="/" tag="p" >
               Spotify Support.
             </router-link>
           </div>
@@ -36,13 +43,13 @@
       </div>
     </div>
 
-
     <div class="conatiner reset_body px-0" v-if="submitted">
       <div class="row justify-content-center  m-0">
         <div class="col-6" align="center">
           <h1>Password Reset</h1>
           <p>
-            A message has been sent to you by email with instructions on how to reset your password. 
+            A message has been sent to you by email with instructions on how to
+            reset your password.
           </p>
         </div>
       </div>
@@ -90,7 +97,7 @@ body {
   #send-btn:hover {
     background-color: #1ed760;
   }
-  #req_error{
+  #req_error {
     width: 80%;
   }
 }
@@ -131,29 +138,24 @@ export default {
       isNormal: true,
       isError: false,
       isSubmitted: false,
-      email:""
+      email: ""
     };
   },
-   methods:
-      {
-      send() {
-      if(this.email=="")
-      {
-         this.isNormal=true;
-         this.isError=true;
-         this.isSubmitted=false;
-         
-      }
-      else{
-      
-        this.isNormal=false;
-        this.isSubmitted=true,
-        this.isError=false;
-        this.$store.dispatch("reset",{email:this.email})
-        .catch(err => console.log(err));
+  methods: {
+    send() {
+      if (this.email == "") {
+        this.isNormal = true;
+        this.isError = true;
+        this.isSubmitted = false;
+      } else {
+        this.isNormal = false;
+        (this.isSubmitted = true), (this.isError = false);
+        this.$store
+          .dispatch("reset", { email: this.email })
+          .catch(err => console.log(err));
       }
     }
-    },
+  },
   computed: {
     normal: function() {
       return this.isNormal;

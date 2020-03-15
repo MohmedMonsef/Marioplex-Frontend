@@ -5,7 +5,7 @@
     <div class="conatiner signup-form px-0">
       <div class="row justify-content-center  m-0">
         <div class="col-4" align="center">
-          <button class="costum-btn" id="facebook-btn">
+          <button class="costum-btn" id="facebook-btn" testid="login facebook button">
             SIGN UP WITH FACEBOOK
           </button>
           <br />
@@ -18,15 +18,23 @@
               type="email"
               placeholder="Email"
               v-model="email"
+              testid="email input"
             />
             <br />
-            <p v-if="req_email == 'true'" class="invalid">
+            <p v-if="req_email == 'true'" 
+            class="invalid"
+            testid="email required error"
+            >
               Please enter your email.
             </p>
-            <p v-if="invalid_email == 'true'" class="invalid">
+            <p v-if="invalid_email == 'true'"
+             testid="email invalid error"
+             class="invalid">
               The email address you supplied is invalid.
             </p>
-            <p v-if="isLoggedIn == 'error'" class="invalid">
+            <p v-if="isLoggedIn == 'error'"
+             testid="email not unique error"
+             class="invalid">
               This email address is already in use.
             </p>
             <input
@@ -34,23 +42,29 @@
               type="email"
               placeholder="Confirm email"
               v-model="email_confirmation"
+              testid="confirm email input"
             />
             <br />
-            <p v-if="req_confirm_email == 'true'" class="invalid">
+            <p v-if="req_confirm_email == 'true'" 
+             testid="confirm email required error"
+            class="invalid">
               Please enter your email.
             </p>
-            <p v-if="invalid_confirm_email == 'true'" class="invalid">
+            <p v-if="invalid_confirm_email == 'true'"
+            testid="confirm email invalid error"
+             class="invalid">
               The email address you supplied is invalid.
             </p>
             <p
               v-if="
                 invalid_email == 'false' &&
-                invalid_confirm_email == 'false' &&
-                req_email =='false' &&
-                req_confirm_email =='false' &&
-                matched_email == 'true'
+                  invalid_confirm_email == 'false' &&
+                  req_email == 'false' &&
+                  req_confirm_email == 'false' &&
+                  matched_email == 'true'
               "
               class="invalid"
+              testid="emails not matched error"
             >
               Email address doesn't match.
             </p>
@@ -60,12 +74,19 @@
               type="password"
               placeholder="Password"
               v-model="password"
+              testid="password input"
             />
             <br />
-            <p v-if="req_password == 'true'" class="invalid">
+            <p v-if="req_password == 'true'"       
+            class="invalid"
+             testid="password required error"
+            >
               Enter a password to continue.
             </p>
-            <p v-if="short_password == 'true'" class="invalid">
+            <p v-if="short_password == 'true'"
+             class="invalid"
+              testid="password short error"
+             >
               Your password is too short.
             </p>
             <input
@@ -73,30 +94,39 @@
               type="text"
               placeholder="What should we call you?"
               v-model="username"
+              testid="username input"
               required
             />
-            <p v-if="req_username == 'true'" class="invalid">
+            <p v-if="req_username == 'true'" class="invalid"
+             testid="username required error"
+            >
               What should we call you?
             </p>
             <br />
             <!-- country -->
-            <select v-model="country" class="country_select">
+            <select v-model="country" class="country_select"
+            testid="country input"
+            >
               <option
                 v-for="country in countries"
                 :key="country.value"
                 :disabled="country.disabled"
-                >{{ country.text }}</option
+                >{{ country.text }}
+                
+                </option
               >
             </select>
-            <p v-if="req_country == 'true'" class="invalid">
+            <p v-if="req_country == 'true'" class="invalid"
+             testid="country required error"
+            >
               Please enter your country.
             </p>
             <!-- country -->
             <!-- take the date of birth -->
             <div id="birthdate" class="input_field">
               <label>Date of birth</label>
-              <input type="text" placeholder="Day" v-model="day" />
-              <select v-model="month" class="month_select">
+              <input type="text" placeholder="Day" v-model="day" testid="day of birth input"/>
+              <select v-model="month" class="month_select" testid="month of birth input">
                 <option
                   v-for="month in Months"
                   :key="month.value"
@@ -106,16 +136,22 @@
                 >
               </select>
 
-              <input type="text" placeholder="Year" v-model="year" />
+              <input type="text" placeholder="Year" testid="year of birth input" v-model="year" />
             </div>
 
-            <p v-if="valid_day == 'true'" class="invalid">
+            <p v-if="valid_day == 'true'" class="invalid"
+            testid="day of birth error"
+            >
               Please enter a valid day of the month.
             </p>
-            <p v-if="valid_month == 'true'" class="invalid">
+            <p v-if="valid_month == 'true'" class="invalid"
+            testid="month of birth error"
+            >
               Please enter your birth month.
             </p>
-            <p v-if="valid_year == 'true'" class="invalid">
+            <p v-if="valid_year == 'true'" class="invalid"
+            testid="year of birth error"
+            >
               Please enter a valid year.
             </p>
             <!-- take the date of birth -->
@@ -127,6 +163,7 @@
                 class="gender_field gender-radio"
                 value="m"
                 v-model="gender"
+                testid="gender male radio button"
               />
               <label for="Male" class="gender_field gender-radio">Male</label>
               <input
@@ -134,6 +171,7 @@
                 class="gender_field gender-radio"
                 value="f"
                 v-model="gender"
+                testid="gender female radio button"
               />
               <label for="Female" class="gender_field gender-label"
                 >Female</label
@@ -142,7 +180,9 @@
             <!-- Gender -->
             <br />
 
-            <p v-if="req_gender == 'true'" class="invalid">
+            <p v-if="req_gender == 'true'" class="invalid"
+            testid="gender required error"
+            >
               Please indicate your gender.
             </p>
             <button
@@ -150,12 +190,15 @@
               class="costum-btn"
               id="signup-btn"
               type="submit"
+               testid="sign up button"
             >
               Sign Up
             </button>
             <div>
               Aleady have an account?
-              <router-link class="highlight" to="/Login" tag="p" replace>
+              <router-link class="highlight" to="/Login" tag="p" 
+              testid="log in link"
+              >
                 Log in
               </router-link>
             </div>
@@ -259,7 +302,6 @@ export default {
   },
   data: function() {
     return {
-      
       //User's data that will be passed from the v-model
       trigger_validation: "false",
       can_submit: true,
@@ -333,8 +375,8 @@ export default {
           };
           this.$store
             .dispatch("signUp", newuser)
-            .then(() =>{ 
-                setTimeout(() => {
+            .then(() => {
+              setTimeout(() => {
                 var check = this.isLoggedIn;
                 console.log("after the request is executed");
                 console.log(check);
@@ -401,10 +443,10 @@ export default {
         return "false";
       }
     },
-    isLoggedIn : function(){ 
-       console.log("in fun")
-      console.log(this.$store.getters.GetStatus)
-      return this.$store.getters.GetStatus
+    isLoggedIn: function() {
+      console.log("in fun");
+      console.log(this.$store.getters.GetStatus);
+      return this.$store.getters.GetStatus;
     },
     req_confirm_email: function() {
       if (this.trigger_validation == "true") {
