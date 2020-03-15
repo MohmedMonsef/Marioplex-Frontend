@@ -5,9 +5,16 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view />
+    <mediaplayer />
   </div>
 </template>
+<script>
+import mediaplayer from "@/components/mediaplayer.vue";
+export default {
+  components: {
+    mediaplayer
+  }
+};
+</script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
