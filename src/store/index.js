@@ -19,7 +19,7 @@ export default new Vuex.Store({
       state.status = "success";
       state.token = token;   
       state.User= user;
-      console.log("this is the user state");
+     console.log("this is the user state");
      console.log(state.user);
     },
     auth_error(state) {
@@ -51,6 +51,24 @@ export default new Vuex.Store({
           console.log("axios cought it");
           console.log(error);
         });
+    },
+    facebook_signUp({ commit }){
+      commit("auth_request");
+      axios
+      .get("/auth/facebook")
+      .then((response) => {
+        const token = response.headers.token;
+        localStorage.setItem("token", token);
+        console.log(token);
+        const user = response.data.user;
+        axios.defaults.headers.common["Authorization"] = token;
+        commit("auth_success", token, user);
+      })
+      .catch(error => {
+        commit("auth_error", error);
+        localStorage.removeItem("token");
+        console.log(error);
+      });
     },
     login({ commit }, user) {
       commit("auth_request");

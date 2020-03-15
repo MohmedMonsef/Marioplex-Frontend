@@ -5,7 +5,9 @@
     <div class="conatiner signup-form px-0">
       <div class="row justify-content-center  m-0">
         <div class="col-4" align="center">
-          <button class="costum-btn" id="facebook-btn" testid="login facebook button">
+          <button class="costum-btn" id="facebook-btn" testid="login facebook button"
+          @click="facebook_signUp()"
+          >
             SIGN UP WITH FACEBOOK
           </button>
           <br />
@@ -391,6 +393,27 @@ export default {
             .catch(err => console.log(err));
         } else return;
       }, 200);
+    },
+    facebook_signUp(){
+      this.$store.dispatch("facebook_signUp")
+      .then(()=>{
+        var check=true;
+        while(check){
+          var status=this.isLoggedIn;
+          if(status=="loading")
+            continue;
+          else if(status == "success") {
+            console.log("logged with fb");     
+          this.$router.push("/");
+          check=false;
+          console.log(check);
+          }
+          else if(status== "error"){
+             console.log("error with fb")  
+            check=false;
+          }
+        }
+        })
     },
     cannotSubmit() {
       console.log("cannot sub");
