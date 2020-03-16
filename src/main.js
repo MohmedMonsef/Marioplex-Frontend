@@ -13,24 +13,24 @@ new Server({
     server.db.loadData({
       songs: [
         {
-          song_name: "Anta_Maghroor",
-          artist_name: "Amr_Diab",
+          song_name: "First_Song",
+          artist_name: "Nora",
           album_image: "../assets/cry.png",
           song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
           start_time: "0:00",
           end_time: "3:45"
         },
         {
-          song_name: "Baen_Habit",
-          artist_name: ["Amr_Diab", "Marshmello"],
+          song_name: "Second_Song",
+          artist_name: ["Bassant", "Marshmello"],
           album_image: "../assets/cry.png",
           song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
           start_time: "0:00",
           end_time: "4:40"
         },
         {
-          song_name: "Yatelmo",
-          artist_name: ["Amr_Diab", "Nihal"],
+          song_name: "Third_Song",
+          artist_name: ["Mona", "Nihal"],
           album_image: "../assets/cry.png",
           song:
             "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
@@ -38,7 +38,7 @@ new Server({
           end_time: "5:13"
         },
         {
-          song_name: "kont fe bally",
+          song_name: "Forth_Song",
           artist_name: ["Dai", "Menna", "Nerdeen"],
           album_image: "../assets/cry.png",
           song:

@@ -16,9 +16,6 @@
             <button>
               <i class="fa fa-heart-o" id="hearticon"></i>
             </button>
-            <button>
-              <i class="fa fa-square-o" id="squareicon"></i>
-            </button>
           </div>
           <br />
           <!-- <a
@@ -28,8 +25,9 @@
             v-bind:key="artist.id"
             >{{ artist.songs.artist_name }}</a
           > -->
-          <a href="#" id="artist_name">Artist1 Name</a>
-          <a href="#" id="artist_name">Artist2 Name</a>
+          <a href="#" id="artist_name">Artist1Name</a>
+          <a href="#" id="artist_name">Artist2Name</a>
+          <a href="#" id="artist_name">Artist3Name</a>
         </div>
       </div>
       <div class="col-sm-6">
@@ -59,10 +57,23 @@
 
         <!-- still doesnot work correctly -->
         <div id="seek_bar" style="display:flex;justify-content: center;">
-          <div id="start_time">0:00</div>
+          <!-- <div id="current_time">0:00</div>
           <div id="fill"></div>
           <div id="handle" style="left:0%;"></div>
-          <div id="end_time">3:45</div>
+          <div id="duration">3:45</div> -->
+
+          <div>
+            <div id="current_time" class="current_time">00:00</div>
+            <!-- here you must add onchange="seeksong()" to control the time of song -->
+            <input
+              id="songslider"
+              class="songslider"
+              type="range"
+              min="0"
+              step="1"
+            />
+            <div id="duration" class="duration">3:45</div>
+          </div>
         </div>
         <!-- ///////////////// -->
       </div>
@@ -75,11 +86,22 @@
             <i class="fa fa-volume-up" id="soundicon"></i>
           </button>
           <!-- still doesnot work correctly -->
-          <div id="seek_bar" style="transform:translateX(0%);">
+          <!-- <div id="seek_bar" style="transform:translateX(0%);">
             <div id="fill"></div>
             <div id="handle"></div>
-          </div>
+          </div> -->
           <!-- ///////////////// -->
+          <div class="volume" id="volume">
+            <!-- here you must add onchange="adjustvolume()" to control the volume -->
+            <input
+              id="volume_slider"
+              class="volume_slider"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -141,7 +163,7 @@ img {
   justify-content: space-between;
   justify-content: center;
   // margin: top right bottom left
-  margin: 15px;
+  margin: 8px;
 }
 button {
   background-color: transparent;
@@ -176,48 +198,99 @@ button:focus {
   }
 }
 //////////////////////////still doesnot work correctly
-#seek-bar {
+// #seek-bar {
+//   width: 500px;
+//   height: 3px;
+//   margin-top: 5px;
+//   background-color: #b3b3b3;
+//   display: flex;
+//   flex-direction: row;
+//   position: relative;
+//   justify-content: center;
+//   border-radius: 50px;
+//   //cursor: pointer;
+// }
+// #fill {
+//   height: 5px;
+//   width: 600px;
+//   background-color: gray;
+//   border-radius: 20px;
+// }
+// #seek-bar:hover {
+//   #handle {
+//     width: 8px;
+//     height: 8px;
+//     background-color: white;
+//     border-radius: 50%;
+//     margin-top: -5px;
+//   }
+// }
+input:focus {
+  outline: 0 !important;
+}
+.songslider {
   width: 500px;
   height: 5px;
-  margin-top: 10px;
-  background-color: #b3b3b3;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  justify-content: center;
-  border-radius: 50px;
-  //cursor: pointer;
+  border-radius: 10px;
+  margin: 5px;
+  // to override default css styles
+  -webkit-appearance: none;
+  appearance: none;
+  background: #424040;
 }
-#fill {
-  height: 5px;
-  width: 600px;
-  background-color: gray;
-  border-radius: 20px;
+// The song slider handle -webkit- for (Chrome, Opera, Safari, Edge) and -moz- for (Firefox) to override default look)
+.songslider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 15px;
+  background: white;
+  cursor: pointer;
 }
-#seek-bar:hover {
-  #handle {
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
-    margin-top: -5px;
-  }
+
+.songslider::-moz-range-thumb,
+.volume_slider::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 15px;
+  background: white;
+  cursor: pointer;
 }
-#start_time,
-#end_time {
-  font-size: 12px;
+#current_time,
+#duration {
+  font-size: 10px;
   color: #b3b3b3;
   display: flex;
-  margin: 5px;
+  margin: 7px;
+}
+#current_time {
+  float: left;
+}
+#duration {
+  float: right;
 }
 //////////////////
 .additional_actions {
   display: flex;
   margin: 30px;
   justify-content: flex-end;
-  #fill {
-    width: 80px;
-    margin-top: 10px;
+  // #fill {
+  //   width: 80px;
+  //   margin-top: 10px;
+  // }
+}
+.volume {
+  bottom: 0px;
+  .volume_slider {
+    margin-top: 5px;
+    height: 4px;
+    border-radius: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #b3b3b3;
+    border-radius: 50px;
   }
 }
 </style>
@@ -227,11 +300,31 @@ button:focus {
 import { mapState } from "vuex";
 var y = document.getElementById("myAudio");
 var x = new Audio(y);
+///////////////////////////////////////////////////////////////
+// var SongSlider = document.getElementById("songslider");
+// var currenttime = document.getElementById("current_time");
+/////////////////////////////////////
 export default {
   data: function() {
     return {};
   },
   methods: {
+    ////////////////////////////////////////////////
+    // updateSongSlider: function(){
+    //   setInterval(() => {
+    //   var c = Math.round(x.currenttime);
+    //   SongSlider.value = c;
+    //   currenttime.textContent = c;
+    //   }, 100);
+    // },
+    // changetime: function(secs){
+    // var min = Math.floor(secs/60);
+    // var sec = secs % 60;
+    // min = (min < 10) ? "0" + min : min;
+    // sec = (sec < 10) ? "0" + sec : sec;
+    // return (min + ":" + sec);
+    // },
+    ////////////////////////////////////
     play_pause_song: function() {
       //var b = document.getElementById("playicon");
 
