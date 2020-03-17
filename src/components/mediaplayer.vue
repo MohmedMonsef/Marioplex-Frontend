@@ -4,17 +4,17 @@
       <div class="col-sm-3">
         <!-- here i need to link album image with mock server -->
         <div class="album_image">
-          <img src="../assets/cry.png" alt="album_image" />
+          <img src="../assets/cry.png" alt="album_image" testid="album_image" />
         </div>
         <!-- here i need to link both song name and artist name with mock server they navigate to another pages
           and i need to change <a> to router link -->
         <div class="song_info">
-          <a href="#" id="song_name">Song Name</a>
+          <a href="#" id="song_name" testid="song_name">Song Name</a>
           <!-- this div is for like songs and them to the library of the user -->
           <!-- donot forget that the second icon is still weird -->
           <div class="actionbuttons">
             <button>
-              <i class="fa fa-heart-o" id="hearticon"></i>
+              <i class="fa fa-heart-o" id="hearticon" testid="hearticon"></i>
             </button>
           </div>
           <br />
@@ -25,65 +25,94 @@
             v-bind:key="artist.id"
             >{{ artist.songs.artist_name }}</a
           > -->
-          <a href="#" id="artist_name">Artist1Name</a>
-          <a href="#" id="artist_name">Artist2Name</a>
-          <a href="#" id="artist_name">Artist3Name</a>
+          <a href="#" id="artist_name" testid="artist_name">Artist1Name</a>
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="play_controllers" id="test_play_controllers">
-          <div class="controllers" id="test_controllers">
+        <div
+          class="play_controllers"
+          id="test_play_controllers"
+          testid="play_controllers"
+        >
+          <div class="controllers" id="test_controllers" testid="controllers">
             <audio id="myAudio">
-              <source :src="songs.song" type="audio/ogg" />
-              <source :src="songs.song" type="audio/mpeg" />
+              <!-- <source :src="songs.song" type="audio/ogg" /> -->
+              <source :src="songs.song" type="audio/mpeg" testid="audio" />
             </audio>
-            <button id="random_button" @click="random_songs()">
-              <i class="fa fa-random" id="randomicon"></i>
+            <button
+              id="random_button"
+              testid="shufflebutton"
+              @click="random_songs()"
+            >
+              <i class="fa fa-random" id="randomicon" testid="shuffleicon"></i>
             </button>
-            <button id="prev_button" @click="prev_song()">
-              <i class="fa fa-step-backward" id="playbackicon"></i>
+            <button id="prev_button" testid="prevbutton" @click="prev_song()">
+              <i
+                class="fa fa-step-backward"
+                id="playbackicon"
+                testid="previcon"
+              ></i>
             </button>
-            <button id="play_button" @click="play_pause_song()">
-              <i class="fa fa-pause" id="playicon"></i>
+            <button
+              id="play_button"
+              testid="playbutton"
+              @click="play_pause_song()"
+            >
+              <i class="fa fa-pause" id="playicon" testid="playicon"></i>
             </button>
-            <button id="next_button" @click="next_song()">
-              <i class="fa fa-step-forward" id="playforwardicon"></i>
+            <button id="next_button" testid="nextbutton" @click="next_song()">
+              <i
+                class="fa fa-step-forward"
+                id="playforwardicon"
+                testid="nexticon"
+              ></i>
             </button>
-            <button id="repeat_button" @click="repeat_song()">
-              <i class="fa fa-repeat" id="repeaticon"></i>
+            <button
+              id="repeat_button"
+              testid="repeatbutton"
+              @click="repeat_song()"
+            >
+              <i class="fa fa-repeat" id="repeaticon" testid="repeaticon"></i>
             </button>
           </div>
         </div>
 
         <!-- still doesnot work correctly -->
-        <div id="seek_bar" style="display:flex;justify-content: center;">
+        <div
+          id="seek_bar"
+          testid="seek_bar"
+          style="display:flex;justify-content: center;"
+        >
           <!-- <div id="current_time">0:00</div>
           <div id="fill"></div>
           <div id="handle" style="left:0%;"></div>
           <div id="duration">3:45</div> -->
 
           <div>
-            <div id="current_time" class="current_time">00:00</div>
+            <div id="current_time" testid="currenttime" class="current_time">
+              00:00
+            </div>
             <!-- here you must add onchange="seeksong()" to control the time of song -->
             <input
               id="songslider"
+              testid="songslider"
               class="songslider"
               type="range"
               min="0"
               step="1"
             />
-            <div id="duration" class="duration">3:45</div>
+            <div id="duration" testid="songduration" class="duration">3:45</div>
           </div>
         </div>
         <!-- ///////////////// -->
       </div>
       <div class="col-md-3">
         <div class="additional_actions">
-          <button id="queue_button" @click="go_to_queue()">
-            <i class="fa fa-bars" id="queueicon"></i>
+          <button id="queue_button" testid="queuebutton" @click="go_to_queue()">
+            <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
           </button>
-          <button id="sound_button" @click="volume_song()">
-            <i class="fa fa-volume-up" id="soundicon"></i>
+          <button id="sound_button" testid="soundbutton" @click="volume_song()">
+            <i class="fa fa-volume-up" id="soundicon" testid="soundicon"></i>
           </button>
           <!-- still doesnot work correctly -->
           <!-- <div id="seek_bar" style="transform:translateX(0%);">
@@ -91,10 +120,11 @@
             <div id="handle"></div>
           </div> -->
           <!-- ///////////////// -->
-          <div class="volume" id="volume">
+          <div class="volume" id="volume" testid="volume">
             <!-- here you must add onchange="adjustvolume()" to control the volume -->
             <input
               id="volume_slider"
+              testid="volumeslider"
               class="volume_slider"
               type="range"
               min="0"
@@ -303,6 +333,7 @@ var x = new Audio(y);
 ///////////////////////////////////////////////////////////////
 // var SongSlider = document.getElementById("songslider");
 // var currenttime = document.getElementById("current_time");
+//var playbutton = document.getElementById("play_button");
 /////////////////////////////////////
 export default {
   data: function() {
@@ -327,7 +358,6 @@ export default {
     ////////////////////////////////////
     play_pause_song: function() {
       //var b = document.getElementById("playicon");
-
       if (x.paused) {
         this.$store.dispatch("playsong_state");
         setTimeout(() => {
