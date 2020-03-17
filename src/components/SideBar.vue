@@ -9,7 +9,7 @@
         <!-- navigations to pages -->
         <ul>
             <li>
-                <router-link to="/HomeWebPlayer" testid="homepage link" class="homepage" id="homepage">
+                <router-link to="/HomeWebPlayer" testid="homepage link" class="homepage" id="homepage1" @click="changeToWhite()">
                     <i class="fa fa-home"></i>Home
                 </router-link>
             </li>
@@ -106,11 +106,13 @@
    .createbutton {
        background-color:black ;
        height: 100%;
-       width: 200px;
+       width: 190px;
        color:darkgray;
        font-weight: bold;
+       font-size: 14px;
        line-height: 40px;
        border: none;
+       outline: none;
        
    }
     .createbutton i{
@@ -120,9 +122,6 @@
       color: white;
       text-decoration: none;
       align-content:center;
-   }
-   .homepage {
-
    }
    .userplaylists{
         font-size: 14px;
@@ -152,13 +151,13 @@ export default {
         
     },
     name: "SideBar" ,
-    // methods:{
-    //      changeToWhite: function() {
-    //       document.getElementById("homepage").style.color="red";
-    //       //document.getElementById("homepage").style.color="white";
-    // }
+    methods:{
+         changeToWhite() {
+          document.getElementById("homepage1").style.color="red";
+          //document.getElementById("homepage").style.backgroundColor="red";
+    }
     
-    // }
+    }
 }
     
 </script>
