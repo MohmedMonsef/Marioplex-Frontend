@@ -15,13 +15,13 @@
           <router-link to="/Help" tag="li">
             <a>Help</a>
           </router-link>
-          <router-link to="/Login" v-if="this.isLoggedIn == ''" tag="li">
+          <router-link to="/Login" v-if="isLoggedIn == ''" tag="li">
             <a>Login</a>
           </router-link>
-          <router-link to="/SignUp" v-if="this.isLoggedIn == ''" tag="li">
+          <router-link to="/SignUp" v-if="isLoggedIn == ''" tag="li">
             <a> SignUp</a>
           </router-link>
-          <router-link to="/" v-if="this.isLoggedIn == 'success'" tag="li">
+          <router-link to="/" v-if="isLoggedIn == 'success'" tag="li">
             <a @click="logout()"> Logout</a>
           </router-link>
         </ul>
@@ -159,20 +159,16 @@
 }
 </style>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: "home-navigation-bar",
   data: function() {
     return {
       togglelength: false,
-      isLogged: false
     };
   },
-  //  mounted() {
-  //     this.isLogged =this.$store.getters.GetStatus;
-  //     console.log("in mouted")
-  //     console.log( this.isLogged )
-  //   },
   methods: {
+    
     collapseBar() {
       this.togglelength = !this.togglelength;
       console.log(this.togglelength);
@@ -183,16 +179,14 @@ export default {
       else element.style.width = 0 + "px";
     },
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("authorization/logout");
       console.log("logout");
     }
   },
-  computed: {
-    isLoggedIn: function() {
-      console.log("in computed");
-      console.log(this.$store.getters.GetStatus);
-      return this.$store.getters.GetStatus;
-    }
+  computed:{
+    ...mapGetters({
+      isLoggedIn:'authorization/GetStatus'
+    }),
   }
 };
 </script>

@@ -19,23 +19,26 @@
             <label>Email address</label>
           </div>
           <br />
-          <input type="text" v-model="email" 
-          testid="email input"
-           />
-          <p class="invalid" id="req_error" 
-          v-if="error"
-          testid="email required error"
+          <input type="text" v-model="email" testid="email input" />
+          <p
+            class="invalid"
+            id="req_error"
+            v-if="error"
+            testid="email required error"
           >
             This field is required
           </p>
-          <button class="costum-btn" id="send-btn" @click.prevent="send()"
-          testid="forget password button"
+          <button
+            class="costum-btn"
+            id="send-btn"
+            @click.prevent="send()"
+            testid="forget password button"
           >
             send
           </button>
           <div>
             If you still need help, contact
-            <router-link class="highlight" to="/" tag="p" >
+            <router-link class="highlight" to="/" tag="p">
               Spotify Support.
             </router-link>
           </div>
@@ -151,7 +154,7 @@ export default {
         this.isNormal = false;
         (this.isSubmitted = true), (this.isError = false);
         this.$store
-          .dispatch("reset", { email: this.email })
+          .dispatch("authorization/reset", { email: this.email })
           .catch(err => console.log(err));
       }
     }

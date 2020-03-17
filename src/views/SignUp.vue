@@ -5,8 +5,11 @@
     <div class="conatiner signup-form px-0">
       <div class="row justify-content-center  m-0">
         <div class="col-4" align="center">
-          <button class="costum-btn" id="facebook-btn" testid="login facebook button"
-          @click="facebook_signUp()"
+          <button
+            class="costum-btn"
+            id="facebook-btn"
+            testid="login facebook button"
+            @click="facebook_signUp()"
           >
             SIGN UP WITH FACEBOOK
           </button>
@@ -23,20 +26,25 @@
               testid="email input"
             />
             <br />
-            <p v-if="req_email == 'true'" 
-            class="invalid"
-            testid="email required error"
+            <p
+              v-if="req_email == true"
+              class="invalid"
+              testid="email required error"
             >
               Please enter your email.
             </p>
-            <p v-if="invalid_email == 'true'"
-             testid="email invalid error"
-             class="invalid">
+            <p
+              v-if="invalid_email == true"
+              testid="email invalid error"
+              class="invalid"
+            >
               The email address you supplied is invalid.
             </p>
-            <p v-if="isLoggedIn == 'error'"
-             testid="email not unique error"
-             class="invalid">
+            <p
+              v-if="isLoggedIn == 'error'"
+              testid="email not unique error"
+              class="invalid"
+            >
               This email address is already in use.
             </p>
             <input
@@ -47,23 +55,27 @@
               testid="confirm email input"
             />
             <br />
-            <p v-if="req_confirm_email == 'true'" 
-             testid="confirm email required error"
-            class="invalid">
+            <p
+              v-if="req_confirm_email == true"
+              testid="confirm email required error"
+              class="invalid"
+            >
               Please enter your email.
             </p>
-            <p v-if="invalid_confirm_email == 'true'"
-            testid="confirm email invalid error"
-             class="invalid">
+            <p
+              v-if="invalid_confirm_email == true"
+              testid="confirm email invalid error"
+              class="invalid"
+            >
               The email address you supplied is invalid.
             </p>
             <p
               v-if="
-                invalid_email == 'false' &&
-                  invalid_confirm_email == 'false' &&
-                  req_email == 'false' &&
-                  req_confirm_email == 'false' &&
-                  matched_email == 'true'
+                invalid_email == false &&
+                  invalid_confirm_email == false &&
+                  req_email == false &&
+                  req_confirm_email == false &&
+                  matched_email == true
               "
               class="invalid"
               testid="emails not matched error"
@@ -79,16 +91,18 @@
               testid="password input"
             />
             <br />
-            <p v-if="req_password == 'true'"       
-            class="invalid"
-             testid="password required error"
+            <p
+              v-if="req_password"
+              class="invalid"
+              testid="password required error"
             >
               Enter a password to continue.
             </p>
-            <p v-if="short_password == 'true'"
-             class="invalid"
+            <p
+              v-if="short_password == true"
+              class="invalid"
               testid="password short error"
-             >
+            >
               Your password is too short.
             </p>
             <input
@@ -99,27 +113,31 @@
               testid="username input"
               required
             />
-            <p v-if="req_username == 'true'" class="invalid"
-             testid="username required error"
+            <p
+              v-if="req_username == true"
+              class="invalid"
+              testid="username required error"
             >
               What should we call you?
             </p>
             <br />
             <!-- country -->
-            <select v-model="country" class="country_select"
-            testid="country input"
+            <select
+              v-model="country"
+              class="country_select"
+              testid="country input"
             >
               <option
                 v-for="country in countries"
                 :key="country.value"
                 :disabled="country.disabled"
                 >{{ country.text }}
-                
-                </option
-              >
+              </option>
             </select>
-            <p v-if="req_country == 'true'" class="invalid"
-             testid="country required error"
+            <p
+              v-if="req_country == true"
+              class="invalid"
+              testid="country required error"
             >
               Please enter your country.
             </p>
@@ -127,8 +145,17 @@
             <!-- take the date of birth -->
             <div id="birthdate" class="input_field">
               <label>Date of birth</label>
-              <input type="text" placeholder="Day" v-model="day" testid="day of birth input"/>
-              <select v-model="month" class="month_select" testid="month of birth input">
+              <input
+                type="text"
+                placeholder="Day"
+                v-model="day"
+                testid="day of birth input"
+              />
+              <select
+                v-model="month"
+                class="month_select"
+                testid="month of birth input"
+              >
                 <option
                   v-for="month in Months"
                   :key="month.value"
@@ -138,21 +165,32 @@
                 >
               </select>
 
-              <input type="text" placeholder="Year" testid="year of birth input" v-model="year" />
+              <input
+                type="text"
+                placeholder="Year"
+                testid="year of birth input"
+                v-model="year"
+              />
             </div>
 
-            <p v-if="valid_day == 'true'" class="invalid"
-            testid="day of birth error"
+            <p
+              v-if="valid_day == true"
+              class="invalid"
+              testid="day of birth error"
             >
               Please enter a valid day of the month.
             </p>
-            <p v-if="valid_month == 'true'" class="invalid"
-            testid="month of birth error"
+            <p
+              v-if="valid_month == true"
+              class="invalid"
+              testid="month of birth error"
             >
               Please enter your birth month.
             </p>
-            <p v-if="valid_year == 'true'" class="invalid"
-            testid="year of birth error"
+            <p
+              v-if="valid_year == true"
+              class="invalid"
+              testid="year of birth error"
             >
               Please enter a valid year.
             </p>
@@ -182,8 +220,10 @@
             <!-- Gender -->
             <br />
 
-            <p v-if="req_gender == 'true'" class="invalid"
-            testid="gender required error"
+            <p
+              v-if="req_gender == true"
+              class="invalid"
+              testid="gender required error"
             >
               Please indicate your gender.
             </p>
@@ -192,14 +232,17 @@
               class="costum-btn"
               id="signup-btn"
               type="submit"
-               testid="sign up button"
+              testid="sign up button"
             >
               Sign Up
             </button>
             <div>
               Aleady have an account?
-              <router-link class="highlight" to="/Login" tag="p" 
-              testid="log in link"
+              <router-link
+                class="highlight"
+                to="/Login"
+                tag="p"
+                testid="log in link"
               >
                 Log in
               </router-link>
@@ -296,6 +339,7 @@
 // @ is an alias to /src
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
+import { mapGetters } from 'vuex'
 export default {
   name: "SignUp",
   components: {
@@ -305,7 +349,7 @@ export default {
   data: function() {
     return {
       //User's data that will be passed from the v-model
-      trigger_validation: "false",
+      trigger_validation: false,
       can_submit: true,
       email: "",
       email_confirmation: "",
@@ -351,7 +395,7 @@ export default {
   },
   methods: {
     signUp() {
-      this.trigger_validation = "true";
+      this.trigger_validation = true;
       this.can_submit = true;
       this.req_email;
       this.invalid_email;
@@ -376,7 +420,7 @@ export default {
             birthday: this.birthday
           };
           this.$store
-            .dispatch("signUp", newuser)
+            .dispatch("authorization/signUp", newuser)
             .then(() => {
               setTimeout(() => {
                 var check = this.isLoggedIn;
@@ -394,26 +438,23 @@ export default {
         } else return;
       }, 200);
     },
-    facebook_signUp(){
-      this.$store.dispatch("facebook_signUp")
-      .then(()=>{
-        var check=true;
-        while(check){
-          var status=this.isLoggedIn;
-          if(status=="loading")
-            continue;
-          else if(status == "success") {
-            console.log("logged with fb");     
-          this.$router.push("/");
-          check=false;
-          console.log(check);
-          }
-          else if(status== "error"){
-             console.log("error with fb")  
-            check=false;
+    facebook_signUp() {
+      this.$store.dispatch("authorization/facebook_signUp").then(() => {
+        var check = true;
+        while (check) {
+          var status = this.isLoggedIn;
+          if (status == "loading") continue;
+          else if (status == "success") {
+            console.log("logged with fb");
+            this.$router.push("/");
+            check = false;
+            console.log(check);
+          } else if (status == "error") {
+            console.log("error with fb");
+            check = false;
           }
         }
-        })
+      });
     },
     cannotSubmit() {
       console.log("cannot sub");
@@ -429,25 +470,28 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      isLoggedIn:'authorization/GetStatus'
+    }),
     req_email: function() {
       console.log(this.email);
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         console.log(this.email);
         if (this.email == "") {
           console.log(this.email);
           console.log("required email not found");
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     invalid_email: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         var to_check = this.email;
         if (
           this.email != "" &&
@@ -457,35 +501,30 @@ export default {
             to_check.indexOf(".com") + 4 != to_check.length)
         ) {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
-    isLoggedIn: function() {
-      console.log("in fun");
-      console.log(this.$store.getters.GetStatus);
-      return this.$store.getters.GetStatus;
-    },
     req_confirm_email: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.email_confirmation == "") {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     invalid_confirm_email: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         var to_check = this.email_confirmation;
         if (
           to_check != "" &&
@@ -495,82 +534,82 @@ export default {
             to_check.indexOf(".com") + 4 != to_check.length)
         ) {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     matched_email: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.email != this.email_confirmation) {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     req_password: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     short_password: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.password.length <= 7 && this.password != "") {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     req_username: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.username == "") {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     req_country: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.country == "Choose a country") {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     valid_day: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (
           this.day == "" ||
           isNaN(this.day) ||
@@ -578,30 +617,30 @@ export default {
           Number(this.day) > 31
         ) {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     valid_month: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.month == "0") {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     valid_year: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         var d = new Date();
         if (
           this.year == "" ||
@@ -610,26 +649,26 @@ export default {
           Number(this.year) > d.getFullYear()
         ) {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     },
     req_gender: function() {
-      if (this.trigger_validation == "true") {
+      if (this.trigger_validation) {
         if (this.gender == "") {
           this.cannotSubmit();
-          return "true";
+          return true;
         } else {
           this.canSubmit();
-          return "false";
+          return false;
         }
       } else {
-        return "false";
+        return false;
       }
     }
   }

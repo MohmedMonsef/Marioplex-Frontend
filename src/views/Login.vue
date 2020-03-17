@@ -9,8 +9,10 @@
           <div class="unlogged" v-if="isLoggedIn == 'error'">
             incorrect email or password
           </div>
-          <button class="costum-btn" id="facebook-btn"
-          testid="login facebook button"
+          <button
+            class="costum-btn"
+            id="facebook-btn"
+            testid="login facebook button"
           >
             CONTINUE WITH FACEBOOK
           </button>
@@ -25,12 +27,9 @@
               v-model="email"
               required
               testid="email input"
-              
             />
             <br />
-            <p v-if="req_email" class="invalid"
-            testid="email required error"
-            >
+            <p v-if="req_email" class="invalid" testid="email required error">
               Please enter your Spotify email address.
             </p>
             <input
@@ -41,8 +40,10 @@
               testid="password input"
             />
             <br />
-            <p v-if="req_password" class="invalid"
-            testid="password required error"
+            <p
+              v-if="req_password"
+              class="invalid"
+              testid="password required error"
             >
               Please enter your password.
             </p>
@@ -52,7 +53,7 @@
                 class="costum-btn"
                 id="login-btn"
                 type="submit"
-                 testid="log in button"
+                testid="log in button"
               >
                 LOG IN
               </button>
@@ -175,7 +176,7 @@
 // @ is an alias to /src
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
-//import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: "Login",
@@ -208,7 +209,7 @@ export default {
             password: this.password
           };
           this.$store
-            .dispatch("login", user)
+            .dispatch("authorization/login", user)
             .then(() => {
               setTimeout(() => {
                 var check = this.isLoggedIn;
@@ -234,6 +235,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      isLoggedIn:'authorization/GetStatus'
+    }),
     req_email: function() {
       if (this.trigger_validation) {
         if (this.email == "") {
@@ -259,11 +263,6 @@ export default {
       } else {
         return false;
       }
-    },
-    isLoggedIn: function() {
-      console.log("in fun");
-      console.log(this.$store.getters.GetStatus);
-      return this.$store.getters.GetStatus;
     }
   }
 };
