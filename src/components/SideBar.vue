@@ -1,38 +1,52 @@
 <template>
-    <div class="SideBar " id="sidebar">
+    <div class="SideBar" testid="sidebar component">
         <!-- spotify logo -->
-        <router-link to="/" id="logo">
-          <img src="../../../../spotify logo.png" alt="Logo" style="width:150px; height:65px; margin:20px;">
+        <router-link to="/" testid="logo in sidebar">
+          <img src="../../../../spotify logo.png" 
+          alt="Logo" 
+          style="width:150px; height:65px; margin:20px;">
         </router-link>
         <!-- navigations to pages -->
         <ul>
             <li>
-                <router-link to="/HomeWebPlayer" id="homeicon"><i class="fa fa-home"></i>Home</router-link>
+                <router-link to="/HomeWebPlayer" testid="homepage link" class="homepage" id="homepage">
+                    <i class="fa fa-home"></i>Home
+                </router-link>
             </li>
             <li>
-                <router-link to="/" id="searchicon"><i class="fa fa-search"></i>Search</router-link> <!-- router link should navigate to search page -->
+                <router-link to="/" testid="searchpage link" class="searchpage">
+                    <i class="fa fa-search"></i>Search
+                </router-link> <!-- router link should navigate to search page -->
             </li>
             <li>
-                <router-link to="/" id="libraryicon"><i class="fa fa-bars"></i> Your Library</router-link> <!-- router link should navigate to library page -->
+                <router-link to="/" testid="librarypage link" class="librarypage">
+                    <i class="fa fa-bars"></i> Your Library
+                </router-link> <!-- router link should navigate to library page -->
             </li>
 
         </ul>
-        <label id="PLAYLISTS">PLAYLISTS</label>
+        <label testid="PLAYLISTS lable">PLAYLISTS</label>
         <!-- creat play lists or show liked songs -->
         <ul>
             <li>
-                <router-link to="/" id="createicon"><i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist</router-link> <!-- router link should navigate to pop up -->
+                <button testid="create button" class="createbutton">
+                    <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
+                </button> <!-- router link should navigate to pop up -->
             </li>
             <li>
-                <router-link to="/" id="likedsongs"><img src="../../../../like.png" style="width:30px; height:30px; margin-right: 15px; ">Liked Songs</router-link> <!-- router link should navigate to liked songs page -->
+                <router-link to="/" testid="likedsongs link" class="likedsongs">
+                    <img src="../../../../like.png" style="width:30px; height:30px; margin-right: 15px; ">Liked Songs
+                </router-link> <!-- router link should navigate to liked songs page -->
             </li>
         </ul>
         <!-- lower border -->
-        <div id="border" class="border" ></div>
+        <div testid="border in sidebar" class="border" ></div>
         <!-- user's play lists -->
         <ul>
             <li  v-for="playlist in playlists1" :key="playlist.id">
-                <router-link to="/" id="userlists">{{playlist.name}}</router-link>  <!-- router link should navigate to play list page-->
+                <router-link to="/" testid="userplaylists" class="userplaylists">
+                    {{playlist.name}}
+                </router-link>  <!-- router link should navigate to play list page-->
             </li>
         </ul>
 
@@ -79,7 +93,7 @@
       font-size:33px ;
      
   }
-  #homeicon , #searchicon , #libraryicon , #createicon , #likedsongs{
+  .homepage , .searchpage , .librarypage , .likedsongs{
       height: 100%;
       width: 100%;
       font-size: 14px;
@@ -89,17 +103,33 @@
       line-height: 40px;
      
   }
-   #homeicon:hover , #searchicon:hover , #libraryicon:hover , #createicon:hover , #likedsongs:hover{
+   .createbutton {
+       background-color:black ;
+       height: 100%;
+       width: 200px;
+       color:darkgray;
+       font-weight: bold;
+       line-height: 40px;
+       border: none;
+       
+   }
+    .createbutton i{
+        margin-right: 15px;
+    }
+   .homepage:hover , .searchpage:hover , .librarypage:hover , .createbutton:hover , .likedsongs:hover{
       color: white;
       text-decoration: none;
       align-content:center;
    }
-   #userlists{
+   .homepage {
+
+   }
+   .userplaylists{
         font-size: 14px;
       color:darkgray;
       padding-left: 30px;
    }
-    #userlists:hover{
+    .userplaylists:hover{
         color: white;
         text-decoration: none;
     }
@@ -122,6 +152,13 @@ export default {
         
     },
     name: "SideBar" ,
+    // methods:{
+    //      changeToWhite: function() {
+    //       document.getElementById("homepage").style.color="red";
+    //       //document.getElementById("homepage").style.color="white";
+    // }
     
+    // }
 }
+    
 </script>
