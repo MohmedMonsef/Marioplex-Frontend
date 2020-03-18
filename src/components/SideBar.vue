@@ -46,6 +46,7 @@
         <ul>
             <li>
                 <button 
+                @click="swithComponent('create-playlist')" :disabled="currentComp === 'create-playlist'"
                 testid="create button" 
                 class="createbutton">
                     <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
@@ -186,6 +187,8 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import CreatePlaylist from "@/components/CreatePlaylist.vue";
+//import {bus} from "../store/index.js"
 export default {
     
     mounted(){
@@ -200,6 +203,15 @@ export default {
         
     },
     name: "SideBar" ,
+
+     components: {
+         CreatePlaylist
+     },
+    //  methods:{
+    //      swithComponent (comp) {
+    //          bus.$emit('switchComp' ,comp)
+    //      }
+    //  }
     // methods:{
     //      changeToWhite() {
     //       document.getElementById("homepage1").style.color="red";
