@@ -43,7 +43,7 @@
 
 <style lang="scss" scoped>
 .navbar-container {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   margin: 0%;
   position: fixed;
   //display: block;

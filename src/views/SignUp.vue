@@ -192,7 +192,15 @@
               class="invalid"
               testid="year of birth error"
             >
+            
               Please enter a valid year.
+            </p>
+               <p
+              v-if="valid_age == true"
+              class="invalid"
+              testid="year of birth error"
+            >
+            Sorry, but you don't meet Spotify's age requirements.
             </p>
             <!-- take the date of birth -->
 
@@ -648,6 +656,21 @@ export default {
           Number(this.year) < 1900 ||
           Number(this.year) > d.getFullYear()
         ) {
+          this.cannotSubmit();
+          return true;
+        } else {
+          this.canSubmit();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    },
+    valid_age: function() {
+      var d = new Date();
+      if (this.trigger_validation) {
+        if (!isNaN(this.year) && Number(this.year) >= 2000  &&
+         Number(this.year) < d.getFullYear()  ) {
           this.cannotSubmit();
           return true;
         } else {
