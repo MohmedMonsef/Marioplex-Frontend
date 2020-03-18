@@ -5,8 +5,9 @@ import router from "./router";
 import store from "./store";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 import "normalize.css";
-import { Server} from 'miragejs'
+import { Server , Response} from 'miragejs'
 
 new Server({
   seeds(server){
@@ -48,6 +49,24 @@ new Server({
         {
           'playlistname': "shreen",
          
+        }
+      ],
+      users: [
+        {
+          username: "Menna",
+          email: "gmail.com",
+          password: "123",
+          country: "Egypt",
+          gender: "m",
+          birthday: "3/12/1999"
+        },
+        {
+          username: "Habiba",
+          email: "mm@yahoo.com",
+          password: "555",
+          country: "Egypt",
+          gender: "m",
+          birthday: "3/12/1998"
         }
       ]
 
@@ -95,7 +114,46 @@ new Server({
         
       });
 
-
+      this.post("/api/signup", (schema, request) => {
+        const user = JSON.parse(request.requestBody).data;
+        if (schema.db.users.findBy({ email: user.email }) == null) {
+          return new Response(
+            201,
+            {
+              token: "menna"
+            },
+            schema.db.users.insert({
+              username: user.username,
+              email: user.email,
+              password: user.password
+            })
+          );
+        } else {
+          return new Response(403, { error: "email not unique" });
+        }
+      });
+      this.post("/api/login", (schema, request) => {
+        const user = JSON.parse(request.requestBody).data;
+        if (
+          schema.db.users.findBy({ email: user.email }) != null &&
+          schema.db.users.findBy({ password: user.password }) != null
+        ) {
+          console.log("in main", schema.db.users.findBy({ email: user.email }));
+          return new Response(
+            201,
+            { token: "menna" },
+            { user: schema.db.users.findBy({ email: user.email }) }
+          );
+        } else {
+          return new Response(403, { error: "no user with such data" });
+        }
+      });
+      this.post("/api/reset", () => {
+        return new Response(200);
+      });
+      this.post("/api/logout", () => {
+        return new Response(200);
+      });
 
     // this.post("/api/users",(schema,request)=>{
     //   const user =JSON.parse(request.requestBody).data
@@ -107,8 +165,18 @@ new Server({
 
     // })
   }
-})
+});
+
 Vue.config.productionTip = false;
+
+Vue.prototype.$http = axios;
+//we can do this.$http and it will be like calling axios directly
+const token = localStorage.getItem("token");
+if (token) {
+  Vue.prototype.$http.defaults.headers.common["x-auth-token"] = token;
+}
+//setting the Authorization on axios header to our token, so requests can be processed if a token is required.
+// This way, we do not have to set token anytime we want to make a request.
 
 new Vue({
   router,
