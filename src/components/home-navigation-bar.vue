@@ -9,19 +9,19 @@
       <!--nav items-->
       <div class=" navbar-list ">
         <ul>
-          <router-link to="/premium" tag="li">
+          <router-link to="/premium" testid="premium link" tag="li">
             <a> Premium</a>
           </router-link>
-          <router-link to="/Help" tag="li">
+          <router-link to="/Help" testid="help link" tag="li">
             <a>Help</a>
           </router-link>
-          <router-link to="/Login" v-if="isLoggedIn == ''" tag="li">
+          <router-link to="/Login" v-if="isLoggedIn == ''" testid="login link" tag="li">
             <a>Login</a>
           </router-link>
-          <router-link to="/SignUp" v-if="isLoggedIn == ''" tag="li">
+          <router-link to="/SignUp" v-if="isLoggedIn == ''" testid="signup link" tag="li">
             <a> SignUp</a>
           </router-link>
-          <router-link to="/" v-if="isLoggedIn == 'success'" tag="li">
+          <router-link to="/" v-if="isLoggedIn == 'success'" testid="logout link" tag="li">
             <a @click="logout()"> Logout</a>
           </router-link>
         </ul>
