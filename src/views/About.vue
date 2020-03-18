@@ -1,10 +1,7 @@
 <template>
   <span>
-    <div class="about">
-      hello from the other side
-    </div>
     <div>
-      <CreatePlaylist />
+      <CreatePlaylist testid="create_and_delete_component" />
     </div>
   </span>
 </template>
@@ -19,4 +16,3 @@ export default {
   }
 };
 </script>
-

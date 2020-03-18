@@ -1,20 +1,22 @@
 <template>
   <div>
-    <button class="button" @click="changeModalState">
+    <button class="button" testid="create_playlist" @click="changeModalState">
       create playlist
     </button>
-    <h1>select element</h1>
-    <select id="playlists">
-  <option v-for="playlist in Playlists" :key="playlist.id" value=" playlist.playlistname ">{{ playlist.playlistname }}</option>
-</select>
-   <!--<button class="button" @click.prevent="DeletePlaylist()">delete playlist</button>-->
+
     <div>
-            <ul>
-              <li v-for="(playlist,id) in Playlists" :key="playlist.id">{{playlist.playlistname}}
-                <span class="Deleteplaylist" @click="DeletePlaylist(id)">x</span>
-              </li>
-            </ul>
-          </div>
+      <ul>
+        <li v-for="(playlist, id) in Playlists" :key="playlist.id">
+          {{ playlist.playlistname }}
+          <span
+            class="Deleteplaylist"
+            testid="delete_playlist"
+            @click="DeletePlaylist(id)"
+            >x</span
+          >
+        </li>
+      </ul>
+    </div>
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -24,29 +26,55 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <div>
-          <h4>Playlist Name</h4>
-          <input type="text" placeholder="Playlist" v-model="Playlists.playlistname" />
-        </div>
-        <div>
-          <button
-            class="button"
-            @click.prevent="CreatePlaylist()"
-            @click="changeModalState"
+        <button class="cancel" @click="changeModalState">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            create
-          </button>
-          <button class="button" @click="changeModalState">
-            cancle
-          </button>
-         <!-- <div>
+            <title>Close</title>
+            <path
+              d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
+              fill="#fff"
+              fill-rule="evenodd"
+            ></path>
+          </svg>
+          <!-- <i class="fa fa-times"  id="myicon" ></i>-->
+        </button>
+
+        <h1 class="title">Create New Playlist</h1>
+
+        <div class="child">
+          <div class="grandchild">
+            <h4 class="playlist_name">Playlist Name</h4>
+            <input
+              class="name_input"
+              type="text"
+              placeholder="New Playlist"
+              v-model="Playlists.playlistname"
+            />
+          </div>
+        </div>
+
+        <button class="cancel_button" @click="changeModalState">
+          cancle
+        </button>
+        <button
+          class="creat_button"
+          testid="confirm_create"
+          @click.prevent="CreatePlaylist()"
+          @click="changeModalState"
+        >
+          create
+        </button>
+        <!-- <div>
             <ul>
               <li v-for="playlist in Playlists" :key="playlist.id">
                 <span class="playlistname">{{ playlist.playlistname }}</span>
               </li>
             </ul>
           </div>-->
-        </div>
       </div>
     </transition>
   </div>
@@ -54,46 +82,45 @@
 
 <script>
 // @ is an alias to /src
-
+//import {mapActions} from "vuex";
+import {mapGetters} from "vuex";
+import {mapState} from "vuex";
 export default {
   name: "CreatePlaylist",
   //showModal:false,
   components: {},
   computed: {
-    Playlists() {
-      return this.$store.state.Playlists;
-      
-    },
-    showModal() {
-      return this.$store.getters.showModal;
-      
-    }
+     ...mapState({
+       Playlists: state=>state.creatplaylist.Playlists,
+     }),
+    ...mapGetters({
+      showModal: 'creatplaylist/showModal', 
+    })
   },
   methods: {
     changeModalState() {
-      this.$store.commit("toggleModal");
+      this.$store.dispatch("creatplaylist/toggleModal");
     },
 
-    CreatePlaylist(){
-      let payload={
-      playlistname:this.Playlists.playlistname,
+    CreatePlaylist() {
+      let payload = {
+        playlistname: this.Playlists.playlistname
       };
-     console.log("nerd")
-     this.$store.dispatch('CreatePlaylist',payload);
+      console.log("nerd");
+      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
     },
-    DeletePlaylist(id){
+    DeletePlaylist(id) {
       console.log(id);
       //this.Playlists.splice(id,1);
       //console.log("removed");
-     // this.$store.commit('DeletePlaylist',id);
-     
-     this.$store.dispatch("DeletePlaylist",id);
-      console.log("removed");
-     // let id=this.Playlists.id;
-     // this.$store.dispatch('DeltePlaylist',id);
-    }
-  },
+      // this.$store.commit('DeletePlaylist',id);
 
+      this.$store.dispatch("deleteplaylist/DeletePlaylist", id);
+      console.log("removed");
+      // let id=this.Playlists.id;
+      // this.$store.dispatch('DeltePlaylist',id);
+    }
+  }
 
   /* methods: {
     createplaylist() {
@@ -106,7 +133,6 @@ export default {
   },*/
 
   // When the user clicks on <div>, open the popup
-  
 };
 </script>
 <style scoped>
@@ -122,26 +148,28 @@ body {
 
 div {
   position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-
+  display: block;
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  width: 500%;
   height: 100vh;
-  overflow-x: hidden;
+  /* overflow-x: hidden;*/
 }
 
-.button {
+.creat_button {
+  position: fixed;
+  top: 60%;
+  left: 50%;
   appearance: none;
   outline: none;
   border: none;
   background: none;
   cursor: pointer;
-  padding: 10px;
   margin: 20px;
-  display:inline-block;
-  padding: 15px 25px;
-  background-image: linear-gradient(to right, #1ed760, #1ed760);
+  height: 50px;
+  width: 180px;
+  padding: 8px 34px;
+  background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
 
@@ -152,47 +180,78 @@ div {
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
 }
+.cancel_button {
+  position: fixed;
+  top: 60%;
+  left: 35%;
+  appearance: none;
+  outline: none;
+
+  background: none;
+  cursor: pointer;
+  margin: 20px;
+  height: 50px;
+  width: 180px;
+  padding: 8px 34px;
+  background-color: transparent;
+  border-radius: 26px;
+  border-color: #fff;
+
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+
+  transition: 0.4s ease-out;
+}
 
 .modal-overlay {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: none;
+
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 98;
-  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  position: absolute;
-  top: 50%;
-  bottom: 30%;
-  right: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99;
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 20%;
-  background-color: #282828;
-  border-radius: 0px;
-  padding: 25px;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display:table;
+  transition: opacity 0.3s ease;
+  
 }
 input {
+  /*position:absolute;*/
   width: 100%;
   height: 10%;
-  margin: 10px 10px 10px 10px;
+  /*margin: 50px 50px 50px 50px;*/
+  /* top:60%;*/
   align-items: center;
   background-color: transparent;
-  color:#fff;
-   border-color: transparent;
-
+  color: #fff;
+  border-color: transparent;
+  padding: 32px 0px;
+  font-size: 48px;
+  line-height: 50px;
+  /*letter-spacing: -.005em;*/
+  color: #fff;
+  text-transform: none;
 }
-ul{
-  color:red;
+ul {
+  color: red;
 }
 
 .fade-enter-active,
@@ -213,5 +272,55 @@ ul{
 .slide-enter,
 .slide-leave-to {
   transform: translateY(-50%) translateX(100vw);
+}
+.cancel {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  display: inline-block;
+  background-color: transparent;
+  color: #fff;
+
+  border: none;
+}
+#myicon {
+  display: inline-block;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+}
+.title {
+  position: absolute;
+  top: 15%;
+  display: block;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.005em;
+  color: #fff;
+  text-transform: none;
+  text-align: center;
+  margin: 16px 0;
+  width: 100%;
+}
+.grandchild {
+  position: fixed;
+  align-items: center;
+  width: 70%;
+  height: 30%;
+  left: 15%;
+  padding: 32px 0px;
+}
+.child {
+  position: fixed;
+  height: 30%;
+  top: 30%;
+  bottom: 50%;
+  /*background-color: rgba(0, 0, 0, 0.2);*/
+  background-color: #424242;
+}
+.playlist_name {
+  color: #fff;
 }
 </style>
