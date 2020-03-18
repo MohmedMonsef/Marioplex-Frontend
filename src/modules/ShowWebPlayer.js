@@ -1,6 +1,7 @@
 import axios from "axios";
 
- const ShowWebPlayer= {
+export default ({
+  namespaced:true,
   state: {
     popular_playlists:[]
   },
@@ -26,7 +27,7 @@ import axios from "axios";
   getters:{
     POPplaylists: state => state.popular_playlists
   }
-}
-export default ShowWebPlayer ;
+});
+
 
 

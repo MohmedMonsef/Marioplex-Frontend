@@ -1,6 +1,7 @@
 import axios from "axios";
 
- const userPlayLists= {
+export default ({
+  namespaced:true,
   state: {
     user_play_lists :[]
   },
@@ -26,7 +27,7 @@ import axios from "axios";
     playlists: state => state.user_play_lists
 
   }
-}
-export default userPlayLists;
+});
+
 
 

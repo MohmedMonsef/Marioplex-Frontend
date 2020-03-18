@@ -9,19 +9,35 @@
         <!-- navigations to pages -->
         <ul>
             <li>
-                <router-link to="/HomeWebPlayer" testid="homepage link" class="homepage" id="homepage1" @click="changeToWhite()">
-                    <i class="fa fa-home"></i>Home
-                </router-link>
+                <div class="divOnFocus">
+                    <router-link 
+                    to="/HomeWebPlayer" 
+                    testid="homepage link" 
+                    class="homepage" 
+                    id="homepage1">
+                        <i class="fa fa-home"></i>Home
+                    </router-link>
+                </div>
             </li>
             <li>
-                <router-link to="/" testid="searchpage link" class="searchpage">
-                    <i class="fa fa-search"></i>Search
-                </router-link> <!-- router link should navigate to search page -->
+                <div class="divOnFocus">
+                    <router-link 
+                    to="/HomeWebPlayer" 
+                    testid="searchpage link" 
+                    class="searchpage">
+                        <i class="fa fa-search"></i>Search
+                    </router-link> <!-- router link should navigate to search page -->
+                </div>
             </li>
             <li>
-                <router-link to="/" testid="librarypage link" class="librarypage">
-                    <i class="fa fa-bars"></i> Your Library
-                </router-link> <!-- router link should navigate to library page -->
+                <div class="divOnFocus">
+                    <router-link 
+                    to="/HomeWebPlayer" 
+                    testid="librarypage link" 
+                    class="librarypage">
+                        <i class="fa fa-bars"></i> Your Library
+                    </router-link> <!-- router link should navigate to library page -->
+                </div>
             </li>
 
         </ul>
@@ -29,12 +45,17 @@
         <!-- creat play lists or show liked songs -->
         <ul>
             <li>
-                <button testid="create button" class="createbutton">
+                <button 
+                testid="create button" 
+                class="createbutton">
                     <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
                 </button> <!-- router link should navigate to pop up -->
             </li>
             <li>
-                <router-link to="/" testid="likedsongs link" class="likedsongs">
+                <router-link 
+                to="/HomeWebPlayer" 
+                testid="likedsongs link" 
+                class="likedsongs">
                     <img src="../../../../like.png" style="width:30px; height:30px; margin-right: 15px; ">Liked Songs
                 </router-link> <!-- router link should navigate to liked songs page -->
             </li>
@@ -44,7 +65,10 @@
         <!-- user's play lists -->
         <ul>
             <li  v-for="playlist in playlists1" :key="playlist.id">
-                <router-link to="/" testid="userplaylists" class="userplaylists">
+                <router-link 
+                to="/" 
+                testid="userplaylists" 
+                class="userplaylists">
                     {{playlist.name}}
                 </router-link>  <!-- router link should navigate to play list page-->
             </li>
@@ -71,42 +95,50 @@
   } 
   label{
       font-size: 11px;
-      padding-left: 20px;
+      padding-left: 24px;
        color:darkgray;
        padding-top: 23px;
        margin-bottom: 16px;
+       font-family:Arial, Helvetica, sans-serif;
        
   }
   .border{
       background-color:#747272;
       width: 190px;
-      height: 0.5px;
+      height: 1px;
       margin: 25px;
       margin-top: 10px;
       margin-bottom: 9px;
+      display:block;
   }
-  .SideBar ul a i{
-      margin-right: 15px;
-      font-size: 25px;
-  }
-  #CreatePlaylist{
-      font-size:33px ;
-     
-  }
-  .homepage , .searchpage , .librarypage , .likedsongs{
+ 
+  .homepage , .searchpage , .librarypage {
       height: 100%;
       width: 100%;
       font-size: 14px;
       color:darkgray;
-      padding-left: 30px;
+      padding-left: 15px;
+      font-weight: bold;
+      line-height: 45px;
+     
+  }
+  .likedsongs{
+      height: 100%;
+      width: 100%;
+      font-size: 14px;
+      color:darkgray;
+      padding-left: 24px;
       font-weight: bold;
       line-height: 40px;
-     
+  }
+   .SideBar ul a i{
+      margin-right: 15px;
+      font-size: 25px;
   }
    .createbutton {
        background-color:black ;
        height: 100%;
-       width: 190px;
+       width: 180px;
        color:darkgray;
        font-weight: bold;
        font-size: 14px;
@@ -117,11 +149,15 @@
    }
     .createbutton i{
         margin-right: 15px;
+        font-size:33px ;
     }
    .homepage:hover , .searchpage:hover , .librarypage:hover , .createbutton:hover , .likedsongs:hover{
       color: white;
       text-decoration: none;
       align-content:center;
+   }
+   .homepage:focus ,.searchpage:focus ,.librarypage:focus ,.likedsongs:focus{
+       color:white;
    }
    .userplaylists{
         font-size: 14px;
@@ -132,6 +168,19 @@
         color: white;
         text-decoration: none;
     }
+    .divOnFocus{
+        border-radius:15px;
+        width: 218px;
+        height: 40px;
+        margin-left: 8px;
+        background:black;
+    }
+    .divOnFocus :focus{
+        width: 100%;
+        height: 100%;
+        background:#313030;
+        display: block;
+    }
  
 </style> 
 
@@ -140,24 +189,24 @@ import {mapGetters} from 'vuex';
 export default {
     
     mounted(){
-         this.$store.dispatch("showplaylists")
+         this.$store.dispatch("sidebar/showplaylists")
          
     },
     computed:{
                 ...mapGetters({
                // map `this.playlists1` to `this.$store.getters.playlists`
-               playlists1: 'playlists'               // creat new object "playlists1" and map to it
+               playlists1: 'sidebar/playlists'               // creat new object "playlists1" and map to it
          })
         
     },
     name: "SideBar" ,
-    methods:{
-         changeToWhite() {
-          document.getElementById("homepage1").style.color="red";
-          //document.getElementById("homepage").style.backgroundColor="red";
-    }
+    // methods:{
+    //      changeToWhite() {
+    //       document.getElementById("homepage1").style.color="red";
+    //       document.getElementById("homepage").style.backgroundColor="red";
+    // }
     
-    }
+    //}
 }
     
 </script>

@@ -50,12 +50,12 @@ export default {
       ShowPopularplaylists
   },
    mounted(){
-         this.$store.dispatch("showPopularPlaylists")
+         this.$store.dispatch("ShowWebPlayer/showPopularPlaylists")
     },
     computed:{
                 ...mapGetters({
                // map `this.playlists1` to `this.$store.getters.playlists`
-                POPplaylists1: 'POPplaylists'              // creat new object "playlists1" and map to it
+                POPplaylists1: 'ShowWebPlayer/POPplaylists'              // creat new object "playlists1" and map to it
          })
         
     },
