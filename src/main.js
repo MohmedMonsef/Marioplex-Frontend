@@ -11,21 +11,7 @@ import { Server} from 'miragejs'
 new Server({
   seeds(server){
     server.db.loadData({
-      user_play_lists:[
-        {
-          'name':'playlist1',
-           
-        },
-        {
-          'name':'playlist2',
-          
-        },
-        {
-          'name':'playlist3',
-          
-        }
-  
-      ],
+
       popular_playlists:[
         {
           'image':"http://dummyimage.com/250x400.jpg/ff4444/ffffff",
@@ -56,12 +42,12 @@ new Server({
       ],
       Playlists: [
         {
-          playlistname: "Amr",
-          id: 1
+          'playlistname': "Amr",
+        
         },
         {
-          playlistname: "shreen",
-          id: 2
+          'playlistname': "shreen",
+         
         }
       ]
 
@@ -80,28 +66,33 @@ new Server({
     // }
     // );
     
-    this.get("/api/users", (schema)=>{
-      return schema.db.user_play_lists
-    });
+    // this.get("/api/users", (schema)=>{
+    //   return schema.db.user_play_lists
+    // });
      
     this.get("/api/user", (schema)=>{
       return schema.db.popular_playlists
     });
+
     this.get("/api/playlists", schema => {
+      console.log('in get', schema.db.Playlists)
       return schema.db.Playlists;
     }),
+
       this.delete("/api/playlist/:id", () => {
         let headers = {};
         let data = { errors: ["Server did not respond"] };
 
         return new Response(500, headers, data);
       }),
+
       this.post("/api/playlists", (schema, request) => {
         const cplaylist = JSON.parse(request.requestBody).data;
+        console.log(cplaylist.playlistname,'in mirag');
         return schema.db.Playlists.insert({
           playlistname: cplaylist.playlistname
-          //'playlistid':cplaylist.playlistid
         });
+        
       });
 
 

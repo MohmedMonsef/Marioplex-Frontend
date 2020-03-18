@@ -3,38 +3,32 @@ export default(
 {
     namespaced:true,
     state: {
-        showModal: true,
-        Playlists: [
-         /* {
-            playlistname: "Amr",
-            id: 1
-          },
-          {
-            playlistname: "shreen",
-            id: 2
-          }*/
-        ]
+        showModal: false,
+        Playlists: []
+        
       },
       getters: {
         showModal: state => {
           return state.showModal;
-        }
+        },
+        playlists: state => state.Playlists
       },
       mutations: {
         toggleModal(state) {
           state.showModal = !state.showModal;
         },
     
-        CreatePlaylist(state,{ id, playlists}) {
-          // state.Playlists.playlistsname=payload;
+        CreatePlaylist(state,{ id,i}) {
     
-          state.Playlists.push({
+            state.Playlists.push({
             id: id,
-            playlistname: playlists
+            playlistname: i
           });
           console.log("nori");
         },
-       
+        setUserPlaylist(state, playlists) {
+          state.Playlists = playlists;
+        }
       },
       actions: {
         
@@ -45,17 +39,31 @@ export default(
           axios
             .post("/api/playlists", { data: payload })
             .then(response => {
-              const playlists = response.data.payload;
-              var id = response.data.id;
-              console.log("wsl");
-              commit("CreatePlaylist", id, playlists);
+              const playlists = response.data;
+              var id = response.data.id
+              console.log("wsl",playlists);
+              var i= playlists.playlistname
+              console.log(i,'de i')
+              commit("CreatePlaylist",{ id, i});
             })
             .catch(error => {
               console.log(error);
             });
-        }
-        
-      },
+        },
       
-     
+      
+      showplaylists({ commit }) {
+        axios
+          .get("/api/playlists")
+          .then(response => {
+            let playlists = response.data;
+            console.log('test function', playlists);
+            commit("setUserPlaylist", playlists);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        },
+      
+      }, 
 })

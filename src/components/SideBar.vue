@@ -45,12 +45,15 @@
         <!-- creat play lists or show liked songs -->
         <ul>
             <li>
-                <button 
-                @click="swithComponent('create-playlist')" :disabled="currentComp === 'create-playlist'"
-                testid="create button" 
-                class="createbutton">
-                    <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
-                </button> <!-- router link should navigate to pop up -->
+                <!-- <CreatePlaylist> -->
+                    <button 
+                    @click="changeModalState()"
+                    testid="create button" 
+                    class="createbutton">
+                        <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
+                    </button>                             
+                 <!-- router link should navigate to pop up -->
+                <!-- </CreatePlaylist> -->
             </li>
             <li>
                 <router-link 
@@ -70,7 +73,7 @@
                 to="/" 
                 testid="userplaylists" 
                 class="userplaylists">
-                    {{playlist.name}}
+                    {{playlist.playlistname}}
                 </router-link>  <!-- router link should navigate to play list page-->
             </li>
         </ul>
@@ -93,6 +96,8 @@
       width: 235px;
       height: 100%;
       background-color: black;
+      top: 0%;
+      z-index: 0;
   } 
   label{
       font-size: 11px;
@@ -187,38 +192,26 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import CreatePlaylist from "@/components/CreatePlaylist.vue";
-//import {bus} from "../store/index.js"
 export default {
     
     mounted(){
-         this.$store.dispatch("sidebar/showplaylists")
+         this.$store.dispatch("creatplaylist/showplaylists")
          
     },
     computed:{
                 ...mapGetters({
                // map `this.playlists1` to `this.$store.getters.playlists`
-               playlists1: 'sidebar/playlists'               // creat new object "playlists1" and map to it
+               playlists1: 'creatplaylist/playlists'               // creat new object "playlists1" and map to it
          })
         
     },
     name: "SideBar" ,
-
-     components: {
-         CreatePlaylist
-     },
-    //  methods:{
-    //      swithComponent (comp) {
-    //          bus.$emit('switchComp' ,comp)
-    //      }
-    //  }
-    // methods:{
-    //      changeToWhite() {
-    //       document.getElementById("homepage1").style.color="red";
-    //       document.getElementById("homepage").style.backgroundColor="red";
-    // }
+    methods:{
+        changeModalState() {
+      this.$store.dispatch("creatplaylist/toggleModal");
+    }
     
-    //}
+    }
 }
     
 </script>

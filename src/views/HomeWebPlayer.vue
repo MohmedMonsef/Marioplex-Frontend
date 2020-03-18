@@ -1,6 +1,7 @@
 <template>
   <div class="home_webplayer">
       <side-bar/>
+    <CreatePlaylist v-if="show"/>
       <div id="HomeInWebPlayer">
           <h2 v-if="POPplaylists1.length">Popular playlists</h2>
           <div class="container">
@@ -23,7 +24,9 @@
       height: 100vh;
       margin-left: 235px;
       background-color:#161516;
-      position: relative;
+      position: fixed;
+      top: 0%;
+      z-index: 0;
 
   }
    h2{
@@ -40,14 +43,17 @@
 <script>
 import SideBar from "@/components/SideBar.vue";
 import ShowPopularplaylists from "@/components/ShowPopularplaylists.vue";
+import CreatePlaylist from "@/components/CreatePlaylist.vue";
 import {mapGetters} from 'vuex';
+import {mapState} from 'vuex';
 
 export default {
  
   name: "HomeWebPlayer",
   components: {
       SideBar,
-      ShowPopularplaylists
+      ShowPopularplaylists,
+      CreatePlaylist
   },
    mounted(){
          this.$store.dispatch("ShowWebPlayer/showPopularPlaylists")
@@ -56,8 +62,10 @@ export default {
                 ...mapGetters({
                // map `this.playlists1` to `this.$store.getters.playlists`
                 POPplaylists1: 'ShowWebPlayer/POPplaylists'              // creat new object "playlists1" and map to it
-         })
-        
+                }),
+                ...mapState({
+                    show: state=> state.creatplaylist.showModal 
+                })
     },
     
 };

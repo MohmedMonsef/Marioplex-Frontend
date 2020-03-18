@@ -1,10 +1,7 @@
 <template>
   <div>
-    <button class="button" testid="create_playlist" @click="changeModalState">
-      create playlist
-    </button>
-
-    <div>
+    
+    <!-- <div>
       <ul>
         <li v-for="(playlist, id) in Playlists" :key="playlist.id">
           {{ playlist.playlistname }}
@@ -16,7 +13,7 @@
           >
         </li>
       </ul>
-    </div>
+    </div> -->
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -52,7 +49,7 @@
               class="name_input"
               type="text"
               placeholder="New Playlist"
-              v-model="Playlists.playlistname"
+              v-model="playlistname"
             />
           </div>
         </div>
@@ -68,13 +65,6 @@
         >
           create
         </button>
-        <!-- <div>
-            <ul>
-              <li v-for="playlist in Playlists" :key="playlist.id">
-                <span class="playlistname">{{ playlist.playlistname }}</span>
-              </li>
-            </ul>
-          </div>-->
       </div>
     </transition>
   </div>
@@ -87,6 +77,11 @@ import {mapGetters} from "vuex";
 import {mapState} from "vuex";
 export default {
   name: "CreatePlaylist",
+  data : function(){
+    return{
+       playlistname: ""
+    };
+  },
   //showModal:false,
   components: {},
   computed: {
@@ -104,33 +99,20 @@ export default {
 
     CreatePlaylist() {
       let payload = {
-        playlistname: this.Playlists.playlistname
+        playlistname: this.playlistname
       };
       console.log("nerd");
       this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
     },
     DeletePlaylist(id) {
       console.log(id);
-      //this.Playlists.splice(id,1);
-      //console.log("removed");
-      // this.$store.commit('DeletePlaylist',id);
 
       this.$store.dispatch("deleteplaylist/DeletePlaylist", id);
       console.log("removed");
-      // let id=this.Playlists.id;
-      // this.$store.dispatch('DeltePlaylist',id);
     }
   }
 
-  /* methods: {
-    createplaylist() {
-      let payload = {
-        playlist: this.playlist,
-        
-      };
-      this.$store.dispatch("createplaylist", payload);
-    }
-  },*/
+  
 
   // When the user clicks on <div>, open the popup
 };
@@ -149,11 +131,9 @@ body {
 div {
   position: relative;
   display: block;
-  /*justify-content: center;*/
-  /*align-items: center;*/
   width: 500%;
   height: 100vh;
-  /* overflow-x: hidden;*/
+ 
 }
 
 .creat_button {
@@ -234,11 +214,8 @@ div {
   
 }
 input {
-  /*position:absolute;*/
   width: 100%;
   height: 10%;
-  /*margin: 50px 50px 50px 50px;*/
-  /* top:60%;*/
   align-items: center;
   background-color: transparent;
   color: #fff;
@@ -246,7 +223,6 @@ input {
   padding: 32px 0px;
   font-size: 48px;
   line-height: 50px;
-  /*letter-spacing: -.005em;*/
   color: #fff;
   text-transform: none;
 }
@@ -317,10 +293,10 @@ ul {
   height: 30%;
   top: 30%;
   bottom: 50%;
-  /*background-color: rgba(0, 0, 0, 0.2);*/
   background-color: #424242;
 }
 .playlist_name {
   color: #fff;
 }
+
 </style>
