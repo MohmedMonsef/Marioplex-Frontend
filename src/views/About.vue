@@ -1,7 +1,11 @@
 <template>
   <span>
     <div>
-      <CreatePlaylist testid="create_and_delete_component" />
+      <CreatePlaylist testid="create_and_delete_component" >
+     </CreatePlaylist  >
+
+     <CreatePlaylist testid="create_e_component" >
+     </CreatePlaylist  >
     </div>
   </span>
 </template>

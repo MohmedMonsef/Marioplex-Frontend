@@ -1,9 +1,10 @@
 <template>
   <div>
+    <slot>
     <button class="button" testid="create_playlist" @click="changeModalState">
       create playlist
     </button>
-
+     </slot>
     <div>
       <ul>
         <li v-for="(playlist, id) in Playlists" :key="playlist.id">

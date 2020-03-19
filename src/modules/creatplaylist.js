@@ -3,7 +3,7 @@ export default(
 {
     namespaced:true,
     state: {
-        showModal: true,
+        showModal: false,
         Playlists: [
          /* {
             playlistname: "Amr",
