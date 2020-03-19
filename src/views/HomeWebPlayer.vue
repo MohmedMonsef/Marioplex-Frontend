@@ -15,6 +15,7 @@
               </div>
           </div>
       </div>
+      <mediaplayer />
   </div>
   
 </template>
@@ -44,6 +45,7 @@
 import SideBar from "@/components/SideBar.vue";
 import ShowPopularplaylists from "@/components/ShowPopularplaylists.vue";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
+import mediaplayer from "@/components/mediaplayer.vue";
 import {mapGetters} from 'vuex';
 import {mapState} from 'vuex';
 
@@ -53,7 +55,8 @@ export default {
   components: {
       SideBar,
       ShowPopularplaylists,
-      CreatePlaylist
+      CreatePlaylist,
+      mediaplayer
   },
    mounted(){
          this.$store.dispatch("ShowWebPlayer/showPopularPlaylists")

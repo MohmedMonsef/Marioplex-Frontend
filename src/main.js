@@ -68,8 +68,43 @@ new Server({
           gender: "m",
           birthday: "3/12/1998"
         }
+      ],
+      songs: [
+        {
+          song_name: "First_Song",
+          artist_name: "Nora",
+          album_image: "../assets/cry.png",
+          song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          start_time: "0:00",
+          end_time: "3:45"
+        },
+        {
+          song_name: "Second_Song",
+          artist_name: ["Bassant", "Marshmello"],
+          album_image: "../assets/cry.png",
+          song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          start_time: "0:00",
+          end_time: "4:40"
+        },
+        {
+          song_name: "Third_Song",
+          artist_name: ["Mona", "Nihal"],
+          album_image: "../assets/cry.png",
+          song:
+            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
+          start_time: "0:00",
+          end_time: "5:13"
+        },
+        {
+          song_name: "Forth_Song",
+          artist_name: ["Dai", "Menna", "Nerdeen"],
+          album_image: "../assets/cry.png",
+          song:
+            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+          start_time: "0:00",
+          end_time: "2:60"
+        }
       ]
-
     }
     )
   },
@@ -88,7 +123,27 @@ new Server({
     // this.get("/api/users", (schema)=>{
     //   return schema.db.user_play_lists
     // });
-     
+    this.get("/api/player/currently-playing", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/player/play", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/player/pause", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/player/next", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/player/previous", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/player/repeat", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/player/shuffle", schema => {
+      return schema.db.songs;
+    });
     this.get("/api/user", (schema)=>{
       return schema.db.popular_playlists
     });
@@ -136,7 +191,7 @@ new Server({
         const user = JSON.parse(request.requestBody).data;
         if (
           schema.db.users.findBy({ email: user.email }) != null &&
-          schema.db.users.findBy({ password: user.password }) != null
+          schema.db.users.findBy({ password: user.password }) != null 
         ) {
           console.log("in main", schema.db.users.findBy({ email: user.email }));
           return new Response(

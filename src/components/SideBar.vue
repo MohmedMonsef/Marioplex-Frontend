@@ -2,7 +2,7 @@
     <div class="SideBar" testid="sidebar component">
         <!-- spotify logo -->
         <router-link to="/" testid="logo in sidebar">
-          <img src="../../../../spotify logo.png" 
+          <img src="../assets/spotify logo.png" 
           alt="Logo" 
           style="width:150px; height:65px; margin:20px;">
         </router-link>
@@ -60,7 +60,7 @@
                 to="/HomeWebPlayer" 
                 testid="likedsongs link" 
                 class="likedsongs">
-                    <img src="../../../../like.png" style="width:30px; height:30px; margin-right: 15px; ">Liked Songs
+                    <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; ">Liked Songs
                 </router-link> <!-- router link should navigate to liked songs page -->
             </li>
         </ul>
