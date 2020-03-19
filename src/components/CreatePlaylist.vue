@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <!-- <div>
       <ul>
         <li v-for="(playlist, id) in Playlists" :key="playlist.id">
@@ -73,23 +72,23 @@
 <script>
 // @ is an alias to /src
 //import {mapActions} from "vuex";
-import {mapGetters} from "vuex";
-import {mapState} from "vuex";
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "CreatePlaylist",
-  data : function(){
-    return{
-       playlistname: ""
+  data: function() {
+    return {
+      playlistname: ""
     };
   },
   //showModal:false,
   components: {},
   computed: {
-     ...mapState({
-       Playlists: state=>state.creatplaylist.Playlists,
-     }),
+    ...mapState({
+      Playlists: state => state.creatplaylist.Playlists
+    }),
     ...mapGetters({
-      showModal: 'creatplaylist/showModal', 
+      showModal: "creatplaylist/showModal"
     })
   },
   methods: {
@@ -112,8 +111,6 @@ export default {
     }
   }
 
-  
-
   // When the user clicks on <div>, open the popup
 };
 </script>
@@ -133,7 +130,6 @@ div {
   display: block;
   width: 500%;
   height: 100vh;
- 
 }
 
 .creat_button {
@@ -208,10 +204,9 @@ div {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  display:table;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: table;
   transition: opacity 0.3s ease;
-  
 }
 input {
   width: 100%;
@@ -298,5 +293,4 @@ ul {
 .playlist_name {
   color: #fff;
 }
-
 </style>

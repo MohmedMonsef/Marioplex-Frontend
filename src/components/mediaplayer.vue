@@ -14,9 +14,12 @@
           <!-- donot forget that the second icon is still weird -->
           <div class="actionbuttons">
             <button>
-              <i class="fa fa-heart-o" id="hearticon" testid="hearticon"></i>
+              <span data-toggle="tooltip" title="Save to your Liked Songs">
+                <i class="fa fa-heart-o" id="hearticon" testid="hearticon"></i>
+              </span>
             </button>
           </div>
+
           <br />
           <!-- <a
             href="#"
@@ -48,35 +51,49 @@
               testid="shufflebutton"
               @click="random_songs()"
             >
-              <i class="fa fa-random" id="randomicon" testid="shuffleicon"></i>
+              <span data-toggle="tooltip" title="Enable shuffle">
+                <i
+                  class="fa fa-random"
+                  id="randomicon"
+                  testid="shuffleicon"
+                ></i>
+              </span>
             </button>
             <button id="prev_button" testid="prevbutton" @click="prev_song()">
-              <i
-                class="fa fa-step-backward"
-                id="playbackicon"
-                testid="previcon"
-              ></i>
+              <span data-toggle="tooltip" title="Previous">
+                <i
+                  class="fa fa-step-backward"
+                  id="playbackicon"
+                  testid="previcon"
+                ></i>
+              </span>
             </button>
             <button
               id="play_button"
               testid="playbutton"
               @click="play_pause_song()"
             >
-              <i class="fa fa-pause" id="playicon" testid="playicon"></i>
+              <span data-toggle="tooltip" title="Play">
+                <i class="fa fa-pause" id="playicon" testid="playicon"></i>
+              </span>
             </button>
             <button id="next_button" testid="nextbutton" @click="next_song()">
-              <i
-                class="fa fa-step-forward"
-                id="playforwardicon"
-                testid="nexticon"
-              ></i>
+              <span data-toggle="tooltip" title="Next">
+                <i
+                  class="fa fa-step-forward"
+                  id="playforwardicon"
+                  testid="nexticon"
+                ></i>
+              </span>
             </button>
             <button
               id="repeat_button"
               testid="repeatbutton"
               @click="repeat_song()"
             >
-              <i class="fa fa-repeat" id="repeaticon" testid="repeaticon"></i>
+              <span data-toggle="tooltip" title="Enable repeat">
+                <i class="fa fa-repeat" id="repeaticon" testid="repeaticon"></i>
+              </span>
             </button>
           </div>
         </div>
@@ -105,6 +122,7 @@
               min="0"
               step="1"
             />
+
             <div id="duration" testid="songduration" class="duration">3:45</div>
           </div>
         </div>
@@ -113,7 +131,9 @@
       <div class="col-md-3">
         <div class="additional_actions">
           <button id="queue_button" testid="queuebutton" @click="go_to_queue()">
-            <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
+            <span data-toggle="tooltip" title="Queue">
+              <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
+            </span>
           </button>
           <button id="sound_button" testid="soundbutton" @click="volume_song()">
             <i class="fa fa-volume-up" id="soundicon" testid="soundicon"></i>
@@ -268,7 +288,7 @@ input:focus {
   height: 5px;
   border-radius: 10px;
   margin: 5px;
-  padding:0px;
+  padding: 0px;
   // to override default css styles
   -webkit-appearance: none;
   appearance: none;
@@ -325,7 +345,7 @@ input:focus {
     height: 4px;
     width: 80px;
     padding: 0px;
-    margin:0px;
+    margin: 0px;
     -webkit-appearance: none;
     appearance: none;
     background: #b3b3b3;
@@ -345,6 +365,9 @@ var x = new Audio(y);
 // var currenttime = document.getElementById("current_time");
 //var playbutton = document.getElementById("play_button");
 /////////////////////////////////////
+(function() {
+  '{data-toggle="tooltip"}'.tooltip();
+});
 export default {
   data: function() {
     return {};
