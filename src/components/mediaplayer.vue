@@ -37,7 +37,11 @@
           <div class="controllers" id="test_controllers" testid="controllers">
             <audio id="myAudio">
               <!-- <source :src="songs.song" type="audio/ogg" /> -->
-              <source :src="songs.song" type="audio/mpeg" testid="audio" />
+              <source
+                :src="media_player.song"
+                type="audio/mpeg"
+                testid="audio"
+              />
             </audio>
             <button
               id="random_button"
@@ -359,11 +363,10 @@ export default {
     play_pause_song: function() {
       //var b = document.getElementById("playicon");
       if (x.paused) {
-        this.$store.dispatch("playsong_state");
+        this.$store.dispatch("mediaplayer/playsong_state");
         setTimeout(() => {
-          console.log(this.$store.state.songs.song);
-          x.src = this.$store.state.songs.song;
-
+          console.log(this.media_player.song);
+          x.src = this.media_player.song;
           if (x) {
             x.play();
           }
@@ -371,10 +374,10 @@ export default {
         }, 500);
       } else {
         console.log("pause song");
-        this.$store.dispatch("pausesong_state");
+        this.$store.dispatch("mediaplayer/pausesong_state");
         setTimeout(() => {
-          console.log(this.$store.state.songs.song);
-          x.src = this.$store.state.songs.song;
+          console.log(this.media_player.song);
+          x.src = this.media_player.song;
           if (x) {
             x.pause();
           }
@@ -387,10 +390,10 @@ export default {
     prev_song: function() {
       var y0 = document.getElementById("myAudio");
       var x0 = new Audio(y0);
-      this.$store.dispatch("prevsong_state");
+      this.$store.dispatch("mediaplayer/prevsong_state");
       setTimeout(() => {
-        console.log(this.$store.state.songs.song);
-        x0.src = this.$store.state.songs.song;
+        console.log(this.media_player.song);
+        x0.src = this.media_player.song;
 
         if (!x.paused) {
           x.pause();
@@ -407,10 +410,10 @@ export default {
     next_song: function() {
       var y1 = document.getElementById("myAudio");
       var x1 = new Audio(y1);
-      this.$store.dispatch("nextsong_state");
+      this.$store.dispatch("mediaplayer/nextsong_state");
       setTimeout(() => {
-        console.log(this.$store.state.songs.song);
-        x1.src = this.$store.state.songs.song;
+        console.log(this.media_player.song);
+        x1.src = this.media_player.song;
 
         if (!x.paused) {
           console.log("inside next song", x.paused);
@@ -427,11 +430,11 @@ export default {
     },
 
     random_songs: function() {
-      this.$store.dispatch("shufflesong_state");
+      this.$store.dispatch("mediaplayer/shufflesong_state");
     },
 
     repeat_song: function() {
-      this.$store.dispatch("repeatsong_state");
+      this.$store.dispatch("mediaplayer/repeatsong_state");
     }
   },
   computed: {
@@ -443,7 +446,11 @@ export default {
     //   end_time: "endtime",
     //   play_song: "playsong"
     // })
-    ...mapState(["songs"])
+    ...mapState({
+      
+      media_player: state => state.mediaplayer.songs,
+      //newstore: state => state.mediaplayer.store.songs
+    })
   }
 };
 </script>
