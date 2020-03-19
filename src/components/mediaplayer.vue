@@ -447,8 +447,7 @@ export default {
     //   play_song: "playsong"
     // })
     ...mapState({
-      
-      media_player: state => state.mediaplayer.songs,
+      media_player: state => state.mediaplayer.songs
       //newstore: state => state.mediaplayer.store.songs
     })
   }
