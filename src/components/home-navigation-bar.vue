@@ -15,13 +15,28 @@
           <router-link to="/Help" testid="help link" tag="li">
             <a>Help</a>
           </router-link>
-          <router-link to="/Login" v-if="isLoggedIn == ''" testid="login link" tag="li">
+          <router-link
+            to="/Login"
+            v-if="isLoggedIn == ''"
+            testid="login link"
+            tag="li"
+          >
             <a>Login</a>
           </router-link>
-          <router-link to="/SignUp" v-if="isLoggedIn == ''" testid="signup link" tag="li">
+          <router-link
+            to="/SignUp"
+            v-if="isLoggedIn == ''"
+            testid="signup link"
+            tag="li"
+          >
             <a> SignUp</a>
           </router-link>
-          <router-link to="/" v-if="isLoggedIn == 'success'" testid="logout link" tag="li">
+          <router-link
+            to="/"
+            v-if="isLoggedIn == 'success'"
+            testid="logout link"
+            tag="li"
+          >
             <a @click="logout()"> Logout</a>
           </router-link>
         </ul>
@@ -159,16 +174,15 @@
 }
 </style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
   name: "home-navigation-bar",
   data: function() {
     return {
-      togglelength: false,
+      togglelength: false
     };
   },
   methods: {
-    
     collapseBar() {
       this.togglelength = !this.togglelength;
       console.log(this.togglelength);
@@ -183,10 +197,10 @@ export default {
       console.log("logout");
     }
   },
-  computed:{
+  computed: {
     ...mapGetters({
-      isLoggedIn:'authorization/GetStatus'
-    }),
+      isLoggedIn: "authorization/GetStatus"
+    })
   }
 };
 </script>

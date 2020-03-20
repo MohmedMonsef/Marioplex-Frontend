@@ -1,11 +1,10 @@
 <template>
   <div class="conatiner px-0">
-      <div id="divider"></div>
-      <strong>or</strong>
+    <div id="divider"></div>
+    <strong>or</strong>
   </div>
 </template>
 <style lang="scss" scoped>
-
 #divider {
   width: 91%;
   height: 1px;

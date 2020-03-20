@@ -11,10 +11,9 @@ import mediaplayer from "../modules/mediaplayer";
 Vue.use(Vuex, axios);
 
 export default new Vuex.Store({
-  
   modules: {
-     ShowWebPlayer,
-     creatplaylist,
+    ShowWebPlayer,
+    creatplaylist,
     deleteplaylist,
     authorization,
     mediaplayer

@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export default ({
-  namespaced:true,
+export default {
+  namespaced: true,
   state: {
-    popular_playlists:[]
+    popular_playlists: []
   },
   mutations: {
     setPopularPlaylists(state, POPplaylists) {
@@ -11,23 +11,19 @@ export default ({
     }
   },
   actions: {
-      showPopularPlaylists({ commit }) {
-        axios
-          .get("/api/user")
-          .then(response => {
-            let POPplaylists = response.data;
-            commit("setPopularPlaylists", POPplaylists);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-        },
-
+    showPopularPlaylists({ commit }) {
+      axios
+        .get("/api/user")
+        .then(response => {
+          let POPplaylists = response.data;
+          commit("setPopularPlaylists", POPplaylists);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   },
-  getters:{
+  getters: {
     POPplaylists: state => state.popular_playlists
   }
-});
-
-
-
+};

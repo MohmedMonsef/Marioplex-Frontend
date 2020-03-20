@@ -268,7 +268,7 @@ input:focus {
   height: 5px;
   border-radius: 10px;
   margin: 5px;
-  padding:0px;
+  padding: 0px;
   // to override default css styles
   -webkit-appearance: none;
   appearance: none;
@@ -325,7 +325,7 @@ input:focus {
     height: 4px;
     width: 80px;
     padding: 0px;
-    margin:0px;
+    margin: 0px;
     -webkit-appearance: none;
     appearance: none;
     background: #b3b3b3;

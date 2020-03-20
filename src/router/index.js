@@ -4,6 +4,12 @@ import Home from "../views/Home.vue";
 import SignUp from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import ForgetPassword from "../views/ForgetPassword.vue";
+import HomeWebPlayer from "../views/HomeWebPlayer.vue";
+import UserHome from "../views/UserHome.vue";
+import Search from "../views/Search.vue";
+import LikedTracks from "../views/LikedTracks.vue";
+import Library from "../views/Library.vue";
+import Queue from "../views/Queue.vue";
 
 Vue.use(VueRouter);
 
@@ -16,11 +22,25 @@ const routes = [
   {
     path: "/HomeWebPlayer",
     name: "HomeWebPlayer",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/HomeWebPlayer.vue")
+    component:HomeWebPlayer,
+    children:[
+      { path: '',
+       component: UserHome
+      },
+		
+      { path: 'search', 
+      component: Search
+      },
+      { path: 'library',
+      component: Library
+     },
+     { path: 'liked-tracks',
+     component: LikedTracks
+     },
+     { path: 'queue',
+      component: Queue
+     }
+    ]
   },
   {
     path: "/signup",

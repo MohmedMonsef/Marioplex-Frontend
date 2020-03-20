@@ -176,7 +176,7 @@
 // @ is an alias to /src
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   name: "Login",
@@ -236,7 +236,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLoggedIn:'authorization/GetStatus'
+      isLoggedIn: "authorization/GetStatus"
     }),
     req_email: function() {
       if (this.trigger_validation) {
