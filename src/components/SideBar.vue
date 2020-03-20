@@ -1,217 +1,198 @@
 <template>
-    <div class="SideBar" testid="sidebar component">
-        <!-- spotify logo -->
-        <router-link to="/" testid="logo in sidebar">
-          <img src="../assets/spotify logo.png" 
-          alt="Logo" 
-          style="width:150px; height:65px; margin:20px;">
+  <div class="SideBar" testid="sidebar component">
+    <!-- spotify logo -->
+    <router-link to="/" testid="logo in sidebar">
+      <img
+        src="../assets/spotify logo.png"
+        alt="Logo"
+        style="width:150px; height:65px; margin:20px;"
+      />
+    </router-link>
+    <!-- navigations to pages -->
+    <ul>
+      <li>
+        <div class="divOnFocus">
+          <router-link to="/HomeWebPlayer" testid="homepage link" class="homepage" id="homepage1">
+            <i class="fa fa-home"></i>Home
+          </router-link>
+        </div>
+      </li>
+      <li>
+        <div class="divOnFocus">
+          <router-link to="/HomeWebPlayer" testid="searchpage link" class="searchpage">
+            <i class="fa fa-search hover"></i>Search
+          </router-link>
+          <!-- router link should navigate to search page -->
+        </div>
+      </li>
+      <li>
+        <div class="divOnFocus">
+          <router-link to="/HomeWebPlayer" testid="librarypage link" class="librarypage">
+            <i class="fa fa-bars"></i> Your Library
+          </router-link>
+          <!-- router link should navigate to library page -->
+        </div>
+      </li>
+    </ul>
+    <label testid="PLAYLISTS lable">PLAYLISTS</label>
+    <!-- creat play lists or show liked songs -->
+    <ul>
+      <li>
+        <!-- <CreatePlaylist> -->
+        <button @click="changeModalState()" testid="create button" class="createbutton">
+          <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
+        </button>
+        <!-- router link should navigate to pop up -->
+        <!-- </CreatePlaylist> -->
+      </li>
+      <li>
+        <router-link to="/HomeWebPlayer" testid="likedsongs link" class="likedsongs">
+          <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; " />Liked Songs
         </router-link>
-        <!-- navigations to pages -->
-        <ul>
-            <li>
-                <div class="divOnFocus">
-                    <router-link 
-                    to="/HomeWebPlayer" 
-                    testid="homepage link" 
-                    class="homepage" 
-                    id="homepage1">
-                        <i class="fa fa-home"></i>Home
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="divOnFocus">
-                    <router-link 
-                    to="/HomeWebPlayer" 
-                    testid="searchpage link" 
-                    class="searchpage">
-                        <i class="fa fa-search"></i>Search
-                    </router-link> <!-- router link should navigate to search page -->
-                </div>
-            </li>
-            <li>
-                <div class="divOnFocus">
-                    <router-link 
-                    to="/HomeWebPlayer" 
-                    testid="librarypage link" 
-                    class="librarypage">
-                        <i class="fa fa-bars"></i> Your Library
-                    </router-link> <!-- router link should navigate to library page -->
-                </div>
-            </li>
-
-        </ul>
-        <label testid="PLAYLISTS lable">PLAYLISTS</label>
-        <!-- creat play lists or show liked songs -->
-        <ul>
-            <li>
-                <!-- <CreatePlaylist> -->
-                    <button 
-                    @click="changeModalState()"
-                    testid="create button" 
-                    class="createbutton">
-                        <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
-                    </button>                             
-                 <!-- router link should navigate to pop up -->
-                <!-- </CreatePlaylist> -->
-            </li>
-            <li>
-                <router-link 
-                to="/HomeWebPlayer" 
-                testid="likedsongs link" 
-                class="likedsongs">
-                    <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; ">Liked Songs
-                </router-link> <!-- router link should navigate to liked songs page -->
-            </li>
-        </ul>
-        <!-- lower border -->
-        <div testid="border in sidebar" class="border" ></div>
-        <!-- user's play lists -->
-        <ul>
-            <li  v-for="playlist in playlists1" :key="playlist.id">
-                <router-link 
-                to="/" 
-                testid="userplaylists" 
-                class="userplaylists">
-                    {{playlist.playlistname}}
-                </router-link>  <!-- router link should navigate to play list page-->
-            </li>
-        </ul>
-
-
-    </div>
+        <!-- router link should navigate to liked songs page -->
+      </li>
+    </ul>
+    <!-- lower border -->
+    <div testid="border in sidebar" class="border"></div>
+    <!-- user's play lists -->
+    <ul>
+      <li v-for="playlist in playlists1" :key="playlist.id">
+        <router-link to="/" testid="userplaylists" class="userplaylists">{{playlist.playlistname}}</router-link>
+        <!-- router link should navigate to play list page-->
+      </li>
+    </ul>
+  </div>
 </template>
 
 
 <style scoped>
-  *{
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      text-decoration: none;
-      
-  }
-  .SideBar{
-      position: fixed;
-      width: 235px;
-      height: 100%;
-      background-color: black;
-      top: 0%;
-      z-index: 0;
-  } 
-  label{
-      font-size: 11px;
-      padding-left: 24px;
-       color:darkgray;
-       padding-top: 23px;
-       margin-bottom: 16px;
-       font-family:Arial, Helvetica, sans-serif;
-       
-  }
-  .border{
-      background-color:#747272;
-      width: 190px;
-      height: 1px;
-      margin: 25px;
-      margin-top: 10px;
-      margin-bottom: 9px;
-      display:block;
-  }
- 
-  .homepage , .searchpage , .librarypage {
-      height: 100%;
-      width: 100%;
-      font-size: 14px;
-      color:darkgray;
-      padding-left: 15px;
-      font-weight: bold;
-      line-height: 45px;
-     
-  }
-  .likedsongs{
-      height: 100%;
-      width: 100%;
-      font-size: 14px;
-      color:darkgray;
-      padding-left: 24px;
-      font-weight: bold;
-      line-height: 40px;
-  }
-   .SideBar ul a i{
-      margin-right: 15px;
-      font-size: 25px;
-  }
-   .createbutton {
-       background-color:black ;
-       height: 100%;
-       width: 180px;
-       color:darkgray;
-       font-weight: bold;
-       font-size: 14px;
-       line-height: 40px;
-       border: none;
-       outline: none;
-       
-   }
-    .createbutton i{
-        margin-right: 15px;
-        font-size:33px ;
-    }
-   .homepage:hover , .searchpage:hover , .librarypage:hover , .createbutton:hover , .likedsongs:hover{
-      color: white;
-      text-decoration: none;
-      align-content:center;
-   }
-   .homepage:focus ,.searchpage:focus ,.librarypage:focus ,.likedsongs:focus{
-       color:white;
-   }
-   .userplaylists{
-        font-size: 14px;
-      color:darkgray;
-      padding-left: 30px;
-   }
-    .userplaylists:hover{
-        color: white;
-        text-decoration: none;
-    }
-    .divOnFocus{
-        border-radius:15px;
-        width: 218px;
-        height: 40px;
-        margin-left: 8px;
-        background:black;
-    }
-    .divOnFocus :focus{
-        width: 100%;
-        height: 100%;
-        background:#313030;
-        display: block;
-    }
- 
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+.SideBar {
+  position: fixed;
+  width: 235px;
+  height: 100%;
+  background-color: black;
+  top: 0%;
+  z-index: 0;
+}
+label {
+  font-size: 11px;
+  padding-left: 24px;
+  color: darkgray;
+  padding-top: 23px;
+  margin-bottom: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.border {
+  background-color: #747272;
+  width: 190px;
+  height: 1px;
+  margin: 25px;
+  margin-top: 10px;
+  margin-bottom: 9px;
+  display: block;
+}
+
+.homepage,
+.searchpage,
+.librarypage {
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  color: darkgray;
+  padding-left: 15px;
+  font-weight: bold;
+  line-height: 45px;
+}
+.likedsongs {
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  color: darkgray;
+  padding-left: 24px;
+  font-weight: bold;
+  line-height: 40px;
+}
+.SideBar ul a i {
+  margin-right: 15px;
+  font-size: 25px;
+}
+.createbutton {
+  background-color: black;
+  height: 100%;
+  width: 180px;
+  color: darkgray;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 40px;
+  border: none;
+  outline: none;
+}
+.createbutton i {
+  margin-right: 15px;
+  font-size: 33px;
+}
+.homepage:hover,
+.searchpage:hover,
+.librarypage:hover,
+.createbutton:hover,
+.likedsongs:hover {
+  color: white;
+  text-decoration: none;
+  align-content: center;
+}
+.homepage:focus,
+.searchpage:focus,
+.librarypage:focus,
+.likedsongs:focus {
+  color: white;
+}
+.userplaylists {
+  font-size: 14px;
+  color: darkgray;
+  padding-left: 30px;
+}
+.userplaylists:hover {
+  color: white;
+  text-decoration: none;
+}
+.divOnFocus {
+  border-radius: 15px;
+  width: 218px;
+  height: 40px;
+  margin-left: 8px;
+  background: black;
+}
+.divOnFocus :focus {
+  width: 100%;
+  height: 100%;
+  background: #313030;
+  display: block;
+}
 </style> 
 
 <script>
-import {mapGetters} from 'vuex';
+import { mapGetters } from "vuex";
 export default {
-    
-    mounted(){
-         this.$store.dispatch("creatplaylist/showplaylists")
-         
-    },
-    computed:{
-                ...mapGetters({
-               // map `this.playlists1` to `this.$store.getters.playlists`
-               playlists1: 'creatplaylist/playlists'               // creat new object "playlists1" and map to it
-         })
-        
-    },
-    name: "SideBar" ,
-    methods:{
-        changeModalState() {
+  mounted() {
+    this.$store.dispatch("creatplaylist/showplaylists");
+  },
+  computed: {
+    ...mapGetters({
+      // map `this.playlists1` to `this.$store.getters.playlists`
+      playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
+    })
+  },
+  name: "SideBar",
+  methods: {
+    changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     }
-    
-    }
-}
-    
+  }
+};
 </script>
