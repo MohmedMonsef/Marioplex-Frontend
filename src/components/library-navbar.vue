@@ -12,7 +12,7 @@
             <li class="nav-item">
                 <div class="divOnFocus">
                     <router-link 
-                    to="/HomeWebPlayer/library" 
+                    to="/HomeWebPlayer/library/library-artists" 
                     testid="Artists in library" 
                     class="nav-link">Artists</router-link>
                 </div>
@@ -20,7 +20,7 @@
             <li class="nav-item">
                 <div class="divOnFocus">
                     <router-link 
-                    to="/HomeWebPlayer/library" 
+                    to="/HomeWebPlayer/library/library-albums" 
                     testid="Albums in library" 
                     class="nav-link">Albums</router-link>
                 </div>
