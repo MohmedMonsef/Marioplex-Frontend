@@ -9,6 +9,7 @@ import UserHome from "../views/UserHome.vue";
 import Search from "../views/Search.vue";
 import LikedTracks from "../views/LikedTracks.vue";
 import Library from "../views/Library.vue";
+import LibraryPlaylists from "../views/library-playlists.vue";
 import Queue from "../views/Queue.vue";
 
 Vue.use(VueRouter);
@@ -32,7 +33,13 @@ const routes = [
       component: Search
       },
       { path: 'library',
-      component: Library
+      component: Library,
+      children:[
+       {
+         path: 'library-playlists',
+         component: LibraryPlaylists,
+       },
+      ]
      },
      { path: 'liked-tracks',
      component: LikedTracks

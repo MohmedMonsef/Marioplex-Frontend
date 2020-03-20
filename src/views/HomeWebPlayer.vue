@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="home_webplayer">
     <side-bar />
