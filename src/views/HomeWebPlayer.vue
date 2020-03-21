@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="home_webplayer">
     <side-bar />
@@ -11,14 +9,19 @@
   </div>
 </template>
 <style scoped>
+.home_webplayer{
+  width:100%;
+}
 #HomeInWebPlayer {
-  width: 100%;
+  width: calc(100vw - 235px);
   height: 100vh;
   margin-left: 235px;
   background-color: #161516;
   position: fixed;
   top: 0%;
   z-index: 0;
+  overflow: auto;
+  box-sizing: border-box;
 }
 </style>
 <script>

@@ -112,9 +112,14 @@
       </div>
       <div class="col-md-3">
         <div class="additional_actions">
+    <router-link
+     to="/HomeWebPlayer/queue"
+    testid="queue icon link"
+    >
           <button id="queue_button" testid="queuebutton" @click="go_to_queue()">
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
           </button>
+    </router-link>
           <button id="sound_button" testid="soundbutton" @click="volume_song()">
             <i class="fa fa-volume-up" id="soundicon" testid="soundicon"></i>
           </button>
