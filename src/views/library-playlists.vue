@@ -11,6 +11,7 @@
 <script>
 import LibPlaylistsDefault from "@/components/lib-playlists-default.vue"
 export default {
+    name: "library-playlists",
     components:{
         LibPlaylistsDefault
     }

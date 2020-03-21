@@ -11,6 +11,7 @@
 <script>
 import LibArtistsDefault from "@/components/lib-artists-default.vue"
 export default {
+    name: "library-artists",
      components:{
         LibArtistsDefault
     }

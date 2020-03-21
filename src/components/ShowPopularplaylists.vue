@@ -23,7 +23,8 @@
         class="stretched-link"
         id="carglink"
         testid="popularplaylist card link"
-      ></router-link>
+      ></router-link>                         
+      <!-- should navigate to playlist page -->
     </div>
   </div>
 </template>
@@ -51,11 +52,6 @@ p {
   font-size: 14px;
   color: gray;
 }
-/* #describtion{
-     font-size: 16px;
-     color: gray;
-     margin-left: 30px; 
-  } */
 </style>
 
 <script>
