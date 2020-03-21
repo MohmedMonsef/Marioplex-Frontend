@@ -2,15 +2,15 @@
   <div class="home_webplayer">
     <side-bar />
     <CreatePlaylist v-if="show" />
-     <div id="HomeInWebPlayer">
-       <router-view></router-view>
+    <div id="HomeInWebPlayer">
+      <router-view></router-view>
     </div>
     <mediaplayer />
   </div>
 </template>
 <style scoped>
-.home_webplayer{
-  width:100%;
+.home_webplayer {
+  width: 100%;
 }
 #HomeInWebPlayer {
   width: calc(100vw - 235px);
@@ -37,7 +37,7 @@ export default {
     CreatePlaylist,
     mediaplayer
   },
-   computed: {
+  computed: {
     ...mapState({
       show: state => state.creatplaylist.showModal
     })

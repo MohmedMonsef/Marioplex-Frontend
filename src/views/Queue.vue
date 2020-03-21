@@ -7,18 +7,43 @@
       Now Playing
     </h2>
 
-    <song-component />
-
-    <h2>
+    <song-component
+       v-for="cs in currentSong"
+      :key="cs.id"
+      :song_artists="cs.track.artists"
+      :song_name="cs.track.name"
+      :song_album="cs.track.album"
+      :song_length="cs.track.length"
+      :isLiked="cs.isLiked"
+      
+    />
+    
+    <h2 v-if="Queued.length">
       Next in Queue
     </h2>
-    <song-component />
+    <song-component
+      v-for="q in Queued"
+      :key="q.id"
+      :song_artists="q.track.artists"
+      :song_name="q.track.name"
+      :song_album="q.track.album"
+      :song_length="q.track.length"
+      :isLiked="q.isLiked"
+    />
 
-    <h2>
+    <h2 v-if="NextUp.length">
       Next Up
     </h2>
 
-    <song-component />
+    <song-component
+      v-for="next in NextUp"
+      :key="next.id"
+      :song_artists="next.track.artists"
+      :song_name="next.track.name"
+      :song_album="next.track.album"
+      :song_length="next.track.length"
+      :isLiked="next.isLiked"
+    />
   </div>
 </template>
 
@@ -49,10 +74,22 @@ h2 {
 
 <script>
 import SongComponent from "@/components/SongComponent.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "Queue",
+  mounted(){
+      this.$store.dispatch("Queue/Queue");
+      this.$store.dispatch("mediaplayer/get_currentsong");
+  },
   components: {
     SongComponent
+  },
+  computed: {
+    ...mapGetters({
+      currentSong: "mediaplayer/Get_Currentsong",
+      NextUp: "Queue/Get_Nextup",
+      Queued: "Queue/Get_Queued"
+    })
   }
 };
 </script>

@@ -1,14 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from "axios";
 import ShowWebPlayer from "../modules/ShowWebPlayer";
 import creatplaylist from "../modules/creatplaylist";
 import deleteplaylist from "../modules/deleteplaylist";
 import authorization from "../modules/authorization";
 import mediaplayer from "../modules/mediaplayer";
+import Queue from "../modules/queue";
 
-//export const  bus = new Vue();
-Vue.use(Vuex, axios);
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
@@ -16,6 +15,7 @@ export default new Vuex.Store({
     creatplaylist,
     deleteplaylist,
     authorization,
-    mediaplayer
+    mediaplayer,
+    Queue
   }
 });

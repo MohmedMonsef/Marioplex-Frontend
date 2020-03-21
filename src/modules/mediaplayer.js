@@ -14,6 +14,7 @@ export default {
     // endtime: String,
     // repeatsong: String,
     // shufflesongs: String
+    currentsong:{},
     songs: []
   },
   mutations: {
@@ -52,6 +53,9 @@ export default {
     },
     setshufflesongs(state, shufflesongs) {
       state.shufflesongs = shufflesongs;
+    },
+    set_currentsong(state,currentsong){
+      state.currentsong=currentsong;
     }
   },
   actions: {
@@ -149,7 +153,21 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    get_currentsong({ commit }){
+      axios
+      .get("/api/currentsong")
+      .then(response => {
+        var currentsong=response.data.currentsong;
+        commit("set_currentsong",currentsong)
+      }).catch(error => {
+        console.error(error);
+      });
     }
+  },
+
+  getters:{
+    Get_Currentsong: state => state.currentsong
   }
   // modules: {},
   //   getters: {

@@ -1,18 +1,18 @@
 <template>
-   <div>
-      <h2 v-if="POPplaylists1.length">Popular playlists</h2>
-      <div class="container">
-        <div class="row">
-          <show-popularplaylists
-            v-for="POPplaylist in POPplaylists1"
-            :key="POPplaylist.id"
-            :image="POPplaylist.image"
-            :title="POPplaylist.title"
-            :des="POPplaylist.des"
-          />
-        </div>
+  <div>
+    <h2 v-if="POPplaylists1.length">Popular playlists</h2>
+    <div class="container">
+      <div class="row">
+        <show-popularplaylists
+          v-for="POPplaylist in POPplaylists1"
+          :key="POPplaylist.id"
+          :image="POPplaylist.image"
+          :title="POPplaylist.title"
+          :des="POPplaylist.des"
+        />
       </div>
     </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -28,15 +28,14 @@ h2 {
 }
 </style>
 
-
 <script>
 import ShowPopularplaylists from "@/components/ShowPopularplaylists.vue";
 import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "UserHome",
-  components: { 
-    ShowPopularplaylists,
+  components: {
+    ShowPopularplaylists
   },
   mounted() {
     this.$store.dispatch("ShowWebPlayer/showPopularPlaylists");
@@ -52,4 +51,3 @@ export default {
   }
 };
 </script>
-

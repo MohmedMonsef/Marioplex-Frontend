@@ -112,14 +112,19 @@
       </div>
       <div class="col-md-3">
         <div class="additional_actions">
-    <router-link
-     to="/HomeWebPlayer/queue"
-    testid="queue icon link"
-    >
-          <button id="queue_button" testid="queuebutton" @click="go_to_queue()">
-            <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
+          <button
+            id="queue_button"
+            testid="queuebutton"
+            @click="queue_navigation()"
+          >
+            <i
+              class="fa fa-bars"
+              :class="{ coloring: color }"
+              id="queueicon"
+              testid="queueicon"
+            ></i>
           </button>
-    </router-link>
+
           <button id="sound_button" testid="soundbutton" @click="volume_song()">
             <i class="fa fa-volume-up" id="soundicon" testid="soundicon"></i>
           </button>
@@ -338,6 +343,10 @@ input:focus {
     border-radius: 50px;
   }
 }
+//queue icon
+.coloring {
+  color: #1db954;
+}
 </style>
 
 <script>
@@ -352,7 +361,16 @@ var x = new Audio(y);
 /////////////////////////////////////
 export default {
   data: function() {
-    return {};
+    return {
+      color: false
+    };
+  },
+  mounted() {
+    if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
+      this.color = true;
+    } else {
+      this.color = false;
+    }
   },
   methods: {
     ////////////////////////////////////////////////
@@ -446,6 +464,22 @@ export default {
 
     repeat_song: function() {
       this.$store.dispatch("mediaplayer/repeatsong_state");
+    },
+    queue_navigation: function() {
+      if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
+        this.$router.go(-1);
+      } else {
+        this.$router.push("/HomeWebPlayer/queue");
+      }
+    },
+    beforeRouteUpdate(to, from, next) {
+      if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
+        this.color = true;
+        next();
+      } else {
+        this.color = false;
+        next();
+      }
     }
   },
   computed: {
@@ -461,6 +495,10 @@ export default {
       media_player: state => state.mediaplayer.songs
       //newstore: state => state.mediaplayer.store.songs
     })
+    //    inqueue:function(){
+
+    //      return {coloring : };
+    // },
   }
 };
 </script>

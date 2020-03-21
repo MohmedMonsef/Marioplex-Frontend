@@ -22,24 +22,14 @@ const routes = [
   {
     path: "/HomeWebPlayer",
     name: "HomeWebPlayer",
-    component:HomeWebPlayer,
-    children:[
-      { path: '',
-       component: UserHome
-      },
-		
-      { path: 'search', 
-      component: Search
-      },
-      { path: 'library',
-      component: Library
-     },
-     { path: 'liked-tracks',
-     component: LikedTracks
-     },
-     { path: 'queue',
-      component: Queue
-     }
+    component: HomeWebPlayer,
+    children: [
+      { path: "", component: UserHome },
+
+      { path: "search", component: Search },
+      { path: "library", component: Library },
+      { path: "liked-tracks", component: LikedTracks },
+      { path: "queue", component: Queue }
     ]
   },
   {
