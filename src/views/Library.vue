@@ -1,6 +1,9 @@
 <template>
     <div class="library">
         <library-navbar/>
+        <div>
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 

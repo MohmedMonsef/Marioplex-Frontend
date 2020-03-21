@@ -1,7 +1,7 @@
 <template>
     <div class="library-navbar">
         <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <div class="divOnFocus">
                     <router-link
                     to="/HomeWebPlayer/library/library-playlists"
@@ -47,12 +47,21 @@
   margin-left: 8px;
   margin-top: 15px; 
 }
+.divOnFocus1 {
+  width: 80px;
+  height: 30px;
+  border-radius:3px;
+  background: #161516;
+  margin-left: 8px;
+  margin-top: 15px; 
+}
 .divOnFocus :focus{
    width: 100%;
   height: 100%;
   background: #313030;
   display: block;
 }
+
 </style>
 
 <script>

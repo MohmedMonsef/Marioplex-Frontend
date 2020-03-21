@@ -37,7 +37,7 @@
       <li>
         <div class="divOnFocus">
           <router-link
-            to="/HomeWebPlayer/library"
+            to="/HomeWebPlayer/library/library-playlists"
             testid="librarypage link"
             class="librarypage"
           >
