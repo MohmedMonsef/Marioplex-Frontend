@@ -1,7 +1,7 @@
 <template>
   <div class="mediaplayer">
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-sm-3" id="song_info_col">
         <!-- here i need to link album image with mock server -->
         <div class="album_image">
           <img src="../assets/cry.png" alt="album_image" testid="album_image" />
@@ -13,11 +13,34 @@
           <!-- this div is for like songs and them to the library of the user -->
           <!-- donot forget that the second icon is still weird -->
           <div class="actionbuttons">
-            <button>
+            <button
+              class="heartbutton"
+              v-if="!liked"
+              @click="likecurrentsong()"
+            >
               <span data-toggle="tooltip" title="Save to your Liked Songs">
-                <i class="fa fa-heart-o" id="hearticon" testid="hearticon"></i>
+                <i
+                  class="fa fa-heart-o"
+                  id="emptyhearticon"
+                  testid="emptyhearticon"
+                ></i>
               </span>
             </button>
+
+            <!-- ////////////////////////////////////// -->
+            <button class="heartbutton" v-if="liked" @click="likecurrentsong()">
+              <span data-toggle="tooltip" title="Remove from your Liked Songs">
+                <i
+                  class="fa fa-heart"
+                  id="filledhearticon"
+                  testid="filledhearticon"
+                  style="color:green"
+                ></i>
+              </span>
+              <!-- <div class="snackbar" id="unlikesnackbar">Removed from your Liked Songs</div> -->
+            </button>
+
+            <!-- /////////////////////////////////// -->
           </div>
 
           <br />
@@ -39,7 +62,7 @@
         >
           <div class="controllers" id="test_controllers" testid="controllers">
             <audio id="myAudio">
-              <!-- <source :src="songs.song" type="audio/ogg" /> -->
+              <source :src="media_player.song" type="audio/ogg" />
               <source
                 :src="media_player.song"
                 type="audio/mpeg"
@@ -71,12 +94,25 @@
             <button
               id="play_button"
               testid="playbutton"
-              @click="play_pause_song()"
+              v-if="playicon"
+              @click="play_pause_song(), changeplayicon()"
             >
-              <span data-toggle="tooltip" title="Play">
+              <span data-toggle="tooltip" title="Pause">
                 <i class="fa fa-pause" id="playicon" testid="playicon"></i>
               </span>
             </button>
+            <!-- ///////////////////////////////// -->
+            <button
+              id="pause_button"
+              testid="pausebutton"
+              v-if="!playicon"
+              @click="play_pause_song(), changeplayicon()"
+            >
+              <span data-toggle="tooltip" title="Play">
+                <i class="fa fa-play" id="pauseicon" testid="pauseicon"></i>
+              </span>
+            </button>
+            <!-- //////////////////////////////// -->
             <button id="next_button" testid="nextbutton" @click="next_song()">
               <span data-toggle="tooltip" title="Next">
                 <i
@@ -108,27 +144,34 @@
           <div id="fill"></div>
           <div id="handle" style="left:0%;"></div>
           <div id="duration">3:45</div> -->
-
+          <div id="current_time" testid="currenttime" class="current_time">
+            00:00
+          </div>
           <div>
-            <div id="current_time" testid="currenttime" class="current_time">
+            <!-- <div id="current_time" testid="currenttime" class="current_time">
               00:00
-            </div>
+            </div> -->
             <!-- here you must add onchange="seeksong()" to control the time of song -->
-            <input
+            <div class="songslider">
+              <div class="movingslider" id="movingslider"></div>
+            </div>
+            <!-- <input
               id="songslider"
               testid="songslider"
               class="songslider"
               type="range"
               min="0"
+              value="0"
               step="1"
-            />
+            /> -->
 
-            <div id="duration" testid="songduration" class="duration">3:45</div>
+            <!-- <div id="duration" testid="songduration" class="duration">3:45</div> -->
           </div>
+          <div id="duration" testid="songduration" class="duration">3:45</div>
         </div>
         <!-- ///////////////// -->
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 hidden-sm">
         <div class="additional_actions">
           <button id="queue_button" testid="queuebutton" @click="go_to_queue()">
             <span data-toggle="tooltip" title="Queue">
@@ -159,6 +202,7 @@
         </div>
       </div>
     </div>
+    <div class="toast" id="liketoast"></div>
   </div>
 </template>
 
@@ -283,18 +327,36 @@ button:focus {
 input:focus {
   outline: 0 !important;
 }
+//this was for the input field range
+// .songslider {
+//   width: 500px;
+//   height: 5px;
+//   border-radius: 10px;
+//   margin: 5px;
+//   padding: 0px;
+//   // to override default css styles
+//   -webkit-appearance: none;
+//   appearance: none;
+//   background: #424040;
+//   border-color: #424040;
+// }
+///////////////////////////
 .songslider {
   width: 500px;
   height: 5px;
   border-radius: 10px;
   margin: 5px;
   padding: 0px;
-  // to override default css styles
-  -webkit-appearance: none;
-  appearance: none;
   background: #424040;
   border-color: #424040;
 }
+.movingslider {
+  height: 5px;
+  width: 0px;
+  border-radius: 10px;
+  background-color: #b3b3b3;
+}
+///////////////////////////
 // The song slider handle -webkit- for (Chrome, Opera, Safari, Edge) and -moz- for (Firefox) to override default look)
 .songslider::-webkit-slider-thumb,
 .volume_slider::-webkit-slider-thumb {
@@ -320,7 +382,7 @@ input:focus {
   font-size: 10px;
   color: #b3b3b3;
   display: flex;
-  margin: 7px;
+  margin: 0px;
 }
 #current_time {
   float: left;
@@ -353,26 +415,67 @@ input:focus {
     border-radius: 50px;
   }
 }
+.toast {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 50%;
+  top: -55px;
+  margin: auto;
+  min-width: 300px;
+  background-color: rgb(8, 118, 243);
+  padding: 10px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: 0 0 10 rgb(9, 76, 131);
+  transition: opacity 0.2s, visibility 0.2s;
+  font-size: 15px;
+}
+.toast--visible {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 
 <script>
-//import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 var y = document.getElementById("myAudio");
 var x = new Audio(y);
 ///////////////////////////////////////////////////////////////
-// var SongSlider = document.getElementById("songslider");
-// var currenttime = document.getElementById("current_time");
+//creating toast object with function show
+const toast = {
+  show(message) {
+    var mytoast = document.getElementById("liketoast");
+    //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
+    clearTimeout(mytoast.hideTimeout);
+    mytoast.textContent = message;
+    mytoast.className = "toast toast--visible";
+    mytoast.hideTimeout = setTimeout(() => {
+      mytoast.classList.remove("toast--visible");
+    }, 2000);
+    console.log("message", message);
+  }
+};
 //var playbutton = document.getElementById("play_button");
+//var audio = document.querySelector(".audio");
 /////////////////////////////////////
-(function() {
-  '{data-toggle="tooltip"}'.tooltip();
-});
 export default {
   data: function() {
     return {};
   },
   methods: {
+    moving_song_bar: function() {
+      var SongSlider = document.getElementById("movingslider");
+      if (x) {
+        x.addEventListener("timeupdate", function() {
+          var sliderposition = x.currentTime / x.duration;
+          SongSlider.style.width = sliderposition * 100 + "%";
+        });
+      }
+    },
     ////////////////////////////////////////////////
     // updateSongSlider: function(){
     //   setInterval(() => {
@@ -381,29 +484,46 @@ export default {
     //   currenttime.textContent = c;
     //   }, 100);
     // },
-    // changetime: function(secs){
-    // var min = Math.floor(secs/60);
-    // var sec = secs % 60;
-    // min = (min < 10) ? "0" + min : min;
-    // sec = (sec < 10) ? "0" + sec : sec;
-    // return (min + ":" + sec);
+    changetime: function(secs) {
+      var min = Math.floor(secs / 60);
+      var sec = secs % 60;
+      min = min < 10 ? "0" + min : min;
+      sec = sec < 10 ? "0" + sec : sec;
+      return min + ":" + sec;
+    },
+    // useraccount : function(){
+    // if (this.user != "success")
+    // {
+    //  var nouser_songinfo = document.getElementById("song_info_col");
+    //  //var nouser_buttons = document.querySelectorAll("buttons");
+    //  //var nouser_sliders = document.querySelectorAll("input");
+    //  nouser_songinfo.style.visibility = "hidden";
+    // }
     // },
     ////////////////////////////////////
+    playsong_by_icon: function() {
+      if (x.paused) this.$store.dispatch("mediaplayer/playicon_state", true);
+    },
     play_pause_song: function() {
       //var b = document.getElementById("playicon");
       if (x.paused) {
         this.$store.dispatch("mediaplayer/playsong_state");
+        this.$store.dispatch("mediaplayer/stateofsong");
+        console.log("song state", this.liked);
         setTimeout(() => {
           console.log(this.media_player.song);
           x.src = this.media_player.song;
           if (x) {
             x.play();
           }
-          //b.find('i').toggleClass('fa fa-play');
+          ////////////////////
+          this.moving_song_bar();
+          ////////////////////
         }, 500);
       } else {
         console.log("pause song");
         this.$store.dispatch("mediaplayer/pausesong_state");
+        this.$store.dispatch("mediaplayer/stateofsong");
         setTimeout(() => {
           console.log(this.media_player.song);
           x.src = this.media_player.song;
@@ -412,7 +532,6 @@ export default {
           }
         }, 500);
       }
-
       console.log(x);
     },
 
@@ -420,10 +539,11 @@ export default {
       var y0 = document.getElementById("myAudio");
       var x0 = new Audio(y0);
       this.$store.dispatch("mediaplayer/prevsong_state");
+      this.$store.dispatch("mediaplayer/stateofsong");
       setTimeout(() => {
         console.log(this.media_player.song);
         x0.src = this.media_player.song;
-
+        this.playsong_by_icon();
         if (!x.paused) {
           x.pause();
           x0.play();
@@ -432,7 +552,7 @@ export default {
           x0.play();
           x = x0;
         }
-        //b.find('i').toggleClass('fa fa-play');
+        this.moving_song_bar();
       }, 500);
     },
 
@@ -440,10 +560,11 @@ export default {
       var y1 = document.getElementById("myAudio");
       var x1 = new Audio(y1);
       this.$store.dispatch("mediaplayer/nextsong_state");
+      this.$store.dispatch("mediaplayer/stateofsong");
       setTimeout(() => {
         console.log(this.media_player.song);
         x1.src = this.media_player.song;
-
+        this.playsong_by_icon();
         if (!x.paused) {
           console.log("inside next song", x.paused);
           x.pause();
@@ -453,8 +574,7 @@ export default {
           x1.play();
           x = x1;
         }
-
-        //b.find('i').toggleClass('fa fa-play');
+        this.moving_song_bar();
       }, 500);
     },
 
@@ -464,6 +584,21 @@ export default {
 
     repeat_song: function() {
       this.$store.dispatch("mediaplayer/repeatsong_state");
+      ///// take care i should add condition here if the user isnot premiuim
+      var repeat = document.getElementById("repeaticon");
+      repeat.style.color = "green";
+    },
+    changeplayicon: function() {
+      this.$store.dispatch("mediaplayer/toggleicon");
+    },
+    likecurrentsong: function() {
+      if (!this.liked) {
+        this.$store.dispatch("mediaplayer/likesong");
+        toast.show("Added to your Liked Songs");
+      } else {
+        this.$store.dispatch("mediaplayer/unlikesong");
+        toast.show("Removed from your Liked Songs");
+      }
     }
   },
   computed: {
@@ -478,6 +613,11 @@ export default {
     ...mapState({
       media_player: state => state.mediaplayer.songs
       //newstore: state => state.mediaplayer.store.songs
+    }),
+    ...mapGetters({
+      playicon: "mediaplayer/playicon",
+      user: "authorization/GetStatus",
+      liked: "mediaplayer/liked"
     })
   }
 };
