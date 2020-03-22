@@ -109,32 +109,56 @@ new Server({
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name1",
-          artistname: "artist name1"
+          artist:[
+            {
+            name: "artist name1"
+            }
+          ]
         },
         {
           images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
           name: "album name2",
-          artistname: "artist name2"
+          artist:[
+            {
+            name: "artist name2"
+            }
+          ]
         },
         {
           images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
           name: "album name3",
-          artistname: "artist name3"
+          artist:[
+            {
+            name: "artist name3"
+            }
+          ]
         },
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name4",
-          artistname: "artist name4"
+          artist:[
+            {
+            name: "artist name4"
+            }
+          ]
         },
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name5",
-          artistname: "artist name5"
+          artist:[
+            {
+            name: "artist name5"
+            }
+          ]
         },
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name6",
-          artistname: "artist name6"
+          artist:[
+            {
+            name: "artist name6"
+            }
+          ]
         },
       ],
       user_artists: [
