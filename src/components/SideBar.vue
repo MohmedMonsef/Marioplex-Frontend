@@ -82,7 +82,7 @@
     <ul>
       <li v-for="playlist in playlists1" :key="playlist.id">
         <router-link to="/" testid="userplaylists" class="userplaylists">
-          {{ playlist.playlistname }}
+          {{ playlist.name }}
         </router-link>
         <!-- router link should navigate to play list page-->
       </li>

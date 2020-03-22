@@ -2,22 +2,25 @@
     <div class="card rounded col-lg-20% " testid="album card">
         <img
             class="card-img-top mx-auto d-block"
-            :src="image"
+            :src="images"
             alt="Card image"
             id="cardimg"
             testid="album image"
             />
         <div class="card-body" id="cardbody" testid="album card body">
             <h4 class="card-title" id="cardtitle" testid="album name">
-                {{ albumname }}
+                {{ name }}
             </h4>
-            <p
+            <!-- <p
                 class="card-text"
                 id="carddescribtion"
                 testid="artist name"
-            >
-                 {{ artistname }}
-            </p>
+            > -->
+            <!-- <p> -->
+            <div>
+            <router-link  class="artistlink" to="/HomeWebPlayer" testid="artist page link"> {{ artistname }}  </router-link>
+            </div>
+            <!-- </p> -->
             <router-link
                 to="/"
                 class="stretched-link"
@@ -36,6 +39,7 @@
   height: 270px;
   margin-left: 15px;
   margin-top: 15px;
+   z-index: 0;
 }
 #cardimg {
   width: 158px;
@@ -48,15 +52,24 @@ h4 {
   color: white;
   margin-bottom: 4px;
 }
-p {
+/* p {
   font-size: 14px;
   color: gray;
+} */
+.artistlink{
+  font-size: 14px;
+  color: gray;
+  
+}
+#carglink{
+display: block;
+/* position:fixed; */
 }
 </style>
 
 <script>
 export default {
     name: "lib-albums",
-    props: ["image", "albumname", "artistname"]
+    props: ["images", "name", "artistname"]
 }
 </script>

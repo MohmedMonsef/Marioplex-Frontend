@@ -41,10 +41,14 @@ new Server({
       ],
       Playlists: [
         {
-          playlistname: "Amr"
+          name: "playlist name1" ,
+          images:"http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          owner:"Amr"
         },
         {
-          playlistname: "shreen"
+          name:"playlist name2" ,
+          images:"http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          owner:"shreen"
         }
       ],
       users: [
@@ -103,34 +107,60 @@ new Server({
       ],
       user_albums: [
         {
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          albumname: "album name1",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name1",
           artistname: "artist name1"
         },
         {
-          image: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-          albumname: "album name2",
+          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+          name: "album name2",
           artistname: "artist name2"
         },
         {
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          albumname: "album name3",
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          name: "album name3",
           artistname: "artist name3"
         },
         {
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          albumname: "album name4",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name4",
           artistname: "artist name4"
         },
         {
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          albumname: "album name5",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name5",
           artistname: "artist name5"
         },
         {
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          albumname: "album name6",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name6",
           artistname: "artist name6"
+        },
+      ],
+      user_artists: [
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name1",
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+          name: "artist name2",
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          name: "artist name3",
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name4",
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name5",
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name6",
         },
       ]
     });
@@ -176,6 +206,9 @@ new Server({
     });
     this.get("/api/useralbums", schema => {
       return schema.db.user_albums;
+    });
+    this.get("/api/userartists", schema => {
+      return schema.db.user_artists;
     });
 
     this.get("/api/playlists", schema => {

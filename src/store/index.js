@@ -6,7 +6,7 @@ import creatplaylist from "../modules/creatplaylist";
 import deleteplaylist from "../modules/deleteplaylist";
 import authorization from "../modules/authorization";
 import mediaplayer from "../modules/mediaplayer";
-import useralbums from "../modules/useralbums";
+import userlibrary from "../modules/userlibrary";
 
 //export const  bus = new Vue();
 Vue.use(Vuex, axios);
@@ -18,6 +18,6 @@ export default new Vuex.Store({
     deleteplaylist,
     authorization,
     mediaplayer,
-    useralbums
+    userlibrary
   }
 });

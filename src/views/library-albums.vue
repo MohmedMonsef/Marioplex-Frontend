@@ -7,8 +7,8 @@
           <lib-albums
             v-for="album in albums1"
             :key="album.id"
-            :image="album.image"
-            :albumname="album.albumname"
+            :images="album.images"
+            :name="album.name"
             :artistname="album.artistname"
           />
         </div>
@@ -41,12 +41,12 @@ export default {
         LibAlbums
     },
      mounted() {
-    this.$store.dispatch("useralbums/showUserAlbums");
+    this.$store.dispatch("userlibrary/showUserAlbums");
   },
   computed: {
     ...mapGetters({
-      // map `this.playlists1` to `this.$store.getters.playlists`
-      albums1: "useralbums/albums" // creat new object "playlists1" and map to it
+      // map `this.albums1` to `this.$store.getters.albums`
+      albums1: "userlibrary/albums"
     }),
   }
 }
