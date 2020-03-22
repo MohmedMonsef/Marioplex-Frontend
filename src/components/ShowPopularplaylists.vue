@@ -1,5 +1,5 @@
 <template>
-  <div class="card rounded col-lg-20% " testid="popularplaylist card">
+  <div class="card rounded col-lg-20% " testid="popularplaylist card" @mouseover="hover=true" @mouseleave="hover=false">
     <img
       class="card-img-top mx-auto d-block"
       :src="image"
@@ -18,6 +18,7 @@
       >
         {{ des }}
       </p>
+      <i v-if="hover" class="fa fa-play-circle"></i>
       <router-link
         to="/"
         class="stretched-link"
@@ -51,6 +52,14 @@ h4 {
 p {
   font-size: 14px;
   color: gray;
+  position:absolute;
+}
+i{
+  margin-left: 130px;
+  margin-bottom: 20px;
+  color: #1db954;
+  position: relative;
+  font-size: 40px;
 }
 </style>
 

@@ -17,6 +17,7 @@
   position: fixed;
   top: 0%;
   z-index: 0;
+  overflow-y: scroll;
 }
 </style>
 <script>

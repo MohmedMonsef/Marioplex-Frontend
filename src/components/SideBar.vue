@@ -1,7 +1,7 @@
 <template>
   <div class="SideBar" testid="sidebar component">
     <!-- spotify logo -->
-    <router-link to="/" testid="logo in sidebar">
+    <router-link to="/HomeWebPlayer" testid="logo in sidebar">
       <img
         src="../assets/spotify logo.png"
         alt="Logo"

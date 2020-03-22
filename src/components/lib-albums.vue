@@ -1,5 +1,6 @@
 <template>
-    <div class="card rounded col-lg-20% " testid="album card">
+<router-link  to="/" id="carglink"  testid="album card link">   <!-- should navigate to album page -->
+    <div class="card rounded col-lg-20% " testid="album card" @mouseover="hover=true" @mouseleave="hover=false">
         <img
             class="card-img-top mx-auto d-block"
             :src="images"
@@ -11,25 +12,11 @@
             <h4 class="card-title" id="cardtitle" testid="album name">
                 {{ name }}
             </h4>
-            <!-- <p
-                class="card-text"
-                id="carddescribtion"
-                testid="artist name"
-            > -->
-            <!-- <p> -->
-            <div>
-            <router-link  class="artistlink" to="/HomeWebPlayer" testid="artist page link"> {{ artistname }}  </router-link>
-            </div>
-            <!-- </p> -->
-            <router-link
-                to="/"
-                class="stretched-link"
-                id="carglink"
-                testid="album card link"
-            ></router-link>
-            <!-- should navigate to album page -->
+            <router-link  class="ard-link artistlink" to="/HomeWebPlayer" testid="artist page link"> {{ artistname }}  </router-link>
+            <i v-if="hover" class="fa fa-play-circle"></i>
         </div>
     </div>
+</router-link>
 </template>
 
 <style scoped>
@@ -52,23 +39,33 @@ h4 {
   color: white;
   margin-bottom: 4px;
 }
-/* p {
-  font-size: 14px;
-  color: gray;
-} */
 .artistlink{
   font-size: 14px;
   color: gray;
-  
+  display: inline;
+  position:absolute;
 }
 #carglink{
 display: block;
-/* position:fixed; */
+outline: none;
+text-decoration: none;
+}
+i{
+  margin-left: 130px;
+  margin-bottom: 20px;
+  color: #1db954;
+  position: relative;
+  font-size: 40px;
 }
 </style>
 
 <script>
 export default {
+  data: function(){
+    return{
+     hover: false
+    }
+  },
     name: "lib-albums",
     props: ["images", "name", "artistname"]
 }

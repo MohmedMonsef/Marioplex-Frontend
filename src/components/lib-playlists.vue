@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card rounded col-lg-20% " testid="playlist card">
+        <div class="card rounded col-lg-20% " testid="playlist card"  @mouseover="hover=true" @mouseleave="hover=false">
         
             <img
                 class="card-img-top mx-auto d-block"
@@ -20,6 +20,7 @@
                 >
                     {{'By '+ owner }}
                 </p>
+                <i v-if="hover" class="fa fa-play-circle"></i>
                 <router-link
                     to="/"
                     class="stretched-link"
@@ -53,11 +54,24 @@ h4 {
 p {
   font-size: 14px;
   color: gray;
+   position:absolute;
+}
+i{
+  margin-left: 130px;
+  margin-bottom: 20px;
+  color: #1db954;
+  position: relative;
+  font-size: 40px;
 }
 </style>
 <script>
 import { mapGetters} from "vuex";
 export default {
+   data: function(){
+    return{
+     hover: false
+    }
+  },
     name: "lib-playlists",
     props: ["images", "name", "owner"],
     mounted() {

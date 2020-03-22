@@ -41,12 +41,12 @@ new Server({
       ],
       Playlists: [
         {
-          name: "playlist name1" ,
+          name: "playlist name*" ,
           images:"http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           owner:"Amr"
         },
         {
-          name:"playlist name2" ,
+          name:"playlist name**" ,
           images:"http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           owner:"shreen"
         }

@@ -1,5 +1,5 @@
 <template>
-    <div class="card rounded col-lg-20% " testid="artist card">
+    <div class="card rounded col-lg-20% " testid="artist card" @mouseover="hover=true" @mouseleave="hover=false">
         <img
             class="card-img-top mx-auto d-block rounded-circle"
             :src="images"
@@ -17,6 +17,7 @@
             >
                  Artist
             </p>
+            <i v-if="hover" class="fa fa-play-circle"></i>
             <router-link
                 to="/"
                 class="stretched-link"
@@ -49,10 +50,23 @@ h4 {
 p {
   font-size: 13px;
   color: gray;
+  position:absolute;
+}
+i{
+  margin-left: 130px;
+  margin-bottom: 20px;
+  color: #1db954;
+  position: relative;
+  font-size: 40px;
 }
 </style>
 <script>
 export default {
+   data: function(){
+    return{
+     hover: false
+    }
+  },
     name: "lib-artists",
     props: ["images", "name"]
 }
