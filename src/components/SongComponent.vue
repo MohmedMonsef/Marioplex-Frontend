@@ -35,7 +35,7 @@
         <p class="dropdown-item">Start Radio</p>
         <p v-if="!isLiked" class="dropdown-item">Add to Liked Songs</p>
         <p v-if="isLiked" class="dropdown-item">Remove from Liked Songs</p>
-        <p class="dropdown-item">Add to Queue</p>
+        <p class="dropdown-item" @click="addToQueue()">Add to Queue</p>
         <p class="dropdown-item">Add to Playlist</p>
       </div>
     </div>
@@ -146,7 +146,32 @@ export default {
       hover: false
     };
   },
-  props: ["song_name", "song_album","song_artists", "song_length","isLiked"]//must add isplayable also
-  // 
+  props: {
+      song_name:{
+          type:String
+      },
+       song_album:{
+            type:String
+       },
+       song_artists:{
+            type:Array
+       },
+        song_length:{
+           type:String
+        },
+        isLiked:{
+            type:Boolean
+        },
+        song_id:{
+            type:String
+        }
+     },//must add isplayable also
+  methods:{
+      addToQueue(){
+            console.log("prop",this.song_id)
+            this.$store.dispatch("Queue/AddToQueue",{song_id: this.song_id});
+      }
+  }
+ 
 };
 </script>

@@ -14,97 +14,112 @@ new Server({
     server.db.loadData({
       currentsong: {
         track: {
-          _id: "55",
+        
           name: "You are my sunshine",
           __v: 0,
           artists: ["civil wars", "john", "jasmine"],
           album: "Barton Hallow",
-          length:"3:33"
+          length: "3:33"
         },
+        _id: "55",
         isLiked: true,
-        isPlayable: true
+        isPlayable: true,
+      
       },
       queue: [
-          {
-            track: {
-              _id: "57",
-              name: "You are my sunshine",
-              __v: 0,
-              artists: ["civil wars", "john", "jasmine"],
-              album: "Barton Hallow",
-              length:"4:23"
-            },
-            isLiked:false,
-            isPlayable: false,
-            isqueue: false
+        {
+          track: {
+            name: "You are my sunshine",
+            __v: 0,
+            artists: ["civil wars", "john", "jasmine"],
+            album: "Barton Hallow",
+            length: "3:33"
           },
-          {
-            track: {
-              _id: "56",
-              name: "the Girl with the red ballon",
-              __v: 0,
-              artists: ["civil wars", "jasmine"],
-              album: "Barton Hallow2",
-              length:"4:23"
-            },
-            isLiked: true,
-            isPlayable: false,
-            isqueue: false
+          _id: "55",
+          isLiked: true,
+          isPlayable: true,
+        },
+        {
+          track: {
+            name: "Beleiver",
+            __v: 0,
+            artists: ["imagine dragons"],
+            album: "Barton Hallow",
+            length: "4:23"
           },
-          {
-            track: {
-              _id: "58",
-              name: "tip of my tongue",
-              __v: 0,
-              artists: ["civil wars", "john"],
-              album: "Barton Hallow3",
-              length:"4:23"
-            },
-            isLiked: true,
-            isPlayable: false,
-            isqueue: false
+          _id: "57",
+          isLiked: false,
+          isPlayable: false,
+          isqueue: false
+        },
+        {
+          track: {
+            name: "the Girl with the red ballon",
+            __v: 0,
+            artists: ["civil wars", "jasmine"],
+            album: "Barton Hallow2",
+            length: "4:23"
           },
-          {
-            track: {
-              _id: "59",
-              name: "what he wrote",
-              __v: 0,
-              artists: ["Laura Marling"],
-              album: "single",
-              length:"4:23"
-            },
-            isLiked: true,
-            isPlayable: false,
-            isqueue: false
+          _id: "56",
+          isLiked: true,
+          isPlayable: false,
+          isqueue: false
+        },
+        {
+          track: {
+            name: "tip of my tongue",
+            __v: 0,
+            artists: ["civil wars", "john"],
+            album: "Barton Hallow3",
+            length: "4:23"
           },
-          {
-            track: {
-              _id: "60",
-              name: "terrible love",
-              __v: 0,
-              artists: ["birdy"],
-              album: "single",
-              length:"4:23"
-            },
-            isLiked: true,
-            isPlayable: false,
-            isqueue: false
+          _id: "58",
+          isLiked: true,
+          isPlayable: false,
+          isqueue: false
+        },
+        {
+          track: {
+        
+            name: "what he wrote",
+            __v: 0,
+            artists: ["Laura Marling"],
+            album: "single",
+            length: "4:23"
           },
-          {
-            track: {
-              _id: "61",
-              name: "Next to me",
-              __v: 0,
-              artists: ["imagine dragons"],
-              album: "single",
-              length:"4:23"
-            },
-            isLiked: true,
-            isPlayable: false,
-            isqueue: false
-          }
-        ]
-      ,
+          _id: "59",
+          isLiked: true,
+          isPlayable: false,
+          isqueue: false
+        },
+        {
+          track: {
+          
+            name: "terrible love",
+            __v: 0,
+            artists: ["birdy"],
+            album: "single",
+            length: "4:23"
+          },
+          _id: "60",
+          isLiked: true,
+          isPlayable: false,
+          isqueue: false
+        },
+        {
+          track: {
+            name: "Next to me",
+            __v: 0,
+            artists: ["imagine dragons"],
+            album: "single",
+            length: "4:23"
+          },
+          _id: "61",
+          isLiked: true,
+          isPlayable: false,
+          isqueue: false
+        }
+      ],
       popular_playlists: [
         {
           image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
@@ -294,11 +309,23 @@ new Server({
     this.post("/api/logout", () => {
       return new Response(200);
     });
+    //queue requests
     this.get("/api/currentsong", schema => {
       return new Response(200, {}, { currentsong: schema.db.currentsong });
     });
     this.get("/api/queue", schema => {
       return new Response(200, {}, { queue: schema.db.queue });
+    });
+    this.post("/api/addtoqueue", (schema ,request) => {
+      const songid = JSON.parse(request.requestBody).data;
+      console.log(songid);
+      let song = schema.db.queue.findBy({_id : songid.song_id});
+      song.isqueue=true;
+      song.id=schema.db.queue.length +1;
+      console.log("adding song to queue in mirage", song);
+      schema.db.queue.insert(song);
+      console.log("queue in mirage",schema.db.queue)
+      return new Response(200, {}, { queue:schema.db.queue  });
     });
     // this.post("/api/users",(schema,request)=>{
     //   const user =JSON.parse(request.requestBody).data

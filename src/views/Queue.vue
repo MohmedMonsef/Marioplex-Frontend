@@ -6,10 +6,11 @@
     <h2>
       Now Playing
     </h2>
-
+     <!-- should be cs.track._id -->
     <song-component
        v-for="cs in currentSong"
-      :key="cs.id"
+      :key="cs._id"
+      :song_id="cs._id"
       :song_artists="cs.track.artists"
       :song_name="cs.track.name"
       :song_album="cs.track.album"
@@ -21,9 +22,11 @@
     <h2 v-if="Queued.length">
       Next in Queue
     </h2>
+    <!-- should be q.track._id -->
     <song-component
       v-for="q in Queued"
-      :key="q.id"
+      :key="q._id"
+      :song_id="q._id" 
       :song_artists="q.track.artists"
       :song_name="q.track.name"
       :song_album="q.track.album"
@@ -34,10 +37,11 @@
     <h2 v-if="NextUp.length">
       Next Up
     </h2>
-
+    <!-- should be next.track._id -->
     <song-component
       v-for="next in NextUp"
-      :key="next.id"
+      :key="next._id"
+      :song_id="next._id"
       :song_artists="next.track.artists"
       :song_name="next.track.name"
       :song_album="next.track.album"
