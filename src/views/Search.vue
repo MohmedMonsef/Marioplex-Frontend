@@ -9,7 +9,9 @@
         v-model="Value"
         autocomplete="off"
       />
-      <div class="height1" v-if="Value.length!==0" @click="reset">&times;</div>
+      <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="contaner" v-if="Value.length==0">
       <div class="all scroll">
@@ -31,12 +33,8 @@
 </template>
 
 <style lang="scss" scoped>
-.height1 {
-  display: inline;
-  border: rgba(0, 0, 0, 0.041);
-  background-color: white;
-  border-radius: 2px;
-  cursor: pointer;
+*:focus {
+  outline: none;
 }
 .cont {
   margin-left: 15px;
@@ -93,7 +91,7 @@ h2 {
   width: 80%;
   height: 100%;
   border: rgba(0, 0, 0, 0.041);
-  cursor: none;
+  cursor: text;
   border-radius: 17px;
   font-family: sans-serif;
   font-size: large;
@@ -103,6 +101,9 @@ h2 {
 
 .search_contaner {
   padding-left: 15px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   width: 30%;
   height: 40px;
   margin-left: 10%;
