@@ -107,7 +107,7 @@ new Server({
                 {
                     name: "pop",
                     image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
+                    href: "/",
                     playlist: []
                 },
                 {
@@ -166,30 +166,6 @@ new Server({
                 },
                 {
                     name: "pop",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
-                    playlist: []
-                },
-                {
-                    name: "roke",
-                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    href: "",
-                    playlist: []
-                },
-                {
-                    name: "rab",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
-                    playlist: []
-                },
-                {
-                    name: "sad",
-                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    href: "",
-                    playlist: []
-                },
-                {
-                    name: "happy",
                     image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     href: "",
                     playlist: []

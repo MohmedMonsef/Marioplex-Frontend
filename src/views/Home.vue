@@ -1,11 +1,10 @@
 <template>
-<div>
-  <div class="home">
-    <home-navigation-bar />
-   
+  <div>
+    <div class="home">
+      <home-navigation-bar />
     </div>
-   <home-footer/>
-   </div>
+    <home-footer />
+  </div>
 </template>
 
 <script>
@@ -17,14 +16,13 @@ export default {
   components: {
     HomeNavigationBar,
     HomeFooter
-    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.home{
+.home {
   background-image: linear-gradient(to bottom right, red, yellow);
   height: calc(100vh);
- 
 }
 </style>

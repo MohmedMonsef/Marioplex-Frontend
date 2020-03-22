@@ -19,15 +19,15 @@
       </li>
       <li>
         <div class="divOnFocus">
-          <router-link to="/HomeWebPlayer" testid="searchpage link" class="searchpage">
-            <i class="fa fa-search hover"></i>Search
+          <router-link to="/HomeWebPlayer/search" testid="searchpage link" class="searchpage">
+            <i class="fa fa-search"></i>Search
           </router-link>
           <!-- router link should navigate to search page -->
         </div>
       </li>
       <li>
         <div class="divOnFocus">
-          <router-link to="/HomeWebPlayer" testid="librarypage link" class="librarypage">
+          <router-link to="/HomeWebPlayer/library" testid="librarypage link" class="librarypage">
             <i class="fa fa-bars"></i> Your Library
           </router-link>
           <!-- router link should navigate to library page -->
@@ -46,7 +46,7 @@
         <!-- </CreatePlaylist> -->
       </li>
       <li>
-        <router-link to="/HomeWebPlayer" testid="likedsongs link" class="likedsongs">
+        <router-link to="/HomeWebPlayer/liked-tracks" testid="likedsongs link" class="likedsongs">
           <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; " />Liked Songs
         </router-link>
         <!-- router link should navigate to liked songs page -->
@@ -57,13 +57,12 @@
     <!-- user's play lists -->
     <ul>
       <li v-for="playlist in playlists1" :key="playlist.id">
-        <router-link to="/" testid="userplaylists" class="userplaylists">{{playlist.playlistname}}</router-link>
+        <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.playlistname }}</router-link>
         <!-- router link should navigate to play list page-->
       </li>
     </ul>
   </div>
 </template>
-
 
 <style scoped>
 * {
@@ -174,7 +173,7 @@ label {
   background: #313030;
   display: block;
 }
-</style> 
+</style>
 
 <script>
 import { mapGetters } from "vuex";

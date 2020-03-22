@@ -192,15 +192,14 @@
               class="invalid"
               testid="year of birth error"
             >
-            
               Please enter a valid year.
             </p>
-               <p
+            <p
               v-if="valid_age == true"
               class="invalid"
               testid="year of birth error"
             >
-            Sorry, but you don't meet Spotify's age requirements.
+              Sorry, but you don't meet Spotify's age requirements.
             </p>
             <!-- take the date of birth -->
 
@@ -347,7 +346,7 @@
 // @ is an alias to /src
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
   name: "SignUp",
   components: {
@@ -479,7 +478,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLoggedIn:'authorization/GetStatus'
+      isLoggedIn: "authorization/GetStatus"
     }),
     req_email: function() {
       console.log(this.email);
@@ -669,8 +668,11 @@ export default {
     valid_age: function() {
       var d = new Date();
       if (this.trigger_validation) {
-        if (!isNaN(this.year) && Number(this.year) >= 2000  &&
-         Number(this.year) < d.getFullYear()  ) {
+        if (
+          !isNaN(this.year) &&
+          Number(this.year) >= 2000 &&
+          Number(this.year) < d.getFullYear()
+        ) {
           this.cannotSubmit();
           return true;
         } else {

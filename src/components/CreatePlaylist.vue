@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <!-- <div>
       <ul>
         <li v-for="(playlist, id) in Playlists" :key="playlist.id">
@@ -13,29 +12,20 @@
           >
         </li>
       </ul>
-    </div> -->
+    </div>-->
     <transition name="fade" appear>
-      <div
-        class="modal-overlay"
-        v-if="showModal"
-        @click="showModal = false"
-      ></div>
+      <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <button class="cancel" @click="changeModalState">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <title>Close</title>
             <path
               d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
               fill="#fff"
               fill-rule="evenodd"
-            ></path>
+            />
           </svg>
           <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
@@ -45,26 +35,17 @@
         <div class="child">
           <div class="grandchild">
             <h4 class="playlist_name">Playlist Name</h4>
-            <input
-              class="name_input"
-              type="text"
-              placeholder="New Playlist"
-              v-model="playlistname"
-            />
+            <input class="name_input" type="text" placeholder="New Playlist" v-model="playlistname" />
           </div>
         </div>
 
-        <button class="cancel_button" @click="changeModalState">
-          cancle
-        </button>
+        <button class="cancel_button" @click="changeModalState">cancle</button>
         <button
           class="creat_button"
           testid="confirm_create"
           @click.prevent="CreatePlaylist()"
           @click="changeModalState"
-        >
-          create
-        </button>
+        >create</button>
       </div>
     </transition>
   </div>
@@ -73,23 +54,23 @@
 <script>
 // @ is an alias to /src
 //import {mapActions} from "vuex";
-import {mapGetters} from "vuex";
-import {mapState} from "vuex";
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "CreatePlaylist",
-  data : function(){
-    return{
-       playlistname: ""
+  data: function() {
+    return {
+      playlistname: ""
     };
   },
   //showModal:false,
   components: {},
   computed: {
-     ...mapState({
-       Playlists: state=>state.creatplaylist.Playlists,
-     }),
+    ...mapState({
+      Playlists: state => state.creatplaylist.Playlists
+    }),
     ...mapGetters({
-      showModal: 'creatplaylist/showModal', 
+      showModal: "creatplaylist/showModal"
     })
   },
   methods: {
@@ -112,8 +93,6 @@ export default {
     }
   }
 
-  
-
   // When the user clicks on <div>, open the popup
 };
 </script>
@@ -133,7 +112,6 @@ div {
   display: block;
   width: 500%;
   height: 100vh;
- 
 }
 
 .creat_button {
@@ -208,10 +186,9 @@ div {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  display:table;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: table;
   transition: opacity 0.3s ease;
-  
 }
 input {
   width: 100%;
@@ -298,5 +275,4 @@ ul {
 .playlist_name {
   color: #fff;
 }
-
 </style>
