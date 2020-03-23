@@ -163,12 +163,44 @@ new Server({
                     image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     href: "",
                     playlist: []
-                },
+                }
+            ],
+            artist: [
                 {
-                    name: "pop",
+                    name: "akram",
                     image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     href: "",
-                    playlist: []
+                    type: "artist"
+                },
+                {
+                    name: "tamer",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "eslam",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "ali",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "amr",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "ahmed",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
                 }
             ]
         });
@@ -188,6 +220,9 @@ new Server({
         // this.get("/api/users", (schema)=>{
         //   return schema.db.user_play_lists
         // });
+        this.get("/api/artist/:id", schema => {
+            return schema.db.artist;
+        });
         this.get("/api/category", schema => {
             console.log("in mirage", schema.db.category);
             return schema.db.category;

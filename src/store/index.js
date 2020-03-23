@@ -7,7 +7,7 @@ import deleteplaylist from "../modules/deleteplaylist";
 import authorization from "../modules/authorization";
 import mediaplayer from "../modules/mediaplayer";
 import categorys from "../modules/categorys";
-
+import Search from "../modules/Search";
 //export const  bus = new Vue();
 Vue.use(Vuex, axios);
 
@@ -18,6 +18,7 @@ export default new Vuex.Store({
         deleteplaylist,
         authorization,
         mediaplayer,
-        categorys
+        categorys,
+        Search
     }
 });

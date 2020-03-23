@@ -8,6 +8,8 @@
         placeholder="Search for artist"
         v-model="Value"
         autocomplete="off"
+        @keydown.esc="reset"
+        v-on:input="changeininput"
       />
       <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
         <span aria-hidden="true">&times;</span>
@@ -29,10 +31,49 @@
         </div>
       </div>
     </div>
+    <div v-if="Value.length!==0">
+      <h2>TopResult</h2>
+      <div class="card mb-4 card-top" style="max-width: 400px;">
+        <div class="row no-gutters">
+          <div>
+            <img src="../assets/cry.png" class="col-md-4 img-card" alt="..." />
+            <h2 class="card-title">Card title</h2>
+            <p class="card-text"></p>
+            <p class="card-text">
+              <small class="text-muted"></small>
+            </p>
+          </div>
+        </div>
+        <router-link to="/" class="stretched-link" id="carglink" testid="cardlink"></router-link>
+      </div>
+      <div class="all scroll">
+        <h2>Artist</h2>
+        <div class="row">
+          <artist
+            class="col-lg-10% col-md-60% col-xs-6"
+            v-for="match_artist in match_artists"
+            :key="match_artist.id"
+            :image="match_artist.image"
+            :name="match_artist.name"
+            :link="match_artist.href"
+            :type="match_artist.type"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.img-card {
+  width: 100%;
+  height: 80px;
+}
+.card-top {
+  background-color: #313030;
+  padding: 20px;
+  height: 250px;
+}
 *:focus {
   outline: none;
 }
@@ -98,6 +139,11 @@ h2 {
   color: black;
   font-weight: 500;
 }
+@media screen and (max-width: 600px) {
+  #search-box {
+    width: 70%;
+  }
+}
 
 .search_contaner {
   padding-left: 15px;
@@ -117,14 +163,16 @@ h2 {
 
 <script>
 import category from "@/components/category.vue";
+import artist from "@/components/artist.vue";
 import { mapGetters, mapState } from "vuex";
 export default {
   name: "Search",
   components: {
-    category
+    category,
+    artist
   },
   data() {
-    return { Value: "" };
+    return { Value: "amr" };
   },
   methods: {
     check(value) {
@@ -134,6 +182,9 @@ export default {
     },
     reset() {
       this.Value = "";
+    },
+    changeininput() {
+      this.$store.dispatch("Search/searchaboutartist", this.Value);
     }
   },
   mounted() {
@@ -141,7 +192,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      categorys: "categorys/getcategory"
+      categorys: "categorys/getcategory",
+      match_artists: "Search/getresult"
     }),
     ...mapState({
       show: state => state.creatplaylist.showModal

@@ -8,8 +8,8 @@
       testid="cardimage"
     />
     <div class="card-body" id="cardbody">
-      <h4 class="card-title" id="cardtitle">{{ title }}</h4>
-      <p class="card-text" id="carddescribtion">{{ des }}</p>
+      <h4 class="card-title" id="cardtitle">{{ name }}</h4>
+      <p class="card-text" id="carddescribtion">{{ type }}</p>
       <router-link :to="link" class="stretched-link" id="carglink"></router-link>
     </div>
   </div>
@@ -44,6 +44,6 @@ p {
 <script>
 export default {
   name: "artist",
-  props: ["image", "title", "link", "songs"]
+  props: ["image", "name", "link", "type"]
 };
 </script>
