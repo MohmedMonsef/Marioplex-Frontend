@@ -15,7 +15,8 @@ export default {
     // repeatsong: String,
     // shufflesongs: String
     currentsong:{},
-    songs: []
+    songs: [],
+   
   },
   mutations: {
     setalbumimage(state, albumimage) {
@@ -56,6 +57,12 @@ export default {
     },
     set_currentsong(state,currentsong){
       state.currentsong=currentsong;
+    },
+    hidelist(state){
+      state.showlist=false;
+    },
+    showlist(state){
+      state.showlist=true;
     }
   },
   actions: {
@@ -164,10 +171,12 @@ export default {
         console.error(error);
       });
     }
+
   },
 
   getters:{
-    Get_Currentsong: state => state.currentsong
+    Get_Currentsong: state => state.currentsong[0],
+  
   }
   // modules: {},
   //   getters: {

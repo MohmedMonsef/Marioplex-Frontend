@@ -14,7 +14,6 @@ new Server({
     server.db.loadData({
       currentsong: {
         track: {
-        
           name: "You are my sunshine",
           __v: 0,
           artists: ["civil wars", "john", "jasmine"],
@@ -23,8 +22,7 @@ new Server({
         },
         _id: "55",
         isLiked: true,
-        isPlayable: true,
-      
+        isPlayable: true
       },
       queue: [
         {
@@ -37,7 +35,7 @@ new Server({
           },
           _id: "55",
           isLiked: true,
-          isPlayable: true,
+          isPlayable: true
         },
         {
           track: {
@@ -80,7 +78,6 @@ new Server({
         },
         {
           track: {
-        
             name: "what he wrote",
             __v: 0,
             artists: ["Laura Marling"],
@@ -94,7 +91,6 @@ new Server({
         },
         {
           track: {
-          
             name: "terrible love",
             __v: 0,
             artists: ["birdy"],
@@ -268,7 +264,7 @@ new Server({
           playlistname: cplaylist.playlistname
         });
       });
-
+    //authentication requests
     this.post("/api/signup", (schema, request) => {
       const user = JSON.parse(request.requestBody).data;
       if (schema.db.users.findBy({ email: user.email }) == null) {
@@ -303,6 +299,15 @@ new Server({
         return new Response(403, { error: "no user with such data" });
       }
     });
+    this.post("/api/getuser", (schema) => {
+        return new Response(
+          201,
+          { token: "menna" },
+          { user: schema.db.users.findBy({ email: "mm@yahoo.com" }) }
+        );
+   
+      // return new Response(403, { error: "no user with such data" });
+    });
     this.post("/api/reset", () => {
       return new Response(200);
     });
@@ -316,16 +321,16 @@ new Server({
     this.get("/api/queue", schema => {
       return new Response(200, {}, { queue: schema.db.queue });
     });
-    this.post("/api/addtoqueue", (schema ,request) => {
+    this.post("/api/addtoqueue", (schema, request) => {
       const songid = JSON.parse(request.requestBody).data;
       console.log(songid);
-      let song = schema.db.queue.findBy({_id : songid.song_id});
-      song.isqueue=true;
-      song.id=schema.db.queue.length +1;
+      let song = schema.db.queue.findBy({ _id: songid.song_id });
+      song.isqueue = true;
+      song.id = schema.db.queue.length + 1;
       console.log("adding song to queue in mirage", song);
       schema.db.queue.insert(song);
-      console.log("queue in mirage",schema.db.queue)
-      return new Response(200, {}, { queue:schema.db.queue  });
+      console.log("queue in mirage", schema.db.queue);
+      return new Response(200, {}, { queue: schema.db.queue });
     });
     // this.post("/api/users",(schema,request)=>{
     //   const user =JSON.parse(request.requestBody).data

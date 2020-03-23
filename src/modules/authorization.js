@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store";
 
 export default {
   namespaced: true,
@@ -17,7 +18,7 @@ export default {
       state.token = token;
       state.User = user;
       console.log("this is the user state");
-      console.log(state.user);
+      console.log(state.User);
     },
     auth_error(state) {
       state.status = "error";
@@ -68,6 +69,23 @@ export default {
           console.log(error);
         });
     },
+    get_user({ commit }) {
+      commit("auth_request");
+      axios
+        .post("/api/getuser")
+        .then(response => {
+          const token = localStorage.getItem("token");
+          const user = response.data.user;   
+          console.log("STATUS", user);
+          localStorage.setItem("token", token);
+          commit("auth_success", { token, user });
+        })
+        .catch(error => {
+          commit("auth_error", error);
+          localStorage.removeItem("token");
+          console.log(error);
+        });
+    },
     login({ commit }, user) {
       commit("auth_request");
       axios
@@ -76,15 +94,9 @@ export default {
         })
         .then(response => {
           const token = response.headers.token;
-          const user = response.data.user;
-          console.log("in Response vuex");
-          console.log(JSON.stringify(user));
-          commit("auth_success", { token, user });
-          console.log("STATUS", user);
           localStorage.setItem("token", token);
-          console.log(token);
-
           axios.defaults.headers.common["x-auth-token"] = token;
+          store.dispatch("authorization/get_user");
         })
         .catch(error => {
           commit("auth_error", error);
@@ -92,6 +104,7 @@ export default {
           console.log(error);
         });
     },
+   
     reset({ commit }, user) {
       axios
         .post("/api/reset", {
