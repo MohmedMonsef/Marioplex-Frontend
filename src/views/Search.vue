@@ -172,7 +172,7 @@ export default {
     artist
   },
   data() {
-    return { Value: "amr" };
+    return { Value: "" };
   },
   methods: {
     check(value) {
