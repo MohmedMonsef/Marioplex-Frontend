@@ -18,7 +18,7 @@
                     id="carddescribtion"
                     testid="playlist owner"
                 >
-                    {{'By '+ owner }}
+                    {{ 'By '+ owner}}
                 </p>
                 <i v-if="hover" class="fa fa-play-circle"></i>
                 <router-link
@@ -65,7 +65,7 @@ i{
 }
 </style>
 <script>
-import { mapGetters} from "vuex";
+//import { mapGetters} from "vuex";
 export default {
    data: function(){
     return{
@@ -73,15 +73,15 @@ export default {
     }
   },
     name: "lib-playlists",
-    props: ["images", "name", "owner"],
-    mounted() {
-    this.$store.dispatch("creatplaylist/showplaylists");
-  },
-  computed: {
-    ...mapGetters({
-      // map `this.playlists1` to `this.$store.getters.playlists`
-      playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
-    })
-  }
+    props: [ "name","images","owner"],
+  //   mounted() {
+  //   this.$store.dispatch("creatplaylist/showplaylists");
+  // },
+  // computed: {
+  //   ...mapGetters({
+  //     // map `this.playlists1` to `this.$store.getters.playlists`
+  //     playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
+  //   })
+  // }
 }
 </script>

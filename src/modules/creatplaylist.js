@@ -16,11 +16,12 @@ export default {
       state.showModal = !state.showModal;
     },
 
-    CreatePlaylist(state, { id, i }) {
-      state.Playlists.push({
-        id: id,
-        playlistname: i
-      });
+    CreatePlaylist(state, playlists) {
+      state.Playlists.push(
+        //id: id,
+        // playlistname: i
+        playlists
+      );
       console.log("nori");
     },
     setUserPlaylist(state, playlists) {
@@ -35,12 +36,12 @@ export default {
       axios
         .post("/api/playlists", { data: payload })
         .then(response => {
-          const playlists = response.data;
-          var id = response.data.id;
+          const playlists = response.data.Playlists;
+          //var id = response.data.id;
           console.log("wsl", playlists);
-          var i = playlists.playlistname;
-          console.log(i, "de i");
-          commit("CreatePlaylist", { id, i });
+         // var i = playlists.playlistname;
+          console.log("de i");
+          commit("CreatePlaylist", playlists);
         })
         .catch(error => {
           console.log(error);

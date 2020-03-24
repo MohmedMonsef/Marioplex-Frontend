@@ -109,56 +109,54 @@ new Server({
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name1",
-          artist:[
-            {
-            name: "artist name1"
+          artist:{
+          name: "artist name1"
             }
-          ]
         },
         {
           images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
           name: "album name2",
-          artist:[
+          artist:
             {
             name: "artist name2"
             }
-          ]
+          
         },
         {
           images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
           name: "album name3",
-          artist:[
+          artist:
             {
             name: "artist name3"
             }
-          ]
+          
         },
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name4",
-          artist:[
+          artist:
             {
             name: "artist name4"
             }
-          ]
+          
         },
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name5",
-          artist:[
+          artist:
             {
             name: "artist name5"
             }
-          ]
+          
         },
         {
           images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           name: "album name6",
-          artist:[
+          artist:
             {
             name: "artist name6"
             }
-          ]
+          
         },
       ],
       user_artists: [
@@ -228,13 +226,12 @@ new Server({
     this.get("/api/user", schema => {
       return schema.db.popular_playlists;
     });
-    this.get("/api/useralbums", schema => {
+    this.get("/api/me/albums", schema => {
       return schema.db.user_albums;
     });
-    this.get("/api/userartists", schema => {
+    this.get("/api//me/following?type=artist", schema => {
       return schema.db.user_artists;
     });
-
     this.get("/api/playlists", schema => {
       console.log("in get", schema.db.Playlists);
       return schema.db.Playlists;
@@ -248,9 +245,9 @@ new Server({
       this.post("/api/playlists", (schema, request) => {
         const cplaylist = JSON.parse(request.requestBody).data;
         console.log(cplaylist.playlistname, "in mirag");
-        return schema.db.Playlists.insert({
-          playlistname: cplaylist.playlistname
-        });
+        return new Response(200, {} , {Playlists:schema.db.Playlists.insert(cplaylist)}
+        );
+          
       });
 
     this.post("/api/signup", (schema, request) => {

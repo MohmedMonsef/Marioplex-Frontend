@@ -10,7 +10,7 @@
 </template>
 <style scoped>
 #HomeInWebPlayer {
-  width: 100%;
+  width: calc(100vw - 235px);
   height: 100vh;
   margin-left: 235px;
   background-color: #161516;

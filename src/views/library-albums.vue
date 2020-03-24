@@ -9,7 +9,7 @@
             :key="album.id"
             :images="album.images"
             :name="album.name"
-            :artistname="album.artist[0].name"
+            :artistname="album.artist.name"
           />
         </div>
       </div>

@@ -88,7 +88,8 @@ export default {
       Playlists: state => state.creatplaylist.Playlists
     }),
     ...mapGetters({
-      showModal: "creatplaylist/showModal"
+      showModal: "creatplaylist/showModal",
+      username: "authorization/Username"
     })
   },
   methods: {
@@ -98,7 +99,9 @@ export default {
 
     CreatePlaylist() {
       let payload = {
-        playlistname: this.playlistname
+        name: this.playlistname,
+        images:"http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+        owner: this.username
       };
       console.log("nerd");
       this.$store.dispatch("creatplaylist/CreatePlaylist", payload);

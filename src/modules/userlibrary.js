@@ -17,7 +17,7 @@ export default {
   actions: {
     showUserAlbums({ commit }) {
       axios
-        .get("/api/useralbums")
+        .get("/api/me/albums")
         .then(response => {
           let albums = response.data;
           commit("setUserAlbums", albums);
@@ -28,7 +28,7 @@ export default {
     },
     showUserArtists({ commit }) {
       axios
-        .get("/api/userartists")
+        .get("/api/me/following?type=artist")
         .then(response => {
           let artists = response.data;
           commit("setUserArtists", artists);
