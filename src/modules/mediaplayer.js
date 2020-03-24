@@ -16,9 +16,18 @@ export default {
     // shufflesongs: String
     currentsong:{},
     songs: [],
+    
+    liked: false,
+    playicon: false,
    
   },
   mutations: {
+    setplayicon(state, playicon) {
+      state.playicon = playicon;
+    },
+    setliked(state, like) {
+      state.liked = like;
+    },
     setalbumimage(state, albumimage) {
       state.songs.album_image = albumimage;
     },
@@ -58,14 +67,15 @@ export default {
     set_currentsong(state,currentsong){
       state.currentsong=currentsong;
     },
-    hidelist(state){
-      state.showlist=false;
-    },
-    showlist(state){
-      state.showlist=true;
+    toggleicon(state) {
+      state.playicon = !state.playicon;
     }
   },
   actions: {
+    playicon_state({ commit }, status) {
+      commit("setplayicon", status);
+    },
+
     currentsong_info({ commit }) {
       axios
         .get("/api/player/currently-playing")
@@ -98,6 +108,7 @@ export default {
           console.log(error);
         });
     },
+
     pausesong_state({ commit }) {
       axios
         .get("/api/player/pause")
@@ -161,30 +172,42 @@ export default {
           console.log(error);
         });
     },
-    get_currentsong({ commit }){
+    toggleicon({ commit }) {
+      commit("toggleicon");
+    },
+    ////////////here i should send end point of like with id
+    likesong({ commit }) {
+      commit("setliked", true);
+    },
+    ///////////here i should send end point of unlike with id
+    unlikesong({ commit }) {
+      commit("setliked", false);
+    },
+    stateofsong({ commit }) {
       axios
-      .get("/api/currentsong")
-      .then(response => {
-        var currentsong=response.data.currentsong;
-        commit("set_currentsong",currentsong)
-      }).catch(error => {
-        console.error(error);
-      });
+        .get("/api/me/like")
+        .then(response => {
+          let like = response.data;
+          commit("setliked", like[i].liked);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
-
   },
-
-  getters:{
+  getters: {
+    //     albumimage: state => state.albumimage,
+    //     songname: state => state.songname,
+    //     artistsname: state => state.artistsname,
+    //     starttime: state => state.starttime,
+    //     endtime: state => state.endtime,
+    //     playsong: state => state.playsong
     Get_Currentsong: state => state.currentsong[0],
-  
+    playicon: state => {
+      return state.playicon;
+    },
+    liked: state => {
+      return state.liked;
+    }
   }
-  // modules: {},
-  //   getters: {
-  //     albumimage: state => state.albumimage,
-  //     songname: state => state.songname,
-  //     artistsname: state => state.artistsname,
-  //     starttime: state => state.starttime,
-  //     endtime: state => state.endtime,
-  //     playsong: state => state.playsong
-  //   }
 };

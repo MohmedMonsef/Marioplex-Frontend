@@ -176,7 +176,8 @@ new Server({
           album_image: "../assets/cry.png",
           song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
           start_time: "0:00",
-          end_time: "3:45"
+          end_time: "3:45",
+          liked: false
         },
         {
           song_name: "Second_Song",
@@ -184,7 +185,8 @@ new Server({
           album_image: "../assets/cry.png",
           song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
           start_time: "0:00",
-          end_time: "4:40"
+          end_time: "4:40",
+          liked: true
         },
         {
           song_name: "Third_Song",
@@ -193,7 +195,8 @@ new Server({
           song:
             "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
           start_time: "0:00",
-          end_time: "5:13"
+          end_time: "5:13",
+          liked: true
         },
         {
           song_name: "Forth_Song",
@@ -202,12 +205,33 @@ new Server({
           song:
             "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
           start_time: "0:00",
-          end_time: "2:60"
+          end_time: "2:60",
+          liked: false
         }
       ]
     });
   },
   routes() {
+    // this.get("/api/users", (schema, request)=>{
+    //   const user =JSON.parse(request.requestBody).data;
+    //   return new Response(
+    //     201,
+    //     {token:'dai'},
+    //     {user: schema.db.user_play_lists.findBy({name: user.name})}
+    //   )
+
+    // }
+    // );
+
+    // this.get("/api/users", (schema)=>{
+    //   return schema.db.user_play_lists
+    // });
+    this.get("/api/me/like", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/me/unlike", schema => {
+      return schema.db.songs;
+    });
     this.get("/api/player/currently-playing", schema => {
       return schema.db.songs;
     });
