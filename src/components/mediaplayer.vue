@@ -91,6 +91,7 @@
                 ></i>
               </span>
             </button>
+            <!-- /////////////////////////////////////////////// -->
             <button
               id="play_button"
               testid="playbutton"
@@ -101,6 +102,8 @@
                 <i class="fa fa-pause" id="playicon" testid="playicon"></i>
               </span>
             </button>
+
+            <!-- //////////////////////////////// -->
             <!-- ///////////////////////////////// -->
             <button
               id="pause_button"
@@ -134,42 +137,35 @@
           </div>
         </div>
 
-        <!-- still doesnot work correctly -->
-        <div
+        <!-- here the song bar moves correctly -->
+        <!-- <div
           id="seek_bar"
           testid="seek_bar"
           style="display:flex;justify-content: center;"
         >
-          <!-- <div id="current_time">0:00</div>
-          <div id="fill"></div>
-          <div id="handle" style="left:0%;"></div>
-          <div id="duration">3:45</div> -->
           <div id="current_time" testid="currenttime" class="current_time">
             00:00
           </div>
           <div>
-            <!-- <div id="current_time" testid="currenttime" class="current_time">
-              00:00
-            </div> -->
-            <!-- here you must add onchange="seeksong()" to control the time of song -->
-            <div class="songslider">
-              <div class="movingslider" id="movingslider"></div>
+            <div class="songslider">   
+               <div class="movingslider" id="movingslider"></div>
             </div>
-            <!-- <input
-              id="songslider"
-              testid="songslider"
-              class="songslider"
-              type="range"
-              min="0"
-              value="0"
-              step="1"
-            /> -->
-
-            <!-- <div id="duration" testid="songduration" class="duration">3:45</div> -->
           </div>
           <div id="duration" testid="songduration" class="duration">3:45</div>
+        </div> -->
+        <!-- ///////////////// the end of the old code where the song bar moves correctly -->
+
+        <!-- the start of the new code  -->
+        <div class="topcontrols">
+          <span class="starttime" id="starttime">00:00</span>
+          <div class="seekbar">
+            <div class="progressbar" id="progressbar"></div>
+            <!-- <progress-bar :val="audio.currentTime" :max="!audio.duration ? 100 : audio.duration"></progress-bar> -->
+            <!-- <input class="progressbar" id="progressbar" type="range" min="0" value="0"> -->
+          </div>
+          <span class="endtime" id="endtime">00:00</span>
         </div>
-        <!-- ///////////////// -->
+        <!-- the end of the new code  -->
       </div>
       <div class="col-md-3 hidden-sm">
         <div class="additional_actions">
@@ -296,71 +292,141 @@ button:focus {
     padding-right: 25px;
   }
 }
-//////////////////////////still doesnot work correctly
-// #seek-bar {
-//   width: 500px;
-//   height: 3px;
-//   margin-top: 5px;
-//   background-color: #b3b3b3;
-//   display: flex;
-//   flex-direction: row;
-//   position: relative;
-//   justify-content: center;
-//   border-radius: 50px;
-//   //cursor: pointer;
-// }
-// #fill {
-//   height: 5px;
-//   width: 600px;
-//   background-color: gray;
-//   border-radius: 20px;
-// }
-// #seek-bar:hover {
-//   #handle {
-//     width: 8px;
-//     height: 8px;
-//     background-color: white;
-//     border-radius: 50%;
-//     margin-top: -5px;
-//   }
-// }
 input:focus {
   outline: 0 !important;
 }
-//this was for the input field range
+//////////////////the song slider code is worked for the moving of the slider only
 // .songslider {
 //   width: 500px;
 //   height: 5px;
 //   border-radius: 10px;
 //   margin: 5px;
 //   padding: 0px;
-//   // to override default css styles
-//   -webkit-appearance: none;
-//   appearance: none;
 //   background: #424040;
 //   border-color: #424040;
 // }
+/////////////////////here the style of the old code but i deleted from above the input range and green div
+//   .greenslider{
+//   width: 0px;
+//   height: 5px;
+//   padding: 0px;
+//   -webkit-appearance: none;
+//   border-radius: 10px;
+//   position: absolute;
+//   background-color:#b3b3b3;
+//   border-color:#b3b3b3;
+//   cursor: pointer;
+// }
+// .greenslider::-webkit-slider-thumb{
+//   visibility: hidden;
+//   opacity: 0;
+//   -webkit-appearance: none;
+//   appearance: none;
+//   //position: relative;
+//   width: 12px;
+//   height: 12px;
+//   border-radius: 15px;
+//   background: white;
+//   cursor: pointer;
+// }
+// .greenslider:hover::-webkit-slider-thumb {
+// opacity: 1;
+// visibility: visible;
+// }
+///////////////////////////////
+////////////this for the filled bar working correctly
+// .movingslider {
+//   height: 5px;
+//   width: 0px;
+//   border-radius: 10px;
+//   position: absolute;
+//   background-color: #b3b3b3;
+// }
 ///////////////////////////
-.songslider {
-  width: 500px;
-  height: 5px;
-  border-radius: 10px;
-  margin: 5px;
-  padding: 0px;
-  background: #424040;
-  border-color: #424040;
+//////////////here the style of the new code //////////////
+.topcontrols {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .starttime,
+  .endtime {
+    flex-basis: 10%;
+    flex-shrink: 1;
+    display: inline-flex;
+    justify-content: center;
+    color: #b3b3b3;
+    font-size: 10px;
+    margin: 0px;
+  }
+  .seekbar {
+    height: 5px;
+    border-radius: 10px;
+    flex-basis: 80%;
+    background-color: #424040;
+    display: flex;
+    .progressbar {
+      height: 100%;
+      width: 0px;
+      left: 0px;
+      -webkit-appearance: none;
+      background-color: #b3b3b3;
+      border-color: #b3b3b3;
+      border-radius: 10px;
+      position: relative;
+      display: inline-flex;
+      padding: 0px;
+      margin: 0px;
+      //to get the user feedback
+      &::after {
+        content: "";
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: -4px;
+        border-radius: 500px;
+      }
+    }
+    //   .progressbar::-webkit-slider-thumb{
+    //   visibility: hidden;
+    //   opacity: 0;
+    //   -webkit-appearance: none;
+    //   appearance: none;
+    //   position: relative;
+    //   width: 12px;
+    //   height: 12px;
+    //   border-radius: 15px;
+    //   background: white;
+    //   cursor: pointer;
+    // }
+
+    &:hover {
+      cursor: pointer;
+      .progressbar {
+        background-color: green;
+        border-color: green;
+
+        &::after {
+          height: 12px;
+          width: 12px;
+          background-color: white;
+        }
+        // .progressbar::-webkit-slider-thumb{
+        //   visibility: visible;
+        //   opacity: 1;
+        // }
+      }
+    }
+  }
 }
-.movingslider {
-  height: 5px;
-  width: 0px;
-  border-radius: 10px;
-  background-color: #b3b3b3;
-}
-///////////////////////////
+/////////////////////end of style of the new code but donot forget that i changed the name of current time to start time and duration to end time in the style below
 // The song slider handle -webkit- for (Chrome, Opera, Safari, Edge) and -moz- for (Firefox) to override default look)
-.songslider::-webkit-slider-thumb,
 .volume_slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
+  //visibility: hidden;
+  -webkit-appearance: none !important;
   appearance: none;
   width: 13px;
   height: 13px;
@@ -368,28 +434,20 @@ input:focus {
   background: white;
   cursor: pointer;
 }
-
-.songslider::-moz-range-thumb,
-.volume_slider::-moz-range-thumb {
-  width: 13px;
-  height: 13px;
-  border-radius: 15px;
-  background: white;
-  cursor: pointer;
-}
-#current_time,
-#duration {
-  font-size: 10px;
-  color: #b3b3b3;
-  display: flex;
-  margin: 0px;
-}
-#current_time {
-  float: left;
-}
-#duration {
-  float: right;
-}
+///the old code style//////////////
+// .current_time,
+// .duration {
+//   font-size: 10px;
+//   color: #b3b3b3;
+//   display: inline-flex;
+//   margin: 0px;
+// }
+// .current_time {
+//   float: left;
+// }
+// .duration {
+//   float: right;
+// }
 //////////////////
 .additional_actions {
   display: flex;
@@ -439,186 +497,4 @@ input:focus {
 }
 </style>
 
-<script>
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-var y = document.getElementById("myAudio");
-var x = new Audio(y);
-///////////////////////////////////////////////////////////////
-//creating toast object with function show
-const toast = {
-  show(message) {
-    var mytoast = document.getElementById("liketoast");
-    //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
-    clearTimeout(mytoast.hideTimeout);
-    mytoast.textContent = message;
-    mytoast.className = "toast toast--visible";
-    mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
-    }, 2000);
-    console.log("message", message);
-  }
-};
-//var playbutton = document.getElementById("play_button");
-//var audio = document.querySelector(".audio");
-/////////////////////////////////////
-export default {
-  data: function() {
-    return {};
-  },
-  methods: {
-    moving_song_bar: function() {
-      var SongSlider = document.getElementById("movingslider");
-      if (x) {
-        x.addEventListener("timeupdate", function() {
-          var sliderposition = x.currentTime / x.duration;
-          SongSlider.style.width = sliderposition * 100 + "%";
-        });
-      }
-    },
-    ////////////////////////////////////////////////
-    // updateSongSlider: function(){
-    //   setInterval(() => {
-    //   var c = Math.round(x.currenttime);
-    //   SongSlider.value = c;
-    //   currenttime.textContent = c;
-    //   }, 100);
-    // },
-    changetime: function(secs) {
-      var min = Math.floor(secs / 60);
-      var sec = secs % 60;
-      min = min < 10 ? "0" + min : min;
-      sec = sec < 10 ? "0" + sec : sec;
-      return min + ":" + sec;
-    },
-    // useraccount : function(){
-    // if (this.user != "success")
-    // {
-    //  var nouser_songinfo = document.getElementById("song_info_col");
-    //  //var nouser_buttons = document.querySelectorAll("buttons");
-    //  //var nouser_sliders = document.querySelectorAll("input");
-    //  nouser_songinfo.style.visibility = "hidden";
-    // }
-    // },
-    ////////////////////////////////////
-    playsong_by_icon: function() {
-      if (x.paused) this.$store.dispatch("mediaplayer/playicon_state", true);
-    },
-    play_pause_song: function() {
-      //var b = document.getElementById("playicon");
-      if (x.paused) {
-        this.$store.dispatch("mediaplayer/playsong_state");
-        this.$store.dispatch("mediaplayer/stateofsong");
-        console.log("song state", this.liked);
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.play();
-          }
-          ////////////////////
-          this.moving_song_bar();
-          ////////////////////
-        }, 500);
-      } else {
-        console.log("pause song");
-        this.$store.dispatch("mediaplayer/pausesong_state");
-        this.$store.dispatch("mediaplayer/stateofsong");
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.pause();
-          }
-        }, 500);
-      }
-      console.log(x);
-    },
-
-    prev_song: function() {
-      var y0 = document.getElementById("myAudio");
-      var x0 = new Audio(y0);
-      this.$store.dispatch("mediaplayer/prevsong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x0.src = this.media_player.song;
-        this.playsong_by_icon();
-        if (!x.paused) {
-          x.pause();
-          x0.play();
-          x = x0;
-        } else {
-          x0.play();
-          x = x0;
-        }
-        this.moving_song_bar();
-      }, 500);
-    },
-
-    next_song: function() {
-      var y1 = document.getElementById("myAudio");
-      var x1 = new Audio(y1);
-      this.$store.dispatch("mediaplayer/nextsong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x1.src = this.media_player.song;
-        this.playsong_by_icon();
-        if (!x.paused) {
-          console.log("inside next song", x.paused);
-          x.pause();
-          x1.play();
-          x = x1;
-        } else {
-          x1.play();
-          x = x1;
-        }
-        this.moving_song_bar();
-      }, 500);
-    },
-
-    random_songs: function() {
-      this.$store.dispatch("mediaplayer/shufflesong_state");
-    },
-
-    repeat_song: function() {
-      this.$store.dispatch("mediaplayer/repeatsong_state");
-      ///// take care i should add condition here if the user isnot premiuim
-      var repeat = document.getElementById("repeaticon");
-      repeat.style.color = "green";
-    },
-    changeplayicon: function() {
-      this.$store.dispatch("mediaplayer/toggleicon");
-    },
-    likecurrentsong: function() {
-      if (!this.liked) {
-        this.$store.dispatch("mediaplayer/likesong");
-        toast.show("Added to your Liked Songs");
-      } else {
-        this.$store.dispatch("mediaplayer/unlikesong");
-        toast.show("Removed from your Liked Songs");
-      }
-    }
-  },
-  computed: {
-    // ...mapGetters({
-    //   album_image: "albumimage",
-    //   song_name: "songname",
-    //   artist_name: "artistsname",
-    //   start_time: "starttime",
-    //   end_time: "endtime",
-    //   play_song: "playsong"
-    // })
-    ...mapState({
-      media_player: state => state.mediaplayer.songs
-      //newstore: state => state.mediaplayer.store.songs
-    }),
-    ...mapGetters({
-      playicon: "mediaplayer/playicon",
-      user: "authorization/GetStatus",
-      liked: "mediaplayer/liked"
-    })
-  }
-};
-</script>
+<script src="../javascript/mediaplayer_script.js"></script>
