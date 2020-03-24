@@ -34,7 +34,9 @@
        </i>
     </div>
     <div id="song_body">
-      <div id="song_name">{{ song_name }}</div>
+      <div class="song_name"
+      :class="{ currently:( song_id == this.currentSong._id) }"
+      >{{ song_name }}</div>
       <div id="song_info">
         <div id="s" v-for="song_artist in song_artists" :key="song_artist">
           <router-link tag="p" to="library" id="song_artist">
@@ -49,7 +51,9 @@
         </router-link>
       </div>
     </div>
-    <div id="song_length">{{ song_length }}</div>
+    <div class="song_length"
+    :class="{ currently:( song_id == this.currentSong._id) }"
+    >{{ song_length }}</div>
     <div id="song_options" class="dropdownlist">
       <div id="icondiv" @click="this.toggleShow">
         <i id="list_icon" v-show="hover" class="fa fa-ellipsis-h dots_icon"></i>
@@ -168,7 +172,7 @@
     border-bottom: white solid 1px;
   }
 }
-#song_length {
+.song_length {
   float: right;
   text-align: right;
   padding-right: 14px;
@@ -177,7 +181,7 @@
   height: inherit;
   color: darkgray;
 }
-#song_name {
+.song_name {
   display: inline-block;
   height: 20px;
   color: #fff;

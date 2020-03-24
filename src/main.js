@@ -208,20 +208,6 @@ new Server({
     });
   },
   routes() {
-    // this.get("/api/users", (schema, request)=>{
-    //   const user =JSON.parse(request.requestBody).data;
-    //   return new Response(
-    //     201,
-    //     {token:'dai'},
-    //     {user: schema.db.user_play_lists.findBy({name: user.name})}
-    //   )
-
-    // }
-    // );
-
-    // this.get("/api/users", (schema)=>{
-    //   return schema.db.user_play_lists
-    // });
     this.get("/api/player/currently-playing", schema => {
       return schema.db.songs;
     });
@@ -265,7 +251,7 @@ new Server({
         });
       });
     //authentication requests
-    this.post("/api/signup", (schema, request) => {
+    this.put("/api/signup", (schema, request) => {
       const user = JSON.parse(request.requestBody).data;
       if (schema.db.users.findBy({ email: user.email }) == null) {
         return new Response(
@@ -299,7 +285,7 @@ new Server({
         return new Response(403, { error: "no user with such data" });
       }
     });
-    this.post("/api/getuser", (schema) => {
+    this.get("/api/getuser", (schema) => {
         return new Response(
           201,
           { token: "menna" },

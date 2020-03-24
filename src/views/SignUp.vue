@@ -438,7 +438,7 @@ export default {
                 } else if (status == "error") {
                    console.log("errror")
                 }
-               },500);
+               },1000);
                 
               ////////
             })
