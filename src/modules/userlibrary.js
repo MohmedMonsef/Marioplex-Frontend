@@ -28,9 +28,10 @@ export default {
     },
     showUserArtists({ commit }) {
       axios
-        .get("/api/me/following?type=artist")
+        .get("/api/me/following")
         .then(response => {
           let artists = response.data;
+          console.log("in module dai")
           commit("setUserArtists", artists);
         })
         .catch(error => {

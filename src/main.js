@@ -239,7 +239,8 @@ new Server({
     this.get("/api/me/albums", schema => {
       return schema.db.user_albums;
     });
-    this.get("/api//me/following?type=artist", schema => {
+    this.get("/api/me/following", schema => {
+      console.log("in main dai")
       return schema.db.user_artists;
     });
     this.get("/api/playlists", schema => {
