@@ -13,10 +13,18 @@ export default {
     // starttime: String,
     // endtime: String,
     // repeatsong: String,
-    // shufflesongs: String
+    // shufflesongs: String,
+    liked: false,
+    playicon: false,
     songs: []
   },
   mutations: {
+    setplayicon(state, playicon) {
+      state.playicon = playicon;
+    },
+    setliked(state, like) {
+      state.liked = like;
+    },
     setalbumimage(state, albumimage) {
       state.songs.album_image = albumimage;
     },
@@ -52,9 +60,16 @@ export default {
     },
     setshufflesongs(state, shufflesongs) {
       state.shufflesongs = shufflesongs;
+    },
+    toggleicon(state) {
+      state.playicon = !state.playicon;
     }
   },
   actions: {
+    playicon_state({ commit }, status) {
+      commit("setplayicon", status);
+    },
+
     currentsong_info({ commit }) {
       axios
         .get("/api/player/currently-playing")
@@ -87,6 +102,7 @@ export default {
           console.log(error);
         });
     },
+
     pausesong_state({ commit }) {
       axios
         .get("/api/player/pause")
@@ -149,15 +165,43 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    toggleicon({ commit }) {
+      commit("toggleicon");
+    },
+    ////////////here i should send end point of like with id
+    likesong({ commit }) {
+      commit("setliked", true);
+    },
+    ///////////here i should send end point of unlike with id
+    unlikesong({ commit }) {
+      commit("setliked", false);
+    },
+    stateofsong({ commit }) {
+      axios
+        .get("/api/me/like")
+        .then(response => {
+          let like = response.data;
+          commit("setliked", like[i].liked);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  // modules: {},
+  getters: {
+    //     albumimage: state => state.albumimage,
+    //     songname: state => state.songname,
+    //     artistsname: state => state.artistsname,
+    //     starttime: state => state.starttime,
+    //     endtime: state => state.endtime,
+    //     playsong: state => state.playsong
+    playicon: state => {
+      return state.playicon;
+    },
+    liked: state => {
+      return state.liked;
     }
   }
-  // modules: {},
-  //   getters: {
-  //     albumimage: state => state.albumimage,
-  //     songname: state => state.songname,
-  //     artistsname: state => state.artistsname,
-  //     starttime: state => state.starttime,
-  //     endtime: state => state.endtime,
-  //     playsong: state => state.playsong
-  //   }
 };
