@@ -8,6 +8,8 @@ import authorization from "../modules/authorization";
 import mediaplayer from "../modules/mediaplayer";
 import categorys from "../modules/categorys";
 import Search from "../modules/Search";
+import userlibrary from "../modules/userlibrary";
+
 //export const  bus = new Vue();
 Vue.use(Vuex, axios);
 
@@ -19,6 +21,7 @@ export default new Vuex.Store({
         authorization,
         mediaplayer,
         categorys,
-        Search
+        Search,
+        userlibrary
     }
 });

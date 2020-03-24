@@ -41,10 +41,14 @@ new Server({
             ],
             Playlists: [
                 {
-                    playlistname: "Amr"
+                    name: "playlist name*",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    owner: "Amr"
                 },
                 {
-                    playlistname: "shreen"
+                    name: "playlist name**",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    owner: "shreen"
                 }
             ],
             users: [
@@ -202,6 +206,76 @@ new Server({
                     href: "",
                     type: "artist"
                 }
+            ],
+            user_albums: [
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name1",
+                    artist: {
+                        name: "artist name1"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+                    name: "album name2",
+                    artist: {
+                        name: "artist name2"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    name: "album name3",
+                    artist: {
+                        name: "artist name3"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name4",
+                    artist: {
+                        name: "artist name4"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name5",
+                    artist: {
+                        name: "artist name5"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name6",
+                    artist: {
+                        name: "artist name6"
+                    }
+                }
+            ],
+            user_artists: [
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name1"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+                    name: "artist name2"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    name: "artist name3"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name4"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name5"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name6"
+                }
             ]
         });
     },
@@ -251,7 +325,6 @@ new Server({
         this.get("/api/user", schema => {
             return schema.db.popular_playlists;
         });
-
         this.get("/api/playlists", schema => {
             console.log("in get", schema.db.Playlists);
             return schema.db.Playlists;
@@ -265,9 +338,11 @@ new Server({
             this.post("/api/playlists", (schema, request) => {
                 const cplaylist = JSON.parse(request.requestBody).data;
                 console.log(cplaylist.playlistname, "in mirag");
-                return schema.db.Playlists.insert({
-                    playlistname: cplaylist.playlistname
-                });
+                return new Response(
+                    200,
+                    {},
+                    { Playlists: schema.db.Playlists.insert(cplaylist) }
+                );
             });
 
         this.post("/api/signup", (schema, request) => {
@@ -313,19 +388,25 @@ new Server({
         this.post("/api/logout", () => {
             return new Response(200);
         });
-
-        // this.post("/api/users",(schema,request)=>{
-        //   const user =JSON.parse(request.requestBody).data
-        //   return schema.db.users.insert({
-        //     'username':user.username,
-        //     'email':user.email,
-        //     'password':user.password
-        //   })
-
-        // })
+        this.get("/api/me/albums", schema => {
+            return schema.db.user_albums;
+        });
+        this.get("/api/me/following", schema => {
+            console.log("in main dai");
+            return schema.db.user_artists;
+        });
+        // this.get("/api/users", (schema)=>{
+        //   return schema.db.user_play_lists
+        // });
+        this.get("/api/me/like", schema => {
+            return schema.db.songs;
+        });
+        this.get("/api/me/unlike", schema => {
+            return schema.db.songs;
+        });
     }
+    ////////////////////////////////////////////////
 });
-
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = axios;

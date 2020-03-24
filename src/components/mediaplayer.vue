@@ -1,7 +1,7 @@
 <template>
   <div class="mediaplayer">
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-sm-3" id="song_info_col">
         <!-- here i need to link album image with mock server -->
         <div class="album_image">
           <img src="../assets/cry.png" alt="album_image" testid="album_image" />
@@ -13,10 +13,36 @@
           <!-- this div is for like songs and them to the library of the user -->
           <!-- donot forget that the second icon is still weird -->
           <div class="actionbuttons">
-            <button>
-              <i class="fa fa-heart-o" id="hearticon" testid="hearticon"></i>
+            <button
+              class="heartbutton"
+              v-if="!liked"
+              @click="likecurrentsong()"
+            >
+              <span data-toggle="tooltip" title="Save to your Liked Songs">
+                <i
+                  class="fa fa-heart-o"
+                  id="emptyhearticon"
+                  testid="emptyhearticon"
+                ></i>
+              </span>
             </button>
+
+            <!-- ////////////////////////////////////// -->
+            <button class="heartbutton" v-if="liked" @click="likecurrentsong()">
+              <span data-toggle="tooltip" title="Remove from your Liked Songs">
+                <i
+                  class="fa fa-heart"
+                  id="filledhearticon"
+                  testid="filledhearticon"
+                  style="color:green"
+                ></i>
+              </span>
+              <!-- <div class="snackbar" id="unlikesnackbar">Removed from your Liked Songs</div> -->
+            </button>
+
+            <!-- /////////////////////////////////// -->
           </div>
+
           <br />
           <!-- <a
             href="#"
@@ -36,7 +62,7 @@
         >
           <div class="controllers" id="test_controllers" testid="controllers">
             <audio id="myAudio">
-              <!-- <source :src="songs.song" type="audio/ogg" /> -->
+              <source :src="media_player.song" type="audio/ogg" />
               <source
                 :src="media_player.song"
                 type="audio/mpeg"
@@ -48,72 +74,105 @@
               testid="shufflebutton"
               @click="random_songs()"
             >
-              <i class="fa fa-random" id="randomicon" testid="shuffleicon"></i>
+              <span data-toggle="tooltip" title="Enable shuffle">
+                <i
+                  class="fa fa-random"
+                  id="randomicon"
+                  testid="shuffleicon"
+                ></i>
+              </span>
             </button>
             <button id="prev_button" testid="prevbutton" @click="prev_song()">
-              <i
-                class="fa fa-step-backward"
-                id="playbackicon"
-                testid="previcon"
-              ></i>
+              <span data-toggle="tooltip" title="Previous">
+                <i
+                  class="fa fa-step-backward"
+                  id="playbackicon"
+                  testid="previcon"
+                ></i>
+              </span>
             </button>
+            <!-- /////////////////////////////////////////////// -->
             <button
               id="play_button"
               testid="playbutton"
-              @click="play_pause_song()"
+              v-if="playicon"
+              @click="play_pause_song(), changeplayicon()"
             >
-              <i class="fa fa-pause" id="playicon" testid="playicon"></i>
+              <span data-toggle="tooltip" title="Pause">
+                <i class="fa fa-pause" id="playicon" testid="playicon"></i>
+              </span>
             </button>
+
+            <!-- //////////////////////////////// -->
+            <!-- ///////////////////////////////// -->
+            <button
+              id="pause_button"
+              testid="pausebutton"
+              v-if="!playicon"
+              @click="play_pause_song(), changeplayicon()"
+            >
+              <span data-toggle="tooltip" title="Play">
+                <i class="fa fa-play" id="pauseicon" testid="pauseicon"></i>
+              </span>
+            </button>
+            <!-- //////////////////////////////// -->
             <button id="next_button" testid="nextbutton" @click="next_song()">
-              <i
-                class="fa fa-step-forward"
-                id="playforwardicon"
-                testid="nexticon"
-              ></i>
+              <span data-toggle="tooltip" title="Next">
+                <i
+                  class="fa fa-step-forward"
+                  id="playforwardicon"
+                  testid="nexticon"
+                ></i>
+              </span>
             </button>
             <button
               id="repeat_button"
               testid="repeatbutton"
               @click="repeat_song()"
             >
-              <i class="fa fa-repeat" id="repeaticon" testid="repeaticon"></i>
+              <span data-toggle="tooltip" title="Enable repeat">
+                <i class="fa fa-repeat" id="repeaticon" testid="repeaticon"></i>
+              </span>
             </button>
           </div>
         </div>
 
-        <!-- still doesnot work correctly -->
-        <div
+        <!-- here the song bar moves correctly -->
+        <!-- <div
           id="seek_bar"
           testid="seek_bar"
           style="display:flex;justify-content: center;"
         >
-          <!-- <div id="current_time">0:00</div>
-          <div id="fill"></div>
-          <div id="handle" style="left:0%;"></div>
-          <div id="duration">3:45</div> -->
-
-          <div>
-            <div id="current_time" testid="currenttime" class="current_time">
-              00:00
-            </div>
-            <!-- here you must add onchange="seeksong()" to control the time of song -->
-            <input
-              id="songslider"
-              testid="songslider"
-              class="songslider"
-              type="range"
-              min="0"
-              step="1"
-            />
-            <div id="duration" testid="songduration" class="duration">3:45</div>
+          <div id="current_time" testid="currenttime" class="current_time">
+            00:00
           </div>
+          <div>
+            <div class="songslider">   
+               <div class="movingslider" id="movingslider"></div>
+            </div>
+          </div>
+          <div id="duration" testid="songduration" class="duration">3:45</div>
+        </div> -->
+        <!-- ///////////////// the end of the old code where the song bar moves correctly -->
+
+        <!-- the start of the new code  -->
+        <div class="topcontrols">
+          <span class="starttime" id="starttime">00:00</span>
+          <div class="seekbar">
+            <div class="progressbar" id="progressbar"></div>
+            <!-- <progress-bar :val="audio.currentTime" :max="!audio.duration ? 100 : audio.duration"></progress-bar> -->
+            <!-- <input class="progressbar" id="progressbar" type="range" min="0" value="0"> -->
+          </div>
+          <span class="endtime" id="endtime">00:00</span>
         </div>
-        <!-- ///////////////// -->
+        <!-- the end of the new code  -->
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 hidden-sm">
         <div class="additional_actions">
           <button id="queue_button" testid="queuebutton" @click="go_to_queue()">
-            <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
+            <span data-toggle="tooltip" title="Queue">
+              <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
+            </span>
           </button>
           <button id="sound_button" testid="soundbutton" @click="volume_song()">
             <i class="fa fa-volume-up" id="soundicon" testid="soundicon"></i>
@@ -139,6 +198,7 @@
         </div>
       </div>
     </div>
+    <div class="toast" id="liketoast"></div>
   </div>
 </template>
 
@@ -232,82 +292,162 @@ button:focus {
     padding-right: 25px;
   }
 }
-//////////////////////////still doesnot work correctly
-// #seek-bar {
-//   width: 500px;
-//   height: 3px;
-//   margin-top: 5px;
-//   background-color: #b3b3b3;
-//   display: flex;
-//   flex-direction: row;
-//   position: relative;
-//   justify-content: center;
-//   border-radius: 50px;
-//   //cursor: pointer;
-// }
-// #fill {
-//   height: 5px;
-//   width: 600px;
-//   background-color: gray;
-//   border-radius: 20px;
-// }
-// #seek-bar:hover {
-//   #handle {
-//     width: 8px;
-//     height: 8px;
-//     background-color: white;
-//     border-radius: 50%;
-//     margin-top: -5px;
-//   }
-// }
 input:focus {
   outline: 0 !important;
 }
-.songslider {
-  width: 500px;
-  height: 5px;
-  border-radius: 10px;
-  margin: 5px;
-  padding: 0px;
-  // to override default css styles
-  -webkit-appearance: none;
-  appearance: none;
-  background: #424040;
-  border-color: #424040;
-}
-// The song slider handle -webkit- for (Chrome, Opera, Safari, Edge) and -moz- for (Firefox) to override default look)
-.songslider::-webkit-slider-thumb,
-.volume_slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 13px;
-  height: 13px;
-  border-radius: 15px;
-  background: white;
-  cursor: pointer;
-}
-
-.songslider::-moz-range-thumb,
-.volume_slider::-moz-range-thumb {
-  width: 13px;
-  height: 13px;
-  border-radius: 15px;
-  background: white;
-  cursor: pointer;
-}
-#current_time,
-#duration {
-  font-size: 10px;
-  color: #b3b3b3;
+//////////////////the song slider code is worked for the moving of the slider only
+// .songslider {
+//   width: 500px;
+//   height: 5px;
+//   border-radius: 10px;
+//   margin: 5px;
+//   padding: 0px;
+//   background: #424040;
+//   border-color: #424040;
+// }
+/////////////////////here the style of the old code but i deleted from above the input range and green div
+//   .greenslider{
+//   width: 0px;
+//   height: 5px;
+//   padding: 0px;
+//   -webkit-appearance: none;
+//   border-radius: 10px;
+//   position: absolute;
+//   background-color:#b3b3b3;
+//   border-color:#b3b3b3;
+//   cursor: pointer;
+// }
+// .greenslider::-webkit-slider-thumb{
+//   visibility: hidden;
+//   opacity: 0;
+//   -webkit-appearance: none;
+//   appearance: none;
+//   //position: relative;
+//   width: 12px;
+//   height: 12px;
+//   border-radius: 15px;
+//   background: white;
+//   cursor: pointer;
+// }
+// .greenslider:hover::-webkit-slider-thumb {
+// opacity: 1;
+// visibility: visible;
+// }
+///////////////////////////////
+////////////this for the filled bar working correctly
+// .movingslider {
+//   height: 5px;
+//   width: 0px;
+//   border-radius: 10px;
+//   position: absolute;
+//   background-color: #b3b3b3;
+// }
+///////////////////////////
+//////////////here the style of the new code //////////////
+.topcontrols {
+  position: relative;
   display: flex;
-  margin: 7px;
+  justify-content: space-between;
+  align-items: center;
+  .starttime,
+  .endtime {
+    flex-basis: 10%;
+    flex-shrink: 1;
+    display: inline-flex;
+    justify-content: center;
+    color: #b3b3b3;
+    font-size: 10px;
+    margin: 0px;
+  }
+  .seekbar {
+    height: 5px;
+    border-radius: 10px;
+    flex-basis: 80%;
+    background-color: #424040;
+    display: flex;
+    .progressbar {
+      height: 100%;
+      width: 0px;
+      left: 0px;
+      -webkit-appearance: none;
+      background-color: #b3b3b3;
+      border-color: #b3b3b3;
+      border-radius: 10px;
+      position: relative;
+      display: inline-flex;
+      padding: 0px;
+      margin: 0px;
+      //to get the user feedback
+      &::after {
+        content: "";
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: -4px;
+        border-radius: 500px;
+      }
+    }
+    //   .progressbar::-webkit-slider-thumb{
+    //   visibility: hidden;
+    //   opacity: 0;
+    //   -webkit-appearance: none;
+    //   appearance: none;
+    //   position: relative;
+    //   width: 12px;
+    //   height: 12px;
+    //   border-radius: 15px;
+    //   background: white;
+    //   cursor: pointer;
+    // }
+
+    &:hover {
+      cursor: pointer;
+      .progressbar {
+        background-color: green;
+        border-color: green;
+
+        &::after {
+          height: 12px;
+          width: 12px;
+          background-color: white;
+        }
+        // .progressbar::-webkit-slider-thumb{
+        //   visibility: visible;
+        //   opacity: 1;
+        // }
+      }
+    }
+  }
 }
-#current_time {
-  float: left;
+/////////////////////end of style of the new code but donot forget that i changed the name of current time to start time and duration to end time in the style below
+// The song slider handle -webkit- for (Chrome, Opera, Safari, Edge) and -moz- for (Firefox) to override default look)
+.volume_slider::-webkit-slider-thumb {
+  //visibility: hidden;
+  -webkit-appearance: none !important;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 15px;
+  background: white;
+  cursor: pointer;
 }
-#duration {
-  float: right;
-}
+///the old code style//////////////
+// .current_time,
+// .duration {
+//   font-size: 10px;
+//   color: #b3b3b3;
+//   display: inline-flex;
+//   margin: 0px;
+// }
+// .current_time {
+//   float: left;
+// }
+// .duration {
+//   float: right;
+// }
 //////////////////
 .additional_actions {
   display: flex;
@@ -333,129 +473,28 @@ input:focus {
     border-radius: 50px;
   }
 }
+.toast {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 50%;
+  top: -55px;
+  margin: auto;
+  min-width: 300px;
+  background-color: rgb(8, 118, 243);
+  padding: 10px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: 0 0 10 rgb(9, 76, 131);
+  transition: opacity 0.2s, visibility 0.2s;
+  font-size: 15px;
+}
+.toast--visible {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 
-<script>
-//import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-var y = document.getElementById("myAudio");
-var x = new Audio(y);
-///////////////////////////////////////////////////////////////
-// var SongSlider = document.getElementById("songslider");
-// var currenttime = document.getElementById("current_time");
-//var playbutton = document.getElementById("play_button");
-/////////////////////////////////////
-export default {
-  data: function() {
-    return {};
-  },
-  methods: {
-    ////////////////////////////////////////////////
-    // updateSongSlider: function(){
-    //   setInterval(() => {
-    //   var c = Math.round(x.currenttime);
-    //   SongSlider.value = c;
-    //   currenttime.textContent = c;
-    //   }, 100);
-    // },
-    // changetime: function(secs){
-    // var min = Math.floor(secs/60);
-    // var sec = secs % 60;
-    // min = (min < 10) ? "0" + min : min;
-    // sec = (sec < 10) ? "0" + sec : sec;
-    // return (min + ":" + sec);
-    // },
-    ////////////////////////////////////
-    play_pause_song: function() {
-      //var b = document.getElementById("playicon");
-      if (x.paused) {
-        this.$store.dispatch("mediaplayer/playsong_state");
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.play();
-          }
-          //b.find('i').toggleClass('fa fa-play');
-        }, 500);
-      } else {
-        console.log("pause song");
-        this.$store.dispatch("mediaplayer/pausesong_state");
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.pause();
-          }
-        }, 500);
-      }
-
-      console.log(x);
-    },
-
-    prev_song: function() {
-      var y0 = document.getElementById("myAudio");
-      var x0 = new Audio(y0);
-      this.$store.dispatch("mediaplayer/prevsong_state");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x0.src = this.media_player.song;
-
-        if (!x.paused) {
-          x.pause();
-          x0.play();
-          x = x0;
-        } else {
-          x0.play();
-          x = x0;
-        }
-        //b.find('i').toggleClass('fa fa-play');
-      }, 500);
-    },
-
-    next_song: function() {
-      var y1 = document.getElementById("myAudio");
-      var x1 = new Audio(y1);
-      this.$store.dispatch("mediaplayer/nextsong_state");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x1.src = this.media_player.song;
-
-        if (!x.paused) {
-          console.log("inside next song", x.paused);
-          x.pause();
-          x1.play();
-          x = x1;
-        } else {
-          x1.play();
-          x = x1;
-        }
-
-        //b.find('i').toggleClass('fa fa-play');
-      }, 500);
-    },
-
-    random_songs: function() {
-      this.$store.dispatch("mediaplayer/shufflesong_state");
-    },
-
-    repeat_song: function() {
-      this.$store.dispatch("mediaplayer/repeatsong_state");
-    }
-  },
-  computed: {
-    // ...mapGetters({
-    //   album_image: "albumimage",
-    //   song_name: "songname",
-    //   artist_name: "artistsname",
-    //   start_time: "starttime",
-    //   end_time: "endtime",
-    //   play_song: "playsong"
-    // })
-    ...mapState({
-      media_player: state => state.mediaplayer.songs
-      //newstore: state => state.mediaplayer.store.songs
-    })
-  }
-};
-</script>
+<script src="../javascript/mediaplayer_script.js"></script>

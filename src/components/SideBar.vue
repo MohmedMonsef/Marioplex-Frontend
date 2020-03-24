@@ -27,7 +27,11 @@
       </li>
       <li>
         <div class="divOnFocus">
-          <router-link to="/HomeWebPlayer/library" testid="librarypage link" class="librarypage">
+          <router-link
+            to="/HomeWebPlayer/library/library-playlists"
+            testid="librarypage link"
+            class="librarypage"
+          >
             <i class="fa fa-bars"></i> Your Library
           </router-link>
           <!-- router link should navigate to library page -->
@@ -57,7 +61,7 @@
     <!-- user's play lists -->
     <ul>
       <li v-for="playlist in playlists1" :key="playlist.id">
-        <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.playlistname }}</router-link>
+        <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
         <!-- router link should navigate to play list page-->
       </li>
     </ul>

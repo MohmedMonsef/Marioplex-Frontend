@@ -31,7 +31,7 @@ h2 {
 
 <script>
 import ShowPopularplaylists from "@/components/ShowPopularplaylists.vue";
-import { mapGetters, mapState } from "vuex";
+import { mapGetters} from "vuex";
 
 export default {
   name: "UserHome",
@@ -46,9 +46,6 @@ export default {
       // map `this.playlists1` to `this.$store.getters.playlists`
       POPplaylists1: "ShowWebPlayer/POPplaylists" // creat new object "playlists1" and map to it
     }),
-    ...mapState({
-      show: state => state.creatplaylist.showModal
-    })
   }
 };
 </script>
