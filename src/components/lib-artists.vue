@@ -1,5 +1,9 @@
 <template>
-    <div class="card rounded col-lg-20% " testid="artist card" @mouseover="hover=true" @mouseleave="hover=false">
+    <div 
+        class="card rounded col-lg-20% " 
+        testid="artist card" 
+        @mouseover="hover=true" @mouseleave="hover=false"
+    >
         <img
             class="card-img-top mx-auto d-block rounded-circle"
             :src="images"
@@ -17,7 +21,7 @@
             >
                  Artist
             </p>
-            <i v-if="hover" class="fa fa-play-circle"></i>
+            <i v-if="hover" class="fa fa-play-circle" testid="artist play icon"></i>
             <router-link
                 to="/"
                 class="stretched-link"

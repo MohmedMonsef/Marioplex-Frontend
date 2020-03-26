@@ -82,7 +82,7 @@ export default {
     CreatePlaylist() {
       let payload = {
         name: this.playlistname,
-        images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+        images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
         owner: this.username
       };
       console.log("nerd");

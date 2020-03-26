@@ -49,7 +49,7 @@ new Server({
                     name: "playlist name**",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     owner: "shreen"
-                }
+                },
             ],
             users: [
                 {
@@ -276,6 +276,62 @@ new Server({
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "artist name6"
                 }
+            ],
+            user_songs:[
+              {
+                name:"ya sattar",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
+              {
+                name:"nour el3en",
+                artist:{
+                  name:"Amr Diab"
+                }
+              },
+              {
+                name:"el nas",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
+              {
+                name:"el nas",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
+              {
+                name:"el nas",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
+              {
+                name:"el nas",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
+              {
+                name:"el nas",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
+              {
+                name:"el nas",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
+              {
+                name:"el nas",
+                artist:{
+                  name:"Hamaki"
+                }
+              },
             ]
         });
     },
@@ -392,12 +448,11 @@ new Server({
             return schema.db.user_albums;
         });
         this.get("/api/me/following", schema => {
-            console.log("in main dai");
             return schema.db.user_artists;
         });
-        // this.get("/api/users", (schema)=>{
-        //   return schema.db.user_play_lists
-        // });
+        this.get("/api/me/tracks", schema => {
+          return schema.db.user_songs;
+      });
         this.get("/api/me/like", schema => {
             return schema.db.songs;
         });

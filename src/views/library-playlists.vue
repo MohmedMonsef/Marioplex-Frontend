@@ -4,6 +4,7 @@
         <h2 v-if="playlists1.length">Playlists</h2>
         <div class="container">
         <div class="row">
+          <lib-likedsongs/>
           <lib-playlists
             v-for="playlist in playlists1"
             :key="playlist.id"
@@ -28,17 +29,20 @@
 .container {
   margin-left: 15px;
 }
+
 </style>
 
 <script>
 import LibPlaylistsDefault from "@/components/lib-playlists-default.vue"
 import LibPlaylists from "@/components/lib-playlists.vue"
+import LibLikedsongs from "@/components/lib-likedsongs.vue"
 import { mapGetters} from "vuex";
 export default {
     name: "library-playlists",
     components:{
         LibPlaylistsDefault,
-        LibPlaylists
+        LibPlaylists,
+        LibLikedsongs
     },
      mounted() {
     this.$store.dispatch("creatplaylist/showplaylists");
@@ -46,7 +50,7 @@ export default {
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
+      playlists1: "creatplaylist/playlists" ,// creat new object "playlists1" and map to it
     })
   },
 }

@@ -1,13 +1,16 @@
 <template>
     <div>
-        <div class="card rounded col-lg-20% " testid="playlist card"  @mouseover="hover=true" @mouseleave="hover=false">
-        
+        <div 
+            class="card rounded col-lg-20% " 
+            testid="playlist card"  
+            @mouseover="hover=true" @mouseleave="hover=false"
+        >
             <img
                 class="card-img-top mx-auto d-block"
                 :src="images"
                 alt="Card image"
                 id="cardimg"
-                testid="album image"
+                testid="playlist image"
             />
             <div class="card-body" id="cardbody" testid="playlist card body">
                 <h4 class="card-title" id="cardtitle" testid="playlist name">
@@ -20,7 +23,7 @@
                 >
                     {{ 'By '+ owner}}
                 </p>
-                <i v-if="hover" class="fa fa-play-circle"></i>
+                <i v-if="hover" class="fa fa-play-circle" testid="playlist play icon"></i>
                 <router-link
                     to="/"
                     class="stretched-link"
@@ -74,14 +77,6 @@ export default {
   },
     name: "lib-playlists",
     props: [ "name","images","owner"],
-  //   mounted() {
-  //   this.$store.dispatch("creatplaylist/showplaylists");
-  // },
-  // computed: {
-  //   ...mapGetters({
-  //     // map `this.playlists1` to `this.$store.getters.playlists`
-  //     playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
-  //   })
-  // }
+  
 }
 </script>
