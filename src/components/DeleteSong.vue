@@ -1,18 +1,6 @@
 <template>
-  <div>
-    <!-- <div>
-      <ul>
-        <li v-for="(playlist, id) in Playlists" :key="playlist.id">
-          {{ playlist.playlistname }}
-          <span
-            class="Deleteplaylist"
-            testid="delete_playlist"
-            @click="DeletePlaylist(id)"
-            >x</span
-          >
-        </li>
-      </ul>
-    </div> -->
+    <span>
+<div>
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -39,61 +27,26 @@
           <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
 
-        <h1 class="title">Create New Playlist</h1>
-
-        <div class="child">
-          <div class="grandchild">
-            <h4 class="playlist_name">Playlist Name</h4>
-            <input
-              class="name_input"
-              type="text"
-              placeholder="New Playlist"
-              v-model="playlistname"
-              @keyup.enter="CreatePlaylist(),changeModalState()"
-              
-              
-              
-            />
-          </div>
-        </div>
+        <h1 class="title">Are you sure,you want to delete this song!!</h1>
 
         <button class="cancel_button" @click="changeModalState">
           cancle
         </button>
-         <!--<input @keyup.enter="CreatePlaylist()" />-->
         <button
-          class="creat_button"
+          class="delete_button"
           testid="confirm_create"
-          
-          @click.prevent="CreatePlaylist()"
+          @click.prevent="DeleteSong(id)"
           @click="changeModalState"
         >
-          create
+          Delete
         </button>
       </div>
     </transition>
-  </div>
+    </div>
+    </span>
 </template>
-
 <style scoped>
-* {
-  margin: 10;
-  padding: 10;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "montserrat", sans-serif;
-}
-
-div {
-  position: relative;
-  display: block;
-  width: 500%;
-  height: 100vh;
-}
-
-.creat_button {
+.delete_button {
   position: fixed;
   top: 60%;
   left: 50%;
@@ -169,23 +122,6 @@ div {
   display: table;
   transition: opacity 0.3s ease;
 }
-input {
-  width: 100%;
-  height: 10%;
-  align-items: center;
-  background-color: transparent;
-  color: #fff;
-  border-color: transparent;
-  padding: 32px 0px;
-  font-size: 48px;
-  line-height: 50px;
-  color: #fff;
-  text-transform: none;
-}
-ul {
-  color: red;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -215,14 +151,6 @@ ul {
 
   border: none;
 }
-#myicon {
-  display: inline-block;
-  align-items: center;
-  color: #fff;
-  position: absolute;
-  left: 50%;
-  top: 10%;
-}
 .title {
   position: absolute;
   top: 15%;
@@ -236,81 +164,24 @@ ul {
   margin: 16px 0;
   width: 100%;
 }
-.grandchild {
-  position: fixed;
-  align-items: center;
-  width: 70%;
-  height: 30%;
-  left: 15%;
-  padding: 32px 0px;
-}
-.child {
-  position: fixed;
-  height: 30%;
-  top: 30%;
-  bottom: 50%;
-  background-color: #424242;
-}
-.playlist_name {
-  color: #fff;
-}
 </style>
 <script>
-// @ is an alias to /src
-//import {mapActions} from "vuex";
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
 export default {
-  name: "CreatePlaylist",
-  data: function() {
-    return {
-      playlistname: ""
-    };
-  },
-  //showModal:false,
-  components: {},
-  computed: {
-    ...mapState({
-      Playlists: state => state.creatplaylist.Playlists
-    }),
-    ...mapGetters({
+    computed:{
+        ...mapGetters({
       showModal: "creatplaylist/showModal"
     }),
-    
-  },
-  methods: {
-    changeModalState() {
+    },
+    methods:{
+        changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
-
-    CreatePlaylist() {
-      var payload
-      if (this.playlistname ) {
-         payload = {
-          playlistname: this.playlistname
-        };
-      } 
-      else {
-         payload = {
-          playlistname: "New Playlist"
-        };
-      }
-      /*let payload = {
-          playlistname: this.playlistname
-        };*/
-      console.log("nerd");
-      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
-    },
-    DeletePlaylist(id) {
+    DeleteSong(id){
       console.log(id);
-
-      this.$store.dispatch("deleteplaylist/DeletePlaylist", id);
+      this.$store.dispatch("uploadsong/DeletePlaylist", id);
       console.log("removed");
-    },
-    
-  }
-
-
-  // When the user clicks on <div>, open the popup
-};
+    }
+    }
+}
 </script>
