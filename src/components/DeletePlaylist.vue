@@ -1,7 +1,7 @@
 <template>
     <span>
 <div>
-    <div>
+   <!-- <div>
       <ul>
         <li v-for="(playlist, id) in Playlists" :key="playlist.id">
           {{ playlist.playlistname }}
@@ -13,7 +13,7 @@
           >
         </li>
       </ul>
-    </div>
+    </div>-->
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -193,7 +193,7 @@ export default {
     DeletePlaylist(id) {
       console.log(id);
 
-      this.$store.dispatch("creatplaylist/DeletePlaylist", id);
+      this.$store.dispatch("deleteplaylist/DeletePlaylist", id);
       console.log("removed");
     },
     }

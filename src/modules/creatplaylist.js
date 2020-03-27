@@ -25,9 +25,6 @@ export default {
     },
     setUserPlaylist(state, playlists) {
       state.Playlists = playlists;
-    },
-    DeletePlaylist(state, id) {
-      state.Playlists.splice(id, 1);
     }
   },
   actions: {
@@ -58,22 +55,6 @@ export default {
           let playlists = response.data;
           console.log("test function", playlists);
           commit("setUserPlaylist", playlists);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    DeletePlaylist({ commit }, id) {
-      axios
-        .delete(`/api/playlist/${id}`)
-        .then(response => {
-          //const deletedplaylist=response.data.id;
-          //deletedplaylist.Playlists.destroy();
-          console.log(response.data);
-          console.log("wsl");
-          // response.Playlists.find(id).destroy();
-          // response.Playlists.splice(id, 1)
-          commit("DeletePlaylist", id);
         })
         .catch(error => {
           console.log(error);

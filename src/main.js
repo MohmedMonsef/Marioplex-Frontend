@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "normalize.css";
 import { Server, Response } from "miragejs";
-import uploadsong from "./modules/uploadsong";
+//import uploadsong from "./modules/uploadsong";
 
 new Server({
   seeds(server) {
@@ -222,7 +222,7 @@ new Server({
       const uploadedsong = JSON.parse(request.requestBody).data;
       console.log(uploadedsong, "in mirag");
       return schema.db.Artist_Songs.insert({
-        URL:uploadsong.URL,
+        URL:uploadedsong.URL,
         Name: uploadedsong.Name,
         TrackNumber:uploadedsong.TrackNumber,
         PreviewURL:uploadedsong.PreviewURL,
