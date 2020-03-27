@@ -18,7 +18,8 @@ new Server({
           __v: 0,
           artists: ["civil wars", "john", "jasmine"],
           album: "Barton Hallow",
-          length: "3:33"
+          length: "3:33",
+          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
         },
         _id: "55",
         isLiked: true,

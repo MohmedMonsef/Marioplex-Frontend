@@ -8,35 +8,51 @@
   >
     <div id="icon">
       <i
-        v-if="!song_state && !hover && !isclicked"
-        :class="{ currently:( song_id == this.currentSong._id) }"
+        v-if="
+          !song_state &&
+            !hover &&
+            !isclicked &&
+            !(playicon && song_id == this.currentSong._id)
+        "
+        :class="{ currently: song_id == currentSong._id }"
         class="fa fa-music music_icon"
       ></i>
       <i
-       v-if="!song_state && (isclicked || hover)"
-        @click="playSong()" 
+        v-if="
+          !song_state &&
+            (isclicked || hover) &&
+            !(playicon && song_id == this.currentSong._id)
+        "
+        @click="playSong()"
         class="fa fa-play"
-        :class="{ currently:( song_id == this.currentSong._id) }"
-        >
-        </i>
+        :class="{ currently: song_id == currentSong._id }"
+      >
+      </i>
       <i
-       v-if="song_state && (isclicked || hover)"
-        @click="pauseSong()" 
+        v-if="
+          playicon && song_id == this.currentSong._id && (isclicked || hover)
+        "
+        @click="pauseSong()"
         class="fa fa-pause"
-         :class="{ currently:( song_id == this.currentSong._id) }"
-        >
-        </i>
-      <i 
-      v-if="song_state && !isclicked && !hover"
-       class="fa fa-volume-up"
-      :class="{ currently:( song_id == this.currentSong._id) }"
-       >
-       </i>
+        :class="{ currently: song_id == currentSong._id }"
+      >
+      </i>
+      <i
+        v-if="
+          playicon && song_id == this.currentSong._id && !isclicked && !hover
+        "
+        class="fa fa-volume-up"
+        :class="{ currently: song_id == currentSong._id }"
+      >
+      </i>
     </div>
     <div id="song_body">
-      <div class="song_name"
-      :class="{ currently:( song_id == this.currentSong._id) }"
-      >{{ song_name }}</div>
+      <div
+        class="song_name"
+        :class="{ currently: song_id == this.currentSong._id }"
+      >
+        {{ song_name }}
+      </div>
       <div id="song_info">
         <div id="s" v-for="song_artist in song_artists" :key="song_artist">
           <router-link tag="p" to="library" id="song_artist">
@@ -51,9 +67,12 @@
         </router-link>
       </div>
     </div>
-    <div class="song_length"
-    :class="{ currently:( song_id == this.currentSong._id) }"
-    >{{ song_length }}</div>
+    <div
+      class="song_length"
+      :class="{ currently: song_id == this.currentSong._id }"
+    >
+      {{ song_length }}
+    </div>
     <div id="song_options" class="dropdownlist">
       <div id="icondiv" @click="this.toggleShow">
         <i id="list_icon" v-show="hover" class="fa fa-ellipsis-h dots_icon"></i>
@@ -205,17 +224,18 @@
 }
 </style>
 
-<script>
+<script type="module">
 import { mapGetters } from "vuex";
+import { default as song_functions } from "../javascript/mediaplayer_script.js";
 export default {
   data: function() {
     return {
       hover: false,
       show: false,
-      song_state:false, //0=>Not playing 1=>playing
       isclicked: false
     };
   },
+  mixins: [song_functions],
   props: {
     song_name: {
       type: String
@@ -265,14 +285,7 @@ export default {
     },
     clicked() {
       this.isclicked = true;
-    },
-    playSong(){
-      this.song_state=true;
-    },
-     pauseSong(){
-      this.song_state=false;
-    },
-    
+    }
   },
   computed: {
     ...mapGetters({

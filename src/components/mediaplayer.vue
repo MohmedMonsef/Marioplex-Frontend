@@ -96,10 +96,10 @@
               id="play_button"
               testid="playbutton"
               v-if="playicon"
-              @click="play_pause_song(), changeplayicon()"
+              @click="pauseSong()"
             >
               <span data-toggle="tooltip" title="Pause">
-                <i class="fa fa-pause" id="playicon" testid="playicon"></i>
+                <i class="fa fa-pause" id="playicon" testid="playicon"> </i>
               </span>
             </button>
 
@@ -109,8 +109,9 @@
               id="pause_button"
               testid="pausebutton"
               v-if="!playicon"
-              @click="play_pause_song(), changeplayicon()"
+              @click="playSong()"
             >
+              <!-- //\\ -->
               <span data-toggle="tooltip" title="Play">
                 <i class="fa fa-play" id="pauseicon" testid="pauseicon"></i>
               </span>
@@ -136,8 +137,8 @@
             </button>
           </div>
         </div>
-
         <!-- here the song bar moves correctly -->
+        
         <!-- <div
           id="seek_bar"
           testid="seek_bar"
@@ -153,33 +154,22 @@
           </div>
           <div id="duration" testid="songduration" class="duration">3:45</div>
         </div> -->
-        <!-- ///////////////// the end of the old code where the song bar moves correctly -->
+        <!-- the end of the old code where the song bar moves correctly -->
 
         <!-- the start of the new code  -->
         <div class="topcontrols">
-          <span class="starttime" id="starttime">00:00</span>
-          <div class="seekbar">
+          <span class="starttime" id="starttime">{{ changeTime }}</span>
+          <div class="seekbar" id="seekbar" @mousedown="startDrag()">
             <div class="progressbar" id="progressbar"></div>
-            <!-- <progress-bar :val="audio.currentTime" :max="!audio.duration ? 100 : audio.duration"></progress-bar> -->
-            <!-- <input class="progressbar" id="progressbar" type="range" min="0" value="0"> -->
           </div>
-          <span class="endtime" id="endtime">00:00</span>
+          <span class="endtime" id="endtime">{{ totalDuration }}</span>
         </div>
         <!-- the end of the new code  -->
       </div>
       <div class="col-md-3 hidden-sm">
         <div class="additional_actions">
-          <button
-            id="queue_button"
-            testid="queuebutton"
-            @click="queue_navigation()"
-          >
-            <i
-              class="fa fa-bars"
-              :class="{ coloring: color }"
-              id="queueicon"
-              testid="queueicon"
-            ></i>
+          <button id="queue_button" testid="queuebutton" @click="queue_alter()">
+            <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
           </button>
 
           <button id="sound_button" testid="soundbutton" @click="volume_song()">
@@ -303,55 +293,6 @@ button:focus {
 input:focus {
   outline: 0 !important;
 }
-//////////////////the song slider code is worked for the moving of the slider only
-// .songslider {
-//   width: 500px;
-//   height: 5px;
-//   border-radius: 10px;
-//   margin: 5px;
-//   padding: 0px;
-//   background: #424040;
-//   border-color: #424040;
-// }
-/////////////////////here the style of the old code but i deleted from above the input range and green div
-//   .greenslider{
-//   width: 0px;
-//   height: 5px;
-//   padding: 0px;
-//   -webkit-appearance: none;
-//   border-radius: 10px;
-//   position: absolute;
-//   background-color:#b3b3b3;
-//   border-color:#b3b3b3;
-//   cursor: pointer;
-// }
-// .greenslider::-webkit-slider-thumb{
-//   visibility: hidden;
-//   opacity: 0;
-//   -webkit-appearance: none;
-//   appearance: none;
-//   //position: relative;
-//   width: 12px;
-//   height: 12px;
-//   border-radius: 15px;
-//   background: white;
-//   cursor: pointer;
-// }
-// .greenslider:hover::-webkit-slider-thumb {
-// opacity: 1;
-// visibility: visible;
-// }
-///////////////////////////////
-////////////this for the filled bar working correctly
-// .movingslider {
-//   height: 5px;
-//   width: 0px;
-//   border-radius: 10px;
-//   position: absolute;
-//   background-color: #b3b3b3;
-// }
-///////////////////////////
-//////////////here the style of the new code //////////////
 .topcontrols {
   position: relative;
   display: flex;
@@ -398,34 +339,17 @@ input:focus {
         border-radius: 500px;
       }
     }
-    //   .progressbar::-webkit-slider-thumb{
-    //   visibility: hidden;
-    //   opacity: 0;
-    //   -webkit-appearance: none;
-    //   appearance: none;
-    //   position: relative;
-    //   width: 12px;
-    //   height: 12px;
-    //   border-radius: 15px;
-    //   background: white;
-    //   cursor: pointer;
-    // }
-
-    &:hover {
+    &:hover,
+    &:active {
       cursor: pointer;
       .progressbar {
         background-color: green;
         border-color: green;
-
         &::after {
           height: 12px;
           width: 12px;
           background-color: white;
         }
-        // .progressbar::-webkit-slider-thumb{
-        //   visibility: visible;
-        //   opacity: 1;
-        // }
       }
     }
   }
@@ -442,29 +366,10 @@ input:focus {
   background: white;
   cursor: pointer;
 }
-///the old code style//////////////
-// .current_time,
-// .duration {
-//   font-size: 10px;
-//   color: #b3b3b3;
-//   display: inline-flex;
-//   margin: 0px;
-// }
-// .current_time {
-//   float: left;
-// }
-// .duration {
-//   float: right;
-// }
-//////////////////
 .additional_actions {
   display: flex;
   margin: 30px;
   justify-content: flex-end;
-  // #fill {
-  //   width: 80px;
-  //   margin-top: 10px;
-  // }
 }
 .volume {
   bottom: 0px;
@@ -510,159 +415,96 @@ input:focus {
 }
 </style>
 
-<script>
-//import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-var y = document.getElementById("myAudio");
-var x = new Audio(y);
-///////////////////////////////////////////////////////////////
-// var SongSlider = document.getElementById("songslider");
-// var currenttime = document.getElementById("current_time");
-//var playbutton = document.getElementById("play_button");
-/////////////////////////////////////
+<script type="module">
+import { default as song_functions } from "../javascript/mediaplayer_script.js";
 export default {
   data: function() {
     return {
-      color: false
+      drag: false,
+      currentPos: 0
     };
   },
-  mounted() {
-    if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
-      this.color = true;
-    } else {
-      this.color = false;
-    }
+  mixins: [song_functions],
+  mounted: function() {
+    this.$nextTick(function() {
+      window.setInterval(() => {
+        this.moving_song_bar();
+      }, 300);
+    });
+  },
+  created: function() {
+    window.addEventListener("mouseup", this.stopDrag),
+      window.addEventListener("mousemove", this.isDrag);
+  },
+  destroyed: function() {
+    window.addEventListener("mouseup", this.stopDrag),
+      window.addEventListener("mousemove", this.isDrag);
   },
   methods: {
-    ////////////////////////////////////////////////
-    // updateSongSlider: function(){
-    //   setInterval(() => {
-    //   var c = Math.round(x.currenttime);
-    //   SongSlider.value = c;
-    //   currenttime.textContent = c;
-    //   }, 100);
-    // },
-    // changetime: function(secs){
-    // var min = Math.floor(secs/60);
-    // var sec = secs % 60;
-    // min = (min < 10) ? "0" + min : min;
-    // sec = (sec < 10) ? "0" + sec : sec;
-    // return (min + ":" + sec);
-    // },
-    ////////////////////////////////////
-    play_pause_song: function() {
-      //var b = document.getElementById("playicon");
-      if (x.paused) {
-        this.$store.dispatch("mediaplayer/playsong_state");
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.play();
-          }
-          //b.find('i').toggleClass('fa fa-play');
-        }, 500);
-      } else {
-        console.log("pause song");
-        this.$store.dispatch("mediaplayer/pausesong_state");
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.pause();
-          }
-        }, 500);
-      }
-
-      console.log(x);
-    },
-
-    prev_song: function() {
-      var y0 = document.getElementById("myAudio");
-      var x0 = new Audio(y0);
-      this.$store.dispatch("mediaplayer/prevsong_state");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x0.src = this.media_player.song;
-
-        if (!x.paused) {
-          x.pause();
-          x0.play();
-          x = x0;
-        } else {
-          x0.play();
-          x = x0;
-        }
-        //b.find('i').toggleClass('fa fa-play');
-      }, 500);
-    },
-
-    next_song: function() {
-      var y1 = document.getElementById("myAudio");
-      var x1 = new Audio(y1);
-      this.$store.dispatch("mediaplayer/nextsong_state");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x1.src = this.media_player.song;
-
-        if (!x.paused) {
-          console.log("inside next song", x.paused);
-          x.pause();
-          x1.play();
-          x = x1;
-        } else {
-          x1.play();
-          x = x1;
-        }
-
-        //b.find('i').toggleClass('fa fa-play');
-      }, 500);
-    },
-
-    random_songs: function() {
-      this.$store.dispatch("mediaplayer/shufflesong_state");
-    },
-
-    repeat_song: function() {
-      this.$store.dispatch("mediaplayer/repeatsong_state");
-    },
-    queue_navigation: function() {
-      if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
-        this.$router.go(-1);
-      } else {
-        this.$router.push("/HomeWebPlayer/queue");
+    ///////////////////////////this function is working
+    moving_song_bar: function() {
+      this.$store.dispatch("mediaplayer/advance_progress");
+      if (!this.drag) {
+        //console.log("this is the entering condition",this.drag && this.playicon)
+        var SongSlider = document.getElementById("progressbar");
+        var ct = this.progress;
+        this.currentPos = ct;
+        var d = this.duration;
+        var sp = ct / d;
+        SongSlider.style.width = sp * 100 + "%";
       }
     },
-    beforeRouteUpdate(to, from, next) {
-      if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
-        this.color = true;
-        next();
-      } else {
-        this.color = false;
-        next();
+    isDrag: function() {
+      if (this.drag) {
+        var bar = document.getElementById("seekbar");
+        var l = bar.getBoundingClientRect().left;
+        var w = bar.getBoundingClientRect().width;
+        l = event.clientX - l;
+        var pos = (l / w) * 100;
+        if (l > 0 && l / w <= 1) this.currentPos = (l / w) * this.duration;
+        else if (l < 0) this.currentPos = 0;
+        else this.currentPos = this.duration;
+        var SongSlider = document.getElementById("progressbar");
+        var str = pos.toString() + "%";
+        SongSlider.style.width = str;
+      }
+    },
+    startDrag: function() {
+      this.drag = true;
+      console.log("in start drag", this.drag);
+    },
+    stopDrag: function() {
+      if (this.drag) {
+        var bar = document.getElementById("seekbar");
+        var l = bar.getBoundingClientRect().left;
+        var w = bar.getBoundingClientRect().width;
+        l = event.clientX - l;
+        var pos = (l / w) * this.duration;
+        this.$store.dispatch("mediaplayer/update_progress", pos);
+        console.log("stop draging", this.drag);
+        this.drag = false;
       }
     }
   },
   computed: {
-    // ...mapGetters({
-    //   album_image: "albumimage",
-    //   song_name: "songname",
-    //   artist_name: "artistsname",
-    //   start_time: "starttime",
-    //   end_time: "endtime",
-    //   play_song: "playsong"
-    // })
-    ...mapState({
-      media_player: state => state.mediaplayer.songs
-      //newstore: state => state.mediaplayer.store.songs
-    })
-    //    inqueue:function(){
-
-    //      return {coloring : };
-    // },
+    changeTime: function() {
+      // console.log("in chnge time" , pos)
+      var min = Math.floor((this.currentPos % 3600) / 60);
+      var sec = Math.floor(this.currentPos % 60);
+      if (sec < 10) sec = "0" + sec;
+      console.log(" minute sec", min, ":", sec);
+      return min + ":" + sec;
+    },
+    totalDuration: function() {
+      if (this.currentaudio) {
+        var min = Math.floor((this.duration % 3600) / 60);
+        var sec = Math.floor(this.duration % 60);
+        if (sec < 10) sec = "0" + sec;
+        console.log(" minute sec", min, ":", sec);
+        return min + ":" + sec;
+      }
+      return "0:00";
+    }
   }
 };
 </script>
-
-
-<script src="../javascript/mediaplayer_script.js"></script>

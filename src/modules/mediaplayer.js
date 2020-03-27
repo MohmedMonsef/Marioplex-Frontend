@@ -3,23 +3,13 @@ var i = 0;
 export default {
   namespaced: true,
   state: {
-    // albumimage: String,
-    // songname: String,
-    // artistsname: [],
-    // playsong: String,
-    // pausesong: String,
-    // prevsong: String,
-    // nextsong: String,
-    // starttime: String,
-    // endtime: String,
-    // repeatsong: String,
-    // shufflesongs: String
-    currentsong:{},
+    currentsong: {},
     songs: [],
-    
     liked: false,
     playicon: false,
-   
+    currentaudio: null,
+    progress: 0,
+    trackduration: 0
   },
   mutations: {
     setplayicon(state, playicon) {
@@ -43,8 +33,8 @@ export default {
     setplaysong(state, playsong) {
       state.songs.song = playsong;
     },
-    setpausesong(state, pausesong) {
-      state.songs.song = pausesong;
+    setpausesong(state) {
+      if (state.currentaudio) state.currentaudio.pause();
     },
     setprevsong(state, prevsong) {
       state.songs.song = prevsong;
@@ -64,11 +54,19 @@ export default {
     setshufflesongs(state, shufflesongs) {
       state.shufflesongs = shufflesongs;
     },
-    set_currentsong(state,currentsong){
-      state.currentsong=currentsong;
+    set_currentsong(state, currentsong) {
+      state.currentsong = currentsong;
     },
     toggleicon(state) {
       state.playicon = !state.playicon;
+    },
+    startcurrentaudio(state, playsong) {
+      if (state.currentaudio) {
+        state.currentaudio.play();
+      } else {
+        state.currentaudio = new Audio(playsong);
+        state.currentaudio.play();
+      }
     }
   },
   actions: {
@@ -102,7 +100,9 @@ export default {
           let playsong = response.data;
           console.log("playsong", Object.keys(playsong).length);
           console.log("inside axios", playsong[i].song);
-          commit("setplaysong", playsong[i].song);
+          commit("startcurrentaudio", playsong[i].song);
+
+          // commit("setplaysong", playsong[i].song);
         })
         .catch(error => {
           console.log(error);
@@ -193,6 +193,31 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    get_currentsong({ commit }) {
+      axios
+        .get("/api/currentsong")
+        .then(response => {
+          var currentsong = response.data.currentsong;
+          commit("set_currentsong", currentsong);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    advance_progress({ state }) {
+      if (state.currentaudio) {
+        if (!state.currentaudio.ispaused) {
+          state.trackduration = state.currentaudio.duration;
+          state.progress = state.currentaudio.currentTime;
+        }
+      }
+    },
+    update_progress({ state }, pos) {
+      if (state.currentaudio) {
+        state.currentaudio.currentTime = pos;
+        state.progress = pos;
+      }
     }
   },
   getters: {
@@ -208,6 +233,16 @@ export default {
     },
     liked: state => {
       return state.liked;
+    },
+    // currentaudio:state => state.currentaudio,
+    currentaudio: state => {
+      return state.currentaudio;
+    },
+    progress: state => {
+      return state.progress;
+    },
+    duration: state => {
+      return state.trackduration;
     }
   }
 };
