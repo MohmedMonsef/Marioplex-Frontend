@@ -332,7 +332,15 @@ new Server({
                   name:"Hamaki"
                 }
               },
-            ]
+            ],
+            Artist_Songs: [
+                { URL:"",
+                  Name: "",
+                  TrackNumber:"",
+                  PreviewURL:"",
+                  AvailableMarket:""
+                }
+              ]
         });
     },
     routes() {
@@ -459,7 +467,61 @@ new Server({
         this.get("/api/me/unlike", schema => {
             return schema.db.songs;
         });
-    }
+        this.post("/api/uploadsong", (schema, request) => {
+            const uploadedsong = JSON.parse(request.requestBody).data;
+            console.log(uploadedsong, "in mirag");
+            return schema.db.Artist_Songs.insert({
+              URL:uploadedsong.URL,
+              Name: uploadedsong.Name,
+              TrackNumber:uploadedsong.TrackNumber,
+              PreviewURL:uploadedsong.PreviewURL,
+              AvailableMarket:uploadedsong.AvailableMarket
+            });
+          });
+          this.put('/api/claimartist',(schema,request)=>{
+            const claimartist = JSON.parse(request.requestBody).data;
+            console.log(claimartist.Name,"in mirage");
+            console.log("artist id",claimartist.id);
+            /* return  schema.db.users.update(
+              { Name:claimartist.Name,
+              Genre:claimartist.Genre,
+              Description:claimartist.Description}
+              
+          )*/
+          
+          return new Response(200,{ },schema.db.users.update(
+            { Name:claimartist.Name,
+            Genre:claimartist.Genre,
+            Description:claimartist.Description}
+            
+        ))
+       /* schema.db.users.update(
+          { Name:claimartist.Name,
+          Genre:claimartist.Genre,
+          Description:claimartist.Description}
+          
+      )
+        return new Response(200,{ token: "menna"},{user:schema.db.users.where({Name:claimartist.Name})})*/
+            
+          });
+          this.delete("/api/song/:id", () => {
+            let headers = {};
+            let data = { errors: ["Server did not respond"] };
+      
+            return new Response(500, headers, data);
+          });
+      
+          // this.post("/api/users",(schema,request)=>{
+          //   const user =JSON.parse(request.requestBody).data
+          //   return schema.db.users.insert({
+          //     'username':user.username,
+          //     'email':user.email,
+          //     'password':user.password
+          //   })
+      
+          // })
+        }
+    
     ////////////////////////////////////////////////
 });
 Vue.config.productionTip = false;

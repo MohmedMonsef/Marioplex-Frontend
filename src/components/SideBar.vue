@@ -61,13 +61,13 @@
     <!-- user's play lists -->
     <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
         <ul>
-          <li v-for="playlist in playlists1" :key="playlist.id" @click.right="show=true">
+          <li v-for="playlist in playlists1" :key="playlist.id" @click.right="show=true , playlistid=playlist.id">
             <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
             <!-- router link should navigate to play list page-->
           </li>
         </ul>
         <ul v-if="show" id="right-click-menu">
-              <li>Delete</li>
+              <li @click="changeModalStateDelete()">Delete</li>
         </ul>
         <!-- id="right-click-menu" 
             tabindex="-1" 
@@ -220,6 +220,7 @@ export default {
   {
     return{
       show: false,
+      playlistid: 0,
     //   viewMenu: false,
     //     top: '0px',
     //     left: '0px',
@@ -240,6 +241,10 @@ export default {
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
+    changeModalStateDelete() {
+      this.$store.dispatch("creatplaylist/toggleModalDelete");
+    },
+    
 
     // setMenu: function(top, left) {
           

@@ -9,7 +9,8 @@ import mediaplayer from "../modules/mediaplayer";
 import categorys from "../modules/categorys";
 import Search from "../modules/Search";
 import userlibrary from "../modules/userlibrary";
-
+import uploadsong from "../modules/uploadsong";
+import claimartistprofile from "../modules/claimartistprofile"
 //export const  bus = new Vue();
 Vue.use(Vuex, axios);
 
@@ -22,6 +23,8 @@ export default new Vuex.Store({
         mediaplayer,
         categorys,
         Search,
-        userlibrary
+        userlibrary,
+        uploadsong,
+        claimartistprofile
     }
 });

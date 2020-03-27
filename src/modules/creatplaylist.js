@@ -3,17 +3,26 @@ export default {
     namespaced: true,
     state: {
         showModal: false,
+        showModalDelete: false,
         Playlists: []
     },
     getters: {
         showModal: state => {
             return state.showModal;
         },
+        showModalDelete: state => {
+            console.log("in getters")
+            return state.showModalDelete;
+        },
         playlists: state => state.Playlists
     },
     mutations: {
         toggleModal(state) {
             state.showModal = !state.showModal;
+        },
+        toggleModalDelete(state) {
+            console.log("in mutations")
+            state.showModalDelete = !state.showModalDelete;
         },
 
         CreatePlaylist(state, playlists) {
@@ -26,11 +35,18 @@ export default {
         },
         setUserPlaylist(state, playlists) {
             state.Playlists = playlists;
-        }
+        },
+        DeletePlaylist(state, id) {
+            state.Playlists.splice(id, 1);
+          }
     },
     actions: {
         toggleModal({ commit }) {
             commit("toggleModal");
+        },
+        toggleModalDelete({ commit }) {
+            console.log("in actions")
+            commit("toggleModalDelete");
         },
         CreatePlaylist({ commit }, payload) {
             axios
@@ -58,6 +74,23 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+        },
+        DeletePlaylist({ commit }, id) {
+            axios
+              .delete(`/api/playlist/${id}`)
+              .then(response => {
+                //const deletedplaylist=response.data.id;
+                //deletedplaylist.Playlists.destroy();
+                console.log(response.data);
+                console.log("wsl");
+                // response.Playlists.find(id).destroy();
+                // response.Playlists.splice(id, 1)
+                commit("DeletePlaylist", id);
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          }
         }
-    }
+    
 };

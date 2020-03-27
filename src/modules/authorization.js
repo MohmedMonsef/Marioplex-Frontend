@@ -5,7 +5,7 @@ export default {
   state: {
     status: "",
     token: localStorage.getItem("token") || "",
-    User: {}
+    User: []
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -25,8 +25,18 @@ export default {
     logout(state) {
       state.status = "";
       state.token = "";
-      state.User = {};
-    }
+      state.User={};
+    },
+    ClaimArtistProfile(state,payload){
+        state.User.update({
+          Name:payload.Name,
+        Genre:payload.Genre,
+        Description:payload.Description
+      });
+      //state.User +=payload
+      console.log('nori',payload.Name)
+      
+  }
   },
   actions: {
     signUp({ commit }, user) {
@@ -121,7 +131,19 @@ export default {
           console.log(error);
           localStorage.removeItem("token");
         });
-    }
+    },
+    ClaimArtistProfile({commit},payload){
+      console.log("wslllllll", payload);
+      axios.put("/api/claimartist",{data:payload})
+      .then(response=>{
+          const claim = response.data;
+        console.log("wsl", claim);
+        commit("ClaimArtistProfile", claim);
+      })
+      .catch(error => {
+          console.log(error);
+        });
+  }
   },
   getters: {
     Username: state => state.User.username,
