@@ -1,9 +1,19 @@
 <template>
-  <div></div>
+    <div class="library">
+        <library-navbar/>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped></style>
 
 <script>
-export default {};
+import LibraryNavbar from "@/components/library-navbar.vue";
+export default {
+    components:{
+        LibraryNavbar,
+    }
+}
 </script>

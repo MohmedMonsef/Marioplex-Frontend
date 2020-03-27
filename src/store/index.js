@@ -6,6 +6,9 @@ import deleteplaylist from "../modules/deleteplaylist";
 import authorization from "../modules/authorization";
 import mediaplayer from "../modules/mediaplayer";
 import Queue from "../modules/queue";
+import categorys from "../modules/categorys";
+import Search from "../modules/Search";
+import userlibrary from "../modules/userlibrary";
 
 Vue.use(Vuex);
 
@@ -16,6 +19,9 @@ export default new Vuex.Store({
     deleteplaylist,
     authorization,
     mediaplayer,
-    Queue
+    Queue,
+    categorys,
+    Search,
+    userlibrary
   }
 });

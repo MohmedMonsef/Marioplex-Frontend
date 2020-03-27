@@ -9,50 +9,70 @@ import UserHome from "../views/UserHome.vue";
 import Search from "../views/Search.vue";
 import LikedTracks from "../views/LikedTracks.vue";
 import Library from "../views/Library.vue";
+import LibraryPlaylists from "../views/library-playlists.vue";
+import LibraryArtists from "../views/library-artists.vue";
+import LibraryAlbums from "../views/library-albums.vue";
 import Queue from "../views/Queue.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/HomeWebPlayer",
-    name: "HomeWebPlayer",
-    component: HomeWebPlayer,
-    children: [
-      { path: "", component: UserHome },
+    {
+        path: "/",
+        name: "Home",
+        component: Home
+    },
+    {
+        path: "/HomeWebPlayer",
+        name: "HomeWebPlayer",
+        component: HomeWebPlayer,
+        children: [
+            { path: "", component: UserHome },
 
-      { path: "search", component: Search },
-      { path: "library", component: Library },
-      { path: "liked-tracks", component: LikedTracks },
-      { path: "queue", component: Queue }
-    ]
-  },
-  {
-    path: "/signup",
-    name: "SignUp",
-    component: SignUp
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: Login
-  },
-  {
-    path: "/ForgetPassword",
-    name: "ForgetPassword",
-    component: ForgetPassword
-  }
+            { path: "search", component: Search },
+            {
+                path: "library",
+                component: Library,
+                children: [
+                    {
+                        path: "library-playlists",
+                        component: LibraryPlaylists
+                    },
+                    {
+                        path: "library-artists",
+                        component: LibraryArtists
+                    },
+                    {
+                        path: "library-albums",
+                        component: LibraryAlbums
+                    }
+                ]
+            },
+            { path: "liked-tracks", component: LikedTracks },
+            { path: "queue", component: Queue }
+        ]
+    },
+    {
+        path: "/signup",
+        name: "SignUp",
+        component: SignUp
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: Login
+    },
+    {
+        path: "/ForgetPassword",
+        name: "ForgetPassword",
+        component: ForgetPassword
+    }
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes
 });
 
 export default router;

@@ -12,23 +12,14 @@
     <ul>
       <li>
         <div class="divOnFocus">
-          <router-link
-            to="/HomeWebPlayer"
-            testid="homepage link"
-            class="homepage"
-            id="homepage1"
-          >
+          <router-link to="/HomeWebPlayer" testid="homepage link" class="homepage" id="homepage1">
             <i class="fa fa-home"></i>Home
           </router-link>
         </div>
       </li>
       <li>
         <div class="divOnFocus">
-          <router-link
-            to="/HomeWebPlayer/search"
-            testid="searchpage link"
-            class="searchpage"
-          >
+          <router-link to="/HomeWebPlayer/search" testid="searchpage link" class="searchpage">
             <i class="fa fa-search"></i>Search
           </router-link>
           <!-- router link should navigate to search page -->
@@ -37,7 +28,7 @@
       <li>
         <div class="divOnFocus">
           <router-link
-            to="/HomeWebPlayer/library"
+            to="/HomeWebPlayer/library/library-playlists"
             testid="librarypage link"
             class="librarypage"
           >
@@ -52,26 +43,15 @@
     <ul>
       <li>
         <!-- <CreatePlaylist> -->
-        <button
-          @click="changeModalState()"
-          testid="create button"
-          class="createbutton"
-        >
+        <button @click="changeModalState()" testid="create button" class="createbutton">
           <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
         </button>
         <!-- router link should navigate to pop up -->
         <!-- </CreatePlaylist> -->
       </li>
       <li>
-        <router-link
-          to="/HomeWebPlayer/liked-tracks"
-          testid="likedsongs link"
-          class="likedsongs"
-        >
-          <img
-            src="../assets/like.png"
-            style="width:30px; height:30px; margin-right: 15px; "
-          />Liked Songs
+        <router-link to="/HomeWebPlayer/liked-tracks" testid="likedsongs link" class="likedsongs">
+          <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; " />Liked Songs
         </router-link>
         <!-- router link should navigate to liked songs page -->
       </li>
@@ -81,9 +61,7 @@
     <!-- user's play lists -->
     <ul>
       <li v-for="playlist in playlists1" :key="playlist.id">
-        <router-link to="/" testid="userplaylists" class="userplaylists">
-          {{ playlist.playlistname }}
-        </router-link>
+        <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
         <!-- router link should navigate to play list page-->
       </li>
     </ul>
