@@ -56,13 +56,13 @@ export default {
     //   currenttime.textContent = c;
     //   }, 100);
     // },
-    // changetime: function(secs) {
-    //   var min =parseInt((secs % 3600) / 60);
-    //   var sec =parseInt(secs % 60);
-    //   min = min < 10 ? "0" + min : min;
-    //   sec = sec < 10 ? "0" + sec : sec;
-    //   return min + ":" + sec;
-    // },
+    changetime: function(secs) {
+      var min =parseInt((secs % 3600) / 60);
+      var sec =parseInt(secs % 60);
+      min = min < 10 ? "0" + min : min;
+      sec = sec < 10 ? "0" + sec : sec;
+      return min + ":" + sec;
+    },
     // useraccount : function(){
     // if (this.user != "success")
     // {
