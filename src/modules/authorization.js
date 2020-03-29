@@ -1,10 +1,11 @@
 import axios from "axios";
+import store from "../store";
 
 export default {
   namespaced: true,
   state: {
     status: "",
-    token: localStorage.getItem("token") || "",
+    token: localStorage.getItem("x-auth-token") || "",
     User: {}
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
@@ -17,7 +18,7 @@ export default {
       state.token = token;
       state.User = user;
       console.log("this is the user state");
-      console.log(state.user);
+      console.log(state.User);
     },
     auth_error(state) {
       state.status = "error";
@@ -32,20 +33,17 @@ export default {
     signUp({ commit }, user) {
       commit("auth_request");
       axios
-        .post("/api/signup", {
+        .put("/api/signup", {
           data: user
         })
         .then(response => {
           const token = response.headers.token;
-          localStorage.setItem("token", token);
-          console.log(response);
-          const user = response.data.user;
-          axios.defaults.headers.common["x-auth-token"] = token;
-          commit("auth_success", { token, user });
+          localStorage.setItem("x-auth-token", token);
+          store.dispatch("authorization/get_user");
         })
         .catch(error => {
           commit("auth_error", error);
-          localStorage.removeItem("token");
+          localStorage.removeItem("x-auth-token");
           console.log("axios cought it");
           console.log(error);
         });
@@ -53,18 +51,31 @@ export default {
     facebook_signUp({ commit }) {
       commit("auth_request");
       axios
-        .get("/auth/facebook")
+        .post("/auth/facebook")
         .then(response => {
           const token = response.headers.token;
-          localStorage.setItem("token", token);
-          console.log(token);
-          const user = response.data.user;
+          localStorage.setItem("x-auth-token", token);
+          store.dispatch("authorization/get_user");
+        })
+        .catch(error => {
+          commit("auth_error", error);
+          localStorage.removeItem("token");
+          console.log(error);
+        });
+    },
+    get_user({ commit }) {
+      commit("auth_request");
+      axios
+        .get("/api/getuser")
+        .then(response => {
+          const token = localStorage.getItem("x-auth-token");
+          const user = response.data.user;   
           axios.defaults.headers.common["x-auth-token"] = token;
           commit("auth_success", { token, user });
         })
         .catch(error => {
           commit("auth_error", error);
-          localStorage.removeItem("token");
+          localStorage.removeItem("x-auth-token");
           console.log(error);
         });
     },
@@ -76,22 +87,16 @@ export default {
         })
         .then(response => {
           const token = response.headers.token;
-          const user = response.data.user;
-          console.log("in Response vuex");
-          console.log(JSON.stringify(user));
-          commit("auth_success", { token, user });
-          console.log("STATUS", user);
-          localStorage.setItem("token", token);
-          console.log(token);
-
-          axios.defaults.headers.common["x-auth-token"] = token;
+          localStorage.setItem("x-auth-token", token);
+          store.dispatch("authorization/get_user");
         })
         .catch(error => {
           commit("auth_error", error);
-          localStorage.removeItem("token");
+          localStorage.removeItem("x-auth-token");
           console.log(error);
         });
     },
+   
     reset({ commit }, user) {
       axios
         .post("/api/reset", {
@@ -103,7 +108,7 @@ export default {
         .catch(error => {
           commit("auth_error", error);
           console.log(error);
-          localStorage.removeItem("token");
+          localStorage.removeItem("x-auth-token");
         });
       console.log(Request.headers);
     },
@@ -113,13 +118,13 @@ export default {
         .post("/api/logout", () => {})
         .then(() => {
           commit("logout");
-          localStorage.removeItem("token");
+          localStorage.removeItem("x-auth-token");
           delete axios.defaults.headers.common["x-auth-token"];
         })
         .catch(error => {
           commit("auth_error", error);
           console.log(error);
-          localStorage.removeItem("token");
+          localStorage.removeItem("x-auth-token");
         });
     }
   },

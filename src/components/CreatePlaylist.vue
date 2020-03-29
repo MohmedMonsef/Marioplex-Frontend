@@ -12,29 +12,20 @@
           >
         </li>
       </ul>
-    </div> -->
+    </div>-->
     <transition name="fade" appear>
-      <div
-        class="modal-overlay"
-        v-if="showModal"
-        @click="showModal = false"
-      ></div>
+      <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <button class="cancel" @click="changeModalState">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <title>Close</title>
             <path
               d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
               fill="#fff"
               fill-rule="evenodd"
-            ></path>
+            />
           </svg>
           <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
@@ -44,26 +35,17 @@
         <div class="child">
           <div class="grandchild">
             <h4 class="playlist_name">Playlist Name</h4>
-            <input
-              class="name_input"
-              type="text"
-              placeholder="New Playlist"
-              v-model="playlistname"
-            />
+            <input class="name_input" type="text" placeholder="New Playlist" v-model="playlistname" />
           </div>
         </div>
 
-        <button class="cancel_button" @click="changeModalState">
-          cancle
-        </button>
+        <button class="cancel_button" @click="changeModalState">cancle</button>
         <button
           class="creat_button"
           testid="confirm_create"
           @click.prevent="CreatePlaylist()"
           @click="changeModalState"
-        >
-          create
-        </button>
+        >create</button>
       </div>
     </transition>
   </div>
@@ -88,7 +70,8 @@ export default {
       Playlists: state => state.creatplaylist.Playlists
     }),
     ...mapGetters({
-      showModal: "creatplaylist/showModal"
+      showModal: "creatplaylist/showModal",
+      username: "authorization/Username"
     })
   },
   methods: {
@@ -98,7 +81,9 @@ export default {
 
     CreatePlaylist() {
       let payload = {
-        playlistname: this.playlistname
+        name: this.playlistname,
+        images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+        owner: this.username
       };
       console.log("nerd");
       this.$store.dispatch("creatplaylist/CreatePlaylist", payload);

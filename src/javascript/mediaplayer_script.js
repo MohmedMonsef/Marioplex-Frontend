@@ -17,52 +17,16 @@ const toast = {
     console.log("message", message);
   }
 };
-//var playbutton = document.getElementById("play_button");
-//var audio = document.querySelector(".audio");
 
 /////////////////////////////////////
 export default {
   data: function() {
-    return {};
+    return {
+      song_state: false //0=>Not playing 1=>playing
+    };
   },
   methods: {
-    seekupdate: function() {
-      var seekbar = document.getElementById("progressbar");
-      var seekto = x.duration * (seekbar.value / 100);
-      x.currentTime = seekto;
-      //this.moving_song_bar();
-    },
-    seektimeupdate: function() {
-      var seekbar = document.getElementById("progressbar");
-      var n = x.currentTime * (100 / x.duration);
-      seekbar.value = n;
-    },
-    ///////////////////////////this function is working
-    moving_song_bar: function() {
-      var SongSlider = document.getElementById("progressbar");
-      if (x) {
-        x.addEventListener("timeupdate", function() {
-          var sliderposition = x.currentTime / x.duration;
-          SongSlider.style.width = sliderposition * 100 + "%";
-        });
-        //this.seektimeupdate();
-      }
-    },
-    ////////////////////////////////////////////////
-    // updateSongSlider: function(){
-    //   setInterval(() => {
-    //   var c = Math.round(x.currenttime);
-    //   SongSlider.value = c;
-    //   currenttime.textContent = c;
-    //   }, 100);
-    // },
-    changetime: function(secs) {
-      var min =parseInt((secs % 3600) / 60);
-      var sec =parseInt(secs % 60);
-      min = min < 10 ? "0" + min : min;
-      sec = sec < 10 ? "0" + sec : sec;
-      return min + ":" + sec;
-    },
+    ////////////////////////////////////
     // useraccount : function(){
     // if (this.user != "success")
     // {
@@ -76,43 +40,21 @@ export default {
     playsong_by_icon: function() {
       if (x.paused) this.$store.dispatch("mediaplayer/playicon_state", true);
     },
-    play_pause_song: function() {
-      if (x.paused) {
-        this.$store.dispatch("mediaplayer/playsong_state");
-        this.$store.dispatch("mediaplayer/stateofsong");
-        console.log("song state", this.liked);
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.play();
-          }
-          ////////////////////
-          // console.log("time" , this.changetime(x.duration));
-          // document.getElementById("endtime").textContent = this.changetime(x.duration.toString()) ;
-
-          // var progress = document.getElementById("progressbar");
-          // progress.addEventListener("change" , this.seekupdate , false);
-          // progress.addEventListener("timeupdate" , this.seektimeupdate , false);
-          //this.seektimeupdate();
-          this.moving_song_bar();
-          ////////////////////
-        }, 500);
-      } else {
-        console.log("pause song");
-        this.$store.dispatch("mediaplayer/pausesong_state");
-        this.$store.dispatch("mediaplayer/stateofsong");
-        setTimeout(() => {
-          console.log(this.media_player.song);
-          x.src = this.media_player.song;
-          if (x) {
-            x.pause();
-          }
-        }, 500);
-      }
-      console.log(x);
+    playSong() {
+      this.song_state = true;
+      this.changeplayicon();
+      // this.$store.dispatch("mediaplayer/get_currentsong");
+      this.$store.dispatch("mediaplayer/playsong_state");
+      this.$store.dispatch("mediaplayer/stateofsong");
+      console.log("song state", this.liked);
     },
-
+    pauseSong() {
+      this.song_state = false;
+      this.changeplayicon();
+      console.log("pause song");
+      this.$store.dispatch("mediaplayer/pausesong_state");
+      this.$store.dispatch("mediaplayer/stateofsong");
+    },
     prev_song: function() {
       var y0 = document.getElementById("myAudio");
       var x0 = new Audio(y0);
@@ -133,7 +75,6 @@ export default {
         this.moving_song_bar();
       }, 500);
     },
-
     next_song: function() {
       var y1 = document.getElementById("myAudio");
       var x1 = new Audio(y1);
@@ -159,7 +100,6 @@ export default {
     random_songs: function() {
       this.$store.dispatch("mediaplayer/shufflesong_state");
     },
-
     repeat_song: function() {
       this.$store.dispatch("mediaplayer/repeatsong_state");
       ///// take care i should add condition here if the user isnot premiuim
@@ -179,25 +119,27 @@ export default {
         this.$store.dispatch("mediaplayer/unlikesong");
         toast.show("Removed from your Liked Songs");
       }
+    },
+    queue_alter: function() {
+      if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
+        this.$router.go(-1);
+      } else {
+        this.$router.push("/HomeWebPlayer/queue");
+      }
     }
   },
   computed: {
-    // ...mapGetters({
-    //   album_image: "albumimage",
-    //   song_name: "songname",
-    //   artist_name: "artistsname",
-    //   start_time: "starttime",
-    //   end_time: "endtime",
-    //   play_song: "playsong"
-    // })
     ...mapState({
       media_player: state => state.mediaplayer.songs
-      //newstore: state => state.mediaplayer.store.songs
     }),
     ...mapGetters({
       playicon: "mediaplayer/playicon",
       user: "authorization/GetStatus",
-      liked: "mediaplayer/liked"
+      liked: "mediaplayer/liked",
+      currentaudio: "mediaplayer/currentaudio",
+      progress: "mediaplayer/progress",
+      duration: "mediaplayer/duration",
+      volume: "mediaplayer/volume"
     })
   }
 };
