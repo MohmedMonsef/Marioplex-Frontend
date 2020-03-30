@@ -12,29 +12,20 @@
           >
         </li>
       </ul>
-    </div> -->
+    </div>-->
     <transition name="fade" appear>
-      <div
-        class="modal-overlay"
-        v-if="showModal"
-        @click="showModal = false"
-      ></div>
+      <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <button class="cancel" @click="changeModalState">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <title>Close</title>
             <path
               d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
               fill="#fff"
               fill-rule="evenodd"
-            ></path>
+            />
           </svg>
           <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
@@ -49,10 +40,7 @@
               type="text"
               placeholder="New Playlist"
               v-model="playlistname"
-              @keyup.enter="CreatePlaylist(),changeModalState()"
-              
-              
-              
+              @keyup.enter="CreatePlaylist(),changeModalState()" 
             />
           </div>
         </div>
@@ -67,13 +55,12 @@
           
           @click.prevent="CreatePlaylist()"
           @click="changeModalState"
-        >
-          create
-        </button>
+        >create</button>
       </div>
     </transition>
   </div>
 </template>
+
 
 <style scoped>
 * {
@@ -113,7 +100,7 @@ div {
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-
+  outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
 }
@@ -137,7 +124,7 @@ div {
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-
+  outline: none;
   transition: 0.4s ease-out;
 }
 
@@ -181,6 +168,8 @@ input {
   line-height: 50px;
   color: #fff;
   text-transform: none;
+   outline: none;
+   font-weight: bold;
 }
 ul {
   color: red;
@@ -274,9 +263,9 @@ export default {
       Playlists: state => state.creatplaylist.Playlists
     }),
     ...mapGetters({
-      showModal: "creatplaylist/showModal"
-    }),
-    
+      showModal: "creatplaylist/showModal",
+      username: "authorization/Username"
+    })
   },
   methods: {
     changeModalState() {
@@ -285,31 +274,31 @@ export default {
 
     CreatePlaylist() {
       var payload
-      if (this.playlistname ) {
-         payload = {
-          playlistname: this.playlistname
-        };
-      } 
-      else {
-         payload = {
-          playlistname: "New Playlist"
-        };
+      if(this.playlistname)
+      {
+      payload = {
+        name: this.playlistname,
+        images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+        owner: this.username
+      };
       }
-      /*let payload = {
-          playlistname: this.playlistname
-        };*/
+      else{
+         payload = {
+        name: "New Playlist",
+        images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+        owner: this.username
+      };
+      }
       console.log("nerd");
       this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
     },
     DeletePlaylist(id) {
       console.log(id);
 
-      this.$store.dispatch("deleteplaylist/DeletePlaylist", id);
+      this.$store.dispatch("creatplaylist/DeletePlaylist", id);
       console.log("removed");
-    },
-    
+    }
   }
-
 
   // When the user clicks on <div>, open the popup
 };

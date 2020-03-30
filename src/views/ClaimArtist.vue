@@ -140,6 +140,7 @@ svg{
     background-color: transparent;
     color:white;
     width:400px;
+     outline: none;
 }
 .back_button{
      position: fixed;
@@ -156,7 +157,7 @@ svg{
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
-
+  outline: none;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -180,7 +181,7 @@ svg{
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-
+   outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
 }
 .creat_button {
@@ -199,7 +200,7 @@ svg{
   background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
-
+   outline: none;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -223,7 +224,7 @@ svg{
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
-
+  outline: none;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -315,6 +316,7 @@ input {
   line-height: 50px;
   color: #fff;
   text-transform: none;
+   outline: none;
 }
 
 

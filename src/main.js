@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "normalize.css";
 import { Server, Response } from "miragejs";
-//import uploadsong from "./modules/uploadsong";
 
 new Server({
   seeds(server) {
@@ -42,10 +41,14 @@ new Server({
       ],
       Playlists: [
         {
-          playlistname: "Amr"
+          name: "playlist name*",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          owner: "Amr"
         },
         {
-          playlistname: "shreen"
+          name: "playlist name**",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          owner: "shreen"
         }
       ],
       users: [
@@ -55,11 +58,7 @@ new Server({
           password: "123",
           country: "Egypt",
           gender: "m",
-          birthday: "3/12/1999",
-          Name:"",
-          Genre:"",
-          Description:"",
-
+          birthday: "3/12/1999"
         },
         {
           username: "Habiba",
@@ -67,10 +66,7 @@ new Server({
           password: "555",
           country: "Egypt",
           gender: "m",
-          birthday: "3/12/1998",
-          Name:"",
-          Genre:"",
-          Description:"",
+          birthday: "3/12/1998"
         }
       ],
       songs: [
@@ -109,12 +105,239 @@ new Server({
           end_time: "2:60"
         }
       ],
+      category: [
+        {
+          name: "pop",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "/",
+          playlist: []
+        },
+        {
+          name: "roke",
+          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "rab",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "sad",
+          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "happy",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "pop",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "roke",
+          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "rab",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "sad",
+          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          href: "",
+          playlist: []
+        },
+        {
+          name: "happy",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          playlist: []
+        }
+      ],
+      artist: [
+        {
+          name: "akram",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          type: "artist"
+        },
+        {
+          name: "tamer",
+          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          href: "",
+          type: "artist"
+        },
+        {
+          name: "eslam",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          type: "artist"
+        },
+        {
+          name: "ali",
+          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          href: "",
+          type: "artist"
+        },
+        {
+          name: "amr",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          type: "artist"
+        },
+        {
+          name: "ahmed",
+          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          href: "",
+          type: "artist"
+        }
+      ],
+      user_albums: [
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name1",
+          artist: {
+            name: "artist name1"
+          }
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+          name: "album name2",
+          artist: {
+            name: "artist name2"
+          }
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          name: "album name3",
+          artist: {
+            name: "artist name3"
+          }
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name4",
+          artist: {
+            name: "artist name4"
+          }
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name5",
+          artist: {
+            name: "artist name5"
+          }
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "album name6",
+          artist: {
+            name: "artist name6"
+          }
+        }
+      ],
+      user_artists: [
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name1"
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+          name: "artist name2"
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          name: "artist name3"
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name4"
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name5"
+        },
+        {
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          name: "artist name6"
+        }
+      ],
+      user_songs: [
+        {
+          name: "ya sattar",
+          artist: {
+            name: "Hamaki"
+          }
+        },
+        {
+          name: "nour el3en",
+          artist: {
+            name: "Amr Diab"
+          }
+        },
+        {
+          name: "el nas",
+          artist: {
+            name: "Hamaki"
+          }
+        },
+        {
+          name: "el nas",
+          artist: {
+            name: "Hamaki"
+          }
+        },
+        {
+          name: "el nas",
+          artist: {
+            name: "Hamaki"
+          }
+        },
+        {
+          name: "el nas",
+          artist: {
+            name: "Hamaki"
+          }
+        },
+        {
+          name: "el nas",
+          artist: {
+            name: "Hamaki"
+          }
+        },
+        {
+          name: "el nas",
+          artist: {
+            name: "Hamaki"
+          }
+        },
+        {
+          name: "el nas",
+          artist: {
+            name: "Hamaki"
+          }
+        }
+      ],
       Artist_Songs: [
-        { URL:"",
+        {
+          URL: "",
           Name: "",
-          TrackNumber:"",
-          PreviewURL:"",
-          AvailableMarket:""
+          TrackNumber: "",
+          PreviewURL: "",
+          AvailableMarket: ""
         }
       ]
     });
@@ -134,6 +357,13 @@ new Server({
     // this.get("/api/users", (schema)=>{
     //   return schema.db.user_play_lists
     // });
+    this.get("/api/artist/:id", schema => {
+      return schema.db.artist;
+    });
+    this.get("/api/category", schema => {
+      console.log("in mirage", schema.db.category);
+      return schema.db.category;
+    });
     this.get("/api/player/currently-playing", schema => {
       return schema.db.songs;
     });
@@ -158,25 +388,23 @@ new Server({
     this.get("/api/user", schema => {
       return schema.db.popular_playlists;
     });
-
     this.get("/api/playlists", schema => {
       console.log("in get", schema.db.Playlists);
       return schema.db.Playlists;
     }),
-      this.delete("/api/playlist/:id", () => {
-        let headers = {};
-        let data = { errors: ["Server did not respond"] };
-
-        return new Response(500, headers, data);
+      this.delete("/api/playlist/:id", (schema, request) => {
+        let id = request.params.id;
+        return schema.db.Playlists.remove(id);
       }),
       this.post("/api/playlists", (schema, request) => {
         const cplaylist = JSON.parse(request.requestBody).data;
         console.log(cplaylist.playlistname, "in mirag");
-        return schema.db.Playlists.insert({
-          playlistname: cplaylist.playlistname
-        });
+        return new Response(
+          200,
+          {},
+          { Playlists: schema.db.Playlists.insert(cplaylist) }
+        );
       });
-
     this.post("/api/signup", (schema, request) => {
       const user = JSON.parse(request.requestBody).data;
       if (schema.db.users.findBy({ email: user.email }) == null) {
@@ -217,49 +445,66 @@ new Server({
     this.post("/api/logout", () => {
       return new Response(200);
     });
-   // this.post("/api/uploadsong")
+    this.get("/api/me/albums", schema => {
+      return schema.db.user_albums;
+    });
+    this.get("/api/me/following", schema => {
+      return schema.db.user_artists;
+    });
+    this.get("/api/me/tracks", schema => {
+      return schema.db.user_songs;
+    });
+    this.get("/api/me/like", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/me/unlike", schema => {
+      return schema.db.songs;
+    });
     this.post("/api/uploadsong", (schema, request) => {
       const uploadedsong = JSON.parse(request.requestBody).data;
       console.log(uploadedsong, "in mirag");
       return schema.db.Artist_Songs.insert({
-        URL:uploadedsong.URL,
+        URL: uploadedsong.URL,
         Name: uploadedsong.Name,
-        TrackNumber:uploadedsong.TrackNumber,
-        PreviewURL:uploadedsong.PreviewURL,
-        AvailableMarket:uploadedsong.AvailableMarket
+        TrackNumber: uploadedsong.TrackNumber,
+        PreviewURL: uploadedsong.PreviewURL,
+        AvailableMarket: uploadedsong.AvailableMarket
       });
     });
-    this.put('/api/claimartist',(schema,request)=>{
+    this.put("/api/claimartist", (schema, request) => {
       const claimartist = JSON.parse(request.requestBody).data;
-      console.log(claimartist.Name,"in mirage");
-      console.log("artist id",claimartist.id);
+      console.log(claimartist.Name, "in mirage");
+      console.log("artist id", claimartist.id);
       /* return  schema.db.users.update(
-        { Name:claimartist.Name,
-        Genre:claimartist.Genre,
-        Description:claimartist.Description}
-        
-    )*/
-    
-    return new Response(200,{ },schema.db.users.update(
-      { Name:claimartist.Name,
-      Genre:claimartist.Genre,
-      Description:claimartist.Description}
-      
-  ))
- /* schema.db.users.update(
-    { Name:claimartist.Name,
-    Genre:claimartist.Genre,
-    Description:claimartist.Description}
-    
-)
-  return new Response(200,{ token: "menna"},{user:schema.db.users.where({Name:claimartist.Name})})*/
-      
-    });
-    this.delete("/api/song/:id", () => {
-      let headers = {};
-      let data = { errors: ["Server did not respond"] };
+              { Name:claimartist.Name,
+              Genre:claimartist.Genre,
+              Description:claimartist.Description}
+              
+          )*/
 
-      return new Response(500, headers, data);
+      return new Response(
+        200,
+        {},
+        schema.db.users.update({
+          Name: claimartist.Name,
+          Genre: claimartist.Genre,
+          Description: claimartist.Description
+        })
+      );
+      /* schema.db.users.update(
+          { Name:claimartist.Name,
+          Genre:claimartist.Genre,
+          Description:claimartist.Description}
+          
+      )
+        return new Response(200,{ token: "menna"},{user:schema.db.users.where({Name:claimartist.Name})})*/
+    });
+    this.delete("/api/song/:id", (schema, request) => {
+        let id = request.params.id;
+        return schema.db.Artist_Songs.remove(id);
+     // let headers = {};
+     // let data = { errors: ["Server did not respond"] };
+     // return new Response(500, headers, data);
     });
 
     // this.post("/api/users",(schema,request)=>{
@@ -272,8 +517,9 @@ new Server({
 
     // })
   }
-});
 
+  ////////////////////////////////////////////////
+});
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = axios;

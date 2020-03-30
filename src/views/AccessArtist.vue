@@ -79,7 +79,7 @@ position: fixed;
   background-color: #7f80fa;
   border-radius: 26px;
   border-color: transparent;
-
+  outline: none;
   color: #fff;
   font-size: 18px;
   font-weight: 700;

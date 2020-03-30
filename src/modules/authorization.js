@@ -12,7 +12,7 @@ export default {
     auth_request(state) {
       state.status = "loading";
     },
-    auth_success(state, {token, user}) {
+    auth_success(state, { token, user }) {
       state.status = "success";
       state.token = token;
       state.User = user;
@@ -51,7 +51,7 @@ export default {
           console.log(response);
           const user = response.data.user;
           axios.defaults.headers.common["x-auth-token"] = token;
-          commit("auth_success", {token, user});
+          commit("auth_success", { token, user });
         })
         .catch(error => {
           commit("auth_error", error);
@@ -70,7 +70,7 @@ export default {
           console.log(token);
           const user = response.data.user;
           axios.defaults.headers.common["x-auth-token"] = token;
-          commit("auth_success",{ token, user});
+          commit("auth_success", { token, user });
         })
         .catch(error => {
           commit("auth_error", error);
@@ -89,7 +89,7 @@ export default {
           const user = response.data.user;
           console.log("in Response vuex");
           console.log(JSON.stringify(user));
-          commit("auth_success", {token, user});
+          commit("auth_success", { token, user });
           console.log("STATUS", user);
           localStorage.setItem("token", token);
           console.log(token);

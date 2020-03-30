@@ -4,6 +4,15 @@ import Home from "../views/Home.vue";
 import SignUp from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import ForgetPassword from "../views/ForgetPassword.vue";
+import HomeWebPlayer from "../views/HomeWebPlayer.vue";
+import UserHome from "../views/UserHome.vue";
+import Search from "../views/Search.vue";
+import LikedTracks from "../views/LikedTracks.vue";
+import Library from "../views/Library.vue";
+import LibraryPlaylists from "../views/library-playlists.vue";
+import LibraryArtists from "../views/library-artists.vue";
+import LibraryAlbums from "../views/library-albums.vue";
+import Queue from "../views/Queue.vue";
 import ForArtist from "../views/ForArtist.vue";
 import AccessArtist from "../views/AccessArtist";
 import ClaimArtist from "../views/ClaimArtist";
@@ -12,61 +21,82 @@ import ArtistPersonalPage from "../views/ArtistPersonalPage"
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/HomeWebPlayer",
-    name: "HomeWebPlayer",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/HomeWebPlayer.vue")
-  },
-  {
-    path: "/signup",
-    name: "SignUp",
-    component: SignUp
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: Login
-  },
-  {
-    path: "/ForgetPassword",
-    name: "ForgetPassword",
-    component: ForgetPassword
-  },
-  {
-    path: "/ForArtist",
-    name: "ForArtist",
-    component: ForArtist
-  },
-  {
-    path: "/ClaimArtist",
-    name: "ClaimArtist",
-    component: ClaimArtist
-  },
-  {
-    path: "/AccessArtist",
-    name: "AccessArtist",
-    component: AccessArtist
-  },
-  {
-    path: "/ArtistPersonalPage",
-    name: "ArtistPersonalPage",
-    component: ArtistPersonalPage
-  },
+    {
+        path: "/",
+        name: "Home",
+        component: Home
+    },
+    {
+        path: "/HomeWebPlayer",
+        name: "HomeWebPlayer",
+        component: HomeWebPlayer,
+        children: [
+            { path: "", component: UserHome },
+
+            { path: "search", component: Search },
+            {
+                path: "library",
+                component: Library,
+                children: [
+                    {
+                        path: "library-playlists",
+                        component: LibraryPlaylists
+                    },
+                    {
+                        path: "library-artists",
+                        component: LibraryArtists
+                    },
+                    {
+                        path: "library-albums",
+                        component: LibraryAlbums
+                    }
+                ]
+            },
+            { path: "liked-tracks", component: LikedTracks },
+            { path: "queue", component: Queue }
+        ]
+    },
+    {
+        path: "/signup",
+        name: "SignUp",
+        component: SignUp
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: Login
+    },
+    {
+        path: "/ForgetPassword",
+        name: "ForgetPassword",
+        component: ForgetPassword
+    },
+    {
+      path: "/ForArtist",
+      name: "ForArtist",
+      component: ForArtist
+    },
+    {
+      path: "/ClaimArtist",
+      name: "ClaimArtist",
+      component: ClaimArtist
+    },
+    {
+      path: "/AccessArtist",
+      name: "AccessArtist",
+      component: AccessArtist
+    },
+    {
+      path: "/ArtistPersonalPage",
+      name: "ArtistPersonalPage",
+      component: ArtistPersonalPage
+    },
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes
 });
 
 export default router;

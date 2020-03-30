@@ -1,7 +1,7 @@
 <template>
     <span>
 <div>
-   <!-- <div>
+    <!-- <div>
       <ul>
         <li v-for="(playlist, id) in Playlists" :key="playlist.id">
           {{ playlist.playlistname }}
@@ -13,17 +13,18 @@
           >
         </li>
       </ul>
-    </div>-->
+    </div> -->
     <transition name="fade" appear>
       <div
         class="modal-overlay"
-        v-if="showModal"
-        @click="showModal = false"
+        v-if="showModalDelete"
+        @click="showModalDelete = false"
       ></div>
     </transition>
+
     <transition name="slide" appear>
-      <div class="modal" v-if="showModal">
-        <button class="cancel" @click="changeModalState">
+      <div class="modal" v-if="showModalDelete">
+        <button class="cancel" @click="changeModalStateDelete()">
           <svg
             width="32"
             height="32"
@@ -37,19 +38,19 @@
               fill-rule="evenodd"
             ></path>
           </svg>
-          <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
 
         <h1 class="title">Are you sure,you want to delete this song!!</h1>
 
-        <button class="cancel_button" @click="changeModalState">
+        <button class="cancel_button" @click="changeModalStateDelete()">
           cancle
         </button>
+        <p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
         <button
           class="delete_button"
           testid="confirm_create"
           @click.prevent="DeletePlaylist()"
-          @click="changeModalState"
+          @click="changeModalStateDelete()"
         >
           Delete
         </button>
@@ -59,54 +60,22 @@
     </span>
 </template>
 <style scoped>
-.delete_button {
-  position: fixed;
-  top: 60%;
-  left: 50%;
-  appearance: none;
-  outline: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-  margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
-  background-color: #1ed760;
-  border-radius: 26px;
-  border-color: transparent;
-
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
-  transition: 0.4s ease-out;
-}
-.cancel_button {
-  position: fixed;
-  top: 60%;
-  left: 35%;
-  appearance: none;
-  outline: none;
-
-  background: none;
-  cursor: pointer;
-  margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
-  background-color: transparent;
-  border-radius: 26px;
-  border-color: #fff;
-
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-
-  transition: 0.4s ease-out;
+* {
+  margin: 10;
+  padding: 10;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "montserrat", sans-serif;
+}
+
+div {
+  position: relative;
+  display: block;
+  width: 500%;
+  height: 100vh;
+}
 .modal-overlay {
   position: fixed;
   display: flex;
@@ -154,15 +123,52 @@
 .slide-leave-to {
   transform: translateY(-50%) translateX(100vw);
 }
-.cancel {
-  position: absolute;
+.delete_button {
+  position: fixed;
+  top: 60%;
   left: 50%;
-  top: 10%;
-  display: inline-block;
-  background-color: transparent;
-  color: #fff;
-
+  appearance: none;
+  outline: none;
   border: none;
+  background: none;
+  cursor: pointer;
+  margin: 20px;
+  height: 50px;
+  width: 180px;
+  padding: 8px 34px;
+  background-color: #1ed760;
+  border-radius: 26px;
+  border-color: transparent;
+
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease-out;
+}
+.cancel_button {
+  position: fixed;
+  top: 60%;
+  left: 35%;
+  appearance: none;
+  outline: none;
+
+  background: none;
+  cursor: pointer;
+  margin: 20px;
+  height: 50px;
+  width: 180px;
+  padding: 8px 34px;
+  background-color: transparent;
+  border-radius: 26px;
+  border-color: #fff;
+
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  transition: 0.4s ease-out;
 }
 .title {
   position: absolute;
@@ -177,24 +183,41 @@
   margin: 16px 0;
   width: 100%;
 }
+.cancel {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  display: inline-block;
+  background-color: transparent;
+  color: #fff;
+
+  border: none;
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
     computed:{
+      ...mapState({
+      Playlists: state => state.creatplaylist.Playlists
+    }),
         ...mapGetters({
-      showModal: "creatplaylist/showModal"
+      showModalDelete: "creatplaylist/showModalDelete",
+      todelete:"creatplaylist/todelete"
     }),
     },
     methods:{
-        changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+        changeModalStateDelete() {
+          console.log("in methods");
+      this.$store.dispatch("creatplaylist/toggleModalDelete");
     },
-    DeletePlaylist(id) {
-      console.log(id);
-
-      this.$store.dispatch("deleteplaylist/DeletePlaylist", id);
+    DeletePlaylist() {
+     
+     console.log("in delete component",this.todelete);
+      this.$store.dispatch("creatplaylist/DeletePlaylist", this.todelete);
       console.log("removed");
     },
-    }
+    },
 }
+</script>

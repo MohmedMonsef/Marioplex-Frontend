@@ -6,19 +6,25 @@ import creatplaylist from "../modules/creatplaylist";
 import deleteplaylist from "../modules/deleteplaylist";
 import authorization from "../modules/authorization";
 import mediaplayer from "../modules/mediaplayer";
+import categorys from "../modules/categorys";
+import Search from "../modules/Search";
+import userlibrary from "../modules/userlibrary";
 import uploadsong from "../modules/uploadsong";
 import claimartistprofile from "../modules/claimartistprofile"
 //export const  bus = new Vue();
 Vue.use(Vuex, axios);
 
 export default new Vuex.Store({
-  modules: {
-    ShowWebPlayer,
-    creatplaylist,
-    deleteplaylist,
-    authorization,
-    mediaplayer,
-    uploadsong,
-    claimartistprofile
-  }
+    modules: {
+        ShowWebPlayer,
+        creatplaylist,
+        deleteplaylist,
+        authorization,
+        mediaplayer,
+        categorys,
+        Search,
+        userlibrary,
+        uploadsong,
+        claimartistprofile
+    }
 });
