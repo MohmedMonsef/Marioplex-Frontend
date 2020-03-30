@@ -25,7 +25,7 @@
                 </p>
                 <i v-if="hover" class="fa fa-play-circle" testid="playlist play icon"></i>
                 <router-link
-                    to="/"
+                    :to="{path:'../playlist/'+ playlist_id}"
                     class="stretched-link"
                     id="carglink"
                     testid="playlist card link"
@@ -76,7 +76,15 @@ export default {
     }
   },
     name: "lib-playlists",
-    props: [ "name","images","owner"],
-  
+    props: [ "name","images","owner", "playlist_id"],
+  //   mounted() {
+  //   this.$store.dispatch("creatplaylist/showplaylists");
+  // },
+  // computed: {
+  //   ...mapGetters({
+  //     // map `this.playlists1` to `this.$store.getters.playlists`
+  //     playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
+  //   })
+  // }
 }
 </script>

@@ -96,10 +96,9 @@
               id="play_button"
               testid="playbutton"
               v-if="playicon"
-              @click="play_pause_song(), changeplayicon()"
             >
               <span data-toggle="tooltip" title="Pause">
-                <i class="fa fa-pause" id="playicon" testid="playicon"></i>
+                <i class="fa fa-pause" id="playicon" testid="playicon" @click="pauseSong()"> </i>
               </span>
             </button>
 
@@ -109,10 +108,10 @@
               id="pause_button"
               testid="pausebutton"
               v-if="!playicon"
-              @click="play_pause_song(), changeplayicon()"
             >
+              <!-- //\\ -->
               <span data-toggle="tooltip" title="Play">
-                <i class="fa fa-play" id="pauseicon" testid="pauseicon"></i>
+                 <i class="fa fa-play" id="pauseicon" testid="pauseicon"  @click="playSong()"></i>
               </span>
             </button>
             <!-- //////////////////////////////// -->
@@ -136,8 +135,8 @@
             </button>
           </div>
         </div>
-
         <!-- here the song bar moves correctly -->
+        
         <!-- <div
           id="seek_bar"
           testid="seek_bar"
@@ -153,29 +152,26 @@
           </div>
           <div id="duration" testid="songduration" class="duration">3:45</div>
         </div> -->
-        <!-- ///////////////// the end of the old code where the song bar moves correctly -->
+        <!-- the end of the old code where the song bar moves correctly -->
 
         <!-- the start of the new code  -->
         <div class="topcontrols">
-          <span class="starttime" id="starttime">00:00</span>
-          <div class="seekbar">
+          <span class="starttime" id="starttime">{{ changeTime }}</span>
+          <div class="seekbar" id="seekbar" @mousedown="startDrag()">
             <div class="progressbar" id="progressbar"></div>
-            <!-- <progress-bar :val="audio.currentTime" :max="!audio.duration ? 100 : audio.duration"></progress-bar> -->
-            <!-- <input class="progressbar" id="progressbar" type="range" min="0" value="0"> -->
           </div>
-          <span class="endtime" id="endtime">00:00</span>
+          <span class="endtime" id="endtime">{{ totalDuration }}</span>
         </div>
         <!-- the end of the new code  -->
       </div>
       <div class="col-md-3 hidden-sm">
         <div class="additional_actions">
-          <button id="queue_button" testid="queuebutton" @click="go_to_queue()">
-            <span data-toggle="tooltip" title="Queue">
-              <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
-            </span>
+          <button id="queue_button" testid="queuebutton" @click="queue_alter()">
+            <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
           </button>
-          <button id="sound_button" testid="soundbutton" @click="volume_song()">
-            <i class="fa fa-volume-up" id="soundicon" testid="soundicon"></i>
+
+          <button id="sound_button" testid="soundbutton" style="width:37px;">
+            <i class="fa fa-volume-off" id="soundicon" testid="soundicon" @click="volume_song()"></i>
           </button>
           <!-- still doesnot work correctly -->
           <!-- <div id="seek_bar" style="transform:translateX(0%);">
@@ -183,18 +179,11 @@
             <div id="handle"></div>
           </div> -->
           <!-- ///////////////// -->
-          <div class="volume" id="volume" testid="volume">
-            <!-- here you must add onchange="adjustvolume()" to control the volume -->
-            <input
-              id="volume_slider"
-              testid="volumeslider"
-              class="volume_slider"
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-            />
+          <div class="volumecontrols">
+          <div class="volumeseekbar" id="volumeseekbar" @mousedown="volumestartDrag()">
+            <div class="volumeprogressbar" id="volumeprogressbar"></div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -295,55 +284,6 @@ button:focus {
 input:focus {
   outline: 0 !important;
 }
-//////////////////the song slider code is worked for the moving of the slider only
-// .songslider {
-//   width: 500px;
-//   height: 5px;
-//   border-radius: 10px;
-//   margin: 5px;
-//   padding: 0px;
-//   background: #424040;
-//   border-color: #424040;
-// }
-/////////////////////here the style of the old code but i deleted from above the input range and green div
-//   .greenslider{
-//   width: 0px;
-//   height: 5px;
-//   padding: 0px;
-//   -webkit-appearance: none;
-//   border-radius: 10px;
-//   position: absolute;
-//   background-color:#b3b3b3;
-//   border-color:#b3b3b3;
-//   cursor: pointer;
-// }
-// .greenslider::-webkit-slider-thumb{
-//   visibility: hidden;
-//   opacity: 0;
-//   -webkit-appearance: none;
-//   appearance: none;
-//   //position: relative;
-//   width: 12px;
-//   height: 12px;
-//   border-radius: 15px;
-//   background: white;
-//   cursor: pointer;
-// }
-// .greenslider:hover::-webkit-slider-thumb {
-// opacity: 1;
-// visibility: visible;
-// }
-///////////////////////////////
-////////////this for the filled bar working correctly
-// .movingslider {
-//   height: 5px;
-//   width: 0px;
-//   border-radius: 10px;
-//   position: absolute;
-//   background-color: #b3b3b3;
-// }
-///////////////////////////
-//////////////here the style of the new code //////////////
 .topcontrols {
   position: relative;
   display: flex;
@@ -390,89 +330,84 @@ input:focus {
         border-radius: 500px;
       }
     }
-    //   .progressbar::-webkit-slider-thumb{
-    //   visibility: hidden;
-    //   opacity: 0;
-    //   -webkit-appearance: none;
-    //   appearance: none;
-    //   position: relative;
-    //   width: 12px;
-    //   height: 12px;
-    //   border-radius: 15px;
-    //   background: white;
-    //   cursor: pointer;
-    // }
-
-    &:hover {
+    &:hover,
+    &:active {
       cursor: pointer;
       .progressbar {
         background-color: green;
         border-color: green;
-
         &::after {
           height: 12px;
           width: 12px;
           background-color: white;
         }
-        // .progressbar::-webkit-slider-thumb{
-        //   visibility: visible;
-        //   opacity: 1;
-        // }
       }
     }
   }
 }
-/////////////////////end of style of the new code but donot forget that i changed the name of current time to start time and duration to end time in the style below
-// The song slider handle -webkit- for (Chrome, Opera, Safari, Edge) and -moz- for (Firefox) to override default look)
-.volume_slider::-webkit-slider-thumb {
-  //visibility: hidden;
-  -webkit-appearance: none !important;
-  appearance: none;
-  width: 13px;
-  height: 13px;
-  border-radius: 15px;
-  background: white;
-  cursor: pointer;
-}
-///the old code style//////////////
-// .current_time,
-// .duration {
-//   font-size: 10px;
-//   color: #b3b3b3;
-//   display: inline-flex;
-//   margin: 0px;
-// }
-// .current_time {
-//   float: left;
-// }
-// .duration {
-//   float: right;
-// }
-//////////////////
+
 .additional_actions {
   display: flex;
   margin: 30px;
   justify-content: flex-end;
-  // #fill {
-  //   width: 80px;
-  //   margin-top: 10px;
-  // }
 }
-.volume {
-  bottom: 0px;
-  .volume_slider {
-    margin-top: 5px;
-    height: 4px;
-    width: 80px;
-    padding: 0px;
-    margin: 0px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: #b3b3b3;
-    border-color: #b3b3b3;
-    border-radius: 50px;
+////style for volume bar
+.volumecontrols {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .volumeseekbar {
+    height: 5px;
+    border-radius: 10px;
+    width: 100px;
+    background-color: #424040;
+    display: flex;
+    .volumeprogressbar {
+      height: 100%;
+      width: 0px;
+      left: 0px;
+      -webkit-appearance: none;
+      background-color: #b3b3b3;
+      border-color: #b3b3b3;
+      border-radius: 10px;
+      position: relative;
+      display: inline-flex;
+      padding: 0px;
+      margin: 0px;
+      //to get the user feedback
+      &::after {
+        content: "";
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: -4px;
+        border-radius: 500px;
+      }
+    }
+    &:hover,
+    &:active {
+      cursor: pointer;
+      .volumeprogressbar {
+        background-color: green;
+        border-color: green;
+        &::after {
+          height: 12px;
+          width: 12px;
+          background-color: white;
+        }
+      }
+    }
   }
 }
+//queue icon
+.coloring {
+  color: #1db954;
+}
+
 .toast {
   visibility: hidden;
   opacity: 0;
@@ -497,4 +432,179 @@ input:focus {
 }
 </style>
 
-<script src="../javascript/mediaplayer_script.js"></script>
+<script type="module">
+import { default as song_functions } from "../javascript/mediaplayer_script.js";
+export default {
+  data: function() {
+    return {
+      volumedrag:false,
+      drag: false,
+      currentPos: 0,
+      volumepos: 0,
+      sound: 0
+    };
+  },
+  mixins: [song_functions],
+  mounted: function() {
+    this.$nextTick(function() {
+      window.setInterval(() => {
+        this.moving_song_bar();
+      }, 300);
+    });
+  },
+  created: function() {
+    window.addEventListener("mouseup",()=>{
+     this.stopDrag();
+     this.volumestopDrag();
+    }),
+      window.addEventListener("mousemove",() =>{
+       this.isDrag();
+        this.volumeisDrag();
+      });
+  },
+  destroyed: function() {
+    window.addEventListener("mouseup",() =>{
+ this.stopDrag();
+ this.volumestopDrag();
+    }),
+      window.addEventListener("mousemove",() =>{
+this.isDrag();
+this.volumeisDrag();
+      } );
+  },
+  methods: {
+    ///////////////////////////this function is working
+    moving_song_bar: function() {
+      this.$store.dispatch("mediaplayer/advance_progress");
+      if (!this.drag) {
+        //console.log("this is the entering condition",this.drag && this.playicon)
+        var SongSlider = document.getElementById("progressbar");
+        var ct = this.progress;
+        this.currentPos = ct;
+        var d = this.duration;
+        var sp = ct / d;
+        SongSlider.style.width = sp * 100 + "%";
+      }
+    },
+    isDrag: function() {
+      if (this.drag) {
+        var bar = document.getElementById("seekbar");
+        var l = bar.getBoundingClientRect().left;
+        var w = bar.getBoundingClientRect().width;
+        l = event.clientX - l;
+        var pos = (l / w) * 100;
+        if (l > 0 && l / w <= 1) this.currentPos = (l / w) * this.duration;
+        else if (l < 0) this.currentPos = 0;
+        else this.currentPos = this.duration;
+        var SongSlider = document.getElementById("progressbar");
+        var str = pos.toString() + "%";
+        SongSlider.style.width = str;
+      }
+    },
+    startDrag: function() {
+      this.drag = true;
+      console.log("in start drag", this.drag);
+    },
+    stopDrag: function() {
+      if (this.drag) {
+        var bar = document.getElementById("seekbar");
+        var l = bar.getBoundingClientRect().left;
+        var w = bar.getBoundingClientRect().width;
+        l = event.clientX - l;
+        var pos = (l / w) * this.duration;
+        this.$store.dispatch("mediaplayer/update_progress", pos);
+        console.log("stop draging", this.drag);
+        this.drag = false;
+      }
+    },
+     volumestartDrag:function(){
+         this.volumedrag = true;
+      console.log("in start volume drag", this.volumedrag);
+    },
+      volumeisDrag: function() {
+      if (this.volumedrag) {
+        var bar = document.getElementById("volumeseekbar");
+        var l = bar.getBoundingClientRect().left;
+        var w = bar.getBoundingClientRect().width;
+        l = event.clientX - l;
+        var pos;
+        if (l > 0 && l / w <= 1) pos = (l / w) * 100;
+        else if (l < 0) pos = 0;
+        else pos = 100;
+        var volumeSlider = document.getElementById("volumeprogressbar");
+        this.volumepos = pos.toString() + "%";
+        volumeSlider.style.width = this.volumepos;
+      }
+    },
+      volumestopDrag: function() {
+      if (this.volumedrag) {
+        var bar = document.getElementById("volumeseekbar");
+        var l = bar.getBoundingClientRect().left;
+        var w = bar.getBoundingClientRect().width;
+        l = event.clientX - l;
+        if (l > 0 && l / w <= 1) this.sound = l / w;
+        else if (l < 0) this.sound = 0;
+        else this.sound = 1;
+        this.$store.dispatch("mediaplayer/update_volume", this.sound);
+        console.log("stop draging", this.volumedrag);
+        this.sound = this.sound * 100;
+        var volumeSlider = document.getElementById("volumeprogressbar");
+        this.volumepos = this.sound.toString() + "%";
+        volumeSlider.style.width = this.volumepos;
+        var changevolumeicon = document.getElementById("soundicon");
+        if(this.sound == 0)
+        changevolumeicon.className="fa fa-volume-off";
+        else if (this.sound > 0 && this.sound <= 50)
+        changevolumeicon.className="fa fa-volume-down";
+        else
+        changevolumeicon.className="fa fa-volume-up";
+         this.volumedrag = false;
+      }
+    },
+    volume_song: function(){
+    var volumeSlider = document.getElementById("volumeprogressbar");
+    var changevolumeicon = document.getElementById("soundicon");
+    if(changevolumeicon.className == "fa fa-volume-up" || changevolumeicon.className == "fa fa-volume-down")
+    {
+     changevolumeicon.className="fa fa-volume-off";
+     volumeSlider.style.width = 0 + "%";
+     this.$store.dispatch("mediaplayer/update_volume", 0);
+    }
+    
+    else if (changevolumeicon.className == "fa fa-volume-off")
+    {
+      volumeSlider.style.width = this.volumepos;
+      if (this.sound > 0 && this.sound <= 50)
+      {
+        changevolumeicon.className="fa fa-volume-down";
+        this.$store.dispatch("mediaplayer/update_volume", this.sound/100);
+      }
+      else{
+       changevolumeicon.className="fa fa-volume-up";
+       this.$store.dispatch("mediaplayer/update_volume", this.sound/100);
+      }
+    }
+    }
+  },
+  computed: {
+    changeTime: function() {
+      // console.log("in chnge time" , pos)
+      var min = Math.floor((this.currentPos % 3600) / 60);
+      var sec = Math.floor(this.currentPos % 60);
+      if (sec < 10) sec = "0" + sec;
+      console.log(" minute sec", min, ":", sec);
+      return min + ":" + sec;
+    },
+    totalDuration: function() {
+      if (this.currentaudio) {
+        var min = Math.floor((this.duration % 3600) / 60);
+        var sec = Math.floor(this.duration % 60);
+        if (sec < 10) sec = "0" + sec;
+        console.log(" minute sec", min, ":", sec);
+        return min + ":" + sec;
+      }
+      return "0:00";
+    }
+  }
+};
+</script>

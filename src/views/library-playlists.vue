@@ -11,6 +11,7 @@
             :images="playlist.images"
             :name="playlist.name"
             :owner="playlist.owner"
+            :playlist_id="playlist._id"
           />
         </div>
       </div>

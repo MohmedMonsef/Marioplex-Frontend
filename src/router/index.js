@@ -17,6 +17,7 @@ import ForArtist from "../views/ForArtist.vue";
 import AccessArtist from "../views/AccessArtist";
 import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage"
+import playlist from "../views/playlist_view.vue";
 
 Vue.use(VueRouter);
 
@@ -53,7 +54,12 @@ const routes = [
                 ]
             },
             { path: "liked-tracks", component: LikedTracks },
-            { path: "queue", component: Queue }
+            { path: "queue", component: Queue },
+            {
+                path: "playlist/:playlist_id",
+                name: "playlist",
+                component: playlist
+            }
         ]
     },
     {
