@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="currentSong"
     class="song"
     @click="clicked"
     :class="{ clicked: isclicked }"
@@ -12,44 +13,44 @@
           !song_state &&
             !hover &&
             !isclicked &&
-            !(playicon && song_id == this.currentSong._id)
+            !(playicon && song_id == this.currentSong.__id)
         "
-        :class="{ currently: song_id == currentSong._id }"
+        :class="{ currently: song_id == currentSong.__id }"
         class="fa fa-music music_icon"
       ></i>
       <i
         v-if="
           !song_state &&
             (isclicked || hover) &&
-            !(playicon && song_id == this.currentSong._id)
+            !(playicon && song_id == this.currentSong.__id)
         "
         @click="playSong()"
         class="fa fa-play"
-        :class="{ currently: song_id == currentSong._id }"
+        :class="{ currently: song_id == currentSong.__id }"
       >
       </i>
       <i
         v-if="
-          playicon && song_id == this.currentSong._id && (isclicked || hover)
+          playicon && song_id == this.currentSong.__id && (isclicked || hover)
         "
         @click="pauseSong()"
         class="fa fa-pause"
-        :class="{ currently: song_id == currentSong._id }"
+        :class="{ currently: song_id == currentSong.__id }"
       >
       </i>
       <i
         v-if="
-          playicon && song_id == this.currentSong._id && !isclicked && !hover
+          playicon && song_id == this.currentSong.__id && !isclicked && !hover
         "
         class="fa fa-volume-up"
-        :class="{ currently: song_id == currentSong._id }"
+        :class="{ currently: song_id == currentSong.__id }"
       >
       </i>
     </div>
     <div id="song_body">
       <div
         class="song_name"
-        :class="{ currently: song_id == this.currentSong._id }"
+        :class="{ currently: song_id == this.currentSong.__id }"
       >
         {{ song_name }}
       </div>
@@ -69,7 +70,7 @@
     </div>
     <div
       class="song_length"
-      :class="{ currently: song_id == this.currentSong._id }"
+      :class="{ currently: song_id == this.currentSong.__id }"
     >
       {{ song_length }}
     </div>
@@ -291,6 +292,9 @@ export default {
     ...mapGetters({
       currentSong: "mediaplayer/Get_Currentsong"
     })
+  },
+    beforeCreate: function(){
+     this.$store.dispatch("mediaplayer/get_currentsong");
   },
   created: function() {
     window.addEventListener("click", this.hideshow);

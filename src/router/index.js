@@ -13,6 +13,7 @@ import LibraryPlaylists from "../views/library-playlists.vue";
 import LibraryArtists from "../views/library-artists.vue";
 import LibraryAlbums from "../views/library-albums.vue";
 import Queue from "../views/Queue.vue";
+import playlist from "../views/playlist_view.vue";
 
 Vue.use(VueRouter);
 
@@ -49,7 +50,12 @@ const routes = [
                 ]
             },
             { path: "liked-tracks", component: LikedTracks },
-            { path: "queue", component: Queue }
+            { path: "queue", component: Queue },
+            {
+                path: "playlist/:playlist_id",
+                name: "playlist",
+                component: playlist
+            }
         ]
     },
     {

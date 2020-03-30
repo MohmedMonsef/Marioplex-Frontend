@@ -8,7 +8,8 @@
     </h2>
     <!-- should be cs.track._id -->
     <song-component
-      :song_id="currentSong._id"
+      v-if="currentSong"
+      :song_id="currentSong.__id"
       :song_artists="currentSong.track.artists"
       :song_name="currentSong.track.name"
       :song_album="currentSong.track.album"
@@ -22,8 +23,8 @@
     <!-- should be q.track._id -->
     <song-component
       v-for="q in Queued"
-      :key="q._id"
-      :song_id="q._id"
+      :key="q.__id"
+      :song_id="q.__id"
       :song_artists="q.track.artists"
       :song_name="q.track.name"
       :song_album="q.track.album"
@@ -37,8 +38,8 @@
     <!-- should be next.track._id -->
     <song-component
       v-for="next in NextUp"
-      :key="next._id"
-      :song_id="next._id"
+      :key="next.__id"
+      :song_id="next.__id"
       :song_artists="next.track.artists"
       :song_name="next.track.name"
       :song_album="next.track.album"

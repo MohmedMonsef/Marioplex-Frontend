@@ -22,7 +22,7 @@
                 </p>
                 <i v-if="hover" class="fa fa-play-circle"></i>
                 <router-link
-                    to="/"
+                    :to="{path:'../playlist/'+ playlist_id}"
                     class="stretched-link"
                     id="carglink"
                     testid="playlist card link"
@@ -73,7 +73,7 @@ export default {
     }
   },
     name: "lib-playlists",
-    props: [ "name","images","owner"],
+    props: [ "name","images","owner", "playlist_id"],
   //   mounted() {
   //   this.$store.dispatch("creatplaylist/showplaylists");
   // },

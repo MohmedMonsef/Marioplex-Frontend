@@ -34,7 +34,7 @@ new Server({
                 album: "Barton Hallow",
                 length: "3:33"
               },
-              _id: "55",
+              __id: "55",
               isLiked: true,
               isPlayable: true
             },
@@ -46,7 +46,7 @@ new Server({
                 album: "Barton Hallow",
                 length: "4:23"
               },
-              _id: "57",
+              __id: "57",
               isLiked: false,
               isPlayable: false,
               isqueue: false
@@ -59,7 +59,7 @@ new Server({
                 album: "Barton Hallow2",
                 length: "4:23"
               },
-              _id: "56",
+              __id: "56",
               isLiked: true,
               isPlayable: false,
               isqueue: false
@@ -72,7 +72,7 @@ new Server({
                 album: "Barton Hallow3",
                 length: "4:23"
               },
-              _id: "58",
+              __id: "58",
               isLiked: true,
               isPlayable: false,
               isqueue: false
@@ -85,7 +85,7 @@ new Server({
                 album: "single",
                 length: "4:23"
               },
-              _id: "59",
+              __id: "59",
               isLiked: true,
               isPlayable: false,
               isqueue: false
@@ -98,7 +98,7 @@ new Server({
                 album: "single",
                 length: "4:23"
               },
-              _id: "60",
+              __id: "60",
               isLiked: true,
               isPlayable: false,
               isqueue: false
@@ -111,7 +111,7 @@ new Server({
                 album: "single",
                 length: "4:23"
               },
-              _id: "61",
+              __id: "61",
               isLiked: true,
               isPlayable: false,
               isqueue: false
@@ -148,12 +148,14 @@ new Server({
                 {
                     name: "playlist name*",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    owner: "Amr"
+                    owner: "Amr",
+                    _id:"5e7d93dad82adf07f4121bac"
                 },
                 {
                     name: "playlist name**",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    owner: "shreen"
+                    owner: "shreen",
+                    _id:"5e7d93dad82adf0ksksksksksksksk"
                 }
             ],
             users: [
@@ -385,7 +387,95 @@ new Server({
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "artist name6"
                 }
-            ]
+            ],
+            playlist_info: [
+              {
+                  "_id": "5e7d93dad82adf07f4121bac",
+                  "type": "playlist",
+                  "name": "dhjgjdjdjg",
+                  "ownerId": "5e7d9045854b0419f4f409b7",
+                  "collaborative": false,
+                  "isPublic": true,
+                  "images": [],
+                  "tracks": [
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb5",
+                          "name": "track2",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": ["artist1"],
+                          "albumId": "5e7d93dad82adf07f4121baf",
+                          "albumName": "album2"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb7",
+                          "name": "track4",
+                          "artistId": "5e7d93dad82adf07f4121bb3",
+                          "artistName": ["artist4"],
+                          "albumId": "5e7d93dad82adf07f4121bb1",
+                          "albumName": "album4"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb6",
+                          "name": "track3",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": ["artist1"],
+                          "albumId": "5e7d93dad82adf07f4121bb0",
+                          "albumName": "album3"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb4",
+                          "name": "track1",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": ["artist1"],
+                          "albumId": "5e7d93dad82adf07f4121bae",
+                          "albumName": "album1"
+                      }
+                  ]
+              },
+               {
+                  "_id": "5e7d93dad82adf0ksksksksksksksk",
+                  "type": "playlist",
+                  "name": "dhjgjdjdjg",
+                  "ownerId": "5e7d9045854b0419f4f409b7",
+                  "collaborative": false,
+                  "isPublic": true,
+                  "images": [],
+                  "tracks": [
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb5",
+                          "name": "track2",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": "artist1",
+                          "albumId": "5e7d93dad82adf07f4121baf",
+                          "albumName": "album2"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb7",
+                          "name": "track4",
+                          "artistId": "5e7d93dad82adf07f4121bb3",
+                          "artistName": "artist4",
+                          "albumId": "5e7d93dad82adf07f4121bb1",
+                          "albumName": "album4"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb6",
+                          "name": "track3",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": "artist1",
+                          "albumId": "5e7d93dad82adf07f4121bb0",
+                          "albumName": "album3"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb4",
+                          "name": "track1",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": "artist1",
+                          "albumId": "5e7d93dad82adf07f4121bae",
+                          "albumName": "album1"
+                      }
+                  ]
+              }
+          ]
         });
     },
     routes() {
@@ -534,7 +624,7 @@ new Server({
     this.post("/api/addtoqueue", (schema, request) => {
       const songid = JSON.parse(request.requestBody).data;
       console.log(songid);
-      let song = schema.db.queue.findBy({ _id: songid.song_id });
+      let song = schema.db.queue.findBy({ __id: songid.song_id });
       song.isqueue = true;
       song.id = schema.db.queue.length + 1;
       console.log("adding song to queue in mirage", song);
@@ -542,6 +632,11 @@ new Server({
       console.log("queue in mirage", schema.db.queue);
       return new Response(200, {}, { queue: schema.db.queue });
     });
+    ////////////////////////
+    this.get("/playlists/:playlist_id", (schema , request) => {
+      let id = request.params.playlist_id;
+      return schema.db.playlist_info.findBy({_id:id});
+  });
     }
     ////////////////////////////////////////////////
 });
