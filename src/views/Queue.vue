@@ -8,6 +8,7 @@
     </h2>
     <!-- should be cs.track._id -->
     <song-component
+      v-if="currentSong"
       :song_id="currentSong._id"
       :song_artists="currentSong.track.artists"
       :song_name="currentSong.track.name"
@@ -78,9 +79,12 @@ import SongComponent from "@/components/SongComponent.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "Queue",
-  mounted() {
-    this.$store.dispatch("Queue/Queue");
+
+  beforeCreate()  {
     this.$store.dispatch("mediaplayer/get_currentsong");
+    this.$store.dispatch("Queue/Queue");
+    
+    
   },
   components: {
     SongComponent

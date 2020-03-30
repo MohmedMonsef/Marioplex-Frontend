@@ -65,6 +65,11 @@ i{
 
 <script>
 export default {
+     data: function(){
+    return{
+     hover: false
+    }
+  },
   name: "ShowPopularplaylists",
   props: ["image", "title", "des"]
 };

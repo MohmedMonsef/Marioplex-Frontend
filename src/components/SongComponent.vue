@@ -1,6 +1,8 @@
 <template>
   <div
+    v-if="currentSong"
     class="song"
+    :id="id" 
     @click="clicked"
     :class="{ clicked: isclicked }"
     @mouseover="hover = true"
@@ -8,39 +10,26 @@
   >
     <div id="icon">
       <i
-        v-if="
-          !song_state &&
-            !hover &&
-            !isclicked &&
-            !(playicon && song_id == this.currentSong._id)
-        "
+        v-if="!song_state && !hover && !isclicked"
         :class="{ currently: song_id == currentSong._id }"
         class="fa fa-music music_icon"
       ></i>
       <i
-        v-if="
-          !song_state &&
-            (isclicked || hover) &&
-            !(playicon && song_id == this.currentSong._id)
-        "
+        v-if="!song_state && (isclicked || hover)"
         @click="playSong()"
         class="fa fa-play"
         :class="{ currently: song_id == currentSong._id }"
       >
       </i>
       <i
-        v-if="
-          playicon && song_id == this.currentSong._id && (isclicked || hover)
-        "
+        v-if="song_state && (isclicked || hover)"
         @click="pauseSong()"
         class="fa fa-pause"
         :class="{ currently: song_id == currentSong._id }"
       >
       </i>
       <i
-        v-if="
-          playicon && song_id == this.currentSong._id && !isclicked && !hover
-        "
+        v-if="song_state && !isclicked && !hover"
         class="fa fa-volume-up"
         :class="{ currently: song_id == currentSong._id }"
       >
@@ -232,8 +221,13 @@ export default {
     return {
       hover: false,
       show: false,
-      isclicked: false
+      isclicked: false,
+      id: null
     };
+  },
+  mounted () {
+    this.id = this._uid,
+    console.log("i am song component number :",this.id)
   },
   mixins: [song_functions],
   props: {
@@ -291,6 +285,9 @@ export default {
     ...mapGetters({
       currentSong: "mediaplayer/Get_Currentsong"
     })
+  },
+  beforeCreate: function() {
+    this.$store.dispatch("mediaplayer/get_currentsong");
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
