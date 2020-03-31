@@ -4,10 +4,17 @@ export default {
   namespaced: true,
   state: {
     currentsong: {},
+    currentsong_info: {
+      index: 1, 
+      song_id: "5e7d93dad82adf07f4121bb6",
+      album_id: "5e7d93dad82adf07f4121bb0",
+      playlist_id:"0"
+    },
+    playicon: false,
     songs: [],
     liked: false,
-    playicon: false,
     currentaudio: null,
+    volumeprogress: 0,
     progress: 0,
     trackduration: 0
   },
@@ -34,7 +41,9 @@ export default {
       state.songs.song = playsong;
     },
     setpausesong(state) {
-      if (state.currentaudio) state.currentaudio.pause();
+      state.playicon=false;
+      if (state.currentaudio)
+         state.currentaudio.pause();
     },
     setprevsong(state, prevsong) {
       state.songs.song = prevsong;
@@ -57,15 +66,23 @@ export default {
     set_currentsong(state, currentsong) {
       state.currentsong = currentsong;
     },
-    toggleicon(state) {
-      state.playicon = !state.playicon;
-    },
-    startcurrentaudio(state, playsong) {
-      if (state.currentaudio) {
+    startcurrentaudio(state, { song, info }) {
+      state.playicon=true;
+      if (
+        state.currentaudio &&
+        JSON.stringify(info) == JSON.stringify(state.currentsong_info)
+      ) {
         state.currentaudio.play();
+        state.currentaudio.volume = state.volumeprogress;
       } else {
-        state.currentaudio = new Audio(playsong);
+        if (state.currentaudio) {
+          state.currentaudio.pause();
+          state.currentaudio = null;
+        }
+        state.currentaudio = new Audio(song);
         state.currentaudio.play();
+        state.currentaudio.volume = state.volumeprogress;
+        state.currentsong_info = info;
       }
     }
   },
@@ -73,7 +90,6 @@ export default {
     playicon_state({ commit }, status) {
       commit("setplayicon", status);
     },
-
     currentsong_info({ commit }) {
       axios
         .get("/api/player/currently-playing")
@@ -93,14 +109,16 @@ export default {
           console.log(error);
         });
     },
-    playsong_state({ commit }) {
+    playsong_state({ commit }, info) {
       axios
         .get("/api/player/play")
         .then(response => {
           let playsong = response.data;
           console.log("playsong", Object.keys(playsong).length);
           console.log("inside axios", playsong[i].song);
-          commit("startcurrentaudio", playsong[i].song);
+          console.log("in song state action ", info);
+          var song = playsong[i].song;
+          commit("startcurrentaudio", { song, info });
 
           // commit("setplaysong", playsong[i].song);
         })
@@ -108,7 +126,6 @@ export default {
           console.log(error);
         });
     },
-
     pausesong_state({ commit }) {
       axios
         .get("/api/player/pause")
@@ -172,9 +189,6 @@ export default {
           console.log(error);
         });
     },
-    toggleicon({ commit }) {
-      commit("toggleicon");
-    },
     ////////////here i should send end point of like with id
     likesong({ commit }) {
       commit("setliked", true);
@@ -218,15 +232,18 @@ export default {
         state.currentaudio.currentTime = pos;
         state.progress = pos;
       }
+    },
+    update_volume({ state }, pos) {
+      if (state.currentaudio) {
+        state.currentaudio.volume = pos;
+        state.volumeprogress = pos;
+      }
+    },
+    set_currentsong_info({ commit }, info) {
+      commit("set_current_info", info);
     }
   },
   getters: {
-    //     albumimage: state => state.albumimage,
-    //     songname: state => state.songname,
-    //     artistsname: state => state.artistsname,
-    //     starttime: state => state.starttime,
-    //     endtime: state => state.endtime,
-    //     playsong: state => state.playsong
     Get_Currentsong: state => state.currentsong[0],
     playicon: state => {
       return state.playicon;
@@ -234,7 +251,6 @@ export default {
     liked: state => {
       return state.liked;
     },
-    // currentaudio:state => state.currentaudio,
     currentaudio: state => {
       return state.currentaudio;
     },
@@ -243,6 +259,12 @@ export default {
     },
     duration: state => {
       return state.trackduration;
+    },
+    volume: state => {
+      return state.volumeprogress;
+    },
+    currentsong_info: state => {
+      return state.currentsong_info;
     }
   }
 };

@@ -1,8 +1,6 @@
 <template>
   <div
-    v-if="currentSong"
     class="song"
-    :id="id" 
     @click="clicked"
     :class="{ clicked: isclicked }"
     @mouseover="hover = true"
@@ -10,36 +8,36 @@
   >
     <div id="icon">
       <i
-        v-if="!song_state && !hover && !isclicked"
-        :class="{ currently: song_id == currentSong._id }"
+        v-if="!hover && !isclicked && !(playicon &&isCurrent)"
+        :class="isCurrentClass"
         class="fa fa-music music_icon"
       ></i>
       <i
-        v-if="!song_state && (isclicked || hover)"
+        v-if="(isclicked || hover) && !(playicon &&isCurrent)"
+        id="playicon-component"
         @click="playSong()"
         class="fa fa-play"
-        :class="{ currently: song_id == currentSong._id }"
+        :class="isCurrentClass"
       >
       </i>
       <i
-        v-if="song_state && (isclicked || hover)"
+        v-if="playicon && (isCurrent)
+        && (isclicked || hover)"
         @click="pauseSong()"
         class="fa fa-pause"
-        :class="{ currently: song_id == currentSong._id }"
+        :class="isCurrentClass"
       >
       </i>
       <i
-        v-if="song_state && !isclicked && !hover"
+        v-if="playicon && (isCurrent)
+         && !isclicked && !hover"
         class="fa fa-volume-up"
-        :class="{ currently: song_id == currentSong._id }"
+        :class="isCurrentClass"
       >
       </i>
     </div>
     <div id="song_body">
-      <div
-        class="song_name"
-        :class="{ currently: song_id == this.currentSong._id }"
-      >
+      <div class="song_name" :class="isCurrentClass">
         {{ song_name }}
       </div>
       <div id="song_info">
@@ -56,10 +54,8 @@
         </router-link>
       </div>
     </div>
-    <div
-      class="song_length"
-      :class="{ currently: song_id == this.currentSong._id }"
-    >
+    <!-- <p>{{index}}</p> -->
+    <div class="song_length" :class="isCurrentClass">
       {{ song_length }}
     </div>
     <div id="song_options" class="dropdownlist">
@@ -214,20 +210,14 @@
 </style>
 
 <script type="module">
-import { mapGetters } from "vuex";
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 export default {
   data: function() {
     return {
       hover: false,
       show: false,
-      isclicked: false,
-      id: null
+      isclicked: false
     };
-  },
-  mounted () {
-    this.id = this._uid,
-    console.log("i am song component number :",this.id)
   },
   mixins: [song_functions],
   props: {
@@ -248,6 +238,17 @@ export default {
     },
     song_id: {
       type: String
+    },
+    index: {
+      type: Number
+    },
+    albumId: {
+      type: String,
+      default: "0"
+    },
+    playlistId: {
+      type: String,
+      default: "0"
     }
   }, //must add isplayable also
   methods: {
@@ -282,12 +283,29 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      currentSong: "mediaplayer/Get_Currentsong"
-    })
-  },
-  beforeCreate: function() {
-    this.$store.dispatch("mediaplayer/get_currentsong");
+    isCurrentClass: function() {
+      return {
+        currently:
+          this.song_id == this.currentsong_info.song_id &&
+          this.albumId == this.currentsong_info.album_id &&
+          this.index == this.currentsong_info.index &&
+          this.playlistId == this.currentsong_info.playlist_id
+      };
+    },
+    isCurrent: function() {
+      console.log("in is current component" ,this.index,"condition", (
+        this.song_id == this.currentsong_info.song_id &&
+        this.albumId == this.currentsong_info.album_id &&
+        this.index == this.currentsong_info.index &&
+        this.playlistId == this.currentsong_info.playlistId
+      ))
+      return (
+        this.song_id == this.currentsong_info.song_id &&
+        this.albumId == this.currentsong_info.album_id &&
+        this.index == this.currentsong_info.index &&
+        this.playlistId == this.currentsong_info.playlist_id
+      );
+    }
   },
   created: function() {
     window.addEventListener("click", this.hideshow);

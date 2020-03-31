@@ -18,7 +18,7 @@ const toast = {
   }
 };
 
-/////////////////////////////////////
+////////////////////////////////////////////////////////////
 export default {
   data: function() {
     return {
@@ -42,15 +42,25 @@ export default {
     },
     playSong() {
       this.song_state = true;
-      this.changeplayicon();
       // this.$store.dispatch("mediaplayer/get_currentsong");
-      this.$store.dispatch("mediaplayer/playsong_state");
+      let info;
+      if("playicon-component" == event.target.id){    
+          info={
+          index:this.index,
+          song_id: this.song_id,
+          album_id:this.albumId,
+          playlist_id:this.playlistId
+      }
+      }
+      else{
+        info=this.currentsong_info;
+      }
+      console.log("my song infoo",info);
+      this.$store.dispatch("mediaplayer/playsong_state",info);
       this.$store.dispatch("mediaplayer/stateofsong");
-      console.log("song state", this.liked);
     },
     pauseSong() {
       this.song_state = false;
-      this.changeplayicon();
       console.log("pause song");
       this.$store.dispatch("mediaplayer/pausesong_state");
       this.$store.dispatch("mediaplayer/stateofsong");
@@ -108,9 +118,6 @@ export default {
       x.loop = true;
       x.load();
     },
-    changeplayicon: function() {
-      this.$store.dispatch("mediaplayer/toggleicon");
-    },
     likecurrentsong: function() {
       if (!this.liked) {
         this.$store.dispatch("mediaplayer/likesong");
@@ -138,7 +145,9 @@ export default {
       liked: "mediaplayer/liked",
       currentaudio: "mediaplayer/currentaudio",
       progress: "mediaplayer/progress",
-      duration: "mediaplayer/duration"
+      duration: "mediaplayer/duration",
+      volume: "mediaplayer/volume",
+      currentsong_info:"mediaplayer/currentsong_info"
     })
   }
 };

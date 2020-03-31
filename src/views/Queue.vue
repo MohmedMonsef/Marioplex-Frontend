@@ -10,11 +10,13 @@
     <song-component
       v-if="currentSong"
       :song_id="currentSong._id"
+      :index ="1"
       :song_artists="currentSong.track.artists"
       :song_name="currentSong.track.name"
-      :song_album="currentSong.track.album"
+      :song_album="currentSong.albumName"
       :song_length="currentSong.track.length"
       :isLiked="currentSong.isLiked"
+      :albumId="currentSong.track.albumId"
     />
 
     <h2 v-if="Queued.length">
@@ -22,14 +24,16 @@
     </h2>
     <!-- should be q.track._id -->
     <song-component
-      v-for="q in Queued"
+      v-for="(q,i) in Queued"
       :key="q._id"
+      :index ="i"
       :song_id="q._id"
       :song_artists="q.track.artists"
       :song_name="q.track.name"
-      :song_album="q.track.album"
+      :song_album="q.albumName"
       :song_length="q.track.length"
       :isLiked="q.isLiked"
+      :albumId="q.track.albumId"
     />
 
     <h2 v-if="NextUp.length">
@@ -37,14 +41,16 @@
     </h2>
     <!-- should be next.track._id -->
     <song-component
-      v-for="next in NextUp"
+      v-for="(next,i) in NextUp"
       :key="next._id"
+      :index ="i"
       :song_id="next._id"
       :song_artists="next.track.artists"
       :song_name="next.track.name"
-      :song_album="next.track.album"
+      :song_album="next.albumName"
       :song_length="next.track.length"
       :isLiked="next.isLiked"
+      :albumId="next.track.albumId"
     />
   </div>
 </template>
