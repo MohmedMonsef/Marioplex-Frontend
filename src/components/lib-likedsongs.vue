@@ -9,7 +9,7 @@
             <span v-for="song in songs1" :key="song.id">
                 <span testid="artist name">{{song.artist.name +' '}} </span>
                 <span testid="song name" class="songname"> {{song.name + ' '}} </span>
-                <span class="dot">.</span> 
+                <span class="dot">. </span> 
             </span>
         </div>
         <h3 class="card-title">Liked Songs</h3>

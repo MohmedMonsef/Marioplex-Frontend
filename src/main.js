@@ -475,6 +475,51 @@ new Server({
                       }
                   ]
               }
+          ],
+          user_songs:[
+            {
+              images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+              name: "song name1",
+              artist: {
+                  name: "Hamaki"
+              }
+          },
+          {
+              images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+              name: "song name2",
+              artist: {
+                  name: "Amr Diab"
+              }
+          },
+          {
+              images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+              name: "song name3",
+              artist: {
+                  name: "Shereen"
+              }
+          },
+          {
+            images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+            name: "song name2",
+            artist: {
+                name: "Amr Diab"
+            }
+           },
+           {
+            images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+            name: "song name3",
+            artist: {
+                name: "Shereen"
+            }
+           },
+           {
+            images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+            name: "song name3",
+            artist: {
+                name: "Shereen"
+            }
+           },
+         
           ]
         });
     },
@@ -689,30 +734,7 @@ new Server({
       // return new Response(403, { error: "no user with such data" });
     });
       
-        this.post("/api/reset", () => {
-            return new Response(200);
-        });
-        this.post("/api/logout", () => {
-            return new Response(200);
-        });
-
-    
-        this.get("/api/me/albums", schema => {
-            return schema.db.user_albums;
-        });
-        this.get("/api/me/following", schema => {
-            console.log("in main dai");
-            return schema.db.user_artists;
-        });
-        // this.get("/api/users", (schema)=>{
-        //   return schema.db.user_play_lists
-        // });
-        this.get("/api/me/like", schema => {
-            return schema.db.songs;
-        });
-        this.get("/api/me/unlike", schema => {
-            return schema.db.songs;
-        });
+       
             //queue requests
     this.get("/api/currentsong", schema => {
       return new Response(200, {}, { currentsong: schema.db.currentsong });
@@ -754,4 +776,4 @@ new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount("#app");
+}).$mount("#app")
