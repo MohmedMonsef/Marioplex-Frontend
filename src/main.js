@@ -473,8 +473,74 @@ new Server({
                           "albumId": "5e7d93dad82adf07f4121bae",
                           "albumName": "album1"
                       }
-                  ]
+                  ],
+                  
               }
+          ],
+          user_songs: [
+            {
+              name: "ya sattar",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "nour el3en",
+              artist: {
+                name: "Amr Diab"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            }
+          ],
+          Artist_Songs: [
+            {
+              URL: "",
+              Name: "",
+              TrackNumber: "",
+              PreviewURL: "",
+              AvailableMarket: ""
+            }
           ]
         });
     },
@@ -689,30 +755,6 @@ new Server({
       // return new Response(403, { error: "no user with such data" });
     });
       
-        this.post("/api/reset", () => {
-            return new Response(200);
-        });
-        this.post("/api/logout", () => {
-            return new Response(200);
-        });
-
-    
-        this.get("/api/me/albums", schema => {
-            return schema.db.user_albums;
-        });
-        this.get("/api/me/following", schema => {
-            console.log("in main dai");
-            return schema.db.user_artists;
-        });
-        // this.get("/api/users", (schema)=>{
-        //   return schema.db.user_play_lists
-        // });
-        this.get("/api/me/like", schema => {
-            return schema.db.songs;
-        });
-        this.get("/api/me/unlike", schema => {
-            return schema.db.songs;
-        });
             //queue requests
     this.get("/api/currentsong", schema => {
       return new Response(200, {}, { currentsong: schema.db.currentsong });
