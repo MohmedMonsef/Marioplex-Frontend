@@ -74,10 +74,17 @@ export default {
         })
         .then(response => {
           console.log("success", response);
-          // setTimeout(()=>{
-          store.dispatch("mediaplayer/get_currentsong");
+          var cs =store.getters['mediaplayer/currentaudio']
+          if(cs){
+            store.dispatch("mediaplayer/get_currentsong");
+            store.dispatch("mediaplayer/playsong_state", info);
+          }
+          else{
+          setTimeout(()=>{
           store.dispatch("mediaplayer/playsong_state", info);
-          // },400)
+          },500)
+          store.dispatch("mediaplayer/get_currentsong");
+        }
         })
         .catch(error => {
           console.log(error);

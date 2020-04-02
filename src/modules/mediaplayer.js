@@ -122,31 +122,41 @@ export default {
     pausesong_state({ commit }) {
       commit("setpausesong");
     },
-    nextsong_state({ commit }) {
+    nextsong_state({state, commit ,dispatch}) {
       axios
-        .get("/api/player/next")
+        .get("/player/next")
         .then(response => {
-          let nextsong = response.data;
-          i += 1;
-          console.log(i);
-          console.log(Object.keys(nextsong).length);
-          if (i == Object.keys(nextsong).length) {
-            i = 0;
-            commit("setnextsong", nextsong[i].song);
-          } else commit("setnextsong", nextsong[i].song);
+          var nextsong = response.data.nextsong;
+          console.log("in get currentsong", nextsong);
+          commit("set_currentsong", nextsong);
+          let info={
+            index:state.currentsong_info.index+1 ,//should handle if its the first track on playlist or album return to zero
+            song_id: nextsong[0]._id,
+            album_id: nextsong[0].track.albumId,
+            playlist_id:state.currentsong_info.playlist_id,
+            is_playlist: state.currentsong_info.is_playlist
+          }
+          dispatch("playsong_state",info)
         })
         .catch(error => {
           console.log(error);
         });
     },
-    prevsong_state({ commit }) {
+    prevsong_state({state, commit ,dispatch}) {
       axios
-        .get("/api/player/previous")
+        .get("/player/previous")
         .then(response => {
-          let prevsong = response.data;
-          i -= 1;
-          if (i < 0) i = 0;
-          else commit("setprevsong", prevsong[i].song);
+          var prevsong = response.data.prevsong;
+          console.log("in get currentsong", prevsong);
+          commit("set_currentsong", prevsong);
+          let info={
+            index:state.currentsong_info.index==0? 0:state.currentsong_info.index -1,//
+            song_id: prevsong[0]._id,
+            album_id: prevsong[0].track.albumId,
+            playlist_id:state.currentsong_info.playlist_id,
+            is_playlist: state.currentsong_info.is_playlist
+          }
+          dispatch("playsong_state",info)
         })
         .catch(error => {
           console.log(error);

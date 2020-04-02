@@ -90,45 +90,10 @@ export default {
       this.$store.dispatch("mediaplayer/stateofsong");
     },
     prev_song: function() {
-      var y0 = document.getElementById("myAudio");
-      var x0 = new Audio(y0);
       this.$store.dispatch("mediaplayer/prevsong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x0.src = this.media_player.song;
-        this.playsong_by_icon();
-        if (!x.paused) {
-          x.pause();
-          x0.play();
-          x = x0;
-        } else {
-          x0.play();
-          x = x0;
-        }
-        this.moving_song_bar();
-      }, 500);
     },
     next_song: function() {
-      var y1 = document.getElementById("myAudio");
-      var x1 = new Audio(y1);
       this.$store.dispatch("mediaplayer/nextsong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x1.src = this.media_player.song;
-        this.playsong_by_icon();
-        if (!x.paused) {
-          console.log("inside next song", x.paused);
-          x.pause();
-          x1.play();
-          x = x1;
-        } else {
-          x1.play();
-          x = x1;
-        }
-        this.moving_song_bar();
-      }, 500);
     },
 
     random_songs: function() {

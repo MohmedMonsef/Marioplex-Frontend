@@ -42,6 +42,7 @@
           :song_artists="p.artistName"
           :song_name="p.name"
           :song_album="p.albumName"
+          :albumId="p.albumId"
           :song_length="'3:45'"
           :isLiked="true"
           :playlistId="$route.params.playlist_id"

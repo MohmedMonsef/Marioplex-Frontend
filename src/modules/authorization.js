@@ -33,7 +33,7 @@ export default {
     signUp({ commit }, user) {
       commit("auth_request");
       axios
-        .put("/api/signup", {
+        .post("/api/signup", {
           data: user
         })
         .then(response => {

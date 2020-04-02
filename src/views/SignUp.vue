@@ -448,20 +448,15 @@ export default {
     },
     facebook_signUp() {
       this.$store.dispatch("authorization/facebook_signUp").then(() => {
-        var check = true;
-        while (check) {
+        setTimeout(() => {
           var status = this.isLoggedIn;
-          if (status == "loading") continue;
-          else if (status == "success") {
+          if (status == "success") {
             console.log("logged with fb");
             this.$router.push("/");
-            check = false;
-            console.log(check);
           } else if (status == "error") {
             console.log("error with fb");
-            check = false;
           }
-        }
+        }, 1000);
       });
     },
     cannotSubmit() {

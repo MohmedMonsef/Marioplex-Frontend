@@ -465,7 +465,37 @@ new Server({
             }
           ]
         }
-      ]
+      ],
+      nextsong: {
+        track: {
+          name: "You are my x",
+          __v: 0,
+          albumId: "5e7d93dad82adf07f4121bb1",
+          artistId: "5e7d93dad82adf07f4121bb2",
+          artists: ["civil wars", "john", "jasmine"],
+          length: "3:33",
+          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        },
+        _id: "5e7d93dad82adf07f4121bb7",
+        albumName: "Barton Hallow",
+        isLiked: true,
+        isPlayable: true
+      },
+      prevsong: {
+        track: {
+          name: "You are my y",
+          __v: 0,
+          albumId: "5e7d93dad82adf07f4121baf",
+          artistId: "5e7d93dad82adf07f4121bb2",
+          artists: ["civil wars", "john", "jasmine"],
+          length: "3:33",
+          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        },
+        _id: "5e7d93dad82adf07f4121bb5",
+        albumName: "Barton Hallow",
+        isLiked: true,
+        isPlayable: true
+      },
     });
   },
   routes() {
@@ -485,11 +515,11 @@ new Server({
     this.get("/api/player/pause", schema => {
       return schema.db.songs;
     });
-    this.get("/api/player/next", schema => {
-      return schema.db.songs;
+    this.get("/player/next", schema => {
+      return new Response(200, {}, { nextsong: schema.db.nextsong });
     });
-    this.get("/api/player/previous", schema => {
-      return schema.db.songs;
+    this.get("/player/previous", schema => {
+      return new Response(200, {}, { prevsong: schema.db.prevsong });
     });
     this.get("/api/player/repeat", schema => {
       return schema.db.songs;
@@ -521,7 +551,7 @@ new Server({
       });
 
     //authentication requests
-    this.put("/api/signup", (schema, request) => {
+    this.post("/api/signup", (schema, request) => {
       const user = JSON.parse(request.requestBody).data;
       if (schema.db.users.findBy({ email: user.email }) == null) {
         return new Response(
