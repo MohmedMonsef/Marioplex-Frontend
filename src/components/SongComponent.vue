@@ -8,12 +8,12 @@
   >
     <div id="icon">
       <i
-        v-if="!hover && !isclicked && !(playicon &&isCurrent)"
+        v-if="!hover && !isclicked && !(playicon && isCurrent)"
         :class="isCurrentClass"
         class="fa fa-music music_icon"
       ></i>
       <i
-        v-if="(isclicked || hover) && !(playicon &&isCurrent)"
+        v-if="(isclicked || hover) && !(playicon && isCurrent)"
         id="playicon-component"
         @click="playSong()"
         class="fa fa-play"
@@ -21,16 +21,14 @@
       >
       </i>
       <i
-        v-if="playicon && (isCurrent)
-        && (isclicked || hover)"
+        v-if="playicon && isCurrent && (isclicked || hover)"
         @click="pauseSong()"
         class="fa fa-pause"
         :class="isCurrentClass"
       >
       </i>
       <i
-        v-if="playicon && (isCurrent)
-         && !isclicked && !hover"
+        v-if="playicon && isCurrent && !isclicked && !hover"
         class="fa fa-volume-up"
         :class="isCurrentClass"
       >
@@ -249,6 +247,10 @@ export default {
     playlistId: {
       type: String,
       default: "0"
+    },
+    isPlaylist: {
+      type: Boolean,
+      default: false
     }
   }, //must add isplayable also
   methods: {
@@ -285,20 +287,10 @@ export default {
   computed: {
     isCurrentClass: function() {
       return {
-        currently:
-          this.song_id == this.currentsong_info.song_id &&
-          this.albumId == this.currentsong_info.album_id &&
-          this.index == this.currentsong_info.index &&
-          this.playlistId == this.currentsong_info.playlist_id
+        currently: this.isCurrent
       };
     },
     isCurrent: function() {
-      console.log("in is current component" ,this.index,"condition", (
-        this.song_id == this.currentsong_info.song_id &&
-        this.albumId == this.currentsong_info.album_id &&
-        this.index == this.currentsong_info.index &&
-        this.playlistId == this.currentsong_info.playlistId
-      ))
       return (
         this.song_id == this.currentsong_info.song_id &&
         this.albumId == this.currentsong_info.album_id &&

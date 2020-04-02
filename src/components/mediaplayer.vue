@@ -61,14 +61,6 @@
           testid="play_controllers"
         >
           <div class="controllers" id="test_controllers" testid="controllers">
-            <audio id="myAudio">
-              <source :src="media_player.song" type="audio/ogg" />
-              <source
-                :src="media_player.song"
-                type="audio/mpeg"
-                testid="audio"
-              />
-            </audio>
             <button
               id="random_button"
               testid="shufflebutton"
@@ -92,26 +84,29 @@
               </span>
             </button>
             <!-- /////////////////////////////////////////////// -->
-            <button
-              id="play_button"
-              testid="playbutton"
-              v-if="playicon"
-            >
+            <button id="play_button" testid="playbutton" v-if="playicon">
               <span data-toggle="tooltip" title="Pause">
-                <i class="fa fa-pause" id="playicon" testid="playicon" @click="pauseSong()"> </i>
+                <i
+                  class="fa fa-pause"
+                  id="playicon"
+                  testid="playicon"
+                  @click="pauseSong()"
+                >
+                </i>
               </span>
             </button>
 
             <!-- //////////////////////////////// -->
             <!-- ///////////////////////////////// -->
-            <button
-              id="pause_button"
-              testid="pausebutton"
-              v-if="!playicon"
-            >
+            <button id="pause_button" testid="pausebutton" v-if="!playicon">
               <!-- //\\ -->
               <span data-toggle="tooltip" title="Play">
-                 <i class="fa fa-play" id="pauseicon" testid="pauseicon"  @click="playSong()"></i>
+                <i
+                  class="fa fa-play"
+                  id="pauseicon"
+                  testid="pauseicon"
+                  @click="playSong()"
+                ></i>
               </span>
             </button>
             <!-- //////////////////////////////// -->
@@ -136,7 +131,7 @@
           </div>
         </div>
         <!-- here the song bar moves correctly -->
-        
+
         <!-- <div
           id="seek_bar"
           testid="seek_bar"
@@ -171,7 +166,12 @@
           </button>
 
           <button id="sound_button" testid="soundbutton" style="width:37px;">
-            <i class="fa fa-volume-off" id="soundicon" testid="soundicon" @click="volume_song()"></i>
+            <i
+              class="fa fa-volume-off"
+              id="soundicon"
+              testid="soundicon"
+              @click="volume_song()"
+            ></i>
           </button>
           <!-- still doesnot work correctly -->
           <!-- <div id="seek_bar" style="transform:translateX(0%);">
@@ -180,10 +180,14 @@
           </div> -->
           <!-- ///////////////// -->
           <div class="volumecontrols">
-          <div class="volumeseekbar" id="volumeseekbar" @mousedown="volumestartDrag()">
-            <div class="volumeprogressbar" id="volumeprogressbar"></div>
+            <div
+              class="volumeseekbar"
+              id="volumeseekbar"
+              @mousedown="volumestartDrag()"
+            >
+              <div class="volumeprogressbar" id="volumeprogressbar"></div>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
@@ -437,7 +441,7 @@ import { default as song_functions } from "../javascript/mediaplayer_script.js";
 export default {
   data: function() {
     return {
-      volumedrag:false,
+      volumedrag: false,
       drag: false,
       currentPos: 0,
       volumepos: 0,
@@ -453,30 +457,30 @@ export default {
     });
   },
   created: function() {
-    window.addEventListener("mouseup",()=>{
-     this.stopDrag();
-     this.volumestopDrag();
+    window.addEventListener("mouseup", () => {
+      this.stopDrag();
+      this.volumestopDrag();
     }),
-      window.addEventListener("mousemove",() =>{
-       this.isDrag();
+      window.addEventListener("mousemove", () => {
+        this.isDrag();
         this.volumeisDrag();
       });
   },
   destroyed: function() {
-    window.addEventListener("mouseup",() =>{
- this.stopDrag();
- this.volumestopDrag();
+    window.addEventListener("mouseup", () => {
+      this.stopDrag();
+      this.volumestopDrag();
     }),
-      window.addEventListener("mousemove",() =>{
-this.isDrag();
-this.volumeisDrag();
-      } );
+      window.addEventListener("mousemove", () => {
+        this.isDrag();
+        this.volumeisDrag();
+      });
   },
   methods: {
     ///////////////////////////this function is working
     moving_song_bar: function() {
       this.$store.dispatch("mediaplayer/advance_progress");
-      if (!this.drag) {
+      if (!this.drag && this.currentaudio) {
         //console.log("this is the entering condition",this.drag && this.playicon)
         var SongSlider = document.getElementById("progressbar");
         var ct = this.progress;
@@ -517,11 +521,11 @@ this.volumeisDrag();
         this.drag = false;
       }
     },
-     volumestartDrag:function(){
-         this.volumedrag = true;
+    volumestartDrag: function() {
+      this.volumedrag = true;
       console.log("in start volume drag", this.volumedrag);
     },
-      volumeisDrag: function() {
+    volumeisDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -536,7 +540,7 @@ this.volumeisDrag();
         volumeSlider.style.width = this.volumepos;
       }
     },
-      volumestopDrag: function() {
+    volumestopDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -552,38 +556,33 @@ this.volumeisDrag();
         this.volumepos = this.sound.toString() + "%";
         volumeSlider.style.width = this.volumepos;
         var changevolumeicon = document.getElementById("soundicon");
-        if(this.sound == 0)
-        changevolumeicon.className="fa fa-volume-off";
+        if (this.sound == 0) changevolumeicon.className = "fa fa-volume-off";
         else if (this.sound > 0 && this.sound <= 50)
-        changevolumeicon.className="fa fa-volume-down";
-        else
-        changevolumeicon.className="fa fa-volume-up";
-         this.volumedrag = false;
+          changevolumeicon.className = "fa fa-volume-down";
+        else changevolumeicon.className = "fa fa-volume-up";
+        this.volumedrag = false;
       }
     },
-    volume_song: function(){
-    var volumeSlider = document.getElementById("volumeprogressbar");
-    var changevolumeicon = document.getElementById("soundicon");
-    if(changevolumeicon.className == "fa fa-volume-up" || changevolumeicon.className == "fa fa-volume-down")
-    {
-     changevolumeicon.className="fa fa-volume-off";
-     volumeSlider.style.width = 0 + "%";
-     this.$store.dispatch("mediaplayer/update_volume", 0);
-    }
-    
-    else if (changevolumeicon.className == "fa fa-volume-off")
-    {
-      volumeSlider.style.width = this.volumepos;
-      if (this.sound > 0 && this.sound <= 50)
-      {
-        changevolumeicon.className="fa fa-volume-down";
-        this.$store.dispatch("mediaplayer/update_volume", this.sound/100);
+    volume_song: function() {
+      var volumeSlider = document.getElementById("volumeprogressbar");
+      var changevolumeicon = document.getElementById("soundicon");
+      if (
+        changevolumeicon.className == "fa fa-volume-up" ||
+        changevolumeicon.className == "fa fa-volume-down"
+      ) {
+        changevolumeicon.className = "fa fa-volume-off";
+        volumeSlider.style.width = 0 + "%";
+        this.$store.dispatch("mediaplayer/update_volume", 0);
+      } else if (changevolumeicon.className == "fa fa-volume-off") {
+        volumeSlider.style.width = this.volumepos;
+        if (this.sound > 0 && this.sound <= 50) {
+          changevolumeicon.className = "fa fa-volume-down";
+          this.$store.dispatch("mediaplayer/update_volume", this.sound / 100);
+        } else {
+          changevolumeicon.className = "fa fa-volume-up";
+          this.$store.dispatch("mediaplayer/update_volume", this.sound / 100);
+        }
       }
-      else{
-       changevolumeicon.className="fa fa-volume-up";
-       this.$store.dispatch("mediaplayer/update_volume", this.sound/100);
-      }
-    }
     }
   },
   computed: {

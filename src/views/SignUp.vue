@@ -429,17 +429,17 @@ export default {
           this.$store
             .dispatch("authorization/signUp", newuser)
             .then(() => {
-              ///   
-               setTimeout(()=>{
+              ///
+              setTimeout(() => {
                 var status = this.isLoggedIn;
-                 if (status == "success") {
-                  console.log("finally succeeded")
+                if (status == "success") {
+                  console.log("finally succeeded");
                   this.$router.push("/");
                 } else if (status == "error") {
-                   console.log("errror")
+                  console.log("errror");
                 }
-               },1000);
-                
+              }, 1000);
+
               ////////
             })
             .catch(err => console.log(err));

@@ -11,11 +11,17 @@
         @keydown.esc="reset"
         v-on:input="changeininput"
       />
-      <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        v-if="Value.length !== 0"
+        @click="reset"
+      >
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="contaner" v-if="Value.length==0">
+    <div class="contaner" v-if="Value.length == 0">
       <div class="all scroll">
         <h2 v-if="categorys.length">Browse All</h2>
         <div class="row">
@@ -31,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div v-if="Value.length!==0">
+    <div v-if="Value.length !== 0">
       <h2>TopResult</h2>
       <div class="card mb-4 card-top" style="max-width: 400px;">
         <div class="row no-gutters">
@@ -44,7 +50,12 @@
             </p>
           </div>
         </div>
-        <router-link to="/" class="stretched-link" id="carglink" testid="cardlink"></router-link>
+        <router-link
+          to="/"
+          class="stretched-link"
+          id="carglink"
+          testid="cardlink"
+        ></router-link>
       </div>
       <div class="all scroll">
         <h2>Artist</h2>

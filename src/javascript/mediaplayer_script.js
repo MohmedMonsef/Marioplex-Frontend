@@ -44,20 +44,44 @@ export default {
       this.song_state = true;
       // this.$store.dispatch("mediaplayer/get_currentsong");
       let info;
-      if("playicon-component" == event.target.id){    
-          info={
-          index:this.index,
+      // let cs=this.currentsong_info;
+
+      if ("playicon-component" == event.target.id) {
+        info = {
+          index: this.index,
           song_id: this.song_id,
-          album_id:this.albumId,
-          playlist_id:this.playlistId
+          album_id: this.albumId,
+          playlist_id: this.playlistId,
+          is_playlist: this.isPlaylist
+        };
+        if (
+          this.song_id == this.currentsong_info.song_id &&
+          this.albumId == this.currentsong_info.album_id &&
+          this.index == this.currentsong_info.index &&
+          this.playlistId == this.currentsong_info.playlist_id
+        ) {
+          this.$store.dispatch("mediaplayer/playsong_state", info);
+          console.log("my compmmm", {
+            index: this.index,
+            song_id: this.song_id,
+            album_id: this.albumId,
+            playlist_id: this.playlistId,
+            is_playlist: this.isPlaylist
+          });
+        } else {
+          this.$store.dispatch("Queue/CreateQueue",info);
+          console.log("my comp", {
+            index: this.index,
+            song_id: this.song_id,
+            album_id: this.albumId,
+            playlist_id: this.playlistId,
+            is_playlist: this.isPlaylist
+          });
+        }
+      } else {
+        console.log("nihal comp", this.currentsong_info);
+        this.$store.dispatch("Queue/CreateQueue", this.currentsong_info);
       }
-      }
-      else{
-        info=this.currentsong_info;
-      }
-      console.log("my song infoo",info);
-      this.$store.dispatch("mediaplayer/playsong_state",info);
-      this.$store.dispatch("mediaplayer/stateofsong");
     },
     pauseSong() {
       this.song_state = false;
@@ -147,7 +171,7 @@ export default {
       progress: "mediaplayer/progress",
       duration: "mediaplayer/duration",
       volume: "mediaplayer/volume",
-      currentsong_info:"mediaplayer/currentsong_info"
+      currentsong_info: "mediaplayer/currentsong_info"
     })
   }
 };

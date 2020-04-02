@@ -3,15 +3,32 @@ var i = 0;
 export default {
   namespaced: true,
   state: {
-    currentsong: {},
+    currentsong: {
+      track: {
+        name: "You are my sunshine",
+        __v: 0,
+        albumId: "5e7d93dad82adf07f4121bb0",
+        artistId: "5e7d93dad82adf07f4121bb2",
+        artists: ["civil wars", "john", "jasmine"],
+        length: "3:33",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
+      },
+      _id: "5e7d93dad82adf07f4121bb6",
+      albumName: "Barton Hallow",
+      isLiked: true,
+      isPlayable: true
+    },
+    //component info
     currentsong_info: {
-      index: 1, 
+      index: 1,
       song_id: "5e7d93dad82adf07f4121bb6",
       album_id: "5e7d93dad82adf07f4121bb0",
-      playlist_id:"0"
+      playlist_id: "0",
+      is_playlist: false
     },
+    //flag weather the song is playing or not
     playicon: false,
-    songs: [],
+    // songs: [],
     liked: false,
     currentaudio: null,
     volumeprogress: 0,
@@ -23,7 +40,7 @@ export default {
       state.playicon = playicon;
     },
     setliked(state, like) {
-      state.liked = like;
+      state.currentsong[0].isLiked = like;
     },
     setalbumimage(state, albumimage) {
       state.songs.album_image = albumimage;
@@ -34,28 +51,18 @@ export default {
     setartistsname(state, artistsname) {
       state.songs.artist_name = artistsname;
     },
-    // setplaysong(state, playsong) {
-    //   state.playsong = playsong;
-    // },
     setplaysong(state, playsong) {
       state.songs.song = playsong;
     },
     setpausesong(state) {
-      state.playicon=false;
-      if (state.currentaudio)
-         state.currentaudio.pause();
+      state.playicon = false;
+      if (state.currentaudio) state.currentaudio.pause();
     },
     setprevsong(state, prevsong) {
       state.songs.song = prevsong;
     },
     setnextsong(state, nextsong) {
       state.songs.song = nextsong;
-    },
-    setstarttime(state, starttime) {
-      state.songs.start_time = starttime;
-    },
-    setendtime(state, endtime) {
-      state.songs.end_time = endtime;
     },
     setreapetsong(state, repeatsong) {
       state.repeatsong = repeatsong;
@@ -66,11 +73,15 @@ export default {
     set_currentsong(state, currentsong) {
       state.currentsong = currentsong;
     },
-    startcurrentaudio(state, { song, info }) {
-      state.playicon=true;
+    startcurrentaudio(state, info) {
+      console.log("staaart", info);
+      state.playicon = true;
       if (
         state.currentaudio &&
-        JSON.stringify(info) == JSON.stringify(state.currentsong_info)
+        info.song_id == state.currentsong_info.song_id &&
+        info.album_id == state.currentsong_info.album_id &&
+        info.index == state.currentsong_info.index &&
+        info.playlist_id == state.currentsong_info.playlist_id
       ) {
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;
@@ -79,7 +90,7 @@ export default {
           state.currentaudio.pause();
           state.currentaudio = null;
         }
-        state.currentaudio = new Audio(song);
+        state.currentaudio = new Audio(state.currentsong[0].track.url);
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;
         state.currentsong_info = info;
@@ -90,52 +101,26 @@ export default {
     playicon_state({ commit }, status) {
       commit("setplayicon", status);
     },
-    currentsong_info({ commit }) {
+    //get the current song from backend
+    get_currentsong({ commit }) {
       axios
-        .get("/api/player/currently-playing")
+        .get("/api/currentsong")
         .then(response => {
-          let albumimage = response.data;
-          let songname = response.data;
-          let artistsname = response.data;
-          let starttime = response.data;
-          let endtime = response.data;
-          commit("setalbumimage", albumimage[0].album_image);
-          commit("setsongname", songname[0].song_name);
-          commit("setartistsname", artistsname[0].artist_name);
-          commit("setstarttime", starttime[0].start_time);
-          commit("setendtime", endtime[0].end_time);
+          var currentsong = response.data.currentsong;
+          console.log("in get currentsong", currentsong);
+          commit("set_currentsong", currentsong);
         })
         .catch(error => {
           console.log(error);
         });
     },
+    //start playing the current audio
     playsong_state({ commit }, info) {
-      axios
-        .get("/api/player/play")
-        .then(response => {
-          let playsong = response.data;
-          console.log("playsong", Object.keys(playsong).length);
-          console.log("inside axios", playsong[i].song);
-          console.log("in song state action ", info);
-          var song = playsong[i].song;
-          commit("startcurrentaudio", { song, info });
-
-          // commit("setplaysong", playsong[i].song);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      console.log("in plaay state", info);
+      commit("startcurrentaudio", info);
     },
     pausesong_state({ commit }) {
-      axios
-        .get("/api/player/pause")
-        .then(response => {
-          let pausesong = response.data;
-          commit("setpausesong", pausesong[i].song);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      commit("setpausesong");
     },
     nextsong_state({ commit }) {
       axios
@@ -208,17 +193,6 @@ export default {
           console.log(error);
         });
     },
-    get_currentsong({ commit }) {
-      axios
-        .get("/api/currentsong")
-        .then(response => {
-          var currentsong = response.data.currentsong;
-          commit("set_currentsong", currentsong);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    },
     advance_progress({ state }) {
       if (state.currentaudio) {
         if (!state.currentaudio.ispaused) {
@@ -238,13 +212,12 @@ export default {
         state.currentaudio.volume = pos;
         state.volumeprogress = pos;
       }
-    },
-    set_currentsong_info({ commit }, info) {
-      commit("set_current_info", info);
     }
   },
   getters: {
-    Get_Currentsong: state => state.currentsong[0],
+    Get_Currentsong: state => {
+      return state.currentsong[0];
+    },
     playicon: state => {
       return state.playicon;
     },
@@ -263,8 +236,6 @@ export default {
     volume: state => {
       return state.volumeprogress;
     },
-    currentsong_info: state => {
-      return state.currentsong_info;
-    }
+    currentsong_info: state => state.currentsong_info
   }
 };

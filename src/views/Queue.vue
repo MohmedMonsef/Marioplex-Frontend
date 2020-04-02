@@ -10,7 +10,7 @@
     <song-component
       v-if="currentSong"
       :song_id="currentSong._id"
-      :index ="1"
+      :index="1"
       :song_artists="currentSong.track.artists"
       :song_name="currentSong.track.name"
       :song_album="currentSong.albumName"
@@ -24,9 +24,9 @@
     </h2>
     <!-- should be q.track._id -->
     <song-component
-      v-for="(q,i) in Queued"
+      v-for="(q, i) in Queued"
       :key="q._id"
-      :index ="i"
+      :index="i"
       :song_id="q._id"
       :song_artists="q.track.artists"
       :song_name="q.track.name"
@@ -41,9 +41,9 @@
     </h2>
     <!-- should be next.track._id -->
     <song-component
-      v-for="(next,i) in NextUp"
+      v-for="(next, i) in NextUp"
       :key="next._id"
-      :index ="i"
+      :index="i"
       :song_id="next._id"
       :song_artists="next.track.artists"
       :song_name="next.track.name"
@@ -86,11 +86,9 @@ import { mapGetters } from "vuex";
 export default {
   name: "Queue",
 
-  beforeCreate()  {
+  beforeCreate() {
     this.$store.dispatch("mediaplayer/get_currentsong");
     this.$store.dispatch("Queue/Queue");
-    
-    
   },
   components: {
     SongComponent

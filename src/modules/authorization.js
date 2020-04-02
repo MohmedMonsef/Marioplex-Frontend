@@ -69,7 +69,7 @@ export default {
         .get("/api/getuser")
         .then(response => {
           const token = localStorage.getItem("x-auth-token");
-          const user = response.data.user;   
+          const user = response.data.user;
           axios.defaults.headers.common["x-auth-token"] = token;
           commit("auth_success", { token, user });
         })
@@ -96,7 +96,7 @@ export default {
           console.log(error);
         });
     },
-   
+
     reset({ commit }, user) {
       axios
         .post("/api/reset", {

@@ -1,36 +1,36 @@
 <template>
-    <div>
-        <div class="card rounded col-lg-20% " testid="playlist card"  @mouseover="hover=true" @mouseleave="hover=false">
-        
-            <img
-                class="card-img-top mx-auto d-block"
-                :src="images"
-                alt="Card image"
-                id="cardimg"
-                testid="album image"
-            />
-            <div class="card-body" id="cardbody" testid="playlist card body">
-                <h4 class="card-title" id="cardtitle" testid="playlist name">
-                    {{ name }}
-                </h4>
-                <p
-                    class="card-text"
-                    id="carddescribtion"
-                    testid="playlist owner"
-                >
-                    {{ 'By '+ owner}}
-                </p>
-                <i v-if="hover" class="fa fa-play-circle"></i>
-                <router-link
-                    :to="{path:'../playlist/'+ playlist_id}"
-                    class="stretched-link"
-                    id="carglink"
-                    testid="playlist card link"
-                ></router-link>
-                     <!-- should navigate to playlist page -->
-            </div>
-        </div>
+  <div>
+    <div
+      class="card rounded col-lg-20% "
+      testid="playlist card"
+      @mouseover="hover = true"
+      @mouseleave="hover = false"
+    >
+      <img
+        class="card-img-top mx-auto d-block"
+        :src="images"
+        alt="Card image"
+        id="cardimg"
+        testid="album image"
+      />
+      <div class="card-body" id="cardbody" testid="playlist card body">
+        <h4 class="card-title" id="cardtitle" testid="playlist name">
+          {{ name }}
+        </h4>
+        <p class="card-text" id="carddescribtion" testid="playlist owner">
+          {{ "By " + owner }}
+        </p>
+        <i v-if="hover" class="fa fa-play-circle"></i>
+        <router-link
+          :to="{ path: '../playlist/' + playlist_id }"
+          class="stretched-link"
+          id="carglink"
+          testid="playlist card link"
+        ></router-link>
+        <!-- should navigate to playlist page -->
+      </div>
     </div>
+  </div>
 </template>
 <style scoped>
 .card {
@@ -54,9 +54,9 @@ h4 {
 p {
   font-size: 14px;
   color: gray;
-   position:absolute;
+  position: absolute;
 }
-i{
+i {
   margin-left: 130px;
   margin-bottom: 20px;
   color: #1db954;
@@ -67,13 +67,13 @@ i{
 <script>
 //import { mapGetters} from "vuex";
 export default {
-   data: function(){
-    return{
-     hover: false
-    }
+  data: function() {
+    return {
+      hover: false
+    };
   },
-    name: "lib-playlists",
-    props: [ "name","images","owner", "playlist_id"],
+  name: "lib-playlists",
+  props: ["name", "images", "owner", "playlist_id"]
   //   mounted() {
   //   this.$store.dispatch("creatplaylist/showplaylists");
   // },
@@ -83,5 +83,5 @@ export default {
   //     playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
   //   })
   // }
-}
+};
 </script>

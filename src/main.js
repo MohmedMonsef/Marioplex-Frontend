@@ -18,7 +18,7 @@ new Server({
           __v: 0,
           albumId: "5e7d93dad82adf07f4121bb0",
           artistId: "5e7d93dad82adf07f4121bb2",
-          artists: ["civil wars", "john", "jasmine"],    
+          artists: ["civil wars", "john", "jasmine"],
           length: "3:33",
           url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
         },
@@ -42,7 +42,7 @@ new Server({
           isLiked: true,
           isPlayable: true,
           isQueue: false,
-          index:2
+          index: 2
         },
         {
           track: {
@@ -58,7 +58,7 @@ new Server({
           isLiked: false,
           isPlayable: false,
           isQueue: false,
-          index:3
+          index: 3
         },
         {
           track: {
@@ -74,7 +74,7 @@ new Server({
           isLiked: true,
           isPlayable: false,
           isQueue: false,
-          index:4
+          index: 4
         },
         {
           track: {
@@ -90,7 +90,7 @@ new Server({
           isLiked: true,
           isPlayable: false,
           isQueue: false,
-          index:5
+          index: 5
         },
         {
           track: {
@@ -106,7 +106,7 @@ new Server({
           isLiked: true,
           isPlayable: false,
           isQueue: false,
-          index:6
+          index: 6
         }
       ],
       popular_playlists: [
@@ -191,7 +191,8 @@ new Server({
           song_name: "Third_Song",
           artist_name: ["Mona", "Nihal"],
           album_image: "../assets/cry.png",
-          song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
+          song:
+            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
           start_time: "0:00",
           end_time: "5:13",
           liked: true
@@ -200,7 +201,8 @@ new Server({
           song_name: "Forth_Song",
           artist_name: ["Dai", "Menna", "Nerdeen"],
           album_image: "../assets/cry.png",
-          song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+          song:
+            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
           start_time: "0:00",
           end_time: "2:60",
           liked: false
@@ -433,7 +435,7 @@ new Server({
               trackid: "5e7d93dad82adf07f4121bb5",
               name: "track2",
               artistId: "5e7d93dad82adf07f4121bb2",
-              artistName:["artist1"],
+              artistName: ["artist1"],
               albumId: "5e7d93dad82adf07f4121baf",
               albumName: "album2"
             },
@@ -502,13 +504,13 @@ new Server({
       console.log("in get", schema.db.Playlists);
       return schema.db.Playlists;
     }),
-    this.delete("/api/playlist/:id", () => {
+      this.delete("/api/playlist/:id", () => {
         let headers = {};
         let data = { errors: ["Server did not respond"] };
 
         return new Response(500, headers, data);
-    }),
-    this.post("/api/playlists", (schema, request) => {
+      }),
+      this.post("/api/playlists", (schema, request) => {
         const cplaylist = JSON.parse(request.requestBody).data;
         console.log(cplaylist.playlistname, "in mirag");
         return new Response(
@@ -516,7 +518,7 @@ new Server({
           {},
           { Playlists: schema.db.Playlists.insert(cplaylist) }
         );
-    });
+      });
 
     //authentication requests
     this.put("/api/signup", (schema, request) => {
@@ -569,7 +571,7 @@ new Server({
     this.post("/api/logout", () => {
       return new Response(200);
     });
-//albums
+    //albums
     this.get("/api/me/albums", schema => {
       return schema.db.user_albums;
     });
@@ -580,14 +582,14 @@ new Server({
     // this.get("/api/users", (schema)=>{
     //   return schema.db.user_play_lists
     // });
-//albums
+    //albums
     this.get("/api/me/like", schema => {
       return schema.db.songs;
     });
     this.get("/api/me/unlike", schema => {
       return schema.db.songs;
     });
-///////////////////////////////////////////////////queue requests
+    ///////////////////////////////////////////////////queue requests
     this.get("/api/currentsong", schema => {
       return new Response(200, {}, { currentsong: schema.db.currentsong });
     });
@@ -597,7 +599,7 @@ new Server({
     this.post("/api/addtoqueue", (schema, request) => {
       const songid = JSON.parse(request.requestBody).data;
       console.log(songid);
-      let song = schema.db.queue.findBy({_id: songid.song_id });
+      let song = schema.db.queue.findBy({ _id: songid.song_id });
       song.isqueue = true;
       song.id = schema.db.queue.length + 1;
       console.log("adding song to queue in mirage", song);
@@ -605,13 +607,20 @@ new Server({
       console.log("queue in mirage", schema.db.queue);
       return new Response(200, {}, { queue: schema.db.queue });
     });
-//////////////////////////////////////////////////Playlists
+    //////////////////////////////////////////////////Playlists
     this.get("/playlists/:playlist_id", (schema, request) => {
       let id = request.params.playlist_id;
-      return schema.db.playlist_info.findBy({ _id: id });
+      return new Response(
+        200,
+        {},
+        { Playlist: schema.db.playlist_info.findBy({ _id: id }) }
+      );
+    });
+    ////////////////////////////////////////////////CreateQueue
+    this.post("/createQueue/:playlist_id/:trackId,null", () => {
+      return new Response(200, {}, { mes: "created with success" });
     });
   }
-  ////////////////////////////////////////////////
 });
 Vue.config.productionTip = false;
 
