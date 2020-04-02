@@ -1,22 +1,34 @@
 <template>
-<router-link  to="/" id="carglink"  testid="album card link">   <!-- should navigate to album page -->
-    <div class="card rounded col-lg-20% " testid="album card" @mouseover="hover=true" @mouseleave="hover=false">
-        <img
-            class="card-img-top mx-auto d-block"
-            :src="images"
-            alt="Card image"
-            id="cardimg"
-            testid="album image"
-            />
-        <div class="card-body" id="cardbody" testid="album card body">
-            <h4 class="card-title" id="cardtitle" testid="album name">
-                {{ name }}
-            </h4>
-            <router-link  class="ard-link artistlink" to="/HomeWebPlayer" testid="artist page link"> {{ artistname }}  </router-link>
-            <i v-if="hover" class="fa fa-play-circle"></i>
+    <router-link  
+        to="/" 
+        id="carglink"  
+        testid="album card link"
+    >   <!-- should navigate to album page -->
+        <div 
+            class="card rounded col-lg-20% " 
+            testid="album card" 
+            @mouseover="hover=true" @mouseleave="hover=false"
+        >
+            <img
+                class="card-img-top mx-auto d-block"
+                :src="images"
+                alt="Card image"
+                id="cardimg"
+                testid="album image"
+                />
+            <div class="card-body" id="cardbody" testid="album card body">
+                <h4 class="card-title" id="cardtitle" testid="album name">
+                    {{ name }}
+                </h4>
+                <router-link  
+                    class="ard-link artistlink" 
+                    to="/HomeWebPlayer" 
+                    testid="artist page link"> {{ artistname }}  
+                </router-link>
+                <i v-if="hover" class="fa fa-play-circle" testid="album play icon"></i>
+            </div>
         </div>
-    </div>
-</router-link>
+    </router-link>
 </template>
 
 <style scoped>

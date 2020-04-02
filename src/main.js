@@ -208,297 +208,377 @@ new Server({
           liked: false
         }
       ],
-      category: [
-        {
-          name: "pop",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "/",
-          playlist: []
-        },
-        {
-          name: "roke",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "rab",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "sad",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "happy",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "pop",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "roke",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "rab",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "sad",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          href: "",
-          playlist: []
-        },
-        {
-          name: "happy",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          playlist: []
-        }
-      ],
-      artist: [
-        {
-          name: "akram",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          type: "artist"
-        },
-        {
-          name: "tamer",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          href: "",
-          type: "artist"
-        },
-        {
-          name: "eslam",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          type: "artist"
-        },
-        {
-          name: "ali",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          href: "",
-          type: "artist"
-        },
-        {
-          name: "amr",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          type: "artist"
-        },
-        {
-          name: "ahmed",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          href: "",
-          type: "artist"
-        }
-      ],
-      user_albums: [
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "album name1",
-          artist: {
-            name: "artist name1"
-          }
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-          name: "album name2",
-          artist: {
-            name: "artist name2"
-          }
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          name: "album name3",
-          artist: {
-            name: "artist name3"
-          }
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "album name4",
-          artist: {
-            name: "artist name4"
-          }
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "album name5",
-          artist: {
-            name: "artist name5"
-          }
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "album name6",
-          artist: {
-            name: "artist name6"
-          }
-        }
-      ],
-      user_artists: [
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "artist name1"
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-          name: "artist name2"
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-          name: "artist name3"
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "artist name4"
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "artist name5"
-        },
-        {
-          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-          name: "artist name6"
-        }
-      ],
-      playlist_info: [
-        {
-          _id: "5e7d93dad82adf07f4121bac",
-          type: "playlist",
-          name: "dhjgjdjdjg",
-          ownerId: "5e7d9045854b0419f4f409b7",
-          collaborative: false,
-          isPublic: true,
-          images: [],
-          tracks: [
-            {
-              trackid: "5e7d93dad82adf07f4121bb5",
-              name: "track2",
-              artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
-              albumId: "5e7d93dad82adf07f4121baf",
-              albumName: "album2"
-            },
-            {
-              trackid: "5e7d93dad82adf07f4121bb7",
-              name: "track4",
-              artistId: "5e7d93dad82adf07f4121bb3",
-              artistName: ["artist4"],
+            category: [
+                {
+                    name: "pop",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "/",
+                    playlist: []
+                },
+                {
+                    name: "roke",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "rab",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "sad",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "happy",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "pop",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "roke",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "rab",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "sad",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    playlist: []
+                },
+                {
+                    name: "happy",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    playlist: []
+                }
+            ],
+            artist: [
+                {
+                    name: "akram",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "tamer",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "eslam",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "ali",
+                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "amr",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "ahmed",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
+                }
+            ],
+            user_albums: [
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name1",
+                    artist: {
+                        name: "artist name1"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+                    name: "album name2",
+                    artist: {
+                        name: "artist name2"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    name: "album name3",
+                    artist: {
+                        name: "artist name3"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name4",
+                    artist: {
+                        name: "artist name4"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name5",
+                    artist: {
+                        name: "artist name5"
+                    }
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "album name6",
+                    artist: {
+                        name: "artist name6"
+                    }
+                }
+            ],
+            user_artists: [
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name1"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+                    name: "artist name2"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    name: "artist name3"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name4"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name5"
+                },
+                {
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "artist name6"
+                }
+            ],
+            playlist_info: [
+              {
+                  "_id": "5e7d93dad82adf07f4121bac",
+                  "type": "playlist",
+                  "name": "dhjgjdjdjg",
+                  "ownerId": "5e7d9045854b0419f4f409b7",
+                  "collaborative": false,
+                  "isPublic": true,
+                  "images": [],
+                  "tracks": [
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb5",
+                          "name": "track2",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": ["artist1"],
+                          "albumId": "5e7d93dad82adf07f4121baf",
+                          "albumName": "album2"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb7",
+                          "name": "track4",
+                          "artistId": "5e7d93dad82adf07f4121bb3",
+                          "artistName": ["artist4"],
+                          "albumId": "5e7d93dad82adf07f4121bb1",
+                          "albumName": "album4"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb6",
+                          "name": "track3",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": ["artist1"],
+                          "albumId": "5e7d93dad82adf07f4121bb0",
+                          "albumName": "album3"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb4",
+                          "name": "track1",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": ["artist1"],
+                          "albumId": "5e7d93dad82adf07f4121bae",
+                          "albumName": "album1"
+                      }
+                  ]
+              },
+               {
+                  "_id": "5e7d93dad82adf0ksksksksksksksk",
+                  "type": "playlist",
+                  "name": "dhjgjdjdjg",
+                  "ownerId": "5e7d9045854b0419f4f409b7",
+                  "collaborative": false,
+                  "isPublic": true,
+                  "images": [],
+                  "tracks": [
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb5",
+                          "name": "track2",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": "artist1",
+                          "albumId": "5e7d93dad82adf07f4121baf",
+                          "albumName": "album2"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb7",
+                          "name": "track4",
+                          "artistId": "5e7d93dad82adf07f4121bb3",
+                          "artistName": "artist4",
+                          "albumId": "5e7d93dad82adf07f4121bb1",
+                          "albumName": "album4"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb6",
+                          "name": "track3",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": "artist1",
+                          "albumId": "5e7d93dad82adf07f4121bb0",
+                          "albumName": "album3"
+                      },
+                      {
+                          "trackid": "5e7d93dad82adf07f4121bb4",
+                          "name": "track1",
+                          "artistId": "5e7d93dad82adf07f4121bb2",
+                          "artistName": "artist1",
+                          "albumId": "5e7d93dad82adf07f4121bae",
+                          "albumName": "album1"
+                      }
+                  ],
+                  
+              }
+          ],
+          nextsong: {
+            track: {
+              name: "You are my x",
+              __v: 0,
               albumId: "5e7d93dad82adf07f4121bb1",
-              albumName: "album4"
+              artistId: "5e7d93dad82adf07f4121bb2",
+              artists: ["civil wars", "john", "jasmine"],
+              length: "3:33",
+              url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+            },
+            _id: "5e7d93dad82adf07f4121bb7",
+            albumName: "Barton Hallow",
+            isLiked: true,
+            isPlayable: true
+          },
+          prevsong: {
+            track: {
+              name: "You are my y",
+              __v: 0,
+              albumId: "5e7d93dad82adf07f4121baf",
+              artistId: "5e7d93dad82adf07f4121bb2",
+              artists: ["civil wars", "john", "jasmine"],
+              length: "3:33",
+              url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+            },
+            _id: "5e7d93dad82adf07f4121bb5",
+            albumName: "Barton Hallow",
+            isLiked: true,
+            isPlayable: true
+          },
+          user_songs: [
+            {
+              name: "ya sattar",
+              artist: {
+                name: "Hamaki"
+              }
             },
             {
-              trackid: "5e7d93dad82adf07f4121bb6",
-              name: "track3",
-              artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
-              albumId: "5e7d93dad82adf07f4121bb0",
-              albumName: "album3"
+              name: "nour el3en",
+              artist: {
+                name: "Amr Diab"
+              }
             },
             {
-              trackid: "5e7d93dad82adf07f4121bb4",
-              name: "track1",
-              artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
-              albumId: "5e7d93dad82adf07f4121bae",
-              albumName: "album1"
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            }
+          ],
+          Artist_Songs: [
+            {
+              URL: "",
+              Name: "",
+              TrackNumber: "",
+              PreviewURL: "",
+              AvailableMarket: ""
             }
           ]
-        },
-        {
-          _id: "5e7d93dad82adf0ksksksksksksksk",
-          type: "playlist",
-          name: "dhjgjdjdjg",
-          ownerId: "5e7d9045854b0419f4f409b7",
-          collaborative: false,
-          isPublic: true,
-          images: [],
-          tracks: [
-            {
-              trackid: "5e7d93dad82adf07f4121bb5",
-              name: "track2",
-              artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
-              albumId: "5e7d93dad82adf07f4121baf",
-              albumName: "album2"
-            },
-            {
-              trackid: "5e7d93dad82adf07f4121bb7",
-              name: "track4",
-              artistId: "5e7d93dad82adf07f4121bb3",
-              artistName: ["artist4"],
-              albumId: "5e7d93dad82adf07f4121bb1",
-              albumName: "album4"
-            },
-            {
-              trackid: "5e7d93dad82adf07f4121bb6",
-              name: "track3",
-              artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
-              albumId: "5e7d93dad82adf07f4121bb0",
-              albumName: "album3"
-            },
-            {
-              trackid: "5e7d93dad82adf07f4121bb4",
-              name: "track1",
-              artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
-              albumId: "5e7d93dad82adf07f4121bae",
-              albumName: "album1"
-            }
-          ]
-        }
-      ],
-      nextsong: {
-        track: {
-          name: "You are my x",
-          __v: 0,
-          albumId: "5e7d93dad82adf07f4121bb1",
-          artistId: "5e7d93dad82adf07f4121bb2",
-          artists: ["civil wars", "john", "jasmine"],
-          length: "3:33",
-          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        },
-        _id: "5e7d93dad82adf07f4121bb7",
-        albumName: "Barton Hallow",
-        isLiked: true,
-        isPlayable: true
-      },
-      prevsong: {
-        track: {
-          name: "You are my y",
-          __v: 0,
-          albumId: "5e7d93dad82adf07f4121baf",
-          artistId: "5e7d93dad82adf07f4121bb2",
-          artists: ["civil wars", "john", "jasmine"],
-          length: "3:33",
-          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-        },
-        _id: "5e7d93dad82adf07f4121bb5",
-        albumName: "Barton Hallow",
-        isLiked: true,
-        isPlayable: true
-      },
-    });
-  },
-  routes() {
+        });
+    },
+    routes() {
+        // this.get("/api/users", (schema, request)=>{
+        //   const user =JSON.parse(request.requestBody).data;
+        //   return new Response(
+        //     201,
+        //     {token:'dai'},
+        //     {user: schema.db.user_play_lists.findBy({name: user.name})}
+        //   )
+
+    // }
+    // );
+
+    // this.get("/api/users", (schema)=>{
+    //   return schema.db.user_play_lists
+    // });
     this.get("/api/artist/:id", schema => {
       return schema.db.artist;
     });
@@ -534,12 +614,120 @@ new Server({
       console.log("in get", schema.db.Playlists);
       return schema.db.Playlists;
     }),
-      this.delete("/api/playlist/:id", () => {
-        let headers = {};
-        let data = { errors: ["Server did not respond"] };
-
-        return new Response(500, headers, data);
+      this.delete("/api/playlist/:id", (schema, request) => {
+        let id = request.params.id;
+        return schema.db.Playlists.remove(id);
       }),
+      this.post("/api/playlists", (schema, request) => {
+        const cplaylist = JSON.parse(request.requestBody).data;
+        console.log(cplaylist.playlistname, "in mirag");
+        return new Response(
+          200,
+          {},
+          { Playlists: schema.db.Playlists.insert(cplaylist) }
+        );
+      });
+    this.post("/api/signup", (schema, request) => {
+      const user = JSON.parse(request.requestBody).data;
+      if (schema.db.users.findBy({ email: user.email }) == null) {
+        return new Response(
+          201,
+          {
+            token: "menna"
+          },
+          schema.db.users.insert({
+            username: user.username,
+            email: user.email,
+            password: user.password
+          })
+        );
+      } else {
+        return new Response(403, { error: "email not unique" });
+      }
+    });
+    this.post("/api/login", (schema, request) => {
+      const user = JSON.parse(request.requestBody).data;
+      if (
+        schema.db.users.findBy({ email: user.email }) != null &&
+        schema.db.users.findBy({ password: user.password }) != null
+      ) {
+        console.log("in main", schema.db.users.findBy({ email: user.email }));
+        return new Response(
+          201,
+          { token: "menna" },
+          { user: schema.db.users.findBy({ email: user.email }) }
+        );
+      } else {
+        return new Response(403, { error: "no user with such data" });
+      }
+    });
+    this.post("/api/reset", () => {
+      return new Response(200);
+    });
+    this.post("/api/logout", () => {
+      return new Response(200);
+    });
+    this.get("/api/me/albums", schema => {
+      return schema.db.user_albums;
+    });
+    this.get("/api/me/following", schema => {
+      return schema.db.user_artists;
+    });
+    this.get("/api/me/tracks", schema => {
+      return schema.db.user_songs;
+    });
+    this.get("/api/me/like", schema => {
+      return schema.db.songs;
+    });
+    this.get("/api/me/unlike", schema => {
+      return schema.db.songs;
+    });
+    this.post("/api/uploadsong", (schema, request) => {
+      const uploadedsong = JSON.parse(request.requestBody).data;
+      console.log(uploadedsong, "in mirag");
+      return schema.db.Artist_Songs.insert({
+        URL: uploadedsong.URL,
+        Name: uploadedsong.Name,
+        TrackNumber: uploadedsong.TrackNumber,
+        PreviewURL: uploadedsong.PreviewURL,
+        AvailableMarket: uploadedsong.AvailableMarket
+      });
+    });
+    this.put("/api/claimartist", (schema, request) => {
+      const claimartist = JSON.parse(request.requestBody).data;
+      console.log(claimartist.Name, "in mirage");
+      console.log("artist id", claimartist.id);
+      /* return  schema.db.users.update(
+              { Name:claimartist.Name,
+              Genre:claimartist.Genre,
+              Description:claimartist.Description}
+              
+          )*/
+
+      return new Response(
+        200,
+        {},
+        schema.db.users.update({
+          Name: claimartist.Name,
+          Genre: claimartist.Genre,
+          Description: claimartist.Description
+        })
+      );
+      /* schema.db.users.update(
+          { Name:claimartist.Name,
+          Genre:claimartist.Genre,
+          Description:claimartist.Description}
+          
+      )
+        return new Response(200,{ token: "menna"},{user:schema.db.users.where({Name:claimartist.Name})})*/
+    });
+    this.delete("/api/song/:id", (schema, request) => {
+        let id = request.params.id;
+        return schema.db.Artist_Songs.remove(id);
+     // let headers = {};
+     // let data = { errors: ["Server did not respond"] };
+     // return new Response(500, headers, data);
+    });
       this.post("/api/playlists", (schema, request) => {
         const cplaylist = JSON.parse(request.requestBody).data;
         console.log(cplaylist.playlistname, "in mirag");
@@ -620,6 +808,8 @@ new Server({
       return schema.db.songs;
     });
     ///////////////////////////////////////////////////queue requests
+      
+            //queue requests
     this.get("/api/currentsong", schema => {
       return new Response(200, {}, { currentsong: schema.db.currentsong });
     });

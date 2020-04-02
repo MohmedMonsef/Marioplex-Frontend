@@ -13,6 +13,10 @@ import LibraryPlaylists from "../views/library-playlists.vue";
 import LibraryArtists from "../views/library-artists.vue";
 import LibraryAlbums from "../views/library-albums.vue";
 import Queue from "../views/Queue.vue";
+import ForArtist from "../views/ForArtist.vue";
+import AccessArtist from "../views/AccessArtist";
+import ClaimArtist from "../views/ClaimArtist";
+import ArtistPersonalPage from "../views/ArtistPersonalPage"
 import playlist from "../views/playlist_view.vue";
 
 Vue.use(VueRouter);
@@ -72,7 +76,27 @@ const routes = [
         path: "/ForgetPassword",
         name: "ForgetPassword",
         component: ForgetPassword
-    }
+    },
+    {
+      path: "/ForArtist",
+      name: "ForArtist",
+      component: ForArtist
+    },
+    {
+      path: "/ClaimArtist",
+      name: "ClaimArtist",
+      component: ClaimArtist
+    },
+    {
+      path: "/AccessArtist",
+      name: "AccessArtist",
+      component: AccessArtist
+    },
+    {
+      path: "/ArtistPersonalPage",
+      name: "ArtistPersonalPage",
+      component: ArtistPersonalPage
+    },
 ];
 
 const router = new VueRouter({

@@ -9,21 +9,25 @@ import Queue from "../modules/queue";
 import categorys from "../modules/categorys";
 import Search from "../modules/Search";
 import userlibrary from "../modules/userlibrary";
+import uploadsong from "../modules/uploadsong";
+import claimartistprofile from "../modules/claimartistprofile"
 import playlist from "../modules/playlist";
-
+//export const  bus = new Vue();
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: {
-    ShowWebPlayer,
-    creatplaylist,
-    deleteplaylist,
-    authorization,
-    mediaplayer,
-    Queue,
-    categorys,
-    Search,
-    userlibrary,
-    playlist
-  }
+    modules: {
+        ShowWebPlayer,
+        creatplaylist,
+        deleteplaylist,
+        authorization,
+        mediaplayer,
+        Queue,
+        categorys,
+        Search,
+        userlibrary,
+        uploadsong,
+        claimartistprofile,
+        playlist
+    }
 });

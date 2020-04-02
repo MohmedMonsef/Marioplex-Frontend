@@ -4,7 +4,8 @@ export default {
   namespaced: true,
   state: {
     user_albums: [],
-    user_artists:[]
+    user_artists:[],
+    user_songs:[]
   },
   mutations: {
     setUserAlbums(state, albums) {
@@ -12,7 +13,10 @@ export default {
     },
     setUserArtists(state, artists) {
       state.user_artists = artists;
-    }
+    },
+    setUserSongs(state, songs) {
+      state.user_songs = songs;
+    },
   },
   actions: {
     showUserAlbums({ commit }) {
@@ -31,8 +35,18 @@ export default {
         .get("/api/me/following")
         .then(response => {
           let artists = response.data;
-          console.log("in module dai")
           commit("setUserArtists", artists);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    showUserSongs({ commit }) {
+      axios
+        .get("/api/me/tracks")
+        .then(response => {
+          let songs = response.data;
+          commit("setUserSongs", songs);
         })
         .catch(error => {
           console.log(error);
@@ -43,5 +57,6 @@ export default {
   getters: {
     albums: state => state.user_albums,
     artists: state => state.user_artists,
+    songs: state => state.user_songs
   }
 };
