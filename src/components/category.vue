@@ -40,6 +40,6 @@ h4 {
 <script>
 export default {
   name: "category",
-  props: ["image", "name", "link", "playlists"]
+  props: ["image", "name","categoryId"]
 };
 </script>

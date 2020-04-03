@@ -6,8 +6,7 @@ export default {
         showModalDelete: false,
         showModal: false, 
         todelete:0,      
-        Playlists: [],
-        loadingplaylists:false
+        Playlists: []
     },
     getters: {
         showModal: state => {
@@ -20,8 +19,7 @@ export default {
            // console.log("in getters")
             return state.showModalDelete;
         },
-        playlists: state => state.Playlists,
-        loadingplaylists: state => state.loadingplaylists,
+        playlists: state => state.Playlists
     },
     mutations: {
         toggleModal(state) {
@@ -35,6 +33,8 @@ export default {
 
         CreatePlaylist(state, playlists) {
             state.Playlists.push(
+                //id: id,
+                // playlistname: i
                 playlists
             );
             console.log("nori");
@@ -42,9 +42,6 @@ export default {
         setUserPlaylist(state, playlists) {
             state.Playlists = playlists;
         },
-        set_loading_playlists(state, status) {
-            state.loadingplaylists = status;
-          },
        // DeletePlaylist(state, id) {
           //  state.Playlists.splice(id, 1);
          // }
@@ -74,14 +71,12 @@ export default {
                 });
         },
         showplaylists({ commit }) {
-            commit("set_loading_playlists", false);
             axios
-                .get("/api/playlists")
+                .get("/api/me/playlists")
                 .then(response => {
                     let playlists = response.data;
                     console.log("test function", playlists);
                     commit("setUserPlaylist", playlists);
-                    commit("set_loading_playlists", true);
                 })
                 .catch(error => {
                     console.log(error);

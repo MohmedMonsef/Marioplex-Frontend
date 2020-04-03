@@ -7,7 +7,7 @@
     >
         <div class="inline-div" v-bind:id="rawId | shorten">
             <span v-for="song in songs1" :key="song.id">
-                <span testid="artist name">{{song.artist.name +' '}} </span>
+                <span testid="artist name">{{song.artistName +' '}} </span>
                 <span testid="song name" class="songname"> {{song.name + ' '}} </span>
                 <span class="dot">.</span> 
             </span>

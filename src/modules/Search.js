@@ -1,13 +1,7 @@
 import axios from "axios";
 export default {
     namespaced: true,
-    state: { 
-        topres: [],
-        result: [],
-        type: "artist",
-        albumres: [],
-         playlistres: []
-    },
+    state: { topres: [], result: [], albumres: [], playlistres: [] },
     mutations: {
         settopres(state, match_valuet) {
             state.topres = match_valuet;
@@ -23,54 +17,47 @@ export default {
         }
     },
     actions: {
-        searchaboutartist({ commit }) {
-            /* searchaboutartist({ commit }, search_value) {
-             const requestOne = axios.get(
-                `/search?type="top&name=${search_value}"`
-            );
-            const requestTwo = axios.get(
-                `/search?type=artist&name=${search_value}`
-            );
-            const requestThree = axios.get(
-                `/search?type=album&name=${search_value}`
-            );
-            const requestfour = axios.get(
-                `/search?type=playlisname&name=${search_value}`
-            );
-*/
-            const requestOne = axios.get("/search/top");
-            const requestTwo = axios.get("/search/artist");
-            const requestThree = axios.get("/search/album");
-            const requestfour = axios.get("/search/playlist");
+        searchaboutartist({ commit }, search_value) {
+        const requestOne = axios.get(
+           "/api/search?name="+search_value+"&type=top"
+       ); 
+       const requestTwo = axios.get(
+           "/api/search?name="+search_value+"&type=artist"
+       );
+       const requestThree = axios.get(
+           "/api/search?name="+search_value+"&type=album"
+       );
+       const requestfour = axios.get(
+           "/api/search?name="+search_value+"&type=playlist"
+       ); 
+      
 
-            axios
-                .all([requestOne, requestTwo, requestThree, requestfour])
-                .then(
-                    axios.spread((...responses) => {
-                        const match_valuet = responses[0].data;
-                        const match_value = responses[1].data;
-                        const match_valuea = responses[2].data;
-                        const match_valuep = responses[3].data;
+       axios
+           .all([ requestTwo, requestThree, requestfour,requestOne])
+           .then(
+               axios.spread((...responses) => {
+                   const match_value = responses[0].data.artist;
+                   const match_valuea = responses[1].data.album;
+                   const match_valuep = responses[2].data.playlist;
+                   const match_valuet = [responses[3].data.top];
 
-                        // use/access the results
-                        console.log(
-                            match_valuet,
-                            match_value,
-                            match_valuea,
-                            match_valuep
-                        );
-                        ///
-                        commit("settopres", match_valuet);
-                        commit("setresult", match_value);
-                        commit("setalbumres", match_valuea);
-                        commit("setplaylistres", match_valuep);
-                    })
-                )
-                .catch(errors => {
-                    // react on errors.
-                    console.error(errors);
-                });
-        }
+                   // use/access the results
+                   console.log(
+                       match_valuet
+                   );
+                   ///
+        
+                   commit("settopres", match_valuet);
+                   commit("setresult", match_value);
+                   commit("setalbumres", match_valuea);
+                   commit("setplaylistres", match_valuep);
+               })
+           )
+           .catch(errors => {
+               // react on errors.
+               console.error(errors);
+           });
+   }
     },
     getters: {
         gettopres(state) {

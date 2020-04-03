@@ -26,27 +26,28 @@ export default {
     logout(state) {
       state.status = "";
       state.token = "";
-      state.User = {};
+      state.User={};
     },
-    ClaimArtistProfile(state, payload) {
-      state.User.update({
-        Name: payload.Name,
-        Genre: payload.Genre,
-        Description: payload.Description
+    ClaimArtistProfile(state,payload){
+        state.User.update({
+          Name:payload.Name,
+        Genre:payload.Genre,
+        Description:payload.Description
       });
       //state.User +=payload
-      console.log("nori", payload.Name);
-    }
+      console.log('nori',payload.Name)
+      
+  }
   },
   actions: {
     signUp({ commit }, user) {
       commit("auth_request");
       axios
-        .post("/api/signup", {
-          data: user
+        .post("api/signup", {
+           user
         })
         .then(response => {
-          const token = response.headers.token;
+          const token = response.data.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("authorization/get_user");
@@ -61,11 +62,10 @@ export default {
     facebook_signUp({ commit }) {
       commit("auth_request");
       axios
-        .post("/auth/facebook")
+        .post("api/auth/facebook")
         .then(response => {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
-          axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("authorization/get_user");
         })
         .catch(error => {
@@ -75,13 +75,14 @@ export default {
         });
     },
     get_user({ commit }) {
+      const token =  localStorage.getItem("x-auth-token");
+      axios.defaults.headers.common["x-auth-token"] = token;
       commit("auth_request");
       axios
-        .get("/api/getuser")
+        .get("api/me")
         .then(response => {
-          const token = localStorage.getItem("x-auth-token");
-          const user = response.data.user;
-          axios.defaults.headers.common["x-auth-token"] = token;
+          const user = response.data[0];
+          console.log(user);
           commit("auth_success", { token, user });
         })
         .catch(error => {
@@ -93,16 +94,19 @@ export default {
     login({ commit }, user) {
       commit("auth_request");
       axios
-        .post("/api/login", {
-          data: user
+        .post("http://localhost:3000/api/login", {
+           email:user.email,
+           password:user.password
         })
         .then(response => {
-          const token = response.headers.token;
+          console.log(response.data.token);
+          const token = response.data.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("authorization/get_user");
         })
         .catch(error => {
+          console.log(error);
           commit("auth_error", error);
           localStorage.removeItem("x-auth-token");
           console.log(error);
@@ -111,8 +115,8 @@ export default {
 
     reset({ commit }, user) {
       axios
-        .post("/api/reset", {
-          data: user
+        .post("api/login/forgetpassword", {
+          email:user.email
         })
         .then(() => {
           commit("logout");
@@ -127,7 +131,7 @@ export default {
     logout({ commit }) {
       commit("auth_request");
       axios
-        .post("/api/logout", () => {})
+        .post("api/logout", () => {})
         .then(() => {
           commit("logout");
           localStorage.removeItem("x-auth-token");
@@ -139,19 +143,18 @@ export default {
           localStorage.removeItem("x-auth-token");
         });
     },
-    ClaimArtistProfile({ commit }, payload) {
+    ClaimArtistProfile({commit},payload){
       console.log("wslllllll", payload);
-      axios
-        .put("/api/claimartist", { data: payload })
-        .then(response => {
+      axios.put("/api/claimartist",{data:payload})
+      .then(response=>{
           const claim = response.data;
-          console.log("wsl", claim);
-          commit("ClaimArtistProfile", claim);
-        })
-        .catch(error => {
+        console.log("wsl", claim);
+        commit("ClaimArtistProfile", claim);
+      })
+      .catch(error => {
           console.log(error);
         });
-    }
+  }
   },
   getters: {
     Username: state => state.User.username,

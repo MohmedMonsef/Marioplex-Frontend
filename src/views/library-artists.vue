@@ -1,6 +1,6 @@
 <template>
   <div>
-     <div class="loading" v-if="!loadingartists">
+    <div class="loading" v-if="!loadingartists">
       <i class="fa fa-spinner fa-spin"></i>
       </div>
       <div v-if="loadingartists">
@@ -12,15 +12,16 @@
           v-for="artist in artists1"
           :key="artist.id"
           :images="artist.images"
-          :name="artist.name"
+          :name="artist.Name"
+          :artistId="artist._id"
         />
       </div>
     </div>
-      </div>
+  </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss"scoped>
 .loading{
   display: flex;
   justify-content: center;
@@ -60,7 +61,7 @@ export default {
     ...mapGetters({
       // map `this.artists1` to `this.$store.getters.artists`
       artists1: "userlibrary/artists",
-      loadingartists: "userlibrary/loadingartists"
+       loadingartists: "userlibrary/loadingartists"
     })
   }
 };

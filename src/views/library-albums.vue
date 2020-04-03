@@ -4,16 +4,16 @@
       <i class="fa fa-spinner fa-spin"></i>
       </div>
       <div v-if="loadingalbums">
-    <lib-albums-default v-if="albums1.length == 0" />
-    <h2 v-if="albums1.length">Albums</h2>
+    <lib-artists-default v-if="artists1.length == 0" />
+    <h2 v-if="artists1.length">Artists</h2>
     <div class="container">
       <div class="row">
-        <lib-albums
-          v-for="album in albums1"
-          :key="album.id"
-          :images="album.images"
-          :name="album.name"
-          :artistname="album.artist.name"
+        <lib-artists
+          v-for="artist in artists1"
+          :key="artist.id"
+          :images="artist.images"
+          :name="artist.Name"
+          :artistId="artist._id"
         />
       </div>
     </div>
@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 .loading{
   display: flex;
   justify-content: center;
@@ -45,23 +45,23 @@ h2 {
 </style>
 
 <script>
-import LibAlbumsDefault from "@/components/lib-albums-default.vue";
-import LibAlbums from "@/components/lib-albums.vue";
+import LibArtistsDefault from "@/components/lib-artists-default.vue";
+import LibArtists from "@/components/lib-artists.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: "library-albums",
+  name: "library-artists",
   components: {
-    LibAlbumsDefault,
-    LibAlbums
+    LibArtistsDefault,
+    LibArtists
   },
   mounted() {
-    this.$store.dispatch("userlibrary/showUserAlbums");
+    this.$store.dispatch("userlibrary/showUserArtists");
   },
   computed: {
     ...mapGetters({
-      // map `this.albums1` to `this.$store.getters.albums`
-      albums1: "userlibrary/albums",
-      loadingalbums: "userlibrary/loadingalbums"
+      // map `this.artists1` to `this.$store.getters.artists`
+      artists1: "userlibrary/artists",
+       loadingalbums: "userlibrary/loadingalbums"
     })
   }
 };

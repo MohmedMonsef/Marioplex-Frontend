@@ -37,6 +37,6 @@ h2 {
 <script>
 export default {
   name: "top",
-  props: ["image", "name", "type", "isartist","artist_id"]
+  props: ["image", "name", "type","artistId","artistName","albumId","playlist_id","track_id","ownerId","ownerName","Id"]
 };
 </script>

@@ -72,6 +72,6 @@ export default {
     }
   },
     name: "lib-artists",
-    props: ["images", "name"]
+    props: ["images", "name","artistId"]
 }
 </script>

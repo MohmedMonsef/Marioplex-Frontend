@@ -168,7 +168,6 @@
   padding: 20px;
   height: 250px;
 }
-
 *:focus {
   outline: none;
 }
@@ -191,14 +190,12 @@
   width: 40px;
   background-color: rgba(0, 0, 0, 0.76);
 }
-
 ::-webkit-scrollbar-button:vertical:increment {
   height: 40px;
   background-image: url(/Images/Scrollbar/decrement.png);
   background-size: 39px 30px;
   background-repeat: no-repeat;
 }
-
 ::-webkit-scrollbar-button:vertical:decrement {
   height: 40px;
   background-image: url(/Images/Scrollbar/increment.png);
@@ -250,7 +247,6 @@ h2 {
     width: 10%;
   }
 }
-
 .search_contaner {
   padding-left: 15px;
   padding-right: 20px;
@@ -322,4 +318,3 @@ export default {
   }
 };
 </script>
-
