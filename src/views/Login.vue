@@ -202,7 +202,7 @@ export default {
       this.req_password;
 
       console.log("in log");
-         setTimeout(() => {
+      setTimeout(() => {
         if (this.can_submit) {
           let user = {
             email: this.email,
@@ -211,17 +211,16 @@ export default {
           this.$store
             .dispatch("authorization/login", user)
             .then(() => {
-               ///
-              setTimeout(()=>{
-        
+              ///
+              setTimeout(() => {
                 var status = this.isLoggedIn;
                 if (status == "success") {
-                  console.log("finally succeeded")
+                  console.log("finally succeeded");
                   this.$router.push("/");
                 } else if (status == "error") {
-                   console.log("errror")
+                  console.log("errror");
                 }
-                 },1000);
+              }, 1000);
               ////////
             })
             .catch(err => console.log(err));

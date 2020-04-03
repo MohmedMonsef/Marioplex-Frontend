@@ -1,7 +1,13 @@
 import axios from "axios";
 export default {
     namespaced: true,
-    state: { topres: [], result: [], albumres: [], playlistres: [] },
+    state: {
+        topres: [],
+        result: [],
+        albumres: [],
+        playlistres: [],
+        load: false
+    },
     mutations: {
         settopres(state, match_valuet) {
             state.topres = match_valuet;
@@ -14,11 +20,14 @@ export default {
         },
         setplaylistres(state, match_valuep) {
             state.playlistres = match_valuep;
+        },
+        set_load(state, status) {
+            state.load = status;
         }
     },
     actions: {
         searchaboutartist({ commit }) {
-        /* when integrate with back
+            /* when integrate with back
             searchaboutartist({ commit }, search_value) {
              const requestOne = axios.get(
                 "/api/search?name=" + search_value + "&type=top"
@@ -33,7 +42,7 @@ export default {
                 "/api/search?name=" + search_value + "&type=playlist"
             );
 */
-
+            commit("set_load", false);
             const requestOne = axios.get("/api/search/top");
             const requestTwo = axios.get("/api/search/artist");
             const requestThree = axios.get("/api/search/album");
@@ -55,6 +64,7 @@ export default {
                         commit("setresult", match_value);
                         commit("setalbumres", match_valuea);
                         commit("setplaylistres", match_valuep);
+                        commit("set_load", true);
                     })
                 )
                 .catch(errors => {
@@ -75,6 +85,7 @@ export default {
         },
         getplaylistsres(state) {
             return state.playlistres;
-        }
+        },
+        loadingsearch: state => state.load
     }
 };

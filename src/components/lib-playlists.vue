@@ -3,8 +3,8 @@
     <div
       class="card rounded col-lg-20%"
       testid="playlist card"
-      @mouseover="hover=true"
-      @mouseleave="hover=false"
+      @mouseover="hover = true"
+      @mouseleave="hover = false"
     >
       <img
         class="card-img-top mx-auto d-block"
@@ -15,10 +15,10 @@
       />
       <div class="card-body" id="cardbody" testid="playlist card body">
         <h4 class="card-title" id="cardtitle" testid="playlist name">{{ name }}</h4>
-        <p class="card-text" id="carddescribtion" testid="playlist owner">{{ 'By '+ owner}}</p>
-        <i v-if="hover" class="fa fa-play-circle" testid="playlist play icon"></i>
+        <p class="card-text" id="carddescribtion" testid="playlist owner">{{ "By " + owner }}</p>
+        <i v-if="hover" class="fa fa-play-circle"></i>
         <router-link
-          :to="{path:'../playlist/'+ playlist_id}"
+          :to="{ path: '../playlist/' + playlist_id }"
           class="stretched-link"
           id="carglink"
           testid="playlist card link"
@@ -69,7 +69,7 @@ export default {
     };
   },
   name: "lib-playlists",
-  props: ["name", "images", "owner", "playlist_id", "ownerName"]
+  props: ["name", "images", "ownerId", "playlist_id", "owner"]
   //   mounted() {
   //   this.$store.dispatch("creatplaylist/showplaylists");
   // },

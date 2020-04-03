@@ -1,5 +1,10 @@
 <template>
-  <div class="card rounded col-lg-20% " testid="popularplaylist card" @mouseover="hover=true" @mouseleave="hover=false">
+  <div
+    class="card rounded col-lg-20% "
+    testid="popularplaylist card"
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+  >
     <img
       class="card-img-top mx-auto d-block"
       :src="image"
@@ -24,7 +29,7 @@
         class="stretched-link"
         id="carglink"
         testid="popularplaylist card link"
-      ></router-link>                         
+      ></router-link>
       <!-- should navigate to playlist page -->
     </div>
   </div>
@@ -52,9 +57,9 @@ h4 {
 p {
   font-size: 14px;
   color: gray;
-  position:absolute;
+  position: absolute;
 }
-i{
+i {
   margin-left: 130px;
   margin-bottom: 20px;
   color: #1db954;
@@ -65,10 +70,10 @@ i{
 
 <script>
 export default {
- data: function() {
-   return {
-  hover:false,
-  };
+  data: function() {
+    return {
+      hover: false
+    };
   },
   name: "ShowPopularplaylists",
   props: ["image", "title", "des"]

@@ -1,157 +1,173 @@
 <template>
   <div class="cont">
-    <div class="search_contaner">
-      <i class="fa fa-search hover"></i>
-      <input
-        testid="search-box"
-        id="search-box"
-        placeholder="Search for artist"
-        v-model="Value"
-        autocomplete="off"
-        @keydown.esc="reset"
-        v-on:input="changeininput"
-      />
-      <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
-        <span aria-hidden="true">&times;</span>
-      </button>
+    <div class="loading" v-if="!loadingcategory">
+      <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div class="contaner" v-if="Value.length==0">
-      <div class="all scroll">
-        <h2 v-if="categorys.length">Browse All</h2>
-        <div class="row">
-          <category
-            class="col-lg-10% col-md-60% col-xs-6"
-            v-for="category in categorys"
-            :key="category.id"
-            :image="category.images"
-            :name="category.name"
-            :categoryId="category._id"
-          />
-        </div>
+    <div v-if="loadingcategory">
+      <div class="search_contaner">
+        <i class="fa fa-search hover"></i>
+        <input
+          testid="search-box"
+          id="search-box"
+          placeholder="Search for artist"
+          v-model="Value"
+          autocomplete="off"
+          @keydown.esc="reset"
+          v-on:input="changeininput"
+        />
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          v-if="Value.length!==0"
+          @click="reset"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    <div v-if="Value.length!==0" class="cont last">
-      <!--search results-->
-      <div v-if="match_top.length">
-        <div v-if="match_top[0].type==='Artist'">
-          <top
-            v-for="match_to in match_top"
-            :key="match_to.id"
-            :image="match_to.images"
-            :name="match_to.name"
-            :type="match_to.type"
-            :artistId="match_to._id"
-          ></top>
-        </div>
-        <div v-if="match_top[0].type==='album'">
-          <top
-            v-for="match_to in match_top"
-            :key="match_to.id"
-            :image="match_to.images"
-            :name="match_to.name"
-            :artistId="match_to.artistId"
-            :artistName="match_to.artistName"
-            :albumId="match_to._id"
-            :type="match_to.type"
-          ></top>
-        </div>
-        <div v-if="match_top[0].type==='playlist'">
-          <top
-            v-for="match_to in match_top"
-            :key="match_to.id"
-            :images="match_to.images"
-            :name="match_to.name"
-            :ownerName="match_to.ownerName"
-            :ownerId="match_to.ownerId"
-            :type="match_to.type"
-            :playlist_id="match_to._id"
-          ></top>
-        </div>
-        <div v-if="match_top[0].type==='track'">
-          <top
-            v-for="match_to in match_top"
-            :key="match_to.id"
-            :images="match_to.images"
-            :name="match_to.name"
-            :type="match_to.type"
-            :artistName="match_to.artistName"
-            :artistId="match_to.artistId"
-            :track_id="match_to._id"
-          ></top>
-        </div>
-        <div v-if="match_top[0].type==='user'">
-          <top
-            v-for="match_to in match_top"
-            :key="match_to.id"
-            :images="match_to.images"
-            :name="match_to.displayName"
-            :type="match_to.type"
-            :Id="match_to._id"
-          ></top>
-        </div>
-      </div>
-      <div v-if="match_artists.length">
-        <h2>Artist</h2>
-        <router-link
-          v-if="match_artists.length>=5"
-          class="ard-link seelink"
-          to="/"
-          testid="seeallplaylist"
-        >SeeAll</router-link>
-        <div class="row">
-          <LibArtists
-            class="col-lg-10% col-md-60% col-xs-6"
-            v-for="match_artist in match_artists"
-            :key="match_artist.id"
-            :images="match_artist.images"
-            :name="match_artist.name"
-            :artistId="match_artist._id"
-          />
-        </div>
-      </div>
-      <div v-if="match_albums.length">
-        <h2>Album</h2>
-        <router-link
-          v-if="match_albums.length>=5"
-          class="ard-link seelink"
-          to="/"
-          testid="seeallplaylist"
-        >SeeAll</router-link>
-        <div class="row">
-          <LibAlbums
-            class="col-lg-10% col-md-60% col-xs-6"
-            v-for=" match_album in  match_albums"
-            :key="match_album.id"
-            :images="match_album.images"
-            :name="match_album.name"
-            :albumId="match_album._id"
-            :artistname="match_album.artistName"
-            :artistId="match_album.artistId"
-          />
-        </div>
-      </div>
-      <div v-if="match_playlists.length">
-        <h2>playlist</h2>
-        <router-link
-          v-if="match_playlists.length>=5"
-          class="ard-link seelink"
-          to="/"
-          testid="seeallplaylist"
-        >SeeAll</router-link>
-        <div class="row">
-          <LibPlaylists
-            v-for="match_playlist in match_playlists"
-            :key="match_playlist.id"
-            :images="match_playlist.images"
-            :name="match_playlist.name"
-            :owner="match_playlist.ownerName"
-            :ownerId="match_playlist.ownerId"
-            :playlist_id="match_playlist._id"
-          />
+      <div class="contaner" v-if="Value.length==0">
+        <div class="all scroll">
+          <h2 v-if="categorys.length">Browse All</h2>
+          <div class="row">
+            <category
+              class="col-lg-10% col-md-60% col-xs-6"
+              v-for="category in categorys"
+              :key="category.id"
+              :image="category.images"
+              :name="category.name"
+              :categoryId="category._id"
+            />
+          </div>
         </div>
       </div>
     </div>
-    <div style="height:1000px"></div>
+    <div class="loading" v-if="!loadingsearch">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <div v-if="loadingsearch">
+      <div v-if="Value.length!==0" class="cont last">
+        <!--search results-->
+        <div v-if="match_top.length">
+          <div v-if="match_top[0].type==='Artist'">
+            <top
+              v-for="match_to in match_top"
+              :key="match_to.id"
+              :image="match_to.images"
+              :name="match_to.name"
+              :type="match_to.type"
+              :artistId="match_to._id"
+            ></top>
+          </div>
+          <div v-if="match_top[0].type==='album'">
+            <top
+              v-for="match_to in match_top"
+              :key="match_to.id"
+              :image="match_to.images"
+              :name="match_to.name"
+              :artistId="match_to.artistId"
+              :artistName="match_to.artistName"
+              :albumId="match_to._id"
+              :type="match_to.type"
+            ></top>
+          </div>
+          <div v-if="match_top[0].type==='playlist'">
+            <top
+              v-for="match_to in match_top"
+              :key="match_to.id"
+              :images="match_to.images"
+              :name="match_to.name"
+              :ownerName="match_to.ownerName"
+              :ownerId="match_to.ownerId"
+              :type="match_to.type"
+              :playlist_id="match_to._id"
+            ></top>
+          </div>
+          <div v-if="match_top[0].type==='track'">
+            <top
+              v-for="match_to in match_top"
+              :key="match_to.id"
+              :images="match_to.images"
+              :name="match_to.name"
+              :type="match_to.type"
+              :artistName="match_to.artistName"
+              :artistId="match_to.artistId"
+              :track_id="match_to._id"
+            ></top>
+          </div>
+          <div v-if="match_top[0].type==='user'">
+            <top
+              v-for="match_to in match_top"
+              :key="match_to.id"
+              :images="match_to.images"
+              :name="match_to.displayName"
+              :type="match_to.type"
+              :Id="match_to._id"
+            ></top>
+          </div>
+        </div>
+        <div v-if="match_artists.length">
+          <h2>Artist</h2>
+          <router-link
+            v-if="match_artists.length>=5"
+            class="ard-link seelink"
+            to="/"
+            testid="seeallplaylist"
+          >SeeAll</router-link>
+          <div class="row">
+            <LibArtists
+              class="col-lg-10% col-md-60% col-xs-6"
+              v-for="match_artist in match_artists"
+              :key="match_artist.id"
+              :images="match_artist.images"
+              :name="match_artist.name"
+              :artistId="match_artist._id"
+            />
+          </div>
+        </div>
+        <div v-if="match_albums.length">
+          <h2>Album</h2>
+          <router-link
+            v-if="match_albums.length>=5"
+            class="ard-link seelink"
+            to="/"
+            testid="seeallplaylist"
+          >SeeAll</router-link>
+          <div class="row">
+            <LibAlbums
+              class="col-lg-10% col-md-60% col-xs-6"
+              v-for=" match_album in  match_albums"
+              :key="match_album.id"
+              :images="match_album.images"
+              :name="match_album.name"
+              :albumId="match_album._id"
+              :artistname="match_album.artistName"
+              :artistId="match_album.artistId"
+            />
+          </div>
+        </div>
+        <div v-if="match_playlists.length">
+          <h2>playlist</h2>
+          <router-link
+            v-if="match_playlists.length>=5"
+            class="ard-link seelink"
+            to="/"
+            testid="seeallplaylist"
+          >SeeAll</router-link>
+          <div class="row">
+            <LibPlaylists
+              v-for="match_playlist in match_playlists"
+              :key="match_playlist.id"
+              :images="match_playlist.images"
+              :name="match_playlist.name"
+              :owner="match_playlist.ownerName"
+              :ownerId="match_playlist.ownerId"
+              :playlist_id="match_playlist._id"
+            />
+          </div>
+        </div>
+      </div>
+      <div style="height:1000px"></div>
+    </div>
   </div>
 </template>
 
@@ -271,6 +287,16 @@ h2 {
   display: inline;
   margin-left: 70%;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  i {
+    color: #fff;
+    font-size: 70px;
+    margin-top: 100px;
+  }
+}
 </style>
 
 <script>
@@ -302,8 +328,8 @@ export default {
       this.Value = "";
     },
     changeininput() {
-       this.$store.dispatch("Search/searchaboutartist")
-    /*  this.$store.dispatch("Search/searchaboutartist", this.Value);*/
+      this.$store.dispatch("Search/searchaboutartist");
+      /*  this.$store.dispatch("Search/searchaboutartist", this.Value);*/
     }
   },
   mounted() {
@@ -315,7 +341,9 @@ export default {
       match_top: "Search/gettopres",
       match_artists: "Search/getresult",
       match_albums: "Search/getalbumres",
-      match_playlists: "Search/getplaylistsres"
+      match_playlists: "Search/getplaylistsres",
+      loadingcategory: "categorys/loading",
+      loadingsearch: "Search/loadingsearch"
     }),
     ...mapState({
       show: state => state.creatplaylist.showModal

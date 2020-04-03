@@ -12,110 +12,129 @@ import { Server, Response } from "miragejs";
 new Server({
     seeds(server) {
         server.db.loadData({
+            playlist: [
+                {
+                    ownerId: "5e68139dbaa5a70758626553",
+                    ownerName: "Amr diab",
+                    ownerImages: [],
+                    _id: "5e7648a37966e84270c96b48",
+                    name: "sherenyat",
+                    type: "playlist",
+                    images: []
+                }
+            ],
             currentsong: {
                 track: {
                     name: "You are my sunshine",
                     __v: 0,
-                    artists: ["civil wars", "john", "jasmine"],
-                    album: "Barton Hallow",
-                    length: "3:33",
+                    albumId: "5e7d93dad82adf07f4121bb0",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    images: [],
+                    duration: 236,
                     url:
-                        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
+                        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+                    _id: "5e7d93dad82adf07f4121bb6"
                 },
-                _id: "55",
+                album: {
+                    name: "album1",
+                    _id: "5e833b412b9d7718a491c850",
+                    artist: {
+                        name: "ahmedsamir",
+                        _id: "5e833a51a51d971174923f17"
+                    }
+                },
                 isLiked: true,
+                playlistId: "5e85f4ca1ba5cf17ccca66eb",
                 isPlayable: true
             },
             queue: [
                 {
-                    track: {
-                        name: "You are my sunshine",
-                        __v: 0,
-                        artists: ["civil wars", "john", "jasmine"],
-                        album: "Barton Hallow",
-                        length: "3:33"
+                    fulltrack: {
+                        track: {
+                            availableMarkets: ['"er,ty,eue,euu"'],
+                            _id: "5e85f4281ba5cf17ccca66dc",
+                            url: "5e85f4281ba5cf17ccca66da",
+                            images: [],
+                            duration: 436,
+                            trackNumber: 236,
+                            name: '"track7"',
+                            artistId: "5e833a51a51d971174923f17",
+                            albumId: "5e833b412b9d7718a491c850",
+                            discNumber: 1,
+                            explicit: false,
+                            type: "Track",
+                            acousticness: 10,
+                            danceability: 23,
+                            energy: 100,
+                            instrumentalness: 4,
+                            key: 90,
+                            liveness: 25,
+                            loudness: 70,
+                            mode: 56,
+                            speechiness: 67,
+                            tempo: 76,
+                            timeSignature: "2020-04-02T14:18:16.464Z",
+                            valence: 70,
+                            like: 0,
+                            __v: 0
+                        },
+                        isLiked: false,
+                        album: {
+                            name: "album1",
+                            _id: "5e833b412b9d7718a491c850",
+                            artist: {
+                                name: "ahmedsamir",
+                                _id: "5e833a51a51d971174923f17"
+                            }
+                        }
                     },
-                    __id: "55",
-                    isLiked: true,
-                    isPlayable: true
+                    isQueue: false,
+                    isPlaylist: true,
+                    index: 2
                 },
                 {
-                    track: {
-                        name: "Beleiver",
-                        __v: 0,
-                        artists: ["imagine dragons"],
-                        album: "Barton Hallow",
-                        length: "4:23"
+                    fulltrack: {
+                        track: {
+                            availableMarkets: ['"er,ty,eue,euu"'],
+                            _id: "5e85f4301ba5cf17ccca66e1",
+                            url: "5e85f4301ba5cf17ccca66df",
+                            images: [],
+                            duration: 436,
+                            trackNumber: 236,
+                            name: '"track8"',
+                            artistId: "5e833a51a51d971174923f17",
+                            albumId: "5e833b412b9d7718a491c850",
+                            discNumber: 1,
+                            explicit: false,
+                            type: "Track",
+                            acousticness: 10,
+                            danceability: 23,
+                            energy: 100,
+                            instrumentalness: 4,
+                            key: 90,
+                            liveness: 25,
+                            loudness: 70,
+                            mode: 56,
+                            speechiness: 67,
+                            tempo: 76,
+                            timeSignature: "2020-04-02T14:18:24.079Z",
+                            valence: 70,
+                            like: 0,
+                            __v: 0
+                        },
+                        isLiked: false,
+                        album: {
+                            name: "album1",
+                            _id: "5e833b412b9d7718a491c850",
+                            artist: {
+                                name: "ahmedsamir",
+                                _id: "5e833a51a51d971174923f17"
+                            }
+                        }
                     },
-                    __id: "57",
-                    isLiked: false,
-                    isPlayable: false,
-                    isqueue: false
-                },
-                {
-                    track: {
-                        name: "the Girl with the red ballon",
-                        __v: 0,
-                        artists: ["civil wars", "jasmine"],
-                        album: "Barton Hallow2",
-                        length: "4:23"
-                    },
-                    __id: "56",
-                    isLiked: true,
-                    isPlayable: false,
-                    isqueue: false
-                },
-                {
-                    track: {
-                        name: "tip of my tongue",
-                        __v: 0,
-                        artists: ["civil wars", "john"],
-                        album: "Barton Hallow3",
-                        length: "4:23"
-                    },
-                    __id: "58",
-                    isLiked: true,
-                    isPlayable: false,
-                    isqueue: false
-                },
-                {
-                    track: {
-                        name: "what he wrote",
-                        __v: 0,
-                        artists: ["Laura Marling"],
-                        album: "single",
-                        length: "4:23"
-                    },
-                    __id: "59",
-                    isLiked: true,
-                    isPlayable: false,
-                    isqueue: false
-                },
-                {
-                    track: {
-                        name: "terrible love",
-                        __v: 0,
-                        artists: ["birdy"],
-                        album: "single",
-                        length: "4:23"
-                    },
-                    __id: "60",
-                    isLiked: true,
-                    isPlayable: false,
-                    isqueue: false
-                },
-                {
-                    track: {
-                        name: "Next to me",
-                        __v: 0,
-                        artists: ["imagine dragons"],
-                        album: "single",
-                        length: "4:23"
-                    },
-                    __id: "61",
-                    isLiked: true,
-                    isPlayable: false,
-                    isqueue: false
+                    isQueue: false,
+                    isPlaylist: true,
+                    index: 3
                 }
             ],
             popular_playlists: [
@@ -177,7 +196,6 @@ new Server({
                     birthday: "3/12/1998"
                 }
             ],
-
             songs: [
                 {
                     song_name: "First_Song",
@@ -223,43 +241,53 @@ new Server({
             category: [
                 {
                     name: "pop",
-                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "roke",
-                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "rab",
-                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "sad",
-                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "happy",
-                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "pop",
-                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "roke",
-                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "rab",
-                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "sad",
-                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+                    categoryId: "123"
                 },
                 {
                     name: "happy",
-                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    categoryId: "123"
                 }
             ],
             artist: [
@@ -289,6 +317,12 @@ new Server({
                 },
                 {
                     name: "amr",
+                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    href: "",
+                    type: "artist"
+                },
+                {
+                    name: "ahmed",
                     image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     href: "",
                     type: "artist"
@@ -378,33 +412,37 @@ new Server({
                             trackid: "5e7d93dad82adf07f4121bb5",
                             name: "track2",
                             artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: ["artist1"],
+                            artistName: "artist1",
                             albumId: "5e7d93dad82adf07f4121baf",
-                            albumName: "album2"
+                            albumName: "album2",
+                            isLiked: false
                         },
                         {
                             trackid: "5e7d93dad82adf07f4121bb7",
                             name: "track4",
                             artistId: "5e7d93dad82adf07f4121bb3",
-                            artistName: ["artist4"],
+                            artistName: "artist4",
                             albumId: "5e7d93dad82adf07f4121bb1",
-                            albumName: "album4"
+                            albumName: "album4",
+                            isLiked: false
                         },
                         {
                             trackid: "5e7d93dad82adf07f4121bb6",
                             name: "track3",
                             artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: ["artist1"],
+                            artistName: "artist1",
                             albumId: "5e7d93dad82adf07f4121bb0",
-                            albumName: "album3"
+                            albumName: "album3",
+                            isLiked: false
                         },
                         {
                             trackid: "5e7d93dad82adf07f4121bb4",
                             name: "track1",
                             artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: ["artist1"],
+                            artistName: "artist1",
                             albumId: "5e7d93dad82adf07f4121bae",
-                            albumName: "album1"
+                            albumName: "album1",
+                            isLiked: true
                         }
                     ]
                 },
@@ -423,7 +461,8 @@ new Server({
                             artistId: "5e7d93dad82adf07f4121bb2",
                             artistName: "artist1",
                             albumId: "5e7d93dad82adf07f4121baf",
-                            albumName: "album2"
+                            albumName: "album2",
+                            isLiked: false
                         },
                         {
                             trackid: "5e7d93dad82adf07f4121bb7",
@@ -431,7 +470,8 @@ new Server({
                             artistId: "5e7d93dad82adf07f4121bb3",
                             artistName: "artist4",
                             albumId: "5e7d93dad82adf07f4121bb1",
-                            albumName: "album4"
+                            albumName: "album4",
+                            isLiked: false
                         },
                         {
                             trackid: "5e7d93dad82adf07f4121bb6",
@@ -439,7 +479,8 @@ new Server({
                             artistId: "5e7d93dad82adf07f4121bb2",
                             artistName: "artist1",
                             albumId: "5e7d93dad82adf07f4121bb0",
-                            albumName: "album3"
+                            albumName: "album3",
+                            isLiked: false
                         },
                         {
                             trackid: "5e7d93dad82adf07f4121bb4",
@@ -447,11 +488,44 @@ new Server({
                             artistId: "5e7d93dad82adf07f4121bb2",
                             artistName: "artist1",
                             albumId: "5e7d93dad82adf07f4121bae",
-                            albumName: "album1"
+                            albumName: "album1",
+                            isLiked: true
                         }
                     ]
                 }
             ],
+            nextsong: {
+                track: {
+                    name: "You are my x",
+                    __v: 0,
+                    albumId: "5e7d93dad82adf07f4121bb1",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artists: ["civil wars", "john", "jasmine"],
+                    length: "3:33",
+                    url:
+                        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+                    _id: "5e7d93dad82adf07f4121bb7"
+                },
+                albumName: "Barton Hallow",
+                isLiked: false,
+                isPlayable: true
+            },
+            prevsong: {
+                track: {
+                    name: "You are my y",
+                    __v: 0,
+                    albumId: "5e7d93dad82adf07f4121baf",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artists: ["civil wars", "john", "jasmine"],
+                    length: "3:33",
+                    url:
+                        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+                    _id: "5e7d93dad82adf07f4121bb5"
+                },
+                albumName: "Barton Hallow",
+                isLiked: true,
+                isPlayable: true
+            },
             user_songs: [
                 {
                     name: "ya sattar",
@@ -587,16 +661,16 @@ new Server({
         this.get("/api/player/pause", schema => {
             return schema.db.songs;
         });
-        this.get("/api/player/next", schema => {
-            return schema.db.songs;
+        this.get("/player/next", schema => {
+            return new Response(200, {}, { nextsong: schema.db.nextsong });
         });
-        this.get("/api/player/previous", schema => {
-            return schema.db.songs;
+        this.get("/player/previous", schema => {
+            return new Response(200, {}, { prevsong: schema.db.prevsong });
         });
         this.get("/api/player/repeat", schema => {
             return schema.db.songs;
         });
-        this.get("/api/player/shuffle", schema => {
+        this.put("/api/player/shuffle", schema => {
             return schema.db.songs;
         });
         this.get("/api/user", schema => {
@@ -692,13 +766,6 @@ new Server({
             const claimartist = JSON.parse(request.requestBody).data;
             console.log(claimartist.Name, "in mirage");
             console.log("artist id", claimartist.id);
-            /* return  schema.db.users.update(
-              { Name:claimartist.Name,
-              Genre:claimartist.Genre,
-              Description:claimartist.Description}
-              
-          )*/
-
             return new Response(
                 200,
                 {},
@@ -708,13 +775,6 @@ new Server({
                     Description: claimartist.Description
                 })
             );
-            /* schema.db.users.update(
-          { Name:claimartist.Name,
-          Genre:claimartist.Genre,
-          Description:claimartist.Description}
-          
-      )
-        return new Response(200,{ token: "menna"},{user:schema.db.users.where({Name:claimartist.Name})})*/
         });
         this.delete("/api/song/:id", (schema, request) => {
             let id = request.params.id;
@@ -723,9 +783,18 @@ new Server({
             // let data = { errors: ["Server did not respond"] };
             // return new Response(500, headers, data);
         });
+        this.post("/api/playlists", (schema, request) => {
+            const cplaylist = JSON.parse(request.requestBody).data;
+            console.log(cplaylist.playlistname, "in mirag");
+            return new Response(
+                200,
+                {},
+                { Playlists: schema.db.Playlists.insert(cplaylist) }
+            );
+        });
 
         //authentication requests
-        this.put("/api/signup", (schema, request) => {
+        this.post("/api/signup", (schema, request) => {
             const user = JSON.parse(request.requestBody).data;
             if (schema.db.users.findBy({ email: user.email }) == null) {
                 return new Response(
@@ -772,6 +841,32 @@ new Server({
             // return new Response(403, { error: "no user with such data" });
         });
 
+        this.post("/api/reset", () => {
+            return new Response(200);
+        });
+        this.post("/api/logout", () => {
+            return new Response(200);
+        });
+        //albums
+        this.get("/api/me/albums", schema => {
+            return schema.db.user_albums;
+        });
+        this.get("/api/me/following", schema => {
+            console.log("in main dai");
+            return schema.db.user_artists;
+        });
+        // this.get("/api/users", (schema)=>{
+        //   return schema.db.user_play_lists
+        // });
+        //albums
+        this.get("/api/me/like", schema => {
+            return schema.db.songs;
+        });
+        this.get("/api/me/unlike", schema => {
+            return schema.db.songs;
+        });
+        ///////////////////////////////////////////////////queue requests
+
         //queue requests
         this.get("/api/currentsong", schema => {
             return new Response(
@@ -786,7 +881,7 @@ new Server({
         this.post("/api/addtoqueue", (schema, request) => {
             const songid = JSON.parse(request.requestBody).data;
             console.log(songid);
-            let song = schema.db.queue.findBy({ __id: songid.song_id });
+            let song = schema.db.queue.findBy({ _id: songid.song_id });
             song.isqueue = true;
             song.id = schema.db.queue.length + 1;
             console.log("adding song to queue in mirage", song);
@@ -794,10 +889,18 @@ new Server({
             console.log("queue in mirage", schema.db.queue);
             return new Response(200, {}, { queue: schema.db.queue });
         });
-        ////////////////////////
+        //////////////////////////////////////////////////Playlists
         this.get("/playlists/:playlist_id", (schema, request) => {
             let id = request.params.playlist_id;
-            return schema.db.playlist_info.findBy({ _id: id });
+            return new Response(
+                200,
+                {},
+                { Playlist: schema.db.playlist_info.findBy({ _id: id }) }
+            );
+        });
+        ////////////////////////////////////////////////CreateQueue
+        this.post("/createQueue/:playlist_id/:trackId", () => {
+            return new Response(200, {}, { mes: "created with success" });
         });
         //////
         this.get("/api/search/top", schema => {
@@ -813,7 +916,6 @@ new Server({
             return schema.db.search_playlist;
         });
     }
-    ////////////////////////////////////////////////
 });
 Vue.config.productionTip = false;
 
