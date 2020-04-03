@@ -98,7 +98,7 @@
   display: block;
   // box-sizing: border-box;
   line-height: 20px;
-  background-color: #161516;
+  background-color: transparent;
   clear: both;
   overflow: visibility;
   transition-property: background-color;

@@ -207,9 +207,6 @@
 .row {
   height: 90px;
 }
-.col-md-3 {
-  height: 90px;
-}
 .album_image {
   float: left;
   margin: 17px 10px 17px 17px;
