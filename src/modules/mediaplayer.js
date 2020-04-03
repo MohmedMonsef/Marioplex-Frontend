@@ -8,14 +8,22 @@ export default {
         __v: 0,
         albumId: "5e7d93dad82adf07f4121bb0",
         artistId: "5e7d93dad82adf07f4121bb2",
-        artists: ["civil wars", "john", "jasmine"],
-        length: "3:33",
+        images:[],
+        duration: 236,
         url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
         _id: "5e7d93dad82adf07f4121bb6"
       },
-      albumName: "Barton Hallow",
+      album: {
+        name: "album1",
+        _id: "5e833b412b9d7718a491c850",
+        artist: {
+            name: "ahmedsamir",
+            _id: "5e833a51a51d971174923f17"
+    },
       isLiked: true,
+      playlistId: "5e85f4ca1ba5cf17ccca66eb",
       isPlayable: true
+   }
     }],
     //component info
     currentsong_info: {
@@ -112,7 +120,7 @@ export default {
           commit("set_currentsong", nextsong);
           let info = {
             index: state.currentsong_info.index + 1, //should handle if its the first track on playlist or album return to zero
-            song_id: nextsong[0]._id,
+            song_id: nextsong[0].track._id,
             album_id: nextsong[0].track.albumId,
             playlist_id: state.currentsong_info.playlist_id,
             is_playlist: state.currentsong_info.is_playlist
@@ -138,7 +146,7 @@ export default {
                 state.currentsong_info.index == 0
                   ? 0
                   : state.currentsong_info.index - 1, //
-              song_id: prevsong[0]._id,
+              song_id: prevsong[0].track._id,
               album_id: prevsong[0].track.albumId,
               playlist_id: state.currentsong_info.playlist_id,
               is_playlist: state.currentsong_info.is_playlist

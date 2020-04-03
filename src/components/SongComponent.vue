@@ -39,9 +39,9 @@
         {{ song_name }}
       </div>
       <div id="song_info">
-        <div id="s" v-for="song_artist in song_artists" :key="song_artist">
+        <div id="s">
           <router-link tag="p" to="library" id="song_artist">
-            {{ song_artist }}
+            {{ song_artists }}
           </router-link>
           <span>
             .
@@ -54,7 +54,7 @@
     </div>
     <!-- <p>{{index}}</p> -->
     <div class="song_length" :class="isCurrentClass">
-      {{ song_length }}
+      {{ length }}
     </div>
     <div id="song_options" class="dropdownlist">
       <div id="icondiv" @click="this.toggleShow">
@@ -240,10 +240,13 @@ export default {
       type: String
     },
     song_artists: {
-      type: Array
+      type: String
+    },
+    artist_id: {
+      type: String
     },
     song_length: {
-      type: String
+      type: Number
     },
     isLiked: {
       type: Boolean
@@ -322,6 +325,13 @@ export default {
         this.index == this.currentsong_info.index &&
         this.playlistId == this.currentsong_info.playlist_id
       );
+    },
+    length:function(){
+        var min = Math.floor((this.song_length % 3600) / 60);
+        var sec = Math.floor(this.song_length% 60);
+        if (sec < 10) sec = "0" + sec;
+        console.log(" minute sec", min, ":", sec);
+        return min + ":" + sec;
     }
   },
   created: function() {

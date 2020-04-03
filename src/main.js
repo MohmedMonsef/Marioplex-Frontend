@@ -18,98 +18,117 @@ new Server({
           __v: 0,
           albumId: "5e7d93dad82adf07f4121bb0",
           artistId: "5e7d93dad82adf07f4121bb2",
-          artists: ["civil wars", "john", "jasmine"],
-          length: "3:33",
+          images:[],
+          duration: 236,
           url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
           _id: "5e7d93dad82adf07f4121bb6"
         },
-      
-        albumName: "Barton Hallow",
+        album: {
+          name: "album1",
+          _id: "5e833b412b9d7718a491c850",
+          artist: {
+              name: "ahmedsamir",
+              _id: "5e833a51a51d971174923f17"
+        },
+      },
         isLiked: true,
+        playlistId: "5e85f4ca1ba5cf17ccca66eb",
         isPlayable: true
       },
       queue: [
         {
-          track: {
-            name: "You are my sunshine",
-            __v: 0,
-            albumId: "5e7d93dad82adf07f4121bae",
-            artistId: "5e7d93dad82adf07f4121bb2",
-            artists: ["civil wars", "john", "jasmine"],
-            length: "3:33"
-          },
-          _id: "5e7d93dad82adf07f4121bb4",
-          albumName: "Barton Hallow",
-          isLiked: true,
-          isPlayable: true,
-          isQueue: false,
-          index: 2
+            "fulltrack": {
+                "track": {
+                    "availableMarkets": [
+                        "\"er,ty,eue,euu\""
+                    ],
+                    "_id": "5e85f4281ba5cf17ccca66dc",
+                    "url": "5e85f4281ba5cf17ccca66da",
+                    "images": [],
+                    "duration": 436,
+                    "trackNumber": 236,
+                    "name": "\"track7\"",
+                    "artistId": "5e833a51a51d971174923f17",
+                    "albumId": "5e833b412b9d7718a491c850",
+                    "discNumber": 1,
+                    "explicit": false,
+                    "type": "Track",
+                    "acousticness": 10,
+                    "danceability": 23,
+                    "energy": 100,
+                    "instrumentalness": 4,
+                    "key": 90,
+                    "liveness": 25,
+                    "loudness": 70,
+                    "mode": 56,
+                    "speechiness": 67,
+                    "tempo": 76,
+                    "timeSignature": "2020-04-02T14:18:16.464Z",
+                    "valence": 70,
+                    "like": 0,
+                    "__v": 0
+                },
+                "isLiked": false,
+                "album": {
+                    "name": "album1",
+                    "_id": "5e833b412b9d7718a491c850",
+                    "artist": {
+                        "name": "ahmedsamir",
+                        "_id": "5e833a51a51d971174923f17"
+                    }
+                }
+            },
+            "isQueue": false,
+            "isPlaylist": true,
+            "index": 2
         },
         {
-          track: {
-            name: "Beleiver",
-            __v: 0,
-            albumId: "5e7d93dad82adf07f4121baf",
-            artistId: "5e7d93dad82adf07f4121bb2",
-            artists: ["imagine dragons"],
-            length: "4:23"
-          },
-          _id: "5e7d93dad82adf07f4121bb5",
-          albumName: "Barton Hallow",
-          isLiked: false,
-          isPlayable: false,
-          isQueue: false,
-          index: 3
-        },
-        {
-          track: {
-            name: "the Girl with the red ballon",
-            __v: 0,
-            albumId: "5e7d93dad82adf07f4121baf",
-            artistId: "5e7d93dad82adf07f4121b55",
-            artists: ["civil wars", "jasmine"],
-            length: "4:23"
-          },
-          _id: "5e7d93dad82adf07f4121555",
-          albumName: "Barton Hallow2",
-          isLiked: true,
-          isPlayable: false,
-          isQueue: false,
-          index: 4
-        },
-        {
-          track: {
-            name: "tip of my tongue",
-            __v: 0,
-            artists: ["civil wars", "john"],
-            albumId: "5e7d93dad82adf07f4121baf",
-            artistId: "5e7d93dad82adf07f4121055",
-            length: "4:23"
-          },
-          _id: "58",
-          albumName: "Barton Hallow3",
-          isLiked: true,
-          isPlayable: false,
-          isQueue: false,
-          index: 5
-        },
-        {
-          track: {
-            name: "terrible love",
-            __v: 0,
-            artists: ["birdy"],
-            albumId: "5e7d93dad82adftt4121baf",
-            artistId: "5e7d93dad82adf0oo4121055",
-            length: "4:23"
-          },
-          _id: "60",
-          albumName: "Single",
-          isLiked: true,
-          isPlayable: false,
-          isQueue: false,
-          index: 6
+            "fulltrack": {
+                "track": {
+                    "availableMarkets": [
+                        "\"er,ty,eue,euu\""
+                    ],
+                    "_id": "5e85f4301ba5cf17ccca66e1",
+                    "url": "5e85f4301ba5cf17ccca66df",
+                    "images": [],
+                    "duration": 436,
+                    "trackNumber": 236,
+                    "name": "\"track8\"",
+                    "artistId": "5e833a51a51d971174923f17",
+                    "albumId": "5e833b412b9d7718a491c850",
+                    "discNumber": 1,
+                    "explicit": false,
+                    "type": "Track",
+                    "acousticness": 10,
+                    "danceability": 23,
+                    "energy": 100,
+                    "instrumentalness": 4,
+                    "key": 90,
+                    "liveness": 25,
+                    "loudness": 70,
+                    "mode": 56,
+                    "speechiness": 67,
+                    "tempo": 76,
+                    "timeSignature": "2020-04-02T14:18:24.079Z",
+                    "valence": 70,
+                    "like": 0,
+                    "__v": 0
+                },
+                "isLiked": false,
+                "album": {
+                    "name": "album1",
+                    "_id": "5e833b412b9d7718a491c850",
+                    "artist": {
+                        "name": "ahmedsamir",
+                        "_id": "5e833a51a51d971174923f17"
+                    }
+                }
+            },
+            "isQueue": false,
+            "isPlaylist": true,
+            "index": 3
         }
-      ],
+    ],
       popular_playlists: [
         {
           image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
@@ -393,7 +412,7 @@ new Server({
               trackid: "5e7d93dad82adf07f4121bb5",
               name: "track2",
               artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
+              artistName: "artist1",
               albumId: "5e7d93dad82adf07f4121baf",
               albumName: "album2",
               isLiked: false
@@ -402,7 +421,7 @@ new Server({
               trackid: "5e7d93dad82adf07f4121bb7",
               name: "track4",
               artistId: "5e7d93dad82adf07f4121bb3",
-              artistName: ["artist4"],
+              artistName: "artist4",
               albumId: "5e7d93dad82adf07f4121bb1",
               albumName: "album4",
               isLiked: false
@@ -411,7 +430,7 @@ new Server({
               trackid: "5e7d93dad82adf07f4121bb6",
               name: "track3",
               artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
+              artistName: "artist1",
               albumId: "5e7d93dad82adf07f4121bb0",
               albumName: "album3",
               isLiked: false
@@ -420,7 +439,7 @@ new Server({
               trackid: "5e7d93dad82adf07f4121bb4",
               name: "track1",
               artistId: "5e7d93dad82adf07f4121bb2",
-              artistName: ["artist1"],
+              artistName: "artist1",
               albumId: "5e7d93dad82adf07f4121bae",
               albumName: "album1",
               isLiked: true

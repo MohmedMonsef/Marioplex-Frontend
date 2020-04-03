@@ -13,13 +13,13 @@ export default {
     set_nextup(state, queue) {
       state.NextUp = [];
       queue.forEach(q => {
-        if (!q.isqueue) state.NextUp.push(q);
+        if (!q.fulltrack.isQueue) state.NextUp.push(q);
       });
     },
     set_queued(state, queue) {
       state.Queued = [];
       queue.forEach(q => {
-        if (q.isqueue) state.Queued.push(q);
+        if (q.fulltrack.isQueue) state.Queued.push(q);
       });
     },
     add_to_queue(state, song) {
