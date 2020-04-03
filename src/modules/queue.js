@@ -58,7 +58,6 @@ export default {
     CreateQueue({ commit }, info) {
       commit("demo");
       if (info == "") {
-        console.log("xxxxxxxxxxxxxxxxxxxxxx");
         info = {
           index: 1,
           song_id: "5e7d93dad82adf07f4121bb6",
@@ -67,24 +66,22 @@ export default {
           is_playlist: false
         };
       }
-      console.log("yyyyyyyyyyyyyyy", info);
       axios
         .post("/createQueue/" + info.playlist_id + "/" + info.song_id, null, {
           isPlaylist: info.is_Playlist
         })
         .then(response => {
           console.log("success", response);
-          var cs =store.getters['mediaplayer/currentaudio']
-          if(cs){
+          var cs = store.getters["mediaplayer/currentaudio"];
+          if (cs) {
             store.dispatch("mediaplayer/get_currentsong");
             store.dispatch("mediaplayer/playsong_state", info);
+          } else {
+            setTimeout(() => {
+              store.dispatch("mediaplayer/playsong_state", info);
+            }, 500);
+            store.dispatch("mediaplayer/get_currentsong");
           }
-          else{
-          setTimeout(()=>{
-          store.dispatch("mediaplayer/playsong_state", info);
-          },500)
-          store.dispatch("mediaplayer/get_currentsong");
-        }
         })
         .catch(error => {
           console.log(error);

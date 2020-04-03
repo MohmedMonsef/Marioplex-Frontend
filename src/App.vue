@@ -12,7 +12,6 @@ export default {
       setTimeout(() => {
         var status = this.isLoggedIn;
         if (status == "error") {
-          //token is expired
           this.$store.dispatch("authorization/logout");
           this.$router.replace("/login");
         }

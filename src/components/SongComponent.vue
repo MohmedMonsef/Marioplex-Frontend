@@ -62,8 +62,8 @@
       </div>
       <div id="mydropdown" class="db" v-show="show">
         <p>Start Radio</p>
-        <p v-if="!isLiked">Add to Liked Songs</p>
-        <p v-if="isLiked">Remove from Liked Songs</p>
+        <p @click="likecurrentsong()" v-if="!isLiked">Add to Liked Songs</p>
+        <p @click="likecurrentsong()" v-if="isLiked">Remove from Liked Songs</p>
         <p @click="addToQueue()">Add to Queue</p>
         <p>Add to Playlist</p>
       </div>
@@ -209,7 +209,21 @@
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
+const toast = {
+  show(message) {
+    var mytoast = document.getElementById("liketoast");
+    //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
+    clearTimeout(mytoast.hideTimeout);
+    mytoast.textContent = message;
+    mytoast.className = "toast toast--visible";
+    mytoast.hideTimeout = setTimeout(() => {
+      mytoast.classList.remove("toast--visible");
+    }, 2000);
+    console.log("message", message);
+  }
+};
 export default {
+
   data: function() {
     return {
       hover: false,
@@ -282,7 +296,18 @@ export default {
     },
     clicked() {
       this.isclicked = true;
-    }
+    },
+    likecurrentsong: function() {
+      if (!this.isLiked) {
+        this.$store.dispatch("mediaplayer/Like",this.song_id);
+        toast.show("Added to your Liked Songs");
+        this.isLiked=true;
+      } else {
+        this.$store.dispatch("mediaplayer/UnLike", this.song_id);
+        toast.show("Removed from your Liked Songs");
+         this.isLiked=false;
+      }
+    },
   },
   computed: {
     isCurrentClass: function() {

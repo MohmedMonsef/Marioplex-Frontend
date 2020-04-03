@@ -44,7 +44,7 @@
           :song_album="p.albumName"
           :albumId="p.albumId"
           :song_length="'3:45'"
-          :isLiked="true"
+          :isLiked="p.isLiked"
           :playlistId="$route.params.playlist_id"
           :isPlaylist="true"
         />

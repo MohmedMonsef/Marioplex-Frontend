@@ -33,8 +33,6 @@ export default {
 
         CreatePlaylist(state, playlists) {
             state.Playlists.push(
-                //id: id,
-                // playlistname: i
                 playlists
             );
             console.log("nori");

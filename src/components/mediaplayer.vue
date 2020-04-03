@@ -62,15 +62,16 @@
         >
           <div class="controllers" id="test_controllers" testid="controllers">
             <button
-              id="random_button"
+              class="random_button"
               testid="shufflebutton"
-              @click="random_songs()"
             >
               <span data-toggle="tooltip" title="Enable shuffle">
                 <i
                   class="fa fa-random"
                   id="randomicon"
                   testid="shuffleicon"
+                  :class="{coloring:this.isShuffle}"
+                  @click="shuffle()"
                 ></i>
               </span>
             </button>
@@ -122,34 +123,20 @@
             <button
               id="repeat_button"
               testid="repeatbutton"
-              @click="repeat_song()"
             >
-              <span data-toggle="tooltip" title="Enable repeat">
-                <i class="fa fa-repeat" id="repeaticon" testid="repeaticon"></i>
-              </span>
+              <div data-toggle="tooltip" title="Enable repeat" style="box-sizing:border-box;overflow:none;min-width:21px;min-height:16px;" >
+                <i class="fa fa-repeat" :class="{coloring:isRepeat!=0}" id="repeaticon" 
+                 @click="repeat_song()"
+                 testid="repeaticon">
+                  <span :class="{hidecoloring:isRepeat!=2}" style="font-size:26px;max-height:16px;">.</span>
+                </i>
+                 <!-- style="background-color:red;border-radius:40px;min-width:21px;max-height:16px;" -->
+                 <!-- <span v-if="isRepeat==2" style="font-size:26px;max-height:16px;">.</span> -->
+              </div>
             </button>
           </div>
         </div>
         <!-- here the song bar moves correctly -->
-
-        <!-- <div
-          id="seek_bar"
-          testid="seek_bar"
-          style="display:flex;justify-content: center;"
-        >
-          <div id="current_time" testid="currenttime" class="current_time">
-            00:00
-          </div>
-          <div>
-            <div class="songslider">   
-               <div class="movingslider" id="movingslider"></div>
-            </div>
-          </div>
-          <div id="duration" testid="songduration" class="duration">3:45</div>
-        </div> -->
-        <!-- the end of the old code where the song bar moves correctly -->
-
-        <!-- the start of the new code  -->
         <div class="topcontrols">
           <span class="starttime" id="starttime">{{ changeTime }}</span>
           <div class="seekbar" id="seekbar" @mousedown="startDrag()">
@@ -173,12 +160,6 @@
               @click="volume_song()"
             ></i>
           </button>
-          <!-- still doesnot work correctly -->
-          <!-- <div id="seek_bar" style="transform:translateX(0%);">
-            <div id="fill"></div>
-            <div id="handle"></div>
-          </div> -->
-          <!-- ///////////////// -->
           <div class="volumecontrols">
             <div
               class="volumeseekbar"
@@ -411,6 +392,16 @@ input:focus {
 .coloring {
   color: #1db954;
 }
+.coloring:hover{
+  color:#1ed760;
+}
+
+.hidecoloring {
+  color: #282828;
+}
+.hidecoloring:hover {
+  color: #282828;
+}
 
 .toast {
   visibility: hidden;
@@ -441,6 +432,8 @@ import { default as song_functions } from "../javascript/mediaplayer_script.js";
 export default {
   data: function() {
     return {
+      isRepeat:0, //0=>no repeat 1=>repeat the song 2=>repeat playlist,album
+      isShuffle:false,
       volumedrag: false,
       drag: false,
       currentPos: 0,
@@ -583,6 +576,14 @@ export default {
           this.$store.dispatch("mediaplayer/update_volume", this.sound / 100);
         }
       }
+    },
+    shuffle: function(){
+      this.isShuffle= !this.isShuffle;
+      this.$store.dispatch("mediaplayer/shufflesong_state",this.isShuffle);
+    },
+    repeat_song: function(){
+      this.isRepeat = (this.isRepeat +1)%3;
+      this.$store.dispatch("mediaplayer/repeatsong_state",this.isRepeat);
     }
   },
   computed: {

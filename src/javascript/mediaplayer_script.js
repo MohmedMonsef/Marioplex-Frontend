@@ -1,7 +1,5 @@
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
-var y = document.getElementById("myAudio");
-var x = new Audio(y);
 ///////////////////////////////////////////////////////////////
 //creating toast object with function show
 const toast = {
@@ -37,15 +35,9 @@ export default {
     // }
     // },
     ////////////////////////////////////
-    playsong_by_icon: function() {
-      if (x.paused) this.$store.dispatch("mediaplayer/playicon_state", true);
-    },
     playSong() {
       this.song_state = true;
-      // this.$store.dispatch("mediaplayer/get_currentsong");
       let info;
-      // let cs=this.currentsong_info;
-
       if ("playicon-component" == event.target.id) {
         info = {
           index: this.index,
@@ -69,7 +61,7 @@ export default {
             is_playlist: this.isPlaylist
           });
         } else {
-          this.$store.dispatch("Queue/CreateQueue",info);
+          this.$store.dispatch("Queue/CreateQueue", info);
           console.log("my comp", {
             index: this.index,
             song_id: this.song_id,
@@ -87,7 +79,6 @@ export default {
       this.song_state = false;
       console.log("pause song");
       this.$store.dispatch("mediaplayer/pausesong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
     },
     prev_song: function() {
       this.$store.dispatch("mediaplayer/prevsong_state");
@@ -99,20 +90,12 @@ export default {
     random_songs: function() {
       this.$store.dispatch("mediaplayer/shufflesong_state");
     },
-    repeat_song: function() {
-      this.$store.dispatch("mediaplayer/repeatsong_state");
-      ///// take care i should add condition here if the user isnot premiuim
-      var repeat = document.getElementById("repeaticon");
-      repeat.style.color = "green";
-      x.loop = true;
-      x.load();
-    },
     likecurrentsong: function() {
       if (!this.liked) {
-        this.$store.dispatch("mediaplayer/likesong");
+        this.$store.dispatch("mediaplayer/Like", "");
         toast.show("Added to your Liked Songs");
       } else {
-        this.$store.dispatch("mediaplayer/unlikesong");
+        this.$store.dispatch("mediaplayer/UnLike", "");
         toast.show("Removed from your Liked Songs");
       }
     },
