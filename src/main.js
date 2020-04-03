@@ -223,63 +223,43 @@ new Server({
             category: [
                 {
                     name: "pop",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "/",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
                 },
                 {
                     name: "roke",
-                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
                 },
                 {
                     name: "rab",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
                 },
                 {
                     name: "sad",
-                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
                 },
                 {
                     name: "happy",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
                 },
                 {
                     name: "pop",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
                 },
                 {
                     name: "roke",
-                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
                 },
                 {
                     name: "rab",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
                 },
                 {
                     name: "sad",
-                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff"
                 },
                 {
                     name: "happy",
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    href: "",
-                    playlist: []
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
                 }
             ],
             artist: [
@@ -541,52 +521,35 @@ new Server({
                 {
                     _id: "5e76461b7ee20d39b463988c",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    info: "this is Amr diab",
+                    name: "this is Amr diab",
                     type: "Artist",
                     genre: ["pop"]
                 }
             ],
             search_album: [
                 {
-                    album: {
-                        _id: "5e764ab5eaa4533e7869d026",
-                        name: "diabiat",
-                        images:
-                            "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                        type: "album"
-                    },
-                    artist: {
-                        _id: "5e76461b7ee20d39b463988c",
-                        images:
-                            "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                        info: "this is Amr diab",
-                        type: "Artist",
-                        genre: ["pop"]
-                    }
+                    _id: "5e764ab5eaa4533e7869d026",
+                    name: "diabiat",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    artistId: "5e76461b7ee20d39b463988c",
+                    artistName: "this is Amr diab"
                 }
             ],
             search_playlist: [
                 {
-                    playlist: {
-                        _id: "5e7648805401214fa04b803a",
-                        name: "Amr diab",
-                        type: "function String() { [native code] }",
-                        images:
-                            "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
-                    },
-                    owner: {
-                        _id: "5e695daf488e9342b8b18bcf",
-                        displayName: "dina",
-                        images:
-                            "http://dummyimage.com/250x400.jpg/ff4444/ffffff"
-                    }
+                    _id: "5e7d93dad82adf0ksksksksksksksk",
+                    name: "Amr diab",
+                    type: "function String() { [native code] }",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    ownerId: "5e695daf488e9342b8b18bcf",
+                    ownerName: "dina"
                 }
             ],
             search_top: [
                 {
                     _id: "5e76461b7ee20d39b463988c",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    info: "this is Amr diab",
+                    name: "Amr diab",
                     type: "Artist",
                     genre: ["pop"]
                 }
@@ -837,16 +800,16 @@ new Server({
             return schema.db.playlist_info.findBy({ _id: id });
         });
         //////
-        this.get("/search/top", schema => {
+        this.get("/api/search/top", schema => {
             return schema.db.search_top;
         });
-        this.get("/search/artist", schema => {
+        this.get("/api/search/artist", schema => {
             return schema.db.search_artist;
         });
-        this.get("/search/album", schema => {
+        this.get("/api/search/album", schema => {
             return schema.db.search_album;
         });
-        this.get("/search/playlist", schema => {
+        this.get("/api/search/playlist", schema => {
             return schema.db.search_playlist;
         });
     }

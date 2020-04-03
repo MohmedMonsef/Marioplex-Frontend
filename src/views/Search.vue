@@ -23,10 +23,9 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="category in categorys"
             :key="category.id"
-            :image="category.image"
+            :image="category.images"
             :name="category.name"
-            :link="category.href"
-            :playlists="category.playlist"
+            :categoryId="category._id"
           />
         </div>
       </div>
@@ -34,25 +33,60 @@
     <div v-if="Value.length!==0" class="cont last">
       <!--search results-->
       <div v-if="match_top.length">
-        <div v-if="match_top.length==1">
+        <div v-if="match_top[0].type==='Artist'">
           <top
             v-for="match_to in match_top"
-            :key="match_to._id"
+            :key="match_to.id"
             :image="match_to.images"
-            :name="match_to.info"
+            :name="match_to.name"
             :type="match_to.type"
-            :artist_id="match_to._id"
-            :isartist="yes"
+            :artistId="match_to._id"
           ></top>
         </div>
-        <div v-if="match_top.length>1">
+        <div v-if="match_top[0].type==='album'">
           <top
             v-for="match_to in match_top"
-            :key="match_to._id"
+            :key="match_to.id"
             :image="match_to.images"
-            :name="match_to.info"
+            :name="match_to.name"
+            :artistId="match_to.artistId"
+            :artistName="match_to.artistName"
+            :albumId="match_to._id"
             :type="match_to.type"
-            :isartist="no"
+          ></top>
+        </div>
+        <div v-if="match_top[0].type==='playlist'">
+          <top
+            v-for="match_to in match_top"
+            :key="match_to.id"
+            :images="match_to.images"
+            :name="match_to.name"
+            :ownerName="match_to.ownerName"
+            :ownerId="match_to.ownerId"
+            :type="match_to.type"
+            :playlist_id="match_to._id"
+          ></top>
+        </div>
+        <div v-if="match_top[0].type==='track'">
+          <top
+            v-for="match_to in match_top"
+            :key="match_to.id"
+            :images="match_to.images"
+            :name="match_to.name"
+            :type="match_to.type"
+            :artistName="match_to.artistName"
+            :artistId="match_to.artistId"
+            :track_id="match_to._id"
+          ></top>
+        </div>
+        <div v-if="match_top[0].type==='user'">
+          <top
+            v-for="match_to in match_top"
+            :key="match_to.id"
+            :images="match_to.images"
+            :name="match_to.displayName"
+            :type="match_to.type"
+            :Id="match_to._id"
           ></top>
         </div>
       </div>
@@ -68,10 +102,10 @@
           <LibArtists
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_artist in match_artists"
-            :key="match_artist._id"
+            :key="match_artist.id"
             :images="match_artist.images"
-            :name="match_artist.info"
-            :type="match_artist.type"
+            :name="match_artist.name"
+            :artistId="match_artist._id"
           />
         </div>
       </div>
@@ -87,10 +121,12 @@
           <LibAlbums
             class="col-lg-10% col-md-60% col-xs-6"
             v-for=" match_album in  match_albums"
-            :key="match_album.album.id"
-            :images="match_album.album.images"
-            :name="match_album.album.name"
-            :artistname="match_album.artist.info"
+            :key="match_album.id"
+            :images="match_album.images"
+            :name="match_album.name"
+            :albumId="match_album._id"
+            :artistname="match_album.artistName"
+            :artistId="match_album.artistId"
           />
         </div>
       </div>
@@ -106,10 +142,11 @@
           <LibPlaylists
             v-for="match_playlist in match_playlists"
             :key="match_playlist.id"
-            :images="match_playlist.playlist.images"
-            :name="match_playlist.playlist.name"
-            :owner="match_playlist.owner.displayName"
-            :playlist_id="match_playlist.playlist._id"
+            :images="match_playlist.images"
+            :name="match_playlist.name"
+            :owner="match_playlist.ownerName"
+            :ownerId="match_playlist.ownerId"
+            :playlist_id="match_playlist._id"
           />
         </div>
       </div>
@@ -265,8 +302,8 @@ export default {
       this.Value = "";
     },
     changeininput() {
-      this.$store.dispatch("Search/searchaboutartist");
-      /* this.$store.dispatch("Search/searchaboutartist", this.Value);*/
+       this.$store.dispatch("Search/searchaboutartist")
+    /*  this.$store.dispatch("Search/searchaboutartist", this.Value);*/
     }
   },
   mounted() {
