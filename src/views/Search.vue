@@ -11,21 +11,11 @@
         @keydown.esc="reset"
         v-on:input="changeininput"
       />
-      <button
-        type="button"
-        class="close"
-        aria-label="Close"
-        v-if="Value.length !== 0"
-        @click="reset"
-      >
+      <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div>
-    <div class="loading" v-if="Value.length == 0 && !loading">
-      <i class="fa fa-spinner fa-spin"></i>
-    </div>
-    <div class="contaner" v-if="Value.length == 0 && loading">
+    <div class="contaner" v-if="Value.length==0">
       <div class="all scroll">
         <h2 v-if="categorys.length">Browse All</h2>
         <div class="row">
@@ -33,62 +23,141 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="category in categorys"
             :key="category.id"
-            :image="category.image"
+            :image="category.images"
             :name="category.name"
-            :link="category.href"
-            :playlists="category.playlist"
+            :categoryId="category._id"
           />
         </div>
       </div>
     </div>
-    </div>
-    <div v-if="Value.length !== 0">
-      <h2>TopResult</h2>
-      <div class="card mb-4 card-top" style="max-width: 400px;">
-        <div class="row no-gutters">
-          <div>
-            <img src="../assets/cry.png" class="col-md-4 img-card" alt="..." />
-            <h2 class="card-title">Card title</h2>
-            <p class="card-text"></p>
-            <p class="card-text">
-              <small class="text-muted"></small>
-            </p>
-          </div>
+    <div v-if="Value.length!==0" class="cont last">
+      <!--search results-->
+      <div v-if="match_top.length">
+        <div v-if="match_top[0].type==='Artist'">
+          <top
+            v-for="match_to in match_top"
+            :key="match_to.id"
+            :image="match_to.images"
+            :name="match_to.name"
+            :type="match_to.type"
+            :artistId="match_to._id"
+          ></top>
         </div>
-        <router-link
-          to="/"
-          class="stretched-link"
-          id="carglink"
-          testid="cardlink"
-        ></router-link>
+        <div v-if="match_top[0].type==='album'">
+          <top
+            v-for="match_to in match_top"
+            :key="match_to.id"
+            :image="match_to.images"
+            :name="match_to.name"
+            :artistId="match_to.artistId"
+            :artistName="match_to.artistName"
+            :albumId="match_to._id"
+            :type="match_to.type"
+          ></top>
+        </div>
+        <div v-if="match_top[0].type==='playlist'">
+           <top
+             v-for="match_to in match_top"
+            :key="match_to.id"
+            :images="match_to.images"
+            :name="match_to.name"
+            :ownerName="match_to.ownerName"
+            :ownerId="match_to.ownerId"
+            :type="match_to.type"
+            :playlist_id="match_to._id"
+          ></top>
+        </div>
+        <div v-if="match_top[0].type==='track'">
+           <top
+             v-for="match_to in match_top"
+            :key="match_to.id"
+            :images="match_to.images"
+            :name="match_to.name"
+            :type="match_to.type"
+            :artistName="match_to.artistName"
+            :artistId="match_to.artistId"
+            :track_id="match_to._id"
+          ></top>
+        </div>
+        <div v-if="match_top[0].type==='user'">
+           <top
+             v-for="match_to in match_top"
+            :key="match_to.id"
+            :images="match_to.images"
+            :name="match_to.displayName"
+            :type="match_to.type"
+            :Id="match_to._id"
+          ></top>
+        </div>
       </div>
-      <div class="all scroll">
+      <div v-if="match_artists.length">
         <h2>Artist</h2>
+        <router-link
+          v-if="match_artists.length>=5"
+          class="ard-link seelink"
+          to="/"
+          testid="seeallplaylist"
+        >SeeAll</router-link>
         <div class="row">
-          <artist
+          <LibArtists
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_artist in match_artists"
             :key="match_artist.id"
-            :image="match_artist.image"
+            :images="match_artist.images"
             :name="match_artist.name"
-            :link="match_artist.href"
-            :type="match_artist.type"
+            :artistId="match_artist._id"
+          />
+        </div>
+      </div>
+      <div v-if="match_albums.length">
+        <h2>Album</h2>
+        <router-link
+          v-if="match_albums.length>=5"
+          class="ard-link seelink"
+          to="/"
+          testid="seeallplaylist"
+        >SeeAll</router-link>
+        <div class="row">
+          <LibAlbums
+            class="col-lg-10% col-md-60% col-xs-6"
+            v-for=" match_album in  match_albums"
+            :key="match_album.id"
+            :images="match_album.images"
+            :name="match_album.name"
+            :albumId="match_album._id"
+            :artistname="match_album.artistName"
+            :artistId="match_album.artistId"
+          />
+        </div>
+      </div>
+      <div v-if="match_playlists.length">
+        <h2>playlist</h2>
+        <router-link
+          v-if="match_playlists.length>=5"
+          class="ard-link seelink"
+          to="/"
+          testid="seeallplaylist"
+        >SeeAll</router-link>
+        <div class="row">
+          <LibPlaylists
+            v-for="match_playlist in match_playlists"
+            :key="match_playlist.id"
+            :images="match_playlist.images"
+            :name="match_playlist.name"
+            :ownerName="match_playlist.ownerName"
+            :ownerId="match_playlist.ownerId"
+            :playlist_id="match_playlist._id"
           />
         </div>
       </div>
     </div>
+    <div style="height:1000px"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.loading{
-  display: flex;
-  justify-content: center;
-  i{
-    color: #fff;
-    font-size: 70px;
-    margin-top: 100px;
-  }
+.last {
+  margin-bottom: 200px;
 }
 .img-card {
   width: 100%;
@@ -99,16 +168,18 @@
   padding: 20px;
   height: 250px;
 }
+
 *:focus {
   outline: none;
 }
 .cont {
   margin-left: 15px;
+  margin-bottom: 25px;
   width: 100%;
   height: 100vh;
 }
 .scroll {
-  width: 2000px;
+  width: 2000;
   height: 100%;
   overflow-x: visible;
   overflow-y: scroll;
@@ -146,7 +217,7 @@ h2 {
   font-weight: bold;
   color: white;
   margin-bottom: 5px;
-  margin-left: 30px;
+  float: left;
 }
 .container {
   margin-left: 15px;
@@ -164,9 +235,19 @@ h2 {
   color: black;
   font-weight: 500;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   #search-box {
-    width: 70%;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 300px) {
+  #search-box {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 100px) {
+  #search-box {
+    width: 10%;
   }
 }
 
@@ -184,20 +265,32 @@ h2 {
   background-color: white;
   color: rgb(26, 24, 9);
 }
+.seelink {
+  font-size: 15px;
+  color: white;
+  display: inline;
+  margin-left: 70%;
+}
 </style>
 
 <script>
 import category from "@/components/category.vue";
-import artist from "@/components/artist.vue";
+import LibArtists from "@/components/lib-artists.vue";
+import top from "@/components/topresult_card.vue";
+import LibAlbums from "@/components/lib-albums.vue";
+import LibPlaylists from "@/components/lib-playlists.vue";
 import { mapGetters, mapState } from "vuex";
 export default {
   name: "Search",
   components: {
     category,
-    artist
+    LibArtists,
+    top,
+    LibAlbums,
+    LibPlaylists
   },
   data() {
-    return { Value:""};
+    return { Value: "" };
   },
   methods: {
     check(value) {
@@ -209,7 +302,7 @@ export default {
       this.Value = "";
     },
     changeininput() {
-      this.$store.dispatch("Search/searchaboutartist", this.Value);
+      this.$store.dispatch("Search/searchaboutartist",this.Value);
     }
   },
   mounted() {
@@ -218,12 +311,15 @@ export default {
   computed: {
     ...mapGetters({
       categorys: "categorys/getcategory",
+      match_top: "Search/gettopres",
       match_artists: "Search/getresult",
-      loading:"categorys/loading"
+      match_albums: "Search/getalbumres",
+      match_playlists: "Search/getplaylistsres"
     }),
     ...mapState({
-      show: state => state.creatplaylist.showModal,
+      show: state => state.creatplaylist.showModal
     })
   }
 };
 </script>
+

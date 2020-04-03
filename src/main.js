@@ -12,6 +12,16 @@ import { Server, Response } from "miragejs";
 new Server({
   seeds(server) {
     server.db.loadData({
+      "playlist":[
+        {
+            "ownerId": "5e68139dbaa5a70758626553",
+            "ownerName": "Amr diab",
+            "ownerImages": [],
+            "_id": "5e7648a37966e84270c96b48",
+            "name": "sherenyat",
+            "type": "playlist",
+            "images": []
+        }],
       currentsong: {
         track: {
           name: "You are my sunshine",
@@ -231,61 +241,61 @@ new Server({
       category: [
         {
           name: "pop",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           href: "/",
           playlist: []
         },
         {
           name: "roke",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "rab",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "sad",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "happy",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "pop",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "roke",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "rab",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "sad",
-          image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
           href: "",
           playlist: []
         },
         {
           name: "happy",
-          image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+          images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
           href: "",
           playlist: []
         }
@@ -600,8 +610,8 @@ new Server({
     //     {user: schema.db.user_play_lists.findBy({name: user.name})}
     //   )
 
-    // }
-    // );
+        // }
+        // );
 
     // this.get("/api/users", (schema)=>{
     //   return schema.db.user_play_lists
@@ -724,29 +734,15 @@ new Server({
       const claimartist = JSON.parse(request.requestBody).data;
       console.log(claimartist.Name, "in mirage");
       console.log("artist id", claimartist.id);
-      /* return  schema.db.users.update(
-              { Name:claimartist.Name,
-              Genre:claimartist.Genre,
-              Description:claimartist.Description}
-              
-          )*/
-
-      return new Response(
-        200,
-        {},
-        schema.db.users.update({
-          Name: claimartist.Name,
-          Genre: claimartist.Genre,
-          Description: claimartist.Description
-        })
-      );
-      /* schema.db.users.update(
-          { Name:claimartist.Name,
-          Genre:claimartist.Genre,
-          Description:claimartist.Description}
-          
-      )
-        return new Response(200,{ token: "menna"},{user:schema.db.users.where({Name:claimartist.Name})})*/
+     return new Response(
+                200,
+                {},
+                schema.db.users.update({
+                    Name: claimartist.Name,
+                    Genre: claimartist.Genre,
+                    Description: claimartist.Description
+                })
+            );
     });
     this.delete("/api/song/:id", (schema, request) => {
       let id = request.params.id;
@@ -867,6 +863,19 @@ new Server({
     this.post("/createQueue/:playlist_id/:trackId", () => {
       return new Response(200, {}, { mes: "created with success" });
     });
+            //////
+            this.get("/search/top", schema => {
+              return schema.db.search_top;
+          });
+          this.get("/search/artist", schema => {
+              return schema.db.search_artist;
+          });
+          this.get("/search/album", schema => {
+              return schema.db.search_album;
+          });
+          this.get("/search/playlist", schema => {
+              return schema.db.search_playlist;
+          });
   }
 });
 Vue.config.productionTip = false;
@@ -875,13 +884,13 @@ Vue.prototype.$http = axios;
 //we can do this.$http and it will be like calling axios directly
 const token = localStorage.getItem("token");
 if (token) {
-  Vue.prototype.$http.defaults.headers.common["x-auth-token"] = token;
+    Vue.prototype.$http.defaults.headers.common["x-auth-token"] = token;
 }
 //setting the Authorization on axios header to our token, so requests can be processed if a token is required.
 // This way, we do not have to set token anytime we want to make a request.
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount("#app");
