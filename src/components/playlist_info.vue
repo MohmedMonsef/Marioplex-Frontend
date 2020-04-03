@@ -15,18 +15,15 @@
              <span data-toggle="tooltip" :title="playlist_name">
              <h2 class="playlistname">{{this.playlist_name}}</h2>
              </span>
-          
-             <a href="" id="owner_name">{{owner_name}}</a>
+             
+             <router-link to="/" id="owner_name">{{owner_name}}</router-link>
              </div>
              <button v-if="!play" class="playbutton" @click="playSong() , isplaying()">PLAY</button>
              <button v-if="play" class="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
              <div class="add-library">
               <button
-              class="heartbutton"
-            >
-
-             <!-- here there is condition of like and call of method inside the button and donot forget to add the second heart -->
-              <span data-toggle="tooltip" title="Save to your Liked Songs">
+              class="heartbutton" v-if="!this.liked" @click="likecurrentplaylist()">
+              <span data-toggle="tooltip" title="Save to Your Library">
                 <i
                   class="fa fa-heart-o"
                   id="emptyhearticon"
@@ -34,6 +31,19 @@
                 ></i>
               </span>
             </button>
+
+              <button class="heartbutton" v-if="this.liked" @click="likecurrentplaylist()">
+              <span data-toggle="tooltip" title="Remove from Your Library">
+                <i
+                  class="fa fa-heart"
+                  id="filledhearticon"
+                  testid="filledhearticon"
+                  style="color:green"
+                ></i>
+              </span>
+            </button>
+
+
             <!-- <span data-toggle="tooltip" title="More">
             <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
             </span>
@@ -43,6 +53,7 @@
       </div>-->
 
       <p>{{playlist_length}} SONGS</p>
+      <div class="toast" id="playlistliketoast"></div>
              </div>
          </div>
      <!-- </div> -->
@@ -157,11 +168,46 @@ font-size: 12px;
 #owner_name:hover{
     color: white;
 }
+.toast {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 50%;
+  bottom: 100px;
+  margin: auto;
+  min-width: 300px;
+  background-color: rgb(8, 118, 243);
+  padding: 10px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: 0 0 10 rgb(9, 76, 131);
+  transition: opacity 0.2s, visibility 0.2s;
+  font-size: 15px;
+}
+.toast--visible {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 
 <script>
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import { mapGetters } from "vuex";
+const toast = {
+  show(message) {
+    var mytoast = document.getElementById("playlistliketoast");
+    //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
+    clearTimeout(mytoast.hideTimeout);
+    mytoast.textContent = message;
+    mytoast.className = "toast toast--visible";
+    mytoast.hideTimeout = setTimeout(() => {
+      mytoast.classList.remove("toast--visible");
+    }, 2000);
+    console.log("message", message);
+  }
+};
 export default {
         data:function(){
         return {
@@ -228,6 +274,15 @@ export default {
       pausebutton.style.opacity="1";
       
       }
+      },
+      likecurrentplaylist:function(){
+        if (!this.liked) {
+        this.$store.dispatch("playlist/like_playlist" ,this.$route.params.playlist_id);
+        toast.show("Saved to Your Library");
+        } else {
+        this.$store.dispatch("playlist/unlike_playist",this.$route.params.playlist_id);
+        toast.show("Removed from Your Library");
+      }
       }
      },
      computed:{
@@ -236,8 +291,13 @@ export default {
          playlist_name: "playlist/playlist_name",
          playicon: "mediaplayer/playicon",
          owner_name:"playlist/owner_name",
-         playlist_image:"playlist/playlist_image"
+         playlist_image:"playlist/playlist_image",
+         liked:"playlist/likeplaylist"
          })
+     },
+      created: function() {      
+   this.$store.dispatch("playlist/like_playlist" , this.$route.params.playlist_id),
+   this.$store.dispatch("playlist/unlike_playist" , this.$route.params.playlist_id)
      }
 }
 </script>>

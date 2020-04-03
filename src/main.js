@@ -393,6 +393,7 @@ new Server({
                   "_id": "5e7d93dad82adf07f4121bac",
                   "type": "playlist",
                   "name": "dhjgjdjdjg",
+                  "like": "true",
                   "ownerId": "5e7d9045854b0419f4f409b7",
                   "ownerName":"Nihal Mansour",
                   "collaborative": false,
@@ -469,6 +470,7 @@ new Server({
                   "_id": "5e7d93dad82adf0ksksksksksksksk",
                   "type": "playlist",
                   "name": "dhjgjdjdjg",
+                  "like":"false",
                   "ownerId": "5e7d9045854b0419f4f409b7",
                   "collaborative": false,
                   "isPublic": true,
@@ -637,6 +639,16 @@ new Server({
       let id = request.params.playlist_id;
       return schema.db.playlist_info.findBy({_id:id});
   });
+
+  this.put("/playlists/:playlist_id/followers", (schema , request) => {
+    let id = request.params.playlist_id;
+    return schema.db.playlist_info.findBy({_id:id});
+    
+});
+this.delete("/playlists/:playlist_id/followers", (schema , request) => {
+  let id = request.params.playlist_id;
+  return schema.db.playlist_info.findBy({_id:id});
+});
     }
     ////////////////////////////////////////////////
 });

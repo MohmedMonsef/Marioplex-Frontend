@@ -7,7 +7,8 @@ export default {
     playlist_length: "",
     playlist_name:"",
     owner_name: "",
-    playlist_image:""
+    playlist_image:"",
+    likedplaylist:false
   },
   mutations: {
     set_playlist(state, playlist_tracks) {
@@ -28,6 +29,9 @@ export default {
   set_playlist_image(state , image){
     state.playlist_image = image;
 },
+set_likedplaylist(state , like){
+  state.likedplaylist = like;
+},
   },
   actions: {
     playlist_tracks({ commit } , playlist_id) {
@@ -46,7 +50,33 @@ export default {
           .catch(error => {
             console.log(error);
           });
-        }  
+        } ,
+
+        like_playlist({ commit } , playlist_id) {
+          commit("set_playlist_loaded" , false);
+          axios
+            .put("/playlists/" + playlist_id + "/followers")
+            .then(response => {
+              let playlist = response.data;
+              commit ("set_likedplaylist" , playlist.like = true)
+            })
+            .catch(error => {
+              console.log(error);
+            });
+          },
+          unlike_playist({ commit } , playlist_id){
+            commit("set_playlist_loaded" , false);
+            axios
+              .delete("/playlists/" + playlist_id + "/followers")
+              .then(response => {
+                let playlist = response.data;
+                commit ("set_likedplaylist" , playlist.like = false)
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          } 
+        
   },
   getters: {
     playlist_tracks: state => state.playlist_tracks,
@@ -55,5 +85,6 @@ export default {
     playlist_name: state => state.playlist_name,
     owner_name: state => state.owner_name,
     playlist_image:state => state.playlist_image,
+    likeplaylist:state => state.likedplaylist
   }
 };

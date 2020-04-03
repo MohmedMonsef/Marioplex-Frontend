@@ -62,7 +62,7 @@ name: "playlistview",
     })
   },
   created: function() {   
-   this.$store.dispatch("playlist/playlist_tracks" , this.$route.params.playlist_id)
+   this.$store.dispatch("playlist/playlist_tracks" , this.$route.params.playlist_id),
    console.log("Playlist_id" , this.$route.params.playlist_id)
    console.log("nihal here is the length" , this.playlist_length)
      }

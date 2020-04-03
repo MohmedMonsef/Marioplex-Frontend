@@ -15,6 +15,7 @@ import LibraryAlbums from "../views/library-albums.vue";
 import Queue from "../views/Queue.vue";
 import playlist from "../views/playlist_view.vue";
 
+
 Vue.use(VueRouter);
 
 const routes = [
