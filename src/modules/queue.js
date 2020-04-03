@@ -6,7 +6,8 @@ export default {
   state: {
     NextUp: [],
     Queued: [],
-    demo: true
+    demo: true,
+    loading:false
   },
   mutations: {
     set_nextup(state, queue) {
@@ -26,10 +27,14 @@ export default {
     },
     demo(state) {
       state.demo = !state.demo;
+    },
+    set_loading(state, status) {
+      state.loading = status;
     }
   },
   actions: {
     Queue({ commit }) {
+      commit("set_loading", false);
       axios
         .get("/api/queue")
         .then(response => {
@@ -37,6 +42,7 @@ export default {
           console.log("My queue in action", queue);
           commit("set_nextup", queue);
           commit("set_queued", queue);
+          commit("set_loading", true);
         })
         .catch(error => {
           console.log(error);
@@ -90,6 +96,7 @@ export default {
   },
   getters: {
     Get_Queued: state => state.Queued,
-    Get_Nextup: state => state.NextUp
+    Get_Nextup: state => state.NextUp,
+    loading: state => state.loading
   }
 };

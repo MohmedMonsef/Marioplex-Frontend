@@ -1,7 +1,10 @@
 import axios from "axios";
 export default {
     namespaced: true,
-    state: { result: [], type: "artist" },
+    state: { 
+        result: [],
+        type: "artist"
+    },
     mutations: {
         setresult(state, match_value) {
             state.result = match_value;

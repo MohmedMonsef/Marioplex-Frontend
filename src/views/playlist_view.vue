@@ -1,6 +1,9 @@
 <template>
   <div class="playlist">
-    <div class="row">
+    <div class="loading" v-if="!playlist_load">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <div v-if="playlist_load" class="row">
       <div class="col-4">
         <div class="playlist_image">
           <img src="../assets/cry.png" alt="playlist_image" />
@@ -54,6 +57,14 @@
 </template>
 
 <style lang="scss" scoped>
+.loading{
+  display: flex;
+  justify-content: center;
+  i{
+    font-size: 70px;
+    margin-top: 100px;
+  }
+}
 .body {
   min-width: 768px;
   min-height: 600px;

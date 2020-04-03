@@ -81,7 +81,8 @@ export default {
       this.$store.dispatch("mediaplayer/pausesong_state");
     },
     prev_song: function() {
-      this.$store.dispatch("mediaplayer/prevsong_state");
+      if(this.currentsong_info.index!=0)
+        this.$store.dispatch("mediaplayer/prevsong_state");
     },
     next_song: function() {
       this.$store.dispatch("mediaplayer/nextsong_state");

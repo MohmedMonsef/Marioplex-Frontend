@@ -1,5 +1,9 @@
 <template>
-  <div id="main_queue">
+<div>
+  <div class="loading" v-if="!loading">
+      <i class="fa fa-spinner fa-spin"></i>
+  </div>
+  <div  v-if="loading" id="main_queue">
     <h1>
       Play Queue
     </h1>
@@ -53,9 +57,19 @@
       :albumId="next.track.albumId"
     />
   </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.loading{
+  display: flex;
+  justify-content: center;
+  i{
+    color: #fff;
+    font-size: 70px;
+    margin-top: 100px;
+  }
+}
 #main_queue {
   max-width: 1955px;
   padding: 0px 32px;
@@ -95,6 +109,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      loading: "Queue/loading",
       currentSong: "mediaplayer/Get_Currentsong",
       NextUp: "Queue/Get_Nextup",
       Queued: "Queue/Get_Queued"

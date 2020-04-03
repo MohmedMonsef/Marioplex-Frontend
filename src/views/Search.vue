@@ -21,7 +21,11 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="contaner" v-if="Value.length == 0">
+    <div>
+    <div class="loading" v-if="Value.length == 0 && !loading">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <div class="contaner" v-if="Value.length == 0 && loading">
       <div class="all scroll">
         <h2 v-if="categorys.length">Browse All</h2>
         <div class="row">
@@ -36,6 +40,7 @@
           />
         </div>
       </div>
+    </div>
     </div>
     <div v-if="Value.length !== 0">
       <h2>TopResult</h2>
@@ -76,6 +81,15 @@
 </template>
 
 <style lang="scss" scoped>
+.loading{
+  display: flex;
+  justify-content: center;
+  i{
+    color: #fff;
+    font-size: 70px;
+    margin-top: 100px;
+  }
+}
 .img-card {
   width: 100%;
   height: 80px;
@@ -183,7 +197,7 @@ export default {
     artist
   },
   data() {
-    return { Value: "" };
+    return { Value:""};
   },
   methods: {
     check(value) {
@@ -204,10 +218,11 @@ export default {
   computed: {
     ...mapGetters({
       categorys: "categorys/getcategory",
-      match_artists: "Search/getresult"
+      match_artists: "Search/getresult",
+      loading:"categorys/loading"
     }),
     ...mapState({
-      show: state => state.creatplaylist.showModal
+      show: state => state.creatplaylist.showModal,
     })
   }
 };

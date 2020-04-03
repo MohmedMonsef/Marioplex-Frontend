@@ -1,5 +1,9 @@
 <template>
   <div>
+     <div class="loading" v-if="!loadingartists">
+      <i class="fa fa-spinner fa-spin"></i>
+      </div>
+      <div v-if="loadingartists">
     <lib-artists-default v-if="artists1.length == 0" />
     <h2 v-if="artists1.length">Artists</h2>
     <div class="container">
@@ -12,10 +16,20 @@
         />
       </div>
     </div>
+      </div>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.loading{
+  display: flex;
+  justify-content: center;
+  i{
+    color: #fff;
+    font-size: 70px;
+    margin-top: 100px;
+  }
+}
 h2 {
   font-size: 28px;
   font-weight: bold;
@@ -45,7 +59,8 @@ export default {
   computed: {
     ...mapGetters({
       // map `this.artists1` to `this.$store.getters.artists`
-      artists1: "userlibrary/artists"
+      artists1: "userlibrary/artists",
+      loadingartists: "userlibrary/loadingartists"
     })
   }
 };

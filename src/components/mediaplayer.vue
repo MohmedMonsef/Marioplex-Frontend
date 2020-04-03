@@ -70,7 +70,7 @@
                   class="fa fa-random"
                   id="randomicon"
                   testid="shuffleicon"
-                  :class="{coloring:this.isShuffle}"
+                  :class="{coloring:isShuffle}"
                   @click="shuffle()"
                 ></i>
               </span>
@@ -79,6 +79,7 @@
               <span data-toggle="tooltip" title="Previous">
                 <i
                   class="fa fa-step-backward"
+                  :class="{disabledicon: currentsong_info.index==0}"
                   id="playbackicon"
                   testid="previcon"
                 ></i>
@@ -424,6 +425,15 @@ input:focus {
 .toast--visible {
   visibility: visible;
   opacity: 1;
+}
+.disabledicon{
+  color:#424040;
+}
+.disabledicon:hover{
+  color:#424040;
+}
+.disabledicon:active{
+  color: #b3b3b3;
 }
 </style>
 
