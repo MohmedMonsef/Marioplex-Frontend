@@ -7,8 +7,9 @@
           <lib-artists
             v-for="artist in artists1"
             :key="artist.id"
-            :images="artist.images"
-            :name="artist.name"
+          :images="artist.images"
+          :name="artist.Name"
+          :artistId="artist._id"
           />
         </div>
       </div>
@@ -22,7 +23,7 @@ h2{
   color: white;
   margin-bottom: 14px;
   margin-left: 30px;
-  margin-top: 38px;
+  margin-top: 80px;
 }
 .container {
   margin-left: 15px;

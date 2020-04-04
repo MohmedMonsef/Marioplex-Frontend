@@ -23,7 +23,7 @@
             </p>
             <i v-if="hover" class="fa fa-play-circle" testid="artist play icon"></i>
             <router-link
-                to="/"
+                to="/ArtistProfile"
                 class="stretched-link"
                 id="carglink"
                 testid="artist card link"

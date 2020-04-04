@@ -21,8 +21,8 @@
                     {{ name }}
                 </h4>
                 <router-link  
-                    class="ard-link artistlink" 
-                    to="/HomeWebPlayer" 
+                    class="card-link artistlink" 
+                    to="/ArtistProfile" 
                     testid="artist page link"> {{ artistname }}  
                 </router-link>
                 <i v-if="hover" class="fa fa-play-circle" testid="album play icon"></i>

@@ -7,9 +7,11 @@
           <lib-albums
             v-for="album in albums1"
             :key="album.id"
-            :images="album.images"
-            :name="album.name"
-            :artistname="album.artist.name"
+          :albumId="album._id"
+          :images="album.images"
+          :name="album.name"
+          :artistname="album.artistName"
+          :artistId="album.artistId"
           />
         </div>
       </div>
@@ -23,7 +25,7 @@ h2{
   color: white;
   margin-bottom: 14px;
   margin-left: 30px;
-  margin-top: 38px;
+  margin-top: 80px;
 }
 .container {
   margin-left: 15px;

@@ -1,23 +1,30 @@
 <template>
     <div class="home-navbar">
         <div class="div1">
-            <button class="prev" @click="goprev()">
+            <button 
+             class="prev"
+             testid="previous page button"
+             @click="goprev()">
                 <i class="fa fa-angle-left"></i>
             </button>
-            <button class="next" @click="gonext()">
+            <button 
+             class="next"
+             testid="next page button"
+             @click="gonext()">
                 <i class="fa fa-angle-right"></i>
             </button>
         </div>
         <div class="div2">
             <div class="login"  v-if="isLoggedIn == 'success'">
-                <div class="library-navbar" v-if="IN">
+                <div class="library-navbar">
                     <ul class="nav">
                         <li class="nav-item active">
                             <div class="divOnFocus">
                                 <router-link
                                 to="/HomeWebPlayer/library/library-playlists"
                                 testid="playlists in library"
-                                class="nav-link">Playlists</router-link>
+                                class="nav-link">Playlists
+                                </router-link>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -25,7 +32,8 @@
                                 <router-link 
                                 to="/HomeWebPlayer/library/library-artists" 
                                 testid="Artists in library" 
-                                class="nav-link">Artists</router-link>
+                                class="nav-link">Artists
+                                </router-link>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -33,7 +41,8 @@
                                 <router-link 
                                 to="/HomeWebPlayer/library/library-albums" 
                                 testid="Albums in library" 
-                                class="nav-link">Albums</router-link>
+                                class="nav-link">Albums
+                                </router-link>
                             </div>
                         </li>
                     </ul>
@@ -68,7 +77,7 @@
                             class="dropdown-item" 
                             href="/UserAccount" 
                             target="_blank" 
-                            testid="userprofilr link">
+                            testid="userprofile link">
                             Account
                         </a>
                         <div class="divider">________________________</div>
@@ -264,8 +273,8 @@
     border-radius: 20px;
     width: 120px;
     height: 38px;
-    background-color: rgb(16,15,16);
-    margin-left: 61%;
+    background-color: #161516;
+    margin-left: 40%;
     margin-top: 10px;
     font-size: 12px;
     font-weight: bold;
@@ -333,10 +342,10 @@ export default {
        isLoggedIn: "authorization/GetStatus",
        Username: "authorization/Username"
     }),
-    IN: function () {
-       return this.ISinlibrary();
+    // IN: function () {
+    //    return this.ISinlibrary();
         
-    }
+    // }
      },
     methods:{
        logout() {
@@ -348,18 +357,18 @@ export default {
     gonext: function () {
          this.$router.go(1);
     },
-    ISinlibrary: function(){
-          if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
-            this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
-            this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
-         {
-                this.inlibrary=true;
-         }
-          else
-               {this.inlibrary=false;  }
-         console.log(this.inlibrary)
-         return this.inlibrary;
-    }
+    // ISinlibrary: function(){
+    //       if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
+    //         this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
+    //         this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
+    //      {
+    //             this.inlibrary=true;
+    //      }
+    //       else
+    //            {this.inlibrary=false;  }
+    //      console.log(this.inlibrary)
+    //      return this.inlibrary;
+    // }
   },
 
 }

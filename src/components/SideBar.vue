@@ -38,43 +38,45 @@
         </div>
       </li>
     </ul>
-    <label testid="PLAYLISTS lable">PLAYLISTS</label>
-    <!-- creat play lists or show liked songs -->
-    <ul>
-      <li>
-        <!-- <CreatePlaylist> -->
-        <button @click="changeModalState()" testid="create button" class="createbutton">
-          <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
-        </button>
-        <!-- router link should navigate to pop up -->
-        <!-- </CreatePlaylist> -->
-      </li>
-      <li>
-        <router-link to="/HomeWebPlayer/liked-tracks" testid="likedsongs link" class="likedsongs">
-          <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; " />Liked Songs
-        </router-link>
-        <!-- router link should navigate to liked songs page -->
-      </li>
-    </ul>
-    <!-- lower border -->
-    <div testid="border in sidebar" class="border"></div>
-    <!-- user's play lists -->
-    <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
+    <div class="loggedin" v-if="isLoggedIn == 'success'">
+        <label testid="PLAYLISTS lable">PLAYLISTS</label>
+        <!-- creat play lists or show liked songs -->
         <ul>
-          <li v-for="playlist in playlists1" :key="playlist.id" @click.right="playlistid=playlist.id,showdelete=true  ">
-            <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
-            <!-- router link should navigate to play list page-->
+          <li>
+            <!-- <CreatePlaylist> -->
+            <button @click="changeModalState()" testid="create button" class="createbutton">
+              <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
+            </button>
+            <!-- router link should navigate to pop up -->
+            <!-- </CreatePlaylist> -->
+          </li>
+          <li>
+            <router-link to="/HomeWebPlayer/liked-tracks" testid="likedsongs link" class="likedsongs">
+              <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; " />Liked Songs
+            </router-link>
+            <!-- router link should navigate to liked songs page -->
           </li>
         </ul>
-        <ul v-if="showdelete" id="right-click-menu">
-              <li @click="changeModalStateDelete()">Delete</li>
-        </ul>
-        <!-- id="right-click-menu" 
-            tabindex="-1" 
-            v-if="viewMenu" 
-            @blur="closeMenu()" 
-            style="top:top; left:left;" -->
-    <!-- </div> -->
+        <!-- lower border -->
+        <div testid="border in sidebar" class="border"></div>
+        <!-- user's play lists -->
+        <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
+            <ul>
+              <li v-for="playlist in playlists1" :key="playlist.id" @click.right="playlistid=playlist.id,showdelete=true  ">
+                <router-link to="/HomeWebPlayer" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
+                <!-- router link should navigate to play list page-->
+              </li>
+            </ul>
+            <ul v-if="showdelete" id="right-click-menu">
+                  <li @click="changeModalStateDelete()">Delete</li>
+            </ul>
+            <!-- id="right-click-menu" 
+                tabindex="-1" 
+                v-if="viewMenu" 
+                @blur="closeMenu()" 
+                style="top:top; left:left;" -->
+        <!-- </div> -->
+    </div>
   </div>
 </template>
 
@@ -236,7 +238,8 @@ export default {
       // map `this.playlists1` to `this.$store.getters.playlists`
       playlists1: "creatplaylist/playlists" ,
       // creat new object "playlists1" and map to it
-       showModalDelete: "creatplaylist/showModalDelete"
+       showModalDelete: "creatplaylist/showModalDelete",
+       isLoggedIn: "authorization/GetStatus"
     })
     
   },
@@ -249,6 +252,7 @@ export default {
 
       this.$store.dispatch("creatplaylist/toggleModalDelete",this.playlistid);
     },
+   
     
 
     // setMenu: function(top, left) {

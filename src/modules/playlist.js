@@ -12,8 +12,10 @@ export default {
     set_playlist_loaded(state , status){
         state.playlist_loaded = status;
     },
-    ReorderTracks(){
-      //to bedone state
+    ReorderTracks(state,track){
+      state.playlist_tracks.push({
+         track
+      })
     },
     AddTrack(state,tracks){
       state.playlist_tracks.push({
@@ -39,12 +41,14 @@ export default {
           axios
           .put("api/playlists/tracks",{data:payload})
           .then(response=>{
+            let track=response.data;
             console.log("theresponse from mirage is",response)
+            commit("ReorderTracks",track)
           })
           .catch(error=>{
             console.log(error)
           })
-          commit("ReorderTracks")
+          
         },
         async AddTrack({commit},payload){
           console.log("to add track in playlist.js the playlistid is",payload.playlistoftrack)

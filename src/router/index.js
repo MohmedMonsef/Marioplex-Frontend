@@ -18,8 +18,9 @@ import AccessArtist from "../views/AccessArtist";
 import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage"
 import playlist from "../views/playlist_view.vue";
-
-
+import GetPremium from "../views/GetPremium.vue";
+import UserAccount from "../views/UserAccount.vue";
+import ArtistProfile from "../views/ArtistProfile.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -99,7 +100,21 @@ const routes = [
       component: ArtistPersonalPage,
       
     },
-   
+    {
+        path: "/GetPremium",
+        name: "GetPremium",
+        component: GetPremium
+    },
+    {
+        path: "/UserAccount",
+        name: "UserAccount",
+        component: UserAccount
+    },
+    {
+        path: "/ArtistProfile",
+        name: "ArtistProfile",
+        component: ArtistProfile
+    },
 ];
 
 const router = new VueRouter({
