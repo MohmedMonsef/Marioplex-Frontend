@@ -1,5 +1,6 @@
 <template>
     <div class="playlist"> 
+      <!-- <playlistpopup v-if="show" /> -->
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
           <playlist v-if="this.playlist_length == 0"/>
@@ -49,7 +50,9 @@ import SongComponent from "@/components/SongComponent.vue";
 import emptytracks from "@/components/emptytracks.vue";
 import playlist from "@/components/playlist.vue";
 import playlistinfo from "@/components/playlist_info.vue";
+// import playlistpopup from "@/components/playlistpopup.vue";
 import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
 name: "playlistview",
     props: {
@@ -62,8 +65,12 @@ name: "playlistview",
     playlist,
     emptytracks,
     playlistinfo
+    //  playlistpopup
   },
     computed: {
+    ...mapState({
+      show: state => state.playlistpopup.showModal
+    }),
     ...mapGetters({
       playlist_tracks: "playlist/playlist_tracks",
       playlist_length: "playlist/playlist_length",

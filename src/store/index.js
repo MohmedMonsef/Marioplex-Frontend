@@ -12,6 +12,7 @@ import userlibrary from "../modules/userlibrary";
 import playlist from "../modules/playlist";
 import album from "../modules/album";
 import likedtracks from "../modules/likedtracks";
+import playlistpopup from "../modules/playlistpopup";
 
 Vue.use(Vuex);
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     userlibrary,
     playlist,
     album,
-    likedtracks
+    likedtracks,
+    playlistpopup
   }
 });
