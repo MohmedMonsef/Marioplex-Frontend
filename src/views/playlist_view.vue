@@ -1,12 +1,11 @@
 <template>
-    <div class="playlist">
+    <div class="playlist"> 
     <div class="row">
-        <div class="col-4">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
           <playlist v-if="this.playlist_length == 0"/>
           <playlistinfo v-else/>
          </div> 
-          
-        <div class="col-8">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
       <emptytracks v-if="this.playlist_length == 0"/>
      <song-component v-else
       v-for="p in playlist_tracks"
@@ -20,19 +19,29 @@
     />
         </div>
 </div>
-    </div>
+</div>
 </template>
 
 <style lang="scss" scoped>
 .playlist{
-    min-width: 768px;
+    // min-width: 768px;
     min-height: 600px;
-  background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
+    background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
 }
 .row{
     margin: 25px;
     margin-top: 0; 
+    display: flex;
+    
 }
+// @media screen and (max-width: 1196px) {
+//  .row{
+// flex-direction: column;
+//  }
+// .col{
+//   flex: 50%;
+// }
+// }
 </style>
 
 <script>

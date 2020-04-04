@@ -10,6 +10,7 @@
             :images="album.images"
             :name="album.name"
             :artistname="album.artist.name"
+            :album_id="album._id"
           />
         </div>
       </div>

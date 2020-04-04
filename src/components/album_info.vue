@@ -1,28 +1,22 @@
 <template>
-     <!-- <div class="col-4"> -->
-         <div class="playlist_info">
+     <div class="album_info">
               <div class="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
-             <img :src="playlist_image" alt="playlist_image" class="playlist_image" id="playlist_image">
+             <img :src="album_image" alt="album_image" class="album_image" id="album_image">
              <i v-if="!play" class="fa fa-play" id="imageplayicon" testid="imageplayicon" @click="playSong() , isplaying()"> </i>
              <i v-if="play" class="fa fa-pause" id="imagepauseicon" testid="imagepauseicon" @click="pauseSong() , stopplaying()"> </i>
-            
-            <!-- <button v-if="!play" id="imageplayicon"  @click="playSong() , isplaying()">
-             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px"><title>MUSIC</title><path d="M41.37,71.64H36.88a2.51,2.51,0,0,1-2.5-2.5V34.84a2.51,2.51,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,41.37,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M60.92,71.64H56.43a2.5,2.5,0,0,1-2.5-2.5V34.84a2.5,2.5,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,60.92,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M49.63,93.8A41.81,41.81,0,1,1,91.44,52,41.85,41.85,0,0,1,49.63,93.8Zm0-82.62A40.81,40.81,0,1,0,90.44,52,40.85,40.85,0,0,0,49.63,11.18Z"></path></svg>
-            </button> -->
-
-             </div>
+            </div>
              <div>
-             <span data-toggle="tooltip" :title="playlist_name">
-             <h2 class="playlistname">{{this.playlist_name}}</h2>
+             <span data-toggle="tooltip" :title="album_name">
+             <h2 class="albumname">{{this.album_name}}</h2>
              </span>
              
-             <router-link to="/" id="owner_name">{{owner_name}}</router-link>
+             <router-link to="/" id="artist_name">{{artist_name}}</router-link>
              </div>
              <button v-if="!play" class="playbutton" @click="playSong() , isplaying()">PLAY</button>
              <button v-if="play" class="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
              <div class="add-library">
               <button
-              class="heartbutton" v-if="!this.liked" @click="likecurrentplaylist()">
+              class="heartbutton" v-if="!this.liked" @click="likecurrentalbum()">
               <span data-toggle="tooltip" title="Save to Your Library">
                 <i
                   class="fa fa-heart-o"
@@ -32,7 +26,7 @@
               </span>
             </button>
 
-              <button class="heartbutton" v-if="this.liked" @click="likecurrentplaylist()">
+              <button class="heartbutton" v-if="this.liked" @click="likecurrentalbum()">
               <span data-toggle="tooltip" title="Remove from Your Library">
                 <i
                   class="fa fa-heart"
@@ -42,35 +36,31 @@
                 ></i>
               </span>
             </button>
-
-
-            <!-- <span data-toggle="tooltip" title="More">
+                <!-- <span data-toggle="tooltip" title="More">
             <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
             </span>
             <div id="mydropdown" class="db" v-show="show">
         <p v-if="!isLiked">Add to Liked Songs</p>
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
-
-      <p>{{playlist_length}} SONGS</p>
-      <div class="toast" id="playlistliketoast"></div>
+             <p>{{album_length}} SONGS</p>
+      <div class="toast" id="albumliketoast"></div>
              </div>
          </div>
-     <!-- </div> -->
 </template>>
 
 <style lang="scss" scoped>
-.playlist_info{
+.album_info{
     width: 100%;
     height: 100%;
     position: absolute;
     text-align: center;
 }
-.playlist_image{
+.album_image{
     height: 350px;
     width: 350px;
 }
-.playlistname{
+.albumname{
     color: white;
     margin: 25px;
     margin-bottom: 10px;
@@ -159,13 +149,13 @@ font-size: 12px;
     cursor: pointer;
   }
 }
-#owner_name{
+#artist_name{
     color: #b3b3b3;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: .015em;
 }
-#owner_name:hover{
+#artist_name:hover{
     color: white;
 }
 .toast {
@@ -197,7 +187,7 @@ import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import { mapGetters } from "vuex";
 const toast = {
   show(message) {
-    var mytoast = document.getElementById("playlistliketoast");
+    var mytoast = document.getElementById("albumliketoast");
     //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
     clearTimeout(mytoast.hideTimeout);
     mytoast.textContent = message;
@@ -209,15 +199,15 @@ const toast = {
   }
 };
 export default {
-        data:function(){
+       data:function(){
         return {
         show:false,
         play:false
         };
-    },
-     mixins: [song_functions],
-     name:"playlist_info",
-     methods:{
+       },
+       mixins: [song_functions],
+       name:"album_info",
+       methods:{
           toggleShow() {
       var x = this.show;
       window.Element.show = false;
@@ -227,16 +217,16 @@ export default {
       this.play = true;
       if (this.playicon)
       {
-      var playlistimage = document.getElementById("playlist_image");
+      var albumimage = document.getElementById("album_image");
       var pausebutton = document.getElementById("imageplayicon");
-      playlistimage.style.opacity="0.3";
+      albumimage.style.opacity="0.3";
       pausebutton.style.opacity="1";
       }
       },
       stopplayingbutton(){
       this.play = false;
-      var playlistimage = document.getElementById("playlist_image");
-      playlistimage.style.opacity="1";
+      var albumimage = document.getElementById("album_image");
+      albumimage.style.opacity="1";
       var playbutton = document.getElementById("imagepauseicon");
       playbutton.style.opacity="0";
       },
@@ -244,8 +234,8 @@ export default {
       this.play = false;
       },
       onhoverimage:function(){
-      var playlistimage = document.getElementById("playlist_image");
-      playlistimage.style.opacity="0.3";
+      var albumimage = document.getElementById("album_image");
+      albumimage.style.opacity="0.3";
       if(!this.play)
       {
        var playbutton = document.getElementById("imageplayicon");
@@ -259,8 +249,8 @@ export default {
       }
       },
       onleaveimage:function(){
-      var playlistimage = document.getElementById("playlist_image");
-      playlistimage.style.opacity="1";
+      var albumimage = document.getElementById("album_image");
+      albumimage.style.opacity="1";
     
       if(!this.play)
       {
@@ -269,35 +259,35 @@ export default {
       
       }
       else{
-      playlistimage.style.opacity="0.3";
+      albumimage.style.opacity="0.3";
       var pausebutton = document.getElementById("imagepauseicon");
       pausebutton.style.opacity="1";
       
       }
       },
-      likecurrentplaylist:function(){
+      likecurrentalbum:function(){
         if (!this.liked) {
-        this.$store.dispatch("playlist/like_playlist" ,this.$route.params.playlist_id);
+       this.$store.dispatch("album/like_album" , this.$route.params.album_id);
         toast.show("Saved to Your Library");
         } else {
-        this.$store.dispatch("playlist/unlike_playist",this.$route.params.playlist_id);
+       this.$store.dispatch("album/unlike_album" , this.$route.params.album_id);
         toast.show("Removed from Your Library");
       }
       }
      },
-     computed:{
+      computed:{
          ...mapGetters({
-         playlist_length: "playlist/playlist_length",
-         playlist_name: "playlist/playlist_name",
+         album_length: "album/album_length",
+         album_name: "album/album_name",
          playicon: "mediaplayer/playicon",
-         owner_name:"playlist/owner_name",
-         playlist_image:"playlist/playlist_image",
-         liked:"playlist/likeplaylist"
+         artist_name:"album/artist_name",
+         album_image:"album/album_image",
+         liked:"album/likealbum"
          })
      }
-  //     created: function() {      
-  //  this.$store.dispatch("playlist/like_playlist" , this.$route.params.playlist_id),
-  //  this.$store.dispatch("playlist/unlike_playist" , this.$route.params.playlist_id)
-  //    }
+//       created: function() {      
+//    this.$store.dispatch("album/like_album" , this.$route.params.album_id),
+//    this.$store.dispatch("album/unlike_album" , this.$route.params.album_id)
+//      }
 }
 </script>>

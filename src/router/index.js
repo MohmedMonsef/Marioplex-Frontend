@@ -14,7 +14,7 @@ import LibraryArtists from "../views/library-artists.vue";
 import LibraryAlbums from "../views/library-albums.vue";
 import Queue from "../views/Queue.vue";
 import playlist from "../views/playlist_view.vue";
-
+import album from "../views/album_view.vue";
 
 Vue.use(VueRouter);
 
@@ -56,6 +56,11 @@ const routes = [
                 path: "playlist/:playlist_id",
                 name: "playlist",
                 component: playlist
+            },
+            {
+                path: "album/:album_id",
+                name: "album",
+                component: album
             }
         ]
     },

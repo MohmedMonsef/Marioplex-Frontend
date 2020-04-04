@@ -10,6 +10,7 @@ import categorys from "../modules/categorys";
 import Search from "../modules/Search";
 import userlibrary from "../modules/userlibrary";
 import playlist from "../modules/playlist";
+import album from "../modules/album";
 
 Vue.use(Vuex);
 
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     categorys,
     Search,
     userlibrary,
-    playlist
+    playlist,
+    album
   }
 });

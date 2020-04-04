@@ -320,46 +320,59 @@ new Server({
             ],
             user_albums: [
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name1",
                     artist: {
                         name: "artist name1"
                     }
+                   
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
                     name: "album name2",
                     artist: {
                         name: "artist name2"
                     }
+                
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
                     name: "album name3",
                     artist: {
                         name: "artist name3"
                     }
+                   
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name4",
                     artist: {
                         name: "artist name4"
                     }
+                   
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name5",
                     artist: {
                         name: "artist name5"
                     }
+                   
                 },
                 {
+                   _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name6",
                     artist: {
                         name: "artist name6"
                     }
+                   
+
                 }
             ],
             user_artists: [
@@ -398,7 +411,7 @@ new Server({
                   "ownerName":"Nihal Mansour",
                   "collaborative": false,
                   "isPublic": true,
-                  "images": ["http://dummyimage.com/250x400.jpg/ff4444/ffffff"],
+                  "images": ["https://dummyimage.com/250x400.jpg/ff4444/ffffff"],
                   "tracks": [
                     {
                         "trackid": "5e7d93dad82adf07f4121bb5",
@@ -477,6 +490,68 @@ new Server({
                   "images": [],
                   "tracks": []
               }
+          ],
+          album_info: [
+            {
+                "_id": "5e7d93daddf07f4121bac",
+                "type": "playlist",
+                "name": "This is an Album",
+                "like": "true",
+                "artist":"Nihal Mansour",
+                "collaborative": false,
+                "isPublic": true,
+                "images": ["https://dummyimage.com/250x400.jpg/ff4444/ffffff"],
+                "tracks": [
+                  {
+                      "trackid": "5e7d93dad82adf07f4121bb5",
+                      "name": "track2",
+                      "artistId": "5e7d93dad82adf07f4121bb2",
+                      "artistName": ["artist1"],
+                      "albumId": "5e7d93dad82adf07f4121baf",
+                      "albumName": "album2"
+                  },
+                  {
+                      "trackid": "5e7d93dad82adf07f4121bb4",
+                      "name": "track1",
+                      "artistId": "5e7d93dad82adf07f4121bb2",
+                      "artistName": ["artist1"],
+                      "albumId": "5e7d93dad82adf07f4121bae",
+                      "albumName": "album1"
+                  },
+                  {
+                    "trackid": "5e7d93dad82adf07f4b5",
+                    "name": "track2",
+                    "artistId": "5e7d93dad82adf07f4121bb2",
+                    "artistName": ["artist1"],
+                    "albumId": "5e7d93dad82adf07f4121baf",
+                    "albumName": "album2"
+                },
+                {
+                    "trackid": "5e7dad82adf07f4121bb7",
+                    "name": "track4",
+                    "artistId": "5e7d93dad82adf07f4121bb3",
+                    "artistName": ["artist4"],
+                    "albumId": "5e7d93dad82adf07f4121bb1",
+                    "albumName": "album4"
+                },
+                {
+                    "trackid": "5e7d93dad82adf0721bb6",
+                    "name": "track3",
+                    "artistId": "5e7d93dad82adf07f4121bb2",
+                    "artistName": ["artist1"],
+                    "albumId": "5e7d93dad82adf07f4121bb0",
+                    "albumName": "album3"
+                },
+                {
+                    "trackid": "5e7d93dad8207f4121bb4",
+                    "name": "track1",
+                    "artistId": "5e7d93dad82adf07f4121bb2",
+                    "artistName": ["artist1"],
+                    "albumId": "5e7d93dad82adf07f4121bae",
+                    "albumName": "album1"
+                }
+                ]
+            }
           ]
         });
     },
@@ -648,6 +723,23 @@ new Server({
 this.delete("/playlists/:playlist_id/followers", (schema , request) => {
   let id = request.params.playlist_id;
   return schema.db.playlist_info.findBy({_id:id});
+});
+
+////////////////////////////albums
+
+this.get("/albums/:album_id", (schema , request) => {
+  let id = request.params.album_id;
+  return schema.db.album_info.findBy({_id:id});
+});
+
+this.put("/me/:album_id", (schema , request) => {
+let id = request.params.album_id;
+return schema.db.album_info.findBy({_id:id});
+
+});
+this.delete("/me/:album_id", (schema , request) => {
+let id = request.params.album_id;
+return schema.db.album_info.findBy({_id:id});
 });
     }
     ////////////////////////////////////////////////

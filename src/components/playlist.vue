@@ -1,5 +1,5 @@
 <template>
-<div class="col-4">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
    <div class="emptyplaylist">
       
 
@@ -26,7 +26,7 @@
 <style lang="scss" scoped>
 .emptyplaylist{
     margin: 50px;
-     position: absolute;
+    position: absolute;
     text-align: center;
 }
 .defaultimage{

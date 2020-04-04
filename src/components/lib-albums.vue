@@ -1,5 +1,5 @@
 <template>
-<router-link  to="/" id="carglink"  testid="album card link">   <!-- should navigate to album page -->
+<router-link  :to="{path:'../album/'+ album_id}" id="carglink"  testid="album card link">   <!-- should navigate to album page -->
     <div class="card rounded col-lg-20% " testid="album card" @mouseover="hover=true" @mouseleave="hover=false">
         <img
             class="card-img-top mx-auto d-block"
@@ -67,6 +67,6 @@ export default {
     }
   },
     name: "lib-albums",
-    props: ["images", "name", "artistname"]
+    props: ["images", "name", "artistname","album_id"]
 }
 </script>

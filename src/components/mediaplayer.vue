@@ -447,7 +447,23 @@ export default {
         this.moving_song_bar();
       }, 300);
     });
+    // if(localStorage.volumepos){
+    //   this.volumepos = localStorage.volumepos;
+    //   console.log("localstorage volumepos" , localStorage.volumepos )
+    // }
+    // if(localStorage.sound){
+    //   this.sound = localStorage.sound;
+    //   console.log("localstorage sound" , localStorage.sound)
+    // }
   },
+  // watch:{
+  //   volumepos(newvolume) {
+  //     localStorage.volumepos = newvolume;
+  //   },
+  //   sound(newsound){
+  //     localStorage.sound = newsound;
+  //   }
+  // },
   created: function() {
     window.addEventListener("mouseup",()=>{
      this.stopDrag();
