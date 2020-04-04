@@ -35,6 +35,8 @@
          </div>
         </div>
         <div class="col-8">
+          <draggable v-model="playlist_tracks" @nd="ReorderTracks">
+            <transition-group type="transition" name="flip-list">
      <song-component
       v-for="p in playlist_tracks"
       :key="p.trackid"
@@ -45,6 +47,8 @@
       :song_length="'3:45'"
       :isLiked="true"
     />
+            </transition-group>
+          </draggable>
         </div>
     </div>
     </div>
@@ -116,22 +120,37 @@ button:focus {
 <script>
 import SongComponent from "@/components/SongComponent.vue";
 import { mapGetters } from "vuex";
+import draggable from "vuedraggable";
 export default {
     data:function(){
         return {
-        show:false
+        show:false,
+        oldIndex:'',
+        newIndex:'',
         };
     },
     name: "playlist",
     components: {
-    SongComponent
+    SongComponent,
+    draggable
   },
   methods:{
       toggleShow() {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
-      }
+      },
+      ReorderTracks(event){
+        console.log("inplaylist_view",event)
+        
+        this.oldIndex=event.oldIndex;
+        this.newIndex=event.newIndex;
+        let payload={
+          oldIndex:this.oldIndex,
+          newIndex:this.newIndex,
+        }
+        this.$store.dispatch("playlist/ReoderTracks",payload);
+      },
   },
   computed: {
      ...mapGetters({

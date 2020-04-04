@@ -19,6 +19,7 @@ import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage"
 import playlist from "../views/playlist_view.vue";
 
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -95,8 +96,10 @@ const routes = [
     {
       path: "/ArtistPersonalPage",
       name: "ArtistPersonalPage",
-      component: ArtistPersonalPage
+      component: ArtistPersonalPage,
+      
     },
+   
 ];
 
 const router = new VueRouter({

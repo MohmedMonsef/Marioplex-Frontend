@@ -7,6 +7,7 @@
     @mouseover="hover = true"
     @mouseleave="hover = false"
   >
+  
     <div id="icon">
       <i
         v-if="
@@ -83,9 +84,12 @@
         <p v-if="!isLiked">Add to Liked Songs</p>
         <p v-if="isLiked">Remove from Liked Songs</p>
         <p @click="addToQueue()">Add to Queue</p>
-        <p>Add to Playlist</p>
+        <p @click="changeModalStateAdd(),showplaylists()">Add to Playlist</p>
       </div>
+
     </div>
+<PlaylistPopup v-if="showAdd" ></PlaylistPopup>
+
   </div>
 </template>
 
@@ -226,14 +230,15 @@
 </style>
 
 <script type="module">
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
+import PlaylistPopup from "../components/PlaylistPopup";
 export default {
   data: function() {
     return {
       hover: false,
       show: false,
-      isclicked: false
+      isclicked: false,
     };
   },
   mixins: [song_functions],
@@ -261,6 +266,9 @@ export default {
     addToQueue() {
       this.$store.dispatch("Queue/AddToQueue", { song_id: this.song_id });
     },
+    // AddToPlaylist(){
+    //   this.$store.dispatch("playlist/AddToPlaylist",{ song_id: this.song_id })
+    // },
     toggleShow(event) {
       console.log(event.screenX);
       console.log(event.screenY);
@@ -282,16 +290,29 @@ export default {
       if (!this.$el.contains(event.target)) {
         this.show = false;
         this.isclicked = false;
-      }
+      } 
     },
     clicked() {
       this.isclicked = true;
-    }
+    },
+    changeModalStateAdd(){
+      console.log("in songcomponent",this.song_id);
+        this.$store.dispatch("creatplaylist/toggleModalAdd",this.song_id);
+      },
+      showplaylists(){
+        this.$store.dispatch("creatplaylist/showplaylists");
+    },
   },
   computed: {
     ...mapGetters({
-      currentSong: "mediaplayer/Get_Currentsong"
-    })
+      currentSong: "mediaplayer/Get_Currentsong",
+      trackid:"mediaplayer/toadd",
+
+    }),
+    ...mapState({
+    showAdd:state => state.creatplaylist.showModalAdd,
+
+  })
   },
     beforeCreate: function(){
      this.$store.dispatch("mediaplayer/get_currentsong");
@@ -301,6 +322,9 @@ export default {
   },
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
+  },
+  components:{
+    PlaylistPopup,
   }
 };
 </script>

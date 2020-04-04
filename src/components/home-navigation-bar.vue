@@ -63,7 +63,8 @@
   position: fixed;
   //display: block;
   display: flex;
-  justify-content: space-around;
+  justify-content:center;
+  
   .navbar-inner {
     margin: auto;
     padding: 0px 15px;

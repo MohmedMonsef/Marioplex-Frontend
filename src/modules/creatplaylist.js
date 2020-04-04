@@ -5,7 +5,10 @@ export default {
     state: {
         showModalDelete: false,
         showModal: false, 
-        todelete:0,      
+        showModalAdd:false,
+        todelete:0,
+        playlistoftrack:0,
+        trackofplaylist:0,      
         Playlists: []
     },
     getters: {
@@ -19,7 +22,16 @@ export default {
            // console.log("in getters")
             return state.showModalDelete;
         },
-        playlists: state => state.Playlists
+        showModalAdd: state => {
+            return state.showModalAdd;    
+        },
+        playlists: state => state.Playlists,
+        playlistoftrack:state=>{
+            return state.playlistoftrack;
+        },
+        trackofplaylist:state=> {
+            return state.trackofplaylist;
+        },
     },
     mutations: {
         toggleModal(state) {
@@ -30,6 +42,10 @@ export default {
             state.showModalDelete = !state.showModalDelete;
             state.todelete=todeleteid
         },
+        toggleModalAdd(state,trackid) {
+            state.showModalAdd = !state.showModalAdd;
+            state.trackofplaylist=trackid;
+        },
 
         CreatePlaylist(state, playlists) {
             state.Playlists.push(
@@ -37,6 +53,7 @@ export default {
                 // playlistname: i
                 playlists
             );
+            state.playlistoftrack=playlists.id;
             console.log("nori");
         },
         setUserPlaylist(state, playlists) {
@@ -55,7 +72,11 @@ export default {
             commit("toggleModalDelete",todeleteid);
 
         },
-        CreatePlaylist({ commit }, payload) {
+        toggleModalAdd({ commit },trackid) {
+            console.log(" id of track in creatplaylist moudle",trackid)
+            commit("toggleModalAdd",trackid);
+        },
+        CreatePlaylist({ commit}, payload) {
             axios
                 .post("/api/playlists", { data: payload })
                 .then(response => {
@@ -63,8 +84,9 @@ export default {
                     //var id = response.data.id;
                     console.log("wsl", playlists);
                     // var i = playlists.playlistname;
-                    console.log("de i");
+                    console.log("de i",playlists.id);
                     commit("CreatePlaylist", playlists);
+                    //commit("mediaplayer/AddTrack",state.playlistoftrack,state.trackofplaylist)
                 })
                 .catch(error => {
                     console.log(error);

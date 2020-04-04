@@ -11,6 +11,14 @@ export default {
     },
     set_playlist_loaded(state , status){
         state.playlist_loaded = status;
+    },
+    ReorderTracks(){
+      //to bedone state
+    },
+    AddTrack(state,tracks){
+      state.playlist_tracks.push({
+        tracks
+      })
     }
   },
   actions: {
@@ -26,7 +34,40 @@ export default {
           .catch(error => {
             console.log(error);
           });
+        },
+        ReorderTracks({commit},payload){
+          axios
+          .put("api/playlists/tracks",{data:payload})
+          .then(response=>{
+            console.log("theresponse from mirage is",response)
+          })
+          .catch(error=>{
+            console.log(error)
+          })
+          commit("ReorderTracks")
+        },
+        async AddTrack({commit},payload){
+          console.log("to add track in playlist.js the playlistid is",payload.playlistoftrack)
+          const data =axios
+          .post("playlists/"+payload.playlistoftrack+"/tracks")
+          .then(response=>{
+            let tracks=response.data;
+            commit ("AddTracks",tracks)
+          })
+          .catch(error=>{
+            console.log(error);
+          })
+          return data;
+
         }
+        // AddToPlaylist({commit},song_id){
+        //   axios
+        //   .post("api/")
+        //   .then(response=>{
+        //     let song=response.data;
+        //     commit("AddToPlaylist",song.)
+        //   })
+        // }
       
   },
   getters: {

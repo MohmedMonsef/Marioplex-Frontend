@@ -156,7 +156,13 @@ new Server({
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     owner: "shreen",
                     _id:"5e7d93dad82adf0ksksksksksksksk"
-                }
+                },
+                {
+                  name: "playlist name***",
+                  images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                  owner: "hamza",
+                  _id:"5e7d93dad82adf0kskskskskskskll"
+              }
             ],
             users: [
                 {
@@ -778,6 +784,18 @@ new Server({
       let id = request.params.playlist_id;
       return schema.db.playlist_info.findBy({_id:id});
   });
+  this.post("playlists/:playlist_id/tracks", (schema, request) => {
+    const tracks = JSON.parse(request.requestBody).data;
+    console.log(tracks, "in mirag");
+    return new Response(
+      200,
+      {},
+      { Playlists: schema.db.songs.insert(tracks) }
+    );
+  });
+  // this.put("/api/playlists/tracks",(schema,request)=>{
+    
+  // })
     }
     ////////////////////////////////////////////////
 });
