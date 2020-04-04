@@ -7,9 +7,11 @@
           <lib-albums
             v-for="album in albums1"
             :key="album.id"
-            :images="album.images"
-            :name="album.name"
-            :artistname="album.artist.name"
+          :albumId="album._id"
+          :images="album.images"
+          :name="album.name"
+          :artistname="album.artistName"
+          :artistId="album.artistId"
           />
         </div>
       </div>

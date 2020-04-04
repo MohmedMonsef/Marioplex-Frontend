@@ -7,8 +7,9 @@
           <lib-artists
             v-for="artist in artists1"
             :key="artist.id"
-            :images="artist.images"
-            :name="artist.name"
+          :images="artist.images"
+          :name="artist.Name"
+          :artistId="artist._id"
           />
         </div>
       </div>

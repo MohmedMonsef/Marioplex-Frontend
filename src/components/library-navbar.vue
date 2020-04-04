@@ -10,7 +10,7 @@
         </div>
         <div class="div2">
             <div class="login"  v-if="isLoggedIn == 'success'">
-                <div class="library-navbar">
+                <div class="library-navbar" v-if="IN">
                     <ul class="nav">
                         <li class="nav-item active">
                             <div class="divOnFocus">
@@ -333,10 +333,10 @@ export default {
        isLoggedIn: "authorization/GetStatus",
        Username: "authorization/Username"
     }),
-    // IN: function () {
-    //    return this.ISinlibrary();
+    IN: function () {
+       return this.ISinlibrary();
         
-    // }
+    }
      },
     methods:{
        logout() {
@@ -347,24 +347,20 @@ export default {
     },
     gonext: function () {
          this.$router.go(1);
+    },
+    ISinlibrary: function(){
+          if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
+            this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
+            this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
+         {
+                this.inlibrary=true;
+         }
+          else
+               {this.inlibrary=false;  }
+         console.log(this.inlibrary)
+         return this.inlibrary;
     }
   },
-//   mounted(){
-//          if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
-//             this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
-//             this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
-//          {
-//                 this.inlibrary=true;
-//          }
-//           else
-//                {this.inlibrary=false;  }
-//          console.log(this.inlibrary , '  daaaaaaai')
-//          return this.inlibrary;
-//   },
-//   watch:{
-//      inlibrary() {
-//          this.ISinlibrary();
-//     }
-//   }
+
 }
 </script>

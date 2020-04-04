@@ -322,70 +322,68 @@ new Server({
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name1",
-                    artist: {
-                        name: "artist name1"
-                    }
+                    artistName: "artist name1",
+                    artistId: 1
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
                     name: "album name2",
-                    artist: {
-                        name: "artist name2"
-                    }
+                    artistName: "artist name2",
+                    artistId: 2
+                    
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
                     name: "album name3",
-                    artist: {
-                        name: "artist name3"
-                    }
+                    artistName: "artist name3",
+                    artistId: 3
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name4",
-                    artist: {
-                        name: "artist name4"
-                    }
+                    artistName: "artist name4",
+                    artistId: 4
+                    
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name5",
-                    artist: {
-                        name: "artist name5"
-                    }
+                    artistName: "artist name5",
+                    artistId: 5
+                    
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name6",
-                    artist: {
-                        name: "artist name6"
-                    }
+                    artistName: "artist name6",
+                    artistId: 6
+                    
                 }
             ],
             user_artists: [
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name1"
+                    Name: "artist name1"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-                    name: "artist name2"
+                    Name: "artist name2"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    name: "artist name3"
+                    Name: "artist name3"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name4"
+                    Name: "artist name4"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name5"
+                    Name: "artist name5"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name6"
+                    Name: "artist name6"
                 }
             ],
             playlist_info: [
@@ -480,57 +478,48 @@ new Server({
           user_songs: [
             {
               name: "ya sattar",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+              
             },
             {
               name: "nour el3en",
-              artist: {
-                name: "Amr Diab"
-              }
+              artistName: "Amr Diab"
+              
             },
             {
               name: "el nas",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+              
             },
             {
               name: "el nas",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+              
             },
             {
               name: "el nas",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+    
             },
             {
               name: "el nas",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+              
             },
             {
               name: "el nas",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+              
             },
             {
               name: "el nas",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+            
             },
             {
               name: "el nas",
-              artist: {
-                name: "Hamaki"
-              }
+              artistName: "Hamaki"
+              
             }
           ],
           Artist_Songs: [
@@ -590,7 +579,7 @@ new Server({
     this.get("/api/user", schema => {
       return schema.db.popular_playlists;
     });
-    this.get("/api/playlists", schema => {
+    this.get("/api/me/playlists", schema => {
       console.log("in get", schema.db.Playlists);
       return schema.db.Playlists;
     }),
@@ -650,7 +639,7 @@ new Server({
     this.get("/api/me/albums", schema => {
       return schema.db.user_albums;
     });
-    this.get("/api/me/following", schema => {
+    this.get("/api/me/followingArtist", schema => {
       return schema.db.user_artists;
     });
     this.get("/api/me/tracks", schema => {

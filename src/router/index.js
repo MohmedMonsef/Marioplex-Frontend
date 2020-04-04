@@ -20,6 +20,7 @@ import ArtistPersonalPage from "../views/ArtistPersonalPage"
 import playlist from "../views/playlist_view.vue";
 import GetPremium from "../views/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
+import ArtistProfile from "../views/ArtistProfile.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -107,6 +108,11 @@ const routes = [
         path: "/UserAccount",
         name: "UserAccount",
         component: UserAccount
+    },
+    {
+        path: "/ArtistProfile",
+        name: "ArtistProfile",
+        component: ArtistProfile
     },
 ];
 

@@ -32,7 +32,7 @@ export default {
     },
     showUserArtists({ commit }) {
       axios
-        .get("/api/me/following")
+        .get("/api/me/followingArtist")
         .then(response => {
           let artists = response.data;
           commit("setUserArtists", artists);

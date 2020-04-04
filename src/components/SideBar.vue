@@ -63,7 +63,7 @@
         <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
             <ul>
               <li v-for="playlist in playlists1" :key="playlist.id" @click.right="playlistid=playlist.id,showdelete=true  ">
-                <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
+                <router-link to="/HomeWebPlayer" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
                 <!-- router link should navigate to play list page-->
               </li>
             </ul>

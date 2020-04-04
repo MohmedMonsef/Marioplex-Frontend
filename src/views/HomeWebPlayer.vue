@@ -5,8 +5,8 @@
     <DeletePlaylist v-if="showdelete"/>
     <div id="HomeInWebPlayer">
       <router-view class="child"></router-view>
-       <!-- <navbar-webplayer /> -->
-        <library-navbar/>
+       <navbar-webplayer />
+        <!-- <library-navbar/> -->
     </div>
     <mediaplayer />
   </div>
@@ -31,9 +31,9 @@ import SideBar from "@/components/SideBar.vue";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
 import mediaplayer from "@/components/mediaplayer.vue";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
-// import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
+import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
 import { mapState } from "vuex";
-import LibraryNavbar from "@/components/library-navbar.vue";
+// import LibraryNavbar from "@/components/library-navbar.vue";
 export default {
   name: "HomeWebPlayer",
   components: {
@@ -41,8 +41,8 @@ export default {
     CreatePlaylist,
     mediaplayer,
     DeletePlaylist,
-    LibraryNavbar
-    // NavbarWebplayer
+    // LibraryNavbar
+    NavbarWebplayer
   },
   computed: {
     ...mapState({

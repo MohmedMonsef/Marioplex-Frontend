@@ -72,7 +72,7 @@ export default {
         },
         showplaylists({ commit }) {
             axios
-                .get("/api/playlists")
+                .get("/api/me/playlists")
                 .then(response => {
                     let playlists = response.data;
                     console.log("test function", playlists);
