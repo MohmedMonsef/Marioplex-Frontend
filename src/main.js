@@ -420,7 +420,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4121bb5",
                     name: "track2",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121baf",
                     albumName: "album2"
                   },
@@ -428,7 +428,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4121bb7",
                     name: "track4",
                     artistId: "5e7d93dad82adf07f4121bb3",
-                    artistName: ["artist4"],
+                    artistName: "artist4",
                     albumId: "5e7d93dad82adf07f4121bb1",
                     albumName: "album4"
                   },
@@ -436,7 +436,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4121bb6",
                     name: "track3",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121bb0",
                     albumName: "album3"
                   },
@@ -444,7 +444,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4121bb4",
                     name: "track1",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121bae",
                     albumName: "album1"
                   },
@@ -452,7 +452,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4b5",
                     name: "track2",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121baf",
                     albumName: "album2"
                   },
@@ -460,7 +460,7 @@ new Server({
                     trackid: "5e7dad82adf07f4121bb7",
                     name: "track4",
                     artistId: "5e7d93dad82adf07f4121bb3",
-                    artistName: ["artist4"],
+                    artistName: "artist4",
                     albumId: "5e7d93dad82adf07f4121bb1",
                     albumName: "album4"
                   },
@@ -468,7 +468,7 @@ new Server({
                     trackid: "5e7d93dad82adf0721bb6",
                     name: "track3",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121bb0",
                     albumName: "album3"
                   },
@@ -476,7 +476,7 @@ new Server({
                     trackid: "5e7d93dad8207f4121bb4",
                     name: "track1",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121bae",
                     albumName: "album1"
                   }
@@ -509,7 +509,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4121bb5",
                     name: "track2",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121baf",
                     albumName: "album2"
                   },
@@ -517,7 +517,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4121bb4",
                     name: "track1",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121bae",
                     albumName: "album1"
                   },
@@ -525,7 +525,7 @@ new Server({
                     trackid: "5e7d93dad82adf07f4b5",
                     name: "track2",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121baf",
                     albumName: "album2"
                   },
@@ -533,7 +533,7 @@ new Server({
                     trackid: "5e7dad82adf07f4121bb7",
                     name: "track4",
                     artistId: "5e7d93dad82adf07f4121bb3",
-                    artistName: ["artist4"],
+                    artistName: "artist4",
                     albumId: "5e7d93dad82adf07f4121bb1",
                     albumName: "album4"
                   },
@@ -541,7 +541,7 @@ new Server({
                     trackid: "5e7d93dad82adf0721bb6",
                     name: "track3",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121bb0",
                     albumName: "album3"
                   },
@@ -549,7 +549,7 @@ new Server({
                     trackid: "5e7d93dad8207f4121bb4",
                     name: "track1",
                     artistId: "5e7d93dad82adf07f4121bb2",
-                    artistName: ["artist1"],
+                    artistName: "artist1",
                     albumId: "5e7d93dad82adf07f4121bae",
                     albumName: "album1"
                   }
@@ -563,7 +563,7 @@ new Server({
                   trackid: "5e7d93dad82adf07f4121bb5",
                   name: "track2",
                   artistId: "5e7d93dad82adf07f4121bb2",
-                  artistName: ["artist1"],
+                  artistName: "artist1",
                   albumId: "5e7d93dad82adf07f4121baf",
                   albumName: "album2"
                 },
@@ -571,7 +571,7 @@ new Server({
                   trackid: "5e7d93dad82adf07f4121bb4",
                   name: "track1",
                   artistId: "5e7d93dad82adf07f4121bb2",
-                  artistName: ["artist1"],
+                  artistName: "artist1",
                   albumId: "5e7d93dad82adf07f4121bae",
                   albumName: "album1"
                 },
@@ -579,7 +579,7 @@ new Server({
                   trackid: "5e7d93dad8207f4121bb4",
                   name: "track1",
                   artistId: "5e7d93dad82adf07f4121bb2",
-                  artistName: ["artist1"],
+                  artistName: "artist1",
                   albumId: "5e7d93dad82adf07f4121bae",
                   albumName: "album1"
                 }

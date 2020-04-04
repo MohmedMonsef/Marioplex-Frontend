@@ -42,6 +42,7 @@
   i{
     font-size: 70px;
     margin-top: 100px;
+    color: white;
   }
 }
 .row{

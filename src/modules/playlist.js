@@ -31,9 +31,6 @@ export default {
 },
 set_likedplaylist(state , like){
   state.likedplaylist = like;
-},
-set_playlist_loaded(state, status) {
-  state.playlist_loaded = status;
 }
   },
   actions: {
@@ -57,7 +54,6 @@ set_playlist_loaded(state, status) {
         } ,
 
         like_playlist({ commit } , playlist_id) {
-          commit("set_playlist_loaded" , false);
           axios
             .put("/playlists/" + playlist_id + "/followers")
             .then(response => {
@@ -69,7 +65,6 @@ set_playlist_loaded(state, status) {
             });
           },
           unlike_playist({ commit } , playlist_id){
-            commit("set_playlist_loaded" , false);
             axios
               .delete("/playlists/" + playlist_id + "/followers")
               .then(response => {

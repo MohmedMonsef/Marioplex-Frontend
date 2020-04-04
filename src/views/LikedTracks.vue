@@ -12,7 +12,7 @@
       :song_artists="p.artistName"
       :song_name="p.name"
       :song_album="p.albumName"
-      :song_length="'3:45'"
+      :song_length=500
       :isLiked="true"
     />
         </div>
