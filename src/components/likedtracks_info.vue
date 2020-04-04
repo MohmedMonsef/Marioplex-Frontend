@@ -8,14 +8,14 @@
              </div>
              <div>
              <span data-toggle="tooltip" title="Liked Songs">
-             <h2 class="likedtracksname">Liked Songs</h2>
+             <h2 class="likedtracksname" testid="likedtracksname">Liked Songs</h2>
              </span>
              
-             <router-link to="/" id="owner_name">{{owner_name}}</router-link>
+             <router-link to="/" id="owner_name" testid="ownername">{{owner_name}}</router-link>
              </div>
-             <button v-if="!play" class="playbutton" @click="playSong() , isplaying()">PLAY</button>
-             <button v-if="play" class="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
-              <p class="length">{{likedtracks_length}} SONGS</p>
+             <button v-if="!play" class="playbutton" testid="playbutton" @click="playSong() , isplaying()">PLAY</button>
+             <button v-if="play" class="pausebutton" testid="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
+              <p class="length" testid="likedtrackslength">{{likedtracks_length}} SONGS</p>
              </div>
 </template>
 

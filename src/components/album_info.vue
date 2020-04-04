@@ -1,22 +1,22 @@
 <template>
      <div class="album_info">
-              <div class="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
-             <img :src="album_image" alt="album_image" class="album_image" id="album_image">
+              <div class="image" testid="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
+             <img :src="album_image" alt="album_image" class="album_image" id="album_image" testid="album_image">
              <i v-if="!play" class="fa fa-play" id="imageplayicon" testid="imageplayicon" @click="playSong() , isplaying()"> </i>
              <i v-if="play" class="fa fa-pause" id="imagepauseicon" testid="imagepauseicon" @click="pauseSong() , stopplaying()"> </i>
             </div>
              <div>
              <span data-toggle="tooltip" :title="album_name">
-             <h2 class="albumname">{{this.album_name}}</h2>
+             <h2 class="albumname" testid="album_name">{{this.album_name}}</h2>
              </span>
              
-             <router-link to="/" id="artist_name">{{artist_name}}</router-link>
+             <router-link to="/" id="artist_name" testid="artist_name">{{artist_name}}</router-link>
              </div>
-             <button v-if="!play" class="playbutton" @click="playSong() , isplaying()">PLAY</button>
-             <button v-if="play" class="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
+             <button v-if="!play" class="playbutton" testid="playbutton" @click="playSong() , isplaying()">PLAY</button>
+             <button v-if="play" class="pausebutton" testid="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
              <div class="add-library">
               <button
-              class="heartbutton" v-if="!this.liked" @click="likecurrentalbum()">
+              class="heartbutton" testid="emptyheartbutton" v-if="!this.liked" @click="likecurrentalbum()">
               <span data-toggle="tooltip" title="Save to Your Library">
                 <i
                   class="fa fa-heart-o"
@@ -26,7 +26,7 @@
               </span>
             </button>
 
-              <button class="heartbutton" v-if="this.liked" @click="likecurrentalbum()">
+              <button class="heartbutton" testid="filledheartbutton" v-if="this.liked" @click="likecurrentalbum()">
               <span data-toggle="tooltip" title="Remove from Your Library">
                 <i
                   class="fa fa-heart"
@@ -43,8 +43,8 @@
         <p v-if="!isLiked">Add to Liked Songs</p>
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
-             <p>{{album_length}} SONGS</p>
-      <div class="toast" id="albumliketoast"></div>
+             <p testid="albumlength">{{album_length}} SONGS</p>
+      <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
              </div>
          </div>
 </template>>
