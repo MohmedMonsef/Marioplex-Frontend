@@ -1,64 +1,47 @@
 <template>
   <div
-    v-if="currentSong"
     class="song"
     @click="clicked"
     :class="{ clicked: isclicked }"
     @mouseover="hover = true"
     @mouseleave="hover = false"
   >
-  
     <div id="icon">
       <i
-        v-if="
-          !song_state &&
-            !hover &&
-            !isclicked &&
-            !(playicon && song_id == this.currentSong.__id)
-        "
-        :class="{ currently: song_id == currentSong.__id }"
+        v-if="!hover && !isclicked && !(playicon && isCurrent)"
+        :class="isCurrentClass"
         class="fa fa-music music_icon"
       ></i>
       <i
-        v-if="
-          !song_state &&
-            (isclicked || hover) &&
-            !(playicon && song_id == this.currentSong.__id)
-        "
+        v-if="(isclicked || hover) && !(playicon && isCurrent)"
+        id="playicon-component"
         @click="playSong()"
         class="fa fa-play"
-        :class="{ currently: song_id == currentSong.__id }"
+        :class="isCurrentClass"
       >
       </i>
       <i
-        v-if="
-          playicon && song_id == this.currentSong.__id && (isclicked || hover)
-        "
+        v-if="playicon && isCurrent && (isclicked || hover)"
         @click="pauseSong()"
         class="fa fa-pause"
-        :class="{ currently: song_id == currentSong.__id }"
+        :class="isCurrentClass"
       >
       </i>
       <i
-        v-if="
-          playicon && song_id == this.currentSong.__id && !isclicked && !hover
-        "
+        v-if="playicon && isCurrent && !isclicked && !hover"
         class="fa fa-volume-up"
-        :class="{ currently: song_id == currentSong.__id }"
+        :class="isCurrentClass"
       >
       </i>
     </div>
     <div id="song_body">
-      <div
-        class="song_name"
-        :class="{ currently: song_id == this.currentSong.__id }"
-      >
+      <div class="song_name" :class="isCurrentClass">
         {{ song_name }}
       </div>
       <div id="song_info">
-        <div id="s" v-for="song_artist in song_artists" :key="song_artist">
+        <div id="s">
           <router-link tag="p" to="library" id="song_artist">
-            {{ song_artist }}
+            {{ song_artists }}
           </router-link>
           <span>
             .
@@ -69,11 +52,9 @@
         </router-link>
       </div>
     </div>
-    <div
-      class="song_length"
-      :class="{ currently: song_id == this.currentSong.__id }"
-    >
-      {{ song_length }}
+    <!-- <p>{{index}}</p> -->
+    <div class="song_length" :class="isCurrentClass">
+      {{ length }}
     </div>
     <div id="song_options" class="dropdownlist">
       <div id="icondiv" @click="this.toggleShow">
@@ -81,15 +62,13 @@
       </div>
       <div id="mydropdown" class="db" v-show="show">
         <p>Start Radio</p>
-        <p v-if="!isLiked">Add to Liked Songs</p>
-        <p v-if="isLiked">Remove from Liked Songs</p>
+        <p @click="likecurrentsong()" v-if="!isLiked">Add to Liked Songs</p>
+        <p @click="likecurrentsong()" v-if="isLiked">Remove from Liked Songs</p>
         <p @click="addToQueue()">Add to Queue</p>
         <p @click="changeModalStateAdd(),showplaylists()">Add to Playlist</p>
       </div>
-
+      <AddTrackPopup v-if="showAdd" ></AddTrackPopup>
     </div>
-<PlaylistPopup v-if="showAdd" ></PlaylistPopup>
-
   </div>
 </template>
 
@@ -102,7 +81,7 @@
   display: block;
   // box-sizing: border-box;
   line-height: 20px;
-  background-color: #161516;
+  background-color: transparent;
   clear: both;
   overflow: visibility;
   transition-property: background-color;
@@ -230,15 +209,29 @@
 </style>
 
 <script type="module">
-import { mapGetters, mapState } from "vuex";
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
-import PlaylistPopup from "../components/PlaylistPopup";
+import { mapGetters, mapState } from "vuex";
+import AddTrackPopup from "../components/AddTrackPopup";
+const toast = {
+  show(message) {
+    var mytoast = document.getElementById("liketoast");
+    //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
+    clearTimeout(mytoast.hideTimeout);
+    mytoast.textContent = message;
+    mytoast.className = "toast toast--visible";
+    mytoast.hideTimeout = setTimeout(() => {
+      mytoast.classList.remove("toast--visible");
+    }, 2000);
+    console.log("message", message);
+  }
+};
 export default {
+
   data: function() {
     return {
       hover: false,
       show: false,
-      isclicked: false,
+      isclicked: false
     };
   },
   mixins: [song_functions],
@@ -250,25 +243,40 @@ export default {
       type: String
     },
     song_artists: {
-      type: Array
+      type: String
+    },
+    artist_id: {
+      type: String
     },
     song_length: {
-      type: String
+      type: Number
     },
     isLiked: {
       type: Boolean
     },
     song_id: {
       type: String
+    },
+    index: {
+      type: Number
+    },
+    albumId: {
+      type: String,
+      default: "0"
+    },
+    playlistId: {
+      type: String,
+      default: "0"
+    },
+    isPlaylist: {
+      type: Boolean,
+      default: false
     }
   }, //must add isplayable also
   methods: {
     addToQueue() {
       this.$store.dispatch("Queue/AddToQueue", { song_id: this.song_id });
     },
-    // AddToPlaylist(){
-    //   this.$store.dispatch("playlist/AddToPlaylist",{ song_id: this.song_id })
-    // },
     toggleShow(event) {
       console.log(event.screenX);
       console.log(event.screenY);
@@ -290,10 +298,21 @@ export default {
       if (!this.$el.contains(event.target)) {
         this.show = false;
         this.isclicked = false;
-      } 
+      }
     },
     clicked() {
       this.isclicked = true;
+    },
+    likecurrentsong: function() {
+      if (!this.isLiked) {
+        this.$store.dispatch("mediaplayer/Like",this.song_id);
+        toast.show("Added to your Liked Songs");
+        this.isLiked=true;
+      } else {
+        this.$store.dispatch("mediaplayer/UnLike", this.song_id);
+        toast.show("Removed from your Liked Songs");
+         this.isLiked=false;
+      }
     },
     changeModalStateAdd(){
       console.log("in songcomponent",this.song_id);
@@ -303,19 +322,36 @@ export default {
         this.$store.dispatch("creatplaylist/showplaylists");
     },
   },
+ 
   computed: {
-    ...mapGetters({
-      currentSong: "mediaplayer/Get_Currentsong",
+    isCurrentClass: function() {
+      return {
+        currently: this.isCurrent
+      };
+    },
+    isCurrent: function() {
+      return (
+        this.song_id == this.currentsong_info.song_id &&
+        this.albumId == this.currentsong_info.album_id &&
+        this.index == this.currentsong_info.index &&
+        this.playlistId == this.currentsong_info.playlist_id
+      );
+    },
+    length:function(){
+        var min = Math.floor((this.song_length % 3600) / 60);
+        var sec = Math.floor(this.song_length% 60);
+        if (sec < 10) sec = "0" + sec;
+        console.log(" minute sec", min, ":", sec);
+        return min + ":" + sec;
+    },
+     ...mapGetters({
+     // currentSong: "mediaplayer/Get_Currentsong",
       trackid:"mediaplayer/toadd",
-
     }),
-    ...mapState({
+  ...mapState({
     showAdd:state => state.creatplaylist.showModalAdd,
 
-  })
-  },
-    beforeCreate: function(){
-     this.$store.dispatch("mediaplayer/get_currentsong");
+  }),
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
@@ -323,8 +359,8 @@ export default {
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
-  components:{
-    PlaylistPopup,
+   components:{
+    AddTrackPopup,
   }
 };
 </script>

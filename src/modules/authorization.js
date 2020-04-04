@@ -26,29 +26,29 @@ export default {
     logout(state) {
       state.status = "";
       state.token = "";
-      state.User={};
+      state.User = {};
     },
-    ClaimArtistProfile(state,payload){
-        state.User.update({
-          Name:payload.Name,
-        Genre:payload.Genre,
-        Description:payload.Description
+    ClaimArtistProfile(state, payload) {
+      state.User.update({
+        Name: payload.Name,
+        Genre: payload.Genre,
+        Description: payload.Description
       });
       //state.User +=payload
-      console.log('nori',payload.Name)
-      
-  }
+      console.log("nori", payload.Name);
+    }
   },
   actions: {
     signUp({ commit }, user) {
       commit("auth_request");
       axios
-        .put("/api/signup", {
+        .post("/api/signup", {
           data: user
         })
         .then(response => {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
+          axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("authorization/get_user");
         })
         .catch(error => {
@@ -65,6 +65,7 @@ export default {
         .then(response => {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
+          axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("authorization/get_user");
         })
         .catch(error => {
@@ -79,7 +80,7 @@ export default {
         .get("/api/getuser")
         .then(response => {
           const token = localStorage.getItem("x-auth-token");
-          const user = response.data.user;   
+          const user = response.data.user;
           axios.defaults.headers.common["x-auth-token"] = token;
           commit("auth_success", { token, user });
         })
@@ -98,6 +99,7 @@ export default {
         .then(response => {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
+          axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("authorization/get_user");
         })
         .catch(error => {
@@ -106,7 +108,7 @@ export default {
           console.log(error);
         });
     },
-   
+
     reset({ commit }, user) {
       axios
         .post("/api/reset", {
@@ -137,18 +139,19 @@ export default {
           localStorage.removeItem("x-auth-token");
         });
     },
-    ClaimArtistProfile({commit},payload){
+    ClaimArtistProfile({ commit }, payload) {
       console.log("wslllllll", payload);
-      axios.put("/api/claimartist",{data:payload})
-      .then(response=>{
+      axios
+        .put("/api/claimartist", { data: payload })
+        .then(response => {
           const claim = response.data;
-        console.log("wsl", claim);
-        commit("ClaimArtistProfile", claim);
-      })
-      .catch(error => {
+          console.log("wsl", claim);
+          commit("ClaimArtistProfile", claim);
+        })
+        .catch(error => {
           console.log(error);
         });
-  }
+    }
   },
   getters: {
     Username: state => state.User.username,

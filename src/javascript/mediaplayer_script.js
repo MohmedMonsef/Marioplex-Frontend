@@ -1,7 +1,5 @@
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
-var y = document.getElementById("myAudio");
-var x = new Audio(y);
 ///////////////////////////////////////////////////////////////
 //creating toast object with function show
 const toast = {
@@ -18,7 +16,7 @@ const toast = {
   }
 };
 
-/////////////////////////////////////
+////////////////////////////////////////////////////////////
 export default {
   data: function() {
     return {
@@ -37,86 +35,68 @@ export default {
     // }
     // },
     ////////////////////////////////////
-    playsong_by_icon: function() {
-      if (x.paused) this.$store.dispatch("mediaplayer/playicon_state", true);
-    },
     playSong() {
       this.song_state = true;
-      this.changeplayicon();
-      // this.$store.dispatch("mediaplayer/get_currentsong");
-      this.$store.dispatch("mediaplayer/playsong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
-      console.log("song state", this.liked);
+      let info;
+      if ("playicon-component" == event.target.id) {
+        info = {
+          index: this.index,
+          song_id: this.song_id,
+          album_id: this.albumId,
+          playlist_id: this.playlistId,
+          is_playlist: this.isPlaylist
+        };
+        if (
+          this.song_id == this.currentsong_info.song_id &&
+          this.albumId == this.currentsong_info.album_id &&
+          this.index == this.currentsong_info.index &&
+          this.playlistId == this.currentsong_info.playlist_id
+        ) {
+          this.$store.dispatch("mediaplayer/playsong_state", info);
+          console.log("my compmmm", {
+            index: this.index,
+            song_id: this.song_id,
+            album_id: this.albumId,
+            playlist_id: this.playlistId,
+            is_playlist: this.isPlaylist
+          });
+        } else {
+          this.$store.dispatch("Queue/CreateQueue", info);
+          console.log("my comp", {
+            index: this.index,
+            song_id: this.song_id,
+            album_id: this.albumId,
+            playlist_id: this.playlistId,
+            is_playlist: this.isPlaylist
+          });
+        }
+      } else {
+        console.log("nihal comp", this.currentsong_info);
+        this.$store.dispatch("Queue/CreateQueue", this.currentsong_info);
+      }
     },
     pauseSong() {
       this.song_state = false;
-      this.changeplayicon();
       console.log("pause song");
       this.$store.dispatch("mediaplayer/pausesong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
     },
     prev_song: function() {
-      var y0 = document.getElementById("myAudio");
-      var x0 = new Audio(y0);
-      this.$store.dispatch("mediaplayer/prevsong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x0.src = this.media_player.song;
-        this.playsong_by_icon();
-        if (!x.paused) {
-          x.pause();
-          x0.play();
-          x = x0;
-        } else {
-          x0.play();
-          x = x0;
-        }
-        this.moving_song_bar();
-      }, 500);
+      if(this.currentsong_info.index!=0)
+        this.$store.dispatch("mediaplayer/prevsong_state");
     },
     next_song: function() {
-      var y1 = document.getElementById("myAudio");
-      var x1 = new Audio(y1);
       this.$store.dispatch("mediaplayer/nextsong_state");
-      this.$store.dispatch("mediaplayer/stateofsong");
-      setTimeout(() => {
-        console.log(this.media_player.song);
-        x1.src = this.media_player.song;
-        this.playsong_by_icon();
-        if (!x.paused) {
-          console.log("inside next song", x.paused);
-          x.pause();
-          x1.play();
-          x = x1;
-        } else {
-          x1.play();
-          x = x1;
-        }
-        this.moving_song_bar();
-      }, 500);
     },
 
     random_songs: function() {
       this.$store.dispatch("mediaplayer/shufflesong_state");
     },
-    repeat_song: function() {
-      this.$store.dispatch("mediaplayer/repeatsong_state");
-      ///// take care i should add condition here if the user isnot premiuim
-      var repeat = document.getElementById("repeaticon");
-      repeat.style.color = "green";
-      x.loop = true;
-      x.load();
-    },
-    changeplayicon: function() {
-      this.$store.dispatch("mediaplayer/toggleicon");
-    },
     likecurrentsong: function() {
       if (!this.liked) {
-        this.$store.dispatch("mediaplayer/likesong");
+        this.$store.dispatch("mediaplayer/Like", "");
         toast.show("Added to your Liked Songs");
       } else {
-        this.$store.dispatch("mediaplayer/unlikesong");
+        this.$store.dispatch("mediaplayer/UnLike", "");
         toast.show("Removed from your Liked Songs");
       }
     },
@@ -139,7 +119,8 @@ export default {
       currentaudio: "mediaplayer/currentaudio",
       progress: "mediaplayer/progress",
       duration: "mediaplayer/duration",
-      volume: "mediaplayer/volume"
+      volume: "mediaplayer/volume",
+      currentsong_info: "mediaplayer/currentsong_info"
     })
   }
 };

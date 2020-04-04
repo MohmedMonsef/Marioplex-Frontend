@@ -1,123 +1,106 @@
 <template>
     <div class="home-navbar">
-        <div class="div1">
-            <button 
-             class="prev"
-             testid="previous page button"
-             @click="goprev()">
-                <i class="fa fa-angle-left"></i>
-            </button>
-            <button 
-             class="next"
-             testid="next page button"
-             @click="gonext()">
-                <i class="fa fa-angle-right"></i>
-            </button>
-        </div>
-        <div class="div2">
-            <div class="login"  v-if="isLoggedIn == 'success'">
-                <div class="library-navbar">
-                    <ul class="nav">
-                        <li class="nav-item active">
-                            <div class="divOnFocus">
-                                <router-link
-                                to="/HomeWebPlayer/library/library-playlists"
-                                testid="playlists in library"
-                                class="nav-link">Playlists
-                                </router-link>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="divOnFocus">
-                                <router-link 
-                                to="/HomeWebPlayer/library/library-artists" 
-                                testid="Artists in library" 
-                                class="nav-link">Artists
-                                </router-link>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="divOnFocus">
-                                <router-link 
-                                to="/HomeWebPlayer/library/library-albums" 
-                                testid="Albums in library" 
-                                class="nav-link">Albums
-                                </router-link>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+        <button class="prev" @click="goprev()">
+            <i class="fa fa-angle-left"></i>
+        </button>
+        <button class="next" @click="gonext()">
+            <i class="fa fa-angle-right"></i>
+        </button>
+        <div class="login"  v-if="isLoggedIn == 'success'">
+            <div class="library-navbar">
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <div class="divOnFocus">
+                            <router-link
+                            to="/HomeWebPlayer/library/library-playlists"
+                            testid="playlists in library"
+                            class="nav-link">Playlists</router-link>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="divOnFocus">
+                            <router-link 
+                            to="/HomeWebPlayer/library/library-artists" 
+                            testid="Artists in library" 
+                            class="nav-link">Artists</router-link>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="divOnFocus">
+                            <router-link 
+                            to="/HomeWebPlayer/library/library-albums" 
+                            testid="Albums in library" 
+                            class="nav-link">Albums</router-link>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="div3">
-            <div class="login"  v-if="isLoggedIn == 'success'">
-                <div class="dropdown">
-                    <button 
-                        type="button" 
-                        class="dropdown-toggle" 
-                        data-toggle="dropdown" 
-                        id="drop_button"
-                        testid="dropdown list"
-                        >
-                            <svg 
-                            width="25" 
-                            height="25" 
-                            viewBox="0 0 80 90" 
-                            xmlns="http://www.w3.org/2000/svg">
-                                <title>User Icon</title>
-                                <path d="M67.74 61.78l-14.5-8.334c-.735-.422-1.24-1.145-1.385-1.98-.145-.835.088-1.685.638-2.33l5.912-6.93c3.747-4.378 5.81-9.967 5.81-15.737v-2.256c0-6.668-2.792-13.108-7.658-17.67C51.622 1.92 45.17-.386 38.392.054c-12.677.82-22.607 11.772-22.607 24.934v1.483c0 5.77 2.063 11.36 5.81 15.736l5.912 6.933c.55.644.783 1.493.638 2.33-.143.834-.648 1.556-1.383 1.98l-14.494 8.33C4.7 66.077 0 74.15 0 82.844v6.76h3.333v-6.76c0-7.5 4.055-14.46 10.59-18.174l14.5-8.334c1.597-.918 2.692-2.487 3.007-4.302.315-1.815-.19-3.66-1.387-5.06l-5.913-6.936c-3.23-3.775-5.01-8.594-5.01-13.57v-1.484c0-11.41 8.562-20.9 19.488-21.608 5.85-.377 11.415 1.61 15.67 5.598 4.26 3.992 6.605 9.404 6.605 15.24v2.254c0 4.976-1.778 9.796-5.01 13.57l-5.915 6.935c-1.195 1.4-1.7 3.246-1.386 5.06.313 1.816 1.41 3.385 3.008 4.303l14.507 8.338c6.525 3.71 10.58 10.67 10.58 18.17v6.76H80v-6.76c0-8.695-4.7-16.768-12.26-21.063z" 
-                                fill="currentColor" 
-                                fill-rule="evenodd">
-                                </path>
-                            </svg>
-                        {{Username}}
-                    </button>
-                    <div class="dropdown-menu">
-                        <a
+            <div class="dropdown">
+                <button 
+                    type="button" 
+                    class="dropdown-toggle" 
+                    data-toggle="dropdown" 
+                    id="drop_button"
+                    testid="dropdown list"
+                    >
+                        <svg 
+                        width="25" 
+                        height="25" 
+                        viewBox="0 0 80 90" 
+                        xmlns="http://www.w3.org/2000/svg">
+                            <title>User Icon</title>
+                            <path d="M67.74 61.78l-14.5-8.334c-.735-.422-1.24-1.145-1.385-1.98-.145-.835.088-1.685.638-2.33l5.912-6.93c3.747-4.378 5.81-9.967 5.81-15.737v-2.256c0-6.668-2.792-13.108-7.658-17.67C51.622 1.92 45.17-.386 38.392.054c-12.677.82-22.607 11.772-22.607 24.934v1.483c0 5.77 2.063 11.36 5.81 15.736l5.912 6.933c.55.644.783 1.493.638 2.33-.143.834-.648 1.556-1.383 1.98l-14.494 8.33C4.7 66.077 0 74.15 0 82.844v6.76h3.333v-6.76c0-7.5 4.055-14.46 10.59-18.174l14.5-8.334c1.597-.918 2.692-2.487 3.007-4.302.315-1.815-.19-3.66-1.387-5.06l-5.913-6.936c-3.23-3.775-5.01-8.594-5.01-13.57v-1.484c0-11.41 8.562-20.9 19.488-21.608 5.85-.377 11.415 1.61 15.67 5.598 4.26 3.992 6.605 9.404 6.605 15.24v2.254c0 4.976-1.778 9.796-5.01 13.57l-5.915 6.935c-1.195 1.4-1.7 3.246-1.386 5.06.313 1.816 1.41 3.385 3.008 4.303l14.507 8.338c6.525 3.71 10.58 10.67 10.58 18.17v6.76H80v-6.76c0-8.695-4.7-16.768-12.26-21.063z" 
+                            fill="currentColor" 
+                            fill-rule="evenodd">
+                            </path>
+                        </svg>
+                       {{Username}}
+                </button>
+                <div class="dropdown-menu">
+                    <a
+                        class="dropdown-item" 
+                        href="/UserAccount" 
+                        target="_blank" 
+                        testid="userprofilr link">
+                        Account
+                    </a>
+                    <div class="divider">________</div>
+                    <router-link to="/HomeWebPlayer" id="logout">
+                        <a 
                             class="dropdown-item" 
-                            href="/UserAccount" 
-                            target="_blank" 
-                            testid="userprofile link">
-                            Account
+                            testid="logout button" 
+                            @click="logout()">
+                            Log out
                         </a>
-                        <div class="divider">________________________</div>
-                        <router-link to="/HomeWebPlayer" id="logout">
-                            <a 
-                                class="dropdown-item" 
-                                testid="logout button" 
-                                @click="logout()">
-                                Log out
-                            </a>
-                        </router-link>
-                    </div>
+                    </router-link>
                 </div>
-                <a href="/GetPremium" target="_blank">
-                        <button
-                        class="upgrade_button"
-                        testid="upgrade_button"
-                        >
-                        UPGRADE
-                        </button>
-                </a>
             </div>
-            <div class="logout" v-if="isLoggedIn == '' || isLoggedIn ==  'error'">
-                <router-link to="/Login">
+            <a href="/GetPremium" target="_blank">
                     <button
-                    class="login_botton"
-                    testid="login_botton"
+                    class="upgrade_button"
+                    testid="upgrade_button"
                     >
-                    LOG IN 
+                    UPGRADE
                     </button>
-                </router-link>
-                <router-link to="/SignUp">
-                    <button
-                    class="signup_botton"
-                    testid="signup_botton"
-                    >
-                    SIGN UP
-                    </button>
-                </router-link>
-            </div>
+            </a>
+        </div>
+        <div class="logout" v-if="isLoggedIn == '' || isLoggedIn ==  'error'">
+            <router-link to="/Login">
+                <button
+                class="login_botton"
+                testid="login_botton"
+                >
+                LOG IN 
+                </button>
+            </router-link>
+            <router-link to="/SignUp">
+                <button
+                class="signup_botton"
+                testid="signup_botton"
+                >
+                SIGN UP
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -135,35 +118,17 @@
 }
 .nav{
    position: absolute; 
-   margin-left: 20px;
+   margin-left: 140px;
 }
-.div1{
+.home-navbar {
   position: fixed;
-  width: 130px;
+  width: 100%;
   height: 60px;
   background-color: #161516;
+  /* background: linear-gradient(141deg, rgba(16,15,16,0)0%, rgba(16,15,16,0.4) 51%, rgba(16,15,16,0.8) 75%); */
   top: 0%; 
   z-index: 0;
-}
-.div2{
-  position: fixed;
-  width: 500px;
-  height: 60px;
-  background-color: #161516;
-  top: 0%; 
-  z-index: 0;
-  margin-left: 130px;
-  position: absolute;
-}
-.div3{
-  position: fixed;
-  width: 450px;
-  height: 60px;
-  background-color: #161516;
-  top: 0%; 
-  z-index: 0;
-  margin-left: 630px;
-  position: absolute;
+  /* margin-bottom: 20px; */
 }
 .divOnFocus {
   width: 100px;
@@ -237,13 +202,13 @@
   background: none;
   height: 38px;
   width: 135px;
- background-color: #161516;
+  background-color: #161516;
   border-radius: 26px;
   border-color: white;
   color: #fff;
   font-size: 12px;
   font-weight: bold;
-  margin-left: 35%;
+  margin-left: 59%;
   margin-top: 10px;
   }
   .upgrade_button:hover{
@@ -268,13 +233,14 @@
     color:rgb(31, 31, 31);
     outline: none;
     position: absolute;
-  }.signup_botton{
+  }
+  .signup_botton{
     border: none;
     border-radius: 20px;
     width: 120px;
     height: 38px;
     background-color: #161516;
-    margin-left: 40%;
+    margin-left: 61%;
     margin-top: 10px;
     font-size: 12px;
     font-weight: bold;
@@ -292,7 +258,7 @@
      
   }
   .prev{
-      margin-left:40px;
+      margin-left: 3%;
       margin-top: 15px;
       background-color: rgb(8, 8, 8);
       border-radius: 50%;
@@ -356,20 +322,24 @@ export default {
     },
     gonext: function () {
          this.$router.go(1);
-    },
-    // ISinlibrary: function(){
-    //       if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
-    //         this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
-    //         this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
-    //      {
-    //             this.inlibrary=true;
-    //      }
-    //       else
-    //            {this.inlibrary=false;  }
-    //      console.log(this.inlibrary)
-    //      return this.inlibrary;
-    // }
+    }
   },
-
+//   mounted(){
+//          if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
+//             this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
+//             this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
+//          {
+//                 this.inlibrary=true;
+//          }
+//           else
+//                {this.inlibrary=false;  }
+//          console.log(this.inlibrary , '  daaaaaaai')
+//          return this.inlibrary;
+//   },
+//   watch:{
+//      inlibrary() {
+//          this.ISinlibrary();
+//     }
+//   }
 }
 </script>

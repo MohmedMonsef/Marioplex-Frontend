@@ -1,33 +1,30 @@
 <template>
-  <div class="likedtracks">
-    <div class="row" v-if="this.likedtracks_length > 0">
+       <div class="album"> 
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-          <LikedTracks/>
+          <albuminfo/>
          </div> 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
      <song-component 
-      v-for="p in likedtracks_tracks"
+      v-for="p in album_tracks"
       :key="p.trackid"
       :song_id="p.trackid"
       :song_artists="p.artistName"
       :song_name="p.name"
       :song_album="p.albumName"
-      :song_length=500
+      :song_length= 500
       :isLiked="true"
     />
         </div>
 </div>
-<div class="row" v-else>
-  <emptylikedtracks/>
 </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
-.likedtracks{
+.album{
     // min-width: 768px;
-    min-height: 300px;
-    background-image: linear-gradient(0deg, #161516, rgb(20, 1, 59));
+    min-height: 900px;
+    background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
 }
 .row{
     margin: 25px;
@@ -39,11 +36,10 @@
 
 <script>
 import SongComponent from "@/components/SongComponent.vue";
-import LikedTracks from "@/components/likedtracks_info.vue";
-import emptylikedtracks from "@/components/emptylikedtracks.vue";
+import albuminfo from "@/components/album_info.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: "likedtracksview",
+name: "albumview",
     props: {
     isLiked: {
       type: Boolean
@@ -51,18 +47,17 @@ export default {
     },
     components: {
     SongComponent,
-    LikedTracks,
-    emptylikedtracks
+    albuminfo
   },
-     computed: {
+    computed: {
     ...mapGetters({
-      likedtracks_tracks: "likedtracks/likedtracks_tracks",
-      likedtracks_length: "likedtracks/likedtracks_length",
-      likedtracks_load: "likedtracks/likedtracks_loaded",
+      album_tracks: "album/album_tracks",
+      album_length: "album/album_length",
+      album_load: "album/album_loaded",
     })
   },
   created: function() {   
-   this.$store.dispatch("likedtracks/likedtracks_tracks")
+   this.$store.dispatch("album/album_tracks" , this.$route.params.album_id)
      }
-};
-</script>
+  }
+</script>>

@@ -21,6 +21,9 @@ import playlist from "../views/playlist_view.vue";
 import GetPremium from "../views/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import ArtistProfile from "../views/ArtistProfile.vue";
+import album from "../views/album_view.vue";
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -61,6 +64,11 @@ const routes = [
                 path: "playlist/:playlist_id",
                 name: "playlist",
                 component: playlist
+            },
+            {
+                path: "album/:album_id",
+                name: "album",
+                component: album
             }
         ]
     },
