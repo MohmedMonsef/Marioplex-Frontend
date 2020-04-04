@@ -1,6 +1,6 @@
 <template>
     <div>
-        <lib-playlists-default v-if="playlists1.length==0"/>
+        <lib-playlists-default v-if="playlists1.length==0 && songs1.length==0"/>
         <h2 v-if="playlists1.length">Playlists</h2>
         <div class="container">
         <div class="row">
@@ -25,7 +25,7 @@
   color: white;
   margin-bottom: 14px;
   margin-left: 30px;
-  margin-top: 38px;
+  margin-top: 80px;
 }
 .container {
   margin-left: 15px;
@@ -47,11 +47,13 @@ export default {
     },
      mounted() {
     this.$store.dispatch("creatplaylist/showplaylists");
+     this.$store.dispatch("userlibrary/showUserSongs");
   },
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
       playlists1: "creatplaylist/playlists" ,// creat new object "playlists1" and map to it
+       songs1: "userlibrary/songs" 
     })
   },
 }

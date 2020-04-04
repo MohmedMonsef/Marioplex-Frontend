@@ -33,8 +33,8 @@ h1{
 }
 svg{
     color:rgb(160, 158, 158);
-    margin-left: 39%;
-    margin-top: 50px;
+    margin-left: 40%;
+    margin-top: 80px;
 }
 p{
    color:rgb(146, 144, 144);

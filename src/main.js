@@ -473,53 +473,74 @@ new Server({
                           "albumId": "5e7d93dad82adf07f4121bae",
                           "albumName": "album1"
                       }
-                  ]
+                  ],
+                  
               }
           ],
-          user_songs:[
+          user_songs: [
             {
-              images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-              name: "song name1",
+              name: "ya sattar",
               artist: {
-                  name: "Hamaki"
+                name: "Hamaki"
               }
-          },
-          {
-              images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-              name: "song name2",
+            },
+            {
+              name: "nour el3en",
               artist: {
-                  name: "Amr Diab"
-              }
-          },
-          {
-              images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-              name: "song name3",
-              artist: {
-                  name: "Shereen"
-              }
-          },
-          {
-            images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-            name: "song name2",
-            artist: {
                 name: "Amr Diab"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
+            },
+            {
+              name: "el nas",
+              artist: {
+                name: "Hamaki"
+              }
             }
-           },
-           {
-            images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-            name: "song name3",
-            artist: {
-                name: "Shereen"
+          ],
+          Artist_Songs: [
+            {
+              URL: "",
+              Name: "",
+              TrackNumber: "",
+              PreviewURL: "",
+              AvailableMarket: ""
             }
-           },
-           {
-            images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-            name: "song name3",
-            artist: {
-                name: "Shereen"
-            }
-           },
-         
           ]
         });
     },
@@ -734,7 +755,6 @@ new Server({
       // return new Response(403, { error: "no user with such data" });
     });
       
-       
             //queue requests
     this.get("/api/currentsong", schema => {
       return new Response(200, {}, { currentsong: schema.db.currentsong });
@@ -776,4 +796,4 @@ new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount("#app")
+}).$mount("#app");

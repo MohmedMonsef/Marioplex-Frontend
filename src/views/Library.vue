@@ -1,6 +1,6 @@
 <template>
     <div class="library">
-        <library-navbar/>
+        <!-- <library-navbar/> -->
         <div>
             <router-view></router-view>
         </div>
@@ -10,10 +10,10 @@
 <style lang="scss" scoped></style>
 
 <script>
-import LibraryNavbar from "@/components/library-navbar.vue";
+// import LibraryNavbar from "@/components/library-navbar.vue";
 export default {
-    components:{
-        LibraryNavbar,
-    }
+    // components:{
+    //     LibraryNavbar,
+    // }
 }
 </script>
