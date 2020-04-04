@@ -9,6 +9,8 @@ import Queue from "../modules/queue";
 import categorys from "../modules/categorys";
 import Search from "../modules/Search";
 import userlibrary from "../modules/userlibrary";
+import uploadsong from "../modules/uploadsong";
+import claimartistprofile from "../modules/claimartistprofile"
 import playlist from "../modules/playlist";
 import album from "../modules/album";
 import likedtracks from "../modules/likedtracks";
@@ -27,6 +29,8 @@ export default new Vuex.Store({
     categorys,
     Search,
     userlibrary,
+    uploadsong,
+    claimartistprofile,
     playlist,
     album,
     likedtracks,

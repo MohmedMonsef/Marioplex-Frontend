@@ -12,7 +12,7 @@ export default {
   },
   mutations: {
     set_playlist(state, playlist_tracks) {
-    state.playlist_tracks = playlist_tracks;
+      state.playlist_tracks = playlist_tracks;
     },
     set_playlist_loaded(state , status){
         state.playlist_loaded = status;
@@ -32,10 +32,13 @@ export default {
 set_likedplaylist(state , like){
   state.likedplaylist = like;
 },
+set_playlist_loaded(state, status) {
+  state.playlist_loaded = status;
+}
   },
   actions: {
     playlist_tracks({ commit } , playlist_id) {
-        commit("set_playlist_loaded" , false);
+      commit("set_playlist_loaded", false);
         axios
           .get("/playlists/" + playlist_id)
           .then(response => {
@@ -46,6 +49,7 @@ set_likedplaylist(state , like){
             commit ("set_playlist_name" , playlist.name)
             commit ("set_owner_name" , playlist.ownerName)
             commit ("set_playlist_image" , playlist.images[0])
+            commit("set_playlist_loaded", true);
           })
           .catch(error => {
             console.log(error);

@@ -59,12 +59,22 @@
     <!-- lower border -->
     <div testid="border in sidebar" class="border"></div>
     <!-- user's play lists -->
-    <ul>
-      <li v-for="playlist in playlists1" :key="playlist.id">
-        <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
-        <!-- router link should navigate to play list page-->
-      </li>
-    </ul>
+    <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
+        <ul>
+          <li v-for="playlist in playlists1" :key="playlist.id" @click.right="playlistid=playlist.id,showdelete=true  ">
+            <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
+            <!-- router link should navigate to play list page-->
+          </li>
+        </ul>
+        <ul v-if="showdelete" id="right-click-menu">
+              <li @click="changeModalStateDelete()">Delete</li>
+        </ul>
+        <!-- id="right-click-menu" 
+            tabindex="-1" 
+            v-if="viewMenu" 
+            @blur="closeMenu()" 
+            style="top:top; left:left;" -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -177,25 +187,99 @@ label {
   background: #313030;
   display: block;
 }
+#right-click-menu{
+  background-color:#313030;
+  list-style: none;
+  width: 150px;
+  height: 40px;
+  padding-left: 10px;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  position: absolute;
+  display: block;
+  margin-left: 10px;        /* delete it */
+}
+#right-click-menu li{
+   cursor: pointer;
+  color: gray;
+}
+#right-click-menu li:hover{
+   color:white;
+}
+#right-click-menu:hover{
+ background-color: rgba(77, 75, 75,0.7);
+}
 </style>
 
 <script>
 import { mapGetters } from "vuex";
+//import Vue from 'vue';
 export default {
+  // el:'#demo',
+  data: function()
+  {
+    return{
+      show: false,
+      showdelete:false,
+      playlistid:0,
+    //   viewMenu: false,
+    //     top: '0px',
+    //     left: '0px',
+    //     right: '0px'
+     }
+  },
   mounted() {
     this.$store.dispatch("creatplaylist/showplaylists");
   },
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
+      playlists1: "creatplaylist/playlists" ,
+      // creat new object "playlists1" and map to it
+       showModalDelete: "creatplaylist/showModalDelete"
     })
+    
   },
   name: "SideBar",
   methods: {
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
-    }
-  }
+    },
+    changeModalStateDelete() {
+
+      this.$store.dispatch("creatplaylist/toggleModalDelete",this.playlistid);
+    },
+    
+
+    // setMenu: function(top, left) {
+          
+    //         var largestHeight = window.innerHeight - this.right.offsetHeight;
+    //         var largestWidth = window.innerWidth - this.right.offsetWidth;
+
+    //         if (top > largestHeight) top = largestHeight;
+
+    //         if (left > largestWidth) left = largestWidth;
+
+    //         this.top = top + 'px';
+    //         this.left = left + 'px';
+    //     },
+
+    //     closeMenu: function() {
+    //         this.viewMenu = false;
+    //     },
+
+    //     openMenu: function(e) {
+    //         this.viewMenu = true;
+
+    //         Vue.nextTick(function() {
+    //             this.right.focus();
+
+    //             this.setMenu(e.y, e.x)
+    //             }.bind(this));
+    //             e.preventDefault();
+    //     }
+    
+  },
+  
 };
 </script>

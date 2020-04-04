@@ -2,6 +2,7 @@
   <div class="home_webplayer">
     <side-bar />
     <CreatePlaylist v-if="show" />
+    <DeletePlaylist v-if="showdelete"/>
     <div id="HomeInWebPlayer">
       <router-view></router-view>
     </div>
@@ -24,6 +25,7 @@
 import SideBar from "@/components/SideBar.vue";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
 import mediaplayer from "@/components/mediaplayer.vue";
+import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -31,11 +33,13 @@ export default {
   components: {
     SideBar,
     CreatePlaylist,
-    mediaplayer
+    mediaplayer,
+    DeletePlaylist
   },
   computed: {
     ...mapState({
-      show: state => state.creatplaylist.showModal
+      show: state => state.creatplaylist.showModal,
+      showdelete: state => state.creatplaylist.showModalDelete,
     })
   }
 };

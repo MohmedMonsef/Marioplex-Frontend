@@ -1,32 +1,102 @@
 import axios from "axios";
 export default {
     namespaced: true,
-    state: { result: [], type: "artist" },
+    state: {
+        search_Value: "",
+        topres: [],
+        result: [],
+        albumres: [],
+        playlistres: [],
+        load: false
+    },
     mutations: {
+        set_value(state, searchvalue) {
+            state.search_Value = searchvalue;
+        },
+        settopres(state, match_valuet) {
+            state.topres = match_valuet;
+        },
         setresult(state, match_value) {
             state.result = match_value;
+        },
+        setalbumres(state, match_valuea) {
+            state.albumres = match_valuea;
+        },
+        setplaylistres(state, match_valuep) {
+            state.playlistres = match_valuep;
+        },
+        set_load(state, status) {
+            state.load = status;
         }
     },
     actions: {
-        searchaboutartist({ commit }, search_value) {
-            axios.get(`/api/artist/:${search_value}`).then(response => {
-                let ressearch = response.data;
-                console.log(ressearch);
-                /*  for (let i = 0; i < ressearch.length; i++) {
-                    if (ressearch[i].name === search_value) {
-                        match_value.push(ressearch[i]);
-                    }
-                }*/
-                let match_value = ressearch;
-                console.log(match_value);
-                console.log(search_value);
-                commit("setresult", match_value);
-            });
+        search_V({ commit }, searchvalue) {
+            commit("set_value", searchvalue);
+            console.log(searchvalue);
+        },
+        searchaboutartist({ commit }) {
+            /* when integrate with back
+            searchaboutartist({ commit }, search_value) {
+             const requestOne = axios.get(
+                "/api/search?name=" + search_value + "&type=top"
+            );
+            const requestTwo = axios.get(
+                "/api/search?name=" + search_value + "&type=artist"
+            );
+            const requestThree = axios.get(
+                "/api/search?name=" + search_value + "&type=album"
+            );
+            const requestfour = axios.get(
+                "/api/search?name=" + search_value + "&type=playlist"
+            );
+*/
+            commit("set_load", false);
+            const requestOne = axios.get("/api/search/top");
+            const requestTwo = axios.get("/api/search/artist");
+            const requestThree = axios.get("/api/search/album");
+            const requestfour = axios.get("/api/search/playlist");
+            axios
+                .all([requestTwo, requestThree, requestfour, requestOne])
+                .then(
+                    axios.spread((...responses) => {
+                        const match_value = responses[0].data;
+                        const match_valuea = responses[1].data;
+                        const match_valuep = responses[2].data;
+                        const match_valuet = responses[3].data;
+
+                        // use/access the results
+                        console.log(match_valuet);
+                        ///
+
+                        commit("settopres", match_valuet);
+                        commit("setresult", match_value);
+                        commit("setalbumres", match_valuea);
+                        commit("setplaylistres", match_valuep);
+                        commit("set_load", true);
+                    })
+                )
+                .catch(errors => {
+                    // react on errors.
+                    console.error(errors);
+                });
         }
     },
     getters: {
+        get_value(state) {
+            return state.search_Value;
+        },
+        gettopres(state) {
+            return state.topres;
+        },
         getresult(state) {
             return state.result;
-        }
+        },
+        getalbumres(state) {
+            return state.albumres;
+        },
+        getplaylistsres(state) {
+            return state.playlistres;
+        },
+        loadingsearch: state => state.load
     }
 };

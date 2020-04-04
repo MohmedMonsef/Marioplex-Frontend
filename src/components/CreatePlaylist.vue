@@ -35,14 +35,24 @@
         <div class="child">
           <div class="grandchild">
             <h4 class="playlist_name">Playlist Name</h4>
-            <input class="name_input" type="text" placeholder="New Playlist" v-model="playlistname" />
+            <input
+              class="name_input"
+              type="text"
+              placeholder="New Playlist"
+              v-model="playlistname"
+              @keyup.enter="CreatePlaylist(),changeModalState()" 
+            />
           </div>
         </div>
 
-        <button class="cancel_button" @click="changeModalState">cancle</button>
+        <button class="cancel_button" @click="changeModalState">
+          cancle
+        </button>
+         <!--<input @keyup.enter="CreatePlaylist()" />-->
         <button
           class="creat_button"
           testid="confirm_create"
+          
           @click.prevent="CreatePlaylist()"
           @click="changeModalState"
         >create</button>
@@ -51,54 +61,7 @@
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-//import {mapActions} from "vuex";
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-export default {
-  name: "CreatePlaylist",
-  data: function() {
-    return {
-      playlistname: ""
-    };
-  },
-  //showModal:false,
-  components: {},
-  computed: {
-    ...mapState({
-      Playlists: state => state.creatplaylist.Playlists
-    }),
-    ...mapGetters({
-      showModal: "creatplaylist/showModal",
-      username: "authorization/Username"
-    })
-  },
-  methods: {
-    changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
-    },
 
-    CreatePlaylist() {
-      let payload = {
-        name: this.playlistname,
-        images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-        owner: this.username
-      };
-      console.log("nerd");
-      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
-    },
-    DeletePlaylist(id) {
-      console.log(id);
-
-      this.$store.dispatch("deleteplaylist/DeletePlaylist", id);
-      console.log("removed");
-    }
-  }
-
-  // When the user clicks on <div>, open the popup
-};
-</script>
 <style scoped>
 * {
   margin: 10;
@@ -137,7 +100,7 @@ div {
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-
+  outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
 }
@@ -161,7 +124,7 @@ div {
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-
+  outline: none;
   transition: 0.4s ease-out;
 }
 
@@ -205,6 +168,8 @@ input {
   line-height: 50px;
   color: #fff;
   text-transform: none;
+   outline: none;
+   font-weight: bold;
 }
 ul {
   color: red;
@@ -279,3 +244,62 @@ ul {
   color: #fff;
 }
 </style>
+<script>
+// @ is an alias to /src
+//import {mapActions} from "vuex";
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+export default {
+  name: "CreatePlaylist",
+  data: function() {
+    return {
+      playlistname: ""
+    };
+  },
+  //showModal:false,
+  components: {},
+  computed: {
+    ...mapState({
+      Playlists: state => state.creatplaylist.Playlists
+    }),
+    ...mapGetters({
+      showModal: "creatplaylist/showModal",
+      username: "authorization/Username"
+    })
+  },
+  methods: {
+    changeModalState() {
+      this.$store.dispatch("creatplaylist/toggleModal");
+    },
+
+    CreatePlaylist() {
+      var payload
+      if(this.playlistname)
+      {
+      payload = {
+        name: this.playlistname,
+        images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+        owner: this.username
+      };
+      }
+      else{
+         payload = {
+        name: "New Playlist",
+        images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+        owner: this.username
+      };
+      }
+      console.log("nerd");
+      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
+    },
+    DeletePlaylist(id) {
+      console.log(id);
+
+      this.$store.dispatch("creatplaylist/DeletePlaylist", id);
+      console.log("removed");
+    }
+  }
+
+  // When the user clicks on <div>, open the popup
+};
+</script>

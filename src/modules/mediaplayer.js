@@ -1,11 +1,39 @@
 import axios from "axios";
-var i = 0;
 export default {
   namespaced: true,
   state: {
-    currentsong: {},
-    songs: [],
-    liked: false,
+    currentsong: [{
+      track: {
+        name: "You are my sunshine",
+        __v: 0,
+        albumId: "5e7d93dad82adf07f4121bb0",
+        artistId: "5e7d93dad82adf07f4121bb2",
+        images:[],
+        duration: 236,
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+        _id: "5e7d93dad82adf07f4121bb6"
+      },
+      album: {
+        name: "album1",
+        _id: "5e833b412b9d7718a491c850",
+        artist: {
+            name: "ahmedsamir",
+            _id: "5e833a51a51d971174923f17"
+    },
+      isLiked: true,
+      playlistId: "5e85f4ca1ba5cf17ccca66eb",
+      isPlayable: true
+   }
+    }],
+    //component info
+    currentsong_info: {
+      index: 1,
+      song_id: "5e7d93dad82adf07f4121bb6",
+      album_id: "5e7d93dad82adf07f4121bb0",
+      playlist_id: "0",
+      is_playlist: false
+    },
+    //flag weather the song is playing or not
     playicon: false,
     currentaudio: null,
     volumeprogress: 0,
@@ -17,7 +45,7 @@ export default {
       state.playicon = playicon;
     },
     setliked(state, like) {
-      state.liked = like;
+      state.currentsong[0].isLiked = like;
     },
     setalbumimage(state, albumimage) {
       state.songs.album_image = albumimage;
@@ -28,47 +56,33 @@ export default {
     setartistsname(state, artistsname) {
       state.songs.artist_name = artistsname;
     },
-    // setplaysong(state, playsong) {
-    //   state.playsong = playsong;
-    // },
-    setplaysong(state, playsong) {
-      state.songs.song = playsong;
-    },
     setpausesong(state) {
+      state.playicon = false;
       if (state.currentaudio) state.currentaudio.pause();
-    },
-    setprevsong(state, prevsong) {
-      state.songs.song = prevsong;
-    },
-    setnextsong(state, nextsong) {
-      state.songs.song = nextsong;
-    },
-    setstarttime(state, starttime) {
-      state.songs.start_time = starttime;
-    },
-    setendtime(state, endtime) {
-      state.songs.end_time = endtime;
-    },
-    setreapetsong(state, repeatsong) {
-      state.repeatsong = repeatsong;
-    },
-    setshufflesongs(state, shufflesongs) {
-      state.shufflesongs = shufflesongs;
     },
     set_currentsong(state, currentsong) {
       state.currentsong = currentsong;
     },
-    toggleicon(state) {
-      state.playicon = !state.playicon;
-    },
-    startcurrentaudio(state, playsong) {
-      if (state.currentaudio) {
+    startcurrentaudio(state, info) {
+      state.playicon = true;
+      if (
+        state.currentaudio &&
+        info.song_id == state.currentsong_info.song_id &&
+        info.album_id == state.currentsong_info.album_id &&
+        info.index == state.currentsong_info.index &&
+        info.playlist_id == state.currentsong_info.playlist_id
+      ) {
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;
       } else {
-        state.currentaudio = new Audio(playsong);
+        if (state.currentaudio) {
+          state.currentaudio.pause();
+          state.currentaudio = null;
+        }
+        state.currentaudio = new Audio(state.currentsong[0].track.url);
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;
+        state.currentsong_info = info;
       }
     }
   },
@@ -76,143 +90,145 @@ export default {
     playicon_state({ commit }, status) {
       commit("setplayicon", status);
     },
-
-    currentsong_info({ commit }) {
-      axios
-        .get("/api/player/currently-playing")
-        .then(response => {
-          let albumimage = response.data;
-          let songname = response.data;
-          let artistsname = response.data;
-          let starttime = response.data;
-          let endtime = response.data;
-          commit("setalbumimage", albumimage[0].album_image);
-          commit("setsongname", songname[0].song_name);
-          commit("setartistsname", artistsname[0].artist_name);
-          commit("setstarttime", starttime[0].start_time);
-          commit("setendtime", endtime[0].end_time);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    playsong_state({ commit }) {
-      axios
-        .get("/api/player/play")
-        .then(response => {
-          let playsong = response.data;
-          console.log("playsong", Object.keys(playsong).length);
-          console.log("inside axios", playsong[i].song);
-          commit("startcurrentaudio", playsong[i].song);
-
-          // commit("setplaysong", playsong[i].song);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-
-    pausesong_state({ commit }) {
-      axios
-        .get("/api/player/pause")
-        .then(response => {
-          let pausesong = response.data;
-          commit("setpausesong", pausesong[i].song);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    nextsong_state({ commit }) {
-      axios
-        .get("/api/player/next")
-        .then(response => {
-          let nextsong = response.data;
-          i += 1;
-          console.log(i);
-          console.log(Object.keys(nextsong).length);
-          if (i == Object.keys(nextsong).length) {
-            i = 0;
-            commit("setnextsong", nextsong[i].song);
-          } else commit("setnextsong", nextsong[i].song);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    prevsong_state({ commit }) {
-      axios
-        .get("/api/player/previous")
-        .then(response => {
-          let prevsong = response.data;
-          i -= 1;
-          if (i < 0) i = 0;
-          else commit("setprevsong", prevsong[i].song);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    repeatsong_state({ commit }) {
-      axios
-        .get("/api/player/repeat")
-        .then(response => {
-          let repeatsong = response.data.song;
-          commit("setreapetsong", repeatsong);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    shufflesong_state({ commit }) {
-      axios
-        .get("/api/player/shuffle")
-        .then(response => {
-          let shfflesongs = response.data.song;
-          commit("setshufflesongs", shfflesongs);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    toggleicon({ commit }) {
-      commit("toggleicon");
-    },
-    ////////////here i should send end point of like with id
-    likesong({ commit }) {
-      commit("setliked", true);
-    },
-    ///////////here i should send end point of unlike with id
-    unlikesong({ commit }) {
-      commit("setliked", false);
-    },
-    stateofsong({ commit }) {
-      axios
-        .get("/api/me/like")
-        .then(response => {
-          let like = response.data;
-          commit("setliked", like[i].liked);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
+    //get the current song from backend
     get_currentsong({ commit }) {
       axios
         .get("/api/currentsong")
         .then(response => {
           var currentsong = response.data.currentsong;
+          console.log("in get currentsong", currentsong);
           commit("set_currentsong", currentsong);
         })
         .catch(error => {
-          console.error(error);
+          console.log(error);
         });
     },
-    advance_progress({ state }) {
+    //start playing the current audio
+    playsong_state({ commit }, info) {
+      console.log("in plaay state", info);
+      commit("startcurrentaudio", info);
+    },
+    pausesong_state({ commit }) {
+      commit("setpausesong");
+    },
+    nextsong_state({ state, commit, dispatch }) {
+      axios
+        .get("/player/next")
+        .then(response => {
+          var nextsong = response.data.nextsong;
+          console.log("in get currentsong", nextsong);
+          commit("set_currentsong", nextsong);
+          let info = {
+            index: state.currentsong_info.index + 1, //should handle if its the first track on playlist or album return to zero
+            song_id: nextsong[0].track._id,
+            album_id: nextsong[0].track.albumId,
+            playlist_id: state.currentsong_info.playlist_id,
+            is_playlist: state.currentsong_info.is_playlist
+          };
+          dispatch("playsong_state", info);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    prevsong_state({ state, commit, dispatch }) {
+      console.log("in prev action", state.progress);
+
+      if (state.progress <= 5) {
+        axios
+          .get("/player/previous")
+          .then(response => {
+            var prevsong = response.data.prevsong;
+            console.log("in get currentsong", prevsong);
+            commit("set_currentsong", prevsong);
+            let info = {
+              index:
+                state.currentsong_info.index == 0
+                  ? 0
+                  : state.currentsong_info.index - 1, //
+              song_id: prevsong[0].track._id,
+              album_id: prevsong[0].track.albumId,
+              playlist_id: state.currentsong_info.playlist_id,
+              is_playlist: state.currentsong_info.is_playlist
+            };
+            dispatch("playsong_state", info);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        dispatch("update_progress", 0);
+      }
+    },
+    repeatsong_state({state},flag) {
+      if(flag==1)
+         state.currentaudio.loop=true;
+      else if(flag==0){
+        state.currentaudio.loop=false;
+      axios
+        .get("/api/player/repeat",null,{state:false})
+        .then(response => {       
+          console.log(response );
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      }
+      else{
+        state.currentaudio.loop=false;
+        axios
+        .get("/api/player/repeat",null,{state:true})
+        .then(response => {       
+          console.log(response );
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      }
+    },
+    shufflesong_state({dispatch },flag) {
+      axios
+        .put("/api/player/shuffle",null,{state:flag})
+        .then(() => {
+          dispatch("Queue/Queue",null,{root: true});
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    ////////////here i should send end point of like with id
+    Like({ state, commit }, track_id) { 
+      if (track_id == "") track_id = state.currentsong[0].track._id;
+      console.log("in likke",track_id);
+      axios
+        .put("/me/like/" + track_id)
+        .then(() => {
+          commit("setliked", true);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    UnLike({ state, commit }, track_id) {
+      if (track_id == "") track_id = state.currentsong[0].track._id;
+      console.log("in unn likke",track_id);
+      axios
+        .put("/me/like/" + track_id)
+        .then(() => {
+          commit("setliked", false);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    advance_progress({ state, dispatch }) {
       if (state.currentaudio) {
         if (!state.currentaudio.ispaused) {
           state.trackduration = state.currentaudio.duration;
           state.progress = state.currentaudio.currentTime;
+          if (state.progress == state.trackduration) {
+            dispatch("nextsong_state");
+          }
         }
       }
     },
@@ -230,20 +246,15 @@ export default {
     }
   },
   getters: {
-    //     albumimage: state => state.albumimage,
-    //     songname: state => state.songname,
-    //     artistsname: state => state.artistsname,
-    //     starttime: state => state.starttime,
-    //     endtime: state => state.endtime,
-    //     playsong: state => state.playsong
-    Get_Currentsong: state => state.currentsong[0],
+    Get_Currentsong: state => {
+      return state.currentsong[0];
+    },
     playicon: state => {
       return state.playicon;
     },
     liked: state => {
-      return state.liked;
+      return state.currentsong[0].isLiked;
     },
-    // currentaudio:state => state.currentaudio,
     currentaudio: state => {
       return state.currentaudio;
     },
@@ -256,5 +267,8 @@ export default {
     volume: state => {
       return state.volumeprogress;
     },
+    currentsong_info: state => {
+      return state.currentsong_info;
+    }
   }
 };

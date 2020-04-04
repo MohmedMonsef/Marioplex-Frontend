@@ -429,17 +429,17 @@ export default {
           this.$store
             .dispatch("authorization/signUp", newuser)
             .then(() => {
-              ///   
-               setTimeout(()=>{
+              ///
+              setTimeout(() => {
                 var status = this.isLoggedIn;
-                 if (status == "success") {
-                  console.log("finally succeeded")
+                if (status == "success") {
+                  console.log("finally succeeded");
                   this.$router.push("/");
                 } else if (status == "error") {
-                   console.log("errror")
+                  console.log("errror");
                 }
-               },1000);
-                
+              }, 1000);
+
               ////////
             })
             .catch(err => console.log(err));
@@ -448,20 +448,15 @@ export default {
     },
     facebook_signUp() {
       this.$store.dispatch("authorization/facebook_signUp").then(() => {
-        var check = true;
-        while (check) {
+        setTimeout(() => {
           var status = this.isLoggedIn;
-          if (status == "loading") continue;
-          else if (status == "success") {
+          if (status == "success") {
             console.log("logged with fb");
             this.$router.push("/");
-            check = false;
-            console.log(check);
           } else if (status == "error") {
             console.log("error with fb");
-            check = false;
           }
-        }
+        }, 1000);
       });
     },
     cannotSubmit() {

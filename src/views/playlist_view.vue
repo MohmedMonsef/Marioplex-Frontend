@@ -1,23 +1,30 @@
 <template>
     <div class="playlist"> 
+        <div class="loading" v-if="!playlist_load">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
       <!-- <playlistpopup v-if="show" /> -->
-    <div class="row">
+    <div v-if="playlist_load" class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
           <playlist v-if="this.playlist_length == 0"/>
           <playlistinfo v-else/>
          </div> 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
       <emptytracks v-if="this.playlist_length == 0"/>
-     <song-component v-else
-      v-for="p in playlist_tracks"
-      :key="p.trackid"
-      :song_id="p.trackid"
-      :song_artists="p.artistName"
-      :song_name="p.name"
-      :song_album="p.albumName"
-      :song_length="'3:45'"
-      :isLiked="true"
-    />
+         <song-component v-else
+          v-for="(p, i) in playlist_tracks"
+          :key="p.trackid"
+          :index="i"
+          :song_id="p.trackid"
+          :song_artists="p.artistName"
+          :song_name="p.name"
+          :song_album="p.albumName"
+          :albumId="p.albumId"
+          :song_length="500"
+          :isLiked="p.isLiked"
+          :playlistId="$route.params.playlist_id"
+          :isPlaylist="true"
+        />
         </div>
 </div>
 </div>
@@ -28,6 +35,14 @@
     // min-width: 768px;
     min-height: 300px;
     background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
+}
+.loading{
+  display: flex;
+  justify-content: center;
+  i{
+    font-size: 70px;
+    margin-top: 100px;
+  }
 }
 .row{
     margin: 25px;
@@ -74,7 +89,7 @@ name: "playlistview",
     ...mapGetters({
       playlist_tracks: "playlist/playlist_tracks",
       playlist_length: "playlist/playlist_length",
-      playlist_load: "playlist/playlist_loaded",
+      playlist_load: "playlist/playlist_loaded"
     })
   },
   created: function() {   

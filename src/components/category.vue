@@ -3,7 +3,7 @@
     <img class="card-img-top mx-auto d-block" :src="image" alt="Card image" id="cardimg" />
     <div class="card-img-overlay">
       <h4 class="card-title">{{name}}</h4>
-      <router-link :to="link" class="stretched-link" id="carglink" testid="cardlink"></router-link>
+      <router-link to="/" class="stretched-link" id="carglink" testid="cardlink"></router-link>
     </div>
   </div>
 </template>
@@ -40,6 +40,6 @@ h4 {
 <script>
 export default {
   name: "category",
-  props: ["image", "name", "link", "playlists"]
+  props: ["image", "name", "categoryId"]
 };
 </script>

@@ -4,7 +4,11 @@ export default {
   namespaced: true,
   state: {
     user_albums: [],
-    user_artists:[]
+    user_artists:[],
+    user_songs:[],
+    
+    loadingalbums:false,
+    loadingartists:false,
   },
   mutations: {
     setUserAlbums(state, albums) {
@@ -12,27 +16,51 @@ export default {
     },
     setUserArtists(state, artists) {
       state.user_artists = artists;
+    },
+    setUserSongs(state, songs) {
+      state.user_songs = songs;
+    },
+    set_loading_albums(state, status) {
+      state.loadingalbums = status;
+    },
+    set_loading_artists(state, status) {
+      state.loadingartists = status;
     }
   },
   actions: {
     showUserAlbums({ commit }) {
+      commit("set_loading_albums", false);
       axios
         .get("/api/me/albums")
         .then(response => {
           let albums = response.data;
           commit("setUserAlbums", albums);
+          commit("set_loading_albums", true);
         })
         .catch(error => {
           console.log(error);
         });
     },
     showUserArtists({ commit }) {
+      commit("set_loading_artists", false);
       axios
         .get("/api/me/following")
         .then(response => {
           let artists = response.data;
-          console.log("in module dai")
           commit("setUserArtists", artists);
+          commit("set_loading_artists", true);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    showUserSongs({ commit }) {
+      
+      axios
+        .get("/api/me/tracks")
+        .then(response => {
+          let songs = response.data;
+          commit("setUserSongs", songs);
         })
         .catch(error => {
           console.log(error);
@@ -43,5 +71,8 @@ export default {
   getters: {
     albums: state => state.user_albums,
     artists: state => state.user_artists,
+    songs: state => state.user_songs,
+    loadingalbums: state => state.loadingalbums,
+    loadingartists: state => state.loadingartists
   }
 };
