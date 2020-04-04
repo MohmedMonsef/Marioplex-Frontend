@@ -11,6 +11,7 @@ import Search from "../modules/Search";
 import userlibrary from "../modules/userlibrary";
 import playlist from "../modules/playlist";
 import album from "../modules/album";
+import likedtracks from "../modules/likedtracks";
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     Search,
     userlibrary,
     playlist,
-    album
+    album,
+    likedtracks
   }
 });

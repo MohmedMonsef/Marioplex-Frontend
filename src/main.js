@@ -552,7 +552,37 @@ new Server({
                 }
                 ]
             }
-          ]
+          ],
+          likedtracks:
+          {  
+              ownerName:"Nihal Mansour",
+              tracks: [
+                {
+                    "trackid": "5e7d93dad82adf07f4121bb5",
+                    "name": "track2",
+                    "artistId": "5e7d93dad82adf07f4121bb2",
+                    "artistName": ["artist1"],
+                    "albumId": "5e7d93dad82adf07f4121baf",
+                    "albumName": "album2"
+                },
+                {
+                    "trackid": "5e7d93dad82adf07f4121bb4",
+                    "name": "track1",
+                    "artistId": "5e7d93dad82adf07f4121bb2",
+                    "artistName": ["artist1"],
+                    "albumId": "5e7d93dad82adf07f4121bae",
+                    "albumName": "album1"
+                },
+              {
+                  "trackid": "5e7d93dad8207f4121bb4",
+                  "name": "track1",
+                  "artistId": "5e7d93dad82adf07f4121bb2",
+                  "artistName": ["artist1"],
+                  "albumId": "5e7d93dad82adf07f4121bae",
+                  "albumName": "album1"
+              }
+              ]
+          }  
         });
     },
     routes() {
@@ -740,6 +770,10 @@ return schema.db.album_info.findBy({_id:id});
 this.delete("/me/:album_id", (schema , request) => {
 let id = request.params.album_id;
 return schema.db.album_info.findBy({_id:id});
+});
+//////////////////liked tracks
+this.get("/me/tracks", schema => {
+  return schema.db.likedtracks;
 });
     }
     ////////////////////////////////////////////////

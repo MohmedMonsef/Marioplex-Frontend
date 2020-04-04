@@ -23,7 +23,7 @@
 <style lang="scss" scoped>
 .album{
     // min-width: 768px;
-    min-height: 600px;
+    min-height: 300px;
     background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
 }
 .row{
