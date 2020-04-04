@@ -1,151 +1,227 @@
 <template>
-    <div class="playlist_popup">
+    <div>
+        <CreatePlaylist v-if="show"/>
     <transition name="fade" appear>
-        <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
+      <div class="modal-overlay" v-if="showModalAdd" @click="showModalAdd = false"></div>
     </transition>
     <transition name="slide" appear>
-    <div class="modal" v-if="showModal">
-        <!-- write here the content of popup -->
-        <div class="child">
-        <div class="playlistimage">
-            <img src="../assets/cry.png" alt="playlist_image" testid="playlist_image">
-        </div>  
-        <div class="popup_info">
-            <h2 class="popuptitle" testid="popuptitle">Start listening with a free Spotify account</h2>
-            <button class="signupfree" testid="signupfree">SIGN UP FREE</button>
-            <p class="have_account" testid="have_account">Already have an account?<span class="login" testid="login"> LOG IN</span></p>   
+      <div class="modal" v-if="showModalAdd">
+        <button class="cancel" @click="changeModalStateAdd">
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <title>Close</title>
+            <path
+              d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
+              fill="#fff"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </button>
+        <h1 class="title">Add to playlist</h1>
+         <button class="cratenewplaylist" @click="changeModalState(),changeModalStateAdd(),AddTrack()">New playlist</button>
+          <div class="playlistscards">
+        <h2 v-if="playlists.length">Playlists</h2>
+        <div class="container">
+        <div class="row">
+          <lib-playlists
+            v-for="playlist in playlists"
+            :key="playlist.id"
+            :images="playlist.images"
+            :name="playlist.name"
+            :owner="playlist.owner"
+            :playlist_id="playlist._id"
+          />
         </div>
+      </div>
     </div>
-    </div>
-    <button class="closebutton" testid="closebutton" @click="showModal = false">close</button>
+      </div>
     </transition>
-    </div>
+  </div>
 </template>
-
 <style lang="scss" scoped>
-*{
-    box-sizing: border-box;
+* {
+  margin: 10;
+  padding: 10;
+  box-sizing: border-box;
 }
-.modal-overlay{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 98;
-    background-color: rgba(0 , 0 , 0 , 0.3);
-}
-.fade-enter-active , .fade-leave-active{
-// these seconds in opacity determine the speed of appearance of popup
-transition: opacity 2s;
-}
-//if we click out side it will close
-.fade-enter , .fade-leave-to{
-    opacity: 0;
-}
-.slide-enter-active , .slide-leave-active{
-// these seconds in opacity determine the speed of appearance of popup
-transition: transform .5s;
-}
-//if we click out side it will close
-.slide-enter , .slide-leave-to{
-    //direction of appearance of animated popup
-    transform: translateY(-50%) translateX(100vm);
-}
-.modal{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    //transform translate -50% to get the popup at the center
-    transform: translate(-50% , -50%);
-    z-index: 99;
 
-    width: 100%;
-    max-width: 400px;
-    // background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
-    background-color: white;
-    border-radius: 16px; 
-    padding: 25px;
-//add here any nested style of elements inside the popup
-.playlistimage{
-    width: 100%;
+body {
+  font-family: "montserrat", sans-serif;
 }
-.popuptitle{
-    font-size: 32px;
-    color: white;
-    font-weight: bold;
-    margin: 8px 0 24px;
+
+div {
+  position: relative;
+  display: block;
+  width: 500%;
+  height: 100vh;
 }
-.have_account{
-font-size: 12px;
-text-align: center;
-margin: 32px 0 0;
-line-height: 24px;
-}
-.login{
-    font-size: 20px;
-}
-.login:hover{
-    font-size: 25px;
-}
-}
-button{
-  background-color: transparent;
+.cratenewplaylist {
+  position: fixed;
+  top: 20%;
+  left: 40%;
+  appearance: none;
+  outline: none;
   border: none;
-  padding: 10px;
+  background: none;
+  cursor: pointer;
+  margin: 20px;
+  height: 50px;
+  width: 250px;
+  padding: 8px 34px;
+  background-color: #1ed760;
+  border-radius: 26px;
+  border-color: transparent;
+
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease-out;
 }
-.signupfree{
-    background-color: #1ed760;
-    border-radius: 500px;
-    width: 100%;
-    height: 35px;
-    padding: 8px 34px;
-    display: inline-block;
-    color: white;
-    margin: 25px 25px 0px 25px;
-    align-content: center;
-    font-size: 12px;
-   line-height: 18px;
-   font-weight: 700;
-   letter-spacing: 1.76px;
+.modal-overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: none;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 98;
+  width: 100%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0);
 }
-.signupfree:hover{
-    transform: scale(1.2);
+
+.modal {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: table;
+  transition: opacity 0.3s ease;
 }
-button:focus {
-  outline: 0 !important;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-.closebutton{
-    background-color: transparent;
-    width: 100%;
-    background: none;
-    color:white;
-    display: block;
-    font-size: 12px; 
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
-.closebutton:hover{
-    transform: scale(1.06);
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(-50%) translateX(100vw);
+}
+.cancel {
+  position: absolute;
+  left: 48%;
+  top: 3%;
+  display: inline-block;
+  background-color: transparent;
+  color: #fff;
+
+  border: none;
+}
+.title {
+  position: absolute;
+  top: 8%;
+  display: block;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.005em;
+  color: #fff;
+  text-transform: none;
+  text-align: center;
+  margin: 16px 0;
+  width: 100%;
+}
+ h2{
+  position:fixed;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 14px;
+  margin-left: 30px;
+  margin-top: 38px;
+  top:30%;
+  //z-index:9998;
+}
+.container {
+  margin-left: 15px;
+  position: fixed;
+  top:40%;
+  //z-index:9998;
+}
+// .row{
+//     z-index:9998;
+// }
+.playlistscards{
+    position:fixed;
+    top:40%;
 }
 </style>
-
 <script>
 import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import CreatePlaylist from "../components/CreatePlaylist";
+import LibPlaylists from "@/components/lib-playlists.vue";
+//import LibPlaylistsDefault from "@/components/lib-playlists-default.vue"
 export default {
-    data:function(){
-        return{
-            showmodal:true
-        };
+    name:"PlaylistPopup",
+    computed:{
+        ...mapState({
+      show: state => state.creatplaylist.showModal,   
+      
+    }),
+        ...mapGetters({
+      showModalAdd: "creatplaylist/showModalAdd",
+      playlists: "creatplaylist/playlists",
+      trackofplaylist:"creatplaylist/trackofplaylist",
+      playlistoftrack:"creatplaylist/playlistoftrack",
+    }),
+
     },
-    name:"playlist_popup",
-       methods: {
-    changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+    methods:{
+       changeModalStateAdd() {
+      this.$store.dispatch("creatplaylist/toggleModalAdd");
     },
+    AddTrack(){
+      console.log("to add track in a playlist the playlistid is",this.playlistoftrack);
+      console.log("to add track in a playlist the track is",this.trackofplaylist)
+      let payload={
+        playlistoftrack:this.playlistoftrack,
+        trackofplaylist:this.trackofplaylist,
+          
+      }
+        this.$store.dispatch("playlist/AddTrack",payload)
     },
-    computed: {
-    ...mapGetters({
-      showModal: "playlistpopup/showModal"
-    })
-  }
+      changeModalState() {
+       this.$store.dispatch("creatplaylist/toggleModal");
+     },
+    // showplaylists(){
+    //     this.$store.dispatch("creatplaylist/showplaylists");
+    // },
+    },
+    components:{
+        CreatePlaylist,
+         LibPlaylists,
+      //  LibPlaylistsDefault,
+    },
+    mounted() {
+    this.$store.dispatch("creatplaylist/showplaylists");
+  },
 }
 </script>
