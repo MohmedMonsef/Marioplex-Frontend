@@ -2,6 +2,7 @@ import axios from "axios";
 export default {
     namespaced: true,
     state: {
+        search_Value: "",
         topres: [],
         result: [],
         albumres: [],
@@ -9,6 +10,9 @@ export default {
         load: false
     },
     mutations: {
+        set_value(state, searchvalue) {
+            state.search_Value = searchvalue;
+        },
         settopres(state, match_valuet) {
             state.topres = match_valuet;
         },
@@ -26,6 +30,10 @@ export default {
         }
     },
     actions: {
+        search_V({ commit }, searchvalue) {
+            commit("set_value", searchvalue);
+            console.log(searchvalue);
+        },
         searchaboutartist({ commit }) {
             /* when integrate with back
             searchaboutartist({ commit }, search_value) {
@@ -74,6 +82,9 @@ export default {
         }
     },
     getters: {
+        get_value(state) {
+            return state.search_Value;
+        },
         gettopres(state) {
             return state.topres;
         },

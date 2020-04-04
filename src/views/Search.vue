@@ -1,31 +1,11 @@
 <template>
   <div class="cont">
+    <searchcomponent></searchcomponent>
     <div class="loading" v-if="!loadingcategory">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="loadingcategory">
-      <div class="search_contaner">
-        <i class="fa fa-search hover"></i>
-        <input
-          testid="search-box"
-          id="search-box"
-          placeholder="Search for artist"
-          v-model="Value"
-          autocomplete="off"
-          @keydown.esc="reset"
-          v-on:input="changeininput"
-        />
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          v-if="Value.length!==0"
-          @click="reset"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="contaner" v-if="Value.length==0">
+      <div class="contaner" v-if="search_value==0">
         <div class="all scroll">
           <h2 v-if="categorys.length">Browse All</h2>
           <div class="row">
@@ -41,11 +21,11 @@
         </div>
       </div>
     </div>
-    <div class="loading" v-if="!loadingsearch">
+    <div class="loading" v-if="!loadingsearch&&search_value.length!==0">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="loadingsearch">
-      <div v-if="Value.length!==0" class="cont last">
+      <div v-if="search_value.length!==0" class="cont last">
         <!--search results-->
         <div v-if="match_top.length">
           <div v-if="match_top[0].type==='Artist'">
@@ -240,47 +220,6 @@ h2 {
   height: 100vh;
   width: 100%;
 }
-#search-box {
-  width: 80%;
-  height: 100%;
-  border: rgba(0, 0, 0, 0.041);
-  cursor: text;
-  border-radius: 17px;
-  font-family: sans-serif;
-  font-size: large;
-  color: black;
-  font-weight: 500;
-}
-@media screen and (max-width: 900px) {
-  #search-box {
-    width: 50%;
-  }
-}
-@media screen and (max-width: 300px) {
-  #search-box {
-    width: 25%;
-  }
-}
-@media screen and (max-width: 100px) {
-  #search-box {
-    width: 10%;
-  }
-}
-
-.search_contaner {
-  padding-left: 15px;
-  padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  width: 30%;
-  height: 40px;
-  margin-left: 10%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 17px;
-  background-color: white;
-  color: rgb(26, 24, 9);
-}
 .seelink {
   font-size: 15px;
   color: white;
@@ -305,6 +244,7 @@ import LibArtists from "@/components/lib-artists.vue";
 import top from "@/components/topresult_card.vue";
 import LibAlbums from "@/components/lib-albums.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
+import searchcomponent from "@/components/searchcomponent.vue";
 import { mapGetters, mapState } from "vuex";
 export default {
   name: "Search",
@@ -313,24 +253,8 @@ export default {
     LibArtists,
     top,
     LibAlbums,
-    LibPlaylists
-  },
-  data() {
-    return { Value: "" };
-  },
-  methods: {
-    check(value) {
-      if (value !== "") {
-        console.log(value);
-      }
-    },
-    reset() {
-      this.Value = "";
-    },
-    changeininput() {
-      this.$store.dispatch("Search/searchaboutartist");
-      /*  this.$store.dispatch("Search/searchaboutartist", this.Value);*/
-    }
+    LibPlaylists,
+    searchcomponent
   },
   mounted() {
     this.$store.dispatch("categorys/showcategory");
@@ -343,7 +267,8 @@ export default {
       match_albums: "Search/getalbumres",
       match_playlists: "Search/getplaylistsres",
       loadingcategory: "categorys/loading",
-      loadingsearch: "Search/loadingsearch"
+      loadingsearch: "Search/loadingsearch",
+      search_value: "Search/get_value"
     }),
     ...mapState({
       show: state => state.creatplaylist.showModal
