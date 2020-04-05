@@ -44,7 +44,7 @@ export default {
     showUserArtists({ commit }) {
       commit("set_loading_artists", false);
       axios
-        .get("/api/me/following")
+        .get("/api/me/followingArtist")
         .then(response => {
           let artists = response.data;
           commit("setUserArtists", artists);

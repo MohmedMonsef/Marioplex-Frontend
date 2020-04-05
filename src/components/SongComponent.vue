@@ -65,8 +65,9 @@
         <p @click="likecurrentsong()" v-if="!isLiked">Add to Liked Songs</p>
         <p @click="likecurrentsong()" v-if="isLiked">Remove from Liked Songs</p>
         <p @click="addToQueue()">Add to Queue</p>
-        <p>Add to Playlist</p>
+        <p @click="changeModalStateAdd(),showplaylists()">Add to Playlist</p>
       </div>
+      <AddTrackPopup v-if="showAdd" ></AddTrackPopup>
     </div>
   </div>
 </template>
@@ -80,7 +81,7 @@
   display: block;
   // box-sizing: border-box;
   line-height: 20px;
-  background-color: #161516;
+  background-color: transparent;
   clear: both;
   overflow: visibility;
   transition-property: background-color;
@@ -209,6 +210,8 @@
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
+import AddTrackPopup from "../components/AddTrackPopup";
+import { mapGetters, mapState } from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");
@@ -311,6 +314,13 @@ export default {
          this.isLiked=false;
       }
     },
+    changeModalStateAdd(){
+      console.log("in songcomponent",this.song_id);
+        this.$store.dispatch("creatplaylist/toggleModalAdd",this.song_id);
+      },
+      showplaylists(){
+        this.$store.dispatch("creatplaylist/showplaylists");
+    },
   },
   computed: {
     isCurrentClass: function() {
@@ -332,13 +342,25 @@ export default {
         if (sec < 10) sec = "0" + sec;
         console.log(" minute sec", min, ":", sec);
         return min + ":" + sec;
-    }
+    },
+    ...mapGetters({
+      currentSong: "mediaplayer/Get_Currentsong",
+      trackid:"mediaplayer/toadd",
+
+    }),
+    ...mapState({
+    showAdd:state => state.creatplaylist.showModalAdd,
+
+  })
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
   },
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
+  },
+  components:{
+    AddTrackPopup,
   }
 };
 </script>

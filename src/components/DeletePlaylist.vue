@@ -45,7 +45,6 @@
         <button class="cancel_button" @click="changeModalStateDelete()">
           cancle
         </button>
-        <p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
         <button
           class="delete_button"
           testid="confirm_create"

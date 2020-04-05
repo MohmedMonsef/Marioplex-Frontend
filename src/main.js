@@ -176,7 +176,8 @@ new Server({
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     owner: "shreen",
                     _id: "5e7d93dad82adf0ksksksksksksksk"
-                }
+                },
+                
             ],
             users: [
                 {
@@ -330,170 +331,259 @@ new Server({
             ],
             user_albums: [
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name1",
-                    artist: {
-                        name: "artist name1"
-                    }
+                    artistName: "artist name1",
+                    artistId: 1
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
                     name: "album name2",
-                    artist: {
-                        name: "artist name2"
-                    }
+                    artistName: "artist name2",
+                    artistId: 2
+                    
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
                     name: "album name3",
-                    artist: {
-                        name: "artist name3"
-                    }
+                    artistName: "artist name3",
+                    artistId: 3
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name4",
-                    artist: {
-                        name: "artist name4"
-                    }
+                    artistName: "artist name4",
+                    artistId: 4
+                    
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name5",
-                    artist: {
-                        name: "artist name5"
-                    }
+                    artistName: "artist name5",
+                    artistId: 5
+                    
                 },
                 {
+                  _id: "5e7d93daddf07f4121bac",
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     name: "album name6",
-                    artist: {
-                        name: "artist name6"
-                    }
+                    artistName: "artist name6",
+                    artistId: 6
+                    
                 }
             ],
             user_artists: [
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name1"
+                    Name: "artist name1"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-                    name: "artist name2"
+                    Name: "artist name2"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    name: "artist name3"
+                    Name: "artist name3"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name4"
+                    Name: "artist name4"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name5"
+                    Name: "artist name5"
                 },
                 {
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    name: "artist name6"
+                    Name: "artist name6"
                 }
             ],
             playlist_info: [
+              {
+                _id: "5e7d93dad82adf07f4121bac",
+                type: "playlist",
+                name: "dhjgjdjdjg",
+                like: "true",
+                ownerId: "5e7d9045854b0419f4f409b7",
+                ownerName: "Nihal Mansour",
+                collaborative: false,
+                isPublic: true,
+                images: ["https://dummyimage.com/250x400.jpg/ff4444/ffffff"],
+                tracks: [
+                  {
+                    trackid: "5e7d93dad82adf07f4121bb5",
+                    name: "track2",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121baf",
+                    albumName: "album2"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf07f4121bb7",
+                    name: "track4",
+                    artistId: "5e7d93dad82adf07f4121bb3",
+                    artistName: "artist4",
+                    albumId: "5e7d93dad82adf07f4121bb1",
+                    albumName: "album4"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf07f4121bb6",
+                    name: "track3",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121bb0",
+                    albumName: "album3"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf07f4121bb4",
+                    name: "track1",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121bae",
+                    albumName: "album1"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf07f4b5",
+                    name: "track2",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121baf",
+                    albumName: "album2"
+                  },
+                  {
+                    trackid: "5e7dad82adf07f4121bb7",
+                    name: "track4",
+                    artistId: "5e7d93dad82adf07f4121bb3",
+                    artistName: "artist4",
+                    albumId: "5e7d93dad82adf07f4121bb1",
+                    albumName: "album4"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf0721bb6",
+                    name: "track3",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121bb0",
+                    albumName: "album3"
+                  },
+                  {
+                    trackid: "5e7d93dad8207f4121bb4",
+                    name: "track1",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121bae",
+                    albumName: "album1"
+                  }
+                ]
+              },
+              {
+                _id: "5e7d93dad82adf0ksksksksksksksk",
+                type: "playlist",
+                name: "dhjgjdjdjg",
+                like: "false",
+                ownerId: "5e7d9045854b0419f4f409b7",
+                collaborative: false,
+                isPublic: true,
+                images: [],
+                tracks: []
+              }
+            ],
+            album_info: [
+              {
+                _id: "5e7d93daddf07f4121bac",
+                type: "playlist",
+                name: "This is an Album",
+                like: "true",
+                artist: "Nihal Mansour",
+                collaborative: false,
+                isPublic: true,
+                images: ["https://dummyimage.com/250x400.jpg/ff4444/ffffff"],
+                tracks: [
+                  {
+                    trackid: "5e7d93dad82adf07f4121bb5",
+                    name: "track2",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121baf",
+                    albumName: "album2"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf07f4121bb4",
+                    name: "track1",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121bae",
+                    albumName: "album1"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf07f4b5",
+                    name: "track2",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121baf",
+                    albumName: "album2"
+                  },
+                  {
+                    trackid: "5e7dad82adf07f4121bb7",
+                    name: "track4",
+                    artistId: "5e7d93dad82adf07f4121bb3",
+                    artistName: "artist4",
+                    albumId: "5e7d93dad82adf07f4121bb1",
+                    albumName: "album4"
+                  },
+                  {
+                    trackid: "5e7d93dad82adf0721bb6",
+                    name: "track3",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121bb0",
+                    albumName: "album3"
+                  },
+                  {
+                    trackid: "5e7d93dad8207f4121bb4",
+                    name: "track1",
+                    artistId: "5e7d93dad82adf07f4121bb2",
+                    artistName: "artist1",
+                    albumId: "5e7d93dad82adf07f4121bae",
+                    albumName: "album1"
+                  }
+                ]
+              }
+            ],
+            likedtracks: {
+              ownerName: "Nihal Mansour",
+              tracks: [
                 {
-                    _id: "5e7d93dad82adf07f4121bac",
-                    type: "playlist",
-                    name: "dhjgjdjdjg",
-                    ownerId: "5e7d9045854b0419f4f409b7",
-                    collaborative: false,
-                    isPublic: true,
-                    images: [],
-                    tracks: [
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb5",
-                            name: "track2",
-                            artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: "artist1",
-                            albumId: "5e7d93dad82adf07f4121baf",
-                            albumName: "album2",
-                            isLiked: false
-                        },
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb7",
-                            name: "track4",
-                            artistId: "5e7d93dad82adf07f4121bb3",
-                            artistName: "artist4",
-                            albumId: "5e7d93dad82adf07f4121bb1",
-                            albumName: "album4",
-                            isLiked: false
-                        },
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb6",
-                            name: "track3",
-                            artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: "artist1",
-                            albumId: "5e7d93dad82adf07f4121bb0",
-                            albumName: "album3",
-                            isLiked: false
-                        },
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb4",
-                            name: "track1",
-                            artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: "artist1",
-                            albumId: "5e7d93dad82adf07f4121bae",
-                            albumName: "album1",
-                            isLiked: true
-                        }
-                    ]
+                  trackid: "5e7d93dad82adf07f4121bb5",
+                  name: "track2",
+                  artistId: "5e7d93dad82adf07f4121bb2",
+                  artistName: "artist1",
+                  albumId: "5e7d93dad82adf07f4121baf",
+                  albumName: "album2"
                 },
                 {
-                    _id: "5e7d93dad82adf0ksksksksksksksk",
-                    type: "playlist",
-                    name: "dhjgjdjdjg",
-                    ownerId: "5e7d9045854b0419f4f409b7",
-                    collaborative: false,
-                    isPublic: true,
-                    images: [],
-                    tracks: [
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb5",
-                            name: "track2",
-                            artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: "artist1",
-                            albumId: "5e7d93dad82adf07f4121baf",
-                            albumName: "album2",
-                            isLiked: false
-                        },
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb7",
-                            name: "track4",
-                            artistId: "5e7d93dad82adf07f4121bb3",
-                            artistName: "artist4",
-                            albumId: "5e7d93dad82adf07f4121bb1",
-                            albumName: "album4",
-                            isLiked: false
-                        },
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb6",
-                            name: "track3",
-                            artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: "artist1",
-                            albumId: "5e7d93dad82adf07f4121bb0",
-                            albumName: "album3",
-                            isLiked: false
-                        },
-                        {
-                            trackid: "5e7d93dad82adf07f4121bb4",
-                            name: "track1",
-                            artistId: "5e7d93dad82adf07f4121bb2",
-                            artistName: "artist1",
-                            albumId: "5e7d93dad82adf07f4121bae",
-                            albumName: "album1",
-                            isLiked: true
-                        }
-                    ]
+                  trackid: "5e7d93dad82adf07f4121bb4",
+                  name: "track1",
+                  artistId: "5e7d93dad82adf07f4121bb2",
+                  artistName: "artist1",
+                  albumId: "5e7d93dad82adf07f4121bae",
+                  albumName: "album1"
+                },
+                {
+                  trackid: "5e7d93dad8207f4121bb4",
+                  name: "track1",
+                  artistId: "5e7d93dad82adf07f4121bb2",
+                  artistName: "artist1",
+                  albumId: "5e7d93dad82adf07f4121bae",
+                  albumName: "album1"
                 }
-            ],
+              ]
+            },
             nextsong: {
                 track: {
                     name: "You are my x",
@@ -527,60 +617,51 @@ new Server({
                 isPlayable: true
             },
             user_songs: [
-                {
-                    name: "ya sattar",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                },
-                {
-                    name: "nour el3en",
-                    artist: {
-                        name: "Amr Diab"
-                    }
-                },
-                {
-                    name: "el nas",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                },
-                {
-                    name: "el nas",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                },
-                {
-                    name: "el nas",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                },
-                {
-                    name: "el nas",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                },
-                {
-                    name: "el nas",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                },
-                {
-                    name: "el nas",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                },
-                {
-                    name: "el nas",
-                    artist: {
-                        name: "Hamaki"
-                    }
-                }
+              {
+                name: "ya sattar",
+                artistName: "Hamaki"
+                
+              },
+              {
+                name: "nour el3en",
+                artistName: "Amr Diab"
+                
+              },
+              {
+                name: "el nas",
+                artistName: "Hamaki"
+                
+              },
+              {
+                name: "el nas",
+                artistName: "Hamaki"
+                
+              },
+              {
+                name: "el nas",
+                artistName: "Hamaki"
+      
+              },
+              {
+                name: "el nas",
+                artistName: "Hamaki"
+                
+              },
+              {
+                name: "el nas",
+                artistName: "Hamaki"
+                
+              },
+              {
+                name: "el nas",
+                artistName: "Hamaki"
+              
+              },
+              {
+                name: "el nas",
+                artistName: "Hamaki"
+                
+              }
             ],
             Artist_Songs: [
                 {
@@ -851,13 +932,13 @@ new Server({
             return new Response(200);
         });
         this.get("/api/me/albums", schema => {
-            return schema.db.user_albums;
+          return schema.db.user_albums;
         });
-        this.get("/api/me/following", schema => {
-            return schema.db.user_artists;
+        this.get("/api/me/followingArtist", schema => {
+          return schema.db.user_artists;
         });
         this.get("/api/me/tracks", schema => {
-            return schema.db.user_songs;
+          return schema.db.user_songs;
         });
         this.get("/api/me/like", schema => {
             return schema.db.songs;
@@ -906,7 +987,23 @@ new Server({
                 { Playlists: schema.db.Playlists.insert(cplaylist) }
             );
         });
-
+        this.post("/api/uploadsong", (schema, request) => {
+          const uploadedsong = JSON.parse(request.requestBody).data;
+          console.log(uploadedsong, "in mirag");
+          return schema.db.Artist_Songs.insert({
+            URL: uploadedsong.URL,
+            Name: uploadedsong.Name,
+            TrackNumber: uploadedsong.TrackNumber,
+            PreviewURL: uploadedsong.PreviewURL,
+            AvailableMarket: uploadedsong.AvailableMarket
+          });
+        });
+        this.put("/api/claimartist", (schema, request) => {
+          const claimartist = JSON.parse(request.requestBody).data;
+          console.log(claimartist.Name, "in mirage");
+          console.log("artist id", claimartist.id);
+        });
+         
         //authentication requests
         this.post("/api/signup", (schema, request) => {
             const user = JSON.parse(request.requestBody).data;
@@ -1029,6 +1126,54 @@ new Server({
         this.get("/api/search/playlist", schema => {
             return schema.db.search_playlist;
         });
+        /////////////////
+        this.get("/playlists/:playlist_id", (schema, request) => {
+          let id = request.params.playlist_id;
+          return schema.db.playlist_info.findBy({ _id: id });
+        });
+    
+        this.put("/playlists/:playlist_id/followers", (schema, request) => {
+          let id = request.params.playlist_id;
+          return schema.db.playlist_info.findBy({ _id: id });
+        });
+        this.delete("/playlists/:playlist_id/followers", (schema, request) => {
+          let id = request.params.playlist_id;
+          return schema.db.playlist_info.findBy({ _id: id });
+        });
+    
+        ////////////////////////////albums
+    
+        this.get("/albums/:album_id", (schema, request) => {
+          let id = request.params.album_id;
+          return schema.db.album_info.findBy({ _id: id });
+        });
+    
+        this.put("/me/:album_id", (schema, request) => {
+          let id = request.params.album_id;
+          return schema.db.album_info.findBy({ _id: id });
+        });
+        this.delete("/me/:album_id", (schema, request) => {
+          let id = request.params.album_id;
+          return schema.db.album_info.findBy({ _id: id });
+        });
+        //////////////////liked tracks
+        this.get("/me/tracks", schema => {
+          return schema.db.likedtracks;
+        });
+        this.post("playlists/:playlist_id/tracks", (schema, request) => {
+          const tracks = JSON.parse(request.requestBody).data;
+          console.log(tracks, "in mirag");
+          return new Response(
+            200,
+            {},
+            { Playlists: schema.db.songs.insert(tracks) }
+          );
+        });
+        this.get("/api/me/playlists", schema => {
+          console.log("in get", schema.db.Playlists);
+          return schema.db.Playlists;
+        });
+        
     }
 });
 Vue.config.productionTip = false;
@@ -1037,13 +1182,13 @@ Vue.prototype.$http = axios;
 //we can do this.$http and it will be like calling axios directly
 const token = localStorage.getItem("token");
 if (token) {
-    Vue.prototype.$http.defaults.headers.common["x-auth-token"] = token;
+  Vue.prototype.$http.defaults.headers.common["x-auth-token"] = token;
 }
 //setting the Authorization on axios header to our token, so requests can be processed if a token is required.
 // This way, we do not have to set token anytime we want to make a request.
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  render: h => h(App)
 }).$mount("#app");

@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" id="carglink" testid="album card link">
+  <router-link :to="{path:'../album/'+ album_id}" id="carglink" testid="album card link">
     <!-- should navigate to album page -->
     <div
       class="card rounded col-lg-20%"
@@ -20,7 +20,8 @@
           class="ard-link artistlink"
           to="/HomeWebPlayer"
           testid="artist page link"
-        >{{ artistname }}</router-link>
+        >{{ artistname }}
+        </router-link>
         <i v-if="hover" class="fa fa-play-circle" testid="album play icon"></i>
       </div>
     </div>
@@ -74,7 +75,7 @@ export default {
       hover: false
     };
   },
-  name: "lib-albums",
-  props: ["images", "name", "artistname", "albumId", "artistId"]
-};
+    name: "lib-albums",
+    props: ["images", "name", "artistname","album_id","artistId"]
+}
 </script>

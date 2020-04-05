@@ -1,10 +1,28 @@
 <template>
-  <div>
-    <div class="loading" v-if="!loadingalbums">
+    <div>
+      <div class="loading" v-if="!loadingalbums">
       <i class="fa fa-spinner fa-spin"></i>
       </div>
       <div v-if="loadingalbums">
-    <lib-albums-default v-if="albums1.length == 0" />
+       <lib-albums-default v-if="albums1.length ==0"/>
+       <h2 v-if="albums1.length">Albums</h2>
+       <div class="container">
+        <div class="row">
+          <lib-albums
+            v-for="album in albums1"
+            :key="album.id"
+          :albumId="album._id"
+          :images="album.images"
+          :name="album.name"
+          :artistname="album.artistName"
+          :artistId="album.artistId"
+          :album_id="album._id"
+          />
+        </div>
+        </div>
+      
+      
+    <!-- <lib-albums-default v-if="albums1.length == 0" />
     <h2 v-if="albums1.length">Albums</h2>
     <div class="container">
       <div class="row">
@@ -14,9 +32,11 @@
           :images="album.images"
           :name="album.name"
           :artistname="album.artist.name"
+          :artistId="album.artistId"
+          :album_id="album._id"
         />
       </div>
-    </div>
+    </div> -->
     </div>
   </div>
 </template>
@@ -37,7 +57,7 @@ h2 {
   color: white;
   margin-bottom: 14px;
   margin-left: 30px;
-  margin-top: 38px;
+  margin-top: 80px;
 }
 .container {
   margin-left: 15px;

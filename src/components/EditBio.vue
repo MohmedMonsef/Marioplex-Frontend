@@ -1,32 +1,51 @@
 <template>
-  <div>
-    <transition name="fade" appear>
+    <div>
+        <transition name="fade" appear>
       <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <button class="cancel" @click="changeModalState">
-          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <title>Close</title>
             <path
               d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
               fill="#fff"
               fill-rule="evenodd"
-            />
+            ></path>
           </svg>
+          <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
 
-        <h1 class="title">Create New Playlist</h1>
+        <h1 class="title">Update Info</h1>
 
         <div class="child">
           <div class="grandchild">
-            <h4 class="playlist_name">Playlist Name</h4>
+            <h4 class="artist_name">Name</h4>
             <input
               class="name_input"
               type="text"
-              placeholder="New Playlist"
-              v-model="playlistname"
-              @keyup.enter="CreatePlaylist(),changeModalState()" 
+              placeholder="Name"
+              v-model="Name"
+            />
+            <h4 class="artist_Genre">Genre</h4>
+            <input
+              class="name_input"
+              type="text"
+              placeholder="Genre"
+              v-model="Genre"
+            />
+            <h4 class="artist_description">Description</h4>
+            <input
+              class="name_input"
+              type="text"
+              placeholder="Description"
+              v-model="Description"
             />
           </div>
         </div>
@@ -34,21 +53,19 @@
         <button class="cancel_button" @click="changeModalState">
           cancle
         </button>
-         <!--<input @keyup.enter="CreatePlaylist()" />-->
         <button
-          class="creat_button"
-          testid="confirm_create"
-          
-          @click.prevent="CreatePlaylist()"
+          class="edit_button"
+          testid="confirm_editing"
+          @click.prevent="EditBio()"
           @click="changeModalState"
-        >create</button>
+        >
+          Edit
+        </button>
       </div>
     </transition>
-  </div>
+    </div>
 </template>
-
-
-<style scoped>
+<style lang="scss" scoped>
 * {
   margin: 10;
   padding: 10;
@@ -66,10 +83,10 @@ div {
   height: 100vh;
 }
 
-.creat_button {
+.edit_button {
   position: fixed;
-  top: 60%;
-  left: 50%;
+  top: 80%;
+  left: 50%;;
   appearance: none;
   outline: none;
   border: none;
@@ -92,7 +109,7 @@ div {
 }
 .cancel_button {
   position: fixed;
-  top: 60%;
+   top: 80%;
   left: 35%;
   appearance: none;
   outline: none;
@@ -210,75 +227,54 @@ ul {
   height: 30%;
   left: 15%;
   padding: 32px 0px;
+  background-color: transparent;
 }
 .child {
   position: fixed;
   height: 30%;
   top: 30%;
   bottom: 50%;
-  background-color: #424242;
+  background-color:transparent;
 }
 .playlist_name {
   color: #fff;
 }
 </style>
 <script>
-// @ is an alias to /src
-//import {mapActions} from "vuex";
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+
 export default {
-  name: "CreatePlaylist",
+  name: "EditBio",
   data: function() {
     return {
-      playlistname: ""
+     Name:"",
+      Genre:"",
+      Description:"",
     };
   },
   //showModal:false,
   components: {},
   computed: {
-    ...mapState({
-      Playlists: state => state.creatplaylist.Playlists
-    }),
+   
     ...mapGetters({
-      showModal: "creatplaylist/showModal",
-      username: "authorization/Username"
+      showModal: "artistproperties/showModal",
     })
   },
   methods: {
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+      this.$store.dispatch("artistproperties/toggleModal");
     },
 
-    CreatePlaylist() {
-      var payload
-      if(this.playlistname)
-      {
-      payload = {
-        name: this.playlistname,
-        images: require('../assets/defaultplaylist.png'),
-        owner: this.username
-      };
-      }
-      else{
-         payload = {
-        name: "New Playlist",
-        images: require('../assets/defaultplaylist.png'),
-        owner: this.username
-      };
-      }
+    EditBio() {
+      
+     let payload={
+         Name:this.Name,
+         Genre:this.Genre,
+         Description:this.Description,
+     }
       console.log("nerd");
-      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
-      // Addtrack();
+      this.$store.dispatch("artistproperties/EditBio", payload);
     },
-    // DeletePlaylist(id) {
-    //   console.log(id);
-
-    //   this.$store.dispatch("creatplaylist/DeletePlaylist", id);
-    //   console.log("removed");
-    // }
   }
-
-  // When the user clicks on <div>, open the popup
 };
 </script>

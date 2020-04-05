@@ -1,43 +1,21 @@
 <template>
-  <div class="playlist">
-    <div class="loading" v-if="!playlist_load">
+    <div class="playlist"> 
+        <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
+      <!-- <playlistpopup v-if="show" /> -->
     <div v-if="playlist_load" class="row">
-      <div class="col-4">
-        <div class="playlist_image">
-          <img src="../assets/cry.png" alt="playlist_image" />
-          <span data-toggle="tooltip" title="the playlist name">
-            <h2 class="playlistname">The Playlist name</h2>
-          </span>
-          <button class="playbutton">PLAY</button>
-          <div class="add-library">
-            <button class="heartbutton">
-              <!-- here there is condition of like and call of method inside the button and donot forget to add the second heart -->
-              <span data-toggle="tooltip" title="Save to your Liked Songs">
-                <i
-                  class="fa fa-heart-o"
-                  id="emptyhearticon"
-                  testid="emptyhearticon"
-                ></i>
-              </span>
-            </button>
-            <span data-toggle="tooltip" title="More">
-              <i
-                id="list_icon"
-                class="fa fa-ellipsis-h dots_icon"
-                @click="this.toggleShow"
-              ></i>
-            </span>
-            <div id="mydropdown" class="db" v-show="show">
-              <!-- <p v-if="!isLiked">Add to Liked Songs</p>
-        <p v-if="isLiked">Remove from Liked Songs</p> -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-8">
-        <song-component
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+          <playlist v-if="this.playlist_length == 0"/>
+          <playlistinfo v-else/>
+         </div> 
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+          <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
+          <emptytracks v-if="this.playlist_length == 0"/>
+          <draggable  @end="ReorderTracks">
+            <transition-group type="transition" name="flip-list">
+         <emptytracks v-if="this.playlist_length == 0"/>
+         <song-component v-else
           v-for="(p, i) in playlist_tracks"
           :key="p.trackid"
           :index="i"
@@ -51,114 +29,107 @@
           :playlistId="$route.params.playlist_id"
           :isPlaylist="true"
         />
-      </div>
-    </div>
-  </div>
+         </transition-group>
+         </draggable>
+        </div>
+</div>
+</div>
 </template>
 
 <style lang="scss" scoped>
+.playlist{
+    // min-width: 768px;
+    min-height: 900px;
+    background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
+}
 .loading{
   display: flex;
   justify-content: center;
   i{
     font-size: 70px;
     margin-top: 100px;
+    color: white;
   }
 }
-.body {
-  min-width: 768px;
-  min-height: 600px;
-  display: flex;
-  height: 100%;
-  overflow: hidden;
+.row{
+    margin: 25px;
+    margin-top: 0; 
+    display: flex;
+    
 }
-.row {
-  margin: 15px;
-}
-.playlist_image {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-.playlistname {
-  color: white;
-  margin: 25px;
-}
-button {
-  background-color: transparent;
-  border: none;
-  padding: 10px;
-}
-.playbutton {
-  background-color: #1ed760;
-  border-radius: 500px;
-  width: 120px;
-  height: 35px;
-  padding: 8px 34px;
-  display: inline-block;
-  color: white;
-  margin: 25px 25px 0px 25px;
-  align-content: center;
-  font-size: 12px;
-  line-height: 18px;
-  font-weight: 700;
-  letter-spacing: 1.76px;
-}
-.playbutton:hover {
-  transform: scale(1.06);
-}
-.heartbutton {
-  background-color: #161516;
-  margin: 15px;
-  display: inline;
-}
-button:focus {
-  outline: 0 !important;
-}
-.fa {
-  color: white;
-  font-size: 25px;
-  display: inline;
-}
-.add_library {
-  display: flex;
-  justify-content: space-between;
-}
+// @media screen and (max-width: 1196px) {
+//  .row{
+// flex-direction: column;
+//  }
+// .col{
+//   flex: 50%;
+// }
+// }
 </style>
 
 <script>
 import SongComponent from "@/components/SongComponent.vue";
+import emptytracks from "@/components/emptytracks.vue";
+import playlist from "@/components/playlist.vue";
+import playlistinfo from "@/components/playlist_info.vue";
+ //import playlistpopup from "@/components/playlistpopup.vue";
 import { mapGetters } from "vuex";
+import draggable from "vuedraggable";
+import { mapState } from "vuex";
 export default {
-  data: function() {
-    return {
-      show: false
-    };
+  name: "playlistview",
+   props: {
+    isLiked: {
+      type: Boolean
+    },
+   },
+    data:function(){
+        return {
+        show:false,
+        oldIndex:'',
+        newIndex:'',
+        };
+    },
+    components: {
+    SongComponent,
+    draggable,
+    playlist,
+    emptytracks,
+    playlistinfo
+    //  playlistpopup
   },
-  name: "playlist",
-  components: {
-    SongComponent
-  },
-  methods: {
-    toggleShow() {
+  methods:{
+      toggleShow() {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
-    }
+      },
+      ReorderTracks(event){
+        console.log("inplaylist_view",event)
+        
+        this.oldIndex=event.oldIndex;
+        this.newIndex=event.newIndex;
+        let payload={
+          oldIndex:this.oldIndex,
+          newIndex:this.newIndex,
+        }
+        this.$store.dispatch("playlist/ReorderTracks",payload);
+      },
   },
   computed: {
-    ...mapGetters({
+    ...mapState({
+      show: state => state.playlistpopup.showModal
+    }),
+     ...mapGetters({
       playlist_tracks: "playlist/playlist_tracks",
+      playlist_length: "playlist/playlist_length",
       playlist_load: "playlist/playlist_loaded"
     })
   },
-  created: function() {
-    this.$store.dispatch(
-      "playlist/playlist_tracks",
-      this.$route.params.playlist_id
-    );
-    console.log("Playlist_id", this.$route.params.playlist_id);
+  created: function() {   
+   this.$store.dispatch("playlist/playlist_tracks" , this.$route.params.playlist_id),
+   console.log("Playlist_id" , this.$route.params.playlist_id)
+   console.log("nihal here is the length" , this.playlist_length)
+     }
   }
-};
-</script>
+</script>>
