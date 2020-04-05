@@ -256,14 +256,14 @@ export default {
       {
       payload = {
         name: this.playlistname,
-        images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+        images: require('../assets/defaultplaylist.png'),
         owner: this.username
       };
       }
       else{
          payload = {
         name: "New Playlist",
-        images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
+        images: require('../assets/defaultplaylist.png'),
         owner: this.username
       };
       }

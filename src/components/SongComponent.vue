@@ -210,8 +210,8 @@
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
-import { mapGetters, mapState } from "vuex";
 import AddTrackPopup from "../components/AddTrackPopup";
+import { mapGetters, mapState } from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");
@@ -322,7 +322,6 @@ export default {
         this.$store.dispatch("creatplaylist/showplaylists");
     },
   },
- 
   computed: {
     isCurrentClass: function() {
       return {
@@ -344,14 +343,15 @@ export default {
         console.log(" minute sec", min, ":", sec);
         return min + ":" + sec;
     },
-     ...mapGetters({
-     // currentSong: "mediaplayer/Get_Currentsong",
+    ...mapGetters({
+      currentSong: "mediaplayer/Get_Currentsong",
       trackid:"mediaplayer/toadd",
+
     }),
-  ...mapState({
+    ...mapState({
     showAdd:state => state.creatplaylist.showModalAdd,
 
-  }),
+  })
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
@@ -359,7 +359,7 @@ export default {
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
-   components:{
+  components:{
     AddTrackPopup,
   }
 };
