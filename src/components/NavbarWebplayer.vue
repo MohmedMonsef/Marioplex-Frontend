@@ -153,7 +153,7 @@
   top: 0%; 
   z-index: 0;
   margin-left: 130px;
-  position: absolute;
+  /* position: absolute; */
 }
 .div3{
   position: fixed;
@@ -163,7 +163,7 @@
   top: 0%; 
   z-index: 0;
   margin-left: 630px;
-  position: absolute;
+  /* position: absolute; */
 }
 .divOnFocus {
   width: 100px;
