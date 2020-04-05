@@ -18,7 +18,7 @@
         </div>
       </li>
       <li>
-        <div class="divOnFocus">
+        <div class="divOnFocus" @click="setsearch(),setfocus()">
           <router-link to="/HomeWebPlayer/search" testid="searchpage link" class="searchpage">
             <i class="fa fa-search"></i>Search
           </router-link>
@@ -222,6 +222,7 @@ export default {
       show: false,
       showdelete:false,
       playlistid:0,
+      searchfocus:false,
     //   viewMenu: false,
     //     top: '0px',
     //     left: '0px',
@@ -248,7 +249,8 @@ export default {
     changeModalStateDelete() {
 
       this.$store.dispatch("creatplaylist/toggleModalDelete",this.playlistid);
-    },
+    },setsearch(){this.$store.dispatch("Search/search_V","");},setfocus(){this.searchfocus=true;this.$store.dispatch("Search/searchfocus",this.searchfocus)}
+
     
 
     // setMenu: function(top, left) {

@@ -598,6 +598,42 @@ new Server({
                     name: "this is Amr diab",
                     type: "Artist",
                     genre: ["pop"]
+                }, {
+                    _id: "5e76461b7ee20d39b463988c",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "this is Amr diab",
+                    type: "Artist",
+                    genre: ["pop"]
+                }, {
+                    _id: "5e76461b7ee20d39b463988c",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "this is Amr diab",
+                    type: "Artist",
+                    genre: ["pop"]
+                }, {
+                    _id: "5e76461b7ee20d39b463988c",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "this is Amr diab",
+                    type: "Artist",
+                    genre: ["pop"]
+                }, {
+                    _id: "5e76461b7ee20d39b463988c",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "this is Amr diab",
+                    type: "Artist",
+                    genre: ["pop"]
+                }, {
+                    _id: "5e76461b7ee20d39b463988c",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "this is Amr diab",
+                    type: "Artist",
+                    genre: ["pop"]
+                }, {
+                    _id: "5e76461b7ee20d39b463988c",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    name: "this is Amr diab",
+                    type: "Artist",
+                    genre: ["pop"]
                 }
             ],
             search_album: [
@@ -607,10 +643,88 @@ new Server({
                     images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
                     artistId: "5e76461b7ee20d39b463988c",
                     artistName: "this is Amr diab"
+                }, {
+                    _id: "5e764ab5eaa4533e7869d026",
+                    name: "diabiat",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    artistId: "5e76461b7ee20d39b463988c",
+                    artistName: "this is Amr diab"
+                }, {
+                    _id: "5e764ab5eaa4533e7869d026",
+                    name: "diabiat",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    artistId: "5e76461b7ee20d39b463988c",
+                    artistName: "this is Amr diab"
+                }, {
+                    _id: "5e764ab5eaa4533e7869d026",
+                    name: "diabiat",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    artistId: "5e76461b7ee20d39b463988c",
+                    artistName: "this is Amr diab"
+                }, {
+                    _id: "5e764ab5eaa4533e7869d026",
+                    name: "diabiat",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    artistId: "5e76461b7ee20d39b463988c",
+                    artistName: "this is Amr diab"
+                }, {
+                    _id: "5e764ab5eaa4533e7869d026",
+                    name: "diabiat",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    artistId: "5e76461b7ee20d39b463988c",
+                    artistName: "this is Amr diab"
+                }, {
+                    _id: "5e764ab5eaa4533e7869d026",
+                    name: "diabiat",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    artistId: "5e76461b7ee20d39b463988c",
+                    artistName: "this is Amr diab"
                 }
             ],
             search_playlist: [
                 {
+                    _id: "5e7d93dad82adf0ksksksksksksksk",
+                    name: "Amr diab",
+                    type: "function String() { [native code] }",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    ownerId: "5e695daf488e9342b8b18bcf",
+                    ownerName: "dina"
+                }, {
+                    _id: "5e7d93dad82adf0ksksksksksksksk",
+                    name: "Amr diab",
+                    type: "function String() { [native code] }",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    ownerId: "5e695daf488e9342b8b18bcf",
+                    ownerName: "dina"
+                }, {
+                    _id: "5e7d93dad82adf0ksksksksksksksk",
+                    name: "Amr diab",
+                    type: "function String() { [native code] }",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    ownerId: "5e695daf488e9342b8b18bcf",
+                    ownerName: "dina"
+                }, {
+                    _id: "5e7d93dad82adf0ksksksksksksksk",
+                    name: "Amr diab",
+                    type: "function String() { [native code] }",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    ownerId: "5e695daf488e9342b8b18bcf",
+                    ownerName: "dina"
+                }, {
+                    _id: "5e7d93dad82adf0ksksksksksksksk",
+                    name: "Amr diab",
+                    type: "function String() { [native code] }",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    ownerId: "5e695daf488e9342b8b18bcf",
+                    ownerName: "dina"
+                }, {
+                    _id: "5e7d93dad82adf0ksksksksksksksk",
+                    name: "Amr diab",
+                    type: "function String() { [native code] }",
+                    images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
+                    ownerId: "5e695daf488e9342b8b18bcf",
+                    ownerName: "dina"
+                }, {
                     _id: "5e7d93dad82adf0ksksksksksksksk",
                     name: "Amr diab",
                     type: "function String() { [native code] }",

@@ -19,6 +19,7 @@ import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage"
 import playlist from "../views/playlist_view.vue";
 
+import seeallartist from "../views/seeallartist.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -34,8 +35,12 @@ const routes = [
         children: [
             { path: "", component: UserHome },
 
-            { path: "search", component: Search },
-            {
+            { path: "search", component: Search, children: [
+                {
+                    path: "seeallartist",
+                    component: seeallartist
+                }] },
+            { 
                 path: "library",
                 component: Library,
                 children: [

@@ -8,7 +8,7 @@
       v-model="Value"
       autocomplete="off"
       @keydown.esc="reset"
-      v-on:input="check(Value)"
+      v-on:input="check(Value),isinsearch"
     />
     <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
       <span aria-hidden="true">&times;</span>
@@ -63,6 +63,8 @@
 </style>
       
 <script>
+import { mapGetters } from "vuex";
+let insearch=insearch;
 export default {
   name: "searchcomponent",
   data() {
@@ -79,8 +81,10 @@ export default {
     reset() {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
-    }
-  }
+    },isinsearch(){if(insearch){this.Value=""}}
+  }, computed: {
+    ...mapGetters({insearch: "Search/insearch",searchfocus:"Search/searchfocus"})}
+  ,props:["search_value"]
 };
 </script>
           
