@@ -4,10 +4,10 @@ export default {
   namespaced: true,
   state: {
     user_albums: [],
-    user_artists:[],
-    user_songs:[],
-    loadingalbums:false,
-    loadingartists:false,
+    user_artists: [],
+    user_songs: [],
+    loadingalbums: false,
+    loadingartists: false
   },
   mutations: {
     setUserAlbums(state, albums) {
@@ -33,17 +33,16 @@ export default {
         .get("/me/albums")
         .then(response => {
           let albums = response.data;
-          console.log(albums)
+          console.log(albums);
           commit("setUserAlbums", albums);
           commit("set_loading_albums", true);
         })
         .catch(error => {
           console.log(error);
-       
-            let albums=[];
-            commit("setUserAlbums", albums);
-            commit("set_loading_albums", true);
- 
+
+          let albums = [];
+          commit("setUserAlbums", albums);
+          commit("set_loading_albums", true);
         });
     },
     showUserArtists({ commit }) {
@@ -52,11 +51,11 @@ export default {
         .get("/me/followingArtist")
         .then(response => {
           let artists = response.data;
-          if(response.status != 200){
-            console.log("jjjjjjj",artists)
-            artists=[];
+          if (response.status != 200) {
+            console.log("jjjjjjj", artists);
+            artists = [];
           }
-          console.log("meeeeeeeeee",artists)
+          console.log("meeeeeeeeee", artists);
           commit("setUserArtists", artists);
           commit("set_loading_artists", true);
         })
@@ -77,7 +76,7 @@ export default {
         .catch(error => {
           console.log(error);
         });
-    },
+    }
   },
   getters: {
     albums: state => state.user_albums,

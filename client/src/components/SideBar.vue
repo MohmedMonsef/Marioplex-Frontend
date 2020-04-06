@@ -60,15 +60,22 @@
     <div testid="border in sidebar" class="border"></div>
     <!-- user's play lists -->
     <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
-        <ul>
-          <li v-for="playlist in playlists1" :key="playlist.id" @click.right="playlistid=playlist.id,showdelete=true  ">
+      <div>
+        <ul  v-on="{contextmenu: openMenu}">
+          <li v-for="(playlist,i) in playlists1" :key="i"
+           @click.right="playlistid=playlist,showdelete=true  ">
             <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
             <!-- router link should navigate to play list page-->
           </li>
         </ul>
-        <ul v-if="showdelete" id="right-click-menu">
-              <li @click="changeModalStateDelete()">Delete</li>
+        <ul tabindex="-1"
+         v-el="right"
+         v-if="viewMenu"
+         :blur="closeMenu"
+        id="right-click-menu">
+        <li @click="changeModalStateDelete()">Delete</li>
         </ul>
+     </div>
         <!-- id="right-click-menu" 
             tabindex="-1" 
             v-if="viewMenu" 
@@ -222,6 +229,9 @@ export default {
       show: false,
       showdelete:false,
       playlistid:0,
+       viewMenu: false,
+        top: '0px',
+        left: '0px'
     //   viewMenu: false,
     //     top: '0px',
     //     left: '0px',
@@ -246,11 +256,39 @@ export default {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
     changeModalStateDelete() {
-
       this.$store.dispatch("creatplaylist/toggleModalDelete",this.playlistid);
     },
     
+     setMenu: function(top, left) {
+          
+            var largestHeight = window.innerHeight - this.$$.right.offsetHeight - 25;
+            var largestWidth = window.innerWidth - this.$$.right.offsetWidth - 25;
 
+            if (top > largestHeight) top = largestHeight;
+
+            if (left > largestWidth) left = largestWidth;
+
+            this.top = top + 'px';
+            this.left = left + 'px';
+
+      
+      
+        },
+
+        closeMenu: function() {
+            this.viewMenu = false;
+        },
+
+        openMenu: function(e) {
+            this.viewMenu = true;
+
+           this.$nextTick(function() {
+                this.$$.right.focus();
+
+                this.setMenu(e.screenX,e.screenY)
+            }.bind(this));
+            e.preventDefault();
+        }
     // setMenu: function(top, left) {
           
     //         var largestHeight = window.innerHeight - this.right.offsetHeight;

@@ -55,12 +55,12 @@ export default {
         selectedfile:this.selectedfile,
         selectedpreview:this.selectedpreview
       };*/
-     /* console.log(payload.Name, "in artist component");
+      /* console.log(payload.Name, "in artist component");
       console.log(payload.TrackNumber, "in artist component");
       console.log(payload.AvailableMarket, "in artist component");
       console.log(payload.selectedfile, "in artist component");
       console.log(payload.selectedpreview, "in artist component");*/
-     /* this.$store.dispatch(
+      /* this.$store.dispatch(
         "uploadsong/OnUpload",
         this.selectedfile,
         this.selectedpreview,
@@ -70,15 +70,14 @@ export default {
           AvailableMarket: this.AvailableMarket
         }
       );*/
-    //  this.$store.dispatch("uploadsong/OnUpload",payload)
-    this.$store.dispatch("uploadsong/OnUpload",{
+      //  this.$store.dispatch("uploadsong/OnUpload",payload)
+      this.$store.dispatch("uploadsong/OnUpload", {
         Name: this.Name,
         TrackNumber: this.TrackNumber,
         AvailableMarket: this.AvailableMarket,
-        selectedfile:this.selectedfile,
-        selectedpreview:this.selectedpreview
-      })
-    
+        selectedfile: this.selectedfile,
+        selectedpreview: this.selectedpreview
+      });
     }
   }
 };

@@ -9,7 +9,9 @@
         <!-- here i need to link both song name and artist name with mock server they navigate to another pages
           and i need to change <a> to router link -->
         <div class="song_info">
-          <a href="#" id="song_name" testid="song_name">Song Name</a>
+          <a href="#" id="song_name" testid="song_name">{{
+            Get_Currentsong.track.name
+          }}</a>
           <!-- this div is for like songs and them to the library of the user -->
           <!-- donot forget that the second icon is still weird -->
           <div class="actionbuttons">
@@ -61,16 +63,13 @@
           testid="play_controllers"
         >
           <div class="controllers" id="test_controllers" testid="controllers">
-            <button
-              class="random_button"
-              testid="shufflebutton"
-            >
+            <button class="random_button" testid="shufflebutton">
               <span data-toggle="tooltip" title="Enable shuffle">
                 <i
                   class="fa fa-random"
                   id="randomicon"
                   testid="shuffleicon"
-                  :class="{coloring:isShuffle}"
+                  :class="{ coloring: isShuffle }"
                   @click="shuffle()"
                 ></i>
               </span>
@@ -79,7 +78,7 @@
               <span data-toggle="tooltip" title="Previous">
                 <i
                   class="fa fa-step-backward"
-                  :class="{disabledicon: currentsong_info.index==0}"
+                  :class="{ disabledicon: currentsong_info.index == 0 }"
                   id="playbackicon"
                   testid="previcon"
                 ></i>
@@ -121,18 +120,27 @@
                 ></i>
               </span>
             </button>
-            <button
-              id="repeat_button"
-              testid="repeatbutton"
-            >
-              <div data-toggle="tooltip" title="Enable repeat" style="box-sizing:border-box;overflow:none;min-width:21px;min-height:16px;" >
-                <i class="fa fa-repeat" :class="{coloring:isRepeat!=0}" id="repeaticon" 
-                 @click="repeat_song()"
-                 testid="repeaticon">
-                  <span :class="{hidecoloring:isRepeat!=2}" style="font-size:26px;max-height:16px;">.</span>
+            <button id="repeat_button" testid="repeatbutton">
+              <div
+                data-toggle="tooltip"
+                title="Enable repeat"
+                style="box-sizing:border-box;overflow:none;min-width:21px;min-height:16px;"
+              >
+                <i
+                  class="fa fa-repeat"
+                  :class="{ coloring: isRepeat != 0 }"
+                  id="repeaticon"
+                  @click="repeat_song()"
+                  testid="repeaticon"
+                >
+                  <span
+                    :class="{ hidecoloring: isRepeat != 2 }"
+                    style="font-size:26px;max-height:16px;"
+                    >.</span
+                  >
                 </i>
-                 <!-- style="background-color:red;border-radius:40px;min-width:21px;max-height:16px;" -->
-                 <!-- <span v-if="isRepeat==2" style="font-size:26px;max-height:16px;">.</span> -->
+                <!-- style="background-color:red;border-radius:40px;min-width:21px;max-height:16px;" -->
+                <!-- <span v-if="isRepeat==2" style="font-size:26px;max-height:16px;">.</span> -->
               </div>
             </button>
           </div>
@@ -393,8 +401,8 @@ input:focus {
 .coloring {
   color: #1db954;
 }
-.coloring:hover{
-  color:#1ed760;
+.coloring:hover {
+  color: #1ed760;
 }
 
 .hidecoloring {
@@ -426,13 +434,13 @@ input:focus {
   visibility: visible;
   opacity: 1;
 }
-.disabledicon{
-  color:#424040;
+.disabledicon {
+  color: #424040;
 }
-.disabledicon:hover{
-  color:#424040;
+.disabledicon:hover {
+  color: #424040;
 }
-.disabledicon:active{
+.disabledicon:active {
   color: #b3b3b3;
 }
 </style>
@@ -442,8 +450,8 @@ import { default as song_functions } from "../javascript/mediaplayer_script.js";
 export default {
   data: function() {
     return {
-      isRepeat:0, //0=>no repeat 1=>repeat the song 2=>repeat playlist,album
-      isShuffle:false,
+      isRepeat: 0, //0=>no repeat 1=>repeat the song 2=>repeat playlist,album
+      isShuffle: false,
       volumedrag: false,
       drag: false,
       currentPos: 0,
@@ -587,13 +595,13 @@ export default {
         }
       }
     },
-    shuffle: function(){
-      this.isShuffle= !this.isShuffle;
-      this.$store.dispatch("mediaplayer/shufflesong_state",this.isShuffle);
+    shuffle: function() {
+      this.isShuffle = !this.isShuffle;
+      this.$store.dispatch("mediaplayer/shufflesong_state", this.isShuffle);
     },
-    repeat_song: function(){
-      this.isRepeat = (this.isRepeat +1)%3;
-      this.$store.dispatch("mediaplayer/repeatsong_state",this.isRepeat);
+    repeat_song: function() {
+      this.isRepeat = (this.isRepeat + 1) % 3;
+      this.$store.dispatch("mediaplayer/repeatsong_state", this.isRepeat);
     }
   },
   computed: {

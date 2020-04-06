@@ -1,49 +1,49 @@
 <template>
-    <span>
-<div>
-    <transition name="fade" appear>
-      <div
-        class="modal-overlay"
-        v-if="showModal"
-        @click="showModal = false"
-      ></div>
-    </transition>
-    <transition name="slide" appear>
-      <div class="modal" v-if="showModal">
-        <button class="cancel" @click="changeModalState">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
+  <span>
+    <div>
+      <transition name="fade" appear>
+        <div
+          class="modal-overlay"
+          v-if="showModal"
+          @click="showModal = false"
+        ></div>
+      </transition>
+      <transition name="slide" appear>
+        <div class="modal" v-if="showModal">
+          <button class="cancel" @click="changeModalState">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Close</title>
+              <path
+                d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
+                fill="#fff"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+            <!-- <i class="fa fa-times"  id="myicon" ></i>-->
+          </button>
+
+          <h1 class="title">Are you sure,you want to delete this song!!</h1>
+
+          <button class="cancel_button" @click="changeModalState">
+            cancle
+          </button>
+          <button
+            class="delete_button"
+            testid="confirm_create"
+            @click.prevent="DeleteSong(id)"
+            @click="changeModalState"
           >
-            <title>Close</title>
-            <path
-              d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
-              fill="#fff"
-              fill-rule="evenodd"
-            ></path>
-          </svg>
-          <!-- <i class="fa fa-times"  id="myicon" ></i>-->
-        </button>
-
-        <h1 class="title">Are you sure,you want to delete this song!!</h1>
-
-        <button class="cancel_button" @click="changeModalState">
-          cancle
-        </button>
-        <button
-          class="delete_button"
-          testid="confirm_create"
-          @click.prevent="DeleteSong(id)"
-          @click="changeModalState"
-        >
-          Delete
-        </button>
-      </div>
-    </transition>
+            Delete
+          </button>
+        </div>
+      </transition>
     </div>
-    </span>
+  </span>
 </template>
 <style scoped>
 .delete_button {
@@ -168,20 +168,20 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-    computed:{
-        ...mapGetters({
+  computed: {
+    ...mapGetters({
       showModal: "creatplaylist/showModal"
-    }),
-    },
-    methods:{
-        changeModalState() {
+    })
+  },
+  methods: {
+    changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
-    DeleteSong(id){
+    DeleteSong(id) {
       console.log(id);
       this.$store.dispatch("uploadsong/DeletePlaylist", id);
       console.log("removed");
     }
-    }
-}
+  }
+};
 </script>

@@ -57,10 +57,10 @@
 </template>
 
 <style lang="scss" scoped>
-.loading{
+.loading {
   display: flex;
   justify-content: center;
-  i{
+  i {
     font-size: 70px;
     margin-top: 100px;
   }
@@ -68,9 +68,9 @@
 .body {
   min-width: 768px;
   min-height: 600px;
-  display: flex;
+  // display: flex;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 .row {
   margin: 15px;
@@ -122,7 +122,7 @@ button:focus {
   display: inline;
 }
 .add_library {
-  display: flex;
+  // display: flex;
   justify-content: space-between;
 }
 </style>

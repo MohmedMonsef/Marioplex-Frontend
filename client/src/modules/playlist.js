@@ -17,7 +17,7 @@ export default {
     playlist_tracks({ commit }, playlist_id) {
       commit("set_playlist_loaded", false);
       axios
-        .get("/playlists/"+playlist_id+"/tracks")
+        .get("/playlists/" + playlist_id + "/tracks")
         .then(response => {
           let playlist = response.data;
           console.log(playlist[0].tracks);

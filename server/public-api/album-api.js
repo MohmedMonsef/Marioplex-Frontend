@@ -10,10 +10,12 @@ const artist=require('./artist-api');
     
     addTrack  : async function(AlbumId,Track){     
         const album = await albumDocument.findById(AlbumId);
+        if(album){
         album.hasTracks.push({
             trackId:Track._id
         });
        await album.save();
+       }
     },
     getAlbumById  : async function(albumID){
         
@@ -67,16 +69,25 @@ const artist=require('./artist-api');
         // connect to db and find album with the same id then return it as json file
         // if found return album else return 0
         let album = await this.getAlbumById(albumID);
-        console.log(album);
+        let albumInfo={}
         if(album){
             let Artist= await artist.getArtist(album.artistId);
+            let track=await this.getTracksAlbum(albumID);
+            albumInfo['_id']=album._id;
+            albumInfo['name']=album.name;
+            albumInfo['images']=album.images;
             if(Artist){
-                return {Album:album,Artist:Artist};
+                albumInfo['artistId']=Artist._id;
+                albumInfo['artistName']=Artist.Name;
             }
-            else {
-                return {Album:album}
+            if(track){
+                albumInfo['track']=track;
             }
-        }
+            else{
+                albumInfo['track']=[]
+            }
+            return albumInfo;
+            }
         else{
             return 0;
         }
@@ -133,9 +144,13 @@ const artist=require('./artist-api');
         else{
 
             for(i=0;i<album.hasTracks.length;i++){
-            var Track=await track.getFullTrack(album.hasTracks[i].trackId,user);
+            var Track=await track.getTrack(album.hasTracks[i].trackId);
             if(Track){
-                Tracks.push(Track);
+                let track={}
+                track['_id']=Track._id;
+                track['name']=Track.name;
+                track['images']=Track.images;
+                Tracks.push(track);
             }
         }
         }

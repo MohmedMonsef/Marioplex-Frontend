@@ -1,7 +1,6 @@
 <template>
   <span>
     <div>
-      
       <UploadSong></UploadSong>
       <DeleteSong></DeleteSong>
     </div>
@@ -15,7 +14,7 @@ export default {
   name: "ArtistPersonalPage",
   components: {
     UploadSong,
-    DeleteSong,
+    DeleteSong
   }
 };
 </script>

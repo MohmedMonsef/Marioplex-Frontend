@@ -5,16 +5,16 @@
 </template>
 <script>
 export default {
-  beforeCreate(){
+  beforeCreate() {
     window.localStorage.isMySessionActive = "false";
   },
-  created(){
-      window.localStorage.isMySessionActive = "true";
+  created() {
+    window.localStorage.isMySessionActive = "true";
   },
   mounted() {
     const token = localStorage.getItem("x-auth-token");
-    console.log("nada"+token);
-    if (token){
+    console.log("nada" + token);
+    if (token) {
       this.$store.dispatch("authorization/get_user");
       setTimeout(() => {
         var status = this.isLoggedIn;

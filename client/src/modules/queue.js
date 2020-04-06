@@ -13,13 +13,13 @@ export default {
     set_nextup(state, queue) {
       state.NextUp = [];
       queue.forEach(q => {
-        if (!q.fulltrack.isQueue) state.NextUp.push(q);
+        if (!q.isQueue) state.NextUp.push(q);
       });
     },
     set_queued(state, queue) {
       state.Queued = [];
       queue.forEach(q => {
-        if (q.fulltrack.isQueue) state.Queued.push(q);
+        if (q.isQueue) state.Queued.push(q);
       });
     },
     add_to_queue(state, song) {
@@ -36,9 +36,9 @@ export default {
     Queue({ commit }) {
       commit("set_loading", false);
       axios
-        .get("/api/queue")
+        .get("/me/queue")
         .then(response => {
-          const queue = response.data.queue;
+          const queue = response.data;
           console.log("My queue in action", queue);
           commit("set_nextup", queue);
           commit("set_queued", queue);
@@ -48,14 +48,11 @@ export default {
           console.log(error);
         });
     },
-    AddToQueue({ commit }, song) {
+    AddToQueue({ dispatch }, song) {
       axios
-        .post("/api/addtoqueue", { data: song })
-        .then(response => {
-          const queue = response.data.queue;
-          console.log("song to add ", queue);
-          commit("set_nextup", queue);
-          commit("set_queued", queue);
+        .post("/player/add-to-queue/"+ song.playlistId +"/"+ song.trackId)
+        .then(() => {
+          dispatch("Queue");
         })
         .catch(error => {
           console.log(error);
@@ -70,12 +67,14 @@ export default {
           album_id: "5e7d93dad82adf07f4121bb0",
           playlist_id: "0",
           is_playlist: false
+
         };
       }
+      console.log("in queue front",info)
+      //var isPlaylist=true
       axios
-        .post("/createQueue/" + info.playlist_id + "/" + info.song_id, null, {
-          isPlaylist: info.is_Playlist
-        })
+        .post("/createQueue/" + info.playlist_id + "/" + info.song_id+"?isPlaylist="+info.is_playlist
+        )
         .then(response => {
           console.log("success", response);
           var cs = store.getters["mediaplayer/currentaudio"];

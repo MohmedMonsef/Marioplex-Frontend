@@ -26,18 +26,17 @@ export default {
     logout(state) {
       state.status = "";
       state.token = "";
-      state.User={};
+      state.User = {};
     },
-    ClaimArtistProfile(state,payload){
-        state.User.update({
-          Name:payload.Name,
-        Genre:payload.Genre,
-        Description:payload.Description
+    ClaimArtistProfile(state, payload) {
+      state.User.update({
+        Name: payload.Name,
+        Genre: payload.Genre,
+        Description: payload.Description
       });
       //state.User +=payload
-      console.log('nori',payload.Name)
-      
-  }
+      console.log("nori", payload.Name);
+    }
   },
   actions: {
     signUp({ commit }, user) {
@@ -45,12 +44,12 @@ export default {
 
       axios
         .post("/sign_up", {
-          email:user.email,
-          password:user.password,
-          username:user.username,
-          gender:user.gender,
-          country:user.country,
-          birthday:user.birthday
+          email: user.email,
+          password: user.password,
+          username: user.username,
+          gender: user.gender,
+          country: user.country,
+          birthday: user.birthday
         })
         .then(response => {
           const token = response.data.token;
@@ -67,24 +66,25 @@ export default {
     facebook_signUp({ commit }) {
       commit("auth_request");
       axios
-        .post("http://localhost:3000/auth/facebook")
+        .get("/auth/facebook")
         .then(response => {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
+          axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("authorization/get_user");
         })
         .catch(error => {
           commit("auth_error", error);
-          localStorage.removeItem("token");
+          localStorage.removeItem("x-auth-token");
           console.log(error);
         });
     },
     get_user({ commit }) {
-      const token =  localStorage.getItem("x-auth-token");
+      const token = localStorage.getItem("x-auth-token");
       axios.defaults.headers.common["x-auth-token"] = token;
       commit("auth_request");
       axios
-        .get("/me")
+        .get("/api/me")
         .then(response => {
           const user = response.data[0];
           console.log(user);
@@ -97,12 +97,12 @@ export default {
         });
     },
     login({ commit }, user) {
-      console.log("in loggin")
+      console.log("in loggin");
       commit("auth_request");
       axios
         .post("/login", {
-           email:user.email,
-           password:user.password
+          email: user.email,
+          password: user.password
         })
         .then(response => {
           console.log(response.data.token);
@@ -122,7 +122,7 @@ export default {
     reset({ commit }, user) {
       axios
         .post("/login/forgetpassword", {
-          email:user.email
+          email: user.email
         })
         .then(() => {
           commit("logout");
@@ -135,22 +135,23 @@ export default {
       console.log(Request.headers);
     },
     logout({ commit }) {
-          commit("logout");
-          localStorage.removeItem("x-auth-token");
-          delete axios.defaults.headers.common["x-auth-token"];
+      commit("logout");
+      localStorage.removeItem("x-auth-token");
+      delete axios.defaults.headers.common["x-auth-token"];
     },
-    ClaimArtistProfile({commit},payload){
+    ClaimArtistProfile({ commit }, payload) {
       console.log("wslllllll", payload);
-      axios.put("/claimartist",{data:payload})
-      .then(response=>{
+      axios
+        .put("/claimartist", { data: payload })
+        .then(response => {
           const claim = response.data;
-        console.log("wsl", claim);
-        commit("ClaimArtistProfile", claim);
-      })
-      .catch(error => {
+          console.log("wsl", claim);
+          commit("ClaimArtistProfile", claim);
+        })
+        .catch(error => {
           console.log(error);
         });
-  }
+    }
   },
   getters: {
     Username: state => state.User.username,

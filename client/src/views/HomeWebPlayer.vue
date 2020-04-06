@@ -2,7 +2,7 @@
   <div class="home_webplayer">
     <side-bar />
     <CreatePlaylist v-if="show" />
-    <DeletePlaylist v-if="showdelete"/>
+    <DeletePlaylist v-if="showdelete" />
     <div id="HomeInWebPlayer">
       <router-view></router-view>
     </div>
@@ -39,7 +39,7 @@ export default {
   computed: {
     ...mapState({
       show: state => state.creatplaylist.showModal,
-      showdelete: state => state.creatplaylist.showModalDelete,
+      showdelete: state => state.creatplaylist.showModalDelete
     })
   }
 };

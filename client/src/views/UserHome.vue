@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @contextmenu="handler($event)">
     <h2 v-if="POPplaylists1.length">Popular playlists</h2>
     <div class="container">
       <div class="row">
@@ -37,8 +37,25 @@ export default {
   components: {
     ShowPopularplaylists
   },
+  created: function() {
+    window.addEventListener(
+      "contextmenu",
+      function(e) {
+        // do something here...
+        e.preventDefault();
+      },
+      false
+    );
+  },
+
   mounted() {
     this.$store.dispatch("ShowWebPlayer/showPopularPlaylists");
+  },
+  methods: {
+    handler: function(e) {
+      //do stuff
+      e.preventDefault();
+    }
   },
   computed: {
     ...mapGetters({
