@@ -6,7 +6,6 @@ export default {
     user_albums: [],
     user_artists:[],
     user_songs:[],
-    
     loadingalbums:false,
     loadingartists:false,
   },
@@ -31,42 +30,54 @@ export default {
     showUserAlbums({ commit }) {
       commit("set_loading_albums", false);
       axios
-        .get("/api/me/albums")
+        .get("/me/albums")
         .then(response => {
           let albums = response.data;
+          console.log(albums)
           commit("setUserAlbums", albums);
           commit("set_loading_albums", true);
         })
         .catch(error => {
           console.log(error);
+       
+            let albums=[];
+            commit("setUserAlbums", albums);
+            commit("set_loading_albums", true);
+ 
         });
     },
     showUserArtists({ commit }) {
       commit("set_loading_artists", false);
       axios
-        .get("/api/me/followingArtist")
+        .get("/me/followingArtist")
         .then(response => {
           let artists = response.data;
+          if(response.status != 200){
+            console.log("jjjjjjj",artists)
+            artists=[];
+          }
+          console.log("meeeeeeeeee",artists)
           commit("setUserArtists", artists);
           commit("set_loading_artists", true);
         })
         .catch(error => {
+          let artists = [];
+          commit("setUserArtists", artists);
+          commit("set_loading_artists", true);
           console.log(error);
         });
     },
     showUserSongs({ commit }) {
-      
       axios
-        .get("/api/me/tracks")
+        .get("/me/tracks")
         .then(response => {
-          let songs = response.data;
+          let songs = response.data.tracks;
           commit("setUserSongs", songs);
         })
         .catch(error => {
           console.log(error);
         });
     },
-    
   },
   getters: {
     albums: state => state.user_albums,

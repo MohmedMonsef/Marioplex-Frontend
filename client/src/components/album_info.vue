@@ -268,11 +268,12 @@ export default {
       },
       likecurrentalbum:function(){
         if (!this.liked) {
+       toast.show("Saved to Your Library");
        this.$store.dispatch("album/like_album" , this.$route.params.album_id);
-        toast.show("Saved to Your Library");
         } else {
-       this.$store.dispatch("album/unlike_album" , this.$route.params.album_id);
         toast.show("Removed from Your Library");
+       this.$store.dispatch("album/unlike_album" , this.$route.params.album_id);
+       
       }
       }
      },

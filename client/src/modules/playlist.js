@@ -8,7 +8,7 @@ export default {
     playlist_name:"",
     owner_name: "",
     playlist_image:"",
-    likedplaylist:false
+    likedplaylist: Boolean
   },
   mutations: {
     set_playlist(state, playlist_tracks) {
@@ -50,12 +50,11 @@ set_likedplaylist(state , like){
           .get("/playlists/" + playlist_id)
           .then(response => {
             let playlist = response.data;
-            commit("set_playlist", playlist.tracks);
-            commit("set_playlist_loaded" , true);
-            commit("set_playlist_length", response.data.tracks.length);
-            commit ("set_playlist_name" , playlist.name)
-            commit ("set_owner_name" , playlist.ownerName)
-            commit ("set_playlist_image" , playlist.images[0])
+            commit("set_playlist", playlist[0].tracks);
+            commit("set_playlist_length", playlist[0].tracks.length);
+            commit ("set_playlist_name" , playlist[0].name)
+            commit ("set_owner_name" , playlist[1].ownerName)
+            commit ("set_playlist_image" , playlist[0].images[0])
             commit("set_playlist_loaded", true);
           })
           .catch(error => {
@@ -102,8 +101,10 @@ set_likedplaylist(state , like){
           axios
             .put("/playlists/" + playlist_id + "/followers")
             .then(response => {
-              let playlist = response.data;
-              commit ("set_likedplaylist" , playlist.like = true)
+              let playlist = response.status;
+                if(playlist == 200){
+              commit ("set_likedplaylist" , true)
+                }
             })
             .catch(error => {
               console.log(error);
@@ -113,8 +114,10 @@ set_likedplaylist(state , like){
             axios
               .delete("/playlists/" + playlist_id + "/followers")
               .then(response => {
-                let playlist = response.data;
-                commit ("set_likedplaylist" , playlist.like = false)
+                let playlist = response.status;
+                if(playlist == 200){
+                commit ("set_likedplaylist" , false)
+                }
               })
               .catch(error => {
                 console.log(error);

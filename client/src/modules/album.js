@@ -8,7 +8,7 @@ export default {
     album_name:"",
     artist_name: "",
     album_image:"",
-    likedalbum:false
+    likedalbum: Boolean
   },
   mutations: {
     set_album(state, album_tracks) {
@@ -41,11 +41,11 @@ set_likedalbum(state , like){
           .then(response => {
             let album = response.data;
             console.log("nihal id" , album_id)
-            commit("set_album", album.tracks);
+            commit("set_album", album.track);
             commit("set_album_loaded" , true);
-            commit("set_album_length", response.data.tracks.length);
+            commit("set_album_length", response.data.track.length);
             commit ("set_album_name" , album.name)
-            commit ("set_artist_name" , album.artist)
+            commit ("set_artist_name" , album.artistName)
             commit ("set_album_image" , album.images[0])
           })
           .catch(error => {
@@ -56,10 +56,12 @@ set_likedalbum(state , like){
         like_album({ commit } , album_id) {
           commit("set_album_loaded" , false);
           axios
-            .put("/me/" + album_id)
+            .put("/me/albums" ,{ids:album_id})
             .then(response => {
               let album = response.data;
-              commit ("set_likedalbum" , album.like = true)
+              if (album.status == 200){
+              commit ("set_likedalbum" , true)
+              }
             })
             .catch(error => {
               console.log(error);
@@ -67,11 +69,15 @@ set_likedalbum(state , like){
           },
           unlike_album({ commit } , album_id){
             commit("set_album_loaded" , false);
+            var id = toString(album_id);
             axios
-              .delete("/me/" + album_id)
+              .delete("/me/albums" ,{"ids":id})
+              console.log("my album nana" , album_id )
               .then(response => {
                 let album = response.data;
-                commit ("set_likedalbum" , album.like = false)
+                if (album.status == 200){
+                commit ("set_likedalbum" , false)
+                }
               })
               .catch(error => {
                 console.log(error);

@@ -9,7 +9,7 @@
             <span v-for="song in songs1" :key="song.id">
                 <span testid="artist name">{{song.artistName +' '}} </span>
                 <span testid="song name" class="songname"> {{song.name + ' '}} </span>
-                <span class="dot">. </span> 
+                <span class="dot">.</span> 
             </span>
         </div>
         <h3 class="card-title">Liked Songs</h3>
@@ -20,7 +20,7 @@
             testid="song play icon">
         </i>
         <router-link
-            to="/HomeWebPlayer/liked-tracks"
+            to="/"
             class="stretched-link"
             id="carglink"
             testid="likedsongs card link"

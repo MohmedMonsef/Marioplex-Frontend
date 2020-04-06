@@ -43,9 +43,9 @@
           <router-link tag="p" to="library" id="song_artist">
             {{ song_artists }}
           </router-link>
-          <span>
+          <!-- <span>
             .
-          </span>
+          </span> -->
         </div>
         <router-link tag="p" id="song_album" to="library">
           {{ song_album }}

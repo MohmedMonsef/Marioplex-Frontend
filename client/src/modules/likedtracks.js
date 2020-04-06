@@ -28,10 +28,10 @@ export default {
           .get("/me/tracks")
           .then(response => {
             let likedtracks = response.data;
-            commit("set_likedtracks", likedtracks[0].tracks);
+            commit("set_likedtracks", likedtracks.tracks);
             commit("set_likedtracks_loaded" , true);
-            commit("set_likedtracks_length", likedtracks[0].tracks.length);
-            commit ("set_owner_name" , likedtracks[0].ownerName)
+            commit("set_likedtracks_length", likedtracks.tracks.length);
+            commit ("set_owner_name" , likedtracks.ownerName)
           })
           .catch(error => {
             console.log(error);

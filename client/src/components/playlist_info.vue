@@ -336,17 +336,19 @@ export default {
     },
     likecurrentplaylist: function() {
       if (!this.liked) {
+        toast.show("Saved to Your Library");
         this.$store.dispatch(
           "playlist/like_playlist",
           this.$route.params.playlist_id
         );
-        toast.show("Saved to Your Library");
+        this.$store.dispatch("creatplaylist/showplaylists");
       } else {
+         toast.show("Removed from Your Library");
         this.$store.dispatch(
           "playlist/unlike_playist",
           this.$route.params.playlist_id
         );
-        toast.show("Removed from Your Library");
+       this.$store.dispatch("creatplaylist/showplaylists");
       }
     }
   },

@@ -5,10 +5,7 @@ export default {
     state: {
         showModalDelete: false,
         showModal: false, 
-        showModalAdd:false,
-        todelete:0,
-        playlistoftrack:0,
-        trackofplaylist:0,      
+        todelete:0,      
         Playlists: [],
         loadingplaylists:false
     },
@@ -23,16 +20,7 @@ export default {
            // console.log("in getters")
             return state.showModalDelete;
         },
-        showModalAdd: state => {
-            return state.showModalAdd;    
-        },
         playlists: state => state.Playlists,
-        playlistoftrack:state=>{
-            return state.playlistoftrack;
-        },
-        trackofplaylist:state=> {
-            return state.trackofplaylist;
-        },
         loadingplaylists: state => state.loadingplaylists,
     },
     mutations: {
@@ -44,24 +32,22 @@ export default {
             state.showModalDelete = !state.showModalDelete;
             state.todelete=todeleteid
         },
-        toggleModalAdd(state,trackid) {
-            state.showModalAdd = !state.showModalAdd;
-            state.trackofplaylist=trackid;
-        },
 
         CreatePlaylist(state, playlists) {
             state.Playlists.push(
+                //id: id,
+                // playlistname: i
                 playlists
             );
-            state.playlistoftrack=playlists.id;
             console.log("nori");
         },
         setUserPlaylist(state, playlists) {
             state.Playlists = playlists;
         },
-        set_loading_playlists(state, status) {
-            state.loadingplaylists = status;
-          },
+        set_loading_playlists(state,value){
+            state.loadingplaylists=value;
+        }
+
        // DeletePlaylist(state, id) {
           //  state.Playlists.splice(id, 1);
          // }
@@ -75,21 +61,17 @@ export default {
             commit("toggleModalDelete",todeleteid);
 
         },
-        toggleModalAdd({ commit },trackid) {
-            console.log(" id of track in creatplaylist moudle",trackid)
-            commit("toggleModalAdd",trackid);
-        },
-        CreatePlaylist({ commit}, payload) {
+        CreatePlaylist({ commit }, payload) {
+            console.log("my payload" ,payload)
             axios
-                .post("/api/playlists", { data: payload })
+                .post("/users/playlists", { name: payload.name })
                 .then(response => {
-                    const playlists = response.data.Playlists;
+                    const playlists = response.data;
                     //var id = response.data.id;
                     console.log("wsl", playlists);
                     // var i = playlists.playlistname;
-                    console.log("de i",playlists.id);
+                    console.log("de i");
                     commit("CreatePlaylist", playlists);
-                    //commit("mediaplayer/AddTrack",state.playlistoftrack,state.trackofplaylist)
                 })
                 .catch(error => {
                     console.log(error);
@@ -98,12 +80,12 @@ export default {
         showplaylists({ commit }) {
             commit("set_loading_playlists", false);
             axios
-                .get("/api/me/playlists")
+                .get("/me/playlists")
                 .then(response => {
                     let playlists = response.data;
                     console.log("test function", playlists);
                     commit("setUserPlaylist", playlists);
-                    commit("set_loading_playlists", true);
+                    commit("set_loading_playlists",true);
                 })
                 .catch(error => {
                     console.log(error);
@@ -112,7 +94,7 @@ export default {
         DeletePlaylist({state}) {
             console.log("in module id",state.todelete)
             axios
-              .delete("/api/playlist/"+state.todelete)
+              .delete("/me/delete/playlists/"+ state.todelete)
               .then(response => {
                 console.log(response.data);
                 console.log("wsl");
