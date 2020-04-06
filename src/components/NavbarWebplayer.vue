@@ -133,7 +133,8 @@
   width: 100px;
   height: 30px;
   border-radius:3px;
-  background: #161516;
+  /* background: #161516; */
+  background: transparent;
   margin-left: 8px;
   margin-top: 15px; 
 }
@@ -201,7 +202,8 @@
   background: none;
   height: 38px;
   width: 135px;
-  background-color: #161516;
+  /* background-color: #161516; */
+  background: transparent;
   border-radius: 26px;
   border-color: white;
   color: #fff;
@@ -238,7 +240,8 @@
     border-radius: 20px;
     width: 120px;
     height: 38px;
-    background-color: #161516;
+    /* background-color: #161516; */
+    background: transparent;
     margin-left: 61%;
     margin-top: 10px;
     font-size: 12px;

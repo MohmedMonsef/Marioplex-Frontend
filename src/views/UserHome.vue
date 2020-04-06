@@ -56,7 +56,7 @@
         </div>
       </div>
        <div class="section">
-        <h2 v-if="POPnewreleases1.length">Your playlists</h2>
+        <h2 v-if="playlists1.length">Your playlists</h2>
         <div class="container">
           <div class="row">
              <lib-playlists
