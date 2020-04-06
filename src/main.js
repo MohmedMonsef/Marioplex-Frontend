@@ -139,29 +139,58 @@ new Server({
             ],
             popular_playlists: [
                 {
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    title: "playlist name1",
-                    des: "be happy"
+                    "owner": {
+                        "id": "5e75c68387bceb10ac3d3394",
+                        "type": "user",
+                        "name": "ahmedsamir"
+                    },
+                    "collaborative": false,
+                    "type": "playlist",
+                    "name": "playlist1",
+                    "images": ["http://dummyimage.com/250x400.jpg/cc0000/ffffff"],
+                    "id": "5e7d894d7832511978ec6b30",
+                    "Description": "lalal",
+                    "isPublic": true
                 },
                 {
-                    image: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-                    title: "playlist name2",
-                    des: "be happy1"
+                    "owner": {
+                        "id": "5e7d9045854b0419f4f409b7",
+                        "type": "user"
+                    },
+                    "collaborative": false,
+                    "type": "playlist",
+                    "name": "ssad",
+                    "images": ["http://dummyimage.com/250x400.jpg/cc0000/ffffff"],
+                    "id": "5e7d9066854b0419f4f409b9",
+                    "Description": "lalala",
+                    "isPublic": true
                 },
                 {
-                    image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-                    title: "playlist name3",
-                    des: "be happy2"
+                    "owner": {
+                        "id": "5e85f48b1ba5cf17ccca66e9",
+                        "type": "user",
+                        "name": "ahmedsamir"
+                    },
+                    "collaborative": false,
+                    "type": "playlist",
+                    "name": "playlist2",
+                    "images": ["http://dummyimage.com/250x400.jpg/cc0000/ffffff"],
+                    "id": "5e85f4ca1ba5cf17ccca66eb",
+                    "Description": "happy",
+                    "isPublic": true
                 },
                 {
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    title: "playlist name4",
-                    des: "be happy3"
-                },
-                {
-                    image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-                    title: "Mood playlist name5",
-                    des: "be happy4"
+                    "owner": {
+                        "id": "5e7d9045854b0419f4f409b7",
+                        "type": "user"
+                    },
+                    "collaborative": false,
+                    "type": "playlist",
+                    "name": "dhjgjdjdjg",
+                    "images": ["http://dummyimage.com/250x400.jpg/cc0000/ffffff"],
+                    "id": "5e7d93dad82adf07f4121bac",
+                    "Description": "saddd",
+                    "isPublic": true
                 }
             ],
             Playlists: [
@@ -708,7 +737,145 @@ new Server({
                     type: "Artist",
                     genre: ["pop"]
                 }
-            ]
+            ],
+            popular_artists: [
+                {
+                    "type": "artist",
+                    "name": "artist1",
+                    "images": ["http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7ef28326e2fa0da04f81ae",
+                    "info": "i am a good artist "
+                },
+                {
+                    "type": "artist",
+                    "name": "ahmedsamir",
+                    "images": ["http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e833a51a51d971174923f17"
+                },
+                {
+                    "type": "artist",
+                    "name": "yytguguy",
+                    "images": ["http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f67e438150c15e8589ece",
+                    "info": "jdshgdjdhfjkd"
+                }
+
+            ],
+            popular_albums: [
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist1"
+                    },
+                    "images": [ "http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f44905cce7d09a82e5a75",
+                    "name": "album1",
+                    "type": "album"
+                },
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist2"
+                    },
+                    "images": [ "http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f4bf85cce7d09a82e5a77",
+                    "name": "album2",
+                    "type": "album"
+                },
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist3"
+                    },
+                    "images": [ "http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f4c925cce7d09a82e5a79",
+                    "name": "album3",
+                    "type": "album"
+                },
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist4"
+                    },
+                    "images": [ "http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f4c985cce7d09a82e5a7b",
+                    "name": "album4",
+                    "type": "album"
+                },
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e833a51a51d971174923f17",
+                        "name": "ahmedsamir"
+                    },
+                    "images": [ "http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e833b412b9d7718a491c850",
+                    "name": "album5",
+                    "type": "album"
+                },
+
+            ],
+            popular_newreleases: [
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist1"
+                    },
+                    "images": ["http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f44905cce7d09a82e5a75",
+                    "name": "album1",
+                    "type": "album"
+                },
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist1"
+                    },
+                    "images": ["http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f4bf85cce7d09a82e5a77",
+                    "name": "album1",
+                    "type": "album"
+                },
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist1"
+                    },
+                    "images": ["http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f4c925cce7d09a82e5a79",
+                    "name": "album1",
+                    "type": "album"
+                },
+                {
+                    "album_type": "type1",
+                    "artist": {
+                        "type": "artist",
+                        "id": "5e7ef28326e2fa0da04f81ae",
+                        "name": "artist1"
+                    },
+                    "images": ["http://dummyimage.com/250x400.jpg/dddddd/000000"],
+                    "id": "5e7f4c985cce7d09a82e5a7b",
+                    "name": "album1",
+                    "type": "album"
+                },
+
+            ],
+            
         });
     },
     routes() {
@@ -754,7 +921,7 @@ new Server({
         this.put("/api/player/shuffle", schema => {
             return schema.db.songs;
         });
-        this.get("/api/user", schema => {
+        this.get("/browse/popular-playlists", schema => {
             return schema.db.popular_playlists;
         });
         this.get("/api/playlists", schema => {
@@ -1059,7 +1226,15 @@ new Server({
           console.log("in get", schema.db.Playlists);
           return schema.db.Playlists;
         });
-        
+        this.get("/browse/new-releases", schema => {
+            return schema.db.popular_newreleases;
+          });
+          this.get("/browse/popular-artists", schema => {
+            return schema.db.popular_artists;
+        });
+        this.get("/browse/popular-albums", schema => {
+            return schema.db.popular_albums;
+        });
     }
 });
 Vue.config.productionTip = false;

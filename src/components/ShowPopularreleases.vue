@@ -1,7 +1,7 @@
 <template>
   <div
     class="card rounded col-lg-20% "
-    testid="popularplaylist card"
+    testid="popularreleases card"
     @mouseover="hover = true"
     @mouseleave="hover = false"
   >
@@ -10,20 +10,20 @@
       :src="images"
       alt="Card image"
       id="cardimg"
-      testid="popularplaylist card image"
+      testid="popularreleases card image"
     />
-    <div class="card-body" id="cardbody" testid="popularplaylist card body">
-      <h4 class="card-title" id="cardtitle" testid="popularplaylist card title">
+    <div class="card-body" id="cardbody" testid="popularreleases card body">
+      <h4 class="card-title" id="cardtitle" testid="popularreleases card title">
         {{ name }}
       </h4>
       <p
         class="card-text"
         id="carddescribtion"
-        testid="popularplaylist card describtion"
+        testid="popularreleases card describtion"
       >
-        {{ Description }}
+       {{ artistname}}
       </p>
-        <button v-if="hover" class="play-button" testid="play-button">
+       <button v-if="hover" class="play-button" testid="play-button">
             <i class="fa fa-play"></i>
             <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
         </button>
@@ -31,9 +31,9 @@
         to="/"
         class="stretched-link"
         id="carglink"
-        testid="popularplaylist card link"
+        testid="popularreleases card link"
       ></router-link>
-      <!-- should navigate to playlist page -->
+      <!-- should navigate to releases  page -->
     </div>
   </div>
 </template>
@@ -96,7 +96,7 @@ export default {
       hover: false
     };
   },
-  name: "ShowPopularplaylists",
-  props: ["images", "name", "Description"]
+  name: "ShowPopularalbums",
+  props: ["images", "name","artistname"]
 };
 </script>
