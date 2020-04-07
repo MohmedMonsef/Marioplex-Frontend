@@ -16,7 +16,6 @@
               class="col-lg-10% col-md-60% col-xs-6"
               v-for="category in categorys"
               :key="category.id"
-              :image="category.images"
               :name="category.name"
               :categoryId="category._id"
             />

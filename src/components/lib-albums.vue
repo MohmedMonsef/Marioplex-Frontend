@@ -25,6 +25,8 @@
           >
           {{ artistname }}
         </router-link>
+      </div>
+    </div>
   </router-link>
 </template>
 

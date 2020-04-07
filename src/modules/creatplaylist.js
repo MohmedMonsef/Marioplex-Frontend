@@ -89,7 +89,6 @@ export default {
         });
     },
   showplaylists({ commit ,state}) {
-      commit("set_loading_playlists", false);
       axios
         .get("/me/playlists")
         .then(response => {
