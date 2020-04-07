@@ -30,7 +30,7 @@ export default {
     ClaimArtistProfile({ commit }, payload) {
       console.log("wslllllll", payload);
       axios
-        .post("/me/ToArtist", payload)
+        .post("/api/me/ToArtist", payload)
         .then(response => {
           const claim = response.status;
           if (claim == 200) {

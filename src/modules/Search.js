@@ -50,16 +50,16 @@ export default {
     // when integrate with back
     searchaboutartist({ commit }, search_value) {
       const requestOne = axios.get(
-        "/search?name=" + search_value + "&type=top"
+        "/api/search?name=" + search_value + "&type=top"
       );
       const requestTwo = axios.get(
-        "/search?name=" + search_value + "&type=artist"
+        "/api/search?name=" + search_value + "&type=artist"
       );
       const requestThree = axios.get(
-        "/search?name=" + search_value + "&type=album"
+        "/api/search?name=" + search_value + "&type=album"
       );
       const requestfour = axios.get(
-        "/search?name=" + search_value + "&type=playlist"
+        "/api/search?name=" + search_value + "&type=playlist"
       );
       var match_value5 = new Array();
       var match_valuea5 = new Array();

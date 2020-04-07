@@ -139,7 +139,7 @@ export default {
     //get the current song from backend
     get_currentsong({ commit }) {
       axios
-        .get("/me/player/currently-playing")
+        .get("/api/me/player/currently-playing")
         .then(response => {
           var currentsong = response.data;
 
@@ -160,7 +160,7 @@ export default {
     },
     nextsong_state({ state, commit, dispatch }) {
       axios
-        .post("/me/player/next-playing")
+        .post("/api/me/player/next-playing")
         .then(response => {
           var nextsong = response.data;
           console.log("in get currentsong", nextsong);
@@ -184,7 +184,7 @@ export default {
 
       if (state.progress <= 5) {
         axios
-          .post("/me/player/prev-playing")
+          .post("/api/me/player/prev-playing")
           .then(response => {
             var prevsong = response.data;
             console.log("in get currentsong", prevsong);
@@ -215,7 +215,7 @@ export default {
       else if (flag == 0 && state.currentaudio) {
         state.currentaudio.loop = false;
         axios
-          .put("/player/repeat?state=" + false)
+          .put("/api/player/repeat?state=" + false)
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
@@ -225,7 +225,7 @@ export default {
       } else if (flag == 2 && state.currentaudio) {
         state.currentaudio.loop = false;
         axios
-          .put("/player/repeat?state=" + true)
+          .put("/api/player/repeat?state=" + true)
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
@@ -236,7 +236,7 @@ export default {
     },
     shufflesong_state({ dispatch }, flag) {
       axios
-        .put("/me/player/shuffle?state=" + flag)
+        .put("/api/me/player/shuffle?state=" + flag)
         .then(() => {
           dispatch("Queue/Queue", null, { root: true });
         })
@@ -253,7 +253,7 @@ export default {
       }
       console.log("in likke", track_id);
       axios
-        .put("/me/like/" + track_id)
+        .put("/api/me/like/" + track_id)
         .then(() => {
           if (songbar || track_id == state.currentsong.track._id)
             commit("setliked", true);
@@ -270,7 +270,7 @@ export default {
         songbar = true;
       }
       axios
-        .delete("/me/unlike/" + track_id)
+        .delete("/api/me/unlike/" + track_id)
         .then(() => {
           if (songbar || track_id == state.currentsong.track._id)
             commit("setliked", false);

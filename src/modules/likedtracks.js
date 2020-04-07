@@ -24,7 +24,7 @@ export default {
   actions: {
     likedtracks_tracks({ state, commit }) {
       axios
-        .get("/me/tracks")
+        .get("/api/me/tracks")
         .then(response => {
           let likedtracks = response.data;
           commit("set_likedtracks", likedtracks.tracks);

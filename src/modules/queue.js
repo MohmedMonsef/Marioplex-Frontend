@@ -35,7 +35,7 @@ export default {
   actions: {
     Queue({ commit, state }) {
       axios
-        .get("/me/queue")
+        .get("/api/me/queue")
         .then(response => {
           const queue = response.data;
           console.log("My queue in action", queue);
@@ -51,7 +51,7 @@ export default {
     },
     AddToQueue({ dispatch }, song) {
       axios
-        .post("/player/add-to-queue/" + song.playlistId + "/" + song.trackId)
+        .post("/api/player/add-to-queue/" + song.playlistId + "/" + song.trackId)
         .then(() => {
           dispatch("Queue");
         })
@@ -75,7 +75,7 @@ export default {
       if (info.playlist_id != "0") {
         axios
           .post(
-            "/createQueue/" +
+            "/api/createQueue/" +
               info.playlist_id +
               "/" +
               info.song_id +
@@ -101,7 +101,7 @@ export default {
       } else {
         axios
           .post(
-            "/createQueue/" +
+            "/api/createQueue/" +
               info.album_id +
               "/" +
               info.song_id +

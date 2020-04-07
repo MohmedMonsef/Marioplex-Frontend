@@ -17,7 +17,7 @@ export default {
     showcategory({ commit }) {
       commit("set_loading", false);
       axios
-        .get("/browse/categories/")
+        .get("/api/browse/categories/")
         .then(respons => {
           let rescategory = respons.data.category;
           console.log(respons.data);

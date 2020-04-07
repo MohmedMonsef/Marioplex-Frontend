@@ -25,7 +25,7 @@ export default {
   actions: {
     showPopularPlaylists({ commit }) {
       axios
-        .get("/browse/popular-playlists")
+        .get("/api/browse/popular-playlists")
         .then(response => {
           let POPplaylists = response.data;
           commit("setPopularPlaylists", POPplaylists);
@@ -36,7 +36,7 @@ export default {
     },
     showPopularArtists({ commit }) {
       axios
-        .get("/browse/popular-artists")
+        .get("/api/browse/popular-artists")
         .then(response => {
           let POPartists = response.data;
           commit("setPopularArtists", POPartists);
@@ -47,7 +47,7 @@ export default {
     },
     showPopularAlbums({ commit }) {
       axios
-        .get("/browse/popular-albums")
+        .get("/api/browse/popular-albums")
         .then(response => {
           let POPalbums = response.data;
           commit("setPopularAlbums", POPalbums);
@@ -58,7 +58,7 @@ export default {
     },
     showPopularNewreleases({ commit }) {
       axios
-        .get("/browse/new-releases")
+        .get("/api/browse/new-releases")
         .then(response => {
           let POPnewreleases = response.data;
           commit("setPopularNewreleases", POPnewreleases);

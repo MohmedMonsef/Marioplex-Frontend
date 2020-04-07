@@ -47,7 +47,7 @@ export default {
     playlist_tracks({ commit }, playlist_id) {
       // commit("set_playlist_loaded", false);
       axios
-        .get("/playlists/" + playlist_id)
+        .get("/api/playlists/" + playlist_id)
         .then(response => {
           let playlist = response.data;
           commit("set_playlist", playlist[0].tracks);
@@ -64,7 +64,7 @@ export default {
     },
     ReorderTracks({ commit }, payload) {
       axios
-        .put("/playlists/" + payload.playlist_id + "/tracks", { data: payload })
+        .put("/api/playlists/" + payload.playlist_id + "/tracks", { data: payload })
         .then(response => {
           if (status == 200) {
             let track = response.data;
@@ -82,7 +82,7 @@ export default {
         payload.playlistoftrack
       );
       const data = axios
-        .post("playlists/" + payload.playlistoftrack + "/tracks")
+        .post("/api/playlists/" + payload.playlistoftrack + "/tracks")
         .then(response => {
           let tracks = response.data;
           commit("AddTracks", tracks);
@@ -103,7 +103,7 @@ export default {
 
     like_playlist({ commit }, playlist_id) {
       axios
-        .put("/playlists/" + playlist_id + "/followers")
+        .put("/api/playlists/" + playlist_id + "/followers")
         .then(response => {
           let playlist = response.status;
           if (playlist == 200) {
@@ -116,7 +116,7 @@ export default {
     },
     unlike_playist({ commit }, playlist_id) {
       axios
-        .delete("/playlists/" + playlist_id + "/followers")
+        .delete("/api/playlists/" + playlist_id + "/followers")
         .then(response => {
           let playlist = response.status;
           if (playlist == 200) {

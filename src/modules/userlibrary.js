@@ -29,7 +29,7 @@ export default {
   actions: {
     showUserAlbums({ commit, state }) {
       axios
-        .get("/me/albums")
+        .get("/api/me/albums")
         .then(response => {
           let albums = response.data;
           console.log(albums);
@@ -49,7 +49,7 @@ export default {
     },
     showUserArtists({ commit, state }) {
       axios
-        .get("/me/followingArtist")
+        .get("/api/me/followingArtist")
         .then(response => {
           let artists = response.data;
           if (response.status != 200) {
@@ -72,7 +72,7 @@ export default {
     },
     showUserSongs({ commit }) {
       axios
-        .get("/me/tracks")
+        .get("/api/me/tracks")
         .then(response => {
           let songs = response.data;
           commit("setUserSongs", songs.tracks);

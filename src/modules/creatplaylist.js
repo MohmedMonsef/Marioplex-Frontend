@@ -60,7 +60,7 @@ export default {
     CreatePlaylist({ commit }, payload) {
       console.log("my payload", payload);
       axios
-        .post("/users/playlists", { name: payload.name })
+        .post("/api/users/playlists", { name: payload.name })
         .then(response => {
           const playlists = response.data;
           //var id = response.data.id;
@@ -75,7 +75,7 @@ export default {
     },
     showplaylists({ commit, state }) {
       axios
-        .get("/me/playlists")
+        .get("/api/me/playlists")
         .then(response => {
           let playlists = response.data;
           console.log("test function", playlists);
@@ -96,7 +96,7 @@ export default {
       if (typeof state.todelete._id == "undefined") to_del = state.todelete.id;
       else to_del = state.todelete._id;
       axios
-        .delete("/me/delete/playlists/" + to_del)
+        .delete("/api/me/delete/playlists/" + to_del)
         .then(response => {
           console.log(response.data);
           console.log("wsl");

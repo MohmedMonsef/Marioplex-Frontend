@@ -37,7 +37,7 @@ export default {
     album_tracks({ commit }, album_id) {
       commit("set_album_loaded", false);
       axios
-        .get("/albums/" + album_id)
+        .get("/api/albums/" + album_id)
         .then(response => {
           let album = response.data;
           console.log("nihal id", album_id);
@@ -58,7 +58,7 @@ export default {
 
     like_album({ commit }, album_id) {
       axios
-        .put("/me/Albums", { ids: album_id })
+        .put("/api/me/Albums", { ids: album_id })
         .then(response => {
           let album = response.status;
           if (album == 200) {
@@ -71,7 +71,7 @@ export default {
     },
     unlike_album({ commit }, album_id) {
       axios
-        .delete("/me/albums", { data: { ids: album_id } })
+        .delete("/api/me/albums", { data: { ids: album_id } })
         .then(response => {
           let album = response.status;
           if (album == 200) {

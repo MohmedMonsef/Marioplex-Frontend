@@ -44,7 +44,7 @@ export default {
       commit("auth_request");
 
       axios
-        .post("/sign_up", {
+        .post("/api/sign_up", {
           email: user.email,
           password: user.password,
           username: user.username,
@@ -67,7 +67,7 @@ export default {
     facebook_signUp({ commit }) {
       commit("auth_request");
       axios
-        .get("/auth/facebook")
+        .get("/api/auth/facebook")
         .then(response => {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
@@ -85,7 +85,7 @@ export default {
       axios.defaults.headers.common["x-auth-token"] = token;
       commit("auth_request");
       axios
-        .get("/me")
+        .get("/api/me")
         .then(response => {
           const user = response.data[0];
           console.log(user);
@@ -102,7 +102,7 @@ export default {
       console.log("in loggin");
       commit("auth_request");
       axios
-        .post("/login", {
+        .post("/api/login", {
           email: user.email,
           password: user.password
         })
@@ -123,7 +123,7 @@ export default {
 
     reset({ commit }, user) {
       axios
-        .post("/login/forgetpassword", {
+        .post("/api/login/forgetpassword", {
           email: user.email
         })
         .then(() => {
@@ -144,7 +144,7 @@ export default {
     ClaimArtistProfile({ commit }, payload) {
       console.log("wslllllll", payload);
       axios
-        .put("/claimartist", { data: payload })
+        .put("/api/me/ToArtist", payload)
         .then(response => {
           const claim = response.data;
           console.log("wsl", claim);
