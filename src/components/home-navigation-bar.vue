@@ -25,7 +25,7 @@
           </router-link>
           <router-link
             to="/SignUp"
-            v-if="isLoggedIn == '' || isLoggedIn ==  'error'"
+            v-if="isLoggedIn == '' || isLoggedIn == 'error'"
             testid="signup link"
             tag="li"
           >
@@ -63,8 +63,8 @@
   position: fixed;
   //display: block;
   display: flex;
-  justify-content:center;
-  
+  justify-content: center;
+
   .navbar-inner {
     margin: auto;
     padding: 0px 15px;

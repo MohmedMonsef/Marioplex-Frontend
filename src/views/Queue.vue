@@ -1,73 +1,73 @@
 <template>
-<div>
-  <div class="loading" v-if="!loading">
+  <div>
+    <div class="loading" v-if="!loading">
       <i class="fa fa-spinner fa-spin"></i>
-  </div>
-  <div  v-if="loading" id="main_queue">
-    <h1>
-      Play Queue
-    </h1>
-    <h2>
-      Now Playing
-    </h2>
-    <!-- should be cs.track._id -->
-    <song-component
-      v-if="currentSong"
-      :song_id="currentSong.track._id"
-      :index="1"
-      :song_artists="currentSong.album.artist.name"
-      :song_name="currentSong.track.name"
-      :song_album="currentSong.album.name"
-      :song_length="currentSong.track.duration"
-      :isLiked="currentSong.isLiked"
-      :albumId="currentSong.album._id"
-      :artist_id="currentSong.album.artist._id"
-    />
+    </div>
+    <div v-if="loading" id="main_queue">
+      <h1>
+        Play Queue
+      </h1>
+      <h2>
+        Now Playing
+      </h2>
+      <!-- should be cs.track._id -->
+      <song-component
+        v-if="currentSong"
+        :song_id="currentSong.track._id"
+        :index="1"
+        :song_artists="currentSong.album.artist.name"
+        :song_name="currentSong.track.name"
+        :song_album="currentSong.album.name"
+        :song_length="currentSong.track.duration"
+        :isLiked="currentSong.isLiked"
+        :albumId="currentSong.album._id"
+        :artist_id="currentSong.album.artist._id"
+      />
 
-    <h2 v-if="Queued.length">
-      Next in Queue
-    </h2>
-    <!-- should be q.track._id -->
-    <song-component
-      v-for="(q, i) in Queued"
-      :key="q.fulltrack.track._id"
-      :index="i"
-      :song_id="q.fulltrack.track._id"
-      :song_artists="q.fulltrack.album.artist.name"
-      :song_name="q.fulltrack.track.name"
-      :song_album="q.fulltrack.album.name"
-      :song_length="q.fulltrack.track.duration"
-      :isLiked="q.fulltrack.isLiked"
-      :albumId="q.fulltrack.album._id"
-      :artist_id="q.fulltrack.album.artist._id"
-    />
+      <h2 v-if="Queued.length">
+        Next in Queue
+      </h2>
+      <!-- should be q.track._id -->
+      <song-component
+        v-for="(q, i) in Queued"
+        :key="i"
+        :index="i"
+        :song_id="q.fulltrack.track._id"
+        :song_artists="q.fulltrack.album.artist.name"
+        :song_name="q.fulltrack.track.name"
+        :song_album="q.fulltrack.album.name"
+        :song_length="q.fulltrack.track.duration"
+        :isLiked="q.fulltrack.isLiked"
+        :albumId="q.fulltrack.album._id"
+        :artist_id="q.fulltrack.album.artist._id"
+      />
 
-    <h2 v-if="NextUp.length">
-      Next Up
-    </h2>
-    <!-- should be next.track._id -->
-    <song-component
-      v-for="(next, i) in NextUp"
-      :key="next.fulltrack.track._id"
-      :index="i"
-      :song_id="next.fulltrack.track._id"
-      :song_artists="next.fulltrack.album.artist.name"
-      :song_name="next.fulltrack.track.name"
-      :song_album="next.fulltrack.album.name"
-      :song_length="next.fulltrack.track.duration"
-      :isLiked="next.fulltrack.isLiked"
-      :albumId="next.fulltrack.album._id"
-      :artist_id="next.fulltrack.album.artist._id"
-    />
-  </div>
+      <h2 v-if="NextUp.length">
+        Next Up
+      </h2>
+      <!-- should be next.track._id -->
+      <song-component
+        v-for="(next, i) in NextUp"
+        :key="i"
+        :index="i"
+        :song_id="next.fulltrack.track._id"
+        :song_artists="next.fulltrack.album.artist.name"
+        :song_name="next.fulltrack.track.name"
+        :song_album="next.fulltrack.album.name"
+        :song_length="next.fulltrack.track.duration"
+        :isLiked="next.fulltrack.isLiked"
+        :albumId="next.fulltrack.album._id"
+        :artist_id="next.fulltrack.album.artist._id"
+      />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.loading{
+.loading {
   display: flex;
   justify-content: center;
-  i{
+  i {
     color: #fff;
     font-size: 70px;
     margin-top: 100px;

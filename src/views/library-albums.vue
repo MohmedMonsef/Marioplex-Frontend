@@ -10,7 +10,7 @@
         <div class="row">
           <lib-albums
             v-for="album in albums1"
-            :key="album.id"
+            :key="album._id"
             :albumId="album._id"
             :images="album.images"
             :name="album.name"

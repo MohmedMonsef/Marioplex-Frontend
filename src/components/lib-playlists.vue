@@ -14,12 +14,28 @@
         testid="playlist image"
       />
       <div class="card-body" id="cardbody" testid="playlist card body">
-        <h4 class="card-title" id="cardtitle" testid="playlist name">{{ name }}</h4>
-        <p v-if="!likedplaylist" class="card-text" id="carddescribtion" testid="playlist owner">{{ "By " + Username }}</p>
-        <p v-if="likedplaylist" class="card-text" id="carddescribtion" testid="playlist owner">{{ "By " + ownerName }}</p>
+        <h4 class="card-title" id="cardtitle" testid="playlist name">
+          {{ name }}
+        </h4>
+        <p
+          v-if="!likedplaylist"
+          class="card-text"
+          id="carddescribtion"
+          testid="playlist owner"
+        >
+          {{ "By " + Username }}
+        </p>
+        <p
+          v-if="likedplaylist"
+          class="card-text"
+          id="carddescribtion"
+          testid="playlist owner"
+        >
+          {{ "By " + ownerName }}
+        </p>
         <button v-if="hover" class="play-button" testid="play-button">
-            <i class="fa fa-play"></i>
-            <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
+          <i class="fa fa-play"></i>
+          <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
         </button>
         <router-link
           :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"
@@ -59,30 +75,30 @@ p {
 i {
   color: white;
   font-size: 14px;
- position: absolute;
+  position: absolute;
 }
-#pauseicone{
+#pauseicone {
   color: white;
   font-size: 12px;
- position: absolute;
- margin-top: 1px;
+  position: absolute;
+  margin-top: 1px;
 }
-.play-button{
-   margin-left: 127px;
+.play-button {
+  margin-left: 127px;
   margin-bottom: 20px;
   background-color: #1db954;
   position: relative;
   font-size: 40px;
-   border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    border: none;
-    padding-bottom: 15px;
-    padding-right: 15px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  padding-bottom: 15px;
+  padding-right: 15px;
 }
 </style>
 <script>
-import { mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 export default {
   data: function() {
     return {
@@ -100,11 +116,11 @@ export default {
   //     playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
   //   })
   // }
-    computed: {
+  computed: {
     ...mapGetters({
-       Username: "authorization/Username",
-       likedplaylist: "playlist/likeplaylist"
-    }),
-     }
+      Username: "authorization/Username",
+      likedplaylist: "playlist/likeplaylist"
+    })
+  }
 };
 </script>

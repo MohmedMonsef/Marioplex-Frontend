@@ -1,30 +1,36 @@
 <template>
   <div>
     <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
+      <div
+        class="modal-overlay"
+        v-if="showModal"
+        @click="showModal = false"
+      ></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <div class="child">
-           <div class="grandchild">
-      
-           <div class="firstcolumn">
-            <img class="image" src="../assets/cry.png" alt="image">
+          <div class="grandchild">
+            <div class="firstcolumn">
+              <img class="image" src="../assets/cry.png" alt="image" />
             </div>
             <div class="secondcolumn">
-            <h2>Start listening with a free Spotify account</h2>
-            <button class="signupbutton" testid="signupbutton">SIGN UP FREE</button>
-            <p>Already have an account? <span class="login">LOG IN</span></p>
+              <h2>Start listening with a free Spotify account</h2>
+              <button class="signupbutton" testid="signupbutton">
+                SIGN UP FREE
+              </button>
+              <p>Already have an account? <span class="login">LOG IN</span></p>
             </div>
-        </div>
-       
-        <p class="close" testid="closepopup" @click="showModal=false">Close</p>
+          </div>
+
+          <p class="close" testid="closepopup" @click="showModal = false">
+            Close
+          </p>
         </div>
       </div>
     </transition>
   </div>
 </template>
-
 
 <style lang="scss" scoped>
 * {
@@ -43,8 +49,6 @@ div {
   width: 500%;
   height: 100vh;
 }
-
-
 
 .modal-overlay {
   position: fixed;
@@ -75,7 +79,6 @@ div {
   transition: opacity 0.3s ease;
 }
 
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -94,14 +97,14 @@ div {
 .slide-enter,
 .slide-leave-to {
   transform: translateZ(-50%) translateX(100vw);
-   transition: transform 0.5s;
+  transition: transform 0.5s;
 }
 
-.firstcolumn{
-width: 5%;
+.firstcolumn {
+  width: 5%;
 }
-.secondcolumn{
-width: 5%;
+.secondcolumn {
+  width: 5%;
 }
 .child {
   position: fixed;
@@ -114,70 +117,70 @@ width: 5%;
   top: 15%;
   left: 20%;
   background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
-.grandchild {
-  position: relative;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  .image{
-  width: 350px;
-  height: auto;
-  position: relative;
-  top: 6%;
-  left: 50%;
-  bottom: 2%;
-  }
-  h2{
-    position: fixed;
-    color:white;
-    font-weight: bold;
-    font-size: 32px;
-  }
-  p{
-    position: fixed;
-    color: white;
-    font-size: 13px;
-  }
-  .login{
-    font-size: 15px;
-  }
-  .login:hover{
-    font-size: 17px;
-  }
-}
-}
-  .close{
+  .grandchild {
     position: relative;
-    right: 45%;
-    color: white;
-    font-size:15px;
-    font-weight: normal; 
-    margin: 20px;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    .image {
+      width: 350px;
+      height: auto;
+      position: relative;
+      top: 6%;
+      left: 50%;
+      bottom: 2%;
+    }
+    h2 {
+      position: fixed;
+      color: white;
+      font-weight: bold;
+      font-size: 32px;
+    }
+    p {
+      position: fixed;
+      color: white;
+      font-size: 13px;
+    }
+    .login {
+      font-size: 15px;
+    }
+    .login:hover {
+      font-size: 17px;
+    }
   }
-  .close:hover{
-    font-size: 16px;
-    color: grey;
+}
+.close {
+  position: relative;
+  right: 45%;
+  color: white;
+  font-size: 15px;
+  font-weight: normal;
+  margin: 20px;
+}
+.close:hover {
+  font-size: 16px;
+  color: grey;
+}
+@media screen and (max-width: 950px) {
+  .child {
+    top: 10%;
+    left: 18%;
+    height: 70%;
+    align-content: center;
   }
-   @media screen and (max-width: 950px) {
-     .child{
-       top: 10%;
-       left: 18%;
-       height: 70%;
-       align-content: center;
-     }
-   }
- @media screen and (max-width: 650px) {
- .child{
-   top: 0%;
-   left: 0%;
-   width: 100%;
-   height: 100%;
-   align-content: center;
-   .image{
-   top: 10%;
-   left: 6%;
-   }
- }
+}
+@media screen and (max-width: 650px) {
+  .child {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    .image {
+      top: 10%;
+      left: 6%;
+    }
+  }
 }
 </style>
 <script>
@@ -186,10 +189,10 @@ export default {
   data: function() {
     return {
       playlistname: "",
-      showModal:true
+      showModal: true
     };
   },
-  
+
   components: {},
   methods: {
     changeModalState() {

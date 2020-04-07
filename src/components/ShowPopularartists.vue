@@ -23,10 +23,10 @@
       >
         Artist
       </p>
-       <button v-if="hover" class="play-button" testid="play-button">
-            <i class="fa fa-play"></i>
-            <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
-        </button>
+      <button v-if="hover" class="play-button" testid="play-button">
+        <i class="fa fa-play"></i>
+        <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
+      </button>
       <router-link
         to="/ArtistProfile"
         class="stretched-link"
@@ -65,26 +65,26 @@ p {
 i {
   color: white;
   font-size: 14px;
- position: absolute;
+  position: absolute;
 }
-#pauseicone{
+#pauseicone {
   color: white;
   font-size: 12px;
- position: absolute;
- margin-top: 1px;
+  position: absolute;
+  margin-top: 1px;
 }
-.play-button{
-   margin-left: 127px;
+.play-button {
+  margin-left: 127px;
   margin-bottom: 20px;
   background-color: #1db954;
   position: relative;
   font-size: 40px;
-   border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    border: none;
-    padding-bottom: 15px;
-    padding-right: 15px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  padding-bottom: 15px;
+  padding-right: 15px;
 }
 </style>
 

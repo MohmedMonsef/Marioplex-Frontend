@@ -38,7 +38,10 @@ export default {
     playSong() {
       this.song_state = true;
       let info;
-      if ("playicon-component" == event.target.id) {
+      if (
+        "playicon-component" == event.target.id ||
+        "songComp" == event.target.id
+      ) {
         info = {
           index: this.index,
           song_id: this.song_id,
@@ -47,10 +50,10 @@ export default {
           is_playlist: this.isPlaylist
         };
         if (
-          this.song_id == this.currentsong_info.song_id &&
-          this.albumId == this.currentsong_info.album_id &&
-          this.index == this.currentsong_info.index &&
-          this.playlistId == this.currentsong_info.playlist_id
+          this.song_id == this.Get_Currentsong.track._id &&
+          this.albumId == this.Get_Currentsong.album._id &&
+          // this.index == this.currentsong_info.index &&
+          this.playlistId == this.Get_Currentsong.playlistId
         ) {
           this.$store.dispatch("mediaplayer/playsong_state", info);
           console.log("my compmmm", {
@@ -71,8 +74,8 @@ export default {
           });
         }
       } else {
-        console.log("nihal comp", this.currentsong_info);
-        this.$store.dispatch("Queue/CreateQueue", this.currentsong_info);
+        console.log("nihal comp", this.Get_Currentsong);
+        this.$store.dispatch("Queue/CreateQueue", this.Get_Currentsong);
       }
     },
     pauseSong() {
@@ -81,7 +84,7 @@ export default {
       this.$store.dispatch("mediaplayer/pausesong_state");
     },
     prev_song: function() {
-      if(this.currentsong_info.index!=0)
+      if (this.currentsong_info.index != 0)
         this.$store.dispatch("mediaplayer/prevsong_state");
     },
     next_song: function() {
@@ -120,7 +123,8 @@ export default {
       progress: "mediaplayer/progress",
       duration: "mediaplayer/duration",
       volume: "mediaplayer/volume",
-      currentsong_info: "mediaplayer/currentsong_info"
+      currentsong_info: "mediaplayer/currentsong_info",
+      Get_Currentsong: "mediaplayer/Get_Currentsong"
     })
   }
 };

@@ -5,17 +5,12 @@
 </template>
 <script>
 export default {
-  beforeCreate(){
+  beforeCreate() {
     window.localStorage.isMySessionActive = "false";
-  },
-  created(){
-      window.localStorage.isMySessionActive = "true";
-  },
-  mounted() {
     const token = localStorage.getItem("x-auth-token");
-    console.log("nada"+token);
-    if (token){
-      this.$store.dispatch("authorization/get_user");
+    console.log("nada" + token);
+    if (token) {
+      this.$store.dispatch("authorization/get_user", false);
       setTimeout(() => {
         var status = this.isLoggedIn;
         if (status == "error") {
@@ -25,6 +20,9 @@ export default {
         }
       }, 500);
     }
+  },
+  created() {
+    window.localStorage.isMySessionActive = "true";
   }
 };
 </script>

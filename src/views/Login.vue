@@ -6,13 +6,14 @@
       <div class="row justify-content-center m-0">
         <div class="col-4 m-0" align="center">
           <h2>To continue,log in to Spotify</h2>
-          <div class="unlogged" v-if="isLoggedIn == 'error'">
+          <div class="unlogged" v-if="isLoggedIn == 'login_err'">
             incorrect email or password
           </div>
           <button
             class="costum-btn"
             id="facebook-btn"
             testid="login facebook button"
+            @click.prevent="facebook_login()"
           >
             CONTINUE WITH FACEBOOK
           </button>
@@ -208,22 +209,7 @@ export default {
             email: this.email,
             password: this.password
           };
-          this.$store
-            .dispatch("authorization/login", user)
-            .then(() => {
-              ///
-              setTimeout(() => {
-                var status = this.isLoggedIn;
-                if (status == "success") {
-                  console.log("finally succeeded");
-                  this.$router.push("/");
-                } else if (status == "error") {
-                  console.log("errror");
-                }
-              }, 1000);
-              ////////
-            })
-            .catch(err => console.log(err));
+          this.$store.dispatch("authorization/login", user);
         }
       }, 200);
     },
@@ -232,6 +218,9 @@ export default {
     },
     canSubmit() {
       this.can_submit = this.can_submit && true;
+    },
+    facebook_login() {
+      this.$store.dispatch("authorization/facebook_signUp");
     }
   },
   computed: {

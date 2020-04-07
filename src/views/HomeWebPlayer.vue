@@ -2,11 +2,11 @@
   <div class="home_webplayer">
     <side-bar />
     <CreatePlaylist v-if="show" />
-    <DeletePlaylist v-if="showdelete"/>
+    <DeletePlaylist v-if="showdelete" />
     <div id="HomeInWebPlayer">
       <router-view class="child"></router-view>
-       <navbar-webplayer/>
-        <!-- <library-navbar/> -->
+      <navbar-webplayer />
+      <!-- <library-navbar/> -->
     </div>
     <mediaplayer />
   </div>
@@ -20,9 +20,9 @@
   position: fixed;
   top: 0%;
   z-index: 0;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
-.child{
+.child {
   padding-top: 80px;
 }
 </style>
@@ -47,9 +47,8 @@ export default {
   computed: {
     ...mapState({
       show: state => state.creatplaylist.showModal,
-      showdelete: state => state.creatplaylist.showModalDelete,
+      showdelete: state => state.creatplaylist.showModalDelete
     })
-  },
+  }
 };
-
 </script>

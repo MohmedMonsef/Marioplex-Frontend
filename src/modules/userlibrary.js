@@ -6,8 +6,8 @@ export default {
     user_albums: [],
     user_artists: [],
     user_songs: [],
-    loadingalbums: false,
-    loadingartists: false
+    loadingalbums: 0,
+    loadingartists: 0
   },
   mutations: {
     setUserAlbums(state, albums) {
@@ -27,42 +27,46 @@ export default {
     }
   },
   actions: {
-    showUserAlbums({ commit }) {
-      commit("set_loading_albums", false);
+    showUserAlbums({ commit, state }) {
       axios
         .get("/me/albums")
         .then(response => {
           let albums = response.data;
           console.log(albums);
           commit("setUserAlbums", albums);
-          commit("set_loading_albums", true);
+          if (state.loadingalbums == 0) {
+            state.loadingalbums = 1;
+          }
         })
         .catch(error => {
           console.log(error);
-
           let albums = [];
           commit("setUserAlbums", albums);
-          commit("set_loading_albums", true);
+          if (state.loadingalbums == 0) {
+            state.loadingalbums = 1;
+          }
         });
     },
-    showUserArtists({ commit }) {
-      commit("set_loading_artists", false);
+    showUserArtists({ commit, state }) {
       axios
         .get("/me/followingArtist")
         .then(response => {
           let artists = response.data;
           if (response.status != 200) {
-            console.log("jjjjjjj", artists);
             artists = [];
           }
           console.log("meeeeeeeeee", artists);
           commit("setUserArtists", artists);
-          commit("set_loading_artists", true);
+          if (state.loadingartists == 0) {
+            state.loadingartists = 1;
+          }
         })
         .catch(error => {
           let artists = [];
           commit("setUserArtists", artists);
-          commit("set_loading_artists", true);
+          if (state.loadingartists == 0) {
+            state.loadingartists = 1;
+          }
           console.log(error);
         });
     },

@@ -6,8 +6,7 @@ export default {
     popular_playlists: [],
     popular_artists: [],
     popular_albums: [],
-    popular_newreleases: [],
-
+    popular_newreleases: []
   },
   mutations: {
     setPopularPlaylists(state, POPplaylists) {
@@ -21,7 +20,7 @@ export default {
     },
     setPopularNewreleases(state, POPnewreleases) {
       state.popular_newreleases = POPnewreleases;
-    },
+    }
   },
   actions: {
     showPopularPlaylists({ commit }) {
@@ -67,12 +66,12 @@ export default {
         .catch(error => {
           console.log(error);
         });
-    },
+    }
   },
   getters: {
     POPplaylists: state => state.popular_playlists,
     POPartists: state => state.popular_artists,
     POPalbums: state => state.popular_albums,
-    POPnewreleases: state => state. popular_newreleases,
+    POPnewreleases: state => state.popular_newreleases
   }
 };

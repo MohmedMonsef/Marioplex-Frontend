@@ -1,16 +1,9 @@
 <template>
-<span>
-    <div>
-       
-    </div>
-</span>    
+  <span>
+    <div></div>
+  </span>
 </template>
-<style scoped>
-
-</style>
+<style scoped></style>
 <script>
-
-export default {
-    
-}
+export default {};
 </script>

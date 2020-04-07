@@ -1,66 +1,66 @@
 <template>
-    <div class="playlist"> 
-        <div class="loading" v-if="!playlist_load">
+  <div class="playlist">
+    <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-      <!-- <playlistpopup v-if="showpopup" /> -->
+    <!-- <playlistpopup v-if="showpopup" /> -->
     <div v-if="playlist_load" class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-          <playlist v-if="this.playlist_length == 0"/>
-          <playlistinfo v-else/>
-         </div> 
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
-          <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
-          <emptytracks v-if="this.playlist_length == 0"/>
-          <draggable ghost-class="ghost" @end="ReorderTracks" v-else>
-            <transition-group type="transition" name="flip-list">
-         <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
-         <song-component class="sortable"
-          v-for="(p, i) in playlist_tracks"
-          :key="p.trackid"
-          :index="i"
-          :song_id="p.trackid"
-          :song_artists="p.artistName"
-          :song_name="p.name"
-          :song_album="p.albumName"
-          :albumId="p.albumId"
-          :song_length="500"
-          :isLiked="p.isLiked"
-          :playlistId="$route.params.playlist_id"
-          :isPlaylist="true"
-        />
-         </transition-group>
-         </draggable>
-        </div>
-</div>
-</div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+        <playlist v-if="this.playlist_length == 0" />
+        <playlistinfo v-else />
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+        <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
+        <emptytracks v-if="this.playlist_length == 0" />
+        <draggable ghost-class="ghost" @end="ReorderTracks" v-else>
+          <transition-group type="transition" name="flip-list">
+            <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
+            <song-component
+              class="sortable"
+              v-for="(p, i) in playlist_tracks"
+              :key="p.trackid"
+              :index="i"
+              :song_id="p.trackid"
+              :song_artists="p.artistName"
+              :song_name="p.name"
+              :song_album="p.albumName"
+              :albumId="p.albumId"
+              :song_length="500"
+              :isLiked="p.isLiked"
+              :playlistId="$route.params.playlist_id"
+              :isPlaylist="true"
+            />
+          </transition-group>
+        </draggable>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.playlist{
-    // min-width: 768px;
-    min-height: 900px;
-    background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
+.playlist {
+  // min-width: 768px;
+  min-height: 900px;
+  background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
 }
-.loading{
+.loading {
   display: flex;
   justify-content: center;
-  i{
+  i {
     font-size: 70px;
     margin-top: 100px;
     color: white;
   }
 }
-.row{
-    margin: 25px;
-    margin-top: 0; 
-    display: flex;
-    
+.row {
+  margin: 25px;
+  margin-top: 0;
+  display: flex;
 }
-.sortable-drag{
- opacity: 0;
+.sortable-drag {
+  opacity: 0;
 }
-.ghost{
+.ghost {
   border-bottom: 1px solid #1ed760;
 }
 // @media screen and (max-width: 1196px) {
@@ -84,20 +84,20 @@ import draggable from "vuedraggable";
 import { mapState } from "vuex";
 export default {
   name: "playlistview",
-   props: {
+  props: {
     isLiked: {
       type: Boolean
-    },
-   },
-    data:function(){
-        return {
-        show:false,
-        oldIndex:'',
-        newIndex:'',
-        playlist_id:''
-        };
-    },
-    components: {
+    }
+  },
+  data: function() {
+    return {
+      show: false,
+      oldIndex: "",
+      newIndex: "",
+      playlist_id: ""
+    };
+  },
+  components: {
     SongComponent,
     draggable,
     playlist,
@@ -105,42 +105,45 @@ export default {
     playlistinfo
     // playlistpopup
   },
-  methods:{
-      toggleShow() {
+  methods: {
+    toggleShow() {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
-      },
-     ReorderTracks(event){
-       // console.log("inplaylist_view",event)
-       let playlist_Id=this.$route.params.playlist_id;
-       this.playlist_id=playlist_Id;
-        this.oldIndex=event.oldIndex;
-        this.newIndex=event.newIndex;
-        let payload={
-          start:this.oldIndex,
-          before:this.newIndex,
-          playlist_id:this.playlist_id
-          
-        }
-        console.log("in playlist_view ",this.playlist_id)
-        this.$store.dispatch("playlist/ReorderTracks",payload);
-      },
+    },
+    ReorderTracks(event) {
+      // console.log("inplaylist_view",event)
+      let playlist_Id = this.$route.params.playlist_id;
+      this.playlist_id = playlist_Id;
+      this.oldIndex = event.oldIndex;
+      this.newIndex = event.newIndex;
+      let payload = {
+        start: this.oldIndex,
+        before: this.newIndex,
+        playlist_id: this.playlist_id
+      };
+      console.log("in playlist_view ", this.playlist_id);
+      this.$store.dispatch("playlist/ReorderTracks", payload);
+    }
   },
   computed: {
     ...mapState({
       showpopup: state => state.playlistpopup.showModal
     }),
-     ...mapGetters({
+    ...mapGetters({
       playlist_tracks: "playlist/playlist_tracks",
       playlist_length: "playlist/playlist_length",
       playlist_load: "playlist/playlist_loaded"
     })
   },
-  created: function() {   
-   this.$store.dispatch("playlist/playlist_tracks" , this.$route.params.playlist_id),
-   console.log("Playlist_id" , this.$route.params.playlist_id)
-   console.log("nihal here is the length" , this.playlist_length)
-     }
+  created: function() {
+    this.$store.dispatch(
+      "playlist/playlist_tracks",
+      this.$route.params.playlist_id
+    ),
+      console.log("Playlist_id", this.$route.params.playlist_id);
+    console.log("nihal here is the length", this.playlist_length);
   }
-</script>>
+};
+</script>
+>

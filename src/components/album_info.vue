@@ -1,134 +1,188 @@
 <template>
-     <div class="album_info">
-              <div class="image" testid="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
-             <img :src="album_image" alt="album_image" class="album_image" id="album_image" testid="album_image">
-             <i v-if="!play" class="fa fa-play" id="imageplayicon" testid="imageplayicon" @click="playSong() , isplaying()"> </i>
-             <i v-if="play" class="fa fa-pause" id="imagepauseicon" testid="imagepauseicon" @click="pauseSong() , stopplaying()"> </i>
-            </div>
-             <div>
-             <span data-toggle="tooltip" :title="album_name">
-             <h2 class="albumname" testid="album_name">{{this.album_name}}</h2>
-             </span>
-             
-             <router-link to="/HomeWebPlayer" id="artist_name" testid="artist_name">{{artist_name}}</router-link>
-             </div>
-             <button v-if="!play" class="playbutton" testid="playbutton" @click="playSong() , isplaying()">PLAY</button>
-             <button v-if="play" class="pausebutton" testid="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
-             <div class="add-library">
-              <button
-              class="heartbutton" testid="emptyheartbutton" v-if="!this.liked" @click="likecurrentalbum()">
-              <span data-toggle="tooltip" title="Save to Your Library">
-                <i
-                  class="fa fa-heart-o"
-                  id="emptyhearticon"
-                  testid="emptyhearticon"
-                ></i>
-              </span>
-            </button>
+  <div class="album_info">
+    <div
+      class="image"
+      testid="image"
+      @mouseover="onhoverimage()"
+      @mouseleave="onleaveimage()"
+    >
+      <img
+        :src="album_image"
+        alt="album_image"
+        class="album_image"
+        id="album_image"
+        testid="album_image"
+      />
+      <i
+        v-if="!play"
+        class="fa fa-play"
+        id="imageplayicon"
+        testid="imageplayicon"
+        @click="playSong(), isplaying()"
+      >
+      </i>
+      <i
+        v-if="play"
+        class="fa fa-pause"
+        id="imagepauseicon"
+        testid="imagepauseicon"
+        @click="pauseSong(), stopplaying()"
+      >
+      </i>
+    </div>
+    <div>
+      <span data-toggle="tooltip" :title="album_name">
+        <h2 class="albumname" testid="album_name">{{ this.album_name }}</h2>
+      </span>
 
-              <button class="heartbutton" testid="filledheartbutton" v-if="this.liked" @click="likecurrentalbum()">
-              <span data-toggle="tooltip" title="Remove from Your Library">
-                <i
-                  class="fa fa-heart"
-                  id="filledhearticon"
-                  testid="filledhearticon"
-                  style="color:green"
-                ></i>
-              </span>
-            </button>
-                <!-- <span data-toggle="tooltip" title="More">
+      <router-link to="/HomeWebPlayer" id="artist_name" testid="artist_name">{{
+        artist_name
+      }}</router-link>
+    </div>
+    <button
+      v-if="!play"
+      class="playbutton"
+      testid="playbutton"
+      @click="playSong(), isplaying()"
+    >
+      PLAY
+    </button>
+    <button
+      v-if="play"
+      class="pausebutton"
+      testid="pausebutton"
+      @click="pauseSong(), stopplayingbutton()"
+    >
+      PAUSE
+    </button>
+    <div class="add-library">
+      <button
+        class="heartbutton"
+        testid="emptyheartbutton"
+        v-if="!this.liked"
+        @click="likecurrentalbum()"
+      >
+        <span data-toggle="tooltip" title="Save to Your Library">
+          <i
+            class="fa fa-heart-o"
+            id="emptyhearticon"
+            testid="emptyhearticon"
+          ></i>
+        </span>
+      </button>
+
+      <button
+        class="heartbutton"
+        testid="filledheartbutton"
+        v-if="this.liked"
+        @click="likecurrentalbum()"
+      >
+        <span data-toggle="tooltip" title="Remove from Your Library">
+          <i
+            class="fa fa-heart"
+            id="filledhearticon"
+            testid="filledhearticon"
+            style="color:green"
+          ></i>
+        </span>
+      </button>
+      <!-- <span data-toggle="tooltip" title="More">
             <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
             </span>
             <div id="mydropdown" class="db" v-show="show">
         <p v-if="!isLiked">Add to Liked Songs</p>
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
-             <p testid="albumlength">{{album_length}} SONGS</p>
+      <p testid="albumlength">{{ album_length }} SONGS</p>
       <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
-             </div>
-         </div>
-</template>>
+    </div>
+  </div> </template
+>>
 
 <style lang="scss" scoped>
-.album_info{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    text-align: center;
+.album_info {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
 }
-.album_image{
-    height: 350px;
-    width: 350px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.album_image {
+  height: 350px;
+  width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.albumname{
-    color: white;
-    margin: 25px;
-    margin-bottom: 5px;
+.albumname {
+  color: white;
+  margin: 25px;
+  margin-bottom: 5px;
 }
-button{
+button {
   background-color: transparent;
   border: none;
   padding: 10px;
 }
-.playbutton , .pausebutton{
-    background-color: #1ed760;
-    border-radius: 500px;
-    width: 120px;
-    height: 35px;
-    padding: 8px 34px;
-    display: inline-block;
-    color: white;
-    margin: 25px 25px 0px 25px;
-    align-content: center;
-    font-size: 12px;
-   line-height: 18px;
-   font-weight: 700;
-   letter-spacing: 1.76px;
+.playbutton,
+.pausebutton {
+  background-color: #1ed760;
+  border-radius: 500px;
+  width: 120px;
+  height: 35px;
+  padding: 8px 34px;
+  display: inline-block;
+  color: white;
+  margin: 25px 25px 0px 25px;
+  align-content: center;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
 }
-.playbutton:hover , .pausebutton:hover{
-    transform: scale(1.06);
+.playbutton:hover,
+.pausebutton:hover {
+  transform: scale(1.06);
 }
-.heartbutton{
-    background-color: transparent;
-    margin: 10px;
+.heartbutton {
+  background-color: transparent;
+  margin: 10px;
 }
 button:focus {
   outline: 0 !important;
 }
-.fa{
-    color: white;
-    font-size: 25px;
+.fa {
+  color: white;
+  font-size: 25px;
 }
-.add_library{
-    display: flex;
-    justify-content: space-between;
+.add_library {
+  display: flex;
+  justify-content: space-between;
 }
-.image{
-    position: relative;
-    text-align: center;
-    align-content: center;
-    display: flex;
-    justify-content: center;
-#imageplayicon , #imagepauseicon{
+.image {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  #imageplayicon,
+  #imagepauseicon {
     opacity: 0;
     position: absolute;
     font-size: 70px;
     font-weight: 1px;
-   top: 130px;
+    top: 130px;
     text-align: center;
     color: white;
+  }
 }
-}
-#imageplayicon:hover , #imagepauseicon:hover{
+#imageplayicon:hover,
+#imagepauseicon:hover {
   transform: scale(1.12);
 }
-p{
-color: #b3b3b3;
-font-size: 12px;
-letter-spacing: 1.76px;
-font-weight: bold;
-font-size: 12px;
+p {
+  color: #b3b3b3;
+  font-size: 12px;
+  letter-spacing: 1.76px;
+  font-weight: bold;
+  font-size: 12px;
 }
 .db {
   position: absolute;
@@ -150,14 +204,14 @@ font-size: 12px;
     cursor: pointer;
   }
 }
-#artist_name{
-    color: #b3b3b3;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: .015em;
+#artist_name {
+  color: #b3b3b3;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.015em;
 }
-#artist_name:hover{
-    color: white;
+#artist_name:hover {
+  color: white;
 }
 .toast {
   visibility: hidden;
@@ -200,95 +254,87 @@ const toast = {
   }
 };
 export default {
-       data:function(){
-        return {
-        show:false,
-        play:false
-        };
-       },
-       mixins: [song_functions],
-       name:"album_info",
-       methods:{
-          toggleShow() {
+  data: function() {
+    return {
+      show: false,
+      play: false
+    };
+  },
+  mixins: [song_functions],
+  name: "album_info",
+  methods: {
+    toggleShow() {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
-      },
-       isplaying(){
+    },
+    isplaying() {
       this.play = true;
-      if (this.playicon)
-      {
-      var albumimage = document.getElementById("album_image");
-      var pausebutton = document.getElementById("imageplayicon");
-      albumimage.style.opacity="0.3";
-      pausebutton.style.opacity="1";
+      if (this.playicon) {
+        var albumimage = document.getElementById("album_image");
+        var pausebutton = document.getElementById("imageplayicon");
+        albumimage.style.opacity = "0.3";
+        pausebutton.style.opacity = "1";
       }
-      },
-      stopplayingbutton(){
+    },
+    stopplayingbutton() {
       this.play = false;
       var albumimage = document.getElementById("album_image");
-      albumimage.style.opacity="1";
+      albumimage.style.opacity = "1";
       var playbutton = document.getElementById("imagepauseicon");
-      playbutton.style.opacity="0";
-      },
-      stopplaying(){
+      playbutton.style.opacity = "0";
+    },
+    stopplaying() {
       this.play = false;
-      },
-      onhoverimage:function(){
+    },
+    onhoverimage: function() {
       var albumimage = document.getElementById("album_image");
-      albumimage.style.opacity="0.3";
-      if(!this.play)
-      {
-       var playbutton = document.getElementById("imageplayicon");
-      playbutton.style.opacity="1";
-      
+      albumimage.style.opacity = "0.3";
+      if (!this.play) {
+        var playbutton = document.getElementById("imageplayicon");
+        playbutton.style.opacity = "1";
+      } else {
+        var pausebutton = document.getElementById("imagepauseicon");
+        pausebutton.style.opacity = "1";
       }
-      else{
-      var pausebutton = document.getElementById("imagepauseicon");
-      pausebutton.style.opacity="1";
-      
-      }
-      },
-      onleaveimage:function(){
+    },
+    onleaveimage: function() {
       var albumimage = document.getElementById("album_image");
-      albumimage.style.opacity="1";
-    
-      if(!this.play)
-      {
-       var playbutton = document.getElementById("imageplayicon");
-      playbutton.style.opacity="0";
-      
+      albumimage.style.opacity = "1";
+
+      if (!this.play) {
+        var playbutton = document.getElementById("imageplayicon");
+        playbutton.style.opacity = "0";
+      } else {
+        albumimage.style.opacity = "0.3";
+        var pausebutton = document.getElementById("imagepauseicon");
+        pausebutton.style.opacity = "1";
       }
-      else{
-      albumimage.style.opacity="0.3";
-      var pausebutton = document.getElementById("imagepauseicon");
-      pausebutton.style.opacity="1";
-      
-      }
-      },
-      likecurrentalbum:function(){
-        if (!this.liked) {
-       toast.show("Saved to Your Library");
-       this.$store.dispatch("album/like_album" , this.$route.params.album_id);
-        } else {
+    },
+    likecurrentalbum: function() {
+      if (!this.liked) {
+        toast.show("Saved to Your Library");
+        this.$store.dispatch("album/like_album", this.$route.params.album_id);
+      } else {
         toast.show("Removed from Your Library");
-        this.$store.dispatch("album/unlike_album" , this.$route.params.album_id);
+        this.$store.dispatch("album/unlike_album", this.$route.params.album_id);
       }
-      }
-     },
-      computed:{
-         ...mapGetters({
-         album_length: "album/album_length",
-         album_name: "album/album_name",
-         playicon: "mediaplayer/playicon",
-         artist_name:"album/artist_name",
-         album_image:"album/album_image",
-         liked:"album/likealbum"
-         })
-     }
-//       created: function() {      
-//    this.$store.dispatch("album/like_album" , this.$route.params.album_id),
-//    this.$store.dispatch("album/unlike_album" , this.$route.params.album_id)
-//      }
-}
-</script>>
+    }
+  },
+  computed: {
+    ...mapGetters({
+      album_length: "album/album_length",
+      album_name: "album/album_name",
+      playicon: "mediaplayer/playicon",
+      artist_name: "album/artist_name",
+      album_image: "album/album_image",
+      liked: "album/likealbum"
+    })
+  }
+  //       created: function() {
+  //    this.$store.dispatch("album/like_album" , this.$route.params.album_id),
+  //    this.$store.dispatch("album/unlike_album" , this.$route.params.album_id)
+  //      }
+};
+</script>
+>

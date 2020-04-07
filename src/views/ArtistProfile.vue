@@ -1,15 +1,13 @@
 <template>
-    <div class="name">
-        Artist Profile
-    </div>
+  <div class="name">
+    Artist Profile
+  </div>
 </template>
 <style scoped>
-.name{
-    color: white;
+.name {
+  color: white;
 }
 </style>
 <script>
-export default {
-    
-}
+export default {};
 </script>

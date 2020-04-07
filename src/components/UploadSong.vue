@@ -1,12 +1,21 @@
 <template>
   <div>
     <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showModalUpload" @click="showModalUpload = false"></div>
+      <div
+        class="modal-overlay"
+        v-if="showModalUpload"
+        @click="showModalUpload = false"
+      ></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModalUpload">
         <button class="cancel" @click="changeModalStateUpload">
-          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <title>Close</title>
             <path
               d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
@@ -15,35 +24,41 @@
             />
           </svg>
         </button>
-       <div class="file_inputs">
-      <h4>Choose Song</h4>
-      <input type="file" name="file" ref="file" @change="OnFileSelected()" />
-      <h4>Song Name</h4>
-      <input type="text" name="file" v-model="Name" />
-      <h4>Track Number</h4>
-      <input type="text" name="file" v-model="TrackNumber" />
-      <h4>Preview Song</h4>
-      <input
-        type="file"
-        name="file"
-        ref="file"
-        @change="OnFilePreviewSelected()"
-      />
-      <h4>Available Market</h4>
-      <input type="text" name="file" v-model="AvailableMarket" />
+        <div class="file_inputs">
+          <h4>Choose Song</h4>
+          <input
+            type="file"
+            name="file"
+            ref="file"
+            @change="OnFileSelected()"
+          />
+          <h4>Song Name</h4>
+          <input type="text" name="file" v-model="Name" />
+          <h4>Track Number</h4>
+          <input type="text" name="file" v-model="TrackNumber" />
+          <h4>Preview Song</h4>
+          <input
+            type="file"
+            name="file"
+            ref="file"
+            @change="OnFilePreviewSelected()"
+          />
+          <h4>Available Market</h4>
+          <input type="text" name="file" v-model="AvailableMarket" />
 
-      <button class="cancel_button" @click="changeModalStateUpload">
-          cancle
-        </button>
-         
-        <button
-          class="creat_button"
-          testid="confirm_create"
-          
-          @click.prevent="OnUpload()"
-          @click="changeModalStateUpload"
-        >create</button>
-     </div> 
+          <button class="cancel_button" @click="changeModalStateUpload">
+            cancle
+          </button>
+
+          <button
+            class="creat_button"
+            testid="confirm_create"
+            @click.prevent="OnUpload()"
+            @click="changeModalStateUpload"
+          >
+            create
+          </button>
+        </div>
       </div>
     </transition>
   </div>
@@ -166,17 +181,17 @@ div {
   display: inline-block;
   background-color: transparent;
   color: #fff;
-margin:0;
+  margin: 0;
   border: none;
 }
-h4{
-  color:white;
-  background-color:black;
-  margin:0;
+h4 {
+  color: white;
+  background-color: black;
+  margin: 0;
 }
-.file_inputs{
-  position:absolute;
-  top:20%;
+.file_inputs {
+  position: absolute;
+  top: 20%;
 }
 input {
   width: 100%;
@@ -190,8 +205,8 @@ input {
   line-height: 20px;
   color: #fff;
   text-transform: none;
-   outline: none;
-   font-weight: bold;
+  outline: none;
+  font-weight: bold;
 }
 </style>
 
@@ -211,9 +226,9 @@ export default {
   state: {
     Artist_Songs: []
   },
-  computed:{
-     ...mapGetters({
-      showModalUpload: "artistproperties/showModalUpload",
+  computed: {
+    ...mapGetters({
+      showModalUpload: "artistproperties/showModalUpload"
     })
   },
   methods: {
@@ -237,12 +252,12 @@ export default {
         selectedfile:this.selectedfile,
         selectedpreview:this.selectedpreview
       };*/
-     /* console.log(payload.Name, "in artist component");
+      /* console.log(payload.Name, "in artist component");
       console.log(payload.TrackNumber, "in artist component");
       console.log(payload.AvailableMarket, "in artist component");
       console.log(payload.selectedfile, "in artist component");
       console.log(payload.selectedpreview, "in artist component");*/
-     /* this.$store.dispatch(
+      /* this.$store.dispatch(
         "uploadsong/OnUpload",
         this.selectedfile,
         this.selectedpreview,
@@ -252,15 +267,14 @@ export default {
           AvailableMarket: this.AvailableMarket
         }
       );*/
-    //  this.$store.dispatch("uploadsong/OnUpload",payload)
-    this.$store.dispatch("uploadsong/OnUpload",{
+      //  this.$store.dispatch("uploadsong/OnUpload",payload)
+      this.$store.dispatch("uploadsong/OnUpload", {
         Name: this.Name,
         TrackNumber: this.TrackNumber,
         AvailableMarket: this.AvailableMarket,
-        selectedfile:this.selectedfile,
-        selectedpreview:this.selectedpreview
-      })
-    
+        selectedfile: this.selectedfile,
+        selectedpreview: this.selectedpreview
+      });
     }
   }
 };

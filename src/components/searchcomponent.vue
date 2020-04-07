@@ -1,4 +1,4 @@
- <template>
+<template>
   <div class="search_contaner">
     <i class="fa fa-search hover"></i>
     <input
@@ -8,9 +8,15 @@
       v-model="Value"
       autocomplete="off"
       @keydown.esc="reset"
-      v-on:input="check(Value)"
+      v-on:input="check(Value), isinsearch"
     />
-    <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      v-if="Value.length !== 0"
+      @click="reset"
+    >
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -61,8 +67,10 @@
   color: rgb(26, 24, 9);
 }
 </style>
-      
+
 <script>
+import { mapGetters } from "vuex";
+let insearch = insearch;
 export default {
   name: "searchcomponent",
   data() {
@@ -73,15 +81,25 @@ export default {
       console.log(value);
       this.$store.dispatch("Search/search_V", this.Value);
       if (value !== "") {
-        this.$store.dispatch("Search/searchaboutartist");
+        this.$store.dispatch("Search/searchaboutartist", this.Value);
       }
     },
     reset() {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
+    },
+    isinsearch() {
+      if (insearch) {
+        this.Value = "";
+      }
     }
-  }
+  },
+  computed: {
+    ...mapGetters({
+      insearch: "Search/insearch",
+      searchfocus: "Search/searchfocus"
+    })
+  },
+  props: ["search_value"]
 };
 </script>
-          
-      

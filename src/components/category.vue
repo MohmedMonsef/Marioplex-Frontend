@@ -1,9 +1,19 @@
 <template>
   <div class="card rounded col-lg-20%">
-    <img class="card-img-top mx-auto d-block" :src="image" alt="Card image" id="cardimg" />
+    <img
+      class="card-img-top mx-auto d-block"
+      src="http://dummyimage.com/250x400.jpg/dddddd/000000"
+      alt="Card image"
+      id="cardimg"
+    />
     <div class="card-img-overlay">
-      <h4 class="card-title">{{name}}</h4>
-      <router-link to="/" class="stretched-link" id="carglink" testid="cardlink"></router-link>
+      <h4 class="card-title">{{ name }}</h4>
+      <router-link
+        :to="link"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
     </div>
   </div>
 </template>

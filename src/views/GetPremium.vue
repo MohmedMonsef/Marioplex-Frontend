@@ -1,13 +1,9 @@
 <template>
-    <div>
-        Get Premium
-    </div>
+  <div>
+    Get Premium
+  </div>
 </template>
-<style scoped>
-
-</style>
+<style scoped></style>
 <script>
-export default {
-    
-}
+export default {};
 </script>

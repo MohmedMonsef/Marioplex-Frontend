@@ -4,7 +4,7 @@
       <li class="disabled">
         Useful links
       </li>
-      <router-link to="/HomeWebPlayer" tag="li">
+      <router-link to="/HomeWebPlayer" tag="li" replace>
         WebPlayer
       </router-link>
       <router-link to="/ForArtist" tag="li">

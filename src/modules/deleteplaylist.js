@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 export default {
   namespaced: true,
   state: {
@@ -20,21 +20,21 @@ export default {
     }
   },
   actions: {
-    DeletePlaylist({ commit }, id) {
-      axios
-        .delete(`/api/playlist/${id}`)
-        .then(response => {
-          //const deletedplaylist=response.data.id;
-          //deletedplaylist.Playlists.destroy();
-          console.log(response.data);
-          console.log("wsl");
-          // response.Playlists.find(id).destroy();
-          // response.Playlists.splice(id, 1)
-          commit("DeletePlaylist", id);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+    // DeletePlaylist({ commit }, id) {
+    //   axios
+    //     .delete(`/api/playlist/${id}`)
+    //     .then(response => {
+    //       //const deletedplaylist=response.data.id;
+    //       //deletedplaylist.Playlists.destroy();
+    //       console.log(response.data);
+    //       console.log("wsl");
+    //       // response.Playlists.find(id).destroy();
+    //       // response.Playlists.splice(id, 1)
+    //       commit("DeletePlaylist", id);
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    // }
   }
 };

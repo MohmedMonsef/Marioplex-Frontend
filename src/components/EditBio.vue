@@ -1,7 +1,11 @@
 <template>
-    <div>
-        <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
+  <div>
+    <transition name="fade" appear>
+      <div
+        class="modal-overlay"
+        v-if="showModal"
+        @click="showModal = false"
+      ></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
@@ -63,7 +67,7 @@
         </button>
       </div>
     </transition>
-    </div>
+  </div>
 </template>
 <style lang="scss" scoped>
 * {
@@ -86,7 +90,7 @@ div {
 .edit_button {
   position: fixed;
   top: 80%;
-  left: 50%;;
+  left: 50%;
   appearance: none;
   outline: none;
   border: none;
@@ -109,7 +113,7 @@ div {
 }
 .cancel_button {
   position: fixed;
-   top: 80%;
+  top: 80%;
   left: 35%;
   appearance: none;
   outline: none;
@@ -171,8 +175,8 @@ input {
   line-height: 50px;
   color: #fff;
   text-transform: none;
-   outline: none;
-   font-weight: bold;
+  outline: none;
+  font-weight: bold;
 }
 ul {
   color: red;
@@ -234,7 +238,7 @@ ul {
   height: 30%;
   top: 30%;
   bottom: 50%;
-  background-color:transparent;
+  background-color: transparent;
 }
 .playlist_name {
   color: #fff;
@@ -247,17 +251,16 @@ export default {
   name: "EditBio",
   data: function() {
     return {
-     Name:"",
-      Genre:"",
-      Description:"",
+      Name: "",
+      Genre: "",
+      Description: ""
     };
   },
   //showModal:false,
   components: {},
   computed: {
-   
     ...mapGetters({
-      showModal: "artistproperties/showModal",
+      showModal: "artistproperties/showModal"
     })
   },
   methods: {
@@ -266,15 +269,14 @@ export default {
     },
 
     EditBio() {
-      
-     let payload={
-         Name:this.Name,
-         Genre:this.Genre,
-         Description:this.Description,
-     }
+      let payload = {
+        Name: this.Name,
+        Genre: this.Genre,
+        Description: this.Description
+      };
       console.log("nerd");
       this.$store.dispatch("artistproperties/EditBio", payload);
-    },
+    }
   }
 };
 </script>

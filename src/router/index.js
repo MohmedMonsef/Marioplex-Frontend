@@ -16,120 +16,127 @@ import Queue from "../views/Queue.vue";
 import ForArtist from "../views/ForArtist.vue";
 import AccessArtist from "../views/AccessArtist";
 import ClaimArtist from "../views/ClaimArtist";
-import ArtistPersonalPage from "../views/ArtistPersonalPage"
+import ArtistPersonalPage from "../views/ArtistPersonalPage";
 import playlist from "../views/playlist_view.vue";
 import GetPremium from "../views/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import ArtistProfile from "../views/ArtistProfile.vue";
 import album from "../views/album_view.vue";
 
-
+import seeallartist from "../views/seeallartist.vue";
 Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: "/",
-        name: "Home",
-        component: Home
-    },
-    {
-        path: "/HomeWebPlayer",
-        name: "HomeWebPlayer",
-        component: HomeWebPlayer,
-        children: [
-            { path: "", component: UserHome },
+  {
+    path: "/",
+    name: "Home",
+    component: Home
+  },
+  {
+    path: "/HomeWebPlayer",
+    name: "HomeWebPlayer",
+    component: HomeWebPlayer,
+    children: [
+      { path: "", component: UserHome },
 
-            { path: "search", component: Search },
-            {
-                path: "library",
-                component: Library,
-                children: [
-                    {
-                        path: "library-playlists",
-                        component: LibraryPlaylists
-                    },
-                    {
-                        path: "library-artists",
-                        component: LibraryArtists
-                    },
-                    {
-                        path: "library-albums",
-                        component: LibraryAlbums
-                    }
-                ]
-            },
-            { path: "liked-tracks", component: LikedTracks },
-            { path: "queue", component: Queue },
-            {
-                path: "playlist/:playlist_id",
-                name: "playlist",
-                component: playlist
-            },
-            {
-                path: "album/:album_id",
-                name: "album",
-                component: album
-            },
-            {
-                path: "/ArtistProfile",
-                name: "ArtistProfile",
-                component: ArtistProfile
-            },
+      {
+        path: "search",
+        component: Search,
+        children: [
+          {
+            path: "seeallartist",
+            component: seeallartist
+          }
         ]
-    },
-    {
-        path: "/signup",
-        name: "SignUp",
-        component: SignUp
-    },
-    {
-        path: "/login",
-        name: "Login",
-        component: Login
-    },
-    {
-        path: "/ForgetPassword",
-        name: "ForgetPassword",
-        component: ForgetPassword
-    },
-    {
-      path: "/ForArtist",
-      name: "ForArtist",
-      component: ForArtist
-    },
-    {
-      path: "/ClaimArtist",
-      name: "ClaimArtist",
-      component: ClaimArtist
-    },
-    {
-      path: "/AccessArtist",
-      name: "AccessArtist",
-      component: AccessArtist
-    },
-    {
-      path: "/ArtistPersonalPage",
-      name: "ArtistPersonalPage",
-      component: ArtistPersonalPage,
-      
-    },
-    {
-        path: "/GetPremium",
-        name: "GetPremium",
-        component: GetPremium
-    },
-    {
-        path: "/UserAccount",
-        name: "UserAccount",
-        component: UserAccount
-    },
-  
+      },
+      {
+        path: "library",
+        component: Library,
+        children: [
+          {
+            path: "library-playlists",
+            component: LibraryPlaylists
+          },
+          {
+            path: "library-artists",
+            component: LibraryArtists
+          },
+          {
+            path: "library-albums",
+            component: LibraryAlbums
+          }
+        ]
+      },
+      { path: "liked-tracks", component: LikedTracks },
+      { path: "queue", component: Queue },
+      {
+        path: "playlist/:playlist_id",
+        name: "playlist",
+        component: playlist
+      },
+      {
+        path: "album/:album_id",
+        name: "album",
+        component: album
+      },
+      {
+        path: "/ArtistProfile",
+        name: "ArtistProfile",
+        component: ArtistProfile
+      }
+    ]
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: SignUp
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login
+  },
+  {
+    path: "/ForgetPassword",
+    name: "ForgetPassword",
+    component: ForgetPassword
+  },
+  {
+    path: "/ForArtist",
+    name: "ForArtist",
+    component: ForArtist
+  },
+  {
+    path: "/ClaimArtist",
+    name: "ClaimArtist",
+    component: ClaimArtist
+  },
+  {
+    path: "/AccessArtist",
+    name: "AccessArtist",
+    component: AccessArtist
+  },
+  {
+    path: "/ArtistPersonalPage",
+    name: "ArtistPersonalPage",
+    component: ArtistPersonalPage
+  },
+  {
+    path: "/GetPremium",
+    name: "GetPremium",
+    component: GetPremium
+  },
+  {
+    path: "/UserAccount",
+    name: "UserAccount",
+    component: UserAccount
+  }
 ];
 
 const router = new VueRouter({
-    mode: "history",
-    base: process.env.BASE_URL,
-    routes
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes
 });
 
 export default router;

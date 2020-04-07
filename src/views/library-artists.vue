@@ -1,31 +1,31 @@
 <template>
-    <div>
-      <div class="loading" v-if="!loadingartists">
+  <div>
+    <div class="loading" v-if="!loadingartists">
       <i class="fa fa-spinner fa-spin"></i>
-      </div>
-      <div v-if="loadingartists">
-        <lib-artists-default v-if="artists1.length==0"/>
-        <h2 v-if="artists1.length">Artists</h2>
-        <div class="container">
+    </div>
+    <div v-if="loadingartists">
+      <lib-artists-default v-if="artists1.length == 0" />
+      <h2 v-if="artists1.length">Artists</h2>
+      <div class="container">
         <div class="row">
           <lib-artists
             v-for="artist in artists1"
             :key="artist.id"
-          :images="artist.images"
-          :name="artist.Name"
-          :artistId="artist._id"
+            :images="artist.images"
+            :name="artist.Name"
+            :artistId="artist._id"
           />
         </div>
-        </div>
       </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.loading{
+.loading {
   display: flex;
   justify-content: center;
-  i{
+  i {
     color: #fff;
     font-size: 70px;
     margin-top: 100px;

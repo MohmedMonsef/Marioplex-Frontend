@@ -5,23 +5,24 @@ import router from "./router";
 import store from "./store";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import "normalize.css";
-
+import axios from "axios";
+import { mockServer } from "../mockServer/mock";
 
 Vue.config.productionTip = false;
 
-Vue.prototype.$http = axios;
-//we can do this.$http and it will be like calling axios directly
-const token = localStorage.getItem("token");
-if (token) {
-    Vue.prototype.$http.defaults.headers.common["x-auth-token"] = token;
+if (process.env.NODE_ENV === "production") {
+  //if in development call the mockServer
+  mockServer();
 }
+// axios.defaults.baseURL = "https://spotify-demo1.herokuapp.com/";
+// (Our Server)
+axios.defaults.baseURL = "http://52.205.254.29";
 //setting the Authorization on axios header to our token, so requests can be processed if a token is required.
 // This way, we do not have to set token anytime we want to make a request.
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  render: h => h(App)
 }).$mount("#app");

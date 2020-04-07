@@ -41,7 +41,7 @@
               The email address you supplied is invalid.
             </p>
             <p
-              v-if="isLoggedIn == 'error'"
+              v-if="isLoggedIn == 'signup_err'"
               testid="email not unique error"
               class="invalid"
             >
@@ -426,38 +426,12 @@ export default {
             gender: this.gender,
             birthday: this.birthday
           };
-          this.$store
-            .dispatch("authorization/signUp", newuser)
-            .then(() => {
-              ///
-              setTimeout(() => {
-                var status = this.isLoggedIn;
-                if (status == "success") {
-                  console.log("finally succeeded");
-                  this.$router.push("/");
-                } else if (status == "error") {
-                  console.log("errror");
-                }
-              }, 1000);
-
-              ////////
-            })
-            .catch(err => console.log(err));
+          this.$store.dispatch("authorization/signUp", newuser);
         } else return;
       }, 200);
     },
     facebook_signUp() {
-      this.$store.dispatch("authorization/facebook_signUp").then(() => {
-        setTimeout(() => {
-          var status = this.isLoggedIn;
-          if (status == "success") {
-            console.log("logged with fb");
-            this.$router.push("/");
-          } else if (status == "error") {
-            console.log("error with fb");
-          }
-        }, 1000);
-      });
+      this.$store.dispatch("authorization/facebook_signUp");
     },
     cannotSubmit() {
       console.log("cannot sub");

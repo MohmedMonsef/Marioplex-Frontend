@@ -1,10 +1,13 @@
 <template>
   <div
     class="song"
+    id="songComp"
     @click="clicked"
     :class="{ clicked: isclicked }"
     @mouseover="hover = true"
     @mouseleave="hover = false"
+    @dblclick="playOnDblCLk()"
+    @click.right="toggleShow"
   >
     <div id="icon">
       <i
@@ -52,7 +55,7 @@
         </router-link>
       </div>
     </div>
-    <!-- <p>{{index}}</p> -->
+    <!-- <p>{{isLiked}}</p> -->
     <div class="song_length" :class="isCurrentClass">
       {{ length }}
     </div>
@@ -60,14 +63,14 @@
       <div id="icondiv" @click="this.toggleShow">
         <i id="list_icon" v-show="hover" class="fa fa-ellipsis-h dots_icon"></i>
       </div>
-      <div id="mydropdown" class="db" v-show="show">
+      <div id="mydropdown" class="db" v-if="show">
         <p>Start Radio</p>
         <p @click="likecurrentsong()" v-if="!isLiked">Add to Liked Songs</p>
         <p @click="likecurrentsong()" v-if="isLiked">Remove from Liked Songs</p>
         <p @click="addToQueue()">Add to Queue</p>
-        <p @click="changeModalStateAdd(),showplaylists()">Add to Playlist</p>
+        <p @click="changeModalStateAdd(), showplaylists()">Add to Playlist</p>
       </div>
-      <AddTrackPopup v-if="showAdd" ></AddTrackPopup>
+      <AddTrackPopup v-if="showAdd"></AddTrackPopup>
     </div>
   </div>
 </template>
@@ -146,6 +149,9 @@
     width: 15px;
     // margin-right: 50px;
   }
+}
+#mydropdown {
+  position: fixed;
 }
 #song_info {
   #s {
@@ -226,7 +232,6 @@ const toast = {
   }
 };
 export default {
-
   data: function() {
     return {
       hover: false,
@@ -275,7 +280,10 @@ export default {
   }, //must add isplayable also
   methods: {
     addToQueue() {
-      this.$store.dispatch("Queue/AddToQueue", { song_id: this.song_id });
+      this.$store.dispatch("Queue/AddToQueue", {
+        trackId: this.song_id,
+        playlistId: this.playlistId
+      });
     },
     toggleShow(event) {
       console.log(event.screenX);
@@ -283,19 +291,20 @@ export default {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
-      // if(this.show){
-
-      //   var element =document.getElementById("mydropdown");
-      //   // var pos=event.clientX ;
-      //   element.css({
-      //   top : 400,
-      //   right:100
-      //   });
-      // }
+      if (!x) {
+        this.$nextTick(function() {
+          var div = document.getElementById("mydropdown");
+          var left = event.screenX - 203 + "px";
+          var top = event.screenY + 0 + "px";
+          div.style.left = left;
+          div.style.top = top;
+        });
+      }
     },
     hideshow(event) {
-      // var targetId = event.target.id;
-      if (!this.$el.contains(event.target)) {
+      var targetId = event.target.id;
+      console.log("my target id", targetId);
+      if (!this.$el.contains(event.target) || targetId != "list_icon") {
         this.show = false;
         this.isclicked = false;
       }
@@ -305,22 +314,35 @@ export default {
     },
     likecurrentsong: function() {
       if (!this.isLiked) {
-        this.$store.dispatch("mediaplayer/Like",this.song_id);
+        this.$store.dispatch("mediaplayer/Like", this.song_id);
         toast.show("Added to your Liked Songs");
-        this.isLiked=true;
+        this.isLiked = true;
       } else {
         this.$store.dispatch("mediaplayer/UnLike", this.song_id);
         toast.show("Removed from your Liked Songs");
-         this.isLiked=false;
+        this.isLiked = false;
       }
     },
-    changeModalStateAdd(){
-      console.log("in songcomponent",this.song_id);
-        this.$store.dispatch("creatplaylist/toggleModalAdd",this.song_id);
-      },
-      showplaylists(){
-        this.$store.dispatch("creatplaylist/showplaylists");
+    playOnDblCLk: function() {
+      console.log("11");
+      if (this.isCurrent) {
+        if (this.playicon) {
+          this.pauseSong();
+        } else {
+          this.playSong();
+        }
+      } else {
+        console.log("22");
+        this.playSong();
+      }
     },
+    changeModalStateAdd() {
+      console.log("in songcomponent", this.song_id);
+      this.$store.dispatch("creatplaylist/toggleModalAdd", this.song_id);
+    },
+    showplaylists() {
+      this.$store.dispatch("creatplaylist/showplaylists");
+    }
   },
   computed: {
     isCurrentClass: function() {
@@ -330,28 +352,25 @@ export default {
     },
     isCurrent: function() {
       return (
-        this.song_id == this.currentsong_info.song_id &&
-        this.albumId == this.currentsong_info.album_id &&
-        this.index == this.currentsong_info.index &&
-        this.playlistId == this.currentsong_info.playlist_id
+        this.song_id == this.Get_Currentsong.track._id &&
+        this.albumId == this.Get_Currentsong.album._id &&
+        this.playlistId == this.Get_Currentsong.playlistId
       );
     },
-    length:function(){
-        var min = Math.floor((this.song_length % 3600) / 60);
-        var sec = Math.floor(this.song_length% 60);
-        if (sec < 10) sec = "0" + sec;
-        console.log(" minute sec", min, ":", sec);
-        return min + ":" + sec;
+    length: function() {
+      var min = Math.floor((this.song_length % 3600) / 60);
+      var sec = Math.floor(this.song_length % 60);
+      if (sec < 10) sec = "0" + sec;
+      console.log(" minute sec", min, ":", sec);
+      return min + ":" + sec;
     },
     ...mapGetters({
-      currentSong: "mediaplayer/Get_Currentsong",
-      trackid:"mediaplayer/toadd",
-
+      Get_Currentsong: "mediaplayer/Get_Currentsong",
+      trackid: "mediaplayer/toadd"
     }),
     ...mapState({
-    showAdd:state => state.creatplaylist.showModalAdd,
-
-  })
+      showAdd: state => state.creatplaylist.showModalAdd
+    })
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
@@ -359,8 +378,8 @@ export default {
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
-  components:{
-    AddTrackPopup,
+  components: {
+    AddTrackPopup
   }
 };
 </script>

@@ -2,36 +2,78 @@ import axios from "axios";
 export default {
   namespaced: true,
   state: {
-    currentsong: [{
+    currentsong: {
       track: {
-        name: "You are my sunshine",
+        availableMarkets: ["EG,US"],
+        _id: "5e80ceb853e67b1e284a0f15",
+        trackNumber: 1,
+        name: "HAVANA",
+        artistId: "5e80c9b614c8566d6cd9b40e",
+        albumId: "5e80cc2b14c8566d6cd9b40f",
+        discNumber: 1,
+        explicit: false,
+        type: "Track",
+        acousticness: 10,
+        danceability: 23,
+        energy: 100,
+        instrumentalness: 4,
+        key: 90,
+        liveness: 25,
+        loudness: 70,
+        mode: 56,
+        speechiness: 67,
+        tempo: 76,
+        timeSignature: "2020-03-29T16:37:12.554Z",
+        valence: 70,
         __v: 0,
-        albumId: "5e7d93dad82adf07f4121bb0",
-        artistId: "5e7d93dad82adf07f4121bb2",
-        images:[],
-        duration: 236,
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-        _id: "5e7d93dad82adf07f4121bb6"
+        images: []
       },
+      isLiked: false,
       album: {
-        name: "album1",
-        _id: "5e833b412b9d7718a491c850",
-        artist: {
-            name: "ahmedsamir",
-            _id: "5e833a51a51d971174923f17"
-    },
-      isLiked: true,
-      playlistId: "5e85f4ca1ba5cf17ccca66eb",
+        name: "HELLO KIDS",
+        _id: "5e80cc2b14c8566d6cd9b40f",
+        artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
+      },
+      isPlaylist: true,
+      playlistId: "5e891c8edb96e26db4efc790",
       isPlayable: true
-   }
-    }],
+    },
     //component info
     currentsong_info: {
-      index: 1,
-      song_id: "5e7d93dad82adf07f4121bb6",
-      album_id: "5e7d93dad82adf07f4121bb0",
-      playlist_id: "0",
-      is_playlist: false
+      track: {
+        availableMarkets: ["EG,US"],
+        _id: "5e80ceb853e67b1e284a0f15",
+        trackNumber: 1,
+        name: "HAVANA",
+        artistId: "5e80c9b614c8566d6cd9b40e",
+        albumId: "5e80cc2b14c8566d6cd9b40f",
+        discNumber: 1,
+        explicit: false,
+        type: "Track",
+        acousticness: 10,
+        danceability: 23,
+        energy: 100,
+        instrumentalness: 4,
+        key: 90,
+        liveness: 25,
+        loudness: 70,
+        mode: 56,
+        speechiness: 67,
+        tempo: 76,
+        timeSignature: "2020-03-29T16:37:12.554Z",
+        valence: 70,
+        __v: 0,
+        images: []
+      },
+      isLiked: false,
+      album: {
+        name: "HELLO KIDS",
+        _id: "5e80cc2b14c8566d6cd9b40f",
+        artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
+      },
+      isPlaylist: true,
+      playlistId: "5e891c8edb96e26db4efc790",
+      isPlayable: true
     },
     //flag weather the song is playing or not
     playicon: false,
@@ -39,14 +81,14 @@ export default {
     volumeprogress: 0,
     progress: 0,
     trackduration: 0,
-    toAdd:0,
+    toAdd: 0
   },
   mutations: {
     setplayicon(state, playicon) {
       state.playicon = playicon;
     },
     setliked(state, like) {
-      state.currentsong[0].isLiked = like;
+      state.currentsong.isLiked = like;
     },
     setalbumimage(state, albumimage) {
       state.songs.album_image = albumimage;
@@ -68,10 +110,9 @@ export default {
       state.playicon = true;
       if (
         state.currentaudio &&
-        info.song_id == state.currentsong_info.song_id &&
-        info.album_id == state.currentsong_info.album_id &&
-        info.index == state.currentsong_info.index &&
-        info.playlist_id == state.currentsong_info.playlist_id
+        info.song_id == state.currentsong.track._id &&
+        info.album_id == state.currentsong.album._id &&
+        info.playlist_id == state.currentsong.playlistId
       ) {
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;
@@ -80,7 +121,11 @@ export default {
           state.currentaudio.pause();
           state.currentaudio = null;
         }
-        state.currentaudio = new Audio(state.currentsong[0].track.url);
+        if (typeof state.currentsong.track.url == "undefined")
+          state.currentaudio = new Audio(
+            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
+          );
+        else state.currentaudio = new Audio(state.currentsong.track.url);
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;
         state.currentsong_info = info;
@@ -94,9 +139,10 @@ export default {
     //get the current song from backend
     get_currentsong({ commit }) {
       axios
-        .get("/api/currentsong")
+        .get("/me/player/currently-playing")
         .then(response => {
-          var currentsong = response.data.currentsong;
+          var currentsong = response.data;
+
           console.log("in get currentsong", currentsong);
           commit("set_currentsong", currentsong);
         })
@@ -114,19 +160,20 @@ export default {
     },
     nextsong_state({ state, commit, dispatch }) {
       axios
-        .get("/player/next")
+        .post("/me/player/next-playing")
         .then(response => {
-          var nextsong = response.data.nextsong;
+          var nextsong = response.data;
           console.log("in get currentsong", nextsong);
           commit("set_currentsong", nextsong);
           let info = {
-            index: state.currentsong_info.index + 1, //should handle if its the first track on playlist or album return to zero
-            song_id: nextsong[0].track._id,
-            album_id: nextsong[0].track.albumId,
-            playlist_id: state.currentsong_info.playlist_id,
-            is_playlist: state.currentsong_info.is_playlist
+            //should handle if its the first track on playlist or album return to zero
+            song_id: nextsong.track._id,
+            album_id: nextsong.album._id,
+            playlist_id: state.playlist_id,
+            is_playlist: state.currentsong.isPlaylist
           };
           dispatch("playsong_state", info);
+          dispatch("Queue/Queue", null, { root: true });
         })
         .catch(error => {
           console.log(error);
@@ -137,9 +184,9 @@ export default {
 
       if (state.progress <= 5) {
         axios
-          .get("/player/previous")
+          .post("/me/player/prev-playing")
           .then(response => {
-            var prevsong = response.data.prevsong;
+            var prevsong = response.data;
             console.log("in get currentsong", prevsong);
             commit("set_currentsong", prevsong);
             let info = {
@@ -147,12 +194,13 @@ export default {
                 state.currentsong_info.index == 0
                   ? 0
                   : state.currentsong_info.index - 1, //
-              song_id: prevsong[0].track._id,
-              album_id: prevsong[0].track.albumId,
-              playlist_id: state.currentsong_info.playlist_id,
-              is_playlist: state.currentsong_info.is_playlist
+              song_id: prevsong.track._id,
+              album_id: prevsong.album._id,
+              playlist_id: prevsong.playlistId,
+              is_playlist: prevsong.isPlaylist
             };
             dispatch("playsong_state", info);
+            dispatch("Queue/Queue", null, { root: true });
           })
           .catch(error => {
             console.log(error);
@@ -161,62 +209,72 @@ export default {
         dispatch("update_progress", 0);
       }
     },
-    repeatsong_state({state},flag) {
-      if(flag==1)
-         state.currentaudio.loop=true;
-      else if(flag==0){
-        state.currentaudio.loop=false;
-      axios
-        .get("/api/player/repeat",null,{state:false})
-        .then(response => {       
-          console.log(response );
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      }
-      else{
-        state.currentaudio.loop=false;
+    repeatsong_state({ state, dispatch }, flag) {
+      console.log("kkk", flag);
+      if (flag == 1 && state.currentaudio) state.currentaudio.loop = true;
+      else if (flag == 0 && state.currentaudio) {
+        state.currentaudio.loop = false;
         axios
-        .get("/api/player/repeat",null,{state:true})
-        .then(response => {       
-          console.log(response );
-        })
-        .catch(error => {
-          console.log(error);
-        });
+          .put("/player/repeat?state=" + false)
+          .then(() => {
+            dispatch("Queue/Queue", null, { root: true });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else if (flag == 2 && state.currentaudio) {
+        state.currentaudio.loop = false;
+        axios
+          .put("/player/repeat?state=" + true)
+          .then(() => {
+            dispatch("Queue/Queue", null, { root: true });
+          })
+          .catch(error => {
+            console.log(error);
+          });
       }
     },
-    shufflesong_state({dispatch },flag) {
+    shufflesong_state({ dispatch }, flag) {
       axios
-        .put("/api/player/shuffle",null,{state:flag})
+        .put("/me/player/shuffle?state=" + flag)
         .then(() => {
-          dispatch("Queue/Queue",null,{root: true});
+          dispatch("Queue/Queue", null, { root: true });
         })
         .catch(error => {
           console.log(error);
         });
     },
     ////////////here i should send end point of like with id
-    Like({ state, commit }, track_id) { 
-      if (track_id == "") track_id = state.currentsong[0].track._id;
-      console.log("in likke",track_id);
+    Like({ state, commit, dispatch }, track_id) {
+      var songbar = false;
+      if (track_id == "") {
+        track_id = state.currentsong.track._id;
+        songbar = true;
+      }
+      console.log("in likke", track_id);
       axios
         .put("/me/like/" + track_id)
         .then(() => {
-          commit("setliked", true);
+          if (songbar || track_id == state.currentsong.track._id)
+            commit("setliked", true);
+          dispatch("get_currentsong");
         })
         .catch(error => {
           console.log(error);
         });
     },
-    UnLike({ state, commit }, track_id) {
-      if (track_id == "") track_id = state.currentsong[0].track._id;
-      console.log("in unn likke",track_id);
+    UnLike({ state, commit, dispatch }, track_id) {
+      var songbar = false;
+      if (track_id == "") {
+        track_id = state.currentsong.track._id;
+        songbar = true;
+      }
       axios
-        .put("/me/like/" + track_id)
+        .delete("/me/unlike/" + track_id)
         .then(() => {
-          commit("setliked", false);
+          if (songbar || track_id == state.currentsong.track._id)
+            commit("setliked", false);
+          dispatch("get_currentsong");
         })
         .catch(error => {
           console.log(error);
@@ -248,13 +306,13 @@ export default {
   },
   getters: {
     Get_Currentsong: state => {
-      return state.currentsong[0];
+      return state.currentsong;
     },
     playicon: state => {
       return state.playicon;
     },
     liked: state => {
-      return state.currentsong[0].isLiked;
+      return state.currentsong.isLiked;
     },
     currentaudio: state => {
       return state.currentaudio;
@@ -268,8 +326,8 @@ export default {
     volume: state => {
       return state.volumeprogress;
     },
-    toadd:state=>{
-      return state.toadd
+    toadd: state => {
+      return state.toadd;
     },
 
     currentsong_info: state => {

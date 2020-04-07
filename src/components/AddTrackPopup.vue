@@ -1,13 +1,22 @@
 <template>
-    <div>
-        <CreatePlaylist v-if="show"/>
+  <div>
+    <CreatePlaylist v-if="show" />
     <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showModalAdd" @click="showModalAdd = false"></div>
+      <div
+        class="modal-overlay"
+        v-if="showModalAdd"
+        @click="showModalAdd = false"
+      ></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModalAdd">
         <button class="cancel" @click="changeModalStateAdd">
-          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <title>Close</title>
             <path
               d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143"
@@ -17,22 +26,27 @@
           </svg>
         </button>
         <h1 class="title">Add to playlist</h1>
-         <button class="cratenewplaylist" @click="changeModalState(),changeModalStateAdd(),AddTrack()">New playlist</button>
-          <div class="playlistscards">
-        <h2 v-if="playlists.length">Playlists</h2>
-        <div class="container">
-        <div class="row">
-          <lib-playlists
-            v-for="playlist in playlists"
-            :key="playlist.id"
-            :images="playlist.images"
-            :name="playlist.name"
-            :owner="playlist.owner"
-            :playlist_id="playlist._id"
-          />
+        <button
+          class="cratenewplaylist"
+          @click="changeModalState(), changeModalStateAdd(), AddTrack()"
+        >
+          New playlist
+        </button>
+        <div class="playlistscards">
+          <h2 v-if="playlists.length">Playlists</h2>
+          <div class="container">
+            <div class="row">
+              <lib-playlists
+                v-for="playlist in playlists"
+                :key="playlist.id"
+                :images="playlist.images"
+                :name="playlist.name"
+                :owner="playlist.owner"
+                :playlist_id="playlist._id"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
       </div>
     </transition>
   </div>
@@ -139,29 +153,29 @@ div {
   margin: 16px 0;
   width: 100%;
 }
- h2{
-  position:fixed;
+h2 {
+  position: fixed;
   font-size: 28px;
   font-weight: bold;
   color: white;
   margin-bottom: 14px;
   margin-left: 30px;
   margin-top: 38px;
-  top:30%;
+  top: 30%;
   //z-index:9998;
 }
 .container {
   margin-left: 15px;
   position: fixed;
-  top:40%;
+  top: 40%;
   //z-index:9998;
 }
 // .row{
 //     z-index:9998;
 // }
-.playlistscards{
-    position:fixed;
-    top:40%;
+.playlistscards {
+  position: fixed;
+  top: 40%;
 }
 </style>
 <script>
@@ -171,47 +185,51 @@ import CreatePlaylist from "../components/CreatePlaylist";
 import LibPlaylists from "@/components/lib-playlists.vue";
 //import LibPlaylistsDefault from "@/components/lib-playlists-default.vue"
 export default {
-    name:"AddTrackPopup",
-    computed:{
-        ...mapState({
-      show: state => state.creatplaylist.showModal,   
-      
+  name: "AddTrackPopup",
+  computed: {
+    ...mapState({
+      show: state => state.creatplaylist.showModal
     }),
-        ...mapGetters({
+    ...mapGetters({
       showModalAdd: "creatplaylist/showModalAdd",
       playlists: "creatplaylist/playlists",
-      trackofplaylist:"creatplaylist/trackofplaylist",
-      playlistoftrack:"creatplaylist/playlistoftrack",
-    }),
-    },
-    methods:{
-       changeModalStateAdd() {
+      trackofplaylist: "creatplaylist/trackofplaylist",
+      playlistoftrack: "creatplaylist/playlistoftrack"
+    })
+  },
+  methods: {
+    changeModalStateAdd() {
       this.$store.dispatch("creatplaylist/toggleModalAdd");
     },
-    AddTrack(){
-      console.log("to add track in a playlist the playlistid is",this.playlistoftrack);
-      console.log("to add track in a playlist the track is",this.trackofplaylist)
-      let payload={
-        playlistoftrack:this.playlistoftrack,
-        trackofplaylist:this.trackofplaylist,
-          
-      }
-        this.$store.dispatch("playlist/AddTrack",payload)
+    AddTrack() {
+      console.log(
+        "to add track in a playlist the playlistid is",
+        this.playlistoftrack
+      );
+      console.log(
+        "to add track in a playlist the track is",
+        this.trackofplaylist
+      );
+      let payload = {
+        playlistoftrack: this.playlistoftrack,
+        trackofplaylist: this.trackofplaylist
+      };
+      this.$store.dispatch("playlist/AddTrack", payload);
     },
-      changeModalState() {
-       this.$store.dispatch("creatplaylist/toggleModal");
-     },
+    changeModalState() {
+      this.$store.dispatch("creatplaylist/toggleModal");
+    }
     // showplaylists(){
     //     this.$store.dispatch("creatplaylist/showplaylists");
     // },
-    },
-    components:{
-        CreatePlaylist,
-         LibPlaylists,
-      //  LibPlaylistsDefault,
-    },
-    mounted() {
-    this.$store.dispatch("creatplaylist/showplaylists");
   },
-}
+  components: {
+    CreatePlaylist,
+    LibPlaylists
+    //  LibPlaylistsDefault,
+  },
+  mounted() {
+    this.$store.dispatch("creatplaylist/showplaylists");
+  }
+};
 </script>
