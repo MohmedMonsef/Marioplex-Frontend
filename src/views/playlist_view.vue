@@ -16,6 +16,7 @@
           <transition-group type="transition" name="flip-list">
             <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
             <song-component
+              testid="songcomponent"
               class="sortable"
               v-for="(p, i) in playlist_tracks"
               :key="p.trackid"

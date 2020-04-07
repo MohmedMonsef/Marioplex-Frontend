@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="col-4"> -->
   <div class="playlist_info">
     <div class="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
       <img
@@ -109,7 +108,6 @@
       <div class="toast" id="playlistliketoast" testid="playlisttoast"></div>
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <style lang="scss" scoped>
