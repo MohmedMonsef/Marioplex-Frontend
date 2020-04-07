@@ -4,7 +4,7 @@
     <div>
       <router-view></router-view>
     </div>
-    <div class="loading" v-if="!loadingcategory">
+    <div class="loading" v-if="!loadingcategory && search_value === ''">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="loadingcategory">
@@ -156,7 +156,7 @@
                 :key="match_playlist.id"
                 :images="match_playlist.images"
                 :name="match_playlist.name"
-                :owner="match_playlist.ownerName"
+                :ownerName="match_playlist.ownerName"
                 :ownerId="match_playlist.ownerId"
                 :playlist_id="match_playlist._id"
               />
