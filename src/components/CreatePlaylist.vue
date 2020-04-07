@@ -7,9 +7,9 @@
         @click="showModal = false"
       ></div>
     </transition>
-    <transition name="slide" appear>
+    <transition testid="cplaylistpopup" name="slide" appear>
       <div class="modal" v-if="showModal">
-        <button class="cancel" @click="changeModalState">
+        <button class="cancel" testid="cancelicon" @click="changeModalState">
           <svg
             width="32"
             height="32"
@@ -31,6 +31,7 @@
           <div class="grandchild">
             <h4 class="playlist_name">Playlist Name</h4>
             <input
+              testid="cplaylistname"
               class="name_input"
               type="text"
               placeholder="New Playlist"
@@ -40,13 +41,17 @@
           </div>
         </div>
 
-        <button class="cancel_button" @click="changeModalState">
+        <button
+          class="cancel_button"
+          testid="cancelbtn"
+          @click="changeModalState"
+        >
           cancle
         </button>
         <!--<input @keyup.enter="CreatePlaylist()" />-->
         <button
           class="creat_button"
-          testid="confirm_create"
+          testid="createbtn"
           @click.prevent="CreatePlaylist()"
           @click="changeModalState"
         >

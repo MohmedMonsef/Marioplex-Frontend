@@ -4,17 +4,15 @@
       <div class=" navbar navbar-expand-sm  justify-content-center ">
         <span>
           <ul>
-            <router-link to="/ArtistPersonalPage" tag="li">
+            <router-link
+              testid="toartistpage"
+              to="/ArtistPersonalPage"
+              tag="li"
+            >
               <a>home</a>
             </router-link>
             <router-link to="/" tag="li">
               <a>music</a>
-            </router-link>
-            <router-link to="/" tag="li">
-              <a>audiance</a>
-            </router-link>
-            <router-link to="/" tag="li">
-              <a>profile</a>
             </router-link>
           </ul>
         </span>

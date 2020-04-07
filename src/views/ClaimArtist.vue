@@ -2,7 +2,7 @@
   <span class="head">
     <div>
       <div class="header">
-        <router-link to="ForArtist">
+        <router-link testid="forartist" to="ForArtist">
           <svg
             width="240"
             height="40"
@@ -26,7 +26,11 @@
           claiming another.
         </p>
         <!--<input class="claim_input" type="url" placeholder="search for a user name or pase a user url" />-->
-        <button class="popup_button" @click="changeModalState">
+        <button
+          class="popup_button"
+          testid="popupbtn"
+          @click="changeModalState"
+        >
           Claim Artist Profile
         </button>
         <transition name="fade" appear>
@@ -36,7 +40,7 @@
             @click="showModal = false"
           ></div>
         </transition>
-        <transition name="slide" appear>
+        <transition testid="artistinfopopup" name="slide" appear>
           <div class="modal" v-if="showModal">
             <button class="cancel" @click="changeModalState">
               <svg
@@ -96,8 +100,8 @@
             </button>
           </div>
         </transition>
-        <router-link to="AccessArtist"
-          ><button class="back_button">GO BACK</button>
+        <router-link testid="accessartist" to="AccessArtist"
+          ><button class="back_button" testid="backbtn">GO BACK</button>
         </router-link>
       </div>
     </div>

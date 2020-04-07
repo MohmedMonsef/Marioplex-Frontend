@@ -96,8 +96,8 @@
       <p testid="albumlength">{{ album_length }} SONGS</p>
       <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
     </div>
-  </div> </template
->>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .album_info {
@@ -337,4 +337,3 @@ export default {
   //      }
 };
 </script>
->

@@ -2,18 +2,26 @@
   <body>
     <span class="black_body">
       <div class="black_body">
-        <ArtistHeader></ArtistHeader>
+        <ArtistHeader testid="artistheader"></ArtistHeader>
         <div class="coverphoto">
-          <img class="c_photo" src="../assets/black_ground.png" />
+          <img
+            class="c_photo"
+            src="../assets/black_ground.png"
+            testid="coverphoto"
+          />
         </div>
-        <EditBio v-if="show" />
-        <UploadSong v-if="showupload"></UploadSong>
+        <EditBio testid="editbio" v-if="show" />
+        <UploadSong testid="uploadsong" v-if="showupload"></UploadSong>
         <div class="bio">
           <div class="A_Image"></div>
           <div>
             <h2 class="bioheader">Bio</h2>
           </div>
-          <button class="svg-container" @click="changeModalState()">
+          <button
+            class="svg-container"
+            testid="editbtn"
+            @click="changeModalState()"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -184,10 +192,14 @@
             side hello from the other side hello from the other side hello from
             the other side hello from the other side
           </p>
-          <button class="c_track" @click="changeModalStateUpload()">
+          <button
+            class="c_track"
+            testid="createtrack"
+            @click="changeModalStateUpload()"
+          >
             Create Track
           </button>
-          <button class="c_album">Create Album</button>
+          <button class="c_album" testid="createalbum">Create Album</button>
         </div>
 
         <!--<DeleteSong></DeleteSong>-->

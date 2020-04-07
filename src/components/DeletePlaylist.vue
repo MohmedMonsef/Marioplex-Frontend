@@ -22,9 +22,13 @@
         ></div>
       </transition>
 
-      <transition name="slide" appear>
+      <transition testid="dplaylistpopup" name="slide" appear>
         <div class="modal" v-if="showModalDelete">
-          <button class="cancel" @click="changeModalStateDelete()">
+          <button
+            class="cancel"
+            testid="cancelicon"
+            @click="changeModalStateDelete()"
+          >
             <svg
               width="32"
               height="32"
@@ -40,14 +44,18 @@
             </svg>
           </button>
 
-          <h1 class="title">Are you sure,you want to delete this song!!</h1>
+          <h1 class="title">Are you sure,you want to delete this playlist!!</h1>
 
-          <button class="cancel_button" @click="changeModalStateDelete()">
+          <button
+            class="cancel_button"
+            testid="cancelbtn"
+            @click="changeModalStateDelete()"
+          >
             cancle
           </button>
           <button
             class="delete_button"
-            testid="confirm_create"
+            testid="deletebtn"
             @click.prevent="DeletePlaylist()"
             @click="changeModalStateDelete()"
           >

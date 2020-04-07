@@ -57,17 +57,19 @@ export default {
       console.log("in actions");
       commit("toggleModalDelete", todeleteid);
     },
-    CreatePlaylist({ commit }, payload) {
-      console.log("my payload", payload);
+    ClaimArtistProfile({ commit }, payload) {
+      console.log("wslllllll", payload);
       axios
-        .post("/users/playlists", { name: payload.name })
+        .post("/me/ToArtist", payload)
         .then(response => {
-          const playlists = response.data;
-          //var id = response.data.id;
-          console.log("wsl", playlists);
-          // var i = playlists.playlistname;
-          console.log("de i");
-          commit("CreatePlaylist", playlists);
+          const claim = response.status;
+          if (claim == 200) {
+            commit("logout");
+            localStorage.removeItem("x-auth-token");
+            delete axios.defaults.headers.common["x-auth-token"];
+            //console.log("wsl", claim);
+            commit("ClaimArtistProfile");
+          }
         })
         .catch(error => {
           console.log(error);

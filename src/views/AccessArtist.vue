@@ -2,7 +2,7 @@
   <span class="head">
     <div>
       <div class="header">
-        <router-link to="ForArtist">
+        <router-link testid="forartist" to="ForArtist">
           <svg
             width="240"
             height="40"
@@ -25,8 +25,8 @@
           If you already have music on Spotify, you can get access to stats,
           pitch tracks to our editors, and more.
         </p>
-        <router-link to="ClaimArtist">
-          <button class="access_button">Continue</button>
+        <router-link tetid="claimartist" to="ClaimArtist">
+          <button class="access_button" testid="accessbtn">Continue</button>
         </router-link>
       </div>
     </div>

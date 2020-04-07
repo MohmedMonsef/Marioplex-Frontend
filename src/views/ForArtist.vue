@@ -1,7 +1,7 @@
 <template>
   <span class="full_screen">
     <div class="container">
-      <home-navigation-bar class="artist_nav_bar" />
+      <home-navigation-bar testid="homenavbar" class="artist_nav_bar" />
       <div class="For_Artist">
         <div class="info">
           <div class="p_s_container">
@@ -15,8 +15,10 @@
             250+ million fans are wating for you.Claim your profile to access
             Spotify for Artists.
           </p>
-          <router-link to="AccessArtist">
-            <button class="claim_access">CLAIM YOUR PROFILE</button>
+          <router-link testid="accessartist" to="AccessArtist">
+            <button class="claim_access" testid="claimartist">
+              CLAIM YOUR PROFILE
+            </button>
           </router-link>
         </div>
       </div>
