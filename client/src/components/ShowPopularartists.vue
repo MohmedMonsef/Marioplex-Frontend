@@ -1,39 +1,39 @@
 <template>
   <div
     class="card rounded col-lg-20% "
-    testid="popularplaylist card"
+    testid="popularartist card"
     @mouseover="hover = true"
     @mouseleave="hover = false"
   >
     <img
-      class="card-img-top mx-auto d-block"
+      class="card-img-top mx-auto d-block rounded-circle"
       :src="images"
       alt="Card image"
       id="cardimg"
-      testid="popularplaylist card image"
+      testid="popularartist card image"
     />
-    <div class="card-body" id="cardbody" testid="popularplaylist card body">
-      <h4 class="card-title" id="cardtitle" testid="popularplaylist card title">
+    <div class="card-body" id="cardbody" testid="popularartist card body">
+      <h4 class="card-title" id="cardtitle" testid="popularartist card title">
         {{ name }}
       </h4>
       <p
         class="card-text"
         id="carddescribtion"
-        testid="popularplaylist card describtion"
+        testid="popularartist card describtion"
       >
-        {{ Description }}
+        Artist
       </p>
-        <button v-if="hover" class="play-button" testid="play-button">
+       <button v-if="hover" class="play-button" testid="play-button">
             <i class="fa fa-play"></i>
             <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
         </button>
       <router-link
-        :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"
+        to="/ArtistProfile"
         class="stretched-link"
         id="carglink"
-        testid="popularplaylist card link"
+        testid="popularartist card link"
       ></router-link>
-      <!-- should navigate to playlist page -->
+      <!-- should navigate to artist page -->
     </div>
   </div>
 </template>
@@ -95,7 +95,7 @@ export default {
       hover: false
     };
   },
-  name: "ShowPopularplaylists",
-  props: ["images", "name", "Description" , "playlist_id"]
+  name: "ShowPopularartists",
+  props: ["images", "name"]
 };
 </script>

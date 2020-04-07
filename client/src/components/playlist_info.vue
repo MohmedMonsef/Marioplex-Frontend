@@ -127,7 +127,7 @@
 .playlistname {
   color: white;
   margin: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 button {
   background-color: transparent;

@@ -1,34 +1,34 @@
 <template>
-    <router-link  
-        :to="{ path: '../album/' + albumId}"
-        id="carglink"  
-        testid="album card link"
-    >   <!-- should navigate to album page -->
-        <div 
-            class="card rounded col-lg-20% " 
-            testid="album card" 
-            @mouseover="hover=true" @mouseleave="hover=false"
-        >
-            <img
-                class="card-img-top mx-auto d-block"
-                :src="images"
-                alt="Card image"
-                id="cardimg"
-                testid="album image"
-                />
-            <div class="card-body" id="cardbody" testid="album card body">
-                <h4 class="card-title" id="cardtitle" testid="album name">
-                    {{ name }}
-                </h4>
-                <router-link  
-                    class="ard-link artistlink" 
-                    to="/HomeWebPlayer" 
-                    testid="artist page link"> {{ artistname }}  
-                </router-link>
-                <i v-if="hover" class="fa fa-play-circle" testid="album play icon"></i>
-            </div>
-        </div>
-    </router-link>
+  <router-link :to="{path:'../album/'+ albumId}" id="carglink" testid="album card link">
+    <!-- should navigate to album page -->
+    <div
+      class="card rounded col-lg-20%"
+      testid="album card"
+      @mouseover="hover=true"
+      @mouseleave="hover=false"
+    >
+      <img
+        class="card-img-top mx-auto d-block"
+        :src="images"
+        alt="Card image"
+        id="cardimg"
+        testid="album image"
+      />
+      <div class="card-body" id="cardbody" testid="album card body">
+        <h4 class="card-title" id="cardtitle" testid="album name">{{ name }}</h4>
+        <router-link
+          class="ard-link artistlink"
+          to="/ArtistProfile"
+          testid="artist page link"
+        >{{ artistname }}
+        </router-link>
+        <button v-if="hover" class="play-button" testid="play-button">
+            <i class="fa fa-play"></i>
+            <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
+        </button>
+      </div>
+    </div>
+  </router-link>
 </template>
 
 <style scoped>
@@ -38,7 +38,7 @@
   height: 270px;
   margin-left: 15px;
   margin-top: 15px;
-   z-index: 0;
+  z-index: 0;
 }
 #cardimg {
   width: 158px;
@@ -51,34 +51,51 @@ h4 {
   color: white;
   margin-bottom: 4px;
 }
-.artistlink{
+.artistlink {
   font-size: 14px;
   color: gray;
   display: inline;
-  position:absolute;
+  position: absolute;
 }
-#carglink{
-display: block;
-outline: none;
-text-decoration: none;
+#carglink {
+  display: block;
+  outline: none;
+  text-decoration: none;
 }
-i{
-  margin-left: 130px;
+i {
+  color: white;
+  font-size: 14px;
+ position: absolute;
+}
+#pauseicone{
+  color: white;
+  font-size: 12px;
+ position: absolute;
+ margin-top: 1px;
+}
+.play-button{
+   margin-left: 127px;
   margin-bottom: 20px;
-  color: #1db954;
+  background-color: #1db954;
   position: relative;
   font-size: 40px;
+   border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    padding-bottom: 15px;
+    padding-right: 15px;
 }
 </style>
 
 <script>
 export default {
-  data: function(){
-    return{
-     hover: false
-    }
+  data: function() {
+    return {
+      hover: false
+    };
   },
     name: "lib-albums",
-    props: ["images", "name", "artistname" , "albumId"]
+    props: ["images", "name", "artistname","albumId","artistId"]
 }
 </script>

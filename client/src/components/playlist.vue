@@ -6,7 +6,12 @@
    <div class="defaultimage">
    <svg id="musicicon" width="90" height="89" viewBox="0 0 80 81" xmlns="http://www.w3.org/2000/svg"><title>Playlist Icon</title><path d="M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z" fill="currentColor" fill-rule="evenodd"></path></svg>
    </div>
-   <h2 class="playlistname" testid="playlistname">New Playlist</h2>
+   <div>
+   <h2 v-if="playlist_name == null"  class="playlistname" testid="defaultplaylistname">New Playlist</h2>
+   <h2 v-if="playlist_name != null"  class="playlistname" testid="playlistname">{{playlist_name}}</h2>
+   <router-link to="/" id="owner_name" testid="ownername">{{owner_name}}</router-link>
+   </div>
+
    <button class="playbutton" testid="playbutton">PLAY</button>
    <div class="morechoices">
           <span data-toggle="tooltip" title="More">
@@ -46,8 +51,18 @@
 }
 .playlistname{
     color: white;
-    margin: 25px;
+    margin: 20px;
+    margin-bottom: 5px;
     font-weight: bold;
+}
+#owner_name {
+  color: #b3b3b3;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.015em;
+}
+#owner_name:hover {
+  color: white;
 }
 button{
   background-color: transparent;
@@ -111,6 +126,7 @@ button:focus {
 }
 </style>
 <script>
+import { mapGetters } from 'vuex';
 export default {
     data:function(){
         return {
@@ -125,5 +141,11 @@ export default {
       this.show = !x;
       },
   },
+  computed:{
+  ...mapGetters({
+  playlist_name : "playlist/playlist_name",
+  owner_name: "playlist/owner_name"
+  }),
+  }
 }
 </script>

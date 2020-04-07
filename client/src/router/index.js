@@ -69,7 +69,12 @@ const routes = [
                 path: "album/:album_id",
                 name: "album",
                 component: album
-            }
+            },
+            {
+                path: "/ArtistProfile",
+                name: "ArtistProfile",
+                component: ArtistProfile
+            },
         ]
     },
     {
@@ -118,11 +123,7 @@ const routes = [
         name: "UserAccount",
         component: UserAccount
     },
-    {
-        path: "/ArtistProfile",
-        name: "ArtistProfile",
-        component: ArtistProfile
-    },
+  
 ];
 
 const router = new VueRouter({

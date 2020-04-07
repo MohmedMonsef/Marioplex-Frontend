@@ -23,6 +23,7 @@
     </div>
 </template>
 
+
 <style lang="scss" scoped>
 .loading{
   display: flex;

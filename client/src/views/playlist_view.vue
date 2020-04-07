@@ -12,10 +12,10 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
           <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
           <emptytracks v-if="this.playlist_length == 0"/>
-          <draggable  @end="ReorderTracks" v-else>
+          <draggable ghost-class="ghost" @end="ReorderTracks" v-else>
             <transition-group type="transition" name="flip-list">
          <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
-         <song-component 
+         <song-component class="sortable"
           v-for="(p, i) in playlist_tracks"
           :key="p.trackid"
           :index="i"
@@ -56,6 +56,12 @@
     margin-top: 0; 
     display: flex;
     
+}
+.sortable-drag{
+ opacity: 0;
+}
+.ghost{
+  border-bottom: 1px solid #1ed760;
 }
 // @media screen and (max-width: 1196px) {
 //  .row{

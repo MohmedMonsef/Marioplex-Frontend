@@ -1,5 +1,5 @@
 <template>
-    <div class="home-navbar">
+    <div class="home-navbar" id="navBar">
         <button class="prev" @click="goprev()">
             <i class="fa fa-angle-left"></i>
         </button>
@@ -7,7 +7,7 @@
             <i class="fa fa-angle-right"></i>
         </button>
         <div class="login"  v-if="isLoggedIn == 'success'">
-            <div class="library-navbar">
+            <div class="library-navbar" v-if="inlibrary">
                 <ul class="nav">
                     <li class="nav-item active">
                         <div class="divOnFocus">
@@ -75,7 +75,7 @@
                     </router-link>
                 </div>
             </div>
-            <a href="/GetPremium" target="_blank">
+            <a href="/GetPremium" target="_blank" v-if="!inlibrary&&!insearch">
                     <button
                     class="upgrade_button"
                     testid="upgrade_button"
@@ -124,28 +124,28 @@
   position: fixed;
   width: 100%;
   height: 60px;
-  background-color: #161516;
-  /* background: linear-gradient(141deg, rgba(16,15,16,0)0%, rgba(16,15,16,0.4) 51%, rgba(16,15,16,0.8) 75%); */
+  /* background-color: #161516; */
   top: 0%; 
   z-index: 0;
-  /* margin-bottom: 20px; */
+  /* background:transparent; */
 }
 .divOnFocus {
   width: 100px;
   height: 30px;
   border-radius:3px;
-  background: #161516;
+  /* background: #161516; */
+  background: transparent;
   margin-left: 8px;
   margin-top: 15px; 
 }
-.divOnFocus1 {
+/* .divOnFocus1 {
   width: 80px;
   height: 30px;
   border-radius:3px;
   background: #161516;
   margin-left: 8px;
   margin-top: 15px; 
-}
+} */
 .divOnFocus :focus{
    width: 100px;
   height: 30px;
@@ -202,7 +202,8 @@
   background: none;
   height: 38px;
   width: 135px;
-  background-color: #161516;
+  /* background-color: #161516; */
+  background: transparent;
   border-radius: 26px;
   border-color: white;
   color: #fff;
@@ -239,7 +240,8 @@
     border-radius: 20px;
     width: 120px;
     height: 38px;
-    background-color: #161516;
+    /* background-color: #161516; */
+    background: transparent;
     margin-left: 61%;
     margin-top: 10px;
     font-size: 12px;
@@ -299,7 +301,8 @@ import { mapGetters } from "vuex";
 export default {
     data: function(){
         return{
-      inlibrary: false 
+      inlibrary: false,
+      insearch: false, 
         }
     },
     name:"LibraryNavbar",
@@ -308,10 +311,6 @@ export default {
        isLoggedIn: "authorization/GetStatus",
        Username: "authorization/Username"
     }),
-    // IN: function () {
-    //    return this.ISinlibrary();
-        
-    // }
      },
     methods:{
        logout() {
@@ -322,24 +321,55 @@ export default {
     },
     gonext: function () {
          this.$router.go(1);
+    },
+    handleScroll()
+    {
+        console.log("transparent dai");
+        var n =document.getElementById('navBar');
+        if(window.scrollY > 20)
+        {   
+            n.style.background = "#161516";
+        }
+        else
+        {
+            n.style.background = "transparent";
+        }
+        
+    },
+    check(){
+        if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
+            this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
+            this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
+         {
+                this.inlibrary=true;
+         }
+            else
+            {
+                this.inlibrary=false;
+            }
+        if (this.$router.currentRoute.path == '/HomeWebPlayer/search')
+        {
+            this.insearch=true;
+        }
+             else
+            {
+                this.insearch=false;
+            }
+        
+        console.log('lib : ',this.inlibrary ,'search : ',this.insearch );
     }
   },
-//   mounted(){
-//          if (this.$router.currentRoute.path == '/HomeWebPlayer/library/library-playlists' || 
-//             this.$router.currentRoute.path == '/HomeWebPlayer/library/library-artists' ||
-//             this.$router.currentRoute.path == '/HomeWebPlayer/library/library-albums') 
-//          {
-//                 this.inlibrary=true;
-//          }
-//           else
-//                {this.inlibrary=false;  }
-//          console.log(this.inlibrary , '  daaaaaaai')
-//          return this.inlibrary;
-//   },
-//   watch:{
-//      inlibrary() {
-//          this.ISinlibrary();
-//     }
-//   }
+   created(){
+           
+            // this.handleScroll();
+     },
+     destroyed(){
+            window.removeEventListener('click', this.check);
+            window.removeEventListener("scroll", this.handleScroll);
+     },
+     mounted(){
+          window.addEventListener('click', this.check);
+          window.addEventListener("scroll", this.handleScroll);
+     }
 }
 </script>

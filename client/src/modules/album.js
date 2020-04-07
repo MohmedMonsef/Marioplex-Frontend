@@ -47,6 +47,9 @@ set_likedalbum(state , like){
             commit ("set_album_name" , album.name)
             commit ("set_artist_name" , album.artistName)
             commit ("set_album_image" , album.images[0])
+            commit("set_likedalbum" ,album.isSaved )
+            console.log("data" , album)
+            console.log("my album" , album.isSaved)
           })
           .catch(error => {
             console.log(error);

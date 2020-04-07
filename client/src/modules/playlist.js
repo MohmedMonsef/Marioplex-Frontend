@@ -55,6 +55,7 @@ set_likedplaylist(state , like){
             commit ("set_playlist_name" , playlist[0].name)
             commit ("set_owner_name" , playlist[1].ownerName)
             commit ("set_playlist_image" , playlist[0].images[0])
+            commit("set_likedplaylist" , playlist[0].isfollowed)
             commit("set_playlist_loaded", true);
           })
           .catch(error => {

@@ -10,7 +10,7 @@
              <h2 class="albumname" testid="album_name">{{this.album_name}}</h2>
              </span>
              
-             <router-link to="/" id="artist_name" testid="artist_name">{{artist_name}}</router-link>
+             <router-link to="/HomeWebPlayer" id="artist_name" testid="artist_name">{{artist_name}}</router-link>
              </div>
              <button v-if="!play" class="playbutton" testid="playbutton" @click="playSong() , isplaying()">PLAY</button>
              <button v-if="play" class="pausebutton" testid="pausebutton" @click="pauseSong() , stopplayingbutton()">PAUSE</button>
@@ -64,7 +64,7 @@
 .albumname{
     color: white;
     margin: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 button{
   background-color: transparent;

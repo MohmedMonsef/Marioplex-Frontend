@@ -159,7 +159,7 @@ export default {
   }
   },
   getters: {
-    Username: state => state.User.username,
+    Username: state => state.User.displayName,
     GetStatus: state => state.status
   }
 };
