@@ -88,6 +88,7 @@ export default {
         show:false,
         oldIndex:'',
         newIndex:'',
+        playlist_id:''
         };
     },
     components: {
@@ -104,15 +105,19 @@ export default {
       window.Element.show = false;
       this.show = !x;
       },
-      ReorderTracks(event){
-        console.log("inplaylist_view",event)
-        
+     ReorderTracks(event){
+       // console.log("inplaylist_view",event)
+       let playlist_Id=this.$route.params.playlist_id;
+       this.playlist_id=playlist_Id;
         this.oldIndex=event.oldIndex;
         this.newIndex=event.newIndex;
         let payload={
-          oldIndex:this.oldIndex,
-          newIndex:this.newIndex,
+          start:this.oldIndex,
+          before:this.newIndex,
+          playlist_id:this.playlist_id
+          
         }
+        console.log("in playlist_view ",this.playlist_id)
         this.$store.dispatch("playlist/ReorderTracks",payload);
       },
   },

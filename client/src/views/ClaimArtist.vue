@@ -345,9 +345,9 @@ export default {
     },
     ClaimArtistProfile(){
       let payload={
-        Name:this.Name,
-        Genre:this.Genre,
-        Description:this.Description
+        name:this.Name,
+        genre:this.Genre,
+       info:this.Description
 
       }
       this.$store.dispatch("authorization/ClaimArtistProfile",payload)

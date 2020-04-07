@@ -53,69 +53,103 @@
   margin: 10;
   padding: 10;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body {
   font-family: "montserrat", sans-serif;
+  overflow-y: hidden;
 }
 
 div {
+  /* relative */
   position: relative;
   display: block;
   width: 500%;
   height: 100vh;
+ overflow: hidden;
 }
 
 .creat_button {
-  position: fixed;
-  top: 60%;
-  left: 50%;
+  /* fixed */
+  /* absolute */
+  position: absolute;
+  top: 70%;
+  left: 48%;
   appearance: none;
   outline: none;
   border: none;
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
+  height: 6%;
+  width: 25%;
   padding: 8px 34px;
   background-color: #1ed760;
-  border-radius: 26px;
+  border-radius: 500px;
   border-color: transparent;
-
   color: #fff;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 700;
-  outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  line-height: 18px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  border: 2px solid transparent ;
+  will-change: transform; 
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  max-width:130px;
+  max-height:50px ;
+  z-index: 4;
+  margin-left:1%;
 }
 .cancel_button {
-  position: fixed;
-  top: 60%;
+  /* fixed */
+  /* absolute */
+  position: absolute ;
+  top: 70%;
   left: 35%;
+  right:50%; 
   appearance: none;
   outline: none;
-
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
+  height: 6%;
+  width: 25%;
   padding: 8px 34px;
   background-color: transparent;
-  border-radius: 26px;
+  border-radius: 500px;
   border-color: #fff;
-
   color: #fff;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 700;
-  outline: none;
-  transition: 0.4s ease-out;
+  transition: all 33ms cubic-bezier(.3,0,0,1);
+  overflow-y: hidden;
+  overflow-x: hidden;
+  z-index:5;
+  line-height: 18px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  border: 2px solid ;
+  will-change: transform; 
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  max-width:130px;
+  max-height:50px ;
+  margin-right:1% ;
+  /* margin-block-end: 200px; */
 }
 
 .modal-overlay {
-  position: fixed;
+  /* fixed */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,15 +159,17 @@ div {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 98;
+  z-index: 2;
   width: 100%;
   height: 200%;
   background-color: rgba(0, 0, 0, 0);
+ overflow: hidden;
 }
 
 .modal {
+  /* fixed */
   position: fixed;
-  z-index: 9998;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
@@ -141,6 +177,7 @@ div {
   background-color: rgba(0, 0, 0, 0.8);
   display: table;
   transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 input {
   width: 100%;
@@ -156,43 +193,52 @@ input {
   text-transform: none;
    outline: none;
    font-weight: bold;
+   overflow-y: hidden;
+   z-index:6;
+   overflow: hidden;
 }
 ul {
   color: red;
+  overflow: hidden;
 }
 
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
+  overflow: hidden;
 }
 
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+ overflow: hidden;
 }
 
 .slide-enter-active,
 .slide-leave-active {
   transition: transform 0.5s;
+  overflow: hidden;
 }
 
 .slide-enter,
 .slide-leave-to {
   transform: translateY(-50%) translateX(100vw);
+  overflow: hidden;
 }
 .cancel {
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 20%;
   display: inline-block;
   background-color: transparent;
   color: #fff;
-
   border: none;
+  overflow: hidden;
+  z-index:4;
 }
 .title {
   position: absolute;
-  top: 15%;
+  top: 25%;
   display: block;
   font-size: 48px;
   line-height: 56px;
@@ -202,6 +248,8 @@ ul {
   text-align: center;
   margin: 16px 0;
   width: 100%;
+  overflow: hidden;
+  z-index: 6;
 }
 .grandchild {
   position: fixed;
@@ -210,18 +258,34 @@ ul {
   height: 30%;
   left: 15%;
   padding: 32px 0px;
+  overflow: hidden;
+  z-index: 6;
 }
 .child {
   position: fixed;
   height: 30%;
-  top: 30%;
+  top: 40%;
   bottom: 50%;
   background-color: #424242;
+  overflow: hidden;
+  z-index: 6;
 }
 .playlist_name {
   color: #fff;
+  overflow: hidden;
+  z-index: 6;
+}
+.column{
+  position: absolute;
+  top:70%;
+  max-width:160px;
+  max-height: 50px;
+  z-index: 4;
 }
 </style>
+
+
+
 <script>
 // @ is an alias to /src
 //import {mapActions} from "vuex";

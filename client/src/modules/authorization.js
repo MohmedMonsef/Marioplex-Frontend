@@ -28,14 +28,16 @@ export default {
       state.token = "";
       state.User={};
     },
-    ClaimArtistProfile(state,payload){
-        state.User.update({
-          Name:payload.Name,
-        Genre:payload.Genre,
-        Description:payload.Description
-      });
-      //state.User +=payload
-      console.log('nori',payload.Name)
+    ClaimArtistProfile(){
+      //   state.User.update({
+      //     Name:payload.Name,
+      //   Genre:payload.Genre,
+      //   Description:payload.Description
+      // });
+      // //state.User +=payload
+      // console.log('nori',payload.Name)
+
+
       
   }
   },
@@ -141,11 +143,15 @@ export default {
     },
     ClaimArtistProfile({commit},payload){
       console.log("wslllllll", payload);
-      axios.put("/claimartist",{data:payload})
+      axios.post("/me/ToArtist",payload)
       .then(response=>{
-          const claim = response.data;
-        console.log("wsl", claim);
-        commit("ClaimArtistProfile", claim);
+          const claim = response.status;
+          if(claim==200){
+            commit("logout");
+            localStorage.removeItem("x-auth-token");
+            delete axios.defaults.headers.common["x-auth-token"];
+        //console.log("wsl", claim);
+        commit("ClaimArtistProfile");}
       })
       .catch(error => {
           console.log(error);

@@ -1,14 +1,20 @@
 <template>
+<body>
   <span class="black_body">
     <div class="black_body">
 
       <ArtistHeader></ArtistHeader>
+      <div class="coverphoto">
+        <img class="c_photo" src="../assets/black_ground.png" />
+      </div>
       <EditBio v-if="show"/>
        <UploadSong v-if="showupload"></UploadSong>
       <div class="bio">
         <div class="A_Image"></div>
+        <div>
         <h2 class="bioheader">Bio</h2>
-        <button @click="changeModalState()">
+        </div>
+        <button class="svg-container" @click="changeModalState()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -62,7 +68,7 @@
           </text>
         </svg>
         </button>
-       <p class="artistbio">hello from the other side  </p>
+       <p class="artistbio">hello from the other side  hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side  hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side from the other side hello from the other side  hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side hello from the other side </p>
        <button class="c_track" @click="changeModalStateUpload()">Create Track</button> 
        <button class="c_album">Create Album </button>
       </div>
@@ -70,33 +76,53 @@
       <!--<DeleteSong></DeleteSong>-->
     </div>
   </span>
+</body>
 </template>
 <style scoped>
-.black_bod{background-color: black;
+.black_body{background-color: black;
 
+}
+
+body{
+  height: 1100px;
+  /* width:1560px; */
+  background-color:black ;
+}
+div{
+  background-color:black;
 }
 svg{
   font-size: 5px;
   position:absolute;
-  top:40%;
+  top:60%;
   left:70%;
+  background-color: black;
   
 }
 .bioheader{
   position:absolute;
-  top:30%;
+  top:50%;
+  color:#fff;
+  background-color: black;
+  width:100%;
 }
 .artistbio{
   min-width: 70%;
   max-width: 70%;
   max-height: 500px;
   position:absolute;
-  top:50%;
-  overflow:scroll;
+  top:70%;
+  overflow-y:scroll;
+  background-color: black;
+  color: #fff;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
 .c_track{
 position: absolute;
-  top: 50%;
+  top: 70%;
   left: 80%;
   appearance: none;
   outline: none;
@@ -120,7 +146,7 @@ position: absolute;
 }
 .c_album{
 position: absolute;
-  top: 40%;
+  top: 60%;
   left: 80%;
   appearance: none;
   outline: none;
@@ -142,6 +168,32 @@ position: absolute;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
 }
+.coverphoto {
+  position :absolute;
+  top:0%;
+  /* The image used */
+  background-image: url("../assets/black_ground.png");
+
+  /* Full height */
+   height: 50%;  
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.c_photo{
+   height: 50%; 
+   width:100%
+}
+/* .svg-container{
+ 
+  position:absolute;
+   top:65%;
+    left:75%;
+    background-color: black;
+} */
+
 </style>
 <script>
 //import { mapGetters } from "vuex";

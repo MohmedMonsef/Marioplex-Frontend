@@ -63,11 +63,13 @@ set_likedplaylist(state , like){
         },
         ReorderTracks({commit},payload){
           axios
-          .put("api/playlists/tracks",{data:payload})
+          .put("/playlists/"+payload.playlist_id+"/tracks",{data:payload})
           .then(response=>{
+            if (status==200){
             let track=response.data;
             console.log("theresponse from mirage is",response)
             commit("ReorderTracks",track)
+            }
           })
           .catch(error=>{
             console.log(error)
