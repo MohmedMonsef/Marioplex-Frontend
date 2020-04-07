@@ -2,10 +2,11 @@
   <div class="likedtracks">
     <div class="row" v-if="this.likedtracks_length > 0">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-        <LikedTracks />
+        <LikedTracks testid="liketracks" />
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <song-component
+          testid="songcomponent"
           v-for="p in likedtracks_tracks"
           :key="p._id"
           :song_id="p._id"
@@ -18,7 +19,7 @@
       </div>
     </div>
     <div class="row" v-else>
-      <emptylikedtracks />
+      <emptylikedtracks testid="emptylikedtracks" />
     </div>
   </div>
 </template>

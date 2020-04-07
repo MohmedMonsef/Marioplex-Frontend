@@ -28,12 +28,18 @@ export default {
       commit("toggleModal");
     },
     ClaimArtistProfile({ commit }, payload) {
+      console.log("wslllllll", payload);
       axios
-        .put("api/claimartist", { data: payload })
+        .post("/me/ToArtist", payload)
         .then(response => {
-          const claim = response.data;
-          console.log("wsl", claim);
-          commit("ClaimArtistProfile", claim);
+          const claim = response.status;
+          if (claim == 200) {
+            commit("logout");
+            localStorage.removeItem("x-auth-token");
+            delete axios.defaults.headers.common["x-auth-token"];
+            //console.log("wsl", claim);
+            commit("ClaimArtistProfile");
+          }
         })
         .catch(error => {
           console.log(error);

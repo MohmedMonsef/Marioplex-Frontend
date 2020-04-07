@@ -146,11 +146,24 @@
         </div>
         <!-- here the song bar moves correctly -->
         <div class="topcontrols">
-          <span class="starttime" id="starttime">{{ changeTime }}</span>
-          <div class="seekbar" id="seekbar" @mousedown="startDrag()">
-            <div class="progressbar" id="progressbar"></div>
+          <span class="starttime" id="starttime" testid="starttime">{{
+            changeTime
+          }}</span>
+          <div
+            class="seekbar"
+            id="seekbar"
+            testid="seekbar"
+            @mousedown="startDrag()"
+          >
+            <div
+              class="progressbar"
+              id="progressbar"
+              testid="progressbar"
+            ></div>
           </div>
-          <span class="endtime" id="endtime">{{ totalDuration }}</span>
+          <span class="endtime" id="endtime" testid="endtime">{{
+            totalDuration
+          }}</span>
         </div>
         <!-- the end of the new code  -->
       </div>
@@ -172,15 +185,20 @@
             <div
               class="volumeseekbar"
               id="volumeseekbar"
+              testid="volumeseekbar"
               @mousedown="volumestartDrag()"
             >
-              <div class="volumeprogressbar" id="volumeprogressbar"></div>
+              <div
+                class="volumeprogressbar"
+                id="volumeprogressbar"
+                testid="volumeprogressbar"
+              ></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="toast" id="liketoast"></div>
+    <div class="toast" id="liketoast" testid="liketoast"></div>
   </div>
 </template>
 

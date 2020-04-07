@@ -2,10 +2,11 @@
   <div class="album">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-        <albuminfo />
+        <albuminfo testid="albuminformation" />
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <song-component
+          testid="songcomponent"
           v-for="p in album_tracks"
           :key="p._id"
           :song_id="p._id"

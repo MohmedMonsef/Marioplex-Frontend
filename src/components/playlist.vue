@@ -49,8 +49,8 @@
         </div>
       </div>
     </div>
-  </div> </template
->>
+  </div> 
+  </template>
 
 <style lang="scss" scoped>
 .emptyplaylist {
