@@ -1,58 +1,70 @@
 import axios from "axios";
 import store from "../store";
 export default {
-  namespaced: true,
-  state: {
-    showModalDelete: false,
-    showModal: false,
-    todelete: 0,
-    Playlists: [],
-    loadingplaylists: false
-  },
-  getters: {
-    showModal: state => {
-      return state.showModal;
+    namespaced: true,
+    state: {
+        showModalDelete: false,
+        showModal: false, 
+        showModalAdd:false,
+        todelete:0,
+        playlistoftrack:0,
+        trackofplaylist:0,      
+        Playlists: [],
+        loadingplaylists:0
     },
-    todelete: state => {
-      return state.todelete;
+    getters: {
+        showModal: state => {
+            return state.showModal;    
+        },
+        todelete:state =>{
+            return state.todelete;
+        },
+        showModalDelete: state => {
+           // console.log("in getters")
+            return state.showModalDelete;
+        },
+        showModalAdd: state => {
+            return state.showModalAdd;    
+        },
+        playlists: state => state.Playlists,
+        playlistoftrack:state=>{
+            return state.playlistoftrack;
+        },
+        trackofplaylist:state=> {
+            return state.trackofplaylist;
+        },
+        loadingplaylists: state => state.loadingplaylists,
     },
-    showModalDelete: state => {
-      // console.log("in getters")
-      return state.showModalDelete;
-    },
-    playlists: state => state.Playlists,
-    loadingplaylists: state => state.loadingplaylists
-  },
-  mutations: {
-    toggleModal(state) {
-      state.showModal = !state.showModal;
-    },
-    toggleModalDelete(state, todeleteid) {
-      console.log("in mutations");
-      state.showModalDelete = !state.showModalDelete;
-      state.todelete = todeleteid;
-    },
+    mutations: {
+        toggleModal(state) {
+            state.showModal = !state.showModal;
+        },
+        toggleModalDelete(state,todeleteid) {
+            console.log("in mutations")
+            state.showModalDelete = !state.showModalDelete;
+            state.todelete=todeleteid
+        },
+        toggleModalAdd(state,trackid) {
+            state.showModalAdd = !state.showModalAdd;
+            state.trackofplaylist=trackid;
+        },
 
-    CreatePlaylist(state, playlists) {
-      state.Playlists.push(
-        //id: id,
-        // playlistname: i
-        playlists
-      );
-      console.log("nori");
+        CreatePlaylist(state, playlists) {
+            state.Playlists.push(
+                playlists
+            );
+            state.playlistoftrack=playlists.id;
+            console.log("nori");
+        },
+        setUserPlaylist(state, playlists) {
+            state.Playlists = playlists;
+        },
     },
-    setUserPlaylist(state, playlists) {
-      state.Playlists = playlists;
-    },
-    set_loading_playlists(state, value) {
-      state.loadingplaylists = value;
-    }
-
-    // DeletePlaylist(state, id) {
-    //  state.Playlists.splice(id, 1);
-    // }
-  },
   actions: {
+    toggleModalAdd({ commit },trackid) {
+      console.log(" id of track in creatplaylist moudle",trackid)
+      commit("toggleModalAdd",trackid);
+  },
     toggleModal({ commit }) {
       commit("toggleModal");
     },
@@ -76,7 +88,7 @@ export default {
           console.log(error);
         });
     },
-    showplaylists({ commit }) {
+  showplaylists({ commit ,state}) {
       commit("set_loading_playlists", false);
       axios
         .get("/me/playlists")
@@ -84,15 +96,21 @@ export default {
           let playlists = response.data;
           console.log("test function", playlists);
           commit("setUserPlaylist", playlists);
-          commit("set_loading_playlists", true);
+          if(state.loadingplaylists == 0){
+            state.loadingplaylists =1;
+          }
         })
         .catch(error => {
+          if(state.loadingplaylists == 0){
+            state.loadingplaylists = 1;
+          }
           console.log(error);
         });
     },
     DeletePlaylist({ state }) {
       var to_del;
-      if (typeof state.todelete._id == "undefined") to_del = state.todelete.id;
+      if (typeof state.todelete._id == "undefined")
+           to_del = state.todelete.id;
       else to_del = state.todelete._id;
       axios
         .delete("/me/delete/playlists/" + to_del)

@@ -1,18 +1,5 @@
 <template>
   <div>
-    <!-- <div>
-      <ul>
-        <li v-for="(playlist, id) in Playlists" :key="playlist.id">
-          {{ playlist.playlistname }}
-          <span
-            class="Deleteplaylist"
-            testid="delete_playlist"
-            @click="DeletePlaylist(id)"
-            >x</span
-          >
-        </li>
-      </ul>
-    </div>-->
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -36,7 +23,6 @@
               fill-rule="evenodd"
             />
           </svg>
-          <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
 
         <h1 class="title">Create New Playlist</h1>
@@ -213,14 +199,6 @@ ul {
 
   border: none;
 }
-#myicon {
-  display: inline-block;
-  align-items: center;
-  color: #fff;
-  position: absolute;
-  left: 50%;
-  top: 10%;
-}
 .title {
   position: absolute;
   top: 15%;
@@ -282,29 +260,32 @@ export default {
     },
 
     CreatePlaylist() {
-      var payload;
-      if (this.playlistname) {
-        payload = {
-          name: this.playlistname,
-          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-          owner: this.username
-        };
-      } else {
-        payload = {
-          name: "New Playlist",
-          images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-          owner: this.username
-        };
+      var payload
+      if(this.playlistname)
+      {
+      payload = {
+        name: this.playlistname,
+        images: require('../assets/defaultplaylist.png'),
+        owner: this.username
+      };
+      }
+      else{
+         payload = {
+        name: "New Playlist",
+        images: require('../assets/defaultplaylist.png'),
+        owner: this.username
+      };
       }
       console.log("nerd");
       this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
+      // Addtrack();
     },
-    DeletePlaylist(id) {
-      console.log(id);
+    // DeletePlaylist(id) {
+    //   console.log(id);
 
-      this.$store.dispatch("creatplaylist/DeletePlaylist", id);
-      console.log("removed");
-    }
+    //   this.$store.dispatch("creatplaylist/DeletePlaylist", id);
+    //   console.log("removed");
+    // }
   }
 
   // When the user clicks on <div>, open the popup

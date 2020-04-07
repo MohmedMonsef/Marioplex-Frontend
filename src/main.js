@@ -12,7 +12,6 @@ import {mockServer}  from "../mockServer/mock"
 Vue.config.productionTip = false;
 
 if(process.env.NODE_ENV === "production"){
-
 //if in development call the mockServer
     mockServer();
 }

@@ -26,10 +26,10 @@
 </template>
 
 <style scoped>
-svg {
-  color: rgb(160, 158, 158);
-  margin-left: 39%;
-  margin-top: 50px;
+  svg{
+    color:rgb(160, 158, 158);
+    margin-left: 41%;
+    margin-top: 80px;
 }
 h1 {
   color: white;

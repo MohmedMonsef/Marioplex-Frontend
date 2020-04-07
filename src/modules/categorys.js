@@ -1,9 +1,9 @@
 import axios from "axios";
 export default {
   namespaced: true,
-  state: { 
-    category: [] ,
-    loading:false
+  state: {
+    category: [],
+    loading: false
   },
   mutations: {
     setcategory(state, rescategory) {
@@ -17,10 +17,10 @@ export default {
     showcategory({ commit }) {
       commit("set_loading", false);
       axios
-        .get("/category")
+        .get("/browse/categories/")
         .then(respons => {
           let rescategory = respons.data.category;
-          console.log(respons.data)
+          console.log(respons.data);
           console.log("test function", rescategory);
           commit("setcategory", rescategory);
           commit("set_loading", true);

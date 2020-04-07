@@ -62,7 +62,8 @@ export default {
     currentaudio: null,
     volumeprogress: 0,
     progress: 0,
-    trackduration: 0
+    trackduration: 0,
+    toAdd:0,
   },
   mutations: {
     setplayicon(state, playicon) {
@@ -92,7 +93,7 @@ export default {
       if (
         state.currentaudio &&
         info.song_id == state.currentsong.track._id &&
-        info.album_id == state.currentsong.artistId &&
+        info.album_id == state.currentsong.album._id &&
         info.playlist_id == state.currentsong.playlistId
       ) {
         state.currentaudio.play();
@@ -102,7 +103,10 @@ export default {
           state.currentaudio.pause();
           state.currentaudio = null;
         }
-        state.currentaudio = new Audio(state.currentsong.track.url);
+        if(typeof state.currentsong.track.url == "undefined")
+         state.currentaudio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3");
+        else
+         state.currentaudio = new Audio(state.currentsong.track.url);
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;
         state.currentsong_info = info;
@@ -145,11 +149,12 @@ export default {
           let info = {
             //should handle if its the first track on playlist or album return to zero
             song_id: nextsong.track._id,
-            album_id: nextsong.albumId,
+            album_id: nextsong.album._id,
             playlist_id: state.playlist_id,
             is_playlist: state.currentsong.isPlaylist
           };
           dispatch("playsong_state", info);
+          dispatch("Queue/Queue",null,{root: true});
         })
         .catch(error => {
           console.log(error);
@@ -171,11 +176,12 @@ export default {
                   ? 0
                   : state.currentsong_info.index - 1, //
               song_id: prevsong.track._id,
-              album_id: prevsong.albumId,
+              album_id: prevsong.album._id,
               playlist_id: prevsong.playlistId,
               is_playlist: prevsong.isPlaylist
             };
             dispatch("playsong_state", info);
+            dispatch("Queue/Queue",null,{root: true});
           })
           .catch(error => {
             console.log(error);
@@ -184,28 +190,27 @@ export default {
         dispatch("update_progress", 0);
       }
     },
-    repeatsong_state({state},flag) {
+    repeatsong_state({state ,dispatch},flag) {
       console.log("kkk",flag)
-      if(flag==1)
+      if(flag==1 && state.currentaudio)
          state.currentaudio.loop=true;
-      else if(flag==0){
-        //state.currentaudio.loop=false;
+      else if(flag==0 && state.currentaudio){
+        state.currentaudio.loop=false;
       axios
         .put("/player/repeat?state="+false)
-        .then(response => {    
-          console.log("hhhh")   
-          console.log(response );
+        .then(() => {    
+          dispatch("Queue/Queue",null,{root: true});
         })
         .catch(error => {
           console.log(error);
         });
       }
-      else{
-        //state.currentaudio.loop=false;
+      else if(flag==2 && state.currentaudio){
+        state.currentaudio.loop=false;
         axios
         .put("/player/repeat?state="+true)
-        .then(response => {       
-          console.log(response );
+        .then( () => {       
+          dispatch("Queue/Queue",null,{root: true});
         })
         .catch(error => {
           console.log(error);
@@ -214,8 +219,6 @@ export default {
     },
     shufflesong_state({dispatch },flag) {
       axios
-
-      
         .put("/me/player/shuffle?state="+flag)
         .then(() => {
           dispatch("Queue/Queue",null,{root: true});
@@ -225,25 +228,37 @@ export default {
         });
     },
     ////////////here i should send end point of like with id
-    Like({ state, commit }, track_id) { 
-      if (track_id == "") track_id = state.currentsong.track._id;
+    Like({ state, commit ,dispatch}, track_id) { 
+      var songbar=false;
+      if (track_id == ""){
+        track_id = state.currentsong.track._id;
+        songbar=true;
+      }
       console.log("in likke",track_id);
       axios
         .put("/me/like/" + track_id)
         .then(() => {
+          if(songbar || track_id == state.currentsong.track._id)
           commit("setliked", true);
+          dispatch("get_currentsong");
         })
         .catch(error => {
           console.log(error);
         });
     },
-    UnLike({ state, commit }, track_id) {
-      if (track_id == "") track_id = state.currentsong.track._id;
-      console.log("in unn likke",track_id);
+    UnLike({ state, commit,dispatch }, track_id) {
+      var songbar =false;
+      if (track_id == "")
+        {
+          track_id = state.currentsong.track._id;
+          songbar=true;
+        }
       axios
         .delete("/me/unlike/" + track_id)
         .then(() => {
+          if(songbar || track_id == state.currentsong.track._id)
           commit("setliked", false);
+          dispatch("get_currentsong");
         })
         .catch(error => {
           console.log(error);
@@ -295,6 +310,10 @@ export default {
     volume: state => {
       return state.volumeprogress;
     },
+    toadd:state=>{
+      return state.toadd
+    },
+
     currentsong_info: state => {
       return state.currentsong_info;
     }

@@ -12,14 +12,23 @@
     <ul>
       <li>
         <div class="divOnFocus">
-          <router-link to="/HomeWebPlayer" testid="homepage link" class="homepage" id="homepage1">
+          <router-link
+            to="/HomeWebPlayer"
+            testid="homepage link"
+            class="homepage"
+            id="homepage1"
+          >
             <i class="fa fa-home"></i>Home
           </router-link>
         </div>
       </li>
       <li>
         <div class="divOnFocus">
-          <router-link to="/HomeWebPlayer/search" testid="searchpage link" class="searchpage">
+          <router-link
+            to="/HomeWebPlayer/search"
+            testid="searchpage link"
+            class="searchpage"
+          >
             <i class="fa fa-search"></i>Search
           </router-link>
           <!-- router link should navigate to search page -->
@@ -38,50 +47,62 @@
         </div>
       </li>
     </ul>
-    <label testid="PLAYLISTS lable">PLAYLISTS</label>
-    <!-- creat play lists or show liked songs -->
-    <ul>
-      <li>
-        <!-- <CreatePlaylist> -->
-        <button @click="changeModalState()" testid="create button" class="createbutton">
-          <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
-        </button>
-        <!-- router link should navigate to pop up -->
-        <!-- </CreatePlaylist> -->
-      </li>
-      <li>
-        <router-link to="/HomeWebPlayer/liked-tracks" testid="likedsongs link" class="likedsongs">
-          <img src="../assets/like.png" style="width:30px; height:30px; margin-right: 15px; " />Liked Songs
-        </router-link>
-        <!-- router link should navigate to liked songs page -->
-      </li>
-    </ul>
-    <!-- lower border -->
-    <div testid="border in sidebar" class="border"></div>
-    <!-- user's play lists -->
-    <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
-      <div>
-        <ul  v-on="{contextmenu: openMenu}">
-          <li v-for="(playlist,i) in playlists1" :key="i"
-           @click.right="playlistid=playlist,showdelete=true  ">
-            <router-link to="/" testid="userplaylists" class="userplaylists">{{ playlist.name }}</router-link>
-            <!-- router link should navigate to play list page-->
-          </li>
-        </ul>
-        <ul tabindex="-1"
-         v-el="right"
-         v-if="viewMenu"
-         :blur="closeMenu"
-        id="right-click-menu">
+    <div class="loggedin" v-if="isLoggedIn == 'success'">
+      <label testid="PLAYLISTS lable">PLAYLISTS</label>
+      <!-- creat play lists or show liked songs -->
+      <ul>
+        <li>
+          <!-- <CreatePlaylist> -->
+          <button
+            @click="changeModalState()"
+            testid="create button"
+            class="createbutton"
+          >
+            <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
+          </button>
+          <!-- router link should navigate to pop up -->
+          <!-- </CreatePlaylist> -->
+        </li>
+        <li>
+          <router-link
+            to="/HomeWebPlayer/liked-tracks"
+            testid="likedsongs link"
+            class="likedsongs"
+          >
+            <img
+              src="../assets/like.png"
+              style="width:30px; height:30px; margin-right: 15px; "
+            />Liked Songs
+          </router-link>
+          <!-- router link should navigate to liked songs page -->
+        </li>
+      </ul>
+      <!-- lower border -->
+      <div testid="border in sidebar" class="border"></div>
+      <!-- user's play lists -->
+      <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
+      <ul>
+        <li
+          v-for="(playlist, i) in playlists1"
+          :key="i"
+          @click.right="(playlistid = playlist), (showdelete = true)"
+        >
+          <router-link to="/" testid="userplaylists" class="userplaylists">{{
+            playlist.name
+          }}</router-link>
+          <!-- router link should navigate to play list page-->
+        </li>
+      </ul>
+      <ul v-if="showdelete" id="right-click-menu">
         <li @click="changeModalStateDelete()">Delete</li>
-        </ul>
-     </div>
-        <!-- id="right-click-menu" 
-            tabindex="-1" 
-            v-if="viewMenu" 
-            @blur="closeMenu()" 
-            style="top:top; left:left;" -->
-    <!-- </div> -->
+      </ul>
+      <!-- id="right-click-menu" 
+                tabindex="-1" 
+                v-if="viewMenu" 
+                @blur="closeMenu()" 
+                style="top:top; left:left;" -->
+      <!-- </div> -->
+    </div>
   </div>
 </template>
 
@@ -194,8 +215,8 @@ label {
   background: #313030;
   display: block;
 }
-#right-click-menu{
-  background-color:#313030;
+#right-click-menu {
+  background-color: #313030;
   list-style: none;
   width: 150px;
   height: 40px;
@@ -204,17 +225,17 @@ label {
   padding-bottom: 10px;
   position: absolute;
   display: block;
-  margin-left: 10px;        /* delete it */
+  margin-left: 10px; /* delete it */
 }
-#right-click-menu li{
-   cursor: pointer;
+#right-click-menu li {
+  cursor: pointer;
   color: gray;
 }
-#right-click-menu li:hover{
-   color:white;
+#right-click-menu li:hover {
+  color: white;
 }
-#right-click-menu:hover{
- background-color: rgba(77, 75, 75,0.7);
+#right-click-menu:hover {
+  background-color: rgba(77, 75, 75, 0.7);
 }
 </style>
 
@@ -223,20 +244,16 @@ import { mapGetters } from "vuex";
 //import Vue from 'vue';
 export default {
   // el:'#demo',
-  data: function()
-  {
-    return{
+  data: function() {
+    return {
       show: false,
-      showdelete:false,
-      playlistid:0,
-       viewMenu: false,
-        top: '0px',
-        left: '0px'
-    //   viewMenu: false,
-    //     top: '0px',
-    //     left: '0px',
-    //     right: '0px'
-     }
+      showdelete: false,
+      playlistid: 0
+      //   viewMenu: false,
+      //     top: '0px',
+      //     left: '0px',
+      //     right: '0px'
+    };
   },
   mounted() {
     this.$store.dispatch("creatplaylist/showplaylists");
@@ -244,11 +261,11 @@ export default {
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      playlists1: "creatplaylist/playlists" ,
+      playlists1: "creatplaylist/playlists",
       // creat new object "playlists1" and map to it
-       showModalDelete: "creatplaylist/showModalDelete"
+      showModalDelete: "creatplaylist/showModalDelete",
+      isLoggedIn: "authorization/GetStatus"
     })
-    
   },
   name: "SideBar",
   methods: {
@@ -256,41 +273,11 @@ export default {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
     changeModalStateDelete() {
-      this.$store.dispatch("creatplaylist/toggleModalDelete",this.playlistid);
-    },
-    
-     setMenu: function(top, left) {
-          
-            var largestHeight = window.innerHeight - this.$$.right.offsetHeight - 25;
-            var largestWidth = window.innerWidth - this.$$.right.offsetWidth - 25;
+      this.$store.dispatch("creatplaylist/toggleModalDelete", this.playlistid);
+    }
 
-            if (top > largestHeight) top = largestHeight;
-
-            if (left > largestWidth) left = largestWidth;
-
-            this.top = top + 'px';
-            this.left = left + 'px';
-
-      
-      
-        },
-
-        closeMenu: function() {
-            this.viewMenu = false;
-        },
-
-        openMenu: function(e) {
-            this.viewMenu = true;
-
-           this.$nextTick(function() {
-                this.$$.right.focus();
-
-                this.setMenu(e.screenX,e.screenY)
-            }.bind(this));
-            e.preventDefault();
-        }
     // setMenu: function(top, left) {
-          
+
     //         var largestHeight = window.innerHeight - this.right.offsetHeight;
     //         var largestWidth = window.innerWidth - this.right.offsetWidth;
 
@@ -316,8 +303,6 @@ export default {
     //             }.bind(this));
     //             e.preventDefault();
     //     }
-    
-  },
-  
+  }
 };
 </script>

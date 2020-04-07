@@ -18,7 +18,7 @@
     <p class="card-text">{{ songs1.length + " liked songs" }}</p>
     <i v-if="hover" class="fa fa-play-circle" testid="song play icon"> </i>
     <router-link
-      to="/"
+      to="/HomeWebPlayer/liked-tracks"
       class="stretched-link"
       id="carglink"
       testid="likedsongs card link"

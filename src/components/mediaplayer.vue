@@ -39,7 +39,6 @@
                   style="color:green"
                 ></i>
               </span>
-              <!-- <div class="snackbar" id="unlikesnackbar">Removed from your Liked Songs</div> -->
             </button>
 
             <!-- /////////////////////////////////// -->
@@ -199,9 +198,6 @@
   bottom: 0%;
 }
 .row {
-  height: 90px;
-}
-.col-md-3 {
   height: 90px;
 }
 .album_image {
@@ -466,7 +462,23 @@ export default {
         this.moving_song_bar();
       }, 300);
     });
+    // if(localStorage.volumepos){
+    //   this.volumepos = localStorage.volumepos;
+    //   console.log("localstorage volumepos" , localStorage.volumepos )
+    // }
+    // if(localStorage.sound){
+    //   this.sound = localStorage.sound;
+    //   console.log("localstorage sound" , localStorage.sound)
+    // }
   },
+  // watch:{
+  //   volumepos(newvolume) {
+  //     localStorage.volumepos = newvolume;
+  //   },
+  //   sound(newsound){
+  //     localStorage.sound = newsound;
+  //   }
+  // },
   created: function() {
     window.addEventListener("mouseup", () => {
       this.stopDrag();

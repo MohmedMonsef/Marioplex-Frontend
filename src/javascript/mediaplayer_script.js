@@ -51,7 +51,7 @@ export default {
         };
         if (
           this.song_id == this.Get_Currentsong.track._id &&
-          this.albumId == this.Get_Currentsong.albumId &&
+          this.albumId == this.Get_Currentsong.album._id &&
           // this.index == this.currentsong_info.index &&
           this.playlistId == this.Get_Currentsong.playlistId
         ) {
@@ -74,8 +74,8 @@ export default {
           });
         }
       } else {
-        console.log("nihal comp", this.currentsong_info);
-        this.$store.dispatch("Queue/CreateQueue", this.currentsong_info);
+        console.log("nihal comp", this.Get_Currentsong);
+        this.$store.dispatch("Queue/CreateQueue", this.Get_Currentsong);
       }
     },
     pauseSong() {

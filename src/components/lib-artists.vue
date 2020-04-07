@@ -1,34 +1,36 @@
 <template>
-  <div
-    class="card rounded col-lg-20% "
-    testid="artist card"
-    @mouseover="hover = true"
-    @mouseleave="hover = false"
-  >
-    <img
-      class="card-img-top mx-auto d-block rounded-circle"
-      :src="images"
-      alt="Card image"
-      id="cardimg"
-      testid="artist image"
-    />
-    <div class="card-body" id="cardbody" testid="artist card body">
-      <h4 class="card-title" id="cardtitle" testid="artist name">
-        {{ name }}
-      </h4>
-      <p class="card-text" id="carddescribtion">
-        Artist
-      </p>
-      <i v-if="hover" class="fa fa-play-circle" testid="artist play icon"></i>
-      <router-link
-        to="/"
-        class="stretched-link"
-        id="carglink"
-        testid="artist card link"
-      ></router-link>
-      <!-- should navigate to artist page -->
+    <div 
+        class="card rounded col-lg-20% " 
+        testid="artist card" 
+        @mouseover="hover=true" @mouseleave="hover=false"
+    >
+        <img
+            class="card-img-top mx-auto d-block rounded-circle"
+            :src="images"
+            alt="Card image"
+            id="cardimg"
+            testid="artist image"
+            />
+        <div class="card-body" id="cardbody" testid="artist card body">
+            <h4 class="card-title" id="cardtitle" testid="artist name">
+                {{ name }}
+            </h4>
+            <p
+                class="card-text"
+                id="carddescribtion"
+            >
+                 Artist
+            </p>
+            <i v-if="hover" class="fa fa-play-circle" testid="artist play icon"></i>
+            <router-link
+                to="/ArtistProfile"
+                class="stretched-link"
+                id="carglink"
+                testid="artist card link"
+            ></router-link>
+            <!-- should navigate to artist page -->
+        </div>
     </div>
-  </div>
 </template>
 <style scoped>
 .card {
@@ -69,7 +71,7 @@ export default {
       hover: false
     };
   },
-  name: "lib-artists",
-  props: ["images", "name", "artistId"]
-};
+    name: "lib-artists",
+    props: ["images", "name","artistId"]
+}
 </script>

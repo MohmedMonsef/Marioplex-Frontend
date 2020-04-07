@@ -85,7 +85,7 @@ export default {
       axios.defaults.headers.common["x-auth-token"] = token;
       commit("auth_request");
       axios
-        .get("/api/me")
+        .get("/me")
         .then(response => {
           const user = response.data[0];
           console.log(user);

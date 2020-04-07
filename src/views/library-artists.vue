@@ -37,7 +37,7 @@ h2 {
   color: white;
   margin-bottom: 14px;
   margin-left: 30px;
-  margin-top: 38px;
+  margin-top: 80px;
 }
 .container {
   margin-left: 15px;

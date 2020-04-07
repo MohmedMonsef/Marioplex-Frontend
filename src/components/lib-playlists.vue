@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="card rounded col-lg-20% "
+      class="card rounded col-lg-20%"
       testid="playlist card"
       @mouseover="hover = true"
       @mouseleave="hover = false"
@@ -11,14 +11,14 @@
         :src="images"
         alt="Card image"
         id="cardimg"
-        testid="album image"
+        testid="playlist image"
       />
       <div class="card-body" id="cardbody" testid="playlist card body">
         <h4 class="card-title" id="cardtitle" testid="playlist name">
           {{ name }}
         </h4>
         <p class="card-text" id="carddescribtion" testid="playlist owner">
-          {{ "By " + ownerName }}
+          {{ "By " + owner }}
         </p>
         <i v-if="hover" class="fa fa-play-circle"></i>
         <router-link
@@ -73,7 +73,7 @@ export default {
     };
   },
   name: "lib-playlists",
-  props: ["name", "images", "ownerName", "playlist_id"]
+  props: ["name", "images", "ownerId", "playlist_id", "owner"]
   //   mounted() {
   //   this.$store.dispatch("creatplaylist/showplaylists");
   // },

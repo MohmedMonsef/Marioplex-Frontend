@@ -10,12 +10,13 @@
         <div class="row">
           <lib-albums
             v-for="album in albums1"
-            :key="album.id"
+            :key="album._id"
             :albumId="album._id"
             :images="album.images"
             :name="album.name"
             :artistname="album.artistName"
             :artistId="album.artistId"
+            :album_id="album._id"
           />
         </div>
       </div>
@@ -39,7 +40,7 @@ h2 {
   color: white;
   margin-bottom: 14px;
   margin-left: 30px;
-  margin-top: 38px;
+  margin-top: 80px;
 }
 .container {
   margin-left: 15px;

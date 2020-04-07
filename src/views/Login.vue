@@ -13,7 +13,7 @@
             class="costum-btn"
             id="facebook-btn"
             testid="login facebook button"
-             @click.prevent="facebook_login()"
+            @click.prevent="facebook_login()"
           >
             CONTINUE WITH FACEBOOK
           </button>
@@ -219,8 +219,8 @@ export default {
     canSubmit() {
       this.can_submit = this.can_submit && true;
     },
-    facebook_login(){
-       this.$store.dispatch("authorization/facebook_signUp");
+    facebook_login() {
+      this.$store.dispatch("authorization/facebook_signUp");
     }
   },
   computed: {

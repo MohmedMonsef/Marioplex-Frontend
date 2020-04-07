@@ -2,7 +2,7 @@
   <div class="card rounded col-lg-20%">
     <img
       class="card-img-top mx-auto d-block"
-      :src="image"
+      src="http://dummyimage.com/250x400.jpg/dddddd/000000"
       alt="Card image"
       id="cardimg"
     />
