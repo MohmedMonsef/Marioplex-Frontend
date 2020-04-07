@@ -26,6 +26,7 @@
       >
       </i>
 
+     <!-- this comment to try to change the shape of play pause icon -->
       <!-- <button v-if="!play" id="imageplayicon"  @click="playSong() , isplaying()">
              <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px"><title>MUSIC</title><path d="M41.37,71.64H36.88a2.51,2.51,0,0,1-2.5-2.5V34.84a2.51,2.51,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,41.37,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M60.92,71.64H56.43a2.5,2.5,0,0,1-2.5-2.5V34.84a2.5,2.5,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,60.92,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M49.63,93.8A41.81,41.81,0,1,1,91.44,52,41.85,41.85,0,0,1,49.63,93.8Zm0-82.62A40.81,40.81,0,1,0,90.44,52,40.85,40.85,0,0,0,49.63,11.18Z"></path></svg>
             </button> -->
@@ -51,6 +52,7 @@
     </button>
 
     <!-- /////////////////////////////////////////// -->
+    <!-- this comment to try to connect the popup to the user -->
     <!-- <button v-if="!play" class="playbutton" testid="playbutton" @click="checkuserstate()">PLAY</button> -->
     <!-- ////////////////////////////////////// -->
 
@@ -94,6 +96,7 @@
         </span>
       </button>
 
+      <!-- this comment is to add ... if needed -->
       <!-- <span data-toggle="tooltip" title="More">
             <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
             </span>

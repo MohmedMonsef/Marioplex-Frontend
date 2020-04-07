@@ -3,7 +3,7 @@
         <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-      <!-- <playlistpopup v-if="show" /> -->
+      <!-- <playlistpopup v-if="showpopup" /> -->
     <div v-if="playlist_load" class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
           <playlist v-if="this.playlist_length == 0"/>
@@ -12,10 +12,10 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
           <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
           <emptytracks v-if="this.playlist_length == 0"/>
-          <draggable  @end="ReorderTracks">
+          <draggable  @end="ReorderTracks" v-else>
             <transition-group type="transition" name="flip-list">
-         <emptytracks v-if="this.playlist_length == 0"/>
-         <song-component v-else
+         <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
+         <song-component 
           v-for="(p, i) in playlist_tracks"
           :key="p.trackid"
           :index="i"
@@ -72,7 +72,7 @@ import SongComponent from "@/components/SongComponent.vue";
 import emptytracks from "@/components/emptytracks.vue";
 import playlist from "@/components/playlist.vue";
 import playlistinfo from "@/components/playlist_info.vue";
- //import playlistpopup from "@/components/playlistpopup.vue";
+//  import playlistpopup from "@/components/playlistpopup.vue";
 import { mapGetters } from "vuex";
 import draggable from "vuedraggable";
 import { mapState } from "vuex";
@@ -96,7 +96,7 @@ export default {
     playlist,
     emptytracks,
     playlistinfo
-    //  playlistpopup
+    // playlistpopup
   },
   methods:{
       toggleShow() {
@@ -118,7 +118,7 @@ export default {
   },
   computed: {
     ...mapState({
-      show: state => state.playlistpopup.showModal
+      showpopup: state => state.playlistpopup.showModal
     }),
      ...mapGetters({
       playlist_tracks: "playlist/playlist_tracks",

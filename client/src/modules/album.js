@@ -54,12 +54,11 @@ set_likedalbum(state , like){
         } ,
 
         like_album({ commit } , album_id) {
-          commit("set_album_loaded" , false);
           axios
-            .put("/me/albums" ,{ids:album_id})
+            .put("/me/Albums" ,{ids:album_id})
             .then(response => {
-              let album = response.data;
-              if (album.status == 200){
+              let album = response.status;
+              if (album == 200){
               commit ("set_likedalbum" , true)
               }
             })
@@ -68,14 +67,11 @@ set_likedalbum(state , like){
             });
           },
           unlike_album({ commit } , album_id){
-            commit("set_album_loaded" , false);
-            var id = toString(album_id);
             axios
-              .delete("/me/albums" ,{"ids":id})
-              console.log("my album nana" , album_id )
+              .delete("/me/albums" , {data:{ids:album_id}})
               .then(response => {
-                let album = response.data;
-                if (album.status == 200){
+                let album = response.status;
+                if (album == 200){
                 commit ("set_likedalbum" , false)
                 }
               })

@@ -13,7 +13,7 @@ export default {
   actions: {
     showPopularPlaylists({ commit }) {
       axios
-        .get("/api/user")
+        .get("/user")
         .then(response => {
           let POPplaylists = response.data;
           commit("setPopularPlaylists", POPplaylists);
