@@ -275,6 +275,7 @@ export default {
           if (songbar || track_id == state.currentsong.track._id)
             commit("setliked", false);
           dispatch("get_currentsong");
+          dispatch("likedtracks/likedtracks_tracks", null, { root: true });
         })
         .catch(error => {
           console.log(error);

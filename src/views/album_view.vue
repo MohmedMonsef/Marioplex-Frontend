@@ -11,9 +11,10 @@
           :song_id="p._id"
           :song_artists="artist_name"
           :song_name="p.name"
-          :song_album="p.albumName"
           :song_length="500"
           :isLiked="true"
+          :song_album="album_name"
+          :albumId="albumid"
         />
       </div>
     </div>
@@ -39,6 +40,11 @@ import albuminfo from "@/components/album_info.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "albumview",
+  data: function() {
+    return {
+      albumid: ""
+    };
+  },
   props: {
     isLiked: {
       type: Boolean
@@ -53,11 +59,16 @@ export default {
       album_tracks: "album/album_tracks",
       album_length: "album/album_length",
       album_load: "album/album_loaded",
-      artist_name: "album/artist_name"
+      artist_name: "album/artist_name",
+      album_name: "album/album_name"
     })
   },
   created: function() {
+    this.albumid = this.$route.params.album_id;
     this.$store.dispatch("album/album_tracks", this.$route.params.album_id);
+  },
+  mounted() {
+    this.albumid = this.$route.params.album_id;
   }
 };
 </script>

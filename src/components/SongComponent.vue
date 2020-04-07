@@ -8,18 +8,21 @@
     @mouseleave="hover = false"
     @dblclick="playOnDblCLk()"
     @click.right="toggleShow"
+    testid="singComponent body"
   >
     <div id="icon">
       <i
         v-if="!hover && !isclicked && !(playicon && isCurrent)"
         :class="isCurrentClass"
         class="fa fa-music music_icon"
+        testid="music icon"
       ></i>
       <i
         v-if="(isclicked || hover) && !(playicon && isCurrent)"
         id="playicon-component"
         @click="playSong()"
         class="fa fa-play"
+        testid="play button"
         :class="isCurrentClass"
       >
       </i>
@@ -28,35 +31,42 @@
         @click="pauseSong()"
         class="fa fa-pause"
         :class="isCurrentClass"
+        testid="pause button"
       >
       </i>
       <i
         v-if="playicon && isCurrent && !isclicked && !hover"
         class="fa fa-volume-up"
         :class="isCurrentClass"
+        testid="volume icon"
       >
       </i>
     </div>
     <div id="song_body">
-      <div class="song_name" :class="isCurrentClass">
+      <div class="song_name" :class="isCurrentClass" testid="song name">
         {{ song_name }}
       </div>
       <div id="song_info">
         <div id="s">
-          <router-link tag="p" to="library" id="song_artist">
+          <router-link
+            tag="p"
+            to="library"
+            id="song_artist"
+            testid="artist name"
+          >
             {{ song_artists }}
           </router-link>
           <span>
             .
           </span>
         </div>
-        <router-link tag="p" id="song_album" to="library">
+        <router-link tag="p" id="song_album" testid="album name" to="library">
           {{ song_album }}
         </router-link>
       </div>
     </div>
     <!-- <p>{{isLiked}}</p> -->
-    <div class="song_length" :class="isCurrentClass">
+    <div testid="song length" class="song_length" :class="isCurrentClass">
       {{ length }}
     </div>
     <div id="song_options" class="dropdownlist">

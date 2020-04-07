@@ -618,12 +618,15 @@ export default {
   },
   computed: {
     changeTime: function() {
-      // console.log("in chnge time" , pos)
-      var min = Math.floor((this.currentPos % 3600) / 60);
-      var sec = Math.floor(this.currentPos % 60);
-      if (sec < 10) sec = "0" + sec;
-      console.log(" minute sec", min, ":", sec);
-      return min + ":" + sec;
+      if (this.currentaudio) {
+        // console.log("in chnge time" , pos)
+        var min = Math.floor((this.currentPos % 3600) / 60);
+        var sec = Math.floor(this.currentPos % 60);
+        if (sec < 10) sec = "0" + sec;
+        console.log(" minute sec", min, ":", sec);
+        return min + ":" + sec;
+      }
+      return "0:00";
     },
     totalDuration: function() {
       if (this.currentaudio) {

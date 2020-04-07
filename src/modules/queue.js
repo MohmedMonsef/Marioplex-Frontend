@@ -72,31 +72,59 @@ export default {
       }
       console.log("in queue front", info);
       //var isPlaylist=true
-      axios
-        .post(
-          "/createQueue/" +
-            info.playlist_id +
-            "/" +
-            info.song_id +
-            "?isPlaylist=" +
-            info.is_playlist
-        )
-        .then(response => {
-          console.log("success", response);
-          var cs = store.getters["mediaplayer/currentaudio"];
-          if (cs) {
-            store.dispatch("mediaplayer/get_currentsong");
-            store.dispatch("mediaplayer/playsong_state", info);
-          } else {
-            setTimeout(() => {
+      if (info.playlist_id != "0") {
+        axios
+          .post(
+            "/createQueue/" +
+              info.playlist_id +
+              "/" +
+              info.song_id +
+              "?isPlaylist=" +
+              info.is_playlist
+          )
+          .then(response => {
+            console.log("success", response);
+            var cs = store.getters["mediaplayer/currentaudio"];
+            if (cs) {
+              store.dispatch("mediaplayer/get_currentsong");
               store.dispatch("mediaplayer/playsong_state", info);
-            }, 500);
-            store.dispatch("mediaplayer/get_currentsong");
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
+            } else {
+              setTimeout(() => {
+                store.dispatch("mediaplayer/playsong_state", info);
+              }, 500);
+              store.dispatch("mediaplayer/get_currentsong");
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        axios
+          .post(
+            "/createQueue/" +
+              info.album_id +
+              "/" +
+              info.song_id +
+              "?isPlaylist=" +
+              info.is_playlist
+          )
+          .then(response => {
+            console.log("success", response);
+            var cs = store.getters["mediaplayer/currentaudio"];
+            if (cs) {
+              store.dispatch("mediaplayer/get_currentsong");
+              store.dispatch("mediaplayer/playsong_state", info);
+            } else {
+              setTimeout(() => {
+                store.dispatch("mediaplayer/playsong_state", info);
+              }, 500);
+              store.dispatch("mediaplayer/get_currentsong");
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
     }
   },
   getters: {

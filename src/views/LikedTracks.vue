@@ -1,29 +1,43 @@
 <template>
-  <div class="likedtracks">
-    <div class="row" v-if="this.likedtracks_length > 0">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-        <LikedTracks />
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
-        <song-component
-          v-for="p in likedtracks_tracks"
-          :key="p._id"
-          :song_id="p._id"
-          :song_artists="p.artistName"
-          :song_name="p.name"
-          :song_album="p.albumName"
-          :song_length="500"
-          :isLiked="true"
-        />
-      </div>
+  <div>
+    <div class="loading" v-if="!likedtracks_load">
+      <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div class="row" v-else>
-      <emptylikedtracks />
+    <div v-if="likedtracks_load" class="likedtracks">
+      <div class="row" v-if="this.likedtracks_length != 0">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+          <LikedTracks />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+          <song-component
+            v-for="p in likedtracks_tracks"
+            :key="p._id"
+            :song_id="p._id"
+            :song_artists="p.artistName"
+            :song_name="p.name"
+            :song_album="p.albumName"
+            :song_length="500"
+            :isLiked="true"
+          />
+        </div>
+      </div>
+      <div class="row" v-else>
+        <emptylikedtracks />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.loading {
+  display: flex;
+  justify-content: center;
+  i {
+    font-size: 70px;
+    margin-top: 100px;
+    color: white;
+  }
+}
 .likedtracks {
   // min-width: 768px;
   min-height: 300px;

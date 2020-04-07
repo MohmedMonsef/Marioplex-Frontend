@@ -3,7 +3,7 @@ export default {
   namespaced: true,
   state: {
     likedtracks_tracks: [],
-    likedtracks_loaded: false,
+    likedtracks_loaded: 0,
     likedtracks_length: "",
     owner_name: ""
   },
@@ -22,8 +22,7 @@ export default {
     }
   },
   actions: {
-    likedtracks_tracks({ commit }) {
-      commit("set_likedtracks_loaded", false);
+    likedtracks_tracks({ state, commit }) {
       axios
         .get("/me/tracks")
         .then(response => {
@@ -32,6 +31,9 @@ export default {
           commit("set_likedtracks_loaded", true);
           commit("set_likedtracks_length", likedtracks.tracks.length);
           commit("set_owner_name", likedtracks.ownerName);
+          if (state.likedtracks_loaded == 0) {
+            state.likedtracks_loaded = 1;
+          }
         })
         .catch(error => {
           console.log(error);

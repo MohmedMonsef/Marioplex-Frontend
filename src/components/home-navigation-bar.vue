@@ -17,7 +17,7 @@
           </router-link>
           <router-link
             to="/Login"
-            v-if="isLoggedIn == '' || isLoggedIn == 'error'"
+            v-if="isLoggedIn != 'success'"
             testid="login link"
             tag="li"
           >
@@ -25,7 +25,7 @@
           </router-link>
           <router-link
             to="/SignUp"
-            v-if="isLoggedIn == '' || isLoggedIn == 'error'"
+            v-if="isLoggedIn != 'success'"
             testid="signup link"
             tag="li"
           >
