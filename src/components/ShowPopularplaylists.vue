@@ -14,7 +14,7 @@
     />
     <div class="card-body" id="cardbody" testid="popularplaylist card body">
       <h4 class="card-title" id="cardtitle" testid="popularplaylist card title">
-        {{ name }}
+        {{ name |shorten }}
       </h4>
       <p
         class="card-text"
@@ -96,6 +96,14 @@ export default {
     };
   },
   name: "ShowPopularplaylists",
-  props: ["images", "name", "Description", "playlist_id"]
+  props: ["images", "name", "Description", "playlist_id"],
+    filters: {
+    shorten: function(value) {
+      if(value.length  > 17)
+        return value.substring(0, 17) + " ...";
+      else
+        return value;
+    }
+  }
 };
 </script>

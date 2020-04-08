@@ -14,7 +14,7 @@
     />
     <div class="card-body" id="cardbody" testid="artist card body">
       <h4 class="card-title" id="cardtitle" testid="artist name">
-        {{ name }}
+        {{ name | shorten}}
       </h4>
       <p class="card-text" id="carddescribtion">
         Artist
@@ -90,6 +90,14 @@ export default {
     };
   },
   name: "lib-artists",
-  props: ["images", "name", "artistId"]
+  props: ["images", "name", "artistId"],
+   filters: {
+    shorten: function(value) {
+      if(value.length  > 17)
+        return value.substring(0, 17) + " ...";
+      else
+        return value;
+    }
+  }
 };
 </script>

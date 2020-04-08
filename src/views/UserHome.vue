@@ -2,10 +2,11 @@
   <div class="home">
     <div class="section">
       <h2 v-if="POPplaylists1.playlists.length">Popular playlists</h2>
+      <a href="/AllLists" class="seeall" v-if="POPplaylists1.playlists.length">SEE All</a>
       <div class="container">
         <div class="row">
           <show-popularplaylists
-            v-for="POPplaylist in POPplaylists1.playlists"
+            v-for="POPplaylist in POPplaylists1.playlists.slice(0,5)"
             :key="POPplaylist.id"
             :images="POPplaylist.images"
             :name="POPplaylist.name"
@@ -17,10 +18,11 @@
     </div>
     <div class="section">
       <h2 v-if="POPartists1.artists.length">Popular artists</h2>
+      <a href="/AllArtists" class="seeall1" v-if="POPartists1.artists.length">SEE All</a>
       <div class="container">
         <div class="row">
           <show-popularartists
-            v-for="POPartist in POPartists1.artists"
+            v-for="POPartist in POPartists1.artists.slice(0,5)"
             :key="POPartist.id"
             :images="POPartist.images"
             :name="POPartist.name"
@@ -30,10 +32,11 @@
     </div>
     <div class="section">
       <h2 v-if="POPalbums1.albums.length">Popular albums</h2>
+      <a href="/AllAlbums" class="seeall2"  v-if="POPalbums1.albums.length">SEE All</a>
       <div class="container">
         <div class="row">
           <show-popularalbums
-            v-for="POPalbum in POPalbums1.albums"
+            v-for="POPalbum in POPalbums1.albums.slice(0,5)"
             :key="POPalbum.id"
             :images="POPalbum.images"
             :name="POPalbum.name"
@@ -45,10 +48,11 @@
     </div>
     <div class="section">
       <h2 v-if="POPnewreleases1.albums.length">Popular new releases</h2>
+      <a href="/AllReleases" class="seeall3"  v-if="POPnewreleases1.albums.length">SEE All</a>
       <div class="container">
         <div class="row">
           <show-popularreleases
-            v-for="POPnewrelease in POPnewreleases1.albums"
+            v-for="POPnewrelease in POPnewreleases1.albums.slice(0,5)"
             :key="POPnewrelease.id"
             :images="POPnewrelease.images"
             :name="POPnewrelease.name"
@@ -61,6 +65,7 @@
     <div class="login" v-if="isLoggedIn == 'success'">
       <div class="section">
         <h2 v-if="playlists1.length">Your playlists</h2>
+        <!-- <a class="seeall">SEE All</a> -->
         <div class="container">
           <div class="row">
             <lib-playlists
@@ -68,7 +73,7 @@
               :key="playlist.id"
               :images="playlist.images"
               :name="playlist.name"
-              :owner="playlist.owner"
+              :ownerName="playlist.owner"
               :playlist_id="playlist.id"
             />
           </div>
@@ -83,19 +88,51 @@
   min-height: 2000px;
 }
 .section {
-  margin-top: 10px;
+  margin-top: 40px;
 }
 h2 {
   font-size: 28px;
   font-weight: bold;
   color: white;
-  margin-bottom: 5px;
   margin-left: 30px;
-  margin-top: 40px;
+  display: inline;
 }
 .container {
   margin-left: 15px;
 }
+.seeall{
+font-size: 14px;
+color: gray;
+font-weight: bold;
+margin-left: 70%;
+cursor: pointer;
+}
+.seeall:hover, .seeall1:hover, .seeall2:hover, .seeall3:hover{
+  color: gray;
+  text-decoration:underline;
+}
+.seeall1{
+  font-size: 14px;
+color: gray;
+font-weight: bold;
+margin-left: 73%;
+cursor: pointer;
+}
+.seeall2{
+   font-size: 14px;
+color: gray;
+font-weight: bold;
+margin-left: 71%;
+cursor: pointer;
+}
+.seeall3{
+   font-size: 14px;
+color: gray;
+font-weight: bold;
+margin-left: 65%;
+cursor: pointer;
+}
+
 </style>
 
 <script>

@@ -22,8 +22,11 @@ import GetPremium from "../views/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import ArtistProfile from "../views/ArtistProfile.vue";
 import album from "../views/album_view.vue";
-
 import seeallartist from "../views/seeallartist.vue";
+import AllLists from "../views/AllLists.vue";
+import AllArtists from "../views/AllArtists.vue";
+import AllAlbums from "../views/AllAlbums.vue";
+import AllReleases from "../views/AllReleases.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -83,6 +86,26 @@ const routes = [
         path: "/ArtistProfile",
         name: "ArtistProfile",
         component: ArtistProfile
+      },
+      {
+        path: "/AllLists",
+        name: "AllLists",
+        component: AllLists
+      },
+      {
+        path: "/AllArtists",
+        name: "AllArtists",
+        component: AllArtists
+      },
+      {
+        path: "/AllAlbums",
+        name: "AllAlbums",
+        component: AllAlbums
+      },
+      {
+        path: "/AllReleases",
+        name: "AllReleases",
+        component: AllReleases
       }
     ]
   },

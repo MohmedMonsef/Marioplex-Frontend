@@ -20,7 +20,7 @@
       />
       <div class="card-body" id="cardbody" testid="album card body">
         <h4 class="card-title" id="cardtitle" testid="album name">
-          {{ name }}
+          {{ name | shorten}}
         </h4>
         <router-link
           class="ard-link artistlink"
@@ -103,6 +103,14 @@ export default {
     };
   },
   name: "lib-albums",
-  props: ["images", "name", "artistname", "albumId", "artistId"]
+  props: ["images", "name", "artistname", "albumId", "artistId"],
+   filters: {
+    shorten: function(value) {
+      if(value.length  > 17)
+        return value.substring(0, 17) + " ...";
+      else
+        return value;
+    }
+  }
 };
 </script>
