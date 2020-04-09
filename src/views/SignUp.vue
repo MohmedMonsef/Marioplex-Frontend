@@ -24,6 +24,7 @@
               placeholder="Email"
               v-model="email"
               testid="email input"
+              id="email"
             />
             <br />
             <p
@@ -89,6 +90,7 @@
               placeholder="Password"
               v-model="password"
               testid="password input"
+              id="password"
             />
             <br />
             <p

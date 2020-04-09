@@ -31,7 +31,7 @@
               id="email"
             />
             <br />
-            <p v-if="req_email" class="invalid" testid="email required error">
+            <p v-if="req_email" id="req_email" class="invalid" testid="email required error">
               Please enter your Spotify email address.
             </p>
             <input
@@ -47,6 +47,7 @@
               v-if="req_password"
               class="invalid"
               testid="password required error"
+              id="req_password"
             >
               Please enter your password.
             </p>
