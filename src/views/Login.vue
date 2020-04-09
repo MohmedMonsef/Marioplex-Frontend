@@ -40,6 +40,7 @@
               v-model="password"
               required
               testid="password input"
+              id="password"
             />
             <br />
             <p
