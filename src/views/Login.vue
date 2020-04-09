@@ -28,6 +28,7 @@
               v-model="email"
               required
               testid="email input"
+              id="email"
             />
             <br />
             <p v-if="req_email" class="invalid" testid="email required error">

@@ -75,8 +75,8 @@
       </div>
       <div id="mydropdown" class="db" v-if="show">
         <p>Start Radio</p>
-        <p @click="likecurrentsong()" v-if="!isLiked">Add to Liked Songs</p>
-        <p @click="likecurrentsong()" v-if="isLiked">Remove from Liked Songs</p>
+        <p @click="likecurrentsong()" id="ifnotliked" v-if="!isLiked">Add to Liked Songs</p>
+        <p @click="likecurrentsong()" id="ifliked" v-if="isLiked">Remove from Liked Songs</p>
         <p @click="addToQueue()">Add to Queue</p>
         <p @click="changeModalStateAdd(), showplaylists()">Add to Playlist</p>
       </div>
@@ -139,7 +139,6 @@
 
 #icon {
   width: 43px;
-
   float: left;
   height: inherit;
   padding-right: 14px;
@@ -236,7 +235,7 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
+    mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
   }
@@ -306,8 +305,10 @@ export default {
           var div = document.getElementById("mydropdown");
           var left = event.screenX - 203 + "px";
           var top = event.screenY + 0 + "px";
+          if(div){
           div.style.left = left;
           div.style.top = top;
+          }
         });
       }
     },
@@ -376,11 +377,12 @@ export default {
     },
     ...mapGetters({
       Get_Currentsong: "mediaplayer/Get_Currentsong",
-      trackid: "mediaplayer/toadd"
-    }),
-    ...mapState({
-      showAdd: state => state.creatplaylist.showModalAdd
+      // trackid: "mediaplayer/toadd"
     })
+    // ,
+    // ...mapState({
+    //   showAdd: state => state.creatplaylist.showModalAdd
+    // })
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
