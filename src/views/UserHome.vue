@@ -65,11 +65,10 @@
     <div class="login" v-if="isLoggedIn == 'success'">
       <div class="section">
         <h2 v-if="playlists1.length">Your playlists</h2>
-        <!-- <a class="seeall">SEE All</a> -->
         <div class="container">
           <div class="row">
             <lib-playlists
-              v-for="playlist in playlists1"
+              v-for="playlist in playlists1.slice(0,5)"
               :key="playlist.id"
               :images="playlist.images"
               :name="playlist.name"
