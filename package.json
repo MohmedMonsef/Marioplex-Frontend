@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit ",
     "lint": "vue-cli-service lint",
     "styleguide": "vue-styleguidist server",
-     "styleguide:build": "vue-styleguidist build"
+    "styleguide:build": "vue-styleguidist build"
   },
   "dependencies": {
     "axios": "^0.19.2",
