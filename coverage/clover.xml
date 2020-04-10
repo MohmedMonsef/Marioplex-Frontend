@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1586549737295" clover="3.2.0">
-  <project timestamp="1586549737295" name="All files">
-    <metrics statements="1568" coveredstatements="207" conditionals="664" coveredconditionals="85" methods="603" coveredmethods="59" elements="2835" coveredelements="351" complexity="0" loc="1568" ncloc="1568" packages="10" files="76" classes="76"/>
+<coverage generated="1586562146003" clover="3.2.0">
+  <project timestamp="1586562146003" name="All files">
+    <metrics statements="1569" coveredstatements="207" conditionals="664" coveredconditionals="85" methods="603" coveredmethods="59" elements="2836" coveredelements="351" complexity="0" loc="1569" ncloc="1569" packages="10" files="76" classes="76"/>
     <package name="Marioplex-Frontend">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="babel.config.js" path="F:\100phase\Marioplex-Frontend\babel.config.js">
@@ -342,7 +342,7 @@
       </file>
     </package>
     <package name="Marioplex-Frontend.src.components">
-      <metrics statements="403" coveredstatements="58" conditionals="103" coveredconditionals="4" methods="131" coveredmethods="27"/>
+      <metrics statements="404" coveredstatements="58" conditionals="103" coveredconditionals="4" methods="131" coveredmethods="27"/>
       <file name="AddTrackPopup.vue" path="F:\100phase\Marioplex-Frontend\src\components\AddTrackPopup.vue">
         <metrics statements="11" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="182" count="2" type="stmt"/>
@@ -398,27 +398,27 @@
       </file>
       <file name="NavbarWebplayer.vue" path="F:\100phase\Marioplex-Frontend\src\components\NavbarWebplayer.vue">
         <metrics statements="21" coveredstatements="4" conditionals="9" coveredconditionals="0" methods="9" coveredmethods="3"/>
-        <line num="295" count="1" type="stmt"/>
-        <line num="298" count="3" type="stmt"/>
-        <line num="312" count="0" type="stmt"/>
-        <line num="315" count="0" type="stmt"/>
-        <line num="318" count="0" type="stmt"/>
-        <line num="321" count="0" type="stmt"/>
-        <line num="322" count="0" type="stmt"/>
-        <line num="323" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="324" count="0" type="stmt"/>
+        <line num="300" count="1" type="stmt"/>
+        <line num="303" count="3" type="stmt"/>
+        <line num="317" count="0" type="stmt"/>
+        <line num="320" count="0" type="stmt"/>
+        <line num="323" count="0" type="stmt"/>
         <line num="326" count="0" type="stmt"/>
-        <line num="330" count="0" type="cond" truecount="0" falsecount="5"/>
-        <line num="338" count="0" type="stmt"/>
-        <line num="340" count="0" type="stmt"/>
-        <line num="342" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="327" count="0" type="stmt"/>
+        <line num="328" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="329" count="0" type="stmt"/>
+        <line num="331" count="0" type="stmt"/>
+        <line num="335" count="0" type="cond" truecount="0" falsecount="5"/>
         <line num="343" count="0" type="stmt"/>
         <line num="345" count="0" type="stmt"/>
+        <line num="347" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="348" count="0" type="stmt"/>
-        <line num="355" count="0" type="stmt"/>
-        <line num="356" count="0" type="stmt"/>
-        <line num="359" count="3" type="stmt"/>
-        <line num="360" count="3" type="stmt"/>
+        <line num="350" count="0" type="stmt"/>
+        <line num="353" count="0" type="stmt"/>
+        <line num="360" count="0" type="stmt"/>
+        <line num="361" count="0" type="stmt"/>
+        <line num="364" count="3" type="stmt"/>
+        <line num="365" count="3" type="stmt"/>
       </file>
       <file name="ShowPopularalbums.vue" path="F:\100phase\Marioplex-Frontend\src\components\ShowPopularalbums.vue">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -438,14 +438,14 @@
       </file>
       <file name="SideBar.vue" path="F:\100phase\Marioplex-Frontend\src\components\SideBar.vue">
         <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
-        <line num="243" count="1" type="stmt"/>
-        <line num="248" count="1" type="stmt"/>
-        <line num="259" count="1" type="stmt"/>
-        <line num="273" count="0" type="stmt"/>
-        <line num="276" count="0" type="stmt"/>
-        <line num="279" count="0" type="stmt"/>
-        <line num="282" count="0" type="stmt"/>
+        <line num="247" count="1" type="stmt"/>
+        <line num="252" count="1" type="stmt"/>
+        <line num="263" count="1" type="stmt"/>
+        <line num="277" count="0" type="stmt"/>
+        <line num="280" count="0" type="stmt"/>
         <line num="283" count="0" type="stmt"/>
+        <line num="286" count="0" type="stmt"/>
+        <line num="287" count="0" type="stmt"/>
       </file>
       <file name="SongComponent.vue" path="F:\100phase\Marioplex-Frontend\src\components\SongComponent.vue">
         <metrics statements="50" coveredstatements="22" conditionals="19" coveredconditionals="4" methods="17" coveredmethods="8"/>
@@ -459,46 +459,46 @@
         <line num="240" count="0" type="stmt"/>
         <line num="241" count="0" type="stmt"/>
         <line num="242" count="0" type="stmt"/>
-        <line num="248" count="8" type="stmt"/>
-        <line num="295" count="0" type="stmt"/>
-        <line num="301" count="2" type="stmt"/>
-        <line num="302" count="2" type="stmt"/>
-        <line num="303" count="2" type="stmt"/>
-        <line num="304" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="305" count="2" type="stmt"/>
+        <line num="253" count="8" type="stmt"/>
+        <line num="300" count="0" type="stmt"/>
         <line num="306" count="2" type="stmt"/>
         <line num="307" count="2" type="stmt"/>
         <line num="308" count="2" type="stmt"/>
         <line num="309" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="310" count="0" type="stmt"/>
-        <line num="311" count="0" type="stmt"/>
-        <line num="317" count="0" type="stmt"/>
-        <line num="318" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="319" count="0" type="stmt"/>
-        <line num="320" count="0" type="stmt"/>
-        <line num="324" count="3" type="stmt"/>
-        <line num="327" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="328" count="0" type="stmt"/>
-        <line num="329" count="0" type="stmt"/>
-        <line num="330" count="0" type="stmt"/>
-        <line num="332" count="0" type="stmt"/>
+        <line num="310" count="2" type="stmt"/>
+        <line num="311" count="2" type="stmt"/>
+        <line num="312" count="2" type="stmt"/>
+        <line num="313" count="2" type="stmt"/>
+        <line num="314" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="315" count="0" type="stmt"/>
+        <line num="316" count="0" type="stmt"/>
+        <line num="322" count="0" type="stmt"/>
+        <line num="323" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="324" count="0" type="stmt"/>
+        <line num="325" count="0" type="stmt"/>
+        <line num="329" count="3" type="stmt"/>
+        <line num="332" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="333" count="0" type="stmt"/>
         <line num="334" count="0" type="stmt"/>
-        <line num="338" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="339" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="340" count="0" type="stmt"/>
-        <line num="342" count="0" type="stmt"/>
+        <line num="335" count="0" type="stmt"/>
+        <line num="337" count="0" type="stmt"/>
+        <line num="338" count="0" type="stmt"/>
+        <line num="339" count="0" type="stmt"/>
+        <line num="343" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="344" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="345" count="0" type="stmt"/>
-        <line num="349" count="0" type="stmt"/>
-        <line num="352" count="0" type="stmt"/>
-        <line num="357" count="8" type="stmt"/>
-        <line num="362" count="8" type="cond" truecount="1" falsecount="2"/>
-        <line num="369" count="8" type="stmt"/>
-        <line num="370" count="8" type="stmt"/>
-        <line num="371" count="8" type="cond" truecount="1" falsecount="1"/>
-        <line num="372" count="8" type="stmt"/>
-        <line num="384" count="8" type="stmt"/>
-        <line num="387" count="0" type="stmt"/>
+        <line num="347" count="0" type="stmt"/>
+        <line num="350" count="0" type="stmt"/>
+        <line num="354" count="0" type="stmt"/>
+        <line num="357" count="0" type="stmt"/>
+        <line num="362" count="8" type="stmt"/>
+        <line num="367" count="8" type="cond" truecount="1" falsecount="2"/>
+        <line num="374" count="8" type="stmt"/>
+        <line num="375" count="8" type="stmt"/>
+        <line num="376" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="377" count="8" type="stmt"/>
+        <line num="389" count="8" type="stmt"/>
+        <line num="392" count="0" type="stmt"/>
       </file>
       <file name="UploadSong.vue" path="F:\100phase\Marioplex-Frontend\src\components\UploadSong.vue">
         <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
@@ -523,42 +523,42 @@
         <line num="249" count="0" type="stmt"/>
         <line num="250" count="0" type="stmt"/>
         <line num="252" count="0" type="stmt"/>
-        <line num="257" count="3" type="stmt"/>
-        <line num="266" count="0" type="stmt"/>
+        <line num="258" count="8" type="stmt"/>
         <line num="267" count="0" type="stmt"/>
         <line num="268" count="0" type="stmt"/>
-        <line num="271" count="0" type="stmt"/>
-        <line num="272" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="273" count="0" type="stmt"/>
+        <line num="269" count="0" type="stmt"/>
+        <line num="272" count="0" type="stmt"/>
+        <line num="273" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="274" count="0" type="stmt"/>
         <line num="275" count="0" type="stmt"/>
         <line num="276" count="0" type="stmt"/>
-        <line num="280" count="0" type="stmt"/>
+        <line num="277" count="0" type="stmt"/>
         <line num="281" count="0" type="stmt"/>
         <line num="282" count="0" type="stmt"/>
         <line num="283" count="0" type="stmt"/>
         <line num="284" count="0" type="stmt"/>
-        <line num="287" count="0" type="stmt"/>
-        <line num="290" count="0" type="stmt"/>
+        <line num="285" count="0" type="stmt"/>
+        <line num="288" count="0" type="stmt"/>
         <line num="291" count="0" type="stmt"/>
-        <line num="292" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="293" count="0" type="stmt"/>
+        <line num="292" count="0" type="stmt"/>
+        <line num="293" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="294" count="0" type="stmt"/>
-        <line num="296" count="0" type="stmt"/>
+        <line num="295" count="0" type="stmt"/>
         <line num="297" count="0" type="stmt"/>
-        <line num="301" count="0" type="stmt"/>
+        <line num="298" count="0" type="stmt"/>
         <line num="302" count="0" type="stmt"/>
-        <line num="304" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="305" count="0" type="stmt"/>
+        <line num="303" count="0" type="stmt"/>
+        <line num="305" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="306" count="0" type="stmt"/>
-        <line num="308" count="0" type="stmt"/>
+        <line num="307" count="0" type="stmt"/>
         <line num="309" count="0" type="stmt"/>
         <line num="310" count="0" type="stmt"/>
-        <line num="314" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="315" count="0" type="stmt"/>
+        <line num="311" count="0" type="stmt"/>
+        <line num="315" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="316" count="0" type="stmt"/>
-        <line num="318" count="0" type="stmt"/>
+        <line num="317" count="0" type="stmt"/>
         <line num="319" count="0" type="stmt"/>
+        <line num="320" count="0" type="stmt"/>
       </file>
       <file name="home-navigation-bar.vue" path="F:\100phase\Marioplex-Frontend\src\components\home-navigation-bar.vue">
         <metrics statements="10" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -583,10 +583,10 @@
       </file>
       <file name="lib-likedsongs.vue" path="F:\100phase\Marioplex-Frontend\src\components\lib-likedsongs.vue">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="102" count="1" type="stmt"/>
-        <line num="105" count="1" type="stmt"/>
-        <line num="112" count="1" type="stmt"/>
-        <line num="121" count="1" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="123" count="1" type="stmt"/>
       </file>
       <file name="lib-playlists-default.vue" path="F:\100phase\Marioplex-Frontend\src\components\lib-playlists-default.vue">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -615,7 +615,7 @@
         <metrics statements="30" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <line num="147" count="1" type="stmt"/>
         <line num="148" count="1" type="stmt"/>
-        <line num="151" count="1" type="stmt"/>
+        <line num="151" count="7" type="stmt"/>
         <line num="159" count="0" type="stmt"/>
         <line num="160" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="161" count="0" type="stmt"/>
@@ -752,60 +752,61 @@
       <file name="playlist.vue" path="F:\100phase\Marioplex-Frontend\src\components\playlist.vue">
         <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="153" count="1" type="stmt"/>
-        <line num="156" count="1" type="stmt"/>
+        <line num="156" count="4" type="stmt"/>
         <line num="163" count="0" type="stmt"/>
         <line num="164" count="0" type="stmt"/>
         <line num="165" count="0" type="stmt"/>
       </file>
       <file name="playlist_info.vue" path="F:\100phase\Marioplex-Frontend\src\components\playlist_info.vue">
-        <metrics statements="47" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="1"/>
-        <line num="252" count="1" type="stmt"/>
-        <line num="253" count="1" type="stmt"/>
+        <metrics statements="48" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="1"/>
         <line num="254" count="1" type="stmt"/>
-        <line num="256" count="0" type="stmt"/>
+        <line num="255" count="1" type="stmt"/>
+        <line num="256" count="1" type="stmt"/>
         <line num="258" count="0" type="stmt"/>
-        <line num="259" count="0" type="stmt"/>
         <line num="260" count="0" type="stmt"/>
         <line num="261" count="0" type="stmt"/>
         <line num="262" count="0" type="stmt"/>
+        <line num="263" count="0" type="stmt"/>
         <line num="264" count="0" type="stmt"/>
-        <line num="269" count="2" type="stmt"/>
-        <line num="291" count="0" type="stmt"/>
-        <line num="292" count="0" type="stmt"/>
+        <line num="266" count="0" type="stmt"/>
+        <line num="271" count="8" type="stmt"/>
         <line num="293" count="0" type="stmt"/>
-        <line num="296" count="0" type="stmt"/>
-        <line num="297" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="294" count="0" type="stmt"/>
+        <line num="295" count="0" type="stmt"/>
         <line num="298" count="0" type="stmt"/>
-        <line num="299" count="0" type="stmt"/>
+        <line num="299" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="300" count="0" type="stmt"/>
         <line num="301" count="0" type="stmt"/>
-        <line num="305" count="0" type="stmt"/>
-        <line num="306" count="0" type="stmt"/>
+        <line num="302" count="0" type="stmt"/>
+        <line num="303" count="0" type="stmt"/>
         <line num="307" count="0" type="stmt"/>
         <line num="308" count="0" type="stmt"/>
         <line num="309" count="0" type="stmt"/>
-        <line num="312" count="0" type="stmt"/>
-        <line num="315" count="0" type="stmt"/>
-        <line num="316" count="0" type="stmt"/>
-        <line num="317" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="310" count="0" type="stmt"/>
+        <line num="311" count="0" type="stmt"/>
+        <line num="314" count="0" type="stmt"/>
+        <line num="317" count="0" type="stmt"/>
         <line num="318" count="0" type="stmt"/>
-        <line num="319" count="0" type="stmt"/>
+        <line num="319" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="320" count="0" type="stmt"/>
         <line num="321" count="0" type="stmt"/>
-        <line num="322" count="0" type="stmt"/>
-        <line num="326" count="0" type="stmt"/>
-        <line num="327" count="0" type="stmt"/>
-        <line num="329" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="330" count="0" type="stmt"/>
-        <line num="331" count="0" type="stmt"/>
+        <line num="323" count="0" type="stmt"/>
+        <line num="324" count="0" type="stmt"/>
+        <line num="328" count="0" type="stmt"/>
+        <line num="329" count="0" type="stmt"/>
+        <line num="331" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="332" count="0" type="stmt"/>
         <line num="333" count="0" type="stmt"/>
-        <line num="334" count="0" type="stmt"/>
         <line num="335" count="0" type="stmt"/>
-        <line num="339" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="340" count="0" type="stmt"/>
-        <line num="341" count="0" type="stmt"/>
+        <line num="336" count="0" type="stmt"/>
+        <line num="337" count="0" type="stmt"/>
+        <line num="341" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="342" count="0" type="stmt"/>
+        <line num="343" count="0" type="stmt"/>
         <line num="347" count="0" type="stmt"/>
-        <line num="348" count="0" type="stmt"/>
-        <line num="352" count="0" type="stmt"/>
+        <line num="349" count="0" type="stmt"/>
+        <line num="350" count="0" type="stmt"/>
+        <line num="354" count="0" type="stmt"/>
       </file>
       <file name="playlistpopup.vue" path="F:\100phase\Marioplex-Frontend\src\components\playlistpopup.vue">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -843,7 +844,7 @@
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="22" count="14" type="stmt"/>
+        <line num="22" count="31" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="45" count="0" type="stmt"/>
@@ -1319,34 +1320,34 @@
         <line num="59" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
+        <line num="71" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="72" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
         <line num="93" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
-        <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
         <line num="110" count="0" type="stmt"/>
-        <line num="114" count="0" type="stmt"/>
-        <line num="118" count="0" type="stmt"/>
-        <line num="121" count="0" type="stmt"/>
-        <line num="122" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="111" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
         <line num="123" count="0" type="stmt"/>
-        <line num="127" count="0" type="stmt"/>
-        <line num="133" count="0" type="stmt"/>
-        <line num="134" count="0" type="stmt"/>
+        <line num="124" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="129" count="0" type="stmt"/>
         <line num="135" count="0" type="stmt"/>
         <line num="136" count="0" type="stmt"/>
         <line num="137" count="0" type="stmt"/>
         <line num="138" count="0" type="stmt"/>
         <line num="139" count="0" type="stmt"/>
+        <line num="140" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
       </file>
       <file name="playlistpopup.js" path="F:\100phase\Marioplex-Frontend\src\modules\playlistpopup.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -1374,36 +1375,36 @@
         <line num="45" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
         <line num="53" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="75" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
+        <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="91" count="0" type="stmt"/>
         <line num="92" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
         <line num="95" count="0" type="stmt"/>
-        <line num="99" count="0" type="stmt"/>
-        <line num="102" count="0" type="stmt"/>
-        <line num="112" count="0" type="stmt"/>
-        <line num="113" count="0" type="stmt"/>
-        <line num="114" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
         <line num="115" count="0" type="stmt"/>
-        <line num="116" count="0" type="stmt"/>
+        <line num="116" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="117" count="0" type="stmt"/>
         <line num="118" count="0" type="stmt"/>
-        <line num="119" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
         <line num="121" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="131" count="0" type="stmt"/>
-        <line num="132" count="0" type="stmt"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="127" count="0" type="stmt"/>
         <line num="133" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
       </file>
       <file name="uploadsong.js" path="F:\100phase\Marioplex-Frontend\src\modules\uploadsong.js">
         <metrics statements="24" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
@@ -1611,10 +1612,11 @@
       </file>
       <file name="SignUp.vue" path="F:\100phase\Marioplex-Frontend\src\views\SignUp.vue">
         <metrics statements="128" coveredstatements="111" conditionals="83" coveredconditionals="73" methods="20" coveredmethods="19"/>
+        <line num="368" count="1" type="stmt"/>
         <line num="369" count="1" type="stmt"/>
         <line num="370" count="1" type="stmt"/>
-        <line num="371" count="1" type="stmt"/>
-        <line num="379" count="12" type="stmt"/>
+        <line num="378" count="12" type="stmt"/>
+        <line num="426" count="7" type="stmt"/>
         <line num="427" count="7" type="stmt"/>
         <line num="428" count="7" type="stmt"/>
         <line num="429" count="7" type="stmt"/>
@@ -1628,117 +1630,116 @@
         <line num="437" count="7" type="stmt"/>
         <line num="438" count="7" type="stmt"/>
         <line num="439" count="7" type="stmt"/>
-        <line num="440" count="7" type="stmt"/>
-        <line num="441" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="440" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="441" count="0" type="stmt"/>
         <line num="442" count="0" type="stmt"/>
-        <line num="443" count="0" type="stmt"/>
+        <line num="450" count="0" type="stmt"/>
         <line num="451" count="0" type="stmt"/>
-        <line num="452" count="0" type="stmt"/>
-        <line num="456" count="1" type="stmt"/>
-        <line num="459" count="63" type="stmt"/>
-        <line num="462" count="38" type="cond" truecount="2" falsecount="0"/>
-        <line num="470" count="21" type="cond" truecount="2" falsecount="0"/>
-        <line num="471" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="455" count="1" type="stmt"/>
+        <line num="458" count="63" type="stmt"/>
+        <line num="461" count="38" type="cond" truecount="2" falsecount="0"/>
+        <line num="469" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="470" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="471" count="5" type="stmt"/>
         <line num="472" count="5" type="stmt"/>
-        <line num="473" count="5" type="stmt"/>
+        <line num="474" count="4" type="stmt"/>
         <line num="475" count="4" type="stmt"/>
-        <line num="476" count="4" type="stmt"/>
-        <line num="479" count="12" type="stmt"/>
-        <line num="483" count="20" type="cond" truecount="2" falsecount="0"/>
-        <line num="484" count="8" type="stmt"/>
-        <line num="485" count="8" type="cond" truecount="7" falsecount="0"/>
+        <line num="478" count="12" type="stmt"/>
+        <line num="482" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="483" count="8" type="stmt"/>
+        <line num="484" count="8" type="cond" truecount="7" falsecount="0"/>
+        <line num="491" count="1" type="stmt"/>
         <line num="492" count="1" type="stmt"/>
-        <line num="493" count="1" type="stmt"/>
+        <line num="494" count="7" type="stmt"/>
         <line num="495" count="7" type="stmt"/>
-        <line num="496" count="7" type="stmt"/>
-        <line num="499" count="12" type="stmt"/>
-        <line num="503" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="504" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="498" count="12" type="stmt"/>
+        <line num="502" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="503" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="504" count="6" type="stmt"/>
         <line num="505" count="6" type="stmt"/>
-        <line num="506" count="6" type="stmt"/>
+        <line num="507" count="1" type="stmt"/>
         <line num="508" count="1" type="stmt"/>
-        <line num="509" count="1" type="stmt"/>
-        <line num="512" count="12" type="stmt"/>
-        <line num="516" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="517" count="7" type="stmt"/>
-        <line num="518" count="7" type="cond" truecount="6" falsecount="1"/>
+        <line num="511" count="12" type="stmt"/>
+        <line num="515" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="516" count="7" type="stmt"/>
+        <line num="517" count="7" type="cond" truecount="6" falsecount="1"/>
+        <line num="524" count="0" type="stmt"/>
         <line num="525" count="0" type="stmt"/>
-        <line num="526" count="0" type="stmt"/>
+        <line num="527" count="7" type="stmt"/>
         <line num="528" count="7" type="stmt"/>
-        <line num="529" count="7" type="stmt"/>
-        <line num="532" count="12" type="stmt"/>
-        <line num="536" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="537" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="531" count="12" type="stmt"/>
+        <line num="535" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="536" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="537" count="2" type="stmt"/>
         <line num="538" count="2" type="stmt"/>
-        <line num="539" count="2" type="stmt"/>
+        <line num="540" count="5" type="stmt"/>
         <line num="541" count="5" type="stmt"/>
-        <line num="542" count="5" type="stmt"/>
-        <line num="545" count="12" type="stmt"/>
-        <line num="549" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="550" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="544" count="12" type="stmt"/>
+        <line num="548" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="549" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="550" count="6" type="stmt"/>
         <line num="551" count="6" type="stmt"/>
-        <line num="552" count="6" type="stmt"/>
+        <line num="553" count="1" type="stmt"/>
         <line num="554" count="1" type="stmt"/>
-        <line num="555" count="1" type="stmt"/>
-        <line num="558" count="12" type="stmt"/>
-        <line num="562" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="563" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="557" count="12" type="stmt"/>
+        <line num="561" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="562" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="563" count="1" type="stmt"/>
         <line num="564" count="1" type="stmt"/>
-        <line num="565" count="1" type="stmt"/>
+        <line num="566" count="6" type="stmt"/>
         <line num="567" count="6" type="stmt"/>
-        <line num="568" count="6" type="stmt"/>
-        <line num="571" count="12" type="stmt"/>
-        <line num="575" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="576" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="570" count="12" type="stmt"/>
+        <line num="574" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="575" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="576" count="7" type="stmt"/>
         <line num="577" count="7" type="stmt"/>
-        <line num="578" count="7" type="stmt"/>
+        <line num="579" count="0" type="stmt"/>
         <line num="580" count="0" type="stmt"/>
-        <line num="581" count="0" type="stmt"/>
-        <line num="584" count="12" type="stmt"/>
-        <line num="588" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="589" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="583" count="12" type="stmt"/>
+        <line num="587" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="588" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="589" count="7" type="stmt"/>
         <line num="590" count="7" type="stmt"/>
-        <line num="591" count="7" type="stmt"/>
+        <line num="592" count="0" type="stmt"/>
         <line num="593" count="0" type="stmt"/>
-        <line num="594" count="0" type="stmt"/>
-        <line num="597" count="12" type="stmt"/>
-        <line num="601" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="602" count="7" type="cond" truecount="3" falsecount="3"/>
+        <line num="596" count="12" type="stmt"/>
+        <line num="600" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="601" count="7" type="cond" truecount="3" falsecount="3"/>
+        <line num="607" count="7" type="stmt"/>
         <line num="608" count="7" type="stmt"/>
-        <line num="609" count="7" type="stmt"/>
+        <line num="610" count="0" type="stmt"/>
         <line num="611" count="0" type="stmt"/>
-        <line num="612" count="0" type="stmt"/>
-        <line num="615" count="12" type="stmt"/>
-        <line num="619" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="620" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="614" count="12" type="stmt"/>
+        <line num="618" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="619" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="620" count="7" type="stmt"/>
         <line num="621" count="7" type="stmt"/>
-        <line num="622" count="7" type="stmt"/>
+        <line num="623" count="0" type="stmt"/>
         <line num="624" count="0" type="stmt"/>
-        <line num="625" count="0" type="stmt"/>
-        <line num="628" count="12" type="stmt"/>
-        <line num="632" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="633" count="7" type="stmt"/>
-        <line num="634" count="7" type="cond" truecount="6" falsecount="0"/>
+        <line num="627" count="12" type="stmt"/>
+        <line num="631" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="632" count="7" type="stmt"/>
+        <line num="633" count="7" type="cond" truecount="6" falsecount="0"/>
+        <line num="639" count="6" type="stmt"/>
         <line num="640" count="6" type="stmt"/>
-        <line num="641" count="6" type="stmt"/>
+        <line num="642" count="1" type="stmt"/>
         <line num="643" count="1" type="stmt"/>
-        <line num="644" count="1" type="stmt"/>
-        <line num="647" count="12" type="stmt"/>
-        <line num="651" count="19" type="stmt"/>
-        <line num="652" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="653" count="7" type="cond" truecount="5" falsecount="0"/>
+        <line num="646" count="12" type="stmt"/>
+        <line num="650" count="19" type="stmt"/>
+        <line num="651" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="652" count="7" type="cond" truecount="5" falsecount="0"/>
+        <line num="657" count="1" type="stmt"/>
         <line num="658" count="1" type="stmt"/>
-        <line num="659" count="1" type="stmt"/>
+        <line num="660" count="6" type="stmt"/>
         <line num="661" count="6" type="stmt"/>
-        <line num="662" count="6" type="stmt"/>
-        <line num="665" count="12" type="stmt"/>
-        <line num="669" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="670" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="664" count="12" type="stmt"/>
+        <line num="668" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="669" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="670" count="7" type="stmt"/>
         <line num="671" count="7" type="stmt"/>
-        <line num="672" count="7" type="stmt"/>
+        <line num="673" count="0" type="stmt"/>
         <line num="674" count="0" type="stmt"/>
-        <line num="675" count="0" type="stmt"/>
-        <line num="678" count="12" type="stmt"/>
+        <line num="677" count="12" type="stmt"/>
       </file>
       <file name="UserHome.vue" path="F:\100phase\Marioplex-Frontend\src\views\UserHome.vue">
         <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
@@ -1815,11 +1816,11 @@
       </file>
       <file name="searchresults.vue" path="F:\100phase\Marioplex-Frontend\src\views\searchresults.vue">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="147" count="0" type="stmt"/>
-        <line num="148" count="0" type="stmt"/>
         <line num="149" count="0" type="stmt"/>
         <line num="150" count="0" type="stmt"/>
         <line num="151" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
       </file>
       <file name="seeallartist.vue" path="F:\100phase\Marioplex-Frontend\src\views\seeallartist.vue">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>

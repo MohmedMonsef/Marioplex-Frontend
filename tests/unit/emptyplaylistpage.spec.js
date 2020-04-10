@@ -32,10 +32,28 @@ describe("playlist", () => {
       propsData: {}
     });
   });
+  it("renders" , () => {
+    expect(wrapper.exists()).toBe(true);
+  });
+  it("renders a vue instance" , () => {
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
   it("renders empty playlist information", () => {
     const playlist_name = wrapper.find(".playlistname");
     expect(playlist_name.text()).toBe("NEW PlayList");
     const owner_name = wrapper.find("#owner_name");
     expect(owner_name.text()).toBe("User");
+  });
+  it("list icon click", () => {
+      wrapper.setData({
+        show:false
+      });
+      const toggleShow = jest.fn();
+      wrapper.setMethods({
+        toggleShow:toggleShow,
+      });
+      const listicon = wrapper.find("#list_icon");
+      listicon.trigger("click");
+      expect(toggleShow).toHaveBeenCalled;
   });
 });

@@ -56,9 +56,6 @@ describe("Login", () => {
     password.trigger("input");
     expect(wrapper.vm.password).toBe("1010");
   });
-
-
-  
   it("required inputs", async () => {
     const login_btn = wrapper.find("#login-btn");
     login_btn.trigger("click");

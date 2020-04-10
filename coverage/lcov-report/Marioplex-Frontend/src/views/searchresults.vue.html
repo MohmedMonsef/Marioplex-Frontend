@@ -226,7 +226,12 @@
 <a name='L168'></a><a href='#L168'>168</a>
 <a name='L169'></a><a href='#L169'>169</a>
 <a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -377,6 +382,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -397,15 +403,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-&lt;div&gt;
-    &lt;div class="loading" v-if="!loadingsearch&amp;&amp;search_value!==''"&gt;
+  &lt;div&gt;
+    &lt;div class="loading" v-if="!loadingsearch &amp;&amp; search_value !== ''"&gt;
       &lt;i class="fa fa-spinner fa-spin"&gt;&lt;/i&gt;
     &lt;/div&gt;
     &lt;div v-if="loadingsearch"&gt;
-      &lt;div v-if="search_value.length!==0" class="cont last"&gt;
+      &lt;div v-if="search_value.length !== 0" class="cont last"&gt;
         &lt;!--search results--&gt;
         &lt;div v-if="match_top.length"&gt;
-          &lt;div v-if="match_top[0].type==='Artist'"&gt;
+          &lt;div v-if="match_top[0].type === 'Artist'"&gt;
             &lt;top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -415,7 +421,7 @@
               :artistId="match_to._id"
             &gt;&lt;/top&gt;
           &lt;/div&gt;
-          &lt;div v-if="match_top[0].type==='album'"&gt;
+          &lt;div v-if="match_top[0].type === 'album'"&gt;
             &lt;top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -427,7 +433,7 @@
               :type="match_to.type"
             &gt;&lt;/top&gt;
           &lt;/div&gt;
-          &lt;div v-if="match_top[0].type==='playlist'"&gt;
+          &lt;div v-if="match_top[0].type === 'playlist'"&gt;
             &lt;top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -439,7 +445,7 @@
               :playlist_id="match_to._id"
             &gt;&lt;/top&gt;
           &lt;/div&gt;
-          &lt;div v-if="match_top[0].type==='track'"&gt;
+          &lt;div v-if="match_top[0].type === 'track'"&gt;
             &lt;top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -451,7 +457,7 @@
               :track_id="match_to._id"
             &gt;&lt;/top&gt;
           &lt;/div&gt;
-          &lt;div v-if="match_top[0].type==='user'"&gt;
+          &lt;div v-if="match_top[0].type === 'user'"&gt;
             &lt;top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -465,11 +471,12 @@
         &lt;div v-if="match_artists.length"&gt;
           &lt;h2&gt;Artist&lt;/h2&gt;
           &lt;router-link
-            v-if="match_artists.length&gt;=5"
+            v-if="match_artists.length &gt;= 5"
             class="ard-link seelink"
             to="/HomeWebPlayer/search/seeallartist"
             testid="seeallartist"
-          &gt;SeeAll&lt;/router-link&gt;
+            &gt;SeeAll&lt;/router-link
+          &gt;
           &lt;div class="row"&gt;
             &lt;LibArtists
               class="col-lg-10% col-md-60% col-xs-6"
@@ -484,15 +491,16 @@
         &lt;div v-if="match_albums.length"&gt;
           &lt;h2&gt;Album&lt;/h2&gt;
           &lt;router-link
-            v-if="match_albums.length&gt;=5"
+            v-if="match_albums.length &gt;= 5"
             class="ard-link seelink"
             to="/"
             testid="seeallplaylist"
-          &gt;SeeAll&lt;/router-link&gt;
+            &gt;SeeAll&lt;/router-link
+          &gt;
           &lt;div class="row"&gt;
             &lt;LibAlbums
               class="col-lg-10% col-md-60% col-xs-6"
-              v-for=" match_album in  match_albums"
+              v-for="match_album in match_albums"
               :key="match_album.id"
               :images="match_album.images"
               :name="match_album.name"
@@ -505,11 +513,12 @@
         &lt;div v-if="match_playlists.length"&gt;
           &lt;h2&gt;playlist&lt;/h2&gt;
           &lt;router-link
-            v-if="match_playlists.length&gt;=5"
+            v-if="match_playlists.length &gt;= 5"
             class="ard-link seelink"
             to="/"
             testid="seeallplaylist"
-          &gt;SeeAll&lt;/router-link&gt;
+            &gt;SeeAll&lt;/router-link
+          &gt;
           &lt;div class="row"&gt;
             &lt;LibPlaylists
               v-for="match_playlist in match_playlists"
@@ -525,7 +534,7 @@
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div style="height:1000px"&gt;&lt;/div&gt;
-&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/template&gt;
 &lt;style scoped&gt;
 .row {
@@ -539,7 +548,6 @@ h2 {
   margin-bottom: 5px;
   float: left;
 }
-&nbsp;
 &lt;/style&gt;
 &lt;script&gt;
 <span class="cstat-no" title="statement not covered" >import LibArtists from "@/components/lib-artists.vue";</span>
@@ -548,7 +556,7 @@ h2 {
 <span class="cstat-no" title="statement not covered" >import LibPlaylists from "@/components/lib-playlists.vue";</span>
 <span class="cstat-no" title="statement not covered" >import { mapGetters } from "vuex";</span>
 export default {
-  name: searchresult,
+  name: "searchresult",
   components: {
     LibArtists,
     top,
@@ -566,14 +574,15 @@ export default {
     })
   }
 };
-&lt;/script&gt;</pre></td></tr></table></pre>
+&lt;/script&gt;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Apr 10 2020 22:15:37 GMT+0200 (Eastern European Standard Time)
+                at Sat Apr 11 2020 01:42:25 GMT+0200 (Eastern European Standard Time)
             </div>
         </div>
         <script src="..\..\..\prettify.js"></script>

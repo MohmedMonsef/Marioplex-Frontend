@@ -344,7 +344,7 @@ export default {
           "playlist/like_playlist",
           this.$route.params.playlist_id
         );
-        // this.$store.dispatch("creatplaylist/showplaylists");
+        this.$store.dispatch("creatplaylist/showplaylists");
       } else {
         toast.show("Removed from Your Library");
         this.$store.dispatch(
