@@ -70,7 +70,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-let insearch = insearch;
+//let insearch = insearch;
 export default {
   name: "searchcomponent",
   data() {
