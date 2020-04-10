@@ -9,7 +9,7 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <button class="cancel" @click="changeModalState">
+        <button class="cancel" @click="changeModalState()">
           <svg
             width="32"
             height="32"
@@ -40,15 +40,16 @@
           </div>
         </div>
 
-        <button class="cancel_button" @click="changeModalState">
+        <button class="cancel_button" @click="changeModalState()">
           cancle
         </button>
         <!--<input @keyup.enter="CreatePlaylist()" />-->
         <button
+        id="mybutton"
           class="creat_button"
           testid="confirm_create"
           @click.prevent="CreatePlaylist()"
-          @click="changeModalState"
+          @click="changeModalState()"
         >
           create
         </button>

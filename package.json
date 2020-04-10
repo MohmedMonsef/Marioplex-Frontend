@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -41,7 +41,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.2.2",
-    "jest": "^25.1.0",
+    "jest": "^25.3.0",
     "miragejs": "^0.1.35",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
@@ -79,6 +79,11 @@
     "last 2 versions"
   ],
   "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
+    "preset": "@vue/cli-plugin-unit-jest",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "*/.vue",
+      "!*/node_modules/*"
+    ]
   }
 }
