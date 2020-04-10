@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import VueRouter from "vue-router";
 import SignUp from "../../src/views/SignUp";
 
-describe("Login", () => {
+describe("SignUp", () => {
   let wrapper;
   let store;
   const localVue = createLocalVue();
