@@ -23,7 +23,11 @@
         </div>
       </li>
       <li>
-        <div class="divOnFocus" id="callsearch" @click="setsearch(), setfocus()">
+        <div
+          class="divOnFocus"
+          id="callsearch"
+          @click="setsearch(), setfocus()"
+        >
           <router-link
             to="/HomeWebPlayer/search"
             testid="searchpage link"
@@ -94,7 +98,7 @@
         </li>
       </ul>
       <ul v-if="showdelete" id="right-click-menu">
-        <li @click="changeModalStateDelete()">Delete</li>
+        <li class="delete_div" @click="changeModalStateDelete()">Delete</li>
       </ul>
       <!-- id="right-click-menu" 
                 tabindex="-1" 

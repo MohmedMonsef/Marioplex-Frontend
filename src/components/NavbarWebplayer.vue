@@ -76,7 +76,12 @@
           </a>
           <div class="divider">________</div>
           <router-link to="/HomeWebPlayer" id="logout">
-            <a class="dropdown-item" testid="logout button" id="logout" @click="logout()">
+            <a
+              class="dropdown-item"
+              testid="logout button"
+              id="logout"
+              @click="logout()"
+            >
               Log out
             </a>
           </router-link>

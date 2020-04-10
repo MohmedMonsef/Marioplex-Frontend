@@ -1,13 +1,13 @@
 <template>
-<div>
-    <div class="loading" v-if="!loadingsearch&&search_value!==''">
+  <div>
+    <div class="loading" v-if="!loadingsearch && search_value !== ''">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="loadingsearch">
-      <div v-if="search_value.length!==0" class="cont last">
+      <div v-if="search_value.length !== 0" class="cont last">
         <!--search results-->
         <div v-if="match_top.length">
-          <div v-if="match_top[0].type==='Artist'">
+          <div v-if="match_top[0].type === 'Artist'">
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -17,7 +17,7 @@
               :artistId="match_to._id"
             ></top>
           </div>
-          <div v-if="match_top[0].type==='album'">
+          <div v-if="match_top[0].type === 'album'">
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -29,7 +29,7 @@
               :type="match_to.type"
             ></top>
           </div>
-          <div v-if="match_top[0].type==='playlist'">
+          <div v-if="match_top[0].type === 'playlist'">
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -41,7 +41,7 @@
               :playlist_id="match_to._id"
             ></top>
           </div>
-          <div v-if="match_top[0].type==='track'">
+          <div v-if="match_top[0].type === 'track'">
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -53,7 +53,7 @@
               :track_id="match_to._id"
             ></top>
           </div>
-          <div v-if="match_top[0].type==='user'">
+          <div v-if="match_top[0].type === 'user'">
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
@@ -67,11 +67,12 @@
         <div v-if="match_artists.length">
           <h2>Artist</h2>
           <router-link
-            v-if="match_artists.length>=5"
+            v-if="match_artists.length >= 5"
             class="ard-link seelink"
             to="/HomeWebPlayer/search/seeallartist"
             testid="seeallartist"
-          >SeeAll</router-link>
+            >SeeAll</router-link
+          >
           <div class="row">
             <LibArtists
               class="col-lg-10% col-md-60% col-xs-6"
@@ -86,15 +87,16 @@
         <div v-if="match_albums.length">
           <h2>Album</h2>
           <router-link
-            v-if="match_albums.length>=5"
+            v-if="match_albums.length >= 5"
             class="ard-link seelink"
             to="/"
             testid="seeallplaylist"
-          >SeeAll</router-link>
+            >SeeAll</router-link
+          >
           <div class="row">
             <LibAlbums
               class="col-lg-10% col-md-60% col-xs-6"
-              v-for=" match_album in  match_albums"
+              v-for="match_album in match_albums"
               :key="match_album.id"
               :images="match_album.images"
               :name="match_album.name"
@@ -107,11 +109,12 @@
         <div v-if="match_playlists.length">
           <h2>playlist</h2>
           <router-link
-            v-if="match_playlists.length>=5"
+            v-if="match_playlists.length >= 5"
             class="ard-link seelink"
             to="/"
             testid="seeallplaylist"
-          >SeeAll</router-link>
+            >SeeAll</router-link
+          >
           <div class="row">
             <LibPlaylists
               v-for="match_playlist in match_playlists"
@@ -127,7 +130,7 @@
       </div>
     </div>
     <div style="height:1000px"></div>
-</div>
+  </div>
 </template>
 <style scoped>
 .row {
@@ -141,7 +144,6 @@ h2 {
   margin-bottom: 5px;
   float: left;
 }
-
 </style>
 <script>
 import LibArtists from "@/components/lib-artists.vue";
@@ -150,7 +152,7 @@ import LibAlbums from "@/components/lib-albums.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: searchresult,
+  name: "searchresult",
   components: {
     LibArtists,
     top,

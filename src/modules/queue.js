@@ -51,7 +51,9 @@ export default {
     },
     AddToQueue({ dispatch }, song) {
       axios
-        .post("/api/player/add-to-queue/" + song.playlistId + "/" + song.trackId)
+        .post(
+          "/api/player/add-to-queue/" + song.playlistId + "/" + song.trackId
+        )
         .then(() => {
           dispatch("Queue");
         })
