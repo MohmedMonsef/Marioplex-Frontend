@@ -5,8 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit --watch",
-    "lint": "vue-cli-service lint"
+    "test:unit": "vue-cli-service test:unit ",
+    "lint": "vue-cli-service lint",
+    "styleguide": "vue-styleguidist server",
+     "styleguide:build": "vue-styleguidist build"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -46,6 +48,7 @@
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-styleguidist": "~4.16.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -82,8 +85,8 @@
     "preset": "@vue/cli-plugin-unit-jest",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "*/.vue",
-      "!*/node_modules/*"
+      "**/*.{js,vue}",
+      "!**/node_modules/**"
     ]
   }
 }
