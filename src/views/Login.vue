@@ -31,7 +31,12 @@
               id="email"
             />
             <br />
-            <p v-if="req_email" id="req_email" class="invalid" testid="email required error">
+            <p
+              v-if="req_email"
+              id="req_email"
+              class="invalid"
+              testid="email required error"
+            >
               Please enter your Spotify email address.
             </p>
             <input
@@ -204,8 +209,6 @@ export default {
       this.can_submit = true;
       this.req_email;
       this.req_password;
-
-      console.log("in log");
       setTimeout(() => {
         if (this.can_submit) {
           let user = {

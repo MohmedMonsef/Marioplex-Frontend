@@ -31,6 +31,7 @@
               v-if="req_email == true"
               class="invalid"
               testid="email required error"
+              id="req_email"
             >
               Please enter your email.
             </p>
@@ -38,6 +39,7 @@
               v-if="invalid_email == true"
               testid="email invalid error"
               class="invalid"
+              id="invalid_email"
             >
               The email address you supplied is invalid.
             </p>
@@ -54,12 +56,14 @@
               placeholder="Confirm email"
               v-model="email_confirmation"
               testid="confirm email input"
+              id="confirm_email"
             />
             <br />
             <p
               v-if="req_confirm_email == true"
               testid="confirm email required error"
               class="invalid"
+               id="confirm_email_req"
             >
               Please enter your email.
             </p>
@@ -80,6 +84,7 @@
               "
               class="invalid"
               testid="emails not matched error"
+              id="mistched_emails"
             >
               Email address doesn't match.
             </p>
@@ -97,6 +102,7 @@
               v-if="req_password"
               class="invalid"
               testid="password required error"
+              id="req_password"
             >
               Enter a password to continue.
             </p>
@@ -104,6 +110,7 @@
               v-if="short_password == true"
               class="invalid"
               testid="password short error"
+              id="short_password"
             >
               Your password is too short.
             </p>
@@ -113,12 +120,14 @@
               placeholder="What should we call you?"
               v-model="username"
               testid="username input"
+              id="username"
               required
             />
             <p
               v-if="req_username == true"
               class="invalid"
               testid="username required error"
+              id="req_username"
             >
               What should we call you?
             </p>
@@ -126,10 +135,11 @@
             <!-- country -->
             <select
               v-model="country"
-              class="country_select"
+               class="country_select"
               testid="country input"
             >
               <option
+               
                 v-for="country in countries"
                 :key="country.value"
                 :disabled="country.disabled"
@@ -140,6 +150,7 @@
               v-if="req_country == true"
               class="invalid"
               testid="country required error"
+              id="req_country"
             >
               Please enter your country.
             </p>
@@ -152,11 +163,13 @@
                 placeholder="Day"
                 v-model="day"
                 testid="day of birth input"
+                id="day"
               />
               <select
                 v-model="month"
                 class="month_select"
                 testid="month of birth input"
+                id="month"
               >
                 <option
                   v-for="month in Months"
@@ -172,6 +185,7 @@
                 placeholder="Year"
                 testid="year of birth input"
                 v-model="year"
+                id="year"
               />
             </div>
 
@@ -179,6 +193,7 @@
               v-if="valid_day == true"
               class="invalid"
               testid="day of birth error"
+              id="req_day"
             >
               Please enter a valid day of the month.
             </p>
@@ -186,6 +201,7 @@
               v-if="valid_month == true"
               class="invalid"
               testid="month of birth error"
+              id="req_month"
             >
               Please enter your birth month.
             </p>
@@ -193,12 +209,14 @@
               v-if="valid_year == true"
               class="invalid"
               testid="year of birth error"
+              id="req_year"
             >
               Please enter a valid year.
             </p>
             <p
               v-if="valid_age == true"
               class="invalid"
+              id="invalid_age"
               testid="year of birth error"
             >
               Sorry, but you don't meet Spotify's age requirements.
@@ -209,6 +227,7 @@
             <div id="gender" class="input_field">
               <input
                 type="radio"
+                id="female_gender"
                 class="gender_field gender-radio"
                 value="m"
                 v-model="gender"
@@ -233,6 +252,7 @@
               v-if="req_gender == true"
               class="invalid"
               testid="gender required error"
+              id="req_gender"
             >
               Please indicate your gender.
             </p>
@@ -436,16 +456,10 @@ export default {
       this.$store.dispatch("authorization/facebook_signUp");
     },
     cannotSubmit() {
-      console.log("cannot sub");
-      console.log(this.can_submit);
       this.can_submit = false;
-      console.log(this.can_submit);
     },
     canSubmit() {
-      console.log("can sub");
-      console.log(this.can_submit);
       this.can_submit = this.can_submit && true;
-      console.log(this.can_submit);
     }
   },
   computed: {
@@ -453,12 +467,8 @@ export default {
       isLoggedIn: "authorization/GetStatus"
     }),
     req_email: function() {
-      console.log(this.email);
       if (this.trigger_validation) {
-        console.log(this.email);
         if (this.email == "") {
-          console.log(this.email);
-          console.log("required email not found");
           this.cannotSubmit();
           return true;
         } else {

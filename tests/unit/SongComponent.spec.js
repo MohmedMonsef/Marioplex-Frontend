@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
-import VueRouter from 'vue-router'
+import VueRouter from "vue-router";
 import SongComponent from "../../src/components/SongComponent";
 
 describe("SongComponent", () => {
@@ -10,7 +10,7 @@ describe("SongComponent", () => {
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
-  localVue.use(VueRouter)
+  localVue.use(VueRouter);
 
   beforeEach(() => {
     store = new Vuex.Store({
@@ -54,8 +54,7 @@ describe("SongComponent", () => {
               playlistId: "5e891c8edb96e26db4efc790",
               isPlayable: true
             },
-            playicon:"false"
-            
+            playicon: "false"
           },
           getters: {
             Get_Currentsong: state => {
@@ -89,7 +88,7 @@ describe("SongComponent", () => {
     expect(song_artists.text()).toBe("civil wars");
     expect(song_length.text()).toBe("8:20");
   });
-  it("if component is clicked ", async() => {
+  it("if component is clicked ", async () => {
     const music_icon = wrapper.find(".music_icon");
     music_icon.trigger("click");
     wrapper.setData({
@@ -97,7 +96,7 @@ describe("SongComponent", () => {
     });
     const playSong = jest.fn();
     wrapper.setMethods({
-      playSong:playSong
+      playSong: playSong
     });
     expect("playSong").toHaveBeenCalled;
   });
