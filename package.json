@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "styleguide": "vue-cli-service styleguidist",
+    "styleguide:build": "vue-cli-service styleguidist:build"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -31,7 +33,7 @@
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-pwa": "~4.2.0",
     "@vue/cli-plugin-router": "~4.2.0",
-    "@vue/cli-plugin-unit-jest": "~4.2.0",
+    "@vue/cli-plugin-unit-jest": "^4.2.3",
     "@vue/cli-plugin-vuex": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -46,6 +48,7 @@
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
+    "vue-styleguidist": "^4.16.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -79,6 +82,11 @@
     "last 2 versions"
   ],
   "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
+    "preset":"@vue/cli-plugin-unit-jest",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,Vue}",
+      "!**/node_modules/**"
+    ]
   }
 }

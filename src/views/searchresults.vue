@@ -150,7 +150,7 @@ import LibAlbums from "@/components/lib-albums.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: searchresult,
+  name: "searchresult",
   components: {
     LibArtists,
     top,
