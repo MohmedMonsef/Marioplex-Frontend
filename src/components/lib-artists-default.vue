@@ -17,7 +17,7 @@
     </svg>
     <h1>Your artists will appear here.</h1>
     <p>Follow artists you love to add them to Your Library.</p>
-    <router-link to="/HomeWebPlayer/search">
+    <router-link to="/HomeWebPlayer/search" class="search">
       <button class="search_button" testid="search button">
         SEARCH
       </button>
@@ -64,5 +64,7 @@ p {
 </style>
 
 <script>
-export default {};
+export default {
+  name: "lib-artists-default"
+};
 </script>
