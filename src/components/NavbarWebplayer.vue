@@ -50,6 +50,7 @@
           testid="dropdown list"
         >
           <svg
+            class="user_icon"
             width="25"
             height="25"
             viewBox="0 0 80 90"
@@ -75,7 +76,7 @@
           </a>
           <div class="divider">________</div>
           <router-link to="/HomeWebPlayer" id="logout">
-            <a class="dropdown-item" testid="logout button" @click="logout()">
+            <a class="dropdown-item" testid="logout button" id="logout" @click="logout()">
               Log out
             </a>
           </router-link>

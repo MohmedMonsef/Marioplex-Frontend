@@ -230,7 +230,7 @@
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import AddTrackPopup from "../components/AddTrackPopup";
-import { mapGetters, mapState } from "vuex";
+import { mapGetters} from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");

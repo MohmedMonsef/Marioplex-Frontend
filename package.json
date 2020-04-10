@@ -46,6 +46,8 @@
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-styleguidist": "~4.16.0",
+    "vue-styleguidist": "^4.16.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -79,6 +81,11 @@
     "last 2 versions"
   ],
   "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
+    "preset": "@vue/cli-plugin-unit-jest",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,vue}",
+      "!**/node_modules/**"
+    ]
   }
 }

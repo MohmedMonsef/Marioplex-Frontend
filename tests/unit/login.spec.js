@@ -15,7 +15,9 @@ describe("Login", () => {
         authorization: {
           namespaced: true,
           state: {
-            status: ""
+            status: "",
+            token: "",
+            User: {}
           },
           getters: {
             GetStatus: state => {
@@ -23,7 +25,9 @@ describe("Login", () => {
             }
           },
           actions: {
-            facebook_signUp: jest.fn()
+            facebook_signUp: jest.fn(),
+            login:jest.fn(),
+            get_user:jest.fn()
           }
         }
       }
@@ -32,6 +36,13 @@ describe("Login", () => {
       localVue,
       store
     });
+  });
+  it("renders", () => {
+    expect(wrapper.exists()).toBe(true);
+  });
+  
+  it("renders a vue instance", () => {
+    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("input email", () => {
     let email = wrapper.find("#email");
@@ -51,6 +62,10 @@ describe("Login", () => {
     await wrapper.vm.$nextTick();
     expect(wrapper.find("#req_email").exists()).toBe(true);
     expect(wrapper.find("#req_password").exists()).toBe(true);
+    const cannotSubmit = jest.fn();
+    wrapper.setMethods({
+      cannotSubmit: cannotSubmit
+    });
   });
   it("facebook login", () => {
     const facebook = wrapper.find("#facebook-btn");

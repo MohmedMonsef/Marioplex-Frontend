@@ -78,6 +78,13 @@ describe("SongComponent", () => {
       }
     });
   });
+  it("renders", () => {
+    expect(wrapper.exists()).toBe(true);
+  });
+  
+  it("renders a vue instance", () => {
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
   it("renders song info", () => {
     const song_name = wrapper.find(".song_name");
     const song_album = wrapper.find("#song_album");

@@ -34,6 +34,13 @@ describe("SignUp", () => {
       store
     });
   });
+  it("renders", () => {
+    expect(wrapper.exists()).toBe(true);
+  });
+  
+  it("renders a vue instance", () => {
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
   it("input email", async() => {
     let email = wrapper.find("#email");
     email.element.value = "mm@gmail.com";
