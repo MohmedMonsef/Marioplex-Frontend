@@ -5,7 +5,6 @@ import album_info from "../../src/components/album_info";
 
 describe("album_info", () => {
   let wrapper;
-  let ifliked;
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
@@ -39,6 +38,12 @@ describe("album_info", () => {
         propsData: {}
       });
   });
+  it("renders" , () => {
+    expect(wrapper.exists()).toBe(true);
+  });
+  it("renders a vue instance" , () => {
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
   it("renders album information", () => {
     const album_name = wrapper.find('.albumname');
     expect(album_name.text()).toBe("Album");
@@ -49,25 +54,85 @@ describe("album_info", () => {
     
   });
   it("if the album is liked", async () => {
-    ifliked = shallowMount(album_info, {
-      localVue,
-      store,
-      propsData: {}
-    });
-    ifliked.setData({
+    wrapper.setData({
       show: false,
       play: false
     });
-    const heart = ifliked.find(".emptyheartbutton");  
+    const heart = wrapper.find(".emptyheartbutton");  
     const likecurrentalbum = jest.fn();
-    ifliked.setMethods({
+    wrapper.setMethods({
       likecurrentalbum:likecurrentalbum
     });
     heart.trigger("click");
-    await ifliked.vm.$nextTick();
-    const isnotliked = ifliked.find(".emptyheartbutton");
-    const isliked = ifliked.find(".filledheartbutton");
+    await wrapper.vm.$nextTick();
+    const isnotliked = wrapper.find(".emptyheartbutton");
+    const isliked = wrapper.find(".filledheartbutton");
     expect(isliked.exists()).toBe(false);
     expect(isnotliked.exists()).toBe(true);
   });
+
+  it("play button click" , () => {
+    wrapper.setData({
+      show: false,
+      play: false
+    });
+    const isplaying = jest.fn();
+    const playSong = jest.fn();
+    wrapper.setMethods({
+      isplaying:isplaying,
+      playSong:playSong
+    });
+    const playbutton = wrapper.find(".playbutton");
+    playbutton.trigger("click");
+    expect(isplaying).toHaveBeenCalled;
+    expect(playSong).toHaveBeenCalled;
+    });
+  it("pause button click" , () => {
+    wrapper.setData({
+      show: false,
+      play: true
+    });
+    const stopplayingbutton = jest.fn();
+    const pauseSong = jest.fn();
+    wrapper.setMethods({
+      stopplayingbutton:stopplayingbutton,
+      pauseSong:pauseSong
+    });
+    const pausebutton = wrapper.find(".pausebutton");
+    pausebutton.trigger("click");
+    expect(stopplayingbutton).toHaveBeenCalled;
+    expect(pauseSong).toHaveBeenCalled;
+  });
+  it("play icon click" , () => {
+    wrapper.setData({
+      show: false,
+      play: false
+    });
+    const isplaying = jest.fn();
+    const playSong = jest.fn();
+    wrapper.setMethods({
+      isplaying:isplaying,
+      playSong:playSong
+    });
+    const playicon = wrapper.find("#imageplayicon");
+    playicon.trigger("click");
+    expect(isplaying).toHaveBeenCalled;
+    expect(playSong).toHaveBeenCalled;
+    });
+    it("pause icon click" , () => {
+      wrapper.setData({
+        show: false,
+        play: true
+      });
+      const stopplaying = jest.fn();
+      const pauseSong = jest.fn();
+      wrapper.setMethods({
+        stopplaying:stopplaying,
+        pauseSong:pauseSong
+      });
+      const pauseicon = wrapper.find("#imagepauseicon");
+      pauseicon.trigger("click");
+      expect(stopplaying).toHaveBeenCalled;
+      expect(pauseSong).toHaveBeenCalled;
+      });
 });

@@ -104,7 +104,9 @@
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
 
-      <p testid="playlistlength" id="playlistlength">{{ playlist_length }} SONGS</p>
+      <p testid="playlistlength" id="playlistlength">
+        {{ playlist_length }} SONGS
+      </p>
       <div class="toast" id="playlistliketoast" testid="playlisttoast"></div>
     </div>
   </div>
@@ -342,7 +344,7 @@ export default {
           "playlist/like_playlist",
           this.$route.params.playlist_id
         );
-        // this.$store.dispatch("creatplaylist/showplaylists");
+        this.$store.dispatch("creatplaylist/showplaylists");
       } else {
         toast.show("Removed from Your Library");
         this.$store.dispatch(
