@@ -65,7 +65,7 @@
     </button>
     <div class="add-library">
       <button
-        class="heartbutton"
+        class="emptyheartbutton"
         testid="emptyheartbutton"
         v-if="!this.liked"
         @click="likecurrentplaylist()"
@@ -80,7 +80,7 @@
       </button>
 
       <button
-        class="heartbutton"
+        class="filledheartbutton"
         testid="filledheartbutton"
         v-if="this.liked"
         @click="likecurrentplaylist()"
@@ -104,7 +104,7 @@
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
 
-      <p testid="playlistlength">{{ playlist_length }} SONGS</p>
+      <p testid="playlistlength" id="playlistlength">{{ playlist_length }} SONGS</p>
       <div class="toast" id="playlistliketoast" testid="playlisttoast"></div>
     </div>
   </div>
@@ -342,7 +342,7 @@ export default {
           "playlist/like_playlist",
           this.$route.params.playlist_id
         );
-        this.$store.dispatch("creatplaylist/showplaylists");
+        // this.$store.dispatch("creatplaylist/showplaylists");
       } else {
         toast.show("Removed from Your Library");
         this.$store.dispatch(
