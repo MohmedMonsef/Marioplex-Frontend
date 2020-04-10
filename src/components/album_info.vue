@@ -57,7 +57,7 @@
     </button>
     <div class="add-library">
       <button
-        class="heartbutton"
+        class="emptyheartbutton"
         testid="emptyheartbutton"
         v-if="!this.liked"
         @click="likecurrentalbum()"
@@ -72,7 +72,7 @@
       </button>
 
       <button
-        class="heartbutton"
+        class="filledheartbutton"
         testid="filledheartbutton"
         v-if="this.liked"
         @click="likecurrentalbum()"
@@ -93,7 +93,7 @@
         <p v-if="!isLiked">Add to Liked Songs</p>
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
-      <p testid="albumlength">{{ album_length }} SONGS</p>
+      <p testid="albumlength" id="albumlength">{{ album_length }} SONGS</p>
       <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
     </div>
   </div>
