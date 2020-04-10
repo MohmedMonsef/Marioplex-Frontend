@@ -95,5 +95,19 @@ describe("SideBar.vue", () => {
     delete_button.trigger("click");
     expect(changeModalStateDelete).toHaveBeenCalled;
   });
+  it("renders", () => {
+    const wrapper = shallowMount(SideBar, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(SideBar, {
+      localVue,
+      store
+    });
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 
 });

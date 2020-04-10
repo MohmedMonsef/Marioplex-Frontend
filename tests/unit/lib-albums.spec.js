@@ -10,17 +10,20 @@ describe("LibAlbums.vue", () => {
       propsData: {
         name: "album name",
         artistname: "artist name"
-        //   albumId: "1",
-        // artistId: 2
       }
     });
     const name = wrapper.find("#cardtitle");
     const artistname = wrapper.find(".artistlink");
-    //   const albumId = wrapper.find('#carglink');
-    //   const artistId = wrapper.find('.song_length');
     expect(name.text()).toBe("album name");
     expect(artistname.text()).toBe("artist name");
-    //   expect(albumId.text()).toBe("1");
-    //   expect(artistId.text()).toBe("8:20");
   });
+  it("renders", () => {
+    const wrapper = shallowMount(LibAlbums, {localVue});
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(LibAlbums, {localVue});
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
+
 });

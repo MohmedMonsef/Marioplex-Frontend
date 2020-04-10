@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">77.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">77.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -707,21 +707,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -734,8 +725,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -747,8 +747,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -773,7 +773,7 @@
     &lt;/transition&gt;
     &lt;transition name="slide" appear&gt;
       &lt;div class="modal" v-if="showModal"&gt;
-        &lt;button class="cancel" @click="changeModalState"&gt;
+        &lt;button class="cancel" @click="changeModalState()"&gt;
           &lt;svg
             width="32"
             height="32"
@@ -804,7 +804,7 @@
           &lt;/div&gt;
         &lt;/div&gt;
 &nbsp;
-        &lt;button class="cancel_button" @click="changeModalState"&gt;
+        &lt;button class="cancel_button" @click="changeModalState()"&gt;
           cancle
         &lt;/button&gt;
         &lt;!--&lt;input @keyup.enter="CreatePlaylist()" /&gt;--&gt;
@@ -812,7 +812,7 @@
           class="creat_button"
           testid="confirm_create"
           @click.prevent="CreatePlaylist()"
-          @click="changeModalState"
+          @click="changeModalState()"
         &gt;
           create
         &lt;/button&gt;
@@ -1060,12 +1060,12 @@ ul {
 &lt;script&gt;
 // @ is an alias to /src
 //import {mapActions} from "vuex";
-<span class="cstat-no" title="statement not covered" >import { mapGetters } from "vuex";</span>
+import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 export default {
   name: "CreatePlaylist",
-<span class="fstat-no" title="function not covered" >  data: function() {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data: function() {
+    return {
       playlistname: ""
     };
   },
@@ -1081,14 +1081,14 @@ export default {
     })
   },
   methods: {
-<span class="fstat-no" title="function not covered" >    changeModalState() {</span>
-<span class="cstat-no" title="statement not covered" >      this.$store.dispatch("creatplaylist/toggleModal");</span>
+    changeModalState() {
+      this.$store.dispatch("creatplaylist/toggleModal");
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    CreatePlaylist() {</span>
+    CreatePlaylist() {
       var payload;
-<span class="cstat-no" title="statement not covered" >      if (this.playlistname) {</span>
-<span class="cstat-no" title="statement not covered" >        payload = {</span>
+<span class="missing-if-branch" title="else path not taken" >E</span>      if (this.playlistname) {
+        payload = {
           name: this.playlistname,
           images: require("../assets/defaultplaylist.png"),
           owner: this.username
@@ -1100,8 +1100,8 @@ export default {
           owner: this.username
         };
       }
-<span class="cstat-no" title="statement not covered" >      console.log("nerd");</span>
-<span class="cstat-no" title="statement not covered" >      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);</span>
+      console.log("nerd");
+      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
       // Addtrack();
     }
     // DeletePlaylist(id) {
@@ -1122,7 +1122,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Apr 11 2020 00:17:14 GMT+0200 (Eastern European Standard Time)
+                at Sat Apr 11 2020 01:05:37 GMT+0200 (Eastern European Standard Time)
             </div>
         </div>
         <script src="..\..\..\prettify.js"></script>

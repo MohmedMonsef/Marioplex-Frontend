@@ -47,4 +47,18 @@ describe("LibPlaylists.vue", () => {
     expect(name.text()).toBe("playlist name");
     expect(ownerName.text()).toBe("By dai");
   });
+  it("renders", () => {
+    const wrapper = shallowMount(LibPlaylists, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(LibPlaylists, {
+      localVue,
+      store
+    });
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 });

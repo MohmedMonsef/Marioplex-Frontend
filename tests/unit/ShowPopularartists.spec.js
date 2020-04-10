@@ -14,4 +14,12 @@ describe("ShowPopularartists.vue", () => {
     const name = wrapper.find("#cardtitle");
     expect(name.text()).toBe("artist_name");
   });
+  it("renders", () => {
+    const wrapper = shallowMount(ShowPopularartists, {localVue});
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(ShowPopularartists, {localVue});
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 });

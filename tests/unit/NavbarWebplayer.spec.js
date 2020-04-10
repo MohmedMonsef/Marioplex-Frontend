@@ -76,4 +76,18 @@ describe("NavbarWebplayer.vue", () => {
     anchor.trigger("click");
     expect(logout).toHaveBeenCalled;
   });
+  it("renders", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 });

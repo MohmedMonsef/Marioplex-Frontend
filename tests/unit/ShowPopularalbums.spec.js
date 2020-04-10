@@ -17,4 +17,12 @@ describe("ShowPopularalbums.vue", () => {
     expect(name.text()).toBe("album_name");
     expect(artistname.text()).toBe("artist_name");
   });
+  it("renders", () => {
+    const wrapper = shallowMount(ShowPopularalbums, {localVue});
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(ShowPopularalbums, {localVue});
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 });
