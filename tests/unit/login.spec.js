@@ -26,8 +26,8 @@ describe("Login", () => {
           },
           actions: {
             facebook_signUp: jest.fn(),
-            login:jest.fn(),
-            get_user:jest.fn()
+            login: jest.fn(),
+            get_user: jest.fn()
           }
         }
       }
@@ -40,7 +40,7 @@ describe("Login", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  
+
   it("renders a vue instance", () => {
     expect(wrapper.isVueInstance()).toBe(true);
   });
@@ -56,6 +56,9 @@ describe("Login", () => {
     password.trigger("input");
     expect(wrapper.vm.password).toBe("1010");
   });
+
+
+  
   it("required inputs", async () => {
     const login_btn = wrapper.find("#login-btn");
     login_btn.trigger("click");

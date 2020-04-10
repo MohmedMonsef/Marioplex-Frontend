@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1586544049866" clover="3.2.0">
-  <project timestamp="1586544049866" name="All files">
-    <metrics statements="1568" coveredstatements="176" conditionals="664" coveredconditionals="85" methods="603" coveredmethods="40" elements="2835" coveredelements="301" complexity="0" loc="1568" ncloc="1568" packages="10" files="75" classes="75"/>
+<coverage generated="1586549737295" clover="3.2.0">
+  <project timestamp="1586549737295" name="All files">
+    <metrics statements="1568" coveredstatements="207" conditionals="664" coveredconditionals="85" methods="603" coveredmethods="59" elements="2835" coveredelements="351" complexity="0" loc="1568" ncloc="1568" packages="10" files="76" classes="76"/>
     <package name="Marioplex-Frontend">
-      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="babel.config.js" path="F:\100phase\Marioplex-Frontend\babel.config.js">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+      <file name="styleguide.config.js" path="F:\100phase\Marioplex-Frontend\styleguide.config.js">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
       </file>
@@ -338,7 +342,7 @@
       </file>
     </package>
     <package name="Marioplex-Frontend.src.components">
-      <metrics statements="404" coveredstatements="27" conditionals="103" coveredconditionals="4" methods="131" coveredmethods="8"/>
+      <metrics statements="403" coveredstatements="58" conditionals="103" coveredconditionals="4" methods="131" coveredmethods="27"/>
       <file name="AddTrackPopup.vue" path="F:\100phase\Marioplex-Frontend\src\components\AddTrackPopup.vue">
         <metrics statements="11" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="182" count="2" type="stmt"/>
@@ -393,50 +397,50 @@
         <line num="278" count="0" type="stmt"/>
       </file>
       <file name="NavbarWebplayer.vue" path="F:\100phase\Marioplex-Frontend\src\components\NavbarWebplayer.vue">
-        <metrics statements="21" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="9" coveredmethods="0"/>
-        <line num="294" count="0" type="stmt"/>
-        <line num="297" count="0" type="stmt"/>
-        <line num="311" count="0" type="stmt"/>
-        <line num="314" count="0" type="stmt"/>
-        <line num="317" count="0" type="stmt"/>
-        <line num="320" count="0" type="stmt"/>
+        <metrics statements="21" coveredstatements="4" conditionals="9" coveredconditionals="0" methods="9" coveredmethods="3"/>
+        <line num="295" count="1" type="stmt"/>
+        <line num="298" count="3" type="stmt"/>
+        <line num="312" count="0" type="stmt"/>
+        <line num="315" count="0" type="stmt"/>
+        <line num="318" count="0" type="stmt"/>
         <line num="321" count="0" type="stmt"/>
-        <line num="322" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="323" count="0" type="stmt"/>
-        <line num="325" count="0" type="stmt"/>
-        <line num="329" count="0" type="cond" truecount="0" falsecount="5"/>
-        <line num="337" count="0" type="stmt"/>
-        <line num="339" count="0" type="stmt"/>
-        <line num="341" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="342" count="0" type="stmt"/>
-        <line num="344" count="0" type="stmt"/>
-        <line num="347" count="0" type="stmt"/>
-        <line num="354" count="0" type="stmt"/>
+        <line num="322" count="0" type="stmt"/>
+        <line num="323" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="324" count="0" type="stmt"/>
+        <line num="326" count="0" type="stmt"/>
+        <line num="330" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="338" count="0" type="stmt"/>
+        <line num="340" count="0" type="stmt"/>
+        <line num="342" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="343" count="0" type="stmt"/>
+        <line num="345" count="0" type="stmt"/>
+        <line num="348" count="0" type="stmt"/>
         <line num="355" count="0" type="stmt"/>
-        <line num="358" count="0" type="stmt"/>
-        <line num="359" count="0" type="stmt"/>
+        <line num="356" count="0" type="stmt"/>
+        <line num="359" count="3" type="stmt"/>
+        <line num="360" count="3" type="stmt"/>
       </file>
       <file name="ShowPopularalbums.vue" path="F:\100phase\Marioplex-Frontend\src\components\ShowPopularalbums.vue">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="94" count="0" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="94" count="1" type="stmt"/>
       </file>
       <file name="ShowPopularartists.vue" path="F:\100phase\Marioplex-Frontend\src\components\ShowPopularartists.vue">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="94" count="0" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="94" count="1" type="stmt"/>
       </file>
       <file name="ShowPopularplaylists.vue" path="F:\100phase\Marioplex-Frontend\src\components\ShowPopularplaylists.vue">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="94" count="0" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="94" count="1" type="stmt"/>
       </file>
       <file name="ShowPopularreleases.vue" path="F:\100phase\Marioplex-Frontend\src\components\ShowPopularreleases.vue">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="94" count="0" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="94" count="1" type="stmt"/>
       </file>
       <file name="SideBar.vue" path="F:\100phase\Marioplex-Frontend\src\components\SideBar.vue">
-        <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="243" count="0" type="stmt"/>
-        <line num="248" count="0" type="stmt"/>
-        <line num="259" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+        <line num="243" count="1" type="stmt"/>
+        <line num="248" count="1" type="stmt"/>
+        <line num="259" count="1" type="stmt"/>
         <line num="273" count="0" type="stmt"/>
         <line num="276" count="0" type="stmt"/>
         <line num="279" count="0" type="stmt"/>
@@ -508,10 +512,10 @@
         <line num="271" count="0" type="stmt"/>
       </file>
       <file name="album_info.vue" path="F:\100phase\Marioplex-Frontend\src\components\album_info.vue">
-        <metrics statements="46" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="0"/>
-        <line num="240" count="0" type="stmt"/>
-        <line num="241" count="0" type="stmt"/>
-        <line num="242" count="0" type="stmt"/>
+        <metrics statements="46" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="1"/>
+        <line num="240" count="1" type="stmt"/>
+        <line num="241" count="1" type="stmt"/>
+        <line num="242" count="1" type="stmt"/>
         <line num="244" count="0" type="stmt"/>
         <line num="246" count="0" type="stmt"/>
         <line num="247" count="0" type="stmt"/>
@@ -519,7 +523,7 @@
         <line num="249" count="0" type="stmt"/>
         <line num="250" count="0" type="stmt"/>
         <line num="252" count="0" type="stmt"/>
-        <line num="257" count="0" type="stmt"/>
+        <line num="257" count="3" type="stmt"/>
         <line num="266" count="0" type="stmt"/>
         <line num="267" count="0" type="stmt"/>
         <line num="268" count="0" type="stmt"/>
@@ -570,28 +574,28 @@
         <line num="198" count="0" type="stmt"/>
       </file>
       <file name="lib-albums.vue" path="F:\100phase\Marioplex-Frontend\src\components\lib-albums.vue">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="101" count="0" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="101" count="1" type="stmt"/>
       </file>
       <file name="lib-artists.vue" path="F:\100phase\Marioplex-Frontend\src\components\lib-artists.vue">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="88" count="0" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="88" count="1" type="stmt"/>
       </file>
       <file name="lib-likedsongs.vue" path="F:\100phase\Marioplex-Frontend\src\components\lib-likedsongs.vue">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="102" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="112" count="0" type="stmt"/>
-        <line num="121" count="0" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="105" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="121" count="1" type="stmt"/>
       </file>
       <file name="lib-playlists-default.vue" path="F:\100phase\Marioplex-Frontend\src\components\lib-playlists-default.vue">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="72" count="0" type="stmt"/>
       </file>
       <file name="lib-playlists.vue" path="F:\100phase\Marioplex-Frontend\src\components\lib-playlists.vue">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="101" count="2" type="stmt"/>
-        <line num="104" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="101" count="3" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
       </file>
       <file name="library-navbar.vue" path="F:\100phase\Marioplex-Frontend\src\components\library-navbar.vue">
         <metrics statements="11" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="6" coveredmethods="0"/>
@@ -608,10 +612,10 @@
         <line num="359" count="0" type="stmt"/>
       </file>
       <file name="likedtracks_info.vue" path="F:\100phase\Marioplex-Frontend\src\components\likedtracks_info.vue">
-        <metrics statements="30" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="147" count="0" type="stmt"/>
-        <line num="148" count="0" type="stmt"/>
-        <line num="151" count="0" type="stmt"/>
+        <metrics statements="30" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="1"/>
+        <line num="147" count="1" type="stmt"/>
+        <line num="148" count="1" type="stmt"/>
+        <line num="151" count="1" type="stmt"/>
         <line num="159" count="0" type="stmt"/>
         <line num="160" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="161" count="0" type="stmt"/>
@@ -746,18 +750,18 @@
         <line num="659" count="0" type="stmt"/>
       </file>
       <file name="playlist.vue" path="F:\100phase\Marioplex-Frontend\src\components\playlist.vue">
-        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="153" count="0" type="stmt"/>
-        <line num="156" count="0" type="stmt"/>
+        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="153" count="1" type="stmt"/>
+        <line num="156" count="1" type="stmt"/>
         <line num="163" count="0" type="stmt"/>
         <line num="164" count="0" type="stmt"/>
         <line num="165" count="0" type="stmt"/>
       </file>
       <file name="playlist_info.vue" path="F:\100phase\Marioplex-Frontend\src\components\playlist_info.vue">
-        <metrics statements="48" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="0"/>
-        <line num="252" count="0" type="stmt"/>
-        <line num="253" count="0" type="stmt"/>
-        <line num="254" count="0" type="stmt"/>
+        <metrics statements="47" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="1"/>
+        <line num="252" count="1" type="stmt"/>
+        <line num="253" count="1" type="stmt"/>
+        <line num="254" count="1" type="stmt"/>
         <line num="256" count="0" type="stmt"/>
         <line num="258" count="0" type="stmt"/>
         <line num="259" count="0" type="stmt"/>
@@ -765,7 +769,7 @@
         <line num="261" count="0" type="stmt"/>
         <line num="262" count="0" type="stmt"/>
         <line num="264" count="0" type="stmt"/>
-        <line num="269" count="0" type="stmt"/>
+        <line num="269" count="2" type="stmt"/>
         <line num="291" count="0" type="stmt"/>
         <line num="292" count="0" type="stmt"/>
         <line num="293" count="0" type="stmt"/>
@@ -799,7 +803,6 @@
         <line num="339" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="340" count="0" type="stmt"/>
         <line num="341" count="0" type="stmt"/>
-        <line num="345" count="0" type="stmt"/>
         <line num="347" count="0" type="stmt"/>
         <line num="348" count="0" type="stmt"/>
         <line num="352" count="0" type="stmt"/>
@@ -832,7 +835,7 @@
       <metrics statements="35" coveredstatements="2" conditionals="15" coveredconditionals="0" methods="11" coveredmethods="1"/>
       <file name="mediaplayer_script.js" path="F:\100phase\Marioplex-Frontend\src\javascript\mediaplayer_script.js">
         <metrics statements="35" coveredstatements="2" conditionals="15" coveredconditionals="0" methods="11" coveredmethods="1"/>
-        <line num="5" count="2" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -840,7 +843,7 @@
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="22" count="8" type="stmt"/>
+        <line num="22" count="14" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="45" count="0" type="stmt"/>

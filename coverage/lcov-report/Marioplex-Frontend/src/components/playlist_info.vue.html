@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">8.51% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/48</span>
+                <span class='fraction'>4/47</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">10% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>1/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">8.51% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/48</span>
+                <span class='fraction'>4/47</span>
             </div>
         
             
@@ -675,9 +675,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -692,7 +692,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -768,7 +768,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -859,7 +859,7 @@
     &lt;/button&gt;
     &lt;div class="add-library"&gt;
       &lt;button
-        class="heartbutton"
+        class="emptyheartbutton"
         testid="emptyheartbutton"
         v-if="!this.liked"
         @click="likecurrentplaylist()"
@@ -874,7 +874,7 @@
       &lt;/button&gt;
 &nbsp;
       &lt;button
-        class="heartbutton"
+        class="filledheartbutton"
         testid="filledheartbutton"
         v-if="this.liked"
         @click="likecurrentplaylist()"
@@ -898,7 +898,7 @@
         &lt;p v-if="isLiked"&gt;Remove from Liked Songs&lt;/p&gt;
       &lt;/div&gt;--&gt;
 &nbsp;
-      &lt;p testid="playlistlength"&gt;{{ playlist_length }} SONGS&lt;/p&gt;
+      &lt;p testid="playlistlength" id="playlistlength"&gt;{{ playlist_length }} SONGS&lt;/p&gt;
       &lt;div class="toast" id="playlistliketoast" testid="playlisttoast"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1043,9 +1043,9 @@ p {
 &lt;/style&gt;
 &nbsp;
 &lt;script&gt;
-<span class="cstat-no" title="statement not covered" >import { default as song_functions } from "../javascript/mediaplayer_script.js";</span>
-<span class="cstat-no" title="statement not covered" >import { mapGetters } from "vuex";</span>
-<span class="cstat-no" title="statement not covered" >const toast = {</span>
+import { default as song_functions } from "../javascript/mediaplayer_script.js";
+import { mapGetters } from "vuex";
+const toast = {
 <span class="fstat-no" title="function not covered" >  show(message) {</span>
 <span class="cstat-no" title="statement not covered" >    var mytoast = document.getElementById("playlistliketoast");</span>
     //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
@@ -1059,8 +1059,8 @@ p {
   }
 };
 export default {
-<span class="fstat-no" title="function not covered" >  data: function() {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data: function() {
+    return {
       show: false,
       play: false
     };
@@ -1136,7 +1136,7 @@ export default {
           "playlist/like_playlist",
           this.$route.params.playlist_id
         );
-<span class="cstat-no" title="statement not covered" >        this.$store.dispatch("creatplaylist/showplaylists");</span>
+        // this.$store.dispatch("creatplaylist/showplaylists");
       } else {
 <span class="cstat-no" title="statement not covered" >        toast.show("Removed from Your Library");</span>
 <span class="cstat-no" title="statement not covered" >        this.$store.dispatch(</span>
@@ -1167,7 +1167,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Apr 10 2020 20:40:49 GMT+0200 (Eastern European Standard Time)
+                at Fri Apr 10 2020 22:15:37 GMT+0200 (Eastern European Standard Time)
             </div>
         </div>
         <script src="..\..\..\prettify.js"></script>

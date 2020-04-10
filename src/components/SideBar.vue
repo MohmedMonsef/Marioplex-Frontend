@@ -23,7 +23,11 @@
         </div>
       </li>
       <li>
-        <div class="divOnFocus" id="callsearch" @click="setsearch(), setfocus()">
+        <div
+          class="divOnFocus"
+          id="callsearch"
+          @click="setsearch(), setfocus()"
+        >
           <router-link
             to="/HomeWebPlayer/search"
             testid="searchpage link"

@@ -524,12 +524,12 @@ export default {
       if (!this.drag && this.currentaudio) {
         //console.log("this is the entering condition",this.drag && this.playicon)
         var SongSlider = document.getElementById("progressbar");
-        if(SongSlider !=null){
-        var ct = this.progress;
-        this.currentPos = ct;
-        var d = this.duration;
-        var sp = ct / d;
-        SongSlider.style.width = sp * 100 + "%";
+        if (SongSlider != null) {
+          var ct = this.progress;
+          this.currentPos = ct;
+          var d = this.duration;
+          var sp = ct / d;
+          SongSlider.style.width = sp * 100 + "%";
         }
       }
     },

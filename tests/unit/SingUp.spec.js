@@ -37,11 +37,11 @@ describe("SignUp", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  
+
   it("renders a vue instance", () => {
     expect(wrapper.isVueInstance()).toBe(true);
   });
-  it("input email", async() => {
+  it("input email", async () => {
     let email = wrapper.find("#email");
     email.element.value = "mm@gmail.com";
     email.trigger("input");
@@ -57,7 +57,7 @@ describe("SignUp", () => {
 
     expect(wrapper.find("#invalid_email").exists()).toBe(true);
   });
-  it("input email confirmation",async () => {
+  it("input email confirmation", async () => {
     let confirm_email = wrapper.find("#confirm_email");
     confirm_email.element.value = "mm@gmail.com";
     confirm_email.trigger("input");
@@ -77,7 +77,7 @@ describe("SignUp", () => {
 
     expect(wrapper.find("#mistched_emails").exists()).toBe(true);
   });
-  it("input password",async () => {
+  it("input password", async () => {
     let password = wrapper.find("#password");
     password.element.value = "1010";
     password.trigger("input");
@@ -95,76 +95,76 @@ describe("SignUp", () => {
     username.trigger("input");
     expect(wrapper.vm.username).toBe("menna");
   });
-    it("input country",async () => {
-      let country = wrapper.find(".country_select");
-      country.element.value = "Egypt";
-      country.selected = true;
-      country.trigger("change");
-      expect(wrapper.vm.country).toBe("Egypt");
+  it("input country", async () => {
+    let country = wrapper.find(".country_select");
+    country.element.value = "Egypt";
+    country.selected = true;
+    country.trigger("change");
+    expect(wrapper.vm.country).toBe("Egypt");
 
-      country.element.value = "Choose a country";
-      country.selected = true;
-      country.trigger("change");
-//invalid input
-      const signup_btn = wrapper.find("#signup-btn");
-      signup_btn.trigger("click");
-      await wrapper.vm.$nextTick();
+    country.element.value = "Choose a country";
+    country.selected = true;
+    country.trigger("change");
+    //invalid input
+    const signup_btn = wrapper.find("#signup-btn");
+    signup_btn.trigger("click");
+    await wrapper.vm.$nextTick();
 
-      expect(wrapper.find("#req_country").exists()).toBe(true);
-    });
-    it("input date",async () => {
-      let day = wrapper.find("#day");
-      day.element.value = "1";
-      day.trigger("input");
-      expect(wrapper.vm.day).toBe("1");
+    expect(wrapper.find("#req_country").exists()).toBe(true);
+  });
+  it("input date", async () => {
+    let day = wrapper.find("#day");
+    day.element.value = "1";
+    day.trigger("input");
+    expect(wrapper.vm.day).toBe("1");
 
-      let month = wrapper.find("#month");
-      month.element.value = "1";
-      month.trigger("input");
-      expect(wrapper.vm.day).toBe("1");
+    let month = wrapper.find("#month");
+    month.element.value = "1";
+    month.trigger("input");
+    expect(wrapper.vm.day).toBe("1");
 
-      let year = wrapper.find("#year");
-      year.element.value = "1999";
-      year.trigger("input");
-      expect(wrapper.vm.year).toBe("1999");
+    let year = wrapper.find("#year");
+    year.element.value = "1999";
+    year.trigger("input");
+    expect(wrapper.vm.year).toBe("1999");
 
-      //trigerring invalid input
-      day.element.value = "n";
-      day.trigger("input");
-      month.element.value = "0";
-      month.trigger("input");
-      year.element.value = "2009";
-      year.trigger("input");
+    //trigerring invalid input
+    day.element.value = "n";
+    day.trigger("input");
+    month.element.value = "0";
+    month.trigger("input");
+    year.element.value = "2009";
+    year.trigger("input");
 
-      const signup_btn = wrapper.find("#signup-btn");
-      signup_btn.trigger("click");
-      await wrapper.vm.$nextTick();
+    const signup_btn = wrapper.find("#signup-btn");
+    signup_btn.trigger("click");
+    await wrapper.vm.$nextTick();
 
-      expect(wrapper.find("#req_day").exists()).toBe(true);
-      expect(wrapper.find("#req_month").exists()).toBe(true);
-      expect(wrapper.find("#invalid_age").exists()).toBe(true);
-    });
-    it("input gender", () => {
-      let fgender = wrapper.find("#female_gender");
-      fgender.selected = true;
-      fgender.trigger("change");
-      expect(wrapper.vm.gender).toBe("m");
-    });
-    it("required inputs", async () => {
-      const signup_btn = wrapper.find("#signup-btn");
-      signup_btn.trigger("click");
-      await wrapper.vm.$nextTick();
-      expect(wrapper.find("#req_email").exists()).toBe(true);
-      expect(wrapper.find("#req_password").exists()).toBe(true);
-      expect(wrapper.find("#confirm_email_req").exists()).toBe(true);
-      expect(wrapper.find("#req_password").exists()).toBe(true);
-      expect(wrapper.find("#req_username").exists()).toBe(true);
-      expect(wrapper.find("#req_country").exists()).toBe(true);
-      expect(wrapper.find("#req_day").exists()).toBe(true);
-      expect(wrapper.find("#req_month").exists()).toBe(true);
-      expect(wrapper.find("#req_year").exists()).toBe(true);
-      expect(wrapper.find("#req_gender").exists()).toBe(true);
-    });
+    expect(wrapper.find("#req_day").exists()).toBe(true);
+    expect(wrapper.find("#req_month").exists()).toBe(true);
+    expect(wrapper.find("#invalid_age").exists()).toBe(true);
+  });
+  it("input gender", () => {
+    let fgender = wrapper.find("#female_gender");
+    fgender.selected = true;
+    fgender.trigger("change");
+    expect(wrapper.vm.gender).toBe("m");
+  });
+  it("required inputs", async () => {
+    const signup_btn = wrapper.find("#signup-btn");
+    signup_btn.trigger("click");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find("#req_email").exists()).toBe(true);
+    expect(wrapper.find("#req_password").exists()).toBe(true);
+    expect(wrapper.find("#confirm_email_req").exists()).toBe(true);
+    expect(wrapper.find("#req_password").exists()).toBe(true);
+    expect(wrapper.find("#req_username").exists()).toBe(true);
+    expect(wrapper.find("#req_country").exists()).toBe(true);
+    expect(wrapper.find("#req_day").exists()).toBe(true);
+    expect(wrapper.find("#req_month").exists()).toBe(true);
+    expect(wrapper.find("#req_year").exists()).toBe(true);
+    expect(wrapper.find("#req_gender").exists()).toBe(true);
+  });
   it("facebook login", () => {
     const facebook = wrapper.find("#facebook-btn");
     facebook.trigger("click");

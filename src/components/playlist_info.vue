@@ -104,7 +104,9 @@
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
 
-      <p testid="playlistlength" id="playlistlength">{{ playlist_length }} SONGS</p>
+      <p testid="playlistlength" id="playlistlength">
+        {{ playlist_length }} SONGS
+      </p>
       <div class="toast" id="playlistliketoast" testid="playlisttoast"></div>
     </div>
   </div>

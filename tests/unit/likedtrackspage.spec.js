@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
-import VueRouter from 'vue-router';
+import VueRouter from "vue-router";
 import likedtracks_info from "../../src/components/likedtracks_info";
 
 describe("likedtracks_info", () => {
@@ -14,29 +14,28 @@ describe("likedtracks_info", () => {
     store = new Vuex.Store({
       modules: {
         likedtracks: {
-          namespaced:true,
+          namespaced: true,
           state: {
             likedtracks_length: 5,
             owner_name: "User"
           },
-          getters:{
-        likedtracks_length: state => state.likedtracks_length,
-        owner_name: state => state.owner_name
+          getters: {
+            likedtracks_length: state => state.likedtracks_length,
+            owner_name: state => state.owner_name
           }
         }
       }
     });
     wrapper = shallowMount(likedtracks_info, {
-        localVue,
-        store,
-        propsData: {}
-      });
+      localVue,
+      store,
+      propsData: {}
+    });
   });
   it("renders likedtracks information", () => {
-    const owner_name = wrapper.find('#owner_name');
+    const owner_name = wrapper.find("#owner_name");
     expect(owner_name.text()).toBe("User");
-    const  likedtracks_length = wrapper.find('.length');
+    const likedtracks_length = wrapper.find(".length");
     expect(likedtracks_length.text()).toBe(5 + " SONGS");
-    
   });
 });

@@ -63,6 +63,6 @@ p {
 </style>
 <script>
 export default {
-  name: "lib-albums-default" ,
-}
+  name: "lib-albums-default"
+};
 </script>

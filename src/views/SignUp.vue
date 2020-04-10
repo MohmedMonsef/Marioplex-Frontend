@@ -63,7 +63,7 @@
               v-if="req_confirm_email == true"
               testid="confirm email required error"
               class="invalid"
-               id="confirm_email_req"
+              id="confirm_email_req"
             >
               Please enter your email.
             </p>
@@ -135,11 +135,10 @@
             <!-- country -->
             <select
               v-model="country"
-               class="country_select"
+              class="country_select"
               testid="country input"
             >
               <option
-               
                 v-for="country in countries"
                 :key="country.value"
                 :disabled="country.disabled"

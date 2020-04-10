@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -282,26 +282,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,7 +318,7 @@
   &gt;
     &lt;div class="inline-div" v-bind:id="rawId | shorten"&gt;
       &lt;span v-for="song in songs1" :key="song.id"&gt;
-        &lt;span testid="artist name"&gt;{{ song.artistName + " " }} &lt;/span&gt;
+        &lt;span testid="artist name" id="artist_name"&gt;{{ song.artistName + " " }} &lt;/span&gt;
         &lt;span testid="song name" class="songname"&gt; {{ song.name + " " }} &lt;/span&gt;
         &lt;span class="dot"&gt;. &lt;/span&gt;
       &lt;/span&gt;
@@ -407,17 +407,17 @@ i {
 }
 &lt;/style&gt;
 &lt;script&gt;
-<span class="cstat-no" title="statement not covered" >import { mapGetters } from "vuex";</span>
+import { mapGetters } from "vuex";
 export default {
-<span class="fstat-no" title="function not covered" >  data: function() {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data: function() {
+    return {
       hover: false,
       rawId: "rawid"
     };
   },
   name: "lib-likedsongs",
-<span class="fstat-no" title="function not covered" >  mounted() {</span>
-<span class="cstat-no" title="statement not covered" >    this.$store.dispatch("userlibrary/showUserSongs");</span>
+  mounted() {
+    this.$store.dispatch("userlibrary/showUserSongs");
   },
   computed: {
     ...mapGetters({
@@ -425,8 +425,8 @@ export default {
     })
   },
   filters: {
-<span class="fstat-no" title="function not covered" >    shorten: function(value) {</span>
-<span class="cstat-no" title="statement not covered" >      return value.substring(0, 20) + " ...";</span>
+    shorten: function(value) {
+      return value.substring(0, 20) + " ...";
     }
   }
 };
@@ -438,7 +438,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Apr 10 2020 20:40:49 GMT+0200 (Eastern European Standard Time)
+                at Fri Apr 10 2020 22:15:37 GMT+0200 (Eastern European Standard Time)
             </div>
         </div>
         <script src="..\..\..\prettify.js"></script>

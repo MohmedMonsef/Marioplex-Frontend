@@ -252,6 +252,7 @@ const toast = {
     console.log("message", message);
   }
 };
+
 export default {
   data: function() {
     return {

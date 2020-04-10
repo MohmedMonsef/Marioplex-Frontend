@@ -23,15 +23,14 @@ describe("ForgetPassword", () => {
       }
     });
     wrapper = shallowMount(ForgetPassword, {
-        store,
+      store,
       localVue
-  
     });
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  
+
   it("renders a vue instance", () => {
     expect(wrapper.isVueInstance()).toBe(true);
   });

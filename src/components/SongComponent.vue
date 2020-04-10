@@ -230,7 +230,7 @@
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import AddTrackPopup from "../components/AddTrackPopup";
-import { mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");
@@ -243,6 +243,11 @@ const toast = {
     }, 2000);
   }
 };
+  /**
+   * upper song component appearing in
+   * @displayName Song Component
+   * @example [none]
+   */
 export default {
   data: function() {
     return {

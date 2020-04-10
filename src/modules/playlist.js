@@ -64,7 +64,9 @@ export default {
     },
     ReorderTracks({ commit }, payload) {
       axios
-        .put("/api/playlists/" + payload.playlist_id + "/tracks", { data: payload })
+        .put("/api/playlists/" + payload.playlist_id + "/tracks", {
+          data: payload
+        })
         .then(response => {
           if (status == 200) {
             let track = response.data;
