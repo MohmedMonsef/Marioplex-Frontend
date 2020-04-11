@@ -112,7 +112,11 @@
 </style>
 <script>
 import HomeNavigationBar from "../components/home-navigation-bar";
-
+/**
+ * This page is to describe how user be an artist
+ * @displayName ForArtist Page
+ * @example [none]
+ */
 export default {
   name: "ForArtist",
   components: {

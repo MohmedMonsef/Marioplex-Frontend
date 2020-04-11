@@ -39,6 +39,11 @@
 import SongComponent from "@/components/SongComponent.vue";
 import albuminfo from "@/components/album_info.vue";
 import { mapGetters } from "vuex";
+/**
+ * Album page made by Artist and you can like and add it to your liked songs also it contains the artist name which will move you to the artist page where you can find more and more of songs you like
+ * @displayName Album Page
+ * @example [none]
+ */
 export default {
   name: "albumview",
   data: function() {
@@ -46,11 +51,7 @@ export default {
       albumid: ""
     };
   },
-  props: {
-    isLiked: {
-      type: Boolean
-    }
-  },
+  props: {},
   components: {
     SongComponent,
     albuminfo
@@ -64,6 +65,10 @@ export default {
       album_name: "album/album_name"
     })
   },
+  /**
+   * Called at loading the page to display album tracks and send the id to get that specific album
+   * @public This is a public method
+   */
   created: function() {
     this.albumid = this.$route.params.album_id;
     this.$store.dispatch("album/album_tracks", this.$route.params.album_id);

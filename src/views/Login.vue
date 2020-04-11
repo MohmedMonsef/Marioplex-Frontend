@@ -186,7 +186,11 @@
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
 import { mapGetters } from "vuex";
-
+/**
+ * Login page where the user required to add his email and password to open his account and start listening to his music
+ * @displayName Login page
+ * @example [none]
+ */
 export default {
   name: "Login",
   components: {
@@ -204,6 +208,12 @@ export default {
     };
   },
   methods: {
+    /**
+     * login function to open user's account
+     * @public This is a public method
+     * @param {String} email email which the spotify account is created with
+     * @param {String} password user's account password
+     */
     login() {
       this.trigger_validation = true;
       this.can_submit = true;
@@ -219,12 +229,24 @@ export default {
         }
       }, 200);
     },
+    /**
+     * this function used to determine the state of account if there is any error with the login operation or the account is not existed
+     * @public This is a public method
+     */
     cannotSubmit() {
       this.can_submit = false;
     },
+    /**
+     * this function used to determine the state of account if it is existed and can let the user in
+     * @public This is a public method
+     */
     canSubmit() {
       this.can_submit = this.can_submit && true;
     },
+    /**
+     * this function used to login with facebook account
+     * @public This is a public method
+     */
     facebook_login() {
       this.$store.dispatch("authorization/facebook_signUp");
     }

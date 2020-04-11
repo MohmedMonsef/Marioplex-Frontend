@@ -34,6 +34,11 @@ import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
 import { mapState } from "vuex";
 // import LibraryNavbar from "@/components/library-navbar.vue";
+/**
+ * Web player home page where all albums and playlists exist
+ * @displayName Web Player Home page
+ * @example [none]
+ */
 export default {
   name: "HomeWebPlayer",
   components: {

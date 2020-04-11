@@ -56,13 +56,14 @@ import SongComponent from "@/components/SongComponent.vue";
 import LikedTracks from "@/components/likedtracks_info.vue";
 import emptylikedtracks from "@/components/emptylikedtracks.vue";
 import { mapGetters } from "vuex";
+/**
+ * User's liked tracks page here is the place of all tracks liked by the user
+ * @displayName User's Liked Tracks
+ * @example [none]
+ */
 export default {
   name: "likedtracksview",
-  props: {
-    isLiked: {
-      type: Boolean
-    }
-  },
+  props: {},
   components: {
     SongComponent,
     LikedTracks,

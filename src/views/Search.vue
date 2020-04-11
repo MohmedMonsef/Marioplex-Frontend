@@ -261,6 +261,11 @@ import LibAlbums from "@/components/lib-albums.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
 import searchcomponent from "@/components/searchcomponent.vue";
 import { mapGetters, mapState } from "vuex";
+/**
+ * Search Page is the place where you can search for certain playlist , album , artist or even certain category
+ * @displayName Search Page
+ * @example [none]
+ */
 export default {
   name: "Search",
   data() {
@@ -278,6 +283,10 @@ export default {
     this.$store.dispatch("categorys/showcategory");
   },
   methods: {
+    /**
+     * This function is for seeall as part of search results will be hidden unless seeall button is pressed
+     * @public This is a public method
+     */
     change() {
       this.showr = false;
     }

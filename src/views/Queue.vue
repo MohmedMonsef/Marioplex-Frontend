@@ -100,6 +100,11 @@ h2 {
 <script>
 import SongComponent from "@/components/SongComponent.vue";
 import { mapGetters } from "vuex";
+/**
+ * Queue is where the tracks of playlist or album you want to listen exists and you can add any other track from another playlist ot album and you can reorder or even shuffle tracks inside, queue also determine which song will play next and this exists in the Next UP part of the queue
+ * @displayName Queue Page
+ * @example [none]
+ */
 export default {
   name: "Queue",
 

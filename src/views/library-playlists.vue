@@ -54,6 +54,11 @@ import LibPlaylistsDefault from "@/components/lib-playlists-default.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
 import LibLikedsongs from "@/components/lib-likedsongs.vue";
 import { mapGetters } from "vuex";
+/**
+ * playlists saved by the user and stored inside his library
+ * @displayName Library playlists page
+ * @example [none]
+ */
 export default {
   name: "library-playlists",
   components: {
