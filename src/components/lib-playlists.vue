@@ -99,6 +99,10 @@ i {
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * @displayName Library playlists
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -106,16 +110,23 @@ export default {
     };
   },
   name: "lib-playlists",
-  props: ["name", "images", "ownerId", "playlist_id", "ownerName"],
-  //   mounted() {
-  //   this.$store.dispatch("creatplaylist/showplaylists");
-  // },
-  // computed: {
-  //   ...mapGetters({
-  //     // map `this.playlists1` to `this.$store.getters.playlists`
-  //     playlists1: "creatplaylist/playlists" // creat new object "playlists1" and map to it
-  //   })
-  // }
+  props: {
+    name: {
+      type: String
+    },
+    images: {
+      type: String
+    },
+    ownerId: {
+      type: String
+    },
+    playlist_id: {
+      type: String
+    },
+    ownerName: {
+      type: String
+    }
+  },
   computed: {
     ...mapGetters({
       Username: "authorization/Username",

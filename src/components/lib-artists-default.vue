@@ -64,6 +64,11 @@ p {
 </style>
 
 <script>
+/**
+ * Appears when user has no artists in his library
+ * @displayName Artists Default
+ * @example [none]
+ */
 export default {
   name: "lib-artists-default"
 };

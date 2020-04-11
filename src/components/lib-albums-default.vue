@@ -62,6 +62,11 @@ p {
 }
 </style>
 <script>
+/**
+ * Appears when user has no albums in his library
+ * @displayName Albums Default
+ * @example [none]
+ */
 export default {
   name: "lib-albums-default"
 };

@@ -176,6 +176,11 @@
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Staic Navbar in homepage
+ * @displayName Navbar Homepage
+ * @example [none]
+ */
 export default {
   name: "home-navigation-bar",
   data: function() {
@@ -193,6 +198,10 @@ export default {
       if (this.togglelength) element.style.width = 450 + "px";
       else element.style.width = 0 + "px";
     },
+    /**
+     * triggers logout function
+     * @public This is a public method
+     */
     logout() {
       this.$store.dispatch("authorization/logout");
       console.log("logout");

@@ -100,12 +100,6 @@
       <ul v-if="showdelete" id="right-click-menu">
         <li class="delete_div" @click="changeModalStateDelete()">Delete</li>
       </ul>
-      <!-- id="right-click-menu" 
-                tabindex="-1" 
-                v-if="viewMenu" 
-                @blur="closeMenu()" 
-                style="top:top; left:left;" -->
-      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -245,18 +239,17 @@ label {
 
 <script>
 import { mapGetters } from "vuex";
-//import Vue from 'vue';
+/**
+ * SideBar drawer including navigation to library or home or search
+ * @displayName SideBar
+ * @example [none]
+ */
 export default {
-  // el:'#demo',
   data: function() {
     return {
       show: false,
       showdelete: false,
       playlistid: 0
-      //   viewMenu: false,
-      //     top: '0px',
-      //     left: '0px',
-      //     right: '0px'
     };
   },
   mounted() {
@@ -266,54 +259,41 @@ export default {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
       playlists1: "creatplaylist/playlists",
-      // creat new object "playlists1" and map to it
       showModalDelete: "creatplaylist/showModalDelete",
       isLoggedIn: "authorization/GetStatus"
     })
   },
   name: "SideBar",
   methods: {
+    /**
+     * triggers creating playlist popup
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
+    /**
+     * triggers deleting playlist popup
+     * @public This is a public method
+     */
     changeModalStateDelete() {
       this.$store.dispatch("creatplaylist/toggleModalDelete", this.playlistid);
     },
+    /**
+     * triggers navigating to search action
+     * @public This is a public method
+     */
     setsearch() {
       this.$store.dispatch("Search/search_V", "");
     },
+    /**
+     * triggers navigating to search router
+     * @public This is a public method
+     */
     setfocus() {
       this.searchfocus = true;
       this.$store.dispatch("Search/searchfocus", this.searchfocus);
     }
-
-    // setMenu: function(top, left) {
-
-    //         var largestHeight = window.innerHeight - this.right.offsetHeight;
-    //         var largestWidth = window.innerWidth - this.right.offsetWidth;
-
-    //         if (top > largestHeight) top = largestHeight;
-
-    //         if (left > largestWidth) left = largestWidth;
-
-    //         this.top = top + 'px';
-    //         this.left = left + 'px';
-    //     },
-
-    //     closeMenu: function() {
-    //         this.viewMenu = false;
-    //     },
-
-    //     openMenu: function(e) {
-    //         this.viewMenu = true;
-
-    //         Vue.nextTick(function() {
-    //             this.right.focus();
-
-    //             this.setMenu(e.y, e.x)
-    //             }.bind(this));
-    //             e.preventDefault();
-    //     }
   }
 };
 </script>

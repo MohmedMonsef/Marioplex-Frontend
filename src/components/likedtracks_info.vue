@@ -146,6 +146,11 @@ p {
 <script>
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import { mapGetters } from "vuex";
+/**
+ * apperars when there is tracks in playlist
+ * @displayName Liked view
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -155,6 +160,10 @@ export default {
   mixins: [song_functions],
   name: "likedtracks_info",
   methods: {
+    /**
+     * Playlist list options(not implemnted yet)
+     * @public This is a public method
+     */
     isplaying() {
       this.play = true;
       if (this.playicon) {
@@ -164,6 +173,10 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+    /**
+     * Pauses current song and changes style
+     * @public This is a public method
+     */
     stopplayingbutton() {
       this.play = false;
       var likedtracksimage = document.getElementById("likedtracks_image");
@@ -174,6 +187,10 @@ export default {
     stopplaying() {
       this.play = false;
     },
+    /**
+     * changes image style on hover
+     * @public This is a public method
+     */
     onhoverimage: function() {
       var likedtracksimage = document.getElementById("likedtracks_image");
       likedtracksimage.style.opacity = "0.3";
@@ -185,6 +202,11 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+
+    /**
+     * returns style to normal(before hover)
+     * @public This is a public method
+     */
     onleaveimage: function() {
       var likedtracksimage = document.getElementById("likedtracks_image");
       likedtracksimage.style.opacity = "1";

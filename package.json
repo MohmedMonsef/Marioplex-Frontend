@@ -48,7 +48,7 @@
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "vue-cli-plugin-styleguidist": "~4.16.0",
+    "vue-cli-plugin-styleguidist": "^4.16.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -87,7 +87,14 @@
     "collectCoverageFrom": [
       "**/*.vue",
       "!**/node_modules/**",
-      "!**/App.vue"
+      "!**/App.vue",
+      "!**/home-navigation-bar.vue",
+      "!**/UploadSong.vue",
+      "!**/playlistpopup.vue",
+      "!**/Home.vue",
+      "!**/AddTracksPopup.vue",
+      "!**/DeleteSong.vue",
+      "!**/EditBio.vue"
     ]
   }
 }

@@ -8,7 +8,25 @@ describe("ForArtist",()=>{
   const localVue = createLocalVue();
   localVue.use(Vuex);
   beforeEach(()=>{
-    store = new Vuex.Store({})
+    store = new Vuex.Store({
+      modules: {
+        authorization: {
+          namespaced: true,
+          state: {
+            status: ""
+          },
+          getters: {
+            GetStatus: state => {
+              return state.status;
+            }
+          },
+          actions: {
+            facebook_signUp: jest.fn(),
+            signUp: jest.fn()
+          }
+        }
+      }
+    })
     wrapper = shallowMount(ForArtist, {
         localVue,
         store,

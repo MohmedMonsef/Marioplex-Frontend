@@ -151,4 +151,16 @@ describe("SongComponent", () => {
     expect(isliked.exists()).toBe(false);
     expect(isnotliked.exists()).toBe(true);
   });
+  it("if mouse hover on component", async () => {
+    
+    let icon = wrapper.find(".fa-music");
+    expect(icon.exists()).toBe(true);
+
+    wrapper.setData({
+      hover:true
+    });
+    await wrapper.vm.$nextTick();
+    icon = wrapper.find(".fa-play");
+    expect(icon.exists()).toBe(true);
+});
 });

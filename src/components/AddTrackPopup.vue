@@ -184,6 +184,11 @@ import { mapState } from "vuex";
 import CreatePlaylist from "../components/CreatePlaylist";
 import LibPlaylists from "@/components/lib-playlists.vue";
 //import LibPlaylistsDefault from "@/components/lib-playlists-default.vue"
+/**
+ * Appears on trying to add new track to playlist(not implemented yet)
+ * @displayName Add track popup
+ * @example [none]
+ */
 export default {
   name: "AddTrackPopup",
   computed: {

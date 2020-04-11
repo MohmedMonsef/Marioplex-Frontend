@@ -71,6 +71,10 @@ button:focus {
 </style>
 
 <script>
+/**
+ * @displayName Empty Saved tracks
+ * @example [none]
+ */
 export default {
   name: "emptylikedtracks"
 };
