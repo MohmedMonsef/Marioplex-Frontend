@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1586571771951" clover="3.2.0">
-  <project timestamp="1586571771952" name="All files">
-    <metrics statements="1571" coveredstatements="217" conditionals="662" coveredconditionals="86" methods="604" coveredmethods="64" elements="2837" coveredelements="367" complexity="0" loc="1571" ncloc="1571" packages="10" files="78" classes="78"/>
+<coverage generated="1586617117633" clover="3.2.0">
+  <project timestamp="1586617117633" name="All files">
+    <metrics statements="1570" coveredstatements="222" conditionals="662" coveredconditionals="86" methods="604" coveredmethods="68" elements="2836" coveredelements="376" complexity="0" loc="1570" ncloc="1570" packages="10" files="78" classes="78"/>
     <package name="Marioplex-Frontend">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="babel.config.js" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\babel.config.js">
@@ -342,7 +342,7 @@
       </file>
     </package>
     <package name="Marioplex-Frontend.src.components">
-      <metrics statements="406" coveredstatements="68" conditionals="101" coveredconditionals="5" methods="132" coveredmethods="32"/>
+      <metrics statements="405" coveredstatements="73" conditionals="101" coveredconditionals="5" methods="132" coveredmethods="36"/>
       <file name="AddTrackPopup.vue" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\AddTrackPopup.vue">
         <metrics statements="11" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="182" count="2" type="stmt"/>
@@ -404,28 +404,27 @@
         <line num="278" count="0" type="stmt"/>
       </file>
       <file name="NavbarWebplayer.vue" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\NavbarWebplayer.vue">
-        <metrics statements="21" coveredstatements="4" conditionals="9" coveredconditionals="0" methods="9" coveredmethods="3"/>
-        <line num="300" count="1" type="stmt"/>
-        <line num="303" count="5" type="stmt"/>
-        <line num="317" count="0" type="stmt"/>
-        <line num="320" count="0" type="stmt"/>
-        <line num="323" count="0" type="stmt"/>
-        <line num="326" count="0" type="stmt"/>
+        <metrics statements="20" coveredstatements="4" conditionals="9" coveredconditionals="0" methods="9" coveredmethods="3"/>
+        <line num="304" count="1" type="stmt"/>
+        <line num="307" count="13" type="stmt"/>
+        <line num="321" count="0" type="stmt"/>
+        <line num="324" count="0" type="stmt"/>
         <line num="327" count="0" type="stmt"/>
-        <line num="328" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="329" count="0" type="stmt"/>
+        <line num="330" count="0" type="stmt"/>
         <line num="331" count="0" type="stmt"/>
-        <line num="335" count="0" type="cond" truecount="0" falsecount="5"/>
-        <line num="343" count="0" type="stmt"/>
-        <line num="345" count="0" type="stmt"/>
-        <line num="347" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="348" count="0" type="stmt"/>
-        <line num="350" count="0" type="stmt"/>
-        <line num="353" count="0" type="stmt"/>
-        <line num="360" count="0" type="stmt"/>
-        <line num="361" count="0" type="stmt"/>
-        <line num="364" count="5" type="stmt"/>
-        <line num="365" count="5" type="stmt"/>
+        <line num="332" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="333" count="0" type="stmt"/>
+        <line num="335" count="0" type="stmt"/>
+        <line num="339" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="347" count="0" type="stmt"/>
+        <line num="349" count="0" type="stmt"/>
+        <line num="351" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="352" count="0" type="stmt"/>
+        <line num="354" count="0" type="stmt"/>
+        <line num="363" count="0" type="stmt"/>
+        <line num="364" count="0" type="stmt"/>
+        <line num="367" count="13" type="stmt"/>
+        <line num="368" count="13" type="stmt"/>
       </file>
       <file name="ShowPopularalbums.vue" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\ShowPopularalbums.vue">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -444,15 +443,15 @@
         <line num="94" count="3" type="stmt"/>
       </file>
       <file name="SideBar.vue" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\SideBar.vue">
-        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
         <line num="247" count="1" type="stmt"/>
-        <line num="252" count="6" type="stmt"/>
-        <line num="263" count="6" type="stmt"/>
-        <line num="277" count="0" type="stmt"/>
+        <line num="252" count="11" type="stmt"/>
+        <line num="263" count="11" type="stmt"/>
+        <line num="277" count="1" type="stmt"/>
         <line num="280" count="0" type="stmt"/>
-        <line num="283" count="0" type="stmt"/>
-        <line num="286" count="0" type="stmt"/>
-        <line num="287" count="0" type="stmt"/>
+        <line num="283" count="1" type="stmt"/>
+        <line num="286" count="1" type="stmt"/>
+        <line num="287" count="1" type="stmt"/>
       </file>
       <file name="SongComponent.vue" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\SongComponent.vue">
         <metrics statements="50" coveredstatements="22" conditionals="19" coveredconditionals="4" methods="17" coveredmethods="8"/>
@@ -596,8 +595,8 @@
         <line num="123" count="3" type="stmt"/>
       </file>
       <file name="lib-playlists-default.vue" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\lib-playlists-default.vue">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="72" count="0" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="72" count="1" type="stmt"/>
       </file>
       <file name="lib-playlists.vue" path="E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\lib-playlists.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

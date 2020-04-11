@@ -21,11 +21,73 @@ describe("NavbarWebplayer.vue", () => {
           getters: {
             Username: state => state.User.displayName,
             GetStatus: state => state.status
+          },
+          actions:{
+            logout: jest.fn()
           }
         }
       }
     });
   });
+  it("has a playlist router", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists("#playlist-link")).toBe(true);
+  });
+
+  it("has a album router", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists("#album-link")).toBe(true);
+  });
+  it("has a artist router", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists("#artist-link")).toBe(true);
+  });
+  it("has a user profile  router", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists("#account-link")).toBe(true);
+  });
+  it("has a upgrade button", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists(".upgrade_button")).toBe(true);
+  });
+  it("has a login botton", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists(".login_botton")).toBe(true);
+  });
+  it("has a signup botton", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists(".signup_botton")).toBe(true);
+  });
+  it("has a drop down list", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists("#drop_button")).toBe(true);
+  });
+
+
   it("call goprev function when previous button is clicked", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
@@ -82,7 +144,7 @@ describe("NavbarWebplayer.vue", () => {
       store
     });
     expect(wrapper.exists()).toBe(true);
-  }); 
+  });
   it("renders a vue instance", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
