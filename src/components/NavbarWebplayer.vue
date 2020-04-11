@@ -15,6 +15,7 @@
                 to="/HomeWebPlayer/library/library-playlists"
                 testid="playlists in library"
                 class="nav-link"
+                id="playlist-link"
                 >Playlists</router-link
               >
             </div>
@@ -25,6 +26,7 @@
                 to="/HomeWebPlayer/library/library-artists"
                 testid="Artists in library"
                 class="nav-link"
+                id="artist-link"
                 >Artists</router-link
               >
             </div>
@@ -35,6 +37,7 @@
                 to="/HomeWebPlayer/library/library-albums"
                 testid="Albums in library"
                 class="nav-link"
+                id="album-link"
                 >Albums</router-link
               >
             </div>
@@ -71,6 +74,7 @@
             href="/UserAccount"
             target="_blank"
             testid="userprofilr link"
+            id="account-link"
           >
             Account
           </a>
@@ -370,7 +374,6 @@ export default {
         this.insearch = false;
       }
 
-      console.log("lib : ", this.inlibrary, "search : ", this.insearch);
     }
   },
   created() {
