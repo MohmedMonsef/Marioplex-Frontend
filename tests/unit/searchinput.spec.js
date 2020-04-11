@@ -111,4 +111,61 @@ describe("searchcomponent", () => {
         expect("check").toHaveBeenCalled;
     })
 
+    it("when input field change it call disbatch and send the value correct ",()=>{
+        const store = new Vuex.Store()
+        store.dispatch = jest.fn()
+       const Wrapper = shallowMount(searchcomponent,{
+       store, localVue
+     })
+     const textInput = Wrapper.find('#search-box');
+     textInput.setValue('some value');
+     textInput.trigger("click");
+    expect(store.dispatch).toHaveBeenCalledWith(
+         "Search/search_V", "some value"
+        )
+    })
+
+    it("when input field change it call two  disbatch and send the value correct and  ",()=>{
+        const store = new Vuex.Store()
+        store.dispatch = jest.fn()
+       const Wrapper = shallowMount(searchcomponent,{
+       store, localVue
+     })
+     const textInput = Wrapper.find('#search-box');
+     textInput.setValue('some value');
+     textInput.trigger("click");
+    expect(store.dispatch).toHaveBeenCalledWith(
+         "Search/searchaboutartist", "some value"
+        )
+    expect(store.dispatch).toHaveBeenCalledWith(
+            "Search/search_V", "some value"
+           )
+    })
+
+    it("when input field is empty it call setvalue dispatch only ",()=>{
+        const store = new Vuex.Store()
+        store.dispatch = jest.fn()
+       const Wrapper = shallowMount(searchcomponent,{
+       store, localVue
+     })
+     const textInput = Wrapper.find('#search-box');
+     textInput.setValue('');
+     textInput.trigger("click");
+    expect(store.dispatch).toHaveBeenCalledWith(
+         "Search/search_V", "")
+    })
+
+    it("when click on exit button the set value dispatch is called ",()=>{
+        const store = new Vuex.Store()
+        store.dispatch = jest.fn()
+       const Wrapper = shallowMount(searchcomponent,{
+       store, localVue
+     })
+     const textInput = Wrapper.find('#search-box');
+     textInput.setValue('some value');
+     textInput.trigger("keydown.esc");
+    expect(store.dispatch).toHaveBeenCalledWith(
+         "Search/search_V", "")
+    })
+
 });

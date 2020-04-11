@@ -1,5 +1,5 @@
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\babel.config.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\babel.config.js
 FNF:0
 FNH:0
 DA:1,0
@@ -9,7 +9,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\styleguide.config.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\styleguide.config.js
 FNF:0
 FNH:0
 DA:1,0
@@ -19,7 +19,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\vue.config.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\vue.config.js
 FNF:0
 FNH:0
 DA:1,0
@@ -30,7 +30,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\coverage\lcov-report\block-navigation.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\coverage\lcov-report\block-navigation.js
 FN:2,init
 FN:24,toggleClass
 FN:31,makeCurrent
@@ -94,7 +94,7 @@ BRF:15
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\coverage\lcov-report\prettify.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\coverage\lcov-report\prettify.js
 FN:2,(anonymous_0)
 FN:2,k
 FN:2,ab
@@ -448,7 +448,7 @@ BRF:286
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\coverage\lcov-report\sorter.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\coverage\lcov-report\sorter.js
 FN:2,(anonymous_0)
 FN:11,getTable
 FN:15,getTableHeader
@@ -590,7 +590,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\mockServer\mock.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\mockServer\mock.js
 FN:3,mockServer
 FN:6,(anonymous_1)
 FN:693,(anonymous_2)
@@ -890,7 +890,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\App.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\App.vue
 FN:8,(anonymous_1)
 FN:14,(anonymous_2)
 FN:24,(anonymous_3)
@@ -920,7 +920,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\main.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\main.js
 FN:27,(anonymous_0)
 FNF:1
 FNH:0
@@ -939,7 +939,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\registerServiceWorker.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\registerServiceWorker.js
 FN:7,(anonymous_0)
 FN:13,(anonymous_1)
 FN:16,(anonymous_2)
@@ -973,7 +973,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\AddTrackPopup.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\AddTrackPopup.vue
 FN:191,(anonymous_1)
 FN:201,(anonymous_2)
 FN:204,(anonymous_3)
@@ -1003,7 +1003,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\AppButton.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\AppButton.vue
 FN:32,(anonymous_1)
 FN:41,(anonymous_2)
 FNF:2
@@ -1020,7 +1020,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\CreatePlaylist.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\CreatePlaylist.vue
 FN:303,(anonymous_1)
 FN:312,(anonymous_2)
 FN:320,(anonymous_3)
@@ -1048,7 +1048,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\DeletePlaylist.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\DeletePlaylist.vue
 FN:202,(anonymous_1)
 FN:210,(anonymous_2)
 FN:214,(anonymous_3)
@@ -1070,7 +1070,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\DeleteSong.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\DeleteSong.vue
 FN:177,(anonymous_1)
 FN:180,(anonymous_2)
 FNF:2
@@ -1088,7 +1088,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\EditBio.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\EditBio.vue
 FN:252,(anonymous_1)
 FN:267,(anonymous_2)
 FN:271,(anonymous_3)
@@ -1109,7 +1109,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\NavbarWebplayer.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\NavbarWebplayer.vue
 FN:302,(anonymous_1)
 FN:316,(anonymous_2)
 FN:319,(anonymous_3)
@@ -1166,7 +1166,7 @@ BRF:9
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\ShowPopularalbums.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\ShowPopularalbums.vue
 FN:93,(anonymous_1)
 FNF:1
 FNH:1
@@ -1178,7 +1178,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\ShowPopularartists.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\ShowPopularartists.vue
 FN:93,(anonymous_1)
 FNF:1
 FNH:1
@@ -1190,7 +1190,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\ShowPopularplaylists.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\ShowPopularplaylists.vue
 FN:93,(anonymous_1)
 FNF:1
 FNH:1
@@ -1202,7 +1202,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\ShowPopularreleases.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\ShowPopularreleases.vue
 FN:93,(anonymous_1)
 FNF:1
 FNH:1
@@ -1214,7 +1214,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\SideBar.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\SideBar.vue
 FN:251,(anonymous_1)
 FN:262,(anonymous_2)
 FN:276,(anonymous_3)
@@ -1243,7 +1243,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\SongComponent.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\SongComponent.vue
 FN:235,(anonymous_1)
 FN:241,(anonymous_2)
 FN:252,(anonymous_3)
@@ -1355,7 +1355,7 @@ BRF:19
 BRH:4
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\UploadSong.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\UploadSong.vue
 FN:217,(anonymous_1)
 FN:235,(anonymous_2)
 FN:238,(anonymous_3)
@@ -1382,7 +1382,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\album_info.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\album_info.vue
 FN:243,(anonymous_1)
 FN:249,(anonymous_2)
 FN:257,(anonymous_3)
@@ -1465,7 +1465,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\home-navigation-bar.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\home-navigation-bar.vue
 FN:181,(anonymous_1)
 FN:187,(anonymous_2)
 FN:196,(anonymous_3)
@@ -1492,7 +1492,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\lib-albums.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\lib-albums.vue
 FN:100,(anonymous_1)
 FNF:1
 FNH:1
@@ -1504,7 +1504,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\lib-artists.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\lib-artists.vue
 FN:87,(anonymous_1)
 FNF:1
 FNH:1
@@ -1516,7 +1516,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\lib-likedsongs.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\lib-likedsongs.vue
 FN:106,(anonymous_1)
 FN:113,(anonymous_2)
 FN:122,(anonymous_3)
@@ -1535,7 +1535,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\lib-playlists-default.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\lib-playlists-default.vue
 FN:71,(anonymous_1)
 FNF:1
 FNH:0
@@ -1547,12 +1547,12 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\lib-playlists.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\lib-playlists.vue
 FN:103,(anonymous_1)
 FNF:1
 FNH:1
 FNDA:3,(anonymous_1)
-DA:101,3
+DA:101,4
 DA:104,3
 LF:2
 LH:2
@@ -1560,7 +1560,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\library-navbar.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\library-navbar.vue
 FN:320,(anonymous_1)
 FN:331,(anonymous_2)
 FN:336,(anonymous_3)
@@ -1597,7 +1597,7 @@ BRF:5
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\likedtracks_info.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\likedtracks_info.vue
 FN:150,(anonymous_1)
 FN:158,(anonymous_2)
 FN:167,(anonymous_3)
@@ -1654,7 +1654,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\mediaplayer.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\mediaplayer.vue
 FN:465,(anonymous_1)
 FN:477,(anonymous_2)
 FN:478,(anonymous_3)
@@ -1849,7 +1849,7 @@ BRF:40
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\playlist.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\playlist.vue
 FN:155,(anonymous_1)
 FN:162,(anonymous_2)
 FNF:2
@@ -1867,7 +1867,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\playlist_info.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\playlist_info.vue
 FN:257,(anonymous_1)
 FN:263,(anonymous_2)
 FN:270,(anonymous_3)
@@ -1952,7 +1952,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\playlistpopup.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\playlistpopup.vue
 FN:189,(anonymous_1)
 FN:198,(anonymous_2)
 FNF:2
@@ -1967,32 +1967,32 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\searchcomponent.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\searchcomponent.vue
 FN:76,(anonymous_1)
 FN:80,(anonymous_2)
 FN:87,(anonymous_3)
 FNF:3
-FNH:1
-FNDA:1,(anonymous_1)
-FNDA:0,(anonymous_2)
-FNDA:0,(anonymous_3)
-DA:72,1
-DA:77,1
-DA:81,0
-DA:82,0
-DA:83,0
-DA:84,0
-DA:88,0
-DA:89,0
+FNH:3
+FNDA:5,(anonymous_1)
+FNDA:4,(anonymous_2)
+FNDA:1,(anonymous_3)
+DA:72,2
+DA:77,5
+DA:81,4
+DA:82,4
+DA:83,4
+DA:84,3
+DA:88,1
+DA:89,1
 LF:8
-LH:2
-BRDA:83,0,0,0
-BRDA:83,0,1,0
+LH:8
+BRDA:83,0,0,3
+BRDA:83,0,1,1
 BRF:2
-BRH:0
+BRH:2
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\sizeMixin.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\sizeMixin.js
 FNF:0
 FNH:0
 DA:4,0
@@ -2002,7 +2002,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\components\topresult_card.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\components\topresult_card.vue
 FN:159,(anonymous_1)
 FNF:1
 FNH:1
@@ -2014,7 +2014,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\javascript\mediaplayer_script.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\javascript\mediaplayer_script.js
 FN:6,(anonymous_0)
 FN:12,(anonymous_1)
 FN:21,(anonymous_2)
@@ -2095,7 +2095,7 @@ BRF:15
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\Search.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\Search.js
 FN:16,(anonymous_0)
 FN:19,(anonymous_1)
 FN:22,(anonymous_2)
@@ -2221,7 +2221,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\ShowWebPlayer.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\ShowWebPlayer.js
 FN:12,(anonymous_0)
 FN:15,(anonymous_1)
 FN:18,(anonymous_2)
@@ -2294,7 +2294,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\album.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\album.js
 FN:14,(anonymous_0)
 FN:17,(anonymous_1)
 FN:20,(anonymous_2)
@@ -2391,7 +2391,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\artistproperties.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\artistproperties.js
 FN:10,(anonymous_0)
 FN:13,(anonymous_1)
 FN:18,(anonymous_2)
@@ -2415,7 +2415,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\authorization.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\authorization.js
 FN:14,(anonymous_0)
 FN:17,(anonymous_1)
 FN:24,(anonymous_2)
@@ -2550,7 +2550,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\categorys.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\categorys.js
 FN:9,(anonymous_0)
 FN:12,(anonymous_1)
 FN:17,(anonymous_2)
@@ -2585,7 +2585,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\claimartistprofile.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\claimartistprofile.js
 FN:8,(anonymous_0)
 FN:13,(anonymous_1)
 FN:16,(anonymous_2)
@@ -2624,7 +2624,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\creatplaylist.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\creatplaylist.js
 FN:13,(anonymous_0)
 FN:16,(anonymous_1)
 FN:19,(anonymous_2)
@@ -2721,7 +2721,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\deleteplaylist.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\deleteplaylist.js
 FN:18,(anonymous_0)
 FNF:1
 FNH:0
@@ -2733,7 +2733,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\likedtracks.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\likedtracks.js
 FN:11,(anonymous_0)
 FN:14,(anonymous_1)
 FN:17,(anonymous_2)
@@ -2783,7 +2783,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\mediaplayer.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\mediaplayer.js
 FN:87,(anonymous_0)
 FN:90,(anonymous_1)
 FN:93,(anonymous_2)
@@ -3036,7 +3036,7 @@ BRF:50
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\playlist.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\playlist.js
 FN:14,(anonymous_0)
 FN:17,(anonymous_1)
 FN:20,(anonymous_2)
@@ -3161,7 +3161,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\playlistpopup.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\playlistpopup.js
 FN:9,(anonymous_0)
 FN:14,(anonymous_1)
 FN:19,(anonymous_2)
@@ -3179,7 +3179,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\queue.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\queue.js
 FN:13,(anonymous_0)
 FN:15,(anonymous_1)
 FN:19,(anonymous_2)
@@ -3296,7 +3296,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\uploadsong.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\uploadsong.js
 FN:9,(anonymous_0)
 FN:18,(anonymous_1)
 FN:23,(anonymous_2)
@@ -3345,7 +3345,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\modules\userlibrary.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\modules\userlibrary.js
 FN:13,(anonymous_0)
 FN:16,(anonymous_1)
 FN:19,(anonymous_2)
@@ -3440,7 +3440,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\router\index.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\router\index.js
 FNF:0
 FNH:0
 DA:27,0
@@ -3452,7 +3452,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\store\index.js
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\store\index.js
 FNF:0
 FNH:0
 DA:20,0
@@ -3462,7 +3462,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\ArtistPersonalPage.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\ArtistPersonalPage.vue
 FN:322,(anonymous_1)
 FN:333,(anonymous_2)
 FN:334,(anonymous_3)
@@ -3490,7 +3490,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\ClaimArtist.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\ClaimArtist.vue
 FN:329,(anonymous_1)
 FN:344,(anonymous_2)
 FN:347,(anonymous_3)
@@ -3510,7 +3510,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\ForArtist.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\ForArtist.vue
 FNF:0
 FNH:0
 DA:114,0
@@ -3520,7 +3520,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\ForgetPassword.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\ForgetPassword.vue
 FN:139,(anonymous_1)
 FN:148,(anonymous_2)
 FN:157,(anonymous_3)
@@ -3555,7 +3555,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\Home.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\Home.vue
 FNF:0
 FNH:0
 DA:12,0
@@ -3566,7 +3566,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\HomeWebPlayer.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\HomeWebPlayer.vue
 FN:49,(anonymous_1)
 FN:50,(anonymous_2)
 FNF:2
@@ -3587,7 +3587,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\LikedTracks.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\LikedTracks.vue
 FN:78,(anonymous_1)
 FNF:1
 FNH:0
@@ -3603,7 +3603,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\Login.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\Login.vue
 FN:196,(anonymous_1)
 FN:207,(anonymous_2)
 FN:212,(anonymous_3)
@@ -3669,7 +3669,7 @@ BRF:12
 BRH:6
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\Queue.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\Queue.vue
 FN:106,(anonymous_1)
 FNF:1
 FNH:1
@@ -3684,38 +3684,38 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\Search.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\Search.vue
 FN:266,(anonymous_1)
 FN:277,(anonymous_2)
 FN:281,(anonymous_3)
 FN:297,(anonymous_4)
 FN:298,(anonymous_5)
 FNF:5
-FNH:0
-FNDA:0,(anonymous_1)
-FNDA:0,(anonymous_2)
+FNH:2
+FNDA:1,(anonymous_1)
+FNDA:1,(anonymous_2)
 FNDA:0,(anonymous_3)
 FNDA:0,(anonymous_4)
 FNDA:0,(anonymous_5)
-DA:257,0
-DA:258,0
-DA:259,0
-DA:260,0
-DA:261,0
-DA:262,0
-DA:263,0
-DA:267,0
-DA:278,0
+DA:257,1
+DA:258,1
+DA:259,1
+DA:260,1
+DA:261,1
+DA:262,1
+DA:263,1
+DA:267,1
+DA:278,1
 DA:282,0
 DA:297,0
 DA:298,0
 LF:12
-LH:0
+LH:9
 BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\SignUp.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\SignUp.vue
 FN:377,(anonymous_1)
 FN:425,(anonymous_2)
 FN:439,(anonymous_3)
@@ -3975,7 +3975,7 @@ BRF:83
 BRH:73
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\UserHome.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\UserHome.vue
 FN:119,(anonymous_1)
 FN:120,(anonymous_2)
 FN:130,(anonymous_3)
@@ -4006,7 +4006,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\album_view.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\album_view.vue
 FN:44,(anonymous_1)
 FN:67,(anonymous_2)
 FN:71,(anonymous_3)
@@ -4028,7 +4028,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\library-albums.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\library-albums.vue
 FN:59,(anonymous_1)
 FNF:1
 FNH:0
@@ -4043,7 +4043,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\library-artists.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\library-artists.vue
 FN:57,(anonymous_1)
 FNF:1
 FNH:0
@@ -4058,7 +4058,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\library-playlists.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\library-playlists.vue
 FN:63,(anonymous_1)
 FNF:1
 FNH:0
@@ -4075,7 +4075,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\playlist_view.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\playlist_view.vue
 FN:93,(anonymous_1)
 FN:110,(anonymous_2)
 FN:115,(anonymous_3)
@@ -4114,7 +4114,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\searchresults.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\searchresults.vue
 FNF:0
 FNH:0
 DA:149,0
@@ -4128,16 +4128,16 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\software engineering\spotify-unit test\Marioplex-Frontend\src\views\seeallartist.vue
+SF:C:\Users\ag\Desktop\unit\Marioplex-Frontend\src\views\seeallartist.vue
 FN:42,(anonymous_1)
 FNF:1
 FNH:0
 FNDA:0,(anonymous_1)
-DA:34,0
-DA:35,0
+DA:34,1
+DA:35,1
 DA:43,0
 LF:3
-LH:0
+LH:2
 BRF:0
 BRH:0
 end_of_record
