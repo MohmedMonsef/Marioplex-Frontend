@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1586617117633" clover="3.2.0">
-  <project timestamp="1586617117633" name="All files">
+<coverage generated="1586628236741" clover="3.2.0">
+  <project timestamp="1586628236741" name="All files">
     <metrics statements="1570" coveredstatements="222" conditionals="662" coveredconditionals="86" methods="604" coveredmethods="68" elements="2836" coveredelements="376" complexity="0" loc="1570" ncloc="1570" packages="10" files="78" classes="78"/>
     <package name="Marioplex-Frontend">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
