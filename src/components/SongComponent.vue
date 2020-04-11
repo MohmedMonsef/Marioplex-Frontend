@@ -296,7 +296,7 @@ export default {
     }
   }, //must add isplayable also
   methods: {
-     /**
+    /**
      * add the component chosen to the queue
      * @public This is a public method
      */

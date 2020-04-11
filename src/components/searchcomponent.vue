@@ -83,11 +83,11 @@ export default {
   },
   methods: {
     check(value) {
-     /**
-     * triggers search request
-     * @displayName Search
-     * @public This is a public method
-     */
+      /**
+       * triggers search request
+       * @displayName Search
+       * @public This is a public method
+       */
       console.log(value);
       this.$store.dispatch("Search/search_V", this.Value);
       if (value !== "") {
@@ -120,8 +120,9 @@ export default {
     })
   },
   props: {
-    search_value:{
-      type:String
-  }}
+    search_value: {
+      type: String
+    }
+  }
 };
 </script>

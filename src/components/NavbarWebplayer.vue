@@ -328,14 +328,14 @@ export default {
     logout() {
       this.$store.dispatch("authorization/logout");
     },
-      /**
+    /**
      * Go to previous router page
      * @public This is a public method
      */
     goprev: function() {
       this.$router.go(-1);
     },
-       /**
+    /**
      * Go to next router page
      * @public This is a public method
      */
@@ -373,7 +373,6 @@ export default {
       } else {
         this.insearch = false;
       }
-
     }
   },
   created() {

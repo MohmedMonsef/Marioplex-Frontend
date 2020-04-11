@@ -42,11 +42,7 @@
         <div class="col-8">
           <h2 class="card-title">{{ name }}</h2>
           <div class="typecont">
-            <p
-              class="card-text p"
-              testid="type"
-              id="typecont"
-            >
+            <p class="card-text p" testid="type" id="typecont">
               {{ type }}
             </p>
           </div>
@@ -167,9 +163,9 @@ export default {
     };
   },
   props: {
-     /**
-       * src for the img displayed
-       */
+    /**
+     * src for the img displayed
+     */
     image: {
       type: String
     },
@@ -179,25 +175,25 @@ export default {
     type: {
       type: String
     },
-      /** 
-       *if artist to go his page
-       */
+    /**
+     *if artist to go his page
+     */
     artistId: {
       type: String
     },
     artistName: {
       type: String
     },
-      /**
-       *to navigate to album page
-       */
+    /**
+     *to navigate to album page
+     */
     albumId: {
       type: String,
       default: "0"
     },
     playlist_id: {
       type: String,
-     
+
       default: "0"
     },
     track_id: {

@@ -73,10 +73,11 @@ p {
 export default {
   name: "lib-playlists-default",
   methods: {
-       /**
+    /**
      * triggers the opening of create playlist popup
      * @public This is a public method
-     */ 
+     */
+
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     }

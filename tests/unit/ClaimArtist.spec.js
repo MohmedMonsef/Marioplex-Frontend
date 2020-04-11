@@ -1,35 +1,47 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import ClaimArtist from "../../src/views/ClaimArtist";
-describe("ClaimArtist",()=>{
+describe("ClaimArtist", () => {
   let wrapper;
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
-  beforeEach(()=>{
+  beforeEach(() => {
     store = new Vuex.Store({
-        modules:{
-            creatplaylist:{
-                namespaced:true,
-                state:{
-                    showModal:true,
-                },
-                getters:{
-                    showModal: state => {
-                        return state.showModal;
-                      },
-                }
-            },
-            authorization:{
-                namespaced:true,
-
+      modules: {
+        creatplaylist: {
+          namespaced: true,
+          state: {
+            showModal: true
+          },
+          getters: {
+            showModal: state => {
+              return state.showModal;
             }
+          }
+        },
+
+        authorization: {
+          namespaced: true,
+          state: {
+            status: ""
+          },
+          getters: {
+            GetStatus: state => {
+              return state.status;
+            }
+          },
+          actions: {
+            facebook_signUp: jest.fn(),
+            signUp: jest.fn()
+          }
         }
+      }
     });
     wrapper = shallowMount(ClaimArtist, {
-        localVue,
-        store,
-      });
+      localVue,
+      store
+    });
   });
   it("it claim artistpopup ", () => {
     //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
@@ -73,21 +85,19 @@ describe("ClaimArtist",()=>{
   });
   it("it claim function artistpopup ", () => {
     //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const ClaimArtistProfile= jest.fn();
+    const ClaimArtistProfile = jest.fn();
     wrapper.setMethods({
-        ClaimArtistProfile: ClaimArtistProfile
+      ClaimArtistProfile: ClaimArtistProfile
     });
     const btn = wrapper.find(".creat_button");
     btn.trigger("click");
     expect(ClaimArtistProfile).toHaveBeenCalled();
   });
-//   it("it calls toglemodalupload dispatch ti change modalstateupload", () => {
-//     store.dispatch = jest.fn();
-//     const btn = wrapper.find(".c_track");
-//     btn.trigger("click");
-//     expect(store.dispatch).toHaveBeenCalledWith(
-//       "artistproperties/toggleModalUpload")
-//   });
-
-
-})
+  //   it("it calls toglemodalupload dispatch ti change modalstateupload", () => {
+  //     store.dispatch = jest.fn();
+  //     const btn = wrapper.find(".c_track");
+  //     btn.trigger("click");
+  //     expect(store.dispatch).toHaveBeenCalledWith(
+  //       "artistproperties/toggleModalUpload")
+  //   });
+});

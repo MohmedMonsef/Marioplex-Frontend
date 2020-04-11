@@ -5,7 +5,7 @@
     </div>
     <div v-if="loadingplaylists" class="notloading">
       <lib-playlists-default
-      id="defaultscreen" 
+        id="defaultscreen"
         v-if="playlists1.length == 0 && songs1.length == 0"
       />
       <h2 v-if="playlists1.length">Playlists</h2>

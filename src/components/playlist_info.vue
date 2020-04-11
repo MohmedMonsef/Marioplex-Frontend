@@ -330,7 +330,7 @@ export default {
     stopplaying() {
       this.play = false;
     },
-      /**
+    /**
      * changes image style on hover
      * @public This is a public method
      */

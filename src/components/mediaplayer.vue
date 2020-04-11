@@ -461,7 +461,7 @@ input:focus {
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
-    /**
+/**
 
      * @displayName Media Player
      */
@@ -523,7 +523,7 @@ export default {
   },
   methods: {
     ///////////////////////////this function is working
-      /**
+    /**
      * changed song bar style when it is playing
      * @public This is a public method
      */
@@ -541,7 +541,7 @@ export default {
         }
       }
     },
-      /**
+    /**
      * changed song bar style while draging
      * @public This is a public method
      */
@@ -560,7 +560,7 @@ export default {
         SongSlider.style.width = str;
       }
     },
-      /**
+    /**
      * signals that the user is dragging song bar
      * @public This is a public method
      */
@@ -584,7 +584,7 @@ export default {
         this.drag = false;
       }
     },
-     /**
+    /**
      * signals that the user is dragging volume bar
      * @public This is a public method
      */
@@ -663,7 +663,7 @@ export default {
         }
       }
     },
-     /**
+    /**
      * Alters shuffle mode for list of tracks
      * @public This is a public method
      */
