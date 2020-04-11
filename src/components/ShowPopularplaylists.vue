@@ -89,6 +89,10 @@ i {
 </style>
 
 <script>
+/**
+ * @displayName Popular playlists card
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -96,6 +100,19 @@ export default {
     };
   },
   name: "ShowPopularplaylists",
-  props: ["images", "name", "Description", "playlist_id"]
+  props: {
+    images: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    Description: {
+      type: String
+    },
+    playlist_id: {
+      type: String
+    }
+  }
 };
 </script>

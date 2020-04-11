@@ -155,6 +155,11 @@ i {
 }
 </style>
 <script>
+/**
+ * Top Results card to display the top result value in search
+ * @displayName Top Result Card
+ * @example [none]
+ */
 export default {
   name: "top",
   data: function() {
@@ -162,18 +167,52 @@ export default {
       hover: false
     };
   },
-  props: [
-    "image",
-    "name",
-    "type",
-    "artistId" /*if artist to go his page*/,
-    "artistName" /*if album*/,
-    "albumId" /*to go to album page*/,
-    "playlist_id" /*if playlist*/,
-    "track_id",
-    "ownerId",
-    "ownerName" /*if playlist*/,
-    "Id"
-  ]
+  props: {
+     /**
+       * src for the img displayed
+       */
+    image: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    type: {
+      type: String
+    },
+      /** 
+       *if artist to go his page
+       */
+    artistId: {
+      type: String
+    },
+    artistName: {
+      type: String
+    },
+      /**
+       *to navigate to album page
+       */
+    albumId: {
+      type: String,
+      default: "0"
+    },
+    playlist_id: {
+      type: String,
+     
+      default: "0"
+    },
+    track_id: {
+      type: String
+    },
+    ownerId: {
+      type: String
+    },
+    ownerName: {
+      type: String
+    },
+    Id: {
+      type: String
+    }
+  }
 };
 </script>

@@ -76,6 +76,11 @@ button:focus {
 </style>
 
 <script>
+/**
+ * apperars when there is no tracks
+ *  @displayName Empty playlist
+ * @example [none]
+ */
 export default {};
 </script>
 >

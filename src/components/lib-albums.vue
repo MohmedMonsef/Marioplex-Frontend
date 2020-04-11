@@ -96,6 +96,10 @@ i {
 </style>
 
 <script>
+/**
+ * @displayName Library albums
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -103,6 +107,22 @@ export default {
     };
   },
   name: "lib-albums",
-  props: ["images", "name", "artistname", "albumId", "artistId"]
+  props: {
+    images: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    artistname: {
+      type: String
+    },
+    albumId: {
+      type: String
+    },
+    artistId: {
+      type: String
+    }
+  }
 };
 </script>

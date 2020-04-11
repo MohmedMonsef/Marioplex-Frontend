@@ -243,11 +243,11 @@ const toast = {
     }, 2000);
   }
 };
-  /**
-   * upper song component appearing in
-   * @displayName Song Component
-   * @example [none]
-   */
+/**
+ * Song component appearing in views(playlists,albums..etc)
+ * @displayName Song Component
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -296,12 +296,20 @@ export default {
     }
   }, //must add isplayable also
   methods: {
+     /**
+     * add the component chosen to the queue
+     * @public This is a public method
+     */
     addToQueue() {
       this.$store.dispatch("Queue/AddToQueue", {
         trackId: this.song_id,
         playlistId: this.playlistId
       });
     },
+    /**
+     * toggles the state of the dropdown list (show/hide)
+     * @public This is a public method
+     */
     toggleShow(event) {
       var x = this.show;
       window.Element.show = false;
@@ -318,6 +326,10 @@ export default {
         });
       }
     },
+    /**
+     * closes all the lists on click on screen
+     * @public This is a public method
+     */
     hideshow(event) {
       var targetId = event.target.id;
       if (!this.$el.contains(event.target) || targetId != "list_icon") {
@@ -325,9 +337,17 @@ export default {
         this.isclicked = false;
       }
     },
+    /**
+     * marks the state of component as clicked altering its appearance
+     * @public This is a public method
+     */
     clicked() {
       this.isclicked = true;
     },
+    /**
+     * triggers the like request for the component
+     * @public This is a public method
+     */
     likecurrentsong: function() {
       if (!this.isLiked) {
         this.$store.dispatch("mediaplayer/Like", this.song_id);
@@ -339,6 +359,10 @@ export default {
         this.isLiked = false;
       }
     },
+    /**
+     * plays song on double click
+     * @public This is a public method
+     */
     playOnDblCLk: function() {
       if (this.isCurrent) {
         if (this.playicon) {
@@ -381,6 +405,7 @@ export default {
       // trackid: "mediaplayer/toadd"
     })
     // ,
+    // not implemented yet
     // ...mapState({
     //   showAdd: state => state.creatplaylist.showModalAdd
     // })

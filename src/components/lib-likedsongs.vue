@@ -102,6 +102,10 @@ i {
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * @displayName Saved Tracks
+ * @example [none]
+ */
 export default {
   data: function() {
     return {

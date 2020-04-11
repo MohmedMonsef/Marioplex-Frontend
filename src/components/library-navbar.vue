@@ -316,6 +316,10 @@ i:hover {
 
 <script>
 import { mapGetters } from "vuex";
+/**
+ * @displayName Library navbar
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -333,15 +337,31 @@ export default {
     }
   },
   methods: {
+    /**
+     * triggers the logout function
+     * @public This is a public method
+     */
     logout() {
       this.$store.dispatch("authorization/logout");
     },
+    /**
+     * Goes to previous Route
+     * @public This is a public method
+     */
     goprev: function() {
       this.$router.go(-1);
     },
+     /**
+     * Goes to next Route
+     * @public This is a public method
+     */
     gonext: function() {
       this.$router.go(1);
     },
+     /**
+     * checks current router
+     * @public This is a public method
+     */
     ISinlibrary: function() {
       if (
         this.$router.currentRoute.path ==

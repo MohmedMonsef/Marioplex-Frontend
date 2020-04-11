@@ -298,6 +298,10 @@ i:hover {
 
 <script>
 import { mapGetters } from "vuex";
+/**
+ * @displayName Navbar in home webplayer
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -313,12 +317,24 @@ export default {
     })
   },
   methods: {
+    /**
+     * triggers logout function
+     * @public This is a public method
+     */
     logout() {
       this.$store.dispatch("authorization/logout");
     },
+      /**
+     * Go to previous router page
+     * @public This is a public method
+     */
     goprev: function() {
       this.$router.go(-1);
     },
+       /**
+     * Go to next router page
+     * @public This is a public method
+     */
     gonext: function() {
       this.$router.go(1);
     },
@@ -331,6 +347,10 @@ export default {
         n.style.background = "transparent";
       }
     },
+    /**
+     * Update navbar component based on current router
+     * @public This is a public method
+     */
     check() {
       if (
         this.$router.currentRoute.path ==

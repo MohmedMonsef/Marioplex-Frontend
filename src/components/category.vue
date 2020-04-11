@@ -48,8 +48,23 @@ h4 {
 </style>
 
 <script>
+/**
+ * Category Card 
+ * @displayName Category
+ * @example [none]
+ */
 export default {
   name: "category",
-  props: ["image", "name", "categoryId"]
+  props: {
+    image:{
+      type:String
+    },
+    name:{
+      type:String
+    }, 
+    categoryId:{
+       type:String
+    }
+  }
 };
 </script>

@@ -89,6 +89,10 @@ i {
 </style>
 
 <script>
+/**
+ * @displayName Popular albums card
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -96,6 +100,19 @@ export default {
     };
   },
   name: "ShowPopularalbums",
-  props: ["images", "name", "artistname", "albumId"]
+  props: {
+    images: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    artistname: {
+      type: String
+    },
+    albumId: {
+      type: String
+    }
+  }
 };
 </script>

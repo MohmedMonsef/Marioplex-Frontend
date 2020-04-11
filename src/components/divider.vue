@@ -22,5 +22,10 @@ strong {
 }
 </style>
 <script>
+/**
+ * Divider with or component
+ * @displayName Divider
+ * @example [none]
+ */
 export default {};
 </script>

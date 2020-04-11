@@ -83,6 +83,10 @@ i {
 }
 </style>
 <script>
+/**
+ * @displayName Artists card
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -90,6 +94,16 @@ export default {
     };
   },
   name: "lib-artists",
-  props: ["images", "name", "artistId"]
+  props: {
+  images:{
+    type: String
+  }, 
+  name:{
+    type: String
+  }, 
+  artistId:{
+    type: String
+  }
+  }
 };
 </script>

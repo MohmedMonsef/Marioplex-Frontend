@@ -22,5 +22,10 @@
 }
 </style>
 <script>
+/**
+ * navigates to home page
+ * @displayName Logo header
+ * @example [none]
+ */
 export default {};
 </script>

@@ -212,6 +212,11 @@ input {
 
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Artist view to add song
+ * @displayName Upload Song
+ * @example [none]
+ */
 export default {
   name: "UploadSong",
   data() {
@@ -232,18 +237,34 @@ export default {
     })
   },
   methods: {
+    /**
+     * opens pop up to add song
+     * @public This is a public method
+     */
     changeModalStateUpload() {
       this.$store.dispatch("artistproperties/toggleModalUpload");
     },
+    /**
+     * check track selected to upload(not implemnted yet)
+     * @public This is a public method
+     */
     OnFileSelected() {
       this.selectedfile = event.target.files[0];
 
       console.log(this.selectedfile, "nori");
     },
+    /**
+     * check track file before upload
+     * @public This is a public method
+     */
     OnFilePreviewSelected() {
       this.selectedpreview = event.target.files[0];
       console.log(this.selectedpreview, "nori");
     },
+    /**
+     * Upload Song(not integerated yet)
+     * @public This is a public method
+     */
     OnUpload() {
       /*let payload = {
         Name: this.Name,

@@ -30,5 +30,10 @@ div {
 }
 </style>
 <script>
+/**
+ * Staic Footer in homepage
+ * @displayName Footer in homepage
+ * @example [none]
+ */
 export default {};
 </script>

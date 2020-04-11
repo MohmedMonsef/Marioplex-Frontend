@@ -266,6 +266,11 @@ const toast = {
     console.log("message", message);
   }
 };
+/**
+ *  * apperars when there is tracks in playlist
+ * @displayName Playlist info
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -289,11 +294,19 @@ export default {
     //      changeModalState() {
     //   this.$store.dispatch("playlistpopup/toggleModal");
     // },
+    /**
+     * Playlist list options(not implemnted yet)
+     * @public This is a public method
+     */
     toggleShow() {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
     },
+    /**
+     * start playing song and changes style
+     * @public This is a public method
+     */
     isplaying() {
       this.play = true;
       if (this.playicon) {
@@ -303,6 +316,10 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+    /**
+     * Pauses current song and changes style
+     * @public This is a public method
+     */
     stopplayingbutton() {
       this.play = false;
       var playlistimage = document.getElementById("playlist_image");
@@ -313,6 +330,10 @@ export default {
     stopplaying() {
       this.play = false;
     },
+      /**
+     * changes image style on hover
+     * @public This is a public method
+     */
     onhoverimage: function() {
       var playlistimage = document.getElementById("playlist_image");
       playlistimage.style.opacity = "0.3";
@@ -324,6 +345,10 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+    /**
+     * returns style to normal(before hover)
+     * @public This is a public method
+     */
     onleaveimage: function() {
       var playlistimage = document.getElementById("playlist_image");
       playlistimage.style.opacity = "1";
@@ -337,6 +362,10 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+    /**
+     * triggers liking/unliking current playlist request
+     * @public This is a public method
+     */
     likecurrentplaylist: function() {
       if (!this.liked) {
         toast.show("Saved to Your Library");
