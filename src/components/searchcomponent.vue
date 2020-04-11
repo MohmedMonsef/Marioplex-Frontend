@@ -70,7 +70,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-let insearch = insearch;
+// let insearch = insearch;
 export default {
   name: "searchcomponent",
   data() {
@@ -88,11 +88,11 @@ export default {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
     },
-    isinsearch() {
-      if (insearch) {
-        this.Value = "";
-      }
-    }
+    // isinsearch() {
+    //   if (insearch) {
+    //     this.Value = "";
+    //   }
+    // }
   },
   computed: {
     ...mapGetters({
