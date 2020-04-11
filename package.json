@@ -87,6 +87,7 @@
     "collectCoverageFrom": [
       "**/*.vue",
       "!**/node_modules/**",
+<<<<<<< HEAD
       "!**/App.vue",
       "!**/home-navigation-bar.vue",
       "!**/UploadSong.vue",
@@ -96,6 +97,9 @@
       "!**/DeleteSong.vue",
       "!**/EditBio.vue"
 
+=======
+      "!**/App.vue"
+>>>>>>> 27bad1a4bcf7e4512998d71969ae52324634793c
     ]
   }
 }

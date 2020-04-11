@@ -2,6 +2,8 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import Login from "../../src/views/Login";
+import LogoHeader from "@/components/logo-header.vue";
+import Divider from "@/components/divider.vue";
 
 describe("Login", () => {
   let wrapper;
@@ -34,7 +36,11 @@ describe("Login", () => {
     });
     wrapper = shallowMount(Login, {
       localVue,
-      store
+      store,
+      stubs:{
+        LogoHeader,
+        Divider
+      }
     });
   });
   it("renders", () => {
