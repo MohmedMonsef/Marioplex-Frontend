@@ -44,7 +44,6 @@
           <div class="typecont">
             <p
               class="card-text p"
-              v-if="type == 'Artist'"
               testid="type"
               id="typecont"
             >

@@ -42,4 +42,18 @@ describe("LibLikedsongs.vue", () => {
     expect(artistName.text()).toBe("artist name");
     expect(songs_length.text()).toBe("1 liked songs");
   });
+  it("renders", () => {
+    const wrapper = shallowMount(LibLikedsongs, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(LibLikedsongs, {
+      localVue,
+      store
+    });
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 });

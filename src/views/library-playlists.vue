@@ -3,8 +3,9 @@
     <div class="loading" v-if="!loadingplaylists">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div v-if="loadingplaylists">
+    <div v-if="loadingplaylists" class="notloading">
       <lib-playlists-default
+      id="defaultscreen" 
         v-if="playlists1.length == 0 && songs1.length == 0"
       />
       <h2 v-if="playlists1.length">Playlists</h2>

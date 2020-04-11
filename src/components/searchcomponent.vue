@@ -70,7 +70,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-let insearch = insearch;
+// let insearch = insearch;
 /**
  * Search bar where user writes a word to search
  * @displayName Search Bar
@@ -101,16 +101,17 @@ export default {
     reset() {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
-    },
-    /**
-     * When confirm search reset
-     * @public This is a public method
-     */
-    isinsearch() {
-      if (insearch) {
-        this.Value = "";
-      }
     }
+    // ,
+    // /**
+    //  * When confirm search reset
+    //  * @public This is a public method
+    //  */
+    // isinsearch() {
+    //   if (insearch) {
+    //     this.Value = "";
+    //   }
+    // }
   },
   computed: {
     ...mapGetters({

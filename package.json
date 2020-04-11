@@ -33,7 +33,7 @@
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-pwa": "~4.2.0",
     "@vue/cli-plugin-router": "~4.2.0",
-    "@vue/cli-plugin-unit-jest": "~4.2.0",
+    "@vue/cli-plugin-unit-jest": "^4.2.3",
     "@vue/cli-plugin-vuex": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -49,7 +49,6 @@
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-styleguidist": "~4.16.0",
-    "vue-styleguidist": "^4.16.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -86,9 +85,17 @@
     "preset": "@vue/cli-plugin-unit-jest",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js,vue}",
+      "**/*.vue",
       "!**/node_modules/**",
-      "!Marioplex-Frontend/src/views/ForArtist.vue"
+      "!**/App.vue",
+      "!**/home-navigation-bar.vue",
+      "!**/UploadSong.vue",
+      "!**/playlistpopup.vue",
+      "!**/Home.vue",
+      "!**/AddTracksPopup.vue",
+      "!**/DeleteSong.vue",
+      "!**/EditBio.vue"
+
     ]
   }
 }

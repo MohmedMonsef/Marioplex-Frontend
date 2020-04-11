@@ -76,95 +76,18 @@ describe("NavbarWebplayer.vue", () => {
     anchor.trigger("click");
     expect(logout).toHaveBeenCalled;
   });
+  it("renders", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(NavbarWebplayer, {
+      localVue,
+      store
+    });
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 });
-
-///////////////////////////////////////////////////////////////////////////
-// import {shallowMount, createLocalVue} from "@vue/test-utils";
-// import CreatePlaylist from "@/components/CreatePlaylist.vue";
-// //import VueRouter from 'vue-router';
-// import Vuex from "vuex";
-// //import TestHelper from "test/test-helpers";
-// //import {getters,mutations,actions} from "@/modules/creatplaylist.js"
-
-// describe('CreatePlaylist',()=>{
-//     const localVue = createLocalVue()
-//     localVue.use(Vuex)
-//    // let wrapper
-//     let store
-//    // let h
-//     beforeEach(()=>{
-//         store=new Vuex.Store({
-//             modules:{
-//                 creatplaylist:{
-//                     namespaced:true,
-//                     state:{
-//                           showModal: false,
-//                           Playlists: [],
-//                     },
-//                     getters:{
-//                         showModal: state => {
-//                             return state.showModal;
-//                           },
-
-//                    },
-//                 //     mutations:{
-//                 //         toggleModal(state) {
-//                 //             state.showModal = !state.showModal;
-//                 //           },
-//                 //           CreatePlaylist(state, playlists) {
-//                 //             state.Playlists.push(
-//                 //               //id: id,
-//                 //               // playlistname: i
-//                 //               playlists
-//                 //             );
-//                 //             console.log("nori");
-//                 //           },
-//                 //    },
-//                     actions:{
-//                         toggleModal:jest.fn(),
-//                         CreatePlaylist:jest.fn(),
-//                     },
-//                 },
-//                 authorization:{
-//                     namespaced:true,
-//                     state:{
-//                         User:{
-//                             displayName:"user name",
-//                         }
-
-//                     },
-//                      getters:{
-//                         Username: state => state.User.displayName,
-//                    }
-//                 }
-//             }
-//         })
-
-//        // h=new TestHelper(wrapper,expect)
-//     })
-
-//     it('has a button', () => {
-//         const  wrapper= shallowMount(CreatePlaylist,{localVue,store});
-//         expect(wrapper.exists('.creat_button')).toBe(true)
-//         //expect(true).toBe(true)
-//       })
-//       it("it's a vue instance ",()=>{
-//           const wrapper=shallowMount(CreatePlaylist,{localVue,store});
-//          expect(wrapper.isVueInstance()).toBe(true);
-
-//       });
-//       it("it creates a playlist", ()=>{
-//         const wrapper=shallowMount(CreatePlaylist,{localVue,store});
-//           //const Create=jest.fn();
-//         // const changeModalState=jest.fn();
-//         // wrapper.setMethods({
-//         //    // CreatePlaylist:Create,
-//         // changeModalState:changeModalState
-//         //   });
-//         const button= wrapper.find('.cancel_button');
-//         button.trigger('click');
-//         //  //await Vue.nextTick()
-//         //   // expect(Create).toHaveBeenCalled();
-//         // expect(changeModalState).toHaveBeenCalled();
-//        });
-// });

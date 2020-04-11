@@ -3,7 +3,7 @@
     <div class="loading" v-if="!loadingartists">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div v-if="loadingartists">
+    <div v-if="loadingartists"  class="notloading">
       <lib-artists-default v-if="artists1.length == 0" />
       <h2 v-if="artists1.length">Artists</h2>
       <div class="container">

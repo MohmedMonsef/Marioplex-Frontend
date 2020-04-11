@@ -19,11 +19,11 @@
       ></i>
       <i
         v-if="(isclicked || hover) && !(playicon && isCurrent)"
-        id="playicon-component"
+        :class="isCurrentClass"
         @click="playSong()"
         class="fa fa-play"
         testid="play button"
-        :class="isCurrentClass"
+        id="playicon-component"
       >
       </i>
       <i

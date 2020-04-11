@@ -14,4 +14,12 @@ describe("LibArtists.vue", () => {
     const name = wrapper.find("#cardtitle");
     expect(name.text()).toBe("artist name");
   });
+  it("renders", () => {
+    const wrapper = shallowMount(LibArtists, {localVue});
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(LibArtists, {localVue});
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
 });

@@ -98,7 +98,7 @@
         </li>
       </ul>
       <ul v-if="showdelete" id="right-click-menu">
-        <li @click="changeModalStateDelete()">Delete</li>
+        <li class="delete_div" @click="changeModalStateDelete()">Delete</li>
       </ul>
     </div>
   </div>

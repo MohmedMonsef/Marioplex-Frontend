@@ -22,20 +22,27 @@ describe("SideBar.vue", () => {
         creatplaylist: {
           namespaced: true,
           state: {
-            showModalDelete: false,
-            Playlists: []
+            showModalDelete: true,
+            Playlists: [
+              {
+                name:'play'
+              }
+            ]
           },
           getters: {
             showModalDelete: state => {
               return state.showModalDelete;
             },
             playlists: state => state.Playlists
+          },
+          actions:{
+            showplaylists: jest.fn()
           }
         }
       }
     });
   });
-  it("call setsearch function", () => {
+  it("call setsearch & setfocus function", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
       store
@@ -51,4 +58,56 @@ describe("SideBar.vue", () => {
     expect(setsearch).toHaveBeenCalled;
     expect(setfocus).toHaveBeenCalled;
   });
+  it("call change Modal State function", () => {
+    const wrapper = shallowMount(SideBar, {
+      localVue,
+      store
+    });
+    const changeModalState = jest.fn();
+    wrapper.setMethods({
+        changeModalState: changeModalState,
+    });
+    const create_button = wrapper.find(".createbutton");
+    create_button.trigger("click");
+    expect(changeModalState).toHaveBeenCalled;
+  });
+  it("show playlists names", () => {
+    const wrapper = shallowMount(SideBar, {
+      localVue,
+      store
+    });
+    const playlist_name = wrapper.find(".userplaylists");
+    expect(playlist_name.text()).toBe('play');
+  });
+  it("call change Modal StateDelete function", () => {
+    const wrapper = shallowMount(SideBar, {
+      localVue,
+      store
+    });
+    wrapper.setData({
+      showdelete: true,
+    });
+    const changeModalStateDelete = jest.fn();
+    wrapper.setMethods({
+      changeModalStateDelete: changeModalStateDelete,
+    });
+    const delete_button = wrapper.find(".delete_div");
+    delete_button.trigger("click");
+    expect(changeModalStateDelete).toHaveBeenCalled;
+  });
+  it("renders", () => {
+    const wrapper = shallowMount(SideBar, {
+      localVue,
+      store
+    });
+    expect(wrapper.exists()).toBe(true);
+  }); 
+  it("renders a vue instance", () => {
+    const wrapper = shallowMount(SideBar, {
+      localVue,
+      store
+    });
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
+
 });

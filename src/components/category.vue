@@ -9,7 +9,7 @@
     <div class="card-img-overlay">
       <h4 class="card-title">{{ name }}</h4>
       <router-link
-        :to="link"
+        to="/"
         class="stretched-link"
         id="carglink"
         testid="cardlink"
