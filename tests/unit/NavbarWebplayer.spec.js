@@ -87,6 +87,22 @@ describe("NavbarWebplayer.vue", () => {
     expect(wrapper.exists("#drop_button")).toBe(true);
   });
 
+  // it("call check function", () => {
+  //   const wrapper = shallowMount(NavbarWebplayer, {
+  //     localVue,
+  //     store
+  //   });
+  //   const check = jest.fn();
+  //   wrapper.setData({
+  //     inlibrary: true,
+  //     insearch: true
+  //   })
+  //   wrapper.setMethods({
+  //     check: check
+  //   });
+  //   wrapper.trigger('click');
+  //   expect(check).toHaveBeenCalled;
+  // });
 
   it("call goprev function when previous button is clicked", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
