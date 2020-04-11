@@ -1,9 +1,11 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import Vuex from "vuex";
+import VueRouter from "vue-router";
 describe("DeletePlaylist", () => {
   const localVue = createLocalVue();
   localVue.use(Vuex);
+  localVue.use(VueRouter);
   let store;
   beforeEach(() => {
     store = new Vuex.Store({
@@ -27,6 +29,10 @@ describe("DeletePlaylist", () => {
             toggleModalDelete:jest.fn(),
 
 
+          },
+          actions:{
+            DeletePlaylist:jest.fn(),
+            toggleModalDelete:jest.fn(),
           }
         }
       }

@@ -26,13 +26,122 @@ describe("likedtracks_info", () => {
         },
         mediaplayer:{
           state:{
+            currentsong: {
+              track: {
+                availableMarkets: ["EG,US"],
+                _id: "5e80ceb853e67b1e284a0f15",
+                trackNumber: 1,
+                name: "HAVANA",
+                artistId: "5e80c9b614c8566d6cd9b40e",
+                albumId: "5e80cc2b14c8566d6cd9b40f",
+                discNumber: 1,
+                explicit: false,
+                type: "Track",
+                acousticness: 10,
+                danceability: 23,
+                energy: 100,
+                instrumentalness: 4,
+                key: 90,
+                liveness: 25,
+                loudness: 70,
+                mode: 56,
+                speechiness: 67,
+                tempo: 76,
+                timeSignature: "2020-03-29T16:37:12.554Z",
+                valence: 70,
+                __v: 0,
+                images: []
+              },
+              isLiked: false,
+              album: {
+                name: "HELLO KIDS",
+                _id: "5e80cc2b14c8566d6cd9b40f",
+                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
+              },
+              isPlaylist: true,
+              playlistId: "5e891c8edb96e26db4efc790",
+              isPlayable: true
+            },
+            //component info
+            currentsong_info: {
+              track: {
+                availableMarkets: ["EG,US"],
+                _id: "5e80ceb853e67b1e284a0f15",
+                trackNumber: 1,
+                name: "HAVANA",
+                artistId: "5e80c9b614c8566d6cd9b40e",
+                albumId: "5e80cc2b14c8566d6cd9b40f",
+                discNumber: 1,
+                explicit: false,
+                type: "Track",
+                acousticness: 10,
+                danceability: 23,
+                energy: 100,
+                instrumentalness: 4,
+                key: 90,
+                liveness: 25,
+                loudness: 70,
+                mode: 56,
+                speechiness: 67,
+                tempo: 76,
+                timeSignature: "2020-03-29T16:37:12.554Z",
+                valence: 70,
+                __v: 0,
+                images: []
+              },
+              isLiked: false,
+              album: {
+                name: "HELLO KIDS",
+                _id: "5e80cc2b14c8566d6cd9b40f",
+                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
+              },
+              isPlaylist: true,
+              playlistId: "5e891c8edb96e26db4efc790",
+              isPlayable: true
+            },
+            //flag weather the song is playing or not
             playicon: false,
+            currentaudio: null,
+            volumeprogress: 0,
+            progress: 0,
+            trackduration: 0
+            // toAdd: 0
           },
           getters:{
+            Get_Currentsong: state => {
+              return state.currentsong;
+            },
             playicon: state => {
               return state.playicon;
+            },
+            liked: state => {
+              return state.currentsong.isLiked;
+            },
+            currentaudio: state => {
+              return state.currentaudio;
+            },
+            progress: state => {
+              return state.progress;
+            },
+            duration: state => {
+              return state.trackduration;
+            },
+            volume: state => {
+              return state.volumeprogress;
+            },
+            // toadd: state => {
+            //   return state.toadd;
+            // },
+        
+            currentsong_info: state => {
+              return state.currentsong_info;
+            }
+        },
+          actions:{
+            pausesong_state:jest.fn(),
+
           }
-        }
+        
       }
     }
     });

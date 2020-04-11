@@ -40,6 +40,18 @@ describe("SideBar.vue", () => {
           }
         },
         Search:{
+          namespaced:true,
+          state:{
+            search_Value: "",
+    topres: [],
+    result5: [],
+    result: [],
+    albumres5: [],
+    playlistres5: [],
+    load: false,
+    in: false,
+    searchfocus: false
+          },
           actions:{
             searchfocus: jest.fn(),
             search_V: jest.fn(),

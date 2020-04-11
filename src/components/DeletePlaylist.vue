@@ -218,7 +218,7 @@ export default {
      */
 
     changeModalStateDelete() {
-      console.log("in methods");
+      //console.log("in methods");
       this.$store.dispatch("creatplaylist/toggleModalDelete");
     },
     /**
@@ -226,9 +226,9 @@ export default {
      * @public This is a public method
      */
     DeletePlaylist() {
-      console.log("in delete component", this.todelete);
+      //console.log("in delete component", this.todelete);
       this.$store.dispatch("creatplaylist/DeletePlaylist", this.todelete);
-      console.log("removed");
+      //console.log("removed");
     }
   }
 };

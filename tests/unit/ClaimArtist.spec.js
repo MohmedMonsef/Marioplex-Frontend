@@ -1,11 +1,13 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
+import VueRouter from "vue-router";
 import ClaimArtist from "../../src/views/ClaimArtist";
 describe("ClaimArtist", () => {
   let wrapper;
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
+  localVue.use(VueRouter);
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
@@ -18,6 +20,9 @@ describe("ClaimArtist", () => {
             showModal: state => {
               return state.showModal;
             }
+          },
+          actions:{
+            toggleModal:jest.fn()
           }
         },
 
@@ -33,7 +38,8 @@ describe("ClaimArtist", () => {
           },
           actions: {
             facebook_signUp: jest.fn(),
-            signUp: jest.fn()
+            signUp: jest.fn(),
+            ClaimArtistProfile:jest.fn(),
           }
         }
       }

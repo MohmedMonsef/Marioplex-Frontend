@@ -1,5 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
+import VueRouter from "vue-router";
 import ForArtist from "../../src/views/ForArtist";
 import HomeNavigationBar from "@/components/home-navigation-bar";
 describe("ForArtist",()=>{
@@ -7,6 +8,7 @@ describe("ForArtist",()=>{
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
+  localVue.use(VueRouter);
   beforeEach(()=>{
     store = new Vuex.Store({
       modules: {
@@ -22,7 +24,8 @@ describe("ForArtist",()=>{
           },
           actions: {
             facebook_signUp: jest.fn(),
-            signUp: jest.fn()
+            signUp: jest.fn(),
+            ClaimArtistProfile:jest.fn()
           }
         }
       }

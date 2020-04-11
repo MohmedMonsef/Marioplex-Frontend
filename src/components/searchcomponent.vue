@@ -88,7 +88,7 @@ export default {
        * @displayName Search
        * @public This is a public method
        */
-      console.log(value);
+      //console.log(value);
       this.$store.dispatch("Search/search_V", this.Value);
       if (value !== "") {
         this.$store.dispatch("Search/searchaboutartist", this.Value);

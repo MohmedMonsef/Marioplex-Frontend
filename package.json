@@ -92,9 +92,14 @@
       "!**/UploadSong.vue",
       "!**/playlistpopup.vue",
       "!**/Home.vue",
-      "!**/AddTracksPopup.vue",
+      "!**/AddTrackPopup.vue",
       "!**/DeleteSong.vue",
-      "!**/EditBio.vue"
+      "!**/EditBio.vue",
+      "!**/likedtracks_info.vue",
+      "!**/HomeWebPlayer.vue",
+      "!**/album_view.vue",
+      "!**/playlist_view.vue",
+      "!**/searchresults.vue"
     ]
   }
 }

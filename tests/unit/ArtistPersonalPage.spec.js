@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
-//import VueRouter from "vue-router";
+import VueRouter from "vue-router";
 import ArtistPersonalPage from "../../src/views/ArtistPersonalPage";
 import UploadSong from "@/components/UploadSong";
 import ArtistHeader from "@/components/ArtistHeader";
@@ -10,7 +10,7 @@ describe("ArtistPersonalPage",()=>{
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
-  //localVue.use(VueRouter);
+  localVue.use(VueRouter);
   beforeEach(()=>{
     store = new Vuex.Store({
         modules:{
@@ -23,6 +23,14 @@ describe("ArtistPersonalPage",()=>{
                   actions:{
                     toggleModalUpload:jest.fn(),
                   },
+                  getters:{
+                    showModal: state => {
+                      return state.showModal;
+                    },
+                    showModalUpload: state => {
+                      return state.showModalUpload;
+                    }
+                  }
             },
         }
     });

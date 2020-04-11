@@ -1,13 +1,13 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
-//import VueRouter from 'vue-router';
+import VueRouter from 'vue-router';
 import Vuex from "vuex";
-//import TestHelper from "test/test-helpers";
-//import {getters,mutations,actions} from "@/modules/creatplaylist.js"
+
 
 describe("CreatePlaylist", () => {
   const localVue = createLocalVue();
   localVue.use(Vuex);
+  localVue.use(VueRouter);
   // let wrapper
   let store;
   // let h
