@@ -156,7 +156,8 @@ export default {
     getplaylistsres5(state) {
       return state.playlistres5;
     },
-    loadingsearch: state => state.load
-  },
+    loadingsearch: state => state.load,
+  
   searchfocus: state => state.searchfocus
+},
 };

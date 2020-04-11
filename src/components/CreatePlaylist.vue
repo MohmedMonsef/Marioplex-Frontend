@@ -9,7 +9,7 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <button class="cancel" @click="changeModalState">
+        <button class="cancel" @click="changeModalState()">
           <svg
             width="32"
             height="32"
@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <button class="cancel_button" @click="changeModalState">
+        <button class="cancel_button" @click="changeModalState()">
           cancle
         </button>
         <!--<input @keyup.enter="CreatePlaylist()" />-->
@@ -48,7 +48,7 @@
           class="creat_button"
           testid="confirm_create"
           @click.prevent="CreatePlaylist()"
-          @click="changeModalState"
+          @click="changeModalState()"
         >
           create
         </button>
@@ -295,9 +295,13 @@ ul {
 
 <script>
 // @ is an alias to /src
-//import {mapActions} from "vuex";
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
+/**
+ * Create Playlist Pop Up to input the new playlist name
+ * @displayName Create Playlist Pop Up
+ * @example [none]
+ */
 export default {
   name: "CreatePlaylist",
   data: function() {
@@ -317,10 +321,18 @@ export default {
     })
   },
   methods: {
+    /**
+     * triggers the closing of popup
+     * @public This is a public method
+     */
+
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
-
+    /**
+     * triggers the create playlist request
+     * @public This is a public method
+     */
     CreatePlaylist() {
       var payload;
       if (this.playlistname) {
@@ -336,7 +348,6 @@ export default {
           owner: this.username
         };
       }
-      console.log("nerd");
       this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
       // Addtrack();
     }

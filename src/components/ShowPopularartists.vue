@@ -89,6 +89,10 @@ i {
 </style>
 
 <script>
+/**
+ * @displayName Popular artists card
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -96,6 +100,13 @@ export default {
     };
   },
   name: "ShowPopularartists",
-  props: ["images", "name"]
+  props: {
+    images: {
+      type: String
+    },
+    name: {
+      type: String
+    }
+  }
 };
 </script>

@@ -14,22 +14,20 @@ describe("playlist_info", () => {
     store = new Vuex.Store({
       modules: {
         playlist: {
-          namespaced:true,
+          namespaced: true,
           state: {
             playlist_length: 3,
             playlist_name: "PlayList",
             owner_name: "User",
             playlist_image: "cry.png",
-            likedplaylist: false,
-            
+            likedplaylist: false
           },
-          getters:{
+          getters: {
             playlist_length: state => state.playlist_length,
             playlist_name: state => state.playlist_name,
             owner_name: state => state.owner_name,
             playlist_image: state => state.playlist_image,
-            likeplaylist: state => state.likedplaylist,
-         
+            likeplaylist: state => state.likedplaylist
           },
            actions:{
               like_playlist: jest.fn(),
@@ -37,14 +35,14 @@ describe("playlist_info", () => {
               playlist_tracks:jest.fn()
             }
         },
-        authorization:{
-            namespaced:true,
-            state: {
-              status:{}
-              },
-              getters:{
-                GetStatus: state => state.status
-              }
+        authorization: {
+          namespaced: true,
+          state: {
+            status: {}
+          },
+          getters: {
+            GetStatus: state => state.status
+          }
         },
         mediaplayer:{
               namespaced:true,

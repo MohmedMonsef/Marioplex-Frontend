@@ -16,7 +16,7 @@
     </svg>
     <h1>Save your favourite albums</h1>
     <p>Save albums you love to build the collection of your dreams.</p>
-    <router-link to="/HomeWebPlayer">
+    <router-link to="/HomeWebPlayer" class="discover">
       <button class="discover_button" testid="discover button">
         DISCOVER
       </button>
@@ -61,3 +61,13 @@ p {
   height: 40px;
 }
 </style>
+<script>
+/**
+ * Appears when user has no albums in his library
+ * @displayName Albums Default
+ * @example [none]
+ */
+export default {
+  name: "lib-albums-default"
+};
+</script>

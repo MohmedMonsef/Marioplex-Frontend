@@ -26,7 +26,7 @@
           claiming another.
         </p>
         <!--<input class="claim_input" type="url" placeholder="search for a user name or pase a user url" />-->
-        <button class="popup_button" @click="changeModalState">
+        <button class="popup_button" @click="changeModalState()">
           Claim Artist Profile
         </button>
         <transition name="fade" appear>
@@ -38,7 +38,7 @@
         </transition>
         <transition name="slide" appear>
           <div class="modal" v-if="showModal">
-            <button class="cancel" @click="changeModalState">
+            <button class="cancel" @click="changeModalState()">
               <svg
                 width="32"
                 height="32"
@@ -83,14 +83,14 @@
               </div>
             </div>
 
-            <button class="cancel_button" @click="changeModalState">
+            <button class="cancel_button" @click="changeModalState()">
               cancle
             </button>
             <button
               class="creat_button"
               testid="confirm_create"
               @click.prevent="ClaimArtistProfile()"
-              @click="changeModalState"
+              @click="changeModalState()"
             >
               claim
             </button>

@@ -184,6 +184,11 @@ div {
 }
 </style>
 <script>
+/**
+ * appears when user tries to create playlist with being registered
+ * @displayName No User Popup
+ * @example [none]
+ */
 export default {
   name: "CreatePlaylist",
   data: function() {
@@ -195,6 +200,10 @@ export default {
 
   components: {},
   methods: {
+     /**
+     * triggers create playlist song
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     }

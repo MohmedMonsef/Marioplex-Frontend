@@ -196,6 +196,11 @@ div {
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
+/**
+ * Delete Playlist Pop Up to confirm delete action
+ * @displayName Delete Playlist Pop Up
+ * @example [none]
+ */
 export default {
   computed: {
     ...mapState({
@@ -207,14 +212,23 @@ export default {
     })
   },
   methods: {
+    /**
+     * triggers the closing of popup
+     * @public This is a public method
+     */
+
     changeModalStateDelete() {
-      console.log("in methods");
+      //console.log("in methods");
       this.$store.dispatch("creatplaylist/toggleModalDelete");
     },
+    /**
+     * triggers the delete playlist request
+     * @public This is a public method
+     */
     DeletePlaylist() {
-      console.log("in delete component", this.todelete);
+      //console.log("in delete component", this.todelete);
       this.$store.dispatch("creatplaylist/DeletePlaylist", this.todelete);
-      console.log("removed");
+      //console.log("removed");
     }
   }
 };

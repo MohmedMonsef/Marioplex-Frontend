@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
-import VueRouter from 'vue-router';
+import VueRouter from "vue-router";
 import playlist from "../../src/components/playlist";
 
 describe("playlist", () => {
@@ -14,23 +14,23 @@ describe("playlist", () => {
     store = new Vuex.Store({
       modules: {
         playlist: {
-          namespaced:true,
+          namespaced: true,
           state: {
             playlist_name: "NEW PlayList",
-            owner_name: "User",
+            owner_name: "User"
           },
-          getters:{
+          getters: {
             playlist_name: state => state.playlist_name,
-            owner_name: state => state.owner_name,
+            owner_name: state => state.owner_name
           }
         }
       }
     });
     wrapper = shallowMount(playlist, {
-        localVue,
-        store,
-        propsData: {}
-      });
+      localVue,
+      store,
+      propsData: {}
+    });
   });
   it("renders" , () => {
     expect(wrapper.exists()).toBe(true);
@@ -39,7 +39,7 @@ describe("playlist", () => {
     expect(wrapper.isVueInstance()).toBe(true);
   });
   it("renders empty playlist information", () => {
-    const playlist_name = wrapper.find('.playlistname');
+    const playlist_name = wrapper.find(".playlistname");
     expect(playlist_name.text()).toBe("NEW PlayList");
   });
   it("renders empty playlist information", () => {

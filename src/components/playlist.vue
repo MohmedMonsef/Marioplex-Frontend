@@ -151,6 +151,11 @@ button:focus {
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Playlist view
+ * @displayName Playlist view
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -159,6 +164,10 @@ export default {
   },
   name: "playlist",
   methods: {
+    /**
+     * shows the list options(not implemented)
+     * @public This is a public method
+     */
     toggleShow() {
       var x = this.show;
       window.Element.show = false;

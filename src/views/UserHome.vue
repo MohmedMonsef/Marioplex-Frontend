@@ -2,7 +2,7 @@
   <div class="home">
     <div class="section">
       <h2 v-if="POPplaylists1.playlists.length">Popular playlists</h2>
-      <div class="container">
+      <div class="container has_popular_playlists ">
         <div class="row">
           <show-popularplaylists
             v-for="POPplaylist in POPplaylists1.playlists"

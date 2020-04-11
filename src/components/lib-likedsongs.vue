@@ -10,7 +10,9 @@
   >
     <div class="inline-div" v-bind:id="rawId | shorten">
       <span v-for="song in songs1" :key="song.id">
-        <span testid="artist name">{{ song.artistName + " " }} </span>
+        <span testid="artist name" id="artist_name"
+          >{{ song.artistName + " " }}
+        </span>
         <span testid="song name" class="songname"> {{ song.name + " " }} </span>
         <span class="dot">. </span>
       </span>
@@ -100,6 +102,10 @@ i {
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * @displayName Saved Tracks
+ * @example [none]
+ */
 export default {
   data: function() {
     return {

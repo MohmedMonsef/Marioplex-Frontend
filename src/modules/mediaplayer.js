@@ -80,8 +80,8 @@ export default {
     currentaudio: null,
     volumeprogress: 0,
     progress: 0,
-    trackduration: 0,
-    toAdd: 0
+    trackduration: 0
+    // toAdd: 0
   },
   mutations: {
     setplayicon(state, playicon) {
@@ -327,9 +327,9 @@ export default {
     volume: state => {
       return state.volumeprogress;
     },
-    toadd: state => {
-      return state.toadd;
-    },
+    // toadd: state => {
+    //   return state.toadd;
+    // },
 
     currentsong_info: state => {
       return state.currentsong_info;

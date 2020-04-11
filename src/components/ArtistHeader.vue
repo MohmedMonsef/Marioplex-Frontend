@@ -76,6 +76,11 @@
 }
 </style>
 <script>
+/**
+ * Artist navbar header
+ * @displayName Artist navigation bar
+ * @example [none]
+ */
 export default {
   name: "ArtistHeader"
 };

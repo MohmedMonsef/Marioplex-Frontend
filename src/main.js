@@ -15,8 +15,7 @@ if (process.env.NODE_ENV === "production") {
   //if in development call the mockServer
   mockServer();
 }
-// axios.defaults.baseURL = "https://spotify-demo1.herokuapp.com/";
-// (Our Server)
+
 axios.defaults.baseURL = "http://52.205.254.29";
 //setting the Authorization on axios header to our token, so requests can be processed if a token is required.
 // This way, we do not have to set token anytime we want to make a request.

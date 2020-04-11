@@ -4,10 +4,10 @@
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="loading" id="main_queue">
-      <h1>
+      <h1 id="main_header">
         Play Queue
       </h1>
-      <h2>
+      <h2 id="current_header">
         Now Playing
       </h2>
       <!-- should be cs.track._id -->
@@ -24,7 +24,7 @@
         :artist_id="currentSong.album.artist._id"
       />
 
-      <h2 v-if="Queued.length">
+      <h2 v-if="Queued.length" id="queued_header">
         Next in Queue
       </h2>
       <!-- should be q.track._id -->
@@ -42,7 +42,7 @@
         :artist_id="q.fulltrack.album.artist._id"
       />
 
-      <h2 v-if="NextUp.length">
+      <h2 v-if="NextUp.length" id="next_header">
         Next Up
       </h2>
       <!-- should be next.track._id -->

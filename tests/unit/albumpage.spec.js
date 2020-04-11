@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
-import VueRouter from 'vue-router';
+import VueRouter from "vue-router";
 import album_info from "../../src/components/album_info";
 
 describe("album_info", () => {
@@ -14,7 +14,7 @@ describe("album_info", () => {
     store = new Vuex.Store({
       modules: {
         album: {
-          namespaced:true,
+          namespaced: true,
           state: {
             album_length: 5,
             album_name: "Album",
@@ -38,10 +38,10 @@ describe("album_info", () => {
       }
     });
     wrapper = shallowMount(album_info, {
-        localVue,
-        store,
-        propsData: {}
-      });
+      localVue,
+      store,
+      propsData: {}
+    });
   });
   it("renders" , () => {
     expect(wrapper.exists()).toBe(true);

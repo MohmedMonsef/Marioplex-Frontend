@@ -167,6 +167,11 @@
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Delete song Pop Up to confirm delete action(not complete)
+ * @displayName Delete song Pop Up
+ * @example [none]
+ */
 export default {
   computed: {
     ...mapGetters({
@@ -174,9 +179,18 @@ export default {
     })
   },
   methods: {
+    /**
+     * triggers the closing of popup
+     * @public This is a public method
+     */
+
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
+    /**
+     * triggers the delete song request
+     * @public This is a public method
+     */
     DeleteSong(id) {
       console.log(id);
       this.$store.dispatch("uploadsong/DeletePlaylist", id);
