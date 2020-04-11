@@ -85,8 +85,9 @@
     "preset": "@vue/cli-plugin-unit-jest",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "*/.{js,vue}",
-      "!*/node_modules/*"
+      "**/*.vue",
+      "!**/node_modules/**",
+      "!**/App.vue"
     ]
   }
 }

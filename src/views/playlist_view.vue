@@ -12,7 +12,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
         <emptytracks v-if="this.playlist_length == 0" />
-        <draggable ghost-class="ghost" @end="ReorderTracks" v-else>
+        <draggable ghost-class="ghost" class="reordertracks" @end="ReorderTracks" v-else>
           <transition-group type="transition" name="flip-list">
             <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
             <song-component
