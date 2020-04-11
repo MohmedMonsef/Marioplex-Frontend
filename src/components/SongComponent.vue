@@ -75,8 +75,12 @@
       </div>
       <div id="mydropdown" class="db" v-if="show">
         <p>Start Radio</p>
-        <p @click="likecurrentsong()" v-if="!isLiked">Add to Liked Songs</p>
-        <p @click="likecurrentsong()" v-if="isLiked">Remove from Liked Songs</p>
+        <p @click="likecurrentsong()" id="ifnotliked" v-if="!isLiked">
+          Add to Liked Songs
+        </p>
+        <p @click="likecurrentsong()" id="ifliked" v-if="isLiked">
+          Remove from Liked Songs
+        </p>
         <p @click="addToQueue()">Add to Queue</p>
         <p @click="changeModalStateAdd(), showplaylists()">Add to Playlist</p>
       </div>
@@ -139,7 +143,6 @@
 
 #icon {
   width: 43px;
-
   float: left;
   height: inherit;
   padding-right: 14px;
@@ -227,7 +230,7 @@
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import AddTrackPopup from "../components/AddTrackPopup";
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");
@@ -238,9 +241,13 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-    console.log("message", message);
   }
 };
+  /**
+   * upper song component appearing in
+   * @displayName Song Component
+   * @example [none]
+   */
 export default {
   data: function() {
     return {
@@ -296,8 +303,6 @@ export default {
       });
     },
     toggleShow(event) {
-      console.log(event.screenX);
-      console.log(event.screenY);
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
@@ -306,14 +311,15 @@ export default {
           var div = document.getElementById("mydropdown");
           var left = event.screenX - 203 + "px";
           var top = event.screenY + 0 + "px";
-          div.style.left = left;
-          div.style.top = top;
+          if (div) {
+            div.style.left = left;
+            div.style.top = top;
+          }
         });
       }
     },
     hideshow(event) {
       var targetId = event.target.id;
-      console.log("my target id", targetId);
       if (!this.$el.contains(event.target) || targetId != "list_icon") {
         this.show = false;
         this.isclicked = false;
@@ -334,7 +340,6 @@ export default {
       }
     },
     playOnDblCLk: function() {
-      console.log("11");
       if (this.isCurrent) {
         if (this.playicon) {
           this.pauseSong();
@@ -342,12 +347,10 @@ export default {
           this.playSong();
         }
       } else {
-        console.log("22");
         this.playSong();
       }
     },
     changeModalStateAdd() {
-      console.log("in songcomponent", this.song_id);
       this.$store.dispatch("creatplaylist/toggleModalAdd", this.song_id);
     },
     showplaylists() {
@@ -371,16 +374,16 @@ export default {
       var min = Math.floor((this.song_length % 3600) / 60);
       var sec = Math.floor(this.song_length % 60);
       if (sec < 10) sec = "0" + sec;
-      console.log(" minute sec", min, ":", sec);
       return min + ":" + sec;
     },
     ...mapGetters({
-      Get_Currentsong: "mediaplayer/Get_Currentsong",
-      trackid: "mediaplayer/toadd"
-    }),
-    ...mapState({
-      showAdd: state => state.creatplaylist.showModalAdd
+      Get_Currentsong: "mediaplayer/Get_Currentsong"
+      // trackid: "mediaplayer/toadd"
     })
+    // ,
+    // ...mapState({
+    //   showAdd: state => state.creatplaylist.showModalAdd
+    // })
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
