@@ -88,5 +88,10 @@ svg {
 }
 </style>
 <script>
+/**
+ * This page is a confirmation from user to be an artist (Not Implemented)
+ * @displayName AccessArtist Page
+ * @example [none]
+ */
 export default {};
 </script>

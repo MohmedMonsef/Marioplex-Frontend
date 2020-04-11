@@ -325,6 +325,11 @@ input {
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Claim artist page to promote the user to be artist to enjoy with features of being artist
+ * @displayName Claim Artist Page
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -341,9 +346,20 @@ export default {
     })
   },
   methods: {
+    /**
+     * toggle appearance of popup
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
+    /**
+     * pop up that takes information about the user to be artist like name , genre and description
+     * @public This is a public method
+     * @param {String} name name of artist
+     * @param {String} genre type of music will be presented
+     * @param {String} description some information about the artist and his kind of music
+     */
     ClaimArtistProfile() {
       let payload = {
         name: this.Name,

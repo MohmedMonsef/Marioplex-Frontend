@@ -151,6 +151,11 @@ import top from "@/components/topresult_card.vue";
 import LibAlbums from "@/components/lib-albums.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
 import { mapGetters } from "vuex";
+/**
+ * Here is the place where results of the search appear
+ * @displayName Search Results page
+ * @example [none]
+ */
 export default {
   name: "searchresult",
   components: {

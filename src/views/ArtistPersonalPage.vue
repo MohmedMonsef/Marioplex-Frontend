@@ -317,6 +317,11 @@ import UploadSong from "../components/UploadSong";
 //import DeleteSong from "../components/DeleteSong";
 import ArtistHeader from "../components/ArtistHeader";
 import EditBio from "../components/EditBio";
+/**
+ * Artist personal page to upload or delete songs or even edit artist bio and photo
+ * @displayName Artist Personal Page
+ * @example [none]
+ */
 export default {
   name: "ArtistPersonalPage",
   data: function() {
@@ -335,9 +340,17 @@ export default {
     })
   },
   methods: {
+    /**
+     * toggle appearance of modal popup
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("artistproperties/toggleModal");
     },
+    /**
+     * toggle upload state of song
+     * @public This is a public method
+     */
     changeModalStateUpload() {
       this.$store.dispatch("artistproperties/toggleModalUpload");
     }

@@ -83,12 +83,17 @@ import playlistinfo from "@/components/playlist_info.vue";
 import { mapGetters } from "vuex";
 import draggable from "vuedraggable";
 import { mapState } from "vuex";
+/**
+ * Playlist page which contains some information like its name and the name of user made by and of course some tracks and some information about them here you can like the whole playlist and add it to your liked playlists
+ * @displayName Playlist page
+ * @example [none]
+ */
 export default {
   name: "playlistview",
   props: {
-    isLiked: {
-      type: Boolean
-    }
+    // isLiked: {
+    //   type: Boolean
+    // }
   },
   data: function() {
     return {
@@ -112,6 +117,13 @@ export default {
       window.Element.show = false;
       this.show = !x;
     },
+    /**
+     * Reorder tracks function used to reorder the tracks inside user's playlist in the library with the order he want (not completed yet)
+     * @public This is a public method
+     * @param {Number} oldIndex old postion of the song
+     * @param {Number} newIndex new postion of the song
+     * @param {String} playlist_id playlist id
+     */
     ReorderTracks(event) {
       // console.log("inplaylist_view",event)
       let playlist_Id = this.$route.params.playlist_id;

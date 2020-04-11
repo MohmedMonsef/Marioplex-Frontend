@@ -50,6 +50,11 @@ h2 {
 import LibAlbumsDefault from "@/components/lib-albums-default.vue";
 import LibAlbums from "@/components/lib-albums.vue";
 import { mapGetters } from "vuex";
+/**
+ * albums saved by the user and stored inside his library
+ * @displayName Library Album page
+ * @example [none]
+ */
 export default {
   name: "library-albums",
   components: {

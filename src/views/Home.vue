@@ -11,6 +11,11 @@
 // @ is an alias to /src
 import HomeNavigationBar from "@/components/home-navigation-bar.vue";
 import HomeFooter from "@/components/home-footer.vue";
+/**
+ * Spotify home page
+ * @displayName Spotify Home Page
+ * @example [none]
+ */
 export default {
   name: "Home",
   components: {

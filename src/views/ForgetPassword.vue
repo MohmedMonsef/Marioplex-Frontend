@@ -135,6 +135,11 @@ h1 {
 }
 </style>
 <script>
+/**
+ * Update password if user forget it
+ * @displayName Update Password
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -145,6 +150,11 @@ export default {
     };
   },
   methods: {
+    /**
+     * update user's password
+     * @public This is a public method
+     * @param {String} email email of user want to reset his password
+     */
     send() {
       if (this.email == "") {
         this.isNormal = true;

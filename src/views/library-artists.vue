@@ -48,6 +48,11 @@ h2 {
 import LibArtistsDefault from "@/components/lib-artists-default.vue";
 import LibArtists from "@/components/lib-artists.vue";
 import { mapGetters } from "vuex";
+/**
+ * library artists page is where artists followed by the user exist
+ * @displayName Library Artists page
+ * @example [none]
+ */
 export default {
   name: "library-artists",
   components: {

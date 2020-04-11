@@ -33,12 +33,21 @@ h3 {
 <script>
 import LibArtists from "@/components/lib-artists.vue";
 import { mapGetters } from "vuex";
+/**
+ * Part of the Search page where results of search for artists appear but also part of them till press seeall button
+ * @displayName Seeall Artists
+ * @example [none]
+ */
 export default {
   name: "seeallartist",
   components: {
     LibArtists
   },
   methods: {
+    /**
+     * check if there is Artists that is identical to the search requirments
+     * @public This is a public method
+     */
     inartist() {
       this.$store.dispatch("Search/artistin", true);
     }

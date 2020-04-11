@@ -347,6 +347,11 @@
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
 import { mapGetters } from "vuex";
+/**
+ * Signup page to create new account
+ * @displayName SignUp page
+ * @example [none]
+ */
 export default {
   name: "SignUp",
   components: {
@@ -401,6 +406,16 @@ export default {
     };
   },
   methods: {
+    /**
+     * Signup function takes user information to create new account
+     * @public This is a public method
+     * @param {String} username username of the user (name of account)
+     * @param {String} password password of user (account password)
+     * @param {String} country user's country
+     * @param {String} email user's email
+     * @param {String} gender if the user is male or female
+     * @param {String} birthday user's date of birth
+     */
     signUp() {
       this.trigger_validation = true;
       this.can_submit = true;
@@ -430,15 +445,27 @@ export default {
         } else return;
       }, 200);
     },
+    /**
+     * This function allow user to Signup to Spotify with Facebook account
+     * @public This is a public method
+     */
     facebook_signUp() {
       this.$store.dispatch("authorization/facebook_signUp");
     },
+    /**
+     * This function indicates that there is problem occurs while Signup with new account
+     * @public This is a public method
+     */
     cannotSubmit() {
       console.log("cannot sub");
       console.log(this.can_submit);
       this.can_submit = false;
       console.log(this.can_submit);
     },
+    /**
+     * This function indicates that there is No problem occurs while Signup and that new account is created
+     * @public This is a public method
+     */
     canSubmit() {
       console.log("can sub");
       console.log(this.can_submit);
