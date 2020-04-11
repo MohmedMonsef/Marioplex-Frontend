@@ -267,14 +267,14 @@ export default {
     })
   },
   methods: {
-     /**
+    /**
      * Opens popup to add updates to artist data
      * @public This is a public method
      */
     changeModalState() {
       this.$store.dispatch("artistproperties/toggleModal");
     },
-      /**
+    /**
      * triggers the edit request
      * @public This is a public method
      */

@@ -272,7 +272,7 @@ export default {
       window.Element.show = false;
       this.show = !x;
     },
-     /**
+    /**
      * checks if song in currently playing
      * @public This is a public method
      */
@@ -318,7 +318,7 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
-     /**
+    /**
      * Returns image apperance to normal
      * @public This is a public method
      */

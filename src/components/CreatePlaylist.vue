@@ -321,10 +321,11 @@ export default {
     })
   },
   methods: {
-     /**
+    /**
      * triggers the closing of popup
      * @public This is a public method
-     */ 
+     */
+
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },

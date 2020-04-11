@@ -95,15 +95,15 @@ export default {
   },
   name: "lib-artists",
   props: {
-  images:{
-    type: String
-  }, 
-  name:{
-    type: String
-  }, 
-  artistId:{
-    type: String
-  }
+    images: {
+      type: Array
+    },
+    name: {
+      type: String
+    },
+    artistId: {
+      type: String
+    }
   }
 };
 </script>

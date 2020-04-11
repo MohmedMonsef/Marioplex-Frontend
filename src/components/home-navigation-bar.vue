@@ -198,7 +198,7 @@ export default {
       if (this.togglelength) element.style.width = 450 + "px";
       else element.style.width = 0 + "px";
     },
-     /**
+    /**
      * triggers logout function
      * @public This is a public method
      */

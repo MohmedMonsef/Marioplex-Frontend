@@ -212,15 +212,16 @@ export default {
     })
   },
   methods: {
-      /**
+    /**
      * triggers the closing of popup
      * @public This is a public method
-     */ 
+     */
+
     changeModalStateDelete() {
       console.log("in methods");
       this.$store.dispatch("creatplaylist/toggleModalDelete");
     },
-     /**
+    /**
      * triggers the delete playlist request
      * @public This is a public method
      */
