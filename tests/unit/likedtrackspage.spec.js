@@ -23,7 +23,19 @@ describe("likedtracks_info", () => {
         likedtracks_length: state => state.likedtracks_length,
         owner_name: state => state.owner_name
           }
-        }
+        },
+        mediaplayer:{
+          namespaced:true,
+          state: {
+            playicon: false,
+            },
+            getters:{
+                playicon: state => state.playicon
+            },
+            actions:{
+              playSong:jest.fn()
+            }
+    },
       }
     });
     wrapper = shallowMount(likedtracks_info, {
@@ -105,4 +117,24 @@ describe("likedtracks_info", () => {
       expect(stopplaying).toHaveBeenCalled;
       expect(pauseSong).toHaveBeenCalled;
       });
+it("image leaving", () => {
+   
+  const onleaveimage = jest.fn();
+  wrapper.setMethods({
+    onleaveimage: onleaveimage,
+  });
+  const playbutton = wrapper.find(".image");
+  playbutton.trigger("mouseleave");
+  expect(onleaveimage).toHaveBeenCalled;
+});
+it("image hovering", () => {
+ 
+  const onhoverimage = jest.fn();
+  wrapper.setMethods({
+    onhoverimage: onhoverimage,
+  });
+  const playbutton = wrapper.find(".image");
+  playbutton.trigger("mouseover");
+  expect(onhoverimage).toHaveBeenCalled;
+});
 });

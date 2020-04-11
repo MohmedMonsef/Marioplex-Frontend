@@ -41,6 +41,8 @@ describe("playlist", () => {
   it("renders empty playlist information", () => {
     const playlist_name = wrapper.find('.playlistname');
     expect(playlist_name.text()).toBe("NEW PlayList");
+  });
+  it("renders empty playlist information", () => {
     const owner_name = wrapper.find('#owner_name');
     expect(owner_name.text()).toBe("User");
   });
@@ -48,12 +50,13 @@ describe("playlist", () => {
       wrapper.setData({
         show:false
       });
+      const listicon = wrapper.find("#list_icon");
+      listicon.trigger("click");
       const toggleShow = jest.fn();
       wrapper.setMethods({
         toggleShow:toggleShow,
       });
-      const listicon = wrapper.find("#list_icon");
-      listicon.trigger("click");
       expect(toggleShow).toHaveBeenCalled;
   });
+
 });

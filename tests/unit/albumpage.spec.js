@@ -28,6 +28,11 @@ describe("album_info", () => {
            artist_name: state => state.artist_name,
            album_image: state => state.album_image,
            likealbum: state => state.likedalbum
+          },
+          actions:{
+            like_album: jest.fn(),
+            unlike_album: jest.fn(),
+            album_tracks:jest.fn()
           }
         }
       }
