@@ -47,13 +47,13 @@ describe("playlist", () => {
   it("list icon click", () => {
       wrapper.setData({
         show:false
-      });
+      }); 
+      const listicon = wrapper.find("#list_icon");
+      listicon.trigger("click");
       const toggleShow = jest.fn();
       wrapper.setMethods({
         toggleShow:toggleShow,
       });
-      const listicon = wrapper.find("#list_icon");
-      listicon.trigger("click");
       expect(toggleShow).toHaveBeenCalled;
   });
 });
