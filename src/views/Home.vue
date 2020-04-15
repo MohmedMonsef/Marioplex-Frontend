@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div class="home">
-      <home-navigation-bar />
-    </div>
+    <home-navigation-bar />
+    <router-view class="child"></router-view>
     <home-footer />
   </div>
 </template>
@@ -19,10 +18,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
-.home {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  height: calc(100vh);
-}
+
 </style>

@@ -67,7 +67,7 @@
         <div class="dropdown-menu">
           <a
             class="dropdown-item"
-            href="/UserAccount"
+            href="/UserAccount/Account-overview"
             target="_blank"
             testid="userprofilr link"
           >

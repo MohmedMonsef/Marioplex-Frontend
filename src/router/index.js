@@ -27,13 +27,32 @@ import AllLists from "../views/AllLists.vue";
 import AllArtists from "../views/AllArtists.vue";
 import AllAlbums from "../views/AllAlbums.vue";
 import AllReleases from "../views/AllReleases.vue";
+import HomeBody from "../components/HomeBody.vue";
+import AccountOverview from "../components/Account-overview.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: "",
+        component: HomeBody
+      },
+      {
+        path: "UserAccount",
+        component: UserAccount,
+        children:[
+          {
+            path: "Account-overview",
+            component: AccountOverview
+          }
+
+        ]
+      }
+    ]
   },
   {
     path: "/HomeWebPlayer",
@@ -149,11 +168,7 @@ const routes = [
     name: "GetPremium",
     component: GetPremium
   },
-  {
-    path: "/UserAccount",
-    name: "UserAccount",
-    component: UserAccount
-  }
+  
 ];
 
 const router = new VueRouter({

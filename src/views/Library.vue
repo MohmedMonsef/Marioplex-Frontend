@@ -1,6 +1,5 @@
 <template>
   <div class="library">
-    <!-- <library-navbar/> -->
     <div>
       <router-view class="child"></router-view>
     </div>
@@ -14,10 +13,7 @@
 </style>
 
 <script>
-// import LibraryNavbar from "@/components/library-navbar.vue";
 export default {
-  // components:{
-  //     LibraryNavbar,
-  // }
+  
 };
 </script>
