@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import HomeBody from "../components/HomeBody.vue";
 import SignUp from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import ForgetPassword from "../views/ForgetPassword.vue";
@@ -29,7 +30,8 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    children: [{ path: "", component: HomeBody }]
   },
   {
     path: "/HomeWebPlayer",

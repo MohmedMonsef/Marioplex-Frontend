@@ -7,7 +7,7 @@ describe("LibPlaylists.vue", () => {
   localVue.use(VueRouter);
   localVue.use(Vuex);
   let store;
-  beforeEach(() => {
+  it("test playlist name & owner", () => {
     store = new Vuex.Store({
       modules: {
         authorization: {
@@ -32,8 +32,6 @@ describe("LibPlaylists.vue", () => {
         }
       }
     });
-  });
-  it("test playlist name & owner", () => {
     const wrapper = shallowMount(LibPlaylists, {
       localVue,
       store,
@@ -46,6 +44,44 @@ describe("LibPlaylists.vue", () => {
     const ownerName = wrapper.find("#carddescribtion");
     expect(name.text()).toBe("playlist name");
     expect(ownerName.text()).toBe("By dai");
+  });
+  it("test playlist namekk & owner", () => {
+    store = new Vuex.Store({
+      modules: {
+        authorization: {
+          namespaced: true,
+          state: {
+            User: {
+              displayName: "user name"
+            }
+          },
+          getters: {
+            Username: state => state.User.displayName
+          }
+        },
+        playlist: {
+          namespaced: true,
+          state: {
+            likedplaylist: false
+          },
+          getters: {
+            likeplaylist: state => state.likedplaylist
+          }
+        }
+      }
+    });
+    const wrapper = shallowMount(LibPlaylists, {
+      localVue,
+      store,
+      propsData: {
+        name: "playlist name",
+        ownerName: "dai"
+      }
+    });
+    const name = wrapper.find("#cardtitle");
+    const ownerName = wrapper.find("#carddescribtion");
+    expect(name.text()).toBe("playlist name");
+    expect(ownerName.text()).toBe("By user name");
   });
   it("renders", () => {
     const wrapper = shallowMount(LibPlaylists, {

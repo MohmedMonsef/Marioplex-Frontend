@@ -3,55 +3,116 @@
     <div class="row navbar-inner">
       <!-- logo -->
       <div class="logo-div">
-        <img src="../assets/logo.png" />
+        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
       </div>
       <!-- logo -->
       <!--nav items-->
-      <div class=" navbar-list ">
+      <div class="navbar-list ">
         <ul>
-          <router-link to="/premium" testid="premium link" tag="li">
+          <router-link to="/premium" tag="li">
             <a> Premium</a>
           </router-link>
-          <router-link to="/Help" testid="help link" tag="li">
+          <router-link to="/Help" tag="li">
             <a>Help</a>
           </router-link>
-          <router-link
-            to="/Login"
-            v-if="isLoggedIn != 'success'"
-            testid="login link"
-            tag="li"
-          >
-            <a>Login</a>
+          <li id="separator">|</li>
+          <router-link to="/SignUp" v-if="isLoggedIn != 'success'" tag="li">
+            <a> Sign up</a>
           </router-link>
-          <router-link
-            to="/SignUp"
-            v-if="isLoggedIn != 'success'"
-            testid="signup link"
-            tag="li"
-          >
-            <a> SignUp</a>
+          <router-link to="/Login" v-if="isLoggedIn != 'success'" tag="li">
+            <a>Log In</a>
           </router-link>
-          <router-link
-            to="/"
-            v-if="isLoggedIn == 'success'"
-            testid="logout link"
-            tag="li"
-          >
-            <a @click="logout()"> Logout</a>
-          </router-link>
+          <div class="dropdown" v-if="isLoggedIn == 'success'">
+            <div
+              class="btn  dropdown-toggle dropdown-custom"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fa fa-user-circle"></i>
+              Profile
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <router-link to="/" class="dropdown-item" tag="p">
+                <a>Account</a>
+              </router-link>
+              <router-link
+                to="/"
+                @click="logout()"
+                class="dropdown-item"
+                tag="p"
+              >
+                <a> Logout</a>
+              </router-link>
+            </div>
+          </div>
         </ul>
       </div>
-      <!-- nav items -->
-      <!-- menu icon -->
-      <div id="menu-icon" @click="collapseBar()">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </div>
-      <!-- menu icon -->
     </div>
-    <!--collapsed navbar list-->
-    <div id="collapsed"></div>
+    <!-- nav items -->
+    <!-- menu icon -->
+    <div id="nav-small">
+      <!-- logo -->
+      <div class="logo-small">
+        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+      </div>
+      <!-- logo -->
+      <div id="disable-page"></div>
+      <div id="collapsed-div">
+        <div id="menu-icon" @click="collapseBar()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <!-- menu icon -->
+        <!--collapsed navbar list-->
+        <div id="collapsed">
+          <ul>
+            <router-link
+              to="/premium"
+              class="big"
+              testid="premium link"
+              tag="li"
+            >
+              <a> Premium</a>
+            </router-link>
+            <router-link to="/Help" class="big" testid="help link" tag="li">
+              <a>Help</a>
+            </router-link>
+            <li id="separator">____</li>
+            <router-link
+              to="/SignUp"
+              v-if="isLoggedIn != 'success'"
+              class="small"
+              testid="signup link"
+              tag="li"
+            >
+              <a> Sign up</a>
+            </router-link>
+            <router-link
+              to="/Login"
+              v-if="isLoggedIn != 'success'"
+              class="small"
+              testid="login link"
+              tag="li"
+            >
+              <a>Log In</a>
+            </router-link>
+            <router-link
+              to="/"
+              v-if="isLoggedIn == 'success'"
+              class="small"
+              testid="logout link"
+              tag="li"
+            >
+              <a @click="logout()"> Logout</a>
+            </router-link>
+          </ul>
+          <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+        </div>
+      </div>
+    </div>
     <!--collapsed navbar list-->
   </div>
 </template>
@@ -61,33 +122,18 @@
   background-color: rgba(0, 0, 0, 0.6);
   margin: 0%;
   position: fixed;
-  //display: block;
-  display: flex;
-  justify-content: center;
-
+  height: 80px;
+  z-index: 2000;
   .navbar-inner {
-    margin: auto;
     padding: 0px 15px;
-    display: flex;
-    justify-content: space-around;
-
-    .logo-div {
-      // width: 150px;
-      margin-top: 20px;
-      display: inline-block;
-      img {
-        width: 150px;
-      }
-    }
+    max-width: 80px;
     .navbar-list {
-      margin-left: 600px;
       font-family: Helvetica, Arial, sans-serif;
       font-size: 16px;
       font-weight: 700;
       line-height: 1.5;
-      //clear: right;
-
-      //display: inline-flex;
+      position: fixed;
+      right: 7%;
       ul {
         margin: 0%;
         list-style-type: none;
@@ -96,6 +142,10 @@
           padding: 28px 17px;
           text-align: center;
           float: right;
+          color: #ffffff;
+          #separator {
+            margin: 17px;
+          }
           a {
             color: #ffffff;
             font-size: 15px;
@@ -110,38 +160,105 @@
       }
     }
   }
+
+  .logo-small {
+    margin-top: -5px;
+    position: fixed;
+    left: 7%;
+    img {
+      width: 95px;
+    }
+  }
+  .logo-div {
+    margin-top: 20px;
+    position: fixed;
+    left: 7%;
+    img {
+      width: 150px;
+    }
+  }
   //animating menu icon to turn into an x upon click
   .change .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-5px, 4px);
+    z-index: 2000px;
   }
 
   .change .bar2 {
     opacity: 0;
+    z-index: 2000px;
   }
 
   .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-4px, -4px);
     transform: rotate(45deg) translate(-4px, -4px);
+    z-index: 2000px;
   }
 }
-#collapsed {
+#nav-small {
   opacity: 0;
+  display: none;
 }
-//styling when the screen is less than 700px
-@media screen and (max-width: 800px) {
-  .navbar-list {
-    display: none;
-  }
-  #menu-icon {
-    padding-top: 20px;
-    float: right;
-    width: 45px;
-    cursor: pointer;
+.dropdown-custom {
+  background-color: transparent;
+  border: transparent;
+  padding-top: 20px;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 0%;
 
+  i {
+    font-size: 35px;
+    margin: 0px 5px;
+  }
+
+  &:hover {
+    background-color: transparent;
+    border: transparent;
+    color: blue;
+  }
+  &:active{
+    color: blue;
+  }
+ &:focus{
+    color: blue;
+  }
+
+}
+    p{
     margin: 0%;
   }
-
+//styling when the screen is less than 700px
+@media screen and (max-width: 1000px) {
+  .navbar-inner {
+    display: none;
+    opacity: 0;
+  }
+  .navbar-list {
+    display: none;
+    opacity: 0;
+  }
+  .navbar-container {
+    background-color: rgb(0, 0, 0);
+    margin: 0%;
+    position: fixed;
+    height: 54px;
+  }
+  #menu-icon {
+    padding-top: 0px;
+    position: fixed;
+    right: 7%;
+    width: 45px;
+    cursor: pointer;
+    margin: 0%;
+    z-index: 2000px;
+  }
+  #nav-small {
+    opacity: 1;
+    display: inline-block;
+    width: 54px;
+    background-color: rgba(0, 0, 0, 1);
+  }
   .bar1,
   .bar2,
   .bar3 {
@@ -151,27 +268,81 @@
     margin: 3px 0;
     border-radius: 3px;
     transition: 0.4s;
+    z-index: 2000px;
   }
-  .navbar-container {
-    background-color: rgba(0, 0, 0, 1);
+  #disable-page {
+    opacity: 1;
+    position: absolute;
+    float: right;
+    top: 0px;
+    right: 0px;
+    width: 0px;
+    height: calc(100vh);
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0s;
   }
-  .navbar-inner {
-    display: flex;
-    justify-content: space-between;
+  #collapsed-div {
+    opacity: 1;
+    position: absolute;
+    float: right;
+    right: 0px;
+    width: 0px;
+    height: calc(100vh);
+    background-color: black;
+    transition: 0.3s;
+    overflow-y: scroll;
   }
   #collapsed {
     opacity: 1;
     position: absolute;
     float: right;
     right: 0px;
+    top: 54px;
     width: 0px;
-    height: 700px;
+    height: calc(100vh - 55px);
     background-color: black;
     transition: 0.3s;
+    font-family: Helvetica, Arial, sans-serif;
+    ul {
+      margin: 0%;
+      list-style-type: none;
+      .big {
+        font-weight: 700;
+        font-size: 36px;
+        a {
+          color: #ffffff;
+        }
+      }
+      .small {
+        font-weight: 400;
+        font-size: 28px;
+        color: #ffffff;
+        a {
+          color: #b3b3b3;
+        }
+      }
+      li {
+        padding: 10px 0px;
+        color: #ffffff;
+        #separator {
+          margin-top: 17px;
+          margin-bottom: 30px;
+        }
+        a {
+          text-decoration: none;
+          padding: 0%;
+        }
+        a:hover {
+          color: #1db954;
+        }
+      }
+    }
+    img {
+      width: 95px;
+      margin-left: 40px;
+      margin-top: 30%;
+    }
   }
-}
-* {
-  box-sizing: border-box;
 }
 </style>
 <script>
@@ -195,7 +366,13 @@ export default {
       var element = document.getElementById("menu-icon");
       element.classList.toggle("change");
       element = document.getElementById("collapsed");
-      if (this.togglelength) element.style.width = 450 + "px";
+      if (this.togglelength) element.style.width = 430 + "px";
+      else element.style.width = 0 + "px";
+      element = document.getElementById("collapsed-div");
+      if (this.togglelength) element.style.width = 430 + "px";
+      else element.style.width = 0 + "px";
+      element = document.getElementById("disable-page");
+      if (this.togglelength) element.style.width = 100 + "vw";
       else element.style.width = 0 + "px";
     },
     /**

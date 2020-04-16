@@ -1,3 +1,97 @@
+commit 9ecedc60a2aee6f0d83a90a292c22f25a63939a5
+Merge: bbf4134 d66f282
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 22:59:34 2020 +0200
+
+    updated readme
+
+commit bbf41344abe43a72fec13e8dd4cdd48c90bd0bb1
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 21:55:34 2020 +0200
+
+    changes in unit test
+
+commit d66f282bba7192ceadfaa5a587c57aad430d60ff
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:53:31 2020 +0200
+
+    merge 3
+
+commit 28373b6927224f89224325ce0504793d81741e85
+Merge: f6a0bed 31a9d6c
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:33:02 2020 +0200
+
+    Merge branch 'dai-unittest' of https://github.com/MohmedMonsef/Marioplex-Frontend into Nerd_unittest
+
+commit f6a0bed536785acd32d7c15861d0c9bac0e3827b
+Merge: c1fa5aa 0cc0691
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:19:35 2020 +0200
+
+    erge 2
+
+commit c1fa5aad52c654b684a8a5e862cc9774b58b52e4
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:07:05 2020 +0200
+
+    first merge
+
+commit 31a9d6c5ca75f3ee76cf7c3f1124961c74976d62
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 20:29:59 2020 +0200
+
+    test
+
+commit 5449d40acac430e662f92c3d4f1b461c36c3ea5c
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 20:12:21 2020 +0200
+
+    dai unit test
+
+commit 77189b898de7a25f272d5c3e129aa3f1c2b878a7
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 20:06:35 2020 +0200
+
+    unit testing 50%
+
+commit 4f8a91522c1919fa17ac69e2f93adcc00f7c5c30
+Merge: 5a63604 9bb827c
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 19:46:47 2020 +0200
+
+    Merge branch 'testing+documentation' of https://github.com/MohmedMonsef/Marioplex-Frontend into Nerd_unittest
+
+commit 0cc0691ac46bcdf22f6b1e8f05ebd0121b349c46
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 19:46:46 2020 +0200
+
+    without coverage folder
+
+commit 601a7af576ab0d17e66e90347ea46f2441d6da46
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 19:43:21 2020 +0200
+
+    some added unit tests
+
+commit 5a63604f47b8f7933a0547c2d83ea5b0ce11755a
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 19:39:57 2020 +0200
+
+    ignoring covarage
+
+commit 4bf12a7a1046c0ea0775e31da128943b8480154c
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 19:29:50 2020 +0200
+
+    tracks
+
+commit 9bb827cb4bbfef6a44b873592d427788001a4b19
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 19:28:41 2020 +0200
+
+    artist integerated
+
 commit 564a9fa4e345da60ae7f4316eb89073e266fef18
 Merge: 6655011 27bad1a
 Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
@@ -43,6 +137,12 @@ Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
 Date:   Sat Apr 11 17:16:18 2020 +0200
 
     userhome+library views
+
+commit 43f968b9746dd44e6369bfcf6e846fd5f000e3d0
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 08:22:08 2020 +0200
+
+    views documentation
 
 commit 9e374834f32291533beb8b3a6a102809ee3c1dd4
 Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
