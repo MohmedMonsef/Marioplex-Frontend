@@ -7,7 +7,7 @@
 .account{
   background: linear-gradient(#212c39, #121e3d 50%, #090c0f);
   background-repeat: no-repeat;
-  height: calc(100vh);
+  height: 100%;
 }
 .child{
   padding-top: 39px;

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="music">
+        <div class="music" testid="music div">
             <div class="row">
                 <div class="col-lg-50%">
                     <h1 id="header">
@@ -12,7 +12,7 @@
                     <p id="paragraph">
                         No restrictions. No ads.
                     </p>
-                    <button class="premium">
+                    <button class="premium" testid="premium button">
                         GET PREMIUM
                     </button>
                 </div>
@@ -21,8 +21,14 @@
                         src="../assets/music.png"
                         alt="music"
                         class="music_img"
+                        testid="music_image"
                     />
                 </div>
+            </div>
+        </div>
+        <div class="row" id="row2">
+            <div class="col-lg-30%">
+                <account-sidebar/>
             </div>
         </div>
     </div>
@@ -73,9 +79,16 @@
     margin-left: 10%;
     margin-top: 9%;
 }
+#row2{
+    margin-left: 7%;
+}
 </style>
 <script>
+import AccountSidebar from "@/components/AccountSidebar.vue";
 export default {
-    
+    name:"Account-overview",
+    components:{
+        AccountSidebar
+    }
 }
 </script>
