@@ -1,6 +1,7 @@
 <template>
     <div class="account_sidebar">
         <svg
+         testid="user_svg"
          id="user_svg"
          class="Icon__root--20DBB Menu__userIcon--1JcsY" 
          version="1.1" 
@@ -13,9 +14,11 @@
             </path>
         </svg>
         <ul>
-            <li @click="(show1=true) ,(show2=false) ,(show3=false) ,(show4=false)">
-                <router-link to="/UserAccount/Account-overview" @click="show1=true">
-                    <div v-if="show1" class="green_div"></div>
+            <li @click="(show1=true) ,(show2=false) ,(show3=false) ,(show4=false)"
+                @mouseover="hover1=true"
+                @mouseleave="hover1=false">
+                <router-link to="/UserAccount/Account-overview" testid="overview link">
+                    <div v-if="show1 || hover1" class="green_div"></div>
                     <svg 
                      version="1.1" 
                      xmlns="http://www.w3.org/2000/svg" 
@@ -30,9 +33,11 @@
                     Account overview
                 </router-link>
             </li>
-            <li @click="(show2=true) ,(show1=false) ,(show3=false) ,(show4=false)">
-                <router-link to="/UserAccount/Account-overview">
-                    <div v-if="show2" class="green_div"></div>
+            <li @click="(show2=true) ,(show1=false) ,(show3=false) ,(show4=false)"
+                @mouseover="hover2=true"
+                @mouseleave="hover2=false">
+                <router-link to="/UserAccount/Account-overview" testid="edit link">
+                    <div v-if="show2 || hover2" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 
                      version="1.1" 
@@ -48,9 +53,11 @@
                     Edit profile
                 </router-link>
             </li>
-            <li @click="(show3=true) ,(show2=false) ,(show1=false) ,(show4=false)">
-                <router-link to="/UserAccount/Account-overview">
-                    <div v-if="show3" class="green_div"></div>
+            <li @click="(show3=true) ,(show2=false) ,(show1=false) ,(show4=false)"
+                @mouseover="hover3=true"
+                @mouseleave="hover3=false">
+                <router-link to="/UserAccount/Account-overview" testid="change link">
+                    <div v-if="show3 || hover3" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 
                      version="1.1" 
@@ -66,9 +73,11 @@
                     Change password
                 </router-link>
             </li>
-            <li @click="(show4=true) ,(show2=false) ,(show3=false) ,(show1=false)">
-                <router-link to="/UserAccount/Account-overview">
-                    <div v-if="show4" class="green_div"></div>
+            <li @click="(show4=true) ,(show2=false) ,(show3=false) ,(show1=false)"
+                @mouseover="hover4=true"
+                @mouseleave="hover4=false">
+                <router-link to="/UserAccount/Account-overview" testid="notification link">
+                    <div v-if="show4 || hover4" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 
                      version="1.1" 
@@ -100,7 +109,7 @@
     background-color: rgb(24, 24, 24);
 }
 .account_sidebar ul{
-    margin-bottom: -11px;
+    margin-bottom: -15px;
 }
 .account_sidebar ul li a{
   height: 100%;
@@ -158,6 +167,10 @@ export default {
       show2:false,
       show3:false,
       show4:false,
+      hover1:false,
+      hover2:false,
+      hover3:false,
+      hover4:false,
     };
   },
     name: "AccountSidebar",
