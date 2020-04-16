@@ -50,6 +50,13 @@
                 <button class="edit">
                     EDIT PROFILE
                 </button>
+                <h2>Your plan</h2>
+                <div class="border">
+                    <div class="plan">Spotify Free</div>
+                    <p class="your_plan">Play music in shuffle mode only, with ads.</p>
+                    <div class="your_plan_border"></div>
+                    <h2>Free</h2>
+                </div>
             </div>
         </div>
     </div>
@@ -107,8 +114,9 @@
 #white_div{
  background-color: white;
  width: 68.5%;
- height: 500px;
+ height: 100%;
  padding-right: 5%;
+ padding-bottom: 5%;
 }
 h1{
     color: black;
@@ -150,12 +158,42 @@ ul li{
   font-weight: bold;
   margin-left: 5%;
   margin-top: 1%;
+  margin-bottom: 10%;
 }
 .edit:hover{
     height: 52px;
     width: 190px;
     border-color: black;
     color: black;
+}
+.border{
+    height: 430px;
+    width: 97%;
+    margin-left: 5%;
+}
+.plan{
+    background: linear-gradient(-180deg, rgb(182, 43, 190) 0%, rgb(150, 34, 185) 100%);
+    width: 100%;
+    height: 230px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+    padding-left: 3%;
+    padding-top: 11%;
+}
+.your_plan{
+    color: black;
+    font-size: 16px;
+    margin-left: 5%;
+    margin-top: 3%;
+    margin-bottom: 4%;
+}
+.your_plan_border{
+    border-bottom: 1px solid rgb(230, 230, 230);
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 4%;
 }
 
 </style>

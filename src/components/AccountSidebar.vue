@@ -105,7 +105,7 @@
 }
 .account_sidebar{
     width: 290px;
-    height: 500px;
+    height: 100%;
     background-color: rgb(24, 24, 24);
 }
 .account_sidebar ul{
