@@ -1,5 +1,5 @@
 <template>
-  <div class="cont">
+  <div class="cont" v-if="search_value!==''&&!searchfocus">
     <div v-if="match_artists.length" v-on:load="inartist">
       <h3>Show Artists For"{{ search_value }}"</h3>
       <div class="row">
@@ -46,7 +46,8 @@ export default {
   computed: {
     ...mapGetters({
       match_artists: "Search/getresult",
-      search_value: "Search/get_value"
+      search_value: "Search/get_value",
+      searchfocus:"Search/searchfocus"
     })
   }
 };

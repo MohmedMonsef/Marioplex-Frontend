@@ -311,6 +311,9 @@ export default {
       this.$store.dispatch("authorization/logout");
     },
     goprev: function() {
+       if( this.$router.currentRoute.path !==
+          "/HomeWebPlayer/search")
+          { this.$store.dispatch("Search/showresult",'h');}
       this.$router.go(-1);
     },
     gonext: function() {
