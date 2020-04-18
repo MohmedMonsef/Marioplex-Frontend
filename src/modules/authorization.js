@@ -157,6 +157,7 @@ export default {
   },
   getters: {
     Username: state => state.User.displayName,
-    GetStatus: state => state.status
+    GetStatus: state => state.status,
+    user: state => state.User
   }
 };

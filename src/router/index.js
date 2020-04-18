@@ -29,6 +29,7 @@ import AllAlbums from "../views/AllAlbums.vue";
 import AllReleases from "../views/AllReleases.vue";
 import HomeBody from "../components/HomeBody.vue";
 import AccountOverview from "../components/Account-overview.vue";
+import AccountEdit from "../components/Account-edit.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -48,8 +49,11 @@ const routes = [
           {
             path: "Account-overview",
             component: AccountOverview
-          }
-
+          },
+          {
+            path: "Account-edit",
+            component: AccountEdit
+          },
         ]
       }
     ]

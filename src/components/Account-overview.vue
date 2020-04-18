@@ -12,9 +12,11 @@
                     <p id="paragraph">
                         No restrictions. No ads.
                     </p>
-                    <button class="premium" testid="premium button">
-                        GET PREMIUM
-                    </button>
+                    <router-link to="/">
+                        <button class="premium" testid="premium button">
+                            GET PREMIUM
+                        </button>
+                    </router-link>
                 </div>
                 <div class="col-lg-50%">
                     <img
@@ -35,21 +37,27 @@
                 <h2>Profile</h2>
                 <ul>
                     <li>
-                        <p class="p1">Username</p>
+                        <span class="p1">Username</span>
+                        <span class="p2">{{Username}}</span>
                     </li>
                     <li>
-                        <p class="p1">Email</p>
+                        <span class="p1">Email</span>
+                        <span class="p3">{{user.email}}</span>
                     </li>
                     <li>
-                        <p class="p1">Date of birth</p>
+                        <span class="p1">Date of birth</span>
+                        <span class="p4">{{user.birthDate.slice(8,10) +"/"+ user.birthDate.slice(5,7) +"/"+ user.birthDate.slice(0,4)}}</span>
                     </li>
                     <li>
-                        <p class="p1">Country</p>
+                        <span class="p1">Country</span>
+                        <span class="p5">{{user.country}}</span>
                     </li>
                 </ul>
-                <button class="edit">
-                    EDIT PROFILE
-                </button>
+                <router-link to="/UserAccount/Account-edit">
+                    <button class="trans_button">
+                        EDIT PROFILE
+                    </button>
+                </router-link>
                 <h2>Your plan</h2>
                 <div class="border">
                     <div class="plan">Spotify Free</div>
@@ -57,6 +65,22 @@
                     <div class="your_plan_border"></div>
                     <h2>Free</h2>
                 </div>
+                <router-link to="/">
+                    <button class="trans_button">
+                        JOIN PREMIUM
+                    </button>
+                </router-link>
+                <h2>For Artist :</h2>
+                <router-link to="/ArtistPersonalPage">
+                    <button type="button" class="trans_button">
+                        TO ARTIST
+                    </button>
+                </router-link>
+                <router-link to="/ForArtist">
+                    <button class="trans_button">
+                        CLAIM ARTIST
+                    </button>
+                </router-link>
             </div>
         </div>
     </div>
@@ -138,15 +162,35 @@ ul{
     list-style: none;
 }
 ul li{
+    margin-top: 2%;
+    margin-bottom:3%;
     border-bottom: 1px solid rgb(214, 214, 214);
 }
 .p1{
     color: rgb(153, 153, 153);
     font-size: 16px;
-    margin-top: 2%;
-    margin-bottom:2%;
 }
-.edit{
+.p2{
+    color: black;
+    font-size: 16px;
+    margin-left: 45.5%;
+}
+.p3{
+    color: black;
+    font-size: 16px;
+    margin-left: 50%;
+}
+.p4{
+    color: black;
+    font-size: 16px;
+    margin-left: 43%;
+}
+.p5{
+    color: black;
+    font-size: 16px;
+    margin-left: 47.5%;
+}
+.trans_button{
    outline: none;
   height: 50px;
   width: 185px;
@@ -160,7 +204,7 @@ ul li{
   margin-top: 1%;
   margin-bottom: 10%;
 }
-.edit:hover{
+.trans_button:hover{
     height: 52px;
     width: 190px;
     border-color: black;
@@ -170,6 +214,7 @@ ul li{
     height: 430px;
     width: 97%;
     margin-left: 5%;
+    margin-bottom: 2%;
 }
 .plan{
     background: linear-gradient(-180deg, rgb(182, 43, 190) 0%, rgb(150, 34, 185) 100%);
@@ -199,10 +244,17 @@ ul li{
 </style>
 <script>
 import AccountSidebar from "@/components/AccountSidebar.vue";
+import { mapGetters } from "vuex";
 export default {
     name:"Account-overview",
     components:{
         AccountSidebar
-    }
+    },
+    computed: {
+    ...mapGetters({
+      user: "authorization/user",
+      Username: "authorization/Username"
+    })
+  },
 }
 </script>

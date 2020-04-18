@@ -14,10 +14,10 @@
             </path>
         </svg>
         <ul>
-            <li @click="(show1=true) ,(show2=false) ,(show3=false) ,(show4=false)"
+            <li @click="(show1=true) ,(show2=false) ,(show3=false) ,(show4=false) ,(show5=false)"
                 @mouseover="hover1=true"
                 @mouseleave="hover1=false">
-                <router-link to="/UserAccount/Account-overview" testid="overview link">
+                <router-link to="/UserAccount/Account-overview" testid="overview_link">
                     <div v-if="show1 || hover1" class="green_div"></div>
                     <svg 
                      version="1.1" 
@@ -33,10 +33,10 @@
                     Account overview
                 </router-link>
             </li>
-            <li @click="(show2=true) ,(show1=false) ,(show3=false) ,(show4=false)"
+            <li @click="(show2=true) ,(show1=false) ,(show3=false) ,(show4=false) ,(show5=false)"
                 @mouseover="hover2=true"
                 @mouseleave="hover2=false">
-                <router-link to="/UserAccount/Account-overview" testid="edit link">
+                <router-link to="/UserAccount/Account-edit" testid="edit_profile_link">
                     <div v-if="show2 || hover2" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 
@@ -53,10 +53,10 @@
                     Edit profile
                 </router-link>
             </li>
-            <li @click="(show3=true) ,(show2=false) ,(show1=false) ,(show4=false)"
+            <li @click="(show3=true) ,(show2=false) ,(show1=false) ,(show4=false) ,(show5=false)"
                 @mouseover="hover3=true"
                 @mouseleave="hover3=false">
-                <router-link to="/UserAccount/Account-overview" testid="change link">
+                <router-link to="/UserAccount/Account-overview" testid="change_password_link">
                     <div v-if="show3 || hover3" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 
@@ -73,10 +73,10 @@
                     Change password
                 </router-link>
             </li>
-            <li @click="(show4=true) ,(show2=false) ,(show3=false) ,(show1=false)"
+            <li @click="(show4=true) ,(show2=false) ,(show3=false) ,(show1=false),(show5=false)"
                 @mouseover="hover4=true"
                 @mouseleave="hover4=false">
-                <router-link to="/UserAccount/Account-overview" testid="notification link">
+                <router-link to="/UserAccount/Account-overview" testid="notification_link">
                     <div v-if="show4 || hover4" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 
@@ -91,6 +91,23 @@
                         </path>
                     </svg>
                     Notification settings
+                </router-link>
+            </li>
+            <li @click="(show5=true) ,(show2=false) ,(show3=false) ,(show1=false) ,(show4=false)"
+                @mouseover="hover5=true"
+                @mouseleave="hover5=false">
+                <router-link to="/UserAccount/Account-overview" testid="recover_link">
+                    <div v-if="show5 || hover5" class="green_div"></div>
+                    <svg 
+                     id="icon-refresh" 
+                     viewBox="0 0 1024 1024">
+                        <title>refresh</title>
+                        <path 
+                            class="path1" 
+                            d="M872.744 514.773v-0.504q0-74.115-28.739-141.676t-77.897-116.719-116.719-78.149-141.676-28.991q-123.525 0-221.841 75.124-90.249 69.578-125.542 177.473-17.646 54.956-18.151 112.937 0 74.115 28.991 141.676t78.149 116.719 116.719 77.897 141.676 28.739q37.814 0 74.367-7.311t70.838-22.436q18.151-8.067 25.461-26.47t-0.756-36.049q-3.529-9.075-10.588-15.63t-15.378-9.832-17.899-3.277-18.655 4.033q-51.427 21.68-107.391 21.68-54.956 0-104.871-21.176t-85.964-57.477-57.477-86.216-21.428-104.871q0-36.806 9.58-71.594t26.974-64.536 42.352-54.704 54.704-42.352 64.536-27.226 71.594-9.832q54.956 0 104.871 21.428t86.216 57.729 57.729 86.468 21.428 105.123h-104.366q-16.134 0-19.411 7.815t7.815 18.907l136.634 136.634q11.092 11.092 26.974 11.092t26.974-11.092l136.634-136.634q7.563-7.059 8.571-13.361t-4.033-9.832-15.63-3.529h-105.375z">
+                        </path>
+                    </svg>
+                    Recover playlists
                 </router-link>
             </li>
         </ul>
@@ -167,10 +184,12 @@ export default {
       show2:false,
       show3:false,
       show4:false,
+      show5:false,
       hover1:false,
       hover2:false,
       hover3:false,
       hover4:false,
+      hover5:false,
     };
   },
     name: "AccountSidebar",
