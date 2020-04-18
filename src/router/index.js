@@ -24,8 +24,10 @@ import ArtistProfile from "../views/ArtistProfile.vue";
 import album from "../views/album_view.vue";
 
 import seeallartist from "../views/seeallartist.vue";
-import seeallalbum from "../views/seeallalbum.vue"
-import seeallplaylist from "../views/seeallplaylist.vue"
+import seeallalbum from "../views/seeallalbum.vue";
+import seeallplaylist from "../views/seeallplaylist.vue";
+import category from"../views/categoryplaylists.vue";
+import seeallcategoryplaylists from"../views/seeallcategoryplaylists.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -94,6 +96,17 @@ const routes = [
         path: "/ArtistProfile",
         name: "ArtistProfile",
         component: ArtistProfile
+      }
+      , {
+        path: "category/:categoryId",
+        name: "category",
+        component: category
+      }
+      ,
+      {
+        path: "category/:categoryId/seeallcategoryplaylists",
+        name: "seeallcategoryplaylists",
+        component: seeallcategoryplaylists
       }
     ]
   },
