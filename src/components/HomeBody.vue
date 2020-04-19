@@ -1,7 +1,7 @@
 <template>
   <div>
-    <homeBodyNoUser v-if="isLoggedIn=='success'" />
-    <homeBodyUser v-if="isLoggedIn!='success'"/>
+    <homeBodyNoUser v-if="isLoggedIn!='success'" />
+    <homeBodyUser v-if="isLoggedIn=='success'" />
   </div>
 </template>
 <style lang="scss" scoped>

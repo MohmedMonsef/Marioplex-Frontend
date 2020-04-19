@@ -18,6 +18,7 @@ import ForArtist from "../views/ForArtist.vue";
 import AccessArtist from "../views/AccessArtist";
 import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage";
+import Premium from "../components/HomePremium.vue";
 import playlist from "../views/playlist_view.vue";
 import GetPremium from "../views/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
@@ -31,7 +32,15 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    children: [{ path: "", component: HomeBody }]
+    children: [
+      { path: "",
+       component: HomeBody 
+      },
+      {
+       path: "premium",
+       component: Premium 
+      }
+    ]
   },
   {
     path: "/HomeWebPlayer",

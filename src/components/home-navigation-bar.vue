@@ -1,7 +1,13 @@
 <template>
   <div
     class="container-fluid navbar-container "
-    :class="islogged ? 'nav-hover-user' : 'nav-hover'"
+    :class="[
+      islogged ? 'nav-hover-user' : 'nav-hover',
+      {
+        classA: scrollPosition == 0 && ispremium,
+        classB: scrollPosition > 0 || !ispremium
+      }
+    ]"
   >
     <div class="row navbar-inner">
       <!-- logo -->
@@ -123,8 +129,15 @@
 </template>
 
 <style lang="scss" scoped>
-.navbar-container {
+.classA {
+  background-color: transparent;
+  transition: background-color 0.2s linear;
+}
+.classB {
   background-color: rgba(0, 0, 0, 0.6);
+  transition: background-color 0.2s linear;
+}
+.navbar-container {
   margin: 0%;
   position: fixed;
   height: 80px;
@@ -443,7 +456,7 @@ export default {
     return {
       togglelength: false,
       scrollPosition: null,
-      ispremium:true
+      ispremium: true
     };
   },
   methods: {
@@ -486,15 +499,22 @@ export default {
       return this.isLoggedIn == "success";
     }
   },
-  watch:{
-    "this.$router.currentRoute.path":function(){
-      if(this.$router.currentRoute.path == "/premium"){
-        this.ispremium=true;
+  watch: {
+    $route: function() {
+      if (this.$route.path == "/premium") {
+        this.ispremium = true;
+      } else {
+        this.ispremium = false;
       }
     }
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
+    if (this.$route.path == "/premium") {
+      this.ispremium = true;
+    } else {
+      this.ispremium = false;
+    }
   },
   destroy() {
     window.removeEventListener("scroll", this.updateScroll);
