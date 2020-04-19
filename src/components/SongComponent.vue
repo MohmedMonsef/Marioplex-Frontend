@@ -84,7 +84,7 @@
         <p @click="addToQueue()">Add to Queue</p>
         <p @click="changeModalStateAdd(), showplaylists()">Add to Playlist</p>
       </div>
-      <AddTrackPopup v-if="showAdd"></AddTrackPopup>
+      <!-- <AddTrackPopup v-if="showAdd"></AddTrackPopup> -->
     </div>
   </div>
 </template>
@@ -229,7 +229,7 @@
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
-import AddTrackPopup from "../components/AddTrackPopup";
+// import AddTrackPopup from "../components/AddTrackPopup";
 import { mapGetters } from "vuex";
 const toast = {
   show(message) {
@@ -416,8 +416,8 @@ export default {
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
-  components: {
-    AddTrackPopup
-  }
+  // components: {
+  //   AddTrackPopup
+  // }
 };
 </script>
