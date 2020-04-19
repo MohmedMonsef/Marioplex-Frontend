@@ -50,6 +50,7 @@
   padding-bottom: 50px;
   padding-left: 60px;
   padding-right: 60px;
+  clear: both;
 }
 div {
   ul {

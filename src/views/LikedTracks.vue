@@ -76,7 +76,7 @@ export default {
       likedtracks_load: "likedtracks/likedtracks_loaded"
     })
   },
-  created: function() {
+  beforeCreate: function() {
     this.$store.dispatch("likedtracks/likedtracks_tracks");
   }
 };

@@ -1,5 +1,8 @@
 <template>
-  <div class="container-fluid navbar-container">
+  <div
+    class="container-fluid navbar-container "
+    :class="islogged ? 'nav-hover-user' : 'nav-hover'"
+  >
     <div class="row navbar-inner">
       <!-- logo -->
       <div class="logo-div">
@@ -7,7 +10,7 @@
       </div>
       <!-- logo -->
       <!--nav items-->
-      <div class="navbar-list ">
+      <div class="navbar-list">
         <ul>
           <router-link to="/premium" tag="li">
             <a> Premium</a>
@@ -35,16 +38,11 @@
             </div>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <router-link to="/" class="dropdown-item" tag="p">
-                <a>Account</a>
+                Account
               </router-link>
-              <router-link
-                to="/"
-                @click="logout()"
-                class="dropdown-item"
-                tag="p"
-              >
-                <a> Logout</a>
-              </router-link>
+              <p to="/" @click="logout()" class="dropdown-item">
+                Logout
+              </p>
             </div>
           </div>
         </ul>
@@ -67,7 +65,7 @@
         </div>
         <!-- menu icon -->
         <!--collapsed navbar list-->
-        <div id="collapsed">
+        <div id="collapsed" :class="islogged ? 'coll-hover' : 'coll'">
           <ul>
             <router-link
               to="/premium"
@@ -99,14 +97,21 @@
             >
               <a>Log In</a>
             </router-link>
-            <router-link
-              to="/"
+            <li
               v-if="isLoggedIn == 'success'"
               class="small"
               testid="logout link"
               tag="li"
             >
               <a @click="logout()"> Logout</a>
+            </li>
+            <router-link
+              to="/"
+              v-if="isLoggedIn == 'success'"
+              class="small"
+              tag="li"
+            >
+              <a> Account</a>
             </router-link>
           </ul>
           <router-link to="/"> <img src="../assets/logo.png"/></router-link>
@@ -146,54 +151,67 @@
           #separator {
             margin: 17px;
           }
-          a {
-            color: #ffffff;
-            font-size: 15px;
-            text-decoration: none;
-            padding: 0%;
-            display: block;
-          }
-          a:hover {
-            color: #1db954;
-          }
         }
       }
     }
   }
+}
+.nav-hover {
+  a {
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 0%;
+    display: block;
+  }
+  a:hover {
+    color: #1db954;
+  }
+}
+.nav-hover-user {
+  a {
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 0%;
+    display: block;
+  }
+  a:hover {
+    color: #2d46b9;
+  }
+}
+.logo-small {
+  margin-top: -5px;
+  position: fixed;
+  left: 7%;
+  img {
+    width: 95px;
+  }
+}
+.logo-div {
+  margin-top: 20px;
+  position: fixed;
+  left: 7%;
+  img {
+    width: 150px;
+  }
+}
+//animating menu icon to turn into an x upon click
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-5px, 4px);
+  z-index: 2000px;
+}
 
-  .logo-small {
-    margin-top: -5px;
-    position: fixed;
-    left: 7%;
-    img {
-      width: 95px;
-    }
-  }
-  .logo-div {
-    margin-top: 20px;
-    position: fixed;
-    left: 7%;
-    img {
-      width: 150px;
-    }
-  }
-  //animating menu icon to turn into an x upon click
-  .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    transform: rotate(-45deg) translate(-5px, 4px);
-    z-index: 2000px;
-  }
+.change .bar2 {
+  opacity: 0;
+  z-index: 2000px;
+}
 
-  .change .bar2 {
-    opacity: 0;
-    z-index: 2000px;
-  }
-
-  .change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-4px, -4px);
-    transform: rotate(45deg) translate(-4px, -4px);
-    z-index: 2000px;
-  }
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-4px, -4px);
+  transform: rotate(45deg) translate(-4px, -4px);
+  z-index: 2000px;
 }
 #nav-small {
   opacity: 0;
@@ -211,23 +229,36 @@
     font-size: 35px;
     margin: 0px 5px;
   }
+  i:active {
+    color: #2d46b9;
+  }
 
   &:hover {
     background-color: transparent;
     border: transparent;
-    color: blue;
+    color: #2d46b9;
   }
-  &:active{
-    color: blue;
+  &:active {
+    color: #2d46b9;
   }
- &:focus{
-    color: blue;
+  &:focus {
+    color: #2d46b9;
   }
-
 }
-    p{
-    margin: 0%;
+
+p {
+  margin: 0%;
+  cursor: pointer;
+}
+p:hover {
+  color: #281fa1;
+  background-color: white;
+}
+.show {
+  div {
+    color: #2d46b9;
   }
+}
 //styling when the screen is less than 700px
 @media screen and (max-width: 1000px) {
   .navbar-inner {
@@ -294,6 +325,8 @@
   }
   #collapsed {
     opacity: 1;
+  }
+  .coll {
     position: absolute;
     float: right;
     right: 0px;
@@ -317,6 +350,7 @@
         font-weight: 400;
         font-size: 28px;
         color: #ffffff;
+        cursor: pointer;
         a {
           color: #b3b3b3;
         }
@@ -343,6 +377,57 @@
       margin-top: 30%;
     }
   }
+  .coll-hover {
+    position: absolute;
+    float: right;
+    right: 0px;
+    top: 54px;
+    width: 0px;
+    height: calc(100vh - 55px);
+    background-color: black;
+    transition: 0.3s;
+    font-family: Helvetica, Arial, sans-serif;
+    ul {
+      margin: 0%;
+      list-style-type: none;
+      .big {
+        font-weight: 700;
+        font-size: 36px;
+        a {
+          color: #ffffff;
+        }
+      }
+      .small {
+        font-weight: 400;
+        font-size: 28px;
+        color: #ffffff;
+        cursor: pointer;
+        a {
+          color: #b3b3b3;
+        }
+      }
+      li {
+        padding: 10px 0px;
+        color: #ffffff;
+        #separator {
+          margin-top: 17px;
+          margin-bottom: 30px;
+        }
+        a {
+          text-decoration: none;
+          padding: 0%;
+        }
+        a:hover {
+          color: #2d46b9;
+        }
+      }
+    }
+    img {
+      width: 95px;
+      margin-left: 40px;
+      margin-top: 30%;
+    }
+  }
 }
 </style>
 <script>
@@ -356,7 +441,9 @@ export default {
   name: "home-navigation-bar",
   data: function() {
     return {
-      togglelength: false
+      togglelength: false,
+      scrollPosition: null,
+      ispremium:true
     };
   },
   methods: {
@@ -382,12 +469,35 @@ export default {
     logout() {
       this.$store.dispatch("authorization/logout");
       console.log("logout");
+    },
+    /**
+     * Update the scroll position
+     * @public This is a public method
+     */
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
     }
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "authorization/GetStatus"
-    })
+    }),
+    islogged() {
+      return this.isLoggedIn == "success";
+    }
+  },
+  watch:{
+    "this.$router.currentRoute.path":function(){
+      if(this.$router.currentRoute.path == "/premium"){
+        this.ispremium=true;
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener("scroll", this.updateScroll);
+  },
+  destroy() {
+    window.removeEventListener("scroll", this.updateScroll);
   }
 };
 </script>

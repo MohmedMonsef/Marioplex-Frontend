@@ -82,8 +82,14 @@ export default {
           });
         }
       } else {
-        console.log("nihal comp", this.Get_Currentsong);
-        this.$store.dispatch("Queue/CreateQueue", this.Get_Currentsong);
+        info = {
+          song_id: this.Get_Currentsong.track._id,
+          album_id: this.Get_Currentsong.track.albumId,
+          playlist_id: this.Get_Currentsong.playlistId,
+          is_playlist: this.Get_Currentsong.isPlaylist
+        };
+        console.log("nihal comp",info);
+        this.$store.dispatch("Queue/CreateQueue", info);
       }
     },
     /**

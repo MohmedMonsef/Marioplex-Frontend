@@ -9,6 +9,7 @@ export default {
   },
   mutations: {
     set_likedtracks(state, likedtracks_tracks) {
+      state.likedtracks_tracks = [];
       state.likedtracks_tracks = likedtracks_tracks;
     },
     set_likedtracks_loaded(state, status) {

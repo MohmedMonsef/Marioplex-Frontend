@@ -111,8 +111,8 @@ export default {
       if (
         state.currentaudio &&
         info.song_id == state.currentsong.track._id &&
-        info.album_id == state.currentsong.album._id &&
-        info.playlist_id == state.currentsong.playlistId
+        (info.album_id == state.currentsong.album._id ||
+          info.playlist_id == state.currentsong.playlistId)
       ) {
         state.currentaudio.play();
         state.currentaudio.volume = state.volumeprogress;

@@ -6,7 +6,8 @@ export default {
     popular_playlists: [],
     popular_artists: [],
     popular_albums: [],
-    popular_newreleases: []
+    popular_newreleases: [],
+    recently_played: []
   },
   mutations: {
     setPopularPlaylists(state, POPplaylists) {
@@ -20,6 +21,9 @@ export default {
     },
     setPopularNewreleases(state, POPnewreleases) {
       state.popular_newreleases = POPnewreleases;
+    },
+    setRecentlyPlayed(state, recently_played) {
+      state.recently_played = recently_played;
     }
   },
   actions: {
@@ -66,12 +70,24 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    RecenlyPlayed({ commit }, limit) {
+      axios
+        .get("api/me/player/recently-played?limit=" + limit)
+        .then(response => {
+          let recently_played = response.data;
+          commit("setPopularNewreleases", recently_played);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
   getters: {
     POPplaylists: state => state.popular_playlists,
     POPartists: state => state.popular_artists,
     POPalbums: state => state.popular_albums,
-    POPnewreleases: state => state.popular_newreleases
+    POPnewreleases: state => state.popular_newreleases,
+    RecenlyPlayed: state => state.recently_played
   }
 };
