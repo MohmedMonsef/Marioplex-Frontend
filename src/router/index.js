@@ -23,6 +23,7 @@ import playlist from "../views/playlist_view.vue";
 import GetPremium from "../components/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import album from "../views/album_view.vue";
+import ArtistProfile from "../views/ArtistProfile.vue";
 
 import seeallartist from "../views/seeallartist.vue";
 Vue.use(VueRouter);
@@ -95,6 +96,11 @@ const routes = [
         path: "album/:album_id",
         name: "album",
         component: album
+      },
+      {
+        path: "ArtistProfile/:artist_id",
+        name: "ArtistProfile",
+        component: ArtistProfile
       }
     ]
   },

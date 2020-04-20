@@ -24,6 +24,7 @@
             :key="POPartist.id"
             :images="POPartist.images"
             :name="POPartist.name"
+            :artistId="POPartist.id"
           />
         </div>
       </div>

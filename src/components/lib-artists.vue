@@ -24,7 +24,7 @@
         <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
       </button>
       <router-link
-        to="/ArtistProfile"
+        :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId}"
         class="stretched-link"
         id="carglink"
         testid="artist card link"
@@ -101,7 +101,7 @@ export default {
     name: {
       type: String
     },
-    artistId: {
+    artistId:{
       type: String
     }
   }
