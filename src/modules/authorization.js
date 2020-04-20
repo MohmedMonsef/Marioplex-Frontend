@@ -42,7 +42,6 @@ export default {
   actions: {
     signUp({ commit }, user) {
       commit("auth_request");
-
       axios
         .post("/api/sign_up", {
           email: user.email,
@@ -65,6 +64,7 @@ export default {
         });
     },
     facebook_signUp({ commit }) {
+     
       commit("auth_request");
       axios
         .get("/api/auth/facebook")
@@ -99,7 +99,6 @@ export default {
         });
     },
     login({ commit }, user) {
-      console.log("in loggin");
       commit("auth_request");
       axios
         .post("/api/login", {

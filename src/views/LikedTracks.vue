@@ -18,7 +18,9 @@
             :song_name="p.name"
             :song_album="p.albumName"
             :song_length="500"
+            :playlistId="playlist_id"
             :isLiked="true"
+            :isPlaylist="true"
           />
         </div>
       </div>
@@ -73,7 +75,8 @@ export default {
     ...mapGetters({
       likedtracks_tracks: "likedtracks/likedtracks_tracks",
       likedtracks_length: "likedtracks/likedtracks_length",
-      likedtracks_load: "likedtracks/likedtracks_loaded"
+      likedtracks_load: "likedtracks/likedtracks_loaded",
+      playlist_id:"likedtracks/playlist_id"
     })
   },
   beforeCreate: function() {

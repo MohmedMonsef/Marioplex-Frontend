@@ -20,7 +20,7 @@ import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage";
 import Premium from "../components/HomePremium.vue";
 import playlist from "../views/playlist_view.vue";
-import GetPremium from "../views/GetPremium.vue";
+import GetPremium from "../components/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import album from "../views/album_view.vue";
 
@@ -34,12 +34,19 @@ const routes = [
     component: Home,
     children: [
       { path: "",
+        name:"HomePage",
        component: HomeBody 
       },
       {
        path: "premium",
+       name:"Premium",
        component: Premium 
-      }
+      },
+      {
+        path: "/GetPremium",
+        name: "GetPremium",
+        component: GetPremium
+      },
     ]
   },
   {
@@ -125,11 +132,6 @@ const routes = [
     path: "/ArtistPersonalPage",
     name: "ArtistPersonalPage",
     component: ArtistPersonalPage
-  },
-  {
-    path: "/GetPremium",
-    name: "GetPremium",
-    component: GetPremium
   },
   {
     path: "/UserAccount",
