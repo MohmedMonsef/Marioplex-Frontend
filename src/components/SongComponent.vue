@@ -82,7 +82,8 @@
           Remove from Liked Songs
         </p>
         <p @click="addToQueue()">Add to Queue</p>
-        <p @click="changeModalStateAdd(), showplaylists()">Add to Playlist</p>
+        <p @click="changeModalStateAdd()">Add to Playlist</p>
+        <p @click="RemoveFromThisPlaylist()">Remove from this Playlist</p>
       </div>
       <AddTrackPopup v-if="showAdd"></AddTrackPopup>
     </div>
@@ -230,7 +231,7 @@
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import AddTrackPopup from "../components/AddTrackPopup";
-import { mapGetters } from "vuex";
+import { mapGetters,mapState } from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");
@@ -253,7 +254,8 @@ export default {
     return {
       hover: false,
       show: false,
-      isclicked: false
+      isclicked: false,
+      //showAdd:false
     };
   },
   mixins: [song_functions],
@@ -375,10 +377,20 @@ export default {
       }
     },
     changeModalStateAdd() {
+      console.log("in song component track",this.song_id)
       this.$store.dispatch("creatplaylist/toggleModalAdd", this.song_id);
     },
-    showplaylists() {
-      this.$store.dispatch("creatplaylist/showplaylists");
+    // showplaylists() {
+    //   this.$store.dispatch("creatplaylist/showplaylists");
+    // },
+    RemoveFromThisPlaylist(){
+      let payload={
+        playlist_id:this.playlistId,
+        song_id:this.song_id
+      };
+      console.log("playlist id in song component",payload.playlist_id)
+       console.log("track in song component",payload.song_id)
+      this.$store.dispatch("playlist/RemoveFromThisPlaylist",payload)
     }
   },
   computed: {
@@ -403,12 +415,12 @@ export default {
     ...mapGetters({
       Get_Currentsong: "mediaplayer/Get_Currentsong"
       // trackid: "mediaplayer/toadd"
-    })
+    }),
     // ,
     // not implemented yet
-    // ...mapState({
-    //   showAdd: state => state.creatplaylist.showModalAdd
-    // })
+    ...mapState({
+      showAdd: state => state.creatplaylist.showModalAdd
+    })
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
