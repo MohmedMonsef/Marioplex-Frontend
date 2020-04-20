@@ -25,7 +25,10 @@ export default {
   actions: {
     toggleModalUpload({ commit }) {
       commit("toggleModalUpload");
-    }
+    },
+    toggleModal({commit}) {
+     commit("toggleModal");
+    },
     /* EditBio({commit},payload){
 
         }*/
