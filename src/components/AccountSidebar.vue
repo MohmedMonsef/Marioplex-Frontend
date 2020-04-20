@@ -56,7 +56,7 @@
             <li @click="(show3=true) ,(show2=false) ,(show1=false) ,(show4=false) ,(show5=false)"
                 @mouseover="hover3=true"
                 @mouseleave="hover3=false">
-                <router-link to="/UserAccount/Account-overview" testid="change_password_link">
+                <router-link to="/UserAccount/Account-change" testid="change_password_link">
                     <div v-if="show3 || hover3" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 

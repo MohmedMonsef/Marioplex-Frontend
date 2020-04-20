@@ -30,6 +30,7 @@ import AllReleases from "../views/AllReleases.vue";
 import HomeBody from "../components/HomeBody.vue";
 import AccountOverview from "../components/Account-overview.vue";
 import AccountEdit from "../components/Account-edit.vue";
+import AccountChange from "../components/Account-change.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -53,6 +54,10 @@ const routes = [
           {
             path: "Account-edit",
             component: AccountEdit
+          },
+          {
+            path: "Account-change",
+            component: AccountChange
           },
         ]
       }
