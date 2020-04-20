@@ -71,6 +71,7 @@ export default {
    */
   created: function() {
     this.albumid = this.$route.params.album_id;
+    
     this.$store.dispatch("album/album_tracks", this.$route.params.album_id);
   },
   mounted() {

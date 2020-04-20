@@ -402,8 +402,8 @@ export default {
     isCurrent: function() {
       return (
         this.song_id == this.Get_Currentsong.track._id &&
-        this.albumId == this.Get_Currentsong.album._id &&
-        this.playlistId == this.Get_Currentsong.playlistId
+        (this.albumId == this.Get_Currentsong.album._id ||
+        this.playlistId == this.Get_Currentsong.playlistId)
       );
     },
     length: function() {
@@ -428,6 +428,7 @@ export default {
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
+  // ,
   components: {
     AddTrackPopup
   }

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import HomeBody from "../components/HomeBody.vue";
 import SignUp from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import ForgetPassword from "../views/ForgetPassword.vue";
@@ -17,8 +18,9 @@ import ForArtist from "../views/ForArtist.vue";
 import AccessArtist from "../views/AccessArtist";
 import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage";
+import Premium from "../components/HomePremium.vue";
 import playlist from "../views/playlist_view.vue";
-import GetPremium from "../views/GetPremium.vue";
+import GetPremium from "../components/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import album from "../views/album_view.vue";
 
@@ -29,7 +31,23 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    children: [
+      { path: "",
+        name:"HomePage",
+       component: HomeBody 
+      },
+      {
+       path: "premium",
+       name:"Premium",
+       component: Premium 
+      },
+      {
+        path: "/GetPremium",
+        name: "GetPremium",
+        component: GetPremium
+      },
+    ]
   },
   {
     path: "/HomeWebPlayer",
@@ -114,11 +132,6 @@ const routes = [
     path: "/ArtistPersonalPage",
     name: "ArtistPersonalPage",
     component: ArtistPersonalPage
-  },
-  {
-    path: "/GetPremium",
-    name: "GetPremium",
-    component: GetPremium
   },
   {
     path: "/UserAccount",
