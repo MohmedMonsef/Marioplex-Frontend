@@ -1,6 +1,6 @@
 <template>
     <div class="cont" >
-        <div v-if="playlists.length" v-on:load="inartist">
+        <div v-if="playlists.length" class="margin">
             <h3>Popular playlists</h3>
             <div class="row">
                 <LibPlaylists
@@ -17,12 +17,15 @@
     </div>
 </template>
 <style scoped>
+.margin{
+  margin-bottom: 200px;
+}
 h3 {
     color: white;
 }
 .cont {
     margin-left: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 250px;
     width: 100%;
     height: 100vh;
 }

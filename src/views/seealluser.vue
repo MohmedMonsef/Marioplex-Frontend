@@ -1,16 +1,17 @@
 <template>
-  <div class="cont" v-if="search_value!==''&&!searchfocus" >
-    <div v-if="match_artists.length" v-on:load="inartist" class="margin">
-      <h3>Show Artists For"{{ search_value }}"</h3>
+  <div class="cont" v-if="search_value!==''&&!searchfocus">
+    <div v-if="match_users.length" v-on:load="inartist" class="margin">
+      <h3>Show Users For"{{ search_value }}"</h3>
       <div class="row">
         <LibArtists
-          class="col-lg-10% col-md-60% col-xs-6"
-          v-for="match_artist in match_artists"
-          :key="match_artist.id"
-          :images="match_artist.images"
-          :name="match_artist.name"
-          :artistId="match_artist._id"
-        />
+            class="col-lg-10% col-md-60% col-xs-6"
+            v-for="match_user in match_users"
+            :key="match_user.id"
+            :images="match_user.images"
+            :name="match_user.displayName"
+            :artistId="match_user._id"
+            :type="match_user.user"
+          />
       </div>
     </div>
   </div>
@@ -36,7 +37,7 @@ h3 {
 import LibArtists from "@/components/lib-artists.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: "seeallartist",
+  name: "seealluser",
   components: {
     LibArtists
   },
@@ -47,7 +48,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      match_artists: "Search/getresult",
+      match_users: "Search/getuser",
       search_value: "Search/get_value",
       searchfocus:"Search/searchfocus"
     })

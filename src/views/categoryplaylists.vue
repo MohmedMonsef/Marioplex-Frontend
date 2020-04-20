@@ -5,7 +5,8 @@
     </div>
     <div v-if="playlists.length">
       <div class="row">
-        <div @click="change" class="col-lg-4">
+        <div class="col-lg-4">
+          <h3 v-if="playlists.length < 5">Popular playlists</h3>
           <router-link
             v-if="playlists.length >= 5"
             class="ard-link playlistlink"
@@ -13,7 +14,7 @@
             testid="seeallplaylist"
           >Popular playlists</router-link>
         </div>
-        <div @click="change" class="col-lg-8">
+        <div class="col-lg-8">
           <router-link
             v-if="playlists.length >= 5"
             class="ard-link seelink"
@@ -39,6 +40,9 @@
   </div>
 </template>
 <style scoped>
+h2{
+  color:white;
+}
 h1 {
     color: white;
     font-size: 150px;

@@ -159,7 +159,7 @@ export default {
       var categoryplaylistsres5 = new Array();
       commit("set_loadingplaylists", false);
       axios
-        .get("/api/browse/categories/?category="+category_Id)
+        .get("/api//browse/categories/?category="+category_Id+"/playlists")
         .then(respons => {
           let categoryplaylistsres = respons.data.category.playlists;
           if (categoryplaylistsres.length >= 5) {

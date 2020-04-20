@@ -28,6 +28,8 @@ import seeallalbum from "../views/seeallalbum.vue";
 import seeallplaylist from "../views/seeallplaylist.vue";
 import category from"../views/categoryplaylists.vue";
 import seeallcategoryplaylists from"../views/seeallcategoryplaylists.vue";
+import seealluser from "../views/seealluser.vue";
+import seealltrack from '../views/seealltrack'
 Vue.use(VueRouter);
 
 const routes = [
@@ -59,7 +61,14 @@ const routes = [
          {
             path: "seeallplaylist",
             component: seeallplaylist
-        } 
+        } ,
+        {
+          path: "seealluser",
+          component: seealluser
+      }, {
+        path: "seealltrack",
+        component: seealltrack
+    }
         ]
       },
       {

@@ -57,6 +57,27 @@
       </div>
       <router-link
         v-if="type == 'Artist'"
+        to="/ArtistProfile"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
+       <router-link
+        v-if="type == 'playlist'"
+        :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
+       <router-link
+        v-if="type == 'album'"
+        :to="{ path: '../album/' + albumId }"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
+       <router-link
+        v-if="type == 'user'"
         to="/"
         class="stretched-link"
         id="carglink"
