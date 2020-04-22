@@ -14,7 +14,7 @@
             :artistId="match_to._id"
           ></top>
         </div>
-        <div v-if="match_top[0].type === 'album'">
+        <div v-if="match_top[0].type === 'Album'">
           <top
             v-for="match_to in match_top"
             :key="match_to.id"
@@ -215,7 +215,7 @@
         </div>
       </div>
       <div
-        v-if="match_artists.length==0 &&  match_albums.length==0 && match_playlists.length==0 && match_users.length==0 "
+        v-if="match_artists.length==0 &&  match_albums.length==0 && match_playlists.length==0 && match_users.length==0 && match_track.length==0"
       >
         <p id="noresult">No Results </p>
         <p>please try using a small key words</p>

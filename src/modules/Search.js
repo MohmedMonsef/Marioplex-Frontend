@@ -179,13 +179,17 @@ export default {
                     })
                 //)
                 .catch((errors) => {
-                    const match_value1 = [];
-                    commit("settopres", match_value1);
-                    commit("setresult5", match_value1);
-                    commit("setalbumres5", match_value1);
-                    commit("setplaylistres5", match_value1);
-                    commit("setuser5", match_value1);
-                    commit("settrack3", match_value1);
+                    commit("settopres", []);
+                    commit("setresult5", []);
+                    commit("setalbumres5", []);
+                    commit("setplaylistres5", []);
+                    commit("setuser5", []);
+                    commit("settrack3", []);
+                    commit("setresult", []);
+                    commit("setalbumres", []);
+                    commit("setplaylistres", []);
+                    commit("setuser", []);
+                    commit("settrack", []);
                     // react on errors.
                     console.error(errors);
                 });
