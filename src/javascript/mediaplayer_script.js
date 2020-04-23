@@ -35,9 +35,18 @@ export default {
     // }
     // },
     ////////////////////////////////////
+    /**
+     * this function is to play current song
+     * @public This is a public method
+     * @param {Number} index index of song in the playlist or album
+     * @param {String} song_id id of the current song
+     * @param {String} album_id id of the album where the song exists
+     * @param {String} playlist_id id of the playlist where the song exists
+     */
     playSong() {
       this.song_state = true;
       let info;
+      console.log("sccccrippt", this.currentaudio);
       if (
         "playicon-component" == event.target.id ||
         "songComp" == event.target.id
@@ -74,26 +83,51 @@ export default {
           });
         }
       } else {
-        console.log("nihal comp", this.Get_Currentsong);
-        this.$store.dispatch("Queue/CreateQueue", this.Get_Currentsong);
+        info = {
+          song_id: this.Get_Currentsong.track._id,
+          album_id: this.Get_Currentsong.track.albumId,
+          playlist_id: this.Get_Currentsong.playlistId,
+          is_playlist: this.Get_Currentsong.isPlaylist
+        };
+        console.log("nihal comp", info);
+        this.$store.dispatch("Queue/CreateQueue", info);
       }
     },
+    /**
+     * this function is to pause current song
+     * @public This is a public method
+     */
     pauseSong() {
       this.song_state = false;
       console.log("pause song");
       this.$store.dispatch("mediaplayer/pausesong_state");
     },
+    /**
+     * this function is to get the previous song in playlist or album
+     * @public This is a public method
+     */
     prev_song: function() {
       if (this.currentsong_info.index != 0)
         this.$store.dispatch("mediaplayer/prevsong_state");
     },
+    /**
+     * this function is to get the next song in playlist or album
+     * @public This is a public method
+     */
     next_song: function() {
       this.$store.dispatch("mediaplayer/nextsong_state");
     },
-
+    /**
+     * this function is used to random the play of songs inside the playlist and it appears also in the queue
+     * @public This is a public method
+     */
     random_songs: function() {
       this.$store.dispatch("mediaplayer/shufflesong_state");
     },
+    /**
+     * this function is to like the current song and save it to user's liked tracks page
+     * @public This is a public method
+     */
     likecurrentsong: function() {
       if (!this.liked) {
         this.$store.dispatch("mediaplayer/Like", "");
@@ -103,6 +137,10 @@ export default {
         toast.show("Removed from your Liked Songs");
       }
     },
+    /**
+     * this function is used to change the router according to place stands for if inside playlist or album then move to queue on click and vice versa
+     * @public This is a public method
+     */
     queue_alter: function() {
       if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
         this.$router.go(-1);

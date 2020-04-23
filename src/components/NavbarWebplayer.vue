@@ -15,6 +15,7 @@
                 to="/HomeWebPlayer/library/library-playlists"
                 testid="playlists in library"
                 class="nav-link"
+                id="playlist-link"
                 >Playlists</router-link
               >
             </div>
@@ -25,6 +26,7 @@
                 to="/HomeWebPlayer/library/library-artists"
                 testid="Artists in library"
                 class="nav-link"
+                id="artist-link"
                 >Artists</router-link
               >
             </div>
@@ -35,6 +37,7 @@
                 to="/HomeWebPlayer/library/library-albums"
                 testid="Albums in library"
                 class="nav-link"
+                id="album-link"
                 >Albums</router-link
               >
             </div>
@@ -50,6 +53,7 @@
           testid="dropdown list"
         >
           <svg
+            class="user_icon"
             width="25"
             height="25"
             viewBox="0 0 80 90"
@@ -70,18 +74,24 @@
             href="/UserAccount/Account-overview"
             target="_blank"
             testid="userprofilr link"
+            id="account-link"
           >
             Account
           </a>
           <div class="divider">________________________</div>
           <router-link to="/HomeWebPlayer" id="logout">
-            <a class="dropdown-item" testid="logout button" @click="logout()">
+            <a
+              class="dropdown-item"
+              testid="logout button"
+              id="logout"
+              @click="logout()"
+            >
               Log out
             </a>
           </router-link>
         </div>
       </div>
-      <a href="/GetPremium" target="_blank" v-if="!inlibrary && !insearch">
+      <a href="/Premium" target="_blank" v-if="!inlibrary && !insearch">
         <button class="upgrade_button" testid="upgrade_button">
           UPGRADE
         </button>
@@ -284,6 +294,10 @@ i:hover {
 
 <script>
 import { mapGetters } from "vuex";
+/**
+ * @displayName Navbar in home webplayer
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -299,12 +313,27 @@ export default {
     })
   },
   methods: {
+    /**
+     * triggers logout function
+     * @public This is a public method
+     */
     logout() {
       this.$store.dispatch("authorization/logout");
     },
+    /**
+     * Go to previous router page
+     * @public This is a public method
+     */
     goprev: function() {
+       if( this.$router.currentRoute.path !==
+          "/HomeWebPlayer/search")
+          { this.$store.dispatch("Search/showresult",'h');}
       this.$router.go(-1);
     },
+    /**
+     * Go to next router page
+     * @public This is a public method
+     */
     gonext: function() {
       this.$router.go(1);
     },
@@ -317,6 +346,10 @@ export default {
         n.style.background = "transparent";
       }
     },
+    /**
+     * Update navbar component based on current router
+     * @public This is a public method
+     */
     check() {
       if (
         this.$router.currentRoute.path ==
@@ -335,8 +368,6 @@ export default {
       } else {
         this.insearch = false;
       }
-
-      console.log("lib : ", this.inlibrary, "search : ", this.insearch);
     }
   },
   created() {

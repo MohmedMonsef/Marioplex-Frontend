@@ -19,11 +19,11 @@
       ></i>
       <i
         v-if="(isclicked || hover) && !(playicon && isCurrent)"
-        id="playicon-component"
+        :class="isCurrentClass"
         @click="playSong()"
         class="fa fa-play"
         testid="play button"
-        :class="isCurrentClass"
+        id="playicon-component"
       >
       </i>
       <i
@@ -75,10 +75,15 @@
       </div>
       <div id="mydropdown" class="db" v-if="show">
         <p>Start Radio</p>
-        <p @click="likecurrentsong()" v-if="!isLiked">Add to Liked Songs</p>
-        <p @click="likecurrentsong()" v-if="isLiked">Remove from Liked Songs</p>
+        <p @click="likecurrentsong()" id="ifnotliked" v-if="!isLiked">
+          Add to Liked Songs
+        </p>
+        <p @click="likecurrentsong()" id="ifliked" v-if="isLiked">
+          Remove from Liked Songs
+        </p>
         <p @click="addToQueue()">Add to Queue</p>
-        <p @click="changeModalStateAdd(), showplaylists()">Add to Playlist</p>
+        <p @click="changeModalStateAdd()">Add to Playlist</p>
+        <p @click="RemoveFromThisPlaylist()">Remove from this Playlist</p>
       </div>
       <AddTrackPopup v-if="showAdd"></AddTrackPopup>
     </div>
@@ -139,7 +144,6 @@
 
 #icon {
   width: 43px;
-
   float: left;
   height: inherit;
   padding-right: 14px;
@@ -238,15 +242,20 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-    console.log("message", message);
   }
 };
+/**
+ * Song component appearing in views(playlists,albums..etc)
+ * @displayName Song Component
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
       hover: false,
       show: false,
       isclicked: false
+      //showAdd:false
     };
   },
   mixins: [song_functions],
@@ -289,15 +298,23 @@ export default {
     }
   }, //must add isplayable also
   methods: {
+    /**
+     * add the component chosen to the queue
+     * @public This is a public method
+     */
     addToQueue() {
       this.$store.dispatch("Queue/AddToQueue", {
         trackId: this.song_id,
-        playlistId: this.playlistId
+        playlistId: this.playlistId,
+        isPlaylist:this.isPlaylist,
+        albumId:this.albumId
       });
     },
+    /**
+     * toggles the state of the dropdown list (show/hide)
+     * @public This is a public method
+     */
     toggleShow(event) {
-      console.log(event.screenX);
-      console.log(event.screenY);
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
@@ -306,22 +323,35 @@ export default {
           var div = document.getElementById("mydropdown");
           var left = event.screenX - 203 + "px";
           var top = event.screenY + 0 + "px";
-          div.style.left = left;
-          div.style.top = top;
+          if (div) {
+            div.style.left = left;
+            div.style.top = top;
+          }
         });
       }
     },
+    /**
+     * closes all the lists on click on screen
+     * @public This is a public method
+     */
     hideshow(event) {
       var targetId = event.target.id;
-      console.log("my target id", targetId);
       if (!this.$el.contains(event.target) || targetId != "list_icon") {
         this.show = false;
         this.isclicked = false;
       }
     },
+    /**
+     * marks the state of component as clicked altering its appearance
+     * @public This is a public method
+     */
     clicked() {
       this.isclicked = true;
     },
+    /**
+     * triggers the like request for the component
+     * @public This is a public method
+     */
     likecurrentsong: function() {
       if (!this.isLiked) {
         this.$store.dispatch("mediaplayer/Like", this.song_id);
@@ -333,8 +363,11 @@ export default {
         this.isLiked = false;
       }
     },
+    /**
+     * plays song on double click
+     * @public This is a public method
+     */
     playOnDblCLk: function() {
-      console.log("11");
       if (this.isCurrent) {
         if (this.playicon) {
           this.pauseSong();
@@ -342,16 +375,21 @@ export default {
           this.playSong();
         }
       } else {
-        console.log("22");
         this.playSong();
       }
     },
     changeModalStateAdd() {
-      console.log("in songcomponent", this.song_id);
+      console.log("in song component track", this.song_id);
       this.$store.dispatch("creatplaylist/toggleModalAdd", this.song_id);
     },
-    showplaylists() {
-      this.$store.dispatch("creatplaylist/showplaylists");
+    RemoveFromThisPlaylist() {
+      let payload = {
+        playlist_id: this.playlistId,
+        song_id: this.song_id
+      };
+      console.log("playlist id in song component", payload.playlist_id);
+      console.log("track in song component", payload.song_id);
+      this.$store.dispatch("playlist/RemoveFromThisPlaylist", payload);
     }
   },
   computed: {
@@ -363,20 +401,18 @@ export default {
     isCurrent: function() {
       return (
         this.song_id == this.Get_Currentsong.track._id &&
-        this.albumId == this.Get_Currentsong.album._id &&
-        this.playlistId == this.Get_Currentsong.playlistId
+        (this.albumId == this.Get_Currentsong.album._id ||
+          this.playlistId == this.Get_Currentsong.playlistId)
       );
     },
     length: function() {
       var min = Math.floor((this.song_length % 3600) / 60);
       var sec = Math.floor(this.song_length % 60);
       if (sec < 10) sec = "0" + sec;
-      console.log(" minute sec", min, ":", sec);
       return min + ":" + sec;
     },
     ...mapGetters({
-      Get_Currentsong: "mediaplayer/Get_Currentsong",
-      trackid: "mediaplayer/toadd"
+      Get_Currentsong: "mediaplayer/Get_Currentsong"
     }),
     ...mapState({
       showAdd: state => state.creatplaylist.showModalAdd
@@ -388,6 +424,7 @@ export default {
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
+  // ,
   components: {
     AddTrackPopup
   }

@@ -89,6 +89,10 @@ i {
 </style>
 
 <script>
+/**
+ * @displayName Popular playlists card
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -96,14 +100,26 @@ export default {
     };
   },
   name: "ShowPopularplaylists",
-  props: ["images", "name", "Description", "playlist_id"],
-    filters: {
+  props: {
+    images: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    Description: {
+      type: String
+    },
+    playlist_id: {
+      type: String
+    }
+  },
+  filters: {
     shorten: function(value) {
       if(value.length  > 17)
         return value.substring(0, 17) + " ...";
       else
-        return value;
-    }
+        return value;}
   }
 };
 </script>

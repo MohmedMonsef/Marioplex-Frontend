@@ -1,5 +1,5 @@
 <template>
-  <div class="home_webplayer">
+  <div class="home_webplayer" >
     <side-bar />
     <CreatePlaylist v-if="show" />
     <DeletePlaylist v-if="showdelete" />
@@ -34,6 +34,11 @@ import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
 import { mapState } from "vuex";
 // import LibraryNavbar from "@/components/library-navbar.vue";
+/**
+ * Web player home page where all albums and playlists exist
+ * @displayName Web Player Home page
+ * @example [none]
+ */
 export default {
   name: "HomeWebPlayer",
   components: {
@@ -49,6 +54,11 @@ export default {
       show: state => state.creatplaylist.showModal,
       showdelete: state => state.creatplaylist.showModalDelete
     })
-  }
+  },
+  // methods:{
+  //   showinputfield(){
+  //     this.$store.dispatch("creatplaylist/showinputfield");
+  //   }
+  // }
 };
 </script>

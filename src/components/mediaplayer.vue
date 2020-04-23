@@ -461,6 +461,10 @@ input:focus {
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
+/**
+
+     * @displayName Media Player
+     */
 export default {
   data: function() {
     return {
@@ -519,18 +523,28 @@ export default {
   },
   methods: {
     ///////////////////////////this function is working
+    /**
+     * changed song bar style when it is playing
+     * @public This is a public method
+     */
     moving_song_bar: function() {
+      //console.log("x")
       this.$store.dispatch("mediaplayer/advance_progress");
-      if (!this.drag && this.currentaudio) {
-        //console.log("this is the entering condition",this.drag && this.playicon)
+      if (!this.drag) {
         var SongSlider = document.getElementById("progressbar");
-        var ct = this.progress;
-        this.currentPos = ct;
-        var d = this.duration;
-        var sp = ct / d;
-        SongSlider.style.width = sp * 100 + "%";
+        if (SongSlider != null) {
+          var ct = this.progress;
+          this.currentPos = ct;
+          var d = this.duration;
+          var sp = ct / d;
+          SongSlider.style.width = sp * 100 + "%";
+        }
       }
     },
+    /**
+     * changed song bar style while draging
+     * @public This is a public method
+     */
     isDrag: function() {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
@@ -546,10 +560,18 @@ export default {
         SongSlider.style.width = str;
       }
     },
+    /**
+     * signals that the user is dragging song bar
+     * @public This is a public method
+     */
     startDrag: function() {
       this.drag = true;
       console.log("in start drag", this.drag);
     },
+    /**
+     * sets song current time on stop dragging
+     * @public This is a public method
+     */
     stopDrag: function() {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
@@ -562,10 +584,18 @@ export default {
         this.drag = false;
       }
     },
+    /**
+     * signals that the user is dragging volume bar
+     * @public This is a public method
+     */
     volumestartDrag: function() {
       this.volumedrag = true;
       console.log("in start volume drag", this.volumedrag);
     },
+    /**
+     * changed volume bar style while draging
+     * @public This is a public method
+     */
     volumeisDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
@@ -581,6 +611,10 @@ export default {
         volumeSlider.style.width = this.volumepos;
       }
     },
+    /**
+     * sets currently playing track audio volume when we stop dragging it
+     * @public This is a public method
+     */
     volumestopDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
@@ -604,6 +638,10 @@ export default {
         this.volumedrag = false;
       }
     },
+    /**
+     * changes currently playing track audio volume
+     * @public This is a public method
+     */
     volume_song: function() {
       var volumeSlider = document.getElementById("volumeprogressbar");
       var changevolumeicon = document.getElementById("soundicon");
@@ -625,10 +663,18 @@ export default {
         }
       }
     },
+    /**
+     * Alters shuffle mode for list of tracks
+     * @public This is a public method
+     */
     shuffle: function() {
       this.isShuffle = !this.isShuffle;
       this.$store.dispatch("mediaplayer/shufflesong_state", this.isShuffle);
     },
+    /**
+     * Alters Repeat mode for tracks
+     * @public This is a public method
+     */
     repeat_song: function() {
       this.isRepeat = (this.isRepeat + 1) % 3;
       this.$store.dispatch("mediaplayer/repeatsong_state", this.isRepeat);
@@ -636,14 +682,14 @@ export default {
   },
   computed: {
     changeTime: function() {
-      if (this.currentaudio) {
+     if (this.currentaudio) {
         // console.log("in chnge time" , pos)
         var min = Math.floor((this.currentPos % 3600) / 60);
         var sec = Math.floor(this.currentPos % 60);
         if (sec < 10) sec = "0" + sec;
         console.log(" minute sec", min, ":", sec);
         return min + ":" + sec;
-      }
+     }
       return "0:00";
     },
     totalDuration: function() {

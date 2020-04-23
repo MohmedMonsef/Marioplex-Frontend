@@ -3,8 +3,9 @@
     <div class="loading" v-if="!loadingplaylists">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div v-if="loadingplaylists">
+    <div v-if="loadingplaylists" class="notloading">
       <lib-playlists-default
+        id="defaultscreen"
         v-if="playlists1.length == 0 && songs1.length == 0"
       />
       <h2 v-if="playlists1.length">Playlists</h2>
@@ -14,7 +15,7 @@
           <lib-playlists
             v-for="playlist in playlists1"
             :key="playlist.id"
-            :images="playlist.images"
+            :images="'http://52.205.254.29/api/images/5e9c9790fc69ad92e0a7eda5?belongs_to=artist'"
             :name="playlist.name"
             :ownerName="playlist.owner"
             :playlist_id="playlist.id"
@@ -53,6 +54,11 @@ import LibPlaylistsDefault from "@/components/lib-playlists-default.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
 import LibLikedsongs from "@/components/lib-likedsongs.vue";
 import { mapGetters } from "vuex";
+/**
+ * playlists saved by the user and stored inside his library
+ * @displayName Library playlists page
+ * @example [none]
+ */
 export default {
   name: "library-playlists",
   components: {

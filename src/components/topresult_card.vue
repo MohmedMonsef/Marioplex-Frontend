@@ -39,25 +39,75 @@
                 style="max-width: 40%;max-height: 100px; display:block; margin-left:0; margin-bottom:15px;"
             /> -->
       <div class="row">
-        <div class="col-8">
+        <div class="col-6">
           <h2 class="card-title">{{ name }}</h2>
-          <div class="typecont">
+          <div class="row">
+          <div class="typecont col-6">
             <p
               class="card-text p"
-              v-if="type == 'Artist'"
               testid="type"
               id="typecont"
             >
               {{ type }}
             </p>
           </div>
+          <div class="col-5">
+        <router-link style="color:white"
+        v-if="type == 'Track' || type == 'Album'"
+        :to="{ path: '/HomeWebPlayer/Artist/' + artistId }"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      >{{artistName}}</router-link>
+       <router-link style="color:white"
+        v-if="type == 'playlist' && ownerType=='Artist' "
+        :to="{ path: '/HomeWebPlayer/Artist/' + ownerId }"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      >{{ownerName}}</router-link>
+       <router-link style="color:white"
+        v-if="type == 'playlist' && ownerType=='user' "
+        to='/' 
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      >{{ownerName}}</router-link>
+          </div>
+          </div>
         </div>
-        <div class="playcon col-4" v-if="hover">
-          <i class="fa fa-play-circle" testid="topplay icon"></i>
+        <div class="playcon col-1" v-if="hover">
+           <router-link
+        v-if="type == 'playlist'"
+        :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"
+        id="carglink"
+        testid="cardlink"
+      ><i class="fa fa-play-circle" testid="topplay icon"></i></router-link>
+       <router-link
+        v-if="type == 'album'"
+        :to="{ path: '../album/' + albumId }"
+        id="carglink"
+        testid="cardlink"
+      ><i class="fa fa-play-circle" testid="topplay icon"></i></router-link>
+       <router-link
+        v-if="type == 'Track'"
+        :to="{ path: '../album/' + albumId }"
+        id="carglink"
+        testid="cardlink"
+      ><i class="fa fa-play-circle" testid="topplay icon"></i></router-link>
+      <i   v-if="type == 'Artist'|| type == 'user'" class="fa fa-play-circle" testid="topplay icon"></i>
         </div>
       </div>
       <router-link
         v-if="type == 'Artist'"
+        to="/ArtistProfile"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
+      
+       <router-link
+        v-if="type == 'user'"
         to="/"
         class="stretched-link"
         id="carglink"
@@ -155,6 +205,11 @@ i {
 }
 </style>
 <script>
+/**
+ * Top Results card to display the top result value in search
+ * @displayName Top Result Card
+ * @example [none]
+ */
 export default {
   name: "top",
   data: function() {
@@ -162,18 +217,55 @@ export default {
       hover: false
     };
   },
-  props: [
-    "image",
-    "name",
-    "type",
-    "artistId" /*if artist to go his page*/,
-    "artistName" /*if album*/,
-    "albumId" /*to go to album page*/,
-    "playlist_id" /*if playlist*/,
-    "track_id",
-    "ownerId",
-    "ownerName" /*if playlist*/,
-    "Id"
-  ]
+  props: {
+    /**
+     * src for the img displayed
+     */
+    image: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    type: {
+      type: String
+    },
+    /**
+     *if artist to go his page
+     */
+    artistId: {
+      type: String
+    },
+    artistName: {
+      type: String
+    },
+    /**
+     *to navigate to album page
+     */
+    albumId: {
+      type: String,
+      default: "0"
+    },
+    playlist_id: {
+      type: String,
+
+      default: "0"
+    },
+    track_id: {
+      type: String
+    },
+    ownerId: {
+      type: String
+    },
+    ownerName: {
+      type: String
+    },
+    ownerType:{
+       type: String
+    },
+    Id: {
+      type: String
+    }
+  }
 };
 </script>

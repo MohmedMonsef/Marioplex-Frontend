@@ -4,7 +4,7 @@
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="loadingalbums">
-      <lib-albums-default v-if="albums1.length == 0" />
+      <lib-albums-default id="defaultscreen" v-if="albums1.length == 0" />
       <h2 v-if="albums1.length">Albums</h2>
       <div class="container">
         <div class="row">
@@ -50,6 +50,11 @@ h2 {
 import LibAlbumsDefault from "@/components/lib-albums-default.vue";
 import LibAlbums from "@/components/lib-albums.vue";
 import { mapGetters } from "vuex";
+/**
+ * albums saved by the user and stored inside his library
+ * @displayName Library Album page
+ * @example [none]
+ */
 export default {
   name: "library-albums",
   components: {

@@ -57,7 +57,7 @@
     </button>
     <div class="add-library">
       <button
-        class="heartbutton"
+        class="emptyheartbutton"
         testid="emptyheartbutton"
         v-if="!this.liked"
         @click="likecurrentalbum()"
@@ -72,7 +72,7 @@
       </button>
 
       <button
-        class="heartbutton"
+        class="filledheartbutton"
         testid="filledheartbutton"
         v-if="this.liked"
         @click="likecurrentalbum()"
@@ -93,7 +93,7 @@
         <p v-if="!isLiked">Add to Liked Songs</p>
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
-      <p testid="albumlength">{{ album_length }} SONGS</p>
+      <p testid="albumlength" id="albumlength">{{ album_length }} SONGS</p>
       <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
     </div>
   </div>
@@ -252,6 +252,11 @@ const toast = {
     console.log("message", message);
   }
 };
+/**
+ * Displays Album information
+ * @displayName Album information
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -267,6 +272,10 @@ export default {
       window.Element.show = false;
       this.show = !x;
     },
+    /**
+     * checks if song in currently playing
+     * @public This is a public method
+     */
     isplaying() {
       this.play = true;
       if (this.playicon) {
@@ -276,6 +285,10 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+    /**
+     * pause current playing song
+     * @public This is a public method
+     */
     stopplayingbutton() {
       this.play = false;
       var albumimage = document.getElementById("album_image");
@@ -283,9 +296,17 @@ export default {
       var playbutton = document.getElementById("imagepauseicon");
       playbutton.style.opacity = "0";
     },
+    /**
+     * pause current playing song
+     * @public This is a public method
+     */
     stopplaying() {
       this.play = false;
     },
+    /**
+     * changes image appearance on hover
+     * @public This is a public method
+     */
     onhoverimage: function() {
       var albumimage = document.getElementById("album_image");
       albumimage.style.opacity = "0.3";
@@ -297,6 +318,10 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+    /**
+     * Returns image apperance to normal
+     * @public This is a public method
+     */
     onleaveimage: function() {
       var albumimage = document.getElementById("album_image");
       albumimage.style.opacity = "1";
@@ -310,12 +335,17 @@ export default {
         pausebutton.style.opacity = "1";
       }
     },
+    /**
+     * triggers request to like current album
+     * @public This is a public method
+     */
     likecurrentalbum: function() {
       if (!this.liked) {
         toast.show("Saved to Your Library");
         this.$store.dispatch("album/like_album", this.$route.params.album_id);
       } else {
         toast.show("Removed from Your Library");
+        console.log("ggg",this.$route.params.album_id)
         this.$store.dispatch("album/unlike_album", this.$route.params.album_id);
       }
     }

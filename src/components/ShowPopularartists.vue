@@ -28,7 +28,7 @@
         <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
       </button>
       <router-link
-        to="/ArtistProfile"
+        :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId}"
         class="stretched-link"
         id="carglink"
         testid="popularartist card link"
@@ -89,6 +89,10 @@ i {
 </style>
 
 <script>
+/**
+ * @displayName Popular artists card
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -96,14 +100,23 @@ export default {
     };
   },
   name: "ShowPopularartists",
-  props: ["images", "name"],
-   filters: {
+  props: {
+    images: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    artistId:{
+      type: String
+    }
+  },
+  filters: {
     shorten: function(value) {
       if(value.length  > 17)
         return value.substring(0, 17) + " ...";
       else
-        return value;
-    }
+        return value;}
   }
 };
 </script>

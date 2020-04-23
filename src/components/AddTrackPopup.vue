@@ -10,7 +10,7 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModalAdd">
-        <button class="cancel" @click="changeModalStateAdd">
+        <button class="cancel" @click="changeModalStateAdd()">
           <svg
             width="32"
             height="32"
@@ -28,27 +28,27 @@
         <h1 class="title">Add to playlist</h1>
         <button
           class="cratenewplaylist"
-          @click="changeModalState(), changeModalStateAdd(), AddTrack()"
+          @click="changeModalState()"
         >
           New playlist
         </button>
+        
         <div class="playlistscards">
-          <h2 v-if="playlists.length">Playlists</h2>
           <div class="container">
             <div class="row">
-              <lib-playlists
+              <PlaylistsToTracks
+              class="userplaylists"
                 v-for="playlist in playlists"
                 :key="playlist.id"
-                :images="playlist.images"
                 :name="playlist.name"
-                :owner="playlist.owner"
-                :playlist_id="playlist._id"
+                :playlist_id="playlist.id"
               />
             </div>
           </div>
         </div>
       </div>
     </transition>
+   
   </div>
 </template>
 <style lang="scss" scoped>
@@ -60,12 +60,13 @@
 body {
   font-family: "montserrat", sans-serif;
 }
-div {
-  position: relative;
-  display: block;
-  width: 500%;
-  height: 100vh;
-}
+
+// div {    //DONKEY!!!!!!!!!!!!!!
+//   position: rel;
+//   display: block;
+//   width: 500%;
+//   height: 100vh;
+// }
 .cratenewplaylist {
   position: fixed;
   top: 20%;
@@ -166,8 +167,8 @@ h2 {
 }
 .container {
   margin-left: 15px;
-  position: fixed;
-  top: 40%;
+  //position: fixed;
+  //top: 40%;
   //z-index:9998;
 }
 // .row{
@@ -177,13 +178,23 @@ h2 {
   position: fixed;
   top: 40%;
 }
+.userplaylists {
+  z-index:99999;
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 import CreatePlaylist from "../components/CreatePlaylist";
-import LibPlaylists from "@/components/lib-playlists.vue";
+import PlaylistsToTracks from "@/components/PlaylistsToTracks.vue";
+
 //import LibPlaylistsDefault from "@/components/lib-playlists-default.vue"
+/**
+ * Appears on trying to add new track to playlist(not implemented yet)
+ * @displayName Add track popup
+ * @example [none]
+ */
+
 export default {
   name: "AddTrackPopup",
   computed: {
@@ -193,7 +204,8 @@ export default {
     ...mapGetters({
       showModalAdd: "creatplaylist/showModalAdd",
       playlists: "creatplaylist/playlists",
-      trackofplaylist: "creatplaylist/trackofplaylist",
+      trackid: "creatplaylist/trackid",
+      //withtrack:"creatplaylist/withtrack",
       playlistoftrack: "creatplaylist/playlistoftrack"
     })
   },
@@ -201,35 +213,39 @@ export default {
     changeModalStateAdd() {
       this.$store.dispatch("creatplaylist/toggleModalAdd");
     },
-    AddTrack() {
-      console.log(
-        "to add track in a playlist the playlistid is",
-        this.playlistoftrack
-      );
-      console.log(
-        "to add track in a playlist the track is",
-        this.trackofplaylist
-      );
-      let payload = {
-        playlistoftrack: this.playlistoftrack,
-        trackofplaylist: this.trackofplaylist
-      };
-      this.$store.dispatch("playlist/AddTrack", payload);
-    },
-    changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
-    }
-    // showplaylists(){
-    //     this.$store.dispatch("creatplaylist/showplaylists");
+    // AddTrackToNewPlayList() {
+    //   console.log(
+    //     "to add track in a playlist the playlistid is",
+    //     this.trackid
+    //   );
+    //   // console.log(
+    //   //   "to add track in a playlist the track is",
+    //   //   this.trackofplaylist
+    //   // );
+    //   let payload = {
+    //    // playlistoftrack: this.playlistoftrack,
+    //     trackid: this.trackid
+    //   };
+    //   this.$store.dispatch("playlist/AddTrackToNewPlayList", payload);
     // },
+    changeModalState() {
+      this.withtrack=true; 
+      console.log("in add track pop up the bool",this.withtrack)   
+      this.$store.dispatch("creatplaylist/toggleModal",this.withtrack);
+    }
   },
   components: {
     CreatePlaylist,
-    LibPlaylists
-    //  LibPlaylistsDefault,
+    PlaylistsToTracks
   },
   mounted() {
     this.$store.dispatch("creatplaylist/showplaylists");
-  }
+  },
+  data:function(){
+    return{
+    withtrack:true
+    }
+  },
+ 
 };
 </script>

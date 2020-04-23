@@ -18,7 +18,9 @@
             :song_name="p.name"
             :song_album="p.albumName"
             :song_length="500"
+            :playlistId="playlist_id"
             :isLiked="true"
+            :isPlaylist="true"
           />
         </div>
       </div>
@@ -56,13 +58,14 @@ import SongComponent from "@/components/SongComponent.vue";
 import LikedTracks from "@/components/likedtracks_info.vue";
 import emptylikedtracks from "@/components/emptylikedtracks.vue";
 import { mapGetters } from "vuex";
+/**
+ * User's liked tracks page here is the place of all tracks liked by the user
+ * @displayName User's Liked Tracks
+ * @example [none]
+ */
 export default {
   name: "likedtracksview",
-  props: {
-    isLiked: {
-      type: Boolean
-    }
-  },
+  props: {},
   components: {
     SongComponent,
     LikedTracks,
@@ -72,10 +75,11 @@ export default {
     ...mapGetters({
       likedtracks_tracks: "likedtracks/likedtracks_tracks",
       likedtracks_length: "likedtracks/likedtracks_length",
-      likedtracks_load: "likedtracks/likedtracks_loaded"
+      likedtracks_load: "likedtracks/likedtracks_loaded",
+      playlist_id:"likedtracks/playlist_id"
     })
   },
-  created: function() {
+  beforeCreate: function() {
     this.$store.dispatch("likedtracks/likedtracks_tracks");
   }
 };

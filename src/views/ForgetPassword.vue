@@ -19,7 +19,7 @@
             <label>Email address</label>
           </div>
           <br />
-          <input type="text" v-model="email" testid="email input" />
+          <input type="text" id="email" v-model="email" testid="email input" />
           <p
             class="invalid"
             id="req_error"
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="conatiner reset_body px-0" v-if="submitted">
+    <div class="conatiner reset_body px-0" v-if="submitted" id="submitted">
       <div class="row justify-content-center  m-0">
         <div class="col-6" align="center">
           <h1>Password Reset</h1>
@@ -135,6 +135,11 @@ h1 {
 }
 </style>
 <script>
+/**
+ * Update password if user forget it
+ * @displayName Update Password
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -145,6 +150,11 @@ export default {
     };
   },
   methods: {
+    /**
+     * update user's password
+     * @public This is a public method
+     * @param {String} email email of user want to reset his password
+     */
     send() {
       if (this.email == "") {
         this.isNormal = true;

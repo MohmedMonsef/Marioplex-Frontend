@@ -89,6 +89,11 @@ i {
 </style>
 
 <script>
+/**
+ * Popular Releases card
+ * @displayName Popular Releases
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -96,14 +101,26 @@ export default {
     };
   },
   name: "ShowPopularalbums",
-  props: ["images", "name", "artistname", "albumId"],
-    filters: {
+  props: {
+    images: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    artistname: {
+      type: String
+    },
+    albumId: {
+      type: String
+    }
+  },
+   filters: {
     shorten: function(value) {
       if(value.length  > 17)
         return value.substring(0, 17) + " ...";
       else
-        return value;
-    }
-  }
+        return value;}
+   }
 };
 </script>

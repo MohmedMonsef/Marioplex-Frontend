@@ -1,4 +1,5 @@
 import axios from "axios";
+import {setupPlayer,currentaudio_pause,currentaudio_play,currentaudio_volume,get_currentaudio,currentaudio_time,currentaudio_src} from "../javascript/play.js";
 export default {
   namespaced: true,
   state: {
@@ -76,12 +77,12 @@ export default {
       isPlayable: true
     },
     //flag weather the song is playing or not
+    currentaudio:null,
     playicon: false,
-    currentaudio: null,
     volumeprogress: 0,
     progress: 0,
-    trackduration: 0,
-    toAdd: 0
+    trackduration: 0
+    // toAdd: 0
   },
   mutations: {
     setplayicon(state, playicon) {
@@ -101,7 +102,10 @@ export default {
     },
     setpausesong(state) {
       state.playicon = false;
-      if (state.currentaudio) state.currentaudio.pause();
+      if (currentaudio_src)
+      {
+        currentaudio_pause();
+      }
     },
     set_currentsong(state, currentsong) {
       state.currentsong = currentsong;
@@ -109,25 +113,21 @@ export default {
     startcurrentaudio(state, info) {
       state.playicon = true;
       if (
-        state.currentaudio &&
+        currentaudio_src() &&
         info.song_id == state.currentsong.track._id &&
-        info.album_id == state.currentsong.album._id &&
-        info.playlist_id == state.currentsong.playlistId
+        (info.album_id == state.currentsong.album._id ||
+          info.playlist_id == state.currentsong.playlistId)
       ) {
-        state.currentaudio.play();
-        state.currentaudio.volume = state.volumeprogress;
+        currentaudio_play();
+        currentaudio_volume(state.volumeprogress);
       } else {
         if (state.currentaudio) {
-          state.currentaudio.pause();
+          currentaudio_pause();
           state.currentaudio = null;
         }
-        if (typeof state.currentsong.track.url == "undefined")
-          state.currentaudio = new Audio(
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
-          );
-        else state.currentaudio = new Audio(state.currentsong.track.url);
-        state.currentaudio.play();
-        state.currentaudio.volume = state.volumeprogress;
+        state.currentaudio = get_currentaudio();
+        currentaudio_play();
+        currentaudio_volume(state.volumeprogress);
         state.currentsong_info = info;
       }
     }
@@ -137,18 +137,42 @@ export default {
       commit("setplayicon", status);
     },
     //get the current song from backend
-    get_currentsong({ commit }) {
+    get_currentsong({ commit, dispatch }) {
       axios
         .get("/api/me/player/currently-playing")
         .then(response => {
           var currentsong = response.data;
-
           console.log("in get currentsong", currentsong);
           commit("set_currentsong", currentsong);
+          dispatch("trackUrl");
         })
         .catch(error => {
           console.log(error);
         });
+    },
+    trackUrl({ state }) {
+      let token = localStorage.getItem("x-auth-token");
+      let keyRoute =
+        "/api/tracks/encryption/" + "5e9b64e4e9c8d87fdc2ecbd8" + "/keys";
+      let trackroute =
+        "http://52.205.254.29/api/tracks/web-player/5e9b64e4e9c8d87fdc2ecbd8/?type=medium&token="+token;
+      axios
+        .get(keyRoute)
+        .then(async response => {
+          state.audioKey = response.data.key;
+          state.audioKeyID = response.data.keyId;
+          setupPlayer(trackroute, state.audioKey, state.audioKeyID);
+        })
+        .catch(error => {
+          console.log("get trackurl error", error);
+        })
+        .then(() => {
+          
+        });
+
+      //  state.currentaudio = new Audio("http://localhost:3000/api/tracks/android/5e9b64e4e9c8d87fdc2ecbd8?type=medium");
+      //  state.currentaudio.controls=false;
+      //  state.currentaudio.setAttribute("content-type","audio/webm");
     },
     //start playing the current audio
     playsong_state({ commit }, info) {
@@ -211,9 +235,10 @@ export default {
     },
     repeatsong_state({ state, dispatch }, flag) {
       console.log("kkk", flag);
-      if (flag == 1 && state.currentaudio) state.currentaudio.loop = true;
+      if (flag == 1 && currentaudio_src())
+      get_currentaudio().loop = true;
       else if (flag == 0 && state.currentaudio) {
-        state.currentaudio.loop = false;
+        get_currentaudio().loop = false;
         axios
           .put("/api/player/repeat?state=" + false)
           .then(() => {
@@ -223,7 +248,7 @@ export default {
             console.log(error);
           });
       } else if (flag == 2 && state.currentaudio) {
-        state.currentaudio.loop = false;
+        get_currentaudio().loop = false;
         axios
           .put("/api/player/repeat?state=" + true)
           .then(() => {
@@ -282,25 +307,25 @@ export default {
         });
     },
     advance_progress({ state, dispatch }) {
-      if (state.currentaudio) {
-        if (!state.currentaudio.ispaused) {
-          state.trackduration = state.currentaudio.duration;
-          state.progress = state.currentaudio.currentTime;
+     if (currentaudio_src()) {
+        if (!get_currentaudio().ispaused) {
+          state.trackduration = get_currentaudio().duration;
+          state.progress = get_currentaudio().currentTime;
           if (state.progress == state.trackduration) {
             dispatch("nextsong_state");
           }
         }
-      }
+     }
     },
     update_progress({ state }, pos) {
-      if (state.currentaudio) {
-        state.currentaudio.currentTime = pos;
+      if (get_currentaudio()) {
+        currentaudio_time(pos);
         state.progress = pos;
       }
     },
     update_volume({ state }, pos) {
-      if (state.currentaudio) {
-        state.currentaudio.volume = pos;
+      if (get_currentaudio()) {
+        currentaudio_volume(pos);
         state.volumeprogress = pos;
       }
     }
@@ -327,12 +352,14 @@ export default {
     volume: state => {
       return state.volumeprogress;
     },
-    toadd: state => {
-      return state.toadd;
-    },
-
     currentsong_info: state => {
       return state.currentsong_info;
+    },
+    audioKey: state => {
+      return state.audioKey;
+    },
+    audioKeyID: state => {
+      return state.audioKeyID;
     }
   }
 };

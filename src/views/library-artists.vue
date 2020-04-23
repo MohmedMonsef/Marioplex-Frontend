@@ -3,7 +3,7 @@
     <div class="loading" v-if="!loadingartists">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div v-if="loadingartists">
+    <div v-if="loadingartists" class="notloading">
       <lib-artists-default v-if="artists1.length == 0" />
       <h2 v-if="artists1.length">Artists</h2>
       <div class="container">
@@ -48,6 +48,11 @@ h2 {
 import LibArtistsDefault from "@/components/lib-artists-default.vue";
 import LibArtists from "@/components/lib-artists.vue";
 import { mapGetters } from "vuex";
+/**
+ * library artists page is where artists followed by the user exist
+ * @displayName Library Artists page
+ * @example [none]
+ */
 export default {
   name: "library-artists",
   components: {

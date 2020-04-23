@@ -30,6 +30,7 @@
             :key="POPartist.id"
             :images="POPartist.images"
             :name="POPartist.name"
+            :artistId="POPartist.id"
           />
         </div>
       </div>
@@ -154,7 +155,11 @@ import ShowPopularalbums from "@/components/ShowPopularalbums.vue";
 import ShowPopularreleases from "@/components/ShowPopularreleases.vue";
 import LibPlaylists from "@/components/lib-playlists.vue";
 import { mapGetters } from "vuex";
-
+/**
+ * This page show popular playlists,albums,releases and artists also shows at the end of the page user's liked playists
+ * @displayName UserHome Page
+ * @example [none]
+ */
 export default {
   name: "UserHome",
   components: {

@@ -6,6 +6,7 @@ export default {
   namespaced: true,
   state: {
     status: "",
+    upgraded: true,
     token: localStorage.getItem("x-auth-token") || "",
     User: {},
     isEdited: "",
@@ -15,6 +16,9 @@ export default {
   mutations: {
     auth_request(state) {
       state.status = "loading";
+    },
+    upgrade(state, flag) {
+      state.upgraded = flag;
     },
     auth_success(state, { token, user }) {
       state.status = "success";
@@ -50,7 +54,6 @@ export default {
   actions: {
     signUp({ commit }, user) {
       commit("auth_request");
-
       axios
         .post("/api/sign_up", {
           email: user.email,
@@ -98,7 +101,7 @@ export default {
           const user = response.data[0];
           console.log(user);
           commit("auth_success", { token, user });
-          if (flag) router.push("/");
+          if (flag) router.replace("/");
         })
         .catch(error => {
           commit("auth_error", "user_err");
@@ -107,7 +110,6 @@ export default {
         });
     },
     login({ commit }, user) {
-      console.log("in loggin");
       commit("auth_request");
       axios
         .post("/api/login", {
@@ -128,7 +130,23 @@ export default {
           console.log(error);
         });
     },
-
+    toPremium({ commit,state }, payload) {
+      console.log("payload",payload.cardNumber)
+      axios
+        .put("api/me/promote", {
+          expiresDate: payload.expiresDate,
+          cardNumber: payload.cardNumber,
+          isMonth: payload.isMonth
+        })
+        .then(() => {
+          state.User.product="premium";
+          store.dispatch("authorization/get_user", true);
+        })
+        .catch(error => {
+          console.log(error);
+          commit("upgrade", false);
+        });
+    },
     reset({ commit }, user) {
       axios
         .post("/api/login/forgetpassword", {
@@ -141,6 +159,24 @@ export default {
           commit("auth_error", "reset_err");
           console.log(error);
           localStorage.removeItem("x-auth-token");
+        });
+      console.log(Request.headers);
+    },
+    resetPassword({ commit }, payload) {
+      console.log("reset",payload.token)
+      axios.defaults.headers.common["x-auth-token"] = payload.token;
+      axios
+        .post("api/login/reset_password", {
+          "password":payload.password
+    }
+        )
+        .then(() => {
+          router.replace("/login");
+        })
+        .catch(error => {
+          commit("logout");
+          console.log(error);
+          delete axios.defaults.headers.common["x-auth-token"];
         });
       console.log(Request.headers);
     },
@@ -203,5 +239,6 @@ export default {
     user: state => state.User,
     isEdited: state => state.isEdited,
     deleted_playlists: state => state.deleted_playlists,
+    upgraded: state => state.upgraded
   }
 };

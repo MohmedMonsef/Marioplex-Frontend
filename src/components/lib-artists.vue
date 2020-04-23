@@ -16,20 +16,31 @@
       <h4 class="card-title" id="cardtitle" testid="artist name">
         {{ name | shorten}}
       </h4>
-      <p class="card-text" id="carddescribtion">
+      <p class="card-text" id="carddescribtion" v-if="type!=user">
         Artist
+      </p>
+      <p class="card-text" id="carddescribtion" v-if="type==user">
+        User
       </p>
       <button v-if="hover" class="play-button" testid="play-button">
         <i class="fa fa-play"></i>
         <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
       </button>
       <router-link
-        to="/ArtistProfile"
+        v-if="type!=user"
+        :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId}"
         class="stretched-link"
         id="carglink"
         testid="artist card link"
       ></router-link>
       <!-- should navigate to artist page -->
+      <router-link
+        v-if="type==user"
+        :to="{path :'/HomeWebPlayer/UserProfile/'+ artistId}"
+        class="stretched-link"
+        id="carglink"
+        testid="artist card link"
+      ></router-link>
     </div>
   </div>
 </template>
@@ -83,6 +94,11 @@ i {
 }
 </style>
 <script>
+/**
+ * @displayName Artists card
+ * @example [none]
+ */
+
 export default {
   data: function() {
     return {
@@ -90,7 +106,20 @@ export default {
     };
   },
   name: "lib-artists",
-  props: ["images", "name", "artistId"],
+  props: {
+    images: {
+      type: Array
+    },
+    name: {
+      type: String
+    },
+    artistId:{
+      type: String
+    },
+    type:{
+      type: String
+    }
+  },
    filters: {
     shorten: function(value) {
       if(value.length  > 17)
@@ -98,6 +127,6 @@ export default {
       else
         return value;
     }
-  }
+   }
 };
 </script>

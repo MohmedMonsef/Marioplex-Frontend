@@ -246,7 +246,10 @@ ul {
 </style>
 <script>
 import { mapGetters } from "vuex";
-
+/**
+ * @displayName Edit Artist Bio
+ * @example [none]
+ */
 export default {
   name: "EditBio",
   data: function() {
@@ -264,10 +267,17 @@ export default {
     })
   },
   methods: {
+    /**
+     * Opens popup to add updates to artist data
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("artistproperties/toggleModal");
     },
-
+    /**
+     * triggers the edit request
+     * @public This is a public method
+     */
     EditBio() {
       let payload = {
         Name: this.Name,

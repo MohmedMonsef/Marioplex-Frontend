@@ -24,12 +24,14 @@
               placeholder="Email"
               v-model="email"
               testid="email input"
+              id="email"
             />
             <br />
             <p
               v-if="req_email == true"
               class="invalid"
               testid="email required error"
+              id="req_email"
             >
               Please enter your email.
             </p>
@@ -37,6 +39,7 @@
               v-if="invalid_email == true"
               testid="email invalid error"
               class="invalid"
+              id="invalid_email"
             >
               The email address you supplied is invalid.
             </p>
@@ -53,12 +56,14 @@
               placeholder="Confirm email"
               v-model="email_confirmation"
               testid="confirm email input"
+              id="confirm_email"
             />
             <br />
             <p
               v-if="req_confirm_email == true"
               testid="confirm email required error"
               class="invalid"
+              id="confirm_email_req"
             >
               Please enter your email.
             </p>
@@ -79,6 +84,7 @@
               "
               class="invalid"
               testid="emails not matched error"
+              id="mistched_emails"
             >
               Email address doesn't match.
             </p>
@@ -89,12 +95,14 @@
               placeholder="Password"
               v-model="password"
               testid="password input"
+              id="password"
             />
             <br />
             <p
               v-if="req_password"
               class="invalid"
               testid="password required error"
+              id="req_password"
             >
               Enter a password to continue.
             </p>
@@ -102,6 +110,7 @@
               v-if="short_password == true"
               class="invalid"
               testid="password short error"
+              id="short_password"
             >
               Your password is too short.
             </p>
@@ -111,12 +120,14 @@
               placeholder="What should we call you?"
               v-model="username"
               testid="username input"
+              id="username"
               required
             />
             <p
               v-if="req_username == true"
               class="invalid"
               testid="username required error"
+              id="req_username"
             >
               What should we call you?
             </p>
@@ -130,6 +141,7 @@
               <option
                 v-for="country in countries"
                 :key="country.value"
+                :value="country.value"
                 :disabled="country.disabled"
                 >{{ country.text }}
               </option>
@@ -138,6 +150,7 @@
               v-if="req_country == true"
               class="invalid"
               testid="country required error"
+              id="req_country"
             >
               Please enter your country.
             </p>
@@ -150,11 +163,13 @@
                 placeholder="Day"
                 v-model="day"
                 testid="day of birth input"
+                id="day"
               />
               <select
                 v-model="month"
                 class="month_select"
                 testid="month of birth input"
+                id="month"
               >
                 <option
                   v-for="month in Months"
@@ -170,6 +185,7 @@
                 placeholder="Year"
                 testid="year of birth input"
                 v-model="year"
+                id="year"
               />
             </div>
 
@@ -177,6 +193,7 @@
               v-if="valid_day == true"
               class="invalid"
               testid="day of birth error"
+              id="req_day"
             >
               Please enter a valid day of the month.
             </p>
@@ -184,6 +201,7 @@
               v-if="valid_month == true"
               class="invalid"
               testid="month of birth error"
+              id="req_month"
             >
               Please enter your birth month.
             </p>
@@ -191,12 +209,14 @@
               v-if="valid_year == true"
               class="invalid"
               testid="year of birth error"
+              id="req_year"
             >
               Please enter a valid year.
             </p>
             <p
               v-if="valid_age == true"
               class="invalid"
+              id="invalid_age"
               testid="year of birth error"
             >
               Sorry, but you don't meet Spotify's age requirements.
@@ -207,6 +227,7 @@
             <div id="gender" class="input_field">
               <input
                 type="radio"
+                id="female_gender"
                 class="gender_field gender-radio"
                 value="m"
                 v-model="gender"
@@ -231,6 +252,7 @@
               v-if="req_gender == true"
               class="invalid"
               testid="gender required error"
+              id="req_gender"
             >
               Please indicate your gender.
             </p>
@@ -347,6 +369,11 @@
 import LogoHeader from "@/components/logo-header.vue";
 import Divider from "@/components/divider.vue";
 import { mapGetters } from "vuex";
+/**
+ * Signup page to create new account
+ * @displayName SignUp page
+ * @example [none]
+ */
 export default {
   name: "SignUp",
   components: {
@@ -369,38 +396,48 @@ export default {
       year: "",
       Months: [
         { text: "Month", value: "0", disabled: true },
-        { text: "January", value: "1", disabled: false },
-        { text: "Febuary", value: "2", disabled: false },
-        { text: "Mars", value: "3", disabled: false },
-        { text: "April", value: "4", disabled: false },
-        { text: "Mai", value: "5", disabled: false },
-        { text: "June", value: "6", disabled: false },
-        { text: "July", value: "7", disabled: false },
-        { text: "August", value: "8", disabled: false },
-        { text: "September", value: "9", disabled: false },
+        { text: "January", value: "01", disabled: false },
+        { text: "Febuary", value: "02", disabled: false },
+        { text: "March", value: "03", disabled: false },
+        { text: "April", value: "04", disabled: false },
+        { text: "May", value: "05", disabled: false },
+        { text: "June", value: "06", disabled: false },
+        { text: "July", value: "07", disabled: false },
+        { text: "August", value: "08", disabled: false },
+        { text: "September", value: "09", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
         { text: "December", value: "12", disabled: false }
       ],
-      country: "Choose a country",
+      country: "0",
       countries: [
         { text: "Choose a country", value: "0", disabled: true },
-        { text: "Egypt", value: "1", disabled: false },
-        { text: "France", value: "2", disabled: false },
-        { text: "USA", value: "3", disabled: false },
-        { text: "UK", value: "4", disabled: false },
-        { text: "Canada", value: "5", disabled: false },
-        { text: "Australia", value: "6", disabled: false },
-        { text: "Saudi Arabia", value: "7", disabled: false },
-        { text: "China", value: "8", disabled: false },
-        { text: "Japan", value: "9", disabled: false },
-        { text: "Tokio", value: "10", disabled: false },
-        { text: "Mexico", value: "11", disabled: false },
-        { text: "Brazil", value: "12", disabled: false }
+        { text: "Egypt", value: "EG", disabled: false },
+        { text: "France", value: "FR", disabled: false },
+        { text: "USA", value: "US", disabled: false },
+        { text: "Britain", value: "UK", disabled: false },
+        { text: "Canada", value: "CA", disabled: false },
+        { text: "Australia", value: "AU", disabled: false },
+        { text: "Saudi Arabia", value: "SA", disabled: false },
+        { text: "China", value: "CN", disabled: false },
+        { text: "Japan", value: "JP", disabled: false },
+        { text: "Korea", value: "KP", disabled: false },
+        { text: "Mexico", value: "MX", disabled: false },
+        { text: "Brazil", value: "BR", disabled: false }
       ]
     };
   },
   methods: {
+    /**
+     * Signup function takes user information to create new account
+     * @public This is a public method
+     * @param {String} username username of the user (name of account)
+     * @param {String} password password of user (account password)
+     * @param {String} country user's country
+     * @param {String} email user's email
+     * @param {String} gender if the user is male or female
+     * @param {String} birthday user's date of birth
+     */
     signUp() {
       this.trigger_validation = true;
       this.can_submit = true;
@@ -417,7 +454,10 @@ export default {
       this.valid_year;
       setTimeout(() => {
         if (this.can_submit) {
-          this.birthday = this.day + "/" + this.month + "/" + this.year; //check date format with back
+          if(this.day>="1" && this.day<="9")
+            this.day = "0"+this.day;
+          var d = new Date(this.year+'-'+this.month+'-'+this.day);
+          this.birthday = d; //check date format with back
           let newuser = {
             username: this.username,
             password: this.password,
@@ -430,20 +470,26 @@ export default {
         } else return;
       }, 200);
     },
+    /**
+     * This function allow user to Signup to Spotify with Facebook account
+     * @public This is a public method
+     */
     facebook_signUp() {
       this.$store.dispatch("authorization/facebook_signUp");
     },
+    /**
+     * This function indicates that there is problem occurs while Signup with new account
+     * @public This is a public method
+     */
     cannotSubmit() {
-      console.log("cannot sub");
-      console.log(this.can_submit);
       this.can_submit = false;
-      console.log(this.can_submit);
     },
+    /**
+     * This function indicates that there is No problem occurs while Signup and that new account is created
+     * @public This is a public method
+     */
     canSubmit() {
-      console.log("can sub");
-      console.log(this.can_submit);
       this.can_submit = this.can_submit && true;
-      console.log(this.can_submit);
     }
   },
   computed: {
@@ -451,12 +497,8 @@ export default {
       isLoggedIn: "authorization/GetStatus"
     }),
     req_email: function() {
-      console.log(this.email);
       if (this.trigger_validation) {
-        console.log(this.email);
         if (this.email == "") {
-          console.log(this.email);
-          console.log("required email not found");
           this.cannotSubmit();
           return true;
         } else {
@@ -574,7 +616,7 @@ export default {
     },
     req_country: function() {
       if (this.trigger_validation) {
-        if (this.country == "Choose a country") {
+        if (this.country == "0") {
           this.cannotSubmit();
           return true;
         } else {

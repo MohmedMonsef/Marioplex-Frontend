@@ -1,0 +1,180 @@
+9ecedc6 (HEAD -> Unit_Testing_V1, origin/Unit_Testing_V1) updated readme
+bbf4134 changes in unit test
+d66f282 (origin/Nerd_unittest) merge 3
+28373b6 Merge branch 'dai-unittest' of https://github.com/MohmedMonsef/Marioplex-Frontend into Nerd_unittest
+f6a0bed erge 2
+c1fa5aa first merge
+31a9d6c test
+5449d40 dai unit test
+77189b8 unit testing 50%
+4f8a915 Merge branch 'testing+documentation' of https://github.com/MohmedMonsef/Marioplex-Frontend into Nerd_unittest
+0cc0691 without coverage folder
+601a7af some added unit tests
+5a63604 ignoring covarage
+4bf12a7 tracks
+9bb827c artist integerated
+564a9fa merged
+6655011 search view merged
+27bad1a unit testing for artist page ,claim,liked create,delete
+d9606d0 unit_test_seeall
+db49442 defauly page merge
+589aab3 playlist default unit test
+bfbbb6c userhome+library views
+43f968b views documentation
+9e37483 components documentation
+20ae0b4 add search unit test
+e38675f maege library,home,song,playlist unit test
+52f9b70 unit_test_search_package
+3da8c03 merge with album info and playlist info
+9b3f5ae nav bar unit test
+aaf6bd9 playlist view merged
+3a08057 added other unit testing
+e611caf side bar unit test
+51504be unit_test_search
+6b39571 Merge branch 'Unit_Testing_V1' of https://github.com/MohmedMonsef/Marioplex-Frontend into testing+documentation
+57b151c merge with library tests
+7eb4d6e library and home unit test
+0da7be2 unit_testing for playlist,album,likedtracks information
+dcbf097 queue unit test
+89967e8 signup unit test
+81e1cb2 login
+e357c44 forget password
+9908aa4 song component unit test
+08726f2 (origin/popularities) see all route
+35d7a6b filter & playicon on the card
+97c3cf3 (origin/master, origin/HEAD, master) final integraion
+073c098 search
+d2462c9 (origin/mergewithback) searchintegrate
+5996cd8 integeration_v2_phase50
+725fc46 (origin/artist_testid) making testids
+092b1f2 integeration_v2_phase50
+880e5e0 integration_v1_phase50%
+a48fc8d final integration phase50
+8e288a9 integrate without server
+94f477c continue integration with local host
+1d5242c update top results card
+7b21297 fixed bug in lib albums
+0ed6c9b (origin/integration) merging integration
+2335d04 integrate claimArtist and Reorder track (BY Nerdeen)
+8acd53b integrate playlist , album and user saved tracks
+2a97a05 (origin/home-webplayer) modifications in nav bar
+068273c back deployed server
+5af5f90 player integeration
+e2f10c9 play icons on card
+ed885f5 merge with back playlist and liked tracks
+8a94cac merged playlist and liked tracks
+a3c5aa3 (origin/integ_artist) merge seeall
+b62661f seeall
+607e181 (origin/mediaplayer_continue) missing some code
+10e5779 (origin/HomeWebplayer) modify nav bar
+154300e (origin/semi_final) merged semi final
+f570423 50% merge
+9a858de (origin/50_merged) Delete PlaylistPopup.vue
+62a945b merging 50%
+e8ac11e integration
+e415b92 merged2
+8d180cb (origin/Artist_NavBar) reorder tracks in playlist
+b5724ec (origin/mediaplayer_view) merged with playlist,album and likedtracks
+f473980 merging navbar with artist profile
+6440678 playlist_popup
+7b4ffa1 home navigation bar
+608bbd0 (origin/Artist_Functions) add track to playlist reorder track styling ,not completing requests
+c4e33ce add test_ids
+f82887f user_liked_tracks view and empty view
+2144937 push routes & modify sidebar
+d50373a search_commponent
+bd268bc album_view and like_unlike album
+86bb9e5 merge with menna
+7ff0db7 search +library+authorization intedration
+c833773 merge with dina
+683d16a (origin/songcomponent+queue) merge with master
+c0d813a update tracks format
+d2eaa2a follow and unfollow playlist
+15927a4 loading screens in webplayer
+14fa501 playlist_view and empty playlist_view
+fa89b55 shuffle and repeat
+56a17be search about (album,artist,playlist,topresult)
+0c5bb66 merged with master
+3f60418 updating next,prev requests
+5c5f74e updating get current song requests
+1cbc4b5 modify liked songs
+9bd1dba  add songs array
+a1af502 synchronizing song component with mediaplayer
+56fd03a (origin/Di_merge) merge with master
+ed8c3a1 merging with dai is done
+39b771a currentSong update
+4184606 playlist-view and volume bar
+d5012cc volume bar
+6f5d06d separate script for queue and mediaplayer
+56039a7 merged with search + library
+ddc1e90 songbar update
+ad3b65f (origin/nerdeen_merge) show modal delete
+4006123 readyto merge
+a4ce8f5 liked songs card
+3934617 (origin/Artist_Account) Arist Account ,Upload song, delete song
+e586f1b (origin/search) edite
+ea66084 merge search&browse all with master
+e9101d1 merge your library
+7a2ec20 (origin/merge_withBassant) merge with bassant
+2214893 (origin/user_library) end points
+d5a0d8d merging with master
+5ad2736 in merging with queue
+dca2b69 sign up update
+9a55464 styling song bar
+f82287e song component when playing + login update
+bee8d5b (origin/browseall) search about an artist&&the card of top result
+4f3f1a8 modifications in user albums
+c6efcd2 play icon on cards
+90ef81d cancel search
+c2fa32b search&&browseall&&cancelsearch
+fd46032 add to queue
+43dc382 user artists and playlists in library
+b5b81ef like-unlike song and moving song bar
+defb528 get current song + get queue requests
+3489d23 user albums in library
+744c1ce initial queue view
+8c95d68 default pages in library
+0b9ec67 add nested routes in library
+c944e5e navigation bar in library
+af62e49 search&&browseall
+4b0d75e nested routes in web player
+451933f (origin/nerdeenwork) moduled
+5d29c63 add tooltip on hover
+a8e9253 (origin/merge) merge_mediaplayer
+f1ba599 module
+3f6e9d8 separate module
+75fa0e4 solved conflict
+dfba787 (origin/mergeSidebarWithCreate) final merge
+a05e9b8 testids for navbars
+53c34a4 merge with error
+c0a3f23 createplaylistinterface
+2912a6d modifications in side bar(on focus)
+0c2afd9 (origin/authentication) home footer
+d33d1eb intial home layout
+2edcf6b change vuex to modules
+478d4c4 add modules folder
+0fedb40 add test ids
+29d8d40 add test id
+4dd5550 some changes in mediaplayer view
+57c3e7b (origin/xyzremote) help page,but not compelet <direct  to pages,animation,response>
+17a50ba play,pause,next,previous song and view of mediaplayer(not completed)
+d789172 CreatePlaylist and DeletePlaylist
+8892b8f show PopularPlaylists section
+1d05123 facebook sign up
+492ae8e added testids
+2be09b7 SideBar
+001f01e logout
+ae2d797 reset password
+11f3d72 login mock server + signup with unique email validation
+44f3228 login validations + fix submit found bug
+6126e39 login complete view
+a1c80b2 signUp mock service
+d4eab7a validation update
+8960cb7 signUp validations
+800da7d signUp
+7f4fff0 login intial
+ce63230 basic files
+d19b3cf basic files
+6e7db16 init
+aab9256 Update README.md
+1a26fcb Initial commit

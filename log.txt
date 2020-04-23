@@ -1,0 +1,1059 @@
+commit 9ecedc60a2aee6f0d83a90a292c22f25a63939a5
+Merge: bbf4134 d66f282
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 22:59:34 2020 +0200
+
+    updated readme
+
+commit bbf41344abe43a72fec13e8dd4cdd48c90bd0bb1
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 21:55:34 2020 +0200
+
+    changes in unit test
+
+commit d66f282bba7192ceadfaa5a587c57aad430d60ff
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:53:31 2020 +0200
+
+    merge 3
+
+commit 28373b6927224f89224325ce0504793d81741e85
+Merge: f6a0bed 31a9d6c
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:33:02 2020 +0200
+
+    Merge branch 'dai-unittest' of https://github.com/MohmedMonsef/Marioplex-Frontend into Nerd_unittest
+
+commit f6a0bed536785acd32d7c15861d0c9bac0e3827b
+Merge: c1fa5aa 0cc0691
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:19:35 2020 +0200
+
+    erge 2
+
+commit c1fa5aad52c654b684a8a5e862cc9774b58b52e4
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 21:07:05 2020 +0200
+
+    first merge
+
+commit 31a9d6c5ca75f3ee76cf7c3f1124961c74976d62
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 20:29:59 2020 +0200
+
+    test
+
+commit 5449d40acac430e662f92c3d4f1b461c36c3ea5c
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 20:12:21 2020 +0200
+
+    dai unit test
+
+commit 77189b898de7a25f272d5c3e129aa3f1c2b878a7
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 20:06:35 2020 +0200
+
+    unit testing 50%
+
+commit 4f8a91522c1919fa17ac69e2f93adcc00f7c5c30
+Merge: 5a63604 9bb827c
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 19:46:47 2020 +0200
+
+    Merge branch 'testing+documentation' of https://github.com/MohmedMonsef/Marioplex-Frontend into Nerd_unittest
+
+commit 0cc0691ac46bcdf22f6b1e8f05ebd0121b349c46
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 19:46:46 2020 +0200
+
+    without coverage folder
+
+commit 601a7af576ab0d17e66e90347ea46f2441d6da46
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 19:43:21 2020 +0200
+
+    some added unit tests
+
+commit 5a63604f47b8f7933a0547c2d83ea5b0ce11755a
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 19:39:57 2020 +0200
+
+    ignoring covarage
+
+commit 4bf12a7a1046c0ea0775e31da128943b8480154c
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 19:29:50 2020 +0200
+
+    tracks
+
+commit 9bb827cb4bbfef6a44b873592d427788001a4b19
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 19:28:41 2020 +0200
+
+    artist integerated
+
+commit 564a9fa4e345da60ae7f4316eb89073e266fef18
+Merge: 6655011 27bad1a
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 18:28:42 2020 +0200
+
+    merged
+
+commit 6655011d4f264df3e430c18308d137abb744585d
+Merge: db49442 d9606d0
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 18:19:16 2020 +0200
+
+    search view merged
+
+commit 27bad1a4bcf7e4512998d71969ae52324634793c
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 11 18:13:53 2020 +0200
+
+    unit testing for artist page ,claim,liked create,delete
+
+commit d9606d0cb03e2388b402738c594976d7e5c016b5
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Sat Apr 11 17:22:27 2020 +0200
+
+    unit_test_seeall
+
+commit db494422673f5fd03e73ed8fe2a422fdb745b12c
+Merge: bfbbb6c 589aab3
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 17:20:26 2020 +0200
+
+    defauly page merge
+
+commit 589aab3d27d96f3c82f3e3bb1f64d500c9db9605
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 17:16:28 2020 +0200
+
+    playlist default unit test
+
+commit bfbbb6c7a3f39ffc7cbe8b62ffbc3fa188e4e0c6
+Merge: 9e37483 20ae0b4
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 17:16:18 2020 +0200
+
+    userhome+library views
+
+commit 43f968b9746dd44e6369bfcf6e846fd5f000e3d0
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 08:22:08 2020 +0200
+
+    views documentation
+
+commit 9e374834f32291533beb8b3a6a102809ee3c1dd4
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 07:58:58 2020 +0200
+
+    components documentation
+
+commit 20ae0b4bb8452a6495b40568b8aaf093a155ec44
+Merge: e38675f 52f9b70
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 04:26:11 2020 +0200
+
+    add search unit test
+
+commit e38675f1ace0bbefd6c3de0bb02754773553d9c5
+Merge: 9b3f5ae 3da8c03
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 02:43:22 2020 +0200
+
+    maege library,home,song,playlist unit test
+
+commit 52f9b70eebec7511f04afe29714904045dc80141
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Sat Apr 11 01:57:59 2020 +0200
+
+    unit_test_search_package
+
+commit 3da8c034ae4e6149fc7ca0d9db06425716caa2ea
+Merge: aaf6bd9 3a08057
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 01:46:20 2020 +0200
+
+    merge with album info and playlist info
+
+commit 9b3f5aecbf61296c6bbee4678b62407617eff90b
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 01:41:58 2020 +0200
+
+    nav bar unit test
+
+commit aaf6bd9e4e3fdc9b1392a2852826f1a62ce52db3
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Apr 11 01:21:36 2020 +0200
+
+    playlist view merged
+
+commit 3a08057963977ce6d0a6b4cd85f403d24eaafa0d
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 11 01:17:18 2020 +0200
+
+    added other unit testing
+
+commit e611caf504ee10fca54575b4e514d4e5aa25c45f
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 11 00:23:14 2020 +0200
+
+    side bar unit test
+
+commit 51504bec6ab5994ba0feff71a3755d326496216d
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Fri Apr 10 22:43:22 2020 +0200
+
+    unit_test_search
+
+commit 6b39571978000058fc13914f41b8f4d251cdece2
+Merge: 57b151c 0da7be2
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 10 21:13:04 2020 +0200
+
+    Merge branch 'Unit_Testing_V1' of https://github.com/MohmedMonsef/Marioplex-Frontend into testing+documentation
+
+commit 57b151cc6e9a53d2849786e2fca252cbf6e1a35e
+Merge: dcbf097 7eb4d6e
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 10 21:11:36 2020 +0200
+
+    merge with library tests
+
+commit 7eb4d6e7e072e504e6f38366774b4bbb3fead357
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Fri Apr 10 20:55:48 2020 +0200
+
+    library and home unit test
+
+commit 0da7be2619c3be890cbb3bc129207e7181d95756
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Fri Apr 10 15:31:53 2020 +0200
+
+    unit_testing for playlist,album,likedtracks information
+
+commit dcbf0971e79c2e15d35c51654f3306270536eabf
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 10 05:02:09 2020 +0200
+
+    queue unit test
+
+commit 89967e887a03f223d9955047c0a3b086e421928f
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 10 04:03:52 2020 +0200
+
+    signup unit test
+
+commit 81e1cb2ed74812fe71cb8b13a1b95ef00ef0fa94
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 10 00:37:16 2020 +0200
+
+    login
+
+commit e357c44433f690a04496cb2f96682b593517cd8e
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Thu Apr 9 23:05:05 2020 +0200
+
+    forget password
+
+commit 9908aa47db1ef0c9df04f4b1ac9c3561714a1457
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Thu Apr 9 20:31:27 2020 +0200
+
+    song component unit test
+
+commit 97c3cf3cf300bac67cb04c97acb9f8b47257e49a
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 23:55:39 2020 +0200
+
+    final integraion
+
+commit 073c098a1d22f10d1ede96a108fd2182457e5866
+Merge: 5996cd8 d2462c9
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 23:42:40 2020 +0200
+
+    search
+
+commit d2462c9f57bdffa6d16bdecf023e440490f77748
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 23:38:55 2020 +0200
+
+    searchintegrate
+
+commit 5996cd8dea5a3323f6f37d0f8ee1a670da9d6616
+Merge: 092b1f2 880e5e0
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Apr 7 23:26:22 2020 +0200
+
+    integeration_v2_phase50
+
+commit 092b1f24e2029156def33b15dea2d68222d5ece3
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Apr 7 23:07:55 2020 +0200
+
+    integeration_v2_phase50
+
+commit 880e5e0fcf32f818832961bc1ac3eac0a5bffea6
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 23:05:45 2020 +0200
+
+    integration_v1_phase50%
+
+commit a48fc8da3b2b9ff0b1d16c437228c70c2a0ac06e
+Merge: 8e288a9 1d5242c
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 20:44:15 2020 +0200
+
+    final integration phase50
+
+commit 8e288a948f7b327dca22e57d0f7870c19aba970a
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 16:21:35 2020 +0200
+
+    integrate without server
+
+commit 94f477ca26c4759f6869715496bc7b96d4fe5f70
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 16:16:24 2020 +0200
+
+    continue integration with local host
+
+commit 1d5242c6066f987daf1da8e9b9d25c09156bc27c
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Apr 7 14:27:09 2020 +0200
+
+    update top results card
+
+commit 7b212975cd7e737e7c93f4e5c9f8dbf4439875a9
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Apr 7 13:45:20 2020 +0200
+
+    fixed bug in lib albums
+
+commit 0ed6c9be2341c9dda0148120757d8a391ac87c7a
+Merge: 068273c a3c5aa3
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Apr 7 13:28:48 2020 +0200
+
+    merging integration
+
+commit 2335d046a9a943f45f3bedff356a4c215a437ed8
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 07:06:42 2020 +0200
+
+    integrate claimArtist and Reorder track (BY Nerdeen)
+
+commit 8acd53b6da6aabf4636a99a35e4bb6a94a34b256
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Apr 7 06:20:52 2020 +0200
+
+    integrate playlist , album and user saved tracks
+
+commit 068273ccb4e139a1dd951c086664c1a7cdcb8fb0
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Mon Apr 6 22:58:02 2020 +0200
+
+    back deployed server
+
+commit 5af5f9066c8b122a39fea2511de03ee15a0ba8b9
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Mon Apr 6 18:32:46 2020 +0200
+
+    player integeration
+
+commit ed885f52716cce7120fa9d21ffe7bf2fb88928d7
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Mon Apr 6 02:07:01 2020 +0200
+
+    merge with back playlist and liked tracks
+
+commit 8a94cace1525f07791d159f4e1815cfbad2c9f85
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Mon Apr 6 02:05:32 2020 +0200
+
+    merged playlist and liked tracks
+
+commit a3c5aa358f23493c87faf39c3a3d6e3cedd8a632
+Merge: b62661f 154300e
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Mon Apr 6 01:05:03 2020 +0200
+
+    merge seeall
+
+commit b62661ff06de1547e41e8c4d5198d64d8849b4bb
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Sun Apr 5 23:34:38 2020 +0200
+
+    seeall
+
+commit 154300e041715e09a70b852c0052b4278dffb977
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sun Apr 5 03:21:48 2020 +0200
+
+    merged semi final
+
+commit f5704234ea415f8ab000c27ba4d60b902a3130b7
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sun Apr 5 01:18:11 2020 +0200
+
+    50% merge
+
+commit 62a945baec2321f29c9e86cdb1553fd6880c64d8
+Merge: 8d180cb e415b92
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sun Apr 5 00:38:37 2020 +0200
+
+    merging 50%
+
+commit e8ac11ef273ee7f79a0dff1a7dadbdf1d1a0a6e9
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sun Apr 5 00:05:34 2020 +0200
+
+    integration
+
+commit e415b9205f0ab3192cabbaae97572d26fcba4d3e
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 4 20:13:34 2020 +0200
+
+    merged2
+
+commit 8d180cba9920061efa05c79cca1fe27e507a6077
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 4 20:00:45 2020 +0200
+
+    reorder tracks in playlist
+
+commit b5724ec4013bbff8c2eb0808c5630a037a9ddced
+Merge: 6440678 d50373a
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 4 19:08:55 2020 +0200
+
+    merged with playlist,album and likedtracks
+
+commit f4739802a00fd8ebf3cad8124808e1ebc7c83ae0
+Merge: 608bbd0 7b4ffa1
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 4 18:42:53 2020 +0200
+
+    merging navbar with artist profile
+
+commit 6440678b49b5c364b7d33122e26a9c768482ee08
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 4 18:16:27 2020 +0200
+
+    playlist_popup
+
+commit 7b4ffa1e0aa8740b9faf6d97211a7ccacfed9678
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 4 17:33:23 2020 +0200
+
+    home navigation bar
+
+commit 608bbd0ebe46105b563c42d424c3ef478b5db013
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Sat Apr 4 17:29:00 2020 +0200
+
+    add track to playlist reorder track styling ,not completing requests
+
+commit c4e33ce2a63e1b9886213920e02685740aa104a6
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 4 11:58:13 2020 +0200
+
+    add test_ids
+
+commit f82887f016d2a42e541775319bf430b832adbd30
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 4 10:53:28 2020 +0200
+
+    user_liked_tracks view and empty view
+
+commit 21449379afbe98019938c77396bcd9acb8bfc1ee
+Merge: 1cbc4b5 9bd1dba
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Apr 4 04:18:12 2020 +0200
+
+    push routes & modify sidebar
+
+commit d50373a76c2e5c038e61949091e9c6e52a144b26
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Sat Apr 4 03:23:08 2020 +0200
+
+    search_commponent
+
+commit bd268bcde24bc23ce1ccb647b9beccec0dc48a9e
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sat Apr 4 02:27:09 2020 +0200
+
+    album_view and like_unlike album
+
+commit 86bb9e50dc7a14645ebfce07e270781631267fe7
+Merge: c833773 683d16a
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Sat Apr 4 01:13:33 2020 +0200
+
+    merge with menna
+
+commit 7ff0db7b62a6b54d137297887e4ca2c8bc8f4110
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 3 23:40:31 2020 +0200
+
+    search +library+authorization intedration
+
+commit c8337732c4d5ba96178fea4098a3886ebfdbfa93
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Fri Apr 3 23:36:27 2020 +0200
+
+    merge with dina
+
+commit 683d16aa54f004fcd992cb5208af9d3a51d850de
+Merge: c0d813a 56a17be
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 3 23:06:18 2020 +0200
+
+    merge with master
+
+commit c0d813a48ae86c0de51d4c9e75330b4d1d325d55
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 3 18:37:18 2020 +0200
+
+    update tracks format
+
+commit d2eaa2ac2e5e866f43da62637001eb4ace04e0ec
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Fri Apr 3 15:30:18 2020 +0200
+
+    follow and unfollow playlist
+
+commit 15927a490f58d2a6c6a528e0df1336c3b11a676a
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 3 15:25:41 2020 +0200
+
+    loading screens in webplayer
+
+commit 14fa50190a4f8d1ff86968da69a30965a99ee3c9
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Fri Apr 3 13:03:47 2020 +0200
+
+    playlist_view and empty playlist_view
+
+commit fa89b5543596de7d9d5b555f9d2c24e5fed6ab10
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Apr 3 12:59:56 2020 +0200
+
+    shuffle and repeat
+
+commit 56a17be448d00e5aea920da374ca25ede36451f2
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Thu Apr 2 23:31:49 2020 +0200
+
+    search about (album,artist,playlist,topresult)
+
+commit 0c5bb66a0e86e6af1f18fecd500282a1b625f184
+Merge: 3f60418 9bd1dba
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Thu Apr 2 12:32:15 2020 +0200
+
+    merged with master
+
+commit 3f604187cf0d67c9711783be704f82cd467352c7
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Thu Apr 2 12:16:30 2020 +0200
+
+    updating next,prev requests
+
+commit 5c5f74ebea9821b9d29b4c69a8d2df41beb12e88
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Thu Apr 2 04:02:32 2020 +0200
+
+    updating get current song requests
+
+commit 1cbc4b57419d4747b88a8ba1da7c58c146df3e3e
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Thu Apr 2 03:45:04 2020 +0200
+
+    modify liked songs
+
+commit 9bd1dba4c8e1b6e2fbbe292e56441c97d4e0710b
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Thu Apr 2 03:32:11 2020 +0200
+
+     add songs array
+
+commit a1af502cde20c89fe09342b517554bbf05d1b709
+Merge: 39b771a 4184606
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Mar 31 02:01:28 2020 +0200
+
+    synchronizing song component with mediaplayer
+
+commit 56fd03a4558c48f177cf08d7e40b33f417b40cba
+Merge: ed8c3a1 4184606
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Mon Mar 30 15:08:23 2020 +0200
+
+    merge with master
+
+commit ed8c3a155f9bbe173b365c3dd2b2271ae98c0cb2
+Merge: 4006123 ad3b65f
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Mon Mar 30 14:34:27 2020 +0200
+
+    merging with dai is done
+
+commit 39b771a4247ace2516d84ad99bd038d275599c9b
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Mon Mar 30 03:41:44 2020 +0200
+
+    currentSong update
+
+commit 4184606127e0d8386faf29822e1ab952dcc22ef4
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Mon Mar 30 03:19:54 2020 +0200
+
+    playlist-view and volume bar
+
+commit d5012cc644303f8c47bba1496881c22755e5f0e4
+Merge: 6f5d06d 56039a7
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sun Mar 29 03:47:37 2020 +0200
+
+    volume bar
+
+commit 6f5d06d8a95deb883bd535ff36124f945a80fd84
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sun Mar 29 00:08:59 2020 +0200
+
+    separate script for queue and mediaplayer
+
+commit 56039a7e66b7350c69cfd7e2ae18dbbca6f0fce7
+Merge: ddc1e90 e586f1b
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Mar 28 00:40:31 2020 +0200
+
+    merged with search + library
+
+commit ddc1e90e24b631327d1d56afae5aa44023ebdf1b
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Mar 28 00:07:05 2020 +0200
+
+    songbar update
+
+commit ad3b65f0a97dedc1e014306995954b26a17156c4
+Merge: a4ce8f5 3934617
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Fri Mar 27 15:47:07 2020 +0200
+
+    show modal delete
+
+commit 40061235b5c95ae3a5347b096406c62be17a5481
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Fri Mar 27 15:44:10 2020 +0200
+
+    readyto merge
+
+commit a4ce8f5a363cde92464885cdcc075712192acaeb
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Fri Mar 27 00:25:12 2020 +0200
+
+    liked songs card
+
+commit 3934617c402ebc1e6d0a135d6114d2f2e0928b31
+Author: Nori <nerdeen.ahmad15@gmail.com>
+Date:   Fri Mar 27 00:18:51 2020 +0200
+
+    Arist Account ,Upload song, delete song
+
+commit e586f1bb62c51db139198592e83201a9892fa353
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Tue Mar 24 23:28:17 2020 +0200
+
+    edite
+
+commit ea66084ef55261e48531ff38bb13297b2d44c567
+Merge: bee8d5b e9101d1
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Tue Mar 24 22:51:41 2020 +0200
+
+    merge search&browse all with master
+
+commit e9101d1eaa8ab00781ed95e32d9b87ba27c2908b
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Tue Mar 24 21:44:12 2020 +0200
+
+    merge your library
+
+commit 7a2ec205d4708f1dc3289176883d85c08204980c
+Merge: 2214893 5ad2736
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Tue Mar 24 20:20:35 2020 +0200
+
+    merge with bassant
+
+commit 22148930c7d396aa332f854a70139523c0138b09
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Tue Mar 24 19:24:54 2020 +0200
+
+    end points
+
+commit d5a0d8d984387ff97e8884f2d69ec8a83a421b83
+Merge: dca2b69 5ad2736
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Mar 24 18:27:00 2020 +0200
+
+    merging with master
+
+commit 5ad273685c4e4ce7f7d482ec8871b3c5462f231d
+Merge: 4b0d75e 9a55464
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Mar 24 18:13:17 2020 +0200
+
+    in merging with queue
+
+commit dca2b690bebb3237560aa01a769a62f27d7c42b9
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Tue Mar 24 18:08:32 2020 +0200
+
+    sign up update
+
+commit 9a55464b01de90d6a3f708300f6e01ea90203c03
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Mar 24 17:42:05 2020 +0200
+
+    styling song bar
+
+commit f82287ef1466f349d0701f22ed09b680a3ec6a5e
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Mon Mar 23 11:46:45 2020 +0200
+
+    song component when playing + login update
+
+commit bee8d5b33d6ffc9a3088158769a86c6177b8c91a
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Mon Mar 23 02:42:07 2020 +0200
+
+    search about an artist&&the card of top result
+
+commit 4f3f1a82566b0677344a010b002716b6dfeefafd
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Mon Mar 23 01:04:16 2020 +0200
+
+    modifications in user albums
+
+commit c6efcd28159c82afb64bb5be9c56893201e91c25
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sun Mar 22 23:42:51 2020 +0200
+
+    play icon on cards
+
+commit 90ef81d2603bd1d29aff87554b37da3d259246fc
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Sun Mar 22 15:03:30 2020 +0200
+
+    cancel search
+
+commit c2fa32b7ae97d659b5c1c48a656742ed0f2da10c
+Merge: af62e49 4b0d75e
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Sun Mar 22 13:42:44 2020 +0200
+
+    search&&browseall&&cancelsearch
+
+commit fd46032af209463a554d60e8c88f3f6edf3370d6
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sun Mar 22 09:16:35 2020 +0200
+
+    add to queue
+
+commit 43dc3828d88f5591510eb69ea46647d396c09c64
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sun Mar 22 05:06:05 2020 +0200
+
+    user artists and playlists in library
+
+commit b5b81efd6ce0ef0f1c68db4be03e7f5e9e956bd5
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Sun Mar 22 03:29:56 2020 +0200
+
+    like-unlike song and moving song bar
+
+commit defb528ac76e5d8fbfc065fcb39cc2f22f427970
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Mar 21 21:35:41 2020 +0200
+
+    get current song + get queue requests
+
+commit 3489d23e5a53c6691806892534ef831e87af2c71
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Mar 21 19:51:46 2020 +0200
+
+    user albums in library
+
+commit 744c1cebf8a4efe23e9eae760fd36c56026519ed
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Mar 21 08:12:11 2020 +0200
+
+    initial queue view
+
+commit 8c95d683a70684f9fb52cca5c733290db92942f7
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sat Mar 21 03:10:51 2020 +0200
+
+    default pages in library
+
+commit 0b9ec6793298e67eada149afb02b39ed8fbcef31
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Fri Mar 20 21:55:26 2020 +0200
+
+    add nested routes in library
+
+commit c944e5ec5c9d635fdb07a197f1b3daf011ed67c4
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Fri Mar 20 21:20:32 2020 +0200
+
+    navigation bar in library
+
+commit af62e49434c2ce06a4df4e90b8f78936039cf4ff
+Author: bassantt <bassantmohamedali99@gmail.com>
+Date:   Fri Mar 20 19:23:50 2020 +0200
+
+    search&&browseall
+
+commit 4b0d75e32a311039497da3e2b99bf5cdff5dba0b
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 20 13:18:17 2020 +0200
+
+    nested routes in web player
+
+commit 5d29c632eb975aea35ae5b6fc2d82bb5ab4dd5cd
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Thu Mar 19 18:26:17 2020 +0200
+
+    add tooltip on hover
+
+commit a8e9253ff5e009c09c0f06cd31779404e95c7a9a
+Merge: 75fa0e4 f1ba599
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Thu Mar 19 13:37:05 2020 +0200
+
+    merge_mediaplayer
+
+commit f1ba599f7d90f29a2c1b1cd94277bae17d2c4dff
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Thu Mar 19 12:14:49 2020 +0200
+
+    module
+
+commit 3f6e9d8e9f9e401a86e364c7632cc2f12b7ac070
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Thu Mar 19 10:08:07 2020 +0200
+
+    separate module
+
+commit 75fa0e4d2768eb5c2b4f45451d9c1b46b72735d4
+Merge: dfba787 a05e9b8
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Wed Mar 18 22:14:19 2020 +0200
+
+    solved conflict
+
+commit dfba787627c6dcbb78059db29ecf4274acd97c09
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Wed Mar 18 21:41:59 2020 +0200
+
+    final merge
+
+commit a05e9b8257381f6723262bc5ea314f8fa3286f7d
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Wed Mar 18 18:29:56 2020 +0200
+
+    testids for navbars
+
+commit 53c34a4c3c0c56917d2427c0e459031083719d52
+Merge: 2912a6d c0a3f23
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Wed Mar 18 08:39:49 2020 +0200
+
+    merge with error
+
+commit c0a3f23f7a1a64a58fe940258b70c1be5e3a65ea
+Author: Nerdeen <nerdeen.ahmad15@gmail.com>
+Date:   Wed Mar 18 03:45:40 2020 +0200
+
+    createplaylistinterface
+
+commit 2912a6d7643b6d9a2a36f6dd7108870f979bf791
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Wed Mar 18 03:31:05 2020 +0200
+
+    modifications in side bar(on focus)
+
+commit 0c2afd943ef64495b8aa2baa632c7f6aeb85e54d
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Wed Mar 18 02:58:10 2020 +0200
+
+    home footer
+
+commit d33d1eb7d36aeffde4bb436e705c43d6df863c4d
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Wed Mar 18 02:08:50 2020 +0200
+
+    intial home layout
+
+commit 2edcf6bb949616c1e4b91674641a15a9d6df49b0
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Wed Mar 18 00:45:39 2020 +0200
+
+    change vuex to modules
+
+commit 478d4c42c83c7fbb579d87c6fe8edd3a5ecf3488
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Tue Mar 17 23:17:27 2020 +0200
+
+    add modules folder
+
+commit 0fedb40b6776130b6a2a31dc09ae869589cc2a0c
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Tue Mar 17 20:26:33 2020 +0200
+
+    add test ids
+
+commit 29d8d40a4ea9e5119d06f6b08d46455cbf45b826
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Tue Mar 17 19:36:10 2020 +0200
+
+    add test id
+
+commit 4dd5550f226e44fb5e44539f3d76418981c19be7
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Mon Mar 16 17:36:58 2020 +0200
+
+    some changes in mediaplayer view
+
+commit 17a50baf94569ae56237aa883779ddfca2fe35aa
+Author: Nihal Mansour <nihalmansour0599@gmail.com>
+Date:   Mon Mar 16 00:04:36 2020 +0200
+
+    play,pause,next,previous song and view of mediaplayer(not completed)
+
+commit d78917288ddb750117a8c60547f58a1dea6943be
+Author: Nerdeen <nerdeen.ahmad15@gmail.com>
+Date:   Mon Mar 16 00:02:47 2020 +0200
+
+    CreatePlaylist and DeletePlaylist
+
+commit 8892b8fd8946c1263d6dce204026e515c51caa51
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sun Mar 15 23:11:07 2020 +0200
+
+    show PopularPlaylists section
+
+commit 1d051237756f6ab3c09e63ecaf4ca07ef7923915
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sun Mar 15 21:30:24 2020 +0200
+
+    facebook sign up
+
+commit 492ae8ecd603ecf24282ea28d266609fe2c8a220
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sun Mar 15 17:36:02 2020 +0200
+
+    added testids
+
+commit 2be09b7198f78092c6c6a10fd9a33a3d87dd828d
+Author: Dai Alaa <dai.a.elrihany@gmail.com>
+Date:   Sun Mar 15 11:35:01 2020 +0200
+
+    SideBar
+
+commit 001f01efd9f0c549e4e2f89cf0606147f006284c
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sun Mar 15 01:07:01 2020 +0200
+
+    logout
+
+commit ae2d797e296934ca5d456d97249e81ac52baa3b5
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Mar 14 20:18:03 2020 +0200
+
+    reset password
+
+commit 11f3d72a22379e2203f49b9a340bad29e06a8e39
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Sat Mar 14 13:23:30 2020 +0200
+
+    login mock server + signup with unique email validation
+
+commit 44f322862c6fbc616ac2cbf2a98f732d9960b525
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 13 16:48:12 2020 +0200
+
+    login validations + fix submit found bug
+
+commit 6126e39f7f663dbe76509fb073bf6866cfe1970a
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 13 14:46:32 2020 +0200
+
+    login complete view
+
+commit a1c80b2db54b1b4a42f104082a2be3f8c3ba5a8c
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 13 11:49:18 2020 +0200
+
+    signUp mock service
+
+commit d4eab7a300b729a8e6e228656846229a96f630da
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 13 07:53:29 2020 +0200
+
+    validation update
+
+commit 8960cb755b7d1fc31dbe10f9fdaed523f64e0a96
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 13 01:21:14 2020 +0200
+
+    signUp validations
+
+commit 800da7d164619af1bcb3d67279d7aa59fb198370
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Thu Mar 12 16:03:26 2020 +0200
+
+    signUp
+
+commit 7f4fff08cdc8bcec00ebb8025abd8bb47db9d8df
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Wed Mar 11 15:45:45 2020 +0200
+
+    login intial
+
+commit ce6323066d92607822cdedf9c26c440cfacbf778
+Merge: d19b3cf aab9256
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 6 17:56:16 2020 +0200
+
+    basic files
+
+commit d19b3cf43d4038e7f30fdfa5dddc33bab069851e
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 6 17:40:10 2020 +0200
+
+    basic files
+
+commit 6e7db16e2e948f2332a14fbe04f7c8d02c1800bd
+Author: MENNA123MAHMOUD <42938021+MENNA123MAHMOUD@users.noreply.github.com>
+Date:   Fri Mar 6 17:18:28 2020 +0200
+
+    init
+
+commit aab9256ab8cb2791a737a760566dd7d4dbb09a5c
+Author: MohmedMonsef <58445101+MohmedMonsef@users.noreply.github.com>
+Date:   Sun Feb 23 11:50:27 2020 +0200
+
+    Update README.md
+
+commit 1a26fcba5f766e34c3ce5b882a6461cc7440b2e3
+Author: MohmedMonsef <58445101+MohmedMonsef@users.noreply.github.com>
+Date:   Sat Feb 22 13:50:54 2020 +0200
+
+    Initial commit

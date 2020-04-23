@@ -50,8 +50,15 @@ export default {
         });
     },
     AddToQueue({ dispatch }, song) {
+      var srcid;  
+      if( song.isPlaylist)
+        srcid=song.playlistId
+      else
+        srcid=song.albumId
       axios
-        .post("/api/player/add-to-queue/" + song.playlistId + "/" + song.trackId)
+        .post(
+          "/api/player/add-to-queue/" + srcid + "/" + song.trackId+"/?isPlaylist="+song.isPlaylist
+        )
         .then(() => {
           dispatch("Queue");
         })

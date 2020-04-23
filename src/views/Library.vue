@@ -13,6 +13,12 @@
 </style>
 
 <script>
+// import LibraryNavbar from "@/components/library-navbar.vue";
+/**
+ * User's Library where his liked albums , playlists and even followed artists exist
+ * @displayName Library page
+ * @example [none]
+ */
 export default {
   
 };

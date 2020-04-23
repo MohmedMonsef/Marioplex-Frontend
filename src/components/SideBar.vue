@@ -1,5 +1,5 @@
 <template>
-  <div class="SideBar" testid="sidebar component">
+  <div class="SideBar" testid="sidebar component"  >
     <!-- spotify logo -->
     <router-link to="/HomeWebPlayer" testid="logo in sidebar">
       <img
@@ -23,7 +23,11 @@
         </div>
       </li>
       <li>
-        <div class="divOnFocus" @click="setsearch(), setfocus()">
+        <div
+          class="divOnFocus"
+          id="callsearch"
+          @click="setsearch(), setfocus()"
+        >
           <router-link
             to="/HomeWebPlayer/search"
             testid="searchpage link"
@@ -85,7 +89,12 @@
         <li
           v-for="(playlist, i) in playlists1"
           :key="i"
-          @click.right="(playlistid = playlist), (showdelete = true)"
+          @click.right="
+            (playlistid = playlist),
+              (showdelete = true),
+              getpos(),
+              (p_id = playlist.id)
+          "
         >
           <router-link to="/" testid="userplaylists" class="userplaylists">{{
             playlist.name
@@ -93,15 +102,21 @@
           <!-- router link should navigate to play list page-->
         </li>
       </ul>
+      <input
+        v-if="showinput"
+        id="in_rename"
+        v-model="newname"
+        @keyup.enter="ChangePlaylistName(),showinputfield()"
+       
+      />
       <ul v-if="showdelete" id="right-click-menu">
-        <li @click="changeModalStateDelete()">Delete</li>
+        <li class="rename_input" @click="showinputfield()">Rename</li>
+        <li class="delete_div" @click="changeModalStateDelete()">Delete</li>
+        
+        <li class="rename_input" @click="PubPriChange()">Secret</li>
+        <li class="rename_input" @click="PubPriChange()">Public</li>
+        
       </ul>
-      <!-- id="right-click-menu" 
-                tabindex="-1" 
-                v-if="viewMenu" 
-                @blur="closeMenu()" 
-                style="top:top; left:left;" -->
-      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -237,22 +252,34 @@ label {
 #right-click-menu:hover {
   background-color: rgba(77, 75, 75, 0.7);
 }
+#in_rename {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  color: black;
+  height: 20px;
+}
 </style>
 
 <script>
 import { mapGetters } from "vuex";
-//import Vue from 'vue';
+/**
+ * SideBar drawer including navigation to library or home or search
+ * @displayName SideBar
+ * @example [none]
+ */
 export default {
-  // el:'#demo',
   data: function() {
     return {
       show: false,
       showdelete: false,
-      playlistid: 0
-      //   viewMenu: false,
-      //     top: '0px',
-      //     left: '0px',
-      //     right: '0px'
+      playlistid: 0,
+      //showinput: false,
+      posy: "",
+      newname: "",
+      p_id: "",
+      public:true
     };
   },
   mounted() {
@@ -262,54 +289,87 @@ export default {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
       playlists1: "creatplaylist/playlists",
-      // creat new object "playlists1" and map to it
       showModalDelete: "creatplaylist/showModalDelete",
-      isLoggedIn: "authorization/GetStatus"
+      isLoggedIn: "authorization/GetStatus",
+      showinput:"creatplaylist/showinput"
+      // renamepl:"creatplaylist/renamepl"
+
     })
   },
   name: "SideBar",
   methods: {
+    /**
+     * triggers creating playlist popup
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
+    /**
+     * triggers deleting playlist popup
+     * @public This is a public method
+     */
     changeModalStateDelete() {
       this.$store.dispatch("creatplaylist/toggleModalDelete", this.playlistid);
     },
+    /**
+     * triggers navigating to search action
+     * @public This is a public method
+     */
     setsearch() {
       this.$store.dispatch("Search/search_V", "");
+      this.$store.dispatch("Search/clear")
     },
+    /**
+     * triggers navigating to search router
+     * @public This is a public method
+     */
     setfocus() {
       this.searchfocus = true;
       this.$store.dispatch("Search/searchfocus", this.searchfocus);
+    },
+    showinputfield() {
+        this.$store.dispatch("creatplaylist/showinputfield");
+      //this.showinput = !this.showinput;
+      this.$nextTick(function() {
+        var i = document.getElementById("in_rename");
+        console.log("the element", this.posy);
+        if (i) {
+          i.style.top = this.posy;
+
+          // this.showinput = true;
+        }
+       
+      });
+    },
+    getpos() {
+      this.posy = event.screenY - 110 + "px";
+      console.log(" posy", this.posy);
+    },
+    ChangePlaylistName() {
+      // this.showinput = false;
+      let payload = {
+        name: this.newname,
+        playlist_id: this.p_id
+      };
+      console.log("inputstaplaylistids", this.showinput);
+      console.log("playlistname", this.newname);
+      console.log("id", this.p_id);
+      this.$store.dispatch("creatplaylist/ChangePlaylistName", payload);
+    },
+    PubPriChange(){
+      if(this.public){
+      this.public=false;
+      }
+      else{
+        this.public=true;
+      }
+      let payload={
+      public:this.public,
+      playlist_id:this.p_id
+      };
+      this.$store.dispatch("creatplaylist/PubPriChange",payload)
     }
-
-    // setMenu: function(top, left) {
-
-    //         var largestHeight = window.innerHeight - this.right.offsetHeight;
-    //         var largestWidth = window.innerWidth - this.right.offsetWidth;
-
-    //         if (top > largestHeight) top = largestHeight;
-
-    //         if (left > largestWidth) left = largestWidth;
-
-    //         this.top = top + 'px';
-    //         this.left = left + 'px';
-    //     },
-
-    //     closeMenu: function() {
-    //         this.viewMenu = false;
-    //     },
-
-    //     openMenu: function(e) {
-    //         this.viewMenu = true;
-
-    //         Vue.nextTick(function() {
-    //             this.right.focus();
-
-    //             this.setMenu(e.y, e.x)
-    //             }.bind(this));
-    //             e.preventDefault();
-    //     }
   }
 };
 </script>

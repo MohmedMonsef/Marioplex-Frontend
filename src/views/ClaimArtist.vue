@@ -26,7 +26,7 @@
           claiming another.
         </p>
         <!--<input class="claim_input" type="url" placeholder="search for a user name or pase a user url" />-->
-        <button class="popup_button" @click="changeModalState">
+        <button class="popup_button" @click="changeModalState()">
           Claim Artist Profile
         </button>
         <transition name="fade" appear>
@@ -38,7 +38,7 @@
         </transition>
         <transition name="slide" appear>
           <div class="modal" v-if="showModal">
-            <button class="cancel" @click="changeModalState">
+            <button class="cancel" @click="changeModalState()">
               <svg
                 width="32"
                 height="32"
@@ -83,14 +83,14 @@
               </div>
             </div>
 
-            <button class="cancel_button" @click="changeModalState">
+            <button class="cancel_button" @click="changeModalState()">
               cancle
             </button>
             <button
               class="creat_button"
               testid="confirm_create"
               @click.prevent="ClaimArtistProfile()"
-              @click="changeModalState"
+              @click="changeModalState()"
             >
               claim
             </button>
@@ -325,6 +325,11 @@ input {
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Claim artist page to promote the user to be artist to enjoy with features of being artist
+ * @displayName Claim Artist Page
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -341,9 +346,20 @@ export default {
     })
   },
   methods: {
+    /**
+     * toggle appearance of popup
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("creatplaylist/toggleModal");
     },
+    /**
+     * pop up that takes information about the user to be artist like name , genre and description
+     * @public This is a public method
+     * @param {String} name name of artist
+     * @param {String} genre type of music will be presented
+     * @param {String} description some information about the artist and his kind of music
+     */
     ClaimArtistProfile() {
       let payload = {
         name: this.Name,
