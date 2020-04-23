@@ -24,7 +24,10 @@
                 </div>
                 <div class="edit_border2"></div>    
                     <!-- body -->
-                <div class="row" id="playlist_row" v-for="playlist in deleted_playlists" :key="playlist.id">
+                <div class="row playlist_row" 
+                 v-for="(playlist, index) in deleted_playlists"
+                 :class="{playlist_row2: index%2==0}" 
+                 :key="playlist.id">
                     <div class="col-lg">
                         <h4 class="head1">{{playlist.deletedAt.slice(8,10) +"/"+ playlist.deletedAt.slice(5,7) +"/"+ playlist.deletedAt.slice(0,4)}}</h4>
                     </div>
@@ -118,8 +121,11 @@ h4{
     border: none;
     letter-spacing: 1px;
 }
-#playlist_row{
+.playlist_row{
     height: 50px;
+}
+.playlist_row2{
+    background: #C1C3C6;
 }
 </style>
 <script>
