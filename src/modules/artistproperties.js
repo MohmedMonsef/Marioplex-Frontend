@@ -7,7 +7,9 @@ export default {
   namespaced: true,
   state: {
     showModal: false,
-    showModalUpload: false
+    showModalUpload: false,
+    currentimage:"",
+    image_id:"5ea0d6ac199f605c7038af37"
   },
   getters: {
     showModal: state => {
@@ -15,6 +17,12 @@ export default {
     },
     showModalUpload: state => {
       return state.showModalUpload;
+    },
+    currentimage:state=>{
+      return state.currentimage;
+    },
+    image_id:state=>{
+      return state.image_id;
     }
   },
   mutations: {
@@ -27,7 +35,12 @@ export default {
     EditBio() {},
     Editgenre() {},
     EditName() {},
-    UploadPhoto() {}
+    UploadPhoto(state,id) {
+      state.image_id=id;
+    },
+    Show_Photo(){
+     // state.currentimage=image
+    }
   },
   actions: {
     toggleModalUpload({ commit }) {
@@ -90,13 +103,18 @@ export default {
       axios
       ({
         method:"post",
-        url:"http://localhost:3000/api/images/upload/5e8cb7037f37604d583f8d22"+"?belongs_to="+ payload.belongs_to+"&height="+payload.height+"&width="+ payload.width,
+        url:"http://localhost:3000/api/images/update/5e8cb7037f37604d583f8d22"+"?belongs_to="+ payload.belongs_to+"&height="+payload.height+"&width="+ payload.width,
         data:photo,
       })
       .then(res => {
           console.log(res);
-          commit("UploadPhoto");
-          //store.dispatch("artistproperties/GetPhoto",)
+          commit("UploadPhoto",res.imageId);
+          // let payload={
+          //   image_id:res.imageId,
+          //   belongs_to:"artist",
+          // }
+          //store.dispatch("artistproperties/Show_Photo",payload)
+         
         })
         .catch(error => {
           console.log(error);
@@ -133,6 +151,16 @@ export default {
 //     }
     // GetPhoto({commit},){
 
+   },
+   Show_Photo({commit}){
+     //console.log("image id in artist properties module",paylaod.image_id);
+      axios
+      .get("http://localhost:3000/api/images/5ea0d6ac199f605c7038af37?belongs_to=artist")
+      .response(res=>{
+        console.log(res)
+       // const image=res
+        commit ("Show_Photo")
+      })
    }
   }
 };
