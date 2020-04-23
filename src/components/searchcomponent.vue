@@ -77,8 +77,20 @@ let insearch=insearch;
 export default {
   name: "searchcomponent",
   data() {
-    return { Value: "" };
+    return { Value: "",awaitingSearch: false };
   },
+   watch: {
+      Value: function() {
+        if (!this.awaitingSearch) {
+          setTimeout(() => {
+          this.$store.dispatch("Search/searchaboutartist",this.Value);
+            this.awaitingSearch = false;
+          }, 2000); // 2 sec delay
+        }
+        this.awaitingSearch = true;
+       this.$store.dispatch("Search/clear")
+      }
+      },
   methods: {
     check(value) {
       /**
@@ -90,9 +102,11 @@ export default {
       console.log(value,"in component");
       this.$store.dispatch("Search/search_V", this.Value);
       if (value !== "") {
-        this.$store.dispatch("Search/searchaboutartist",this.Value);
+      //  this.$store.dispatch("Search/searchaboutartist",this.Value);
+        this.$store.dispatch("Search/should",'yes');
       }
       else{
+        this.$store.dispatch("Search/should",'no');
         this.$router.currentRoute.path ==
           "/HomeWebPlayer/search"
       }
@@ -106,6 +120,10 @@ export default {
       this.$store.dispatch("Search/search_V", this.Value);
     },isinsearch(){if(insearch){this.Value=""}},
     focus(){
+       if (this.Value !== "") {
+       // this.$store.dispatch("Search/searchaboutartist",this.Value);
+      }
+      
       this.$store.dispatch("Search/searchfocus",true);
      if( this.$router.currentRoute.path !==
           "/HomeWebPlayer/search")
@@ -115,6 +133,9 @@ export default {
       }
     },
     leave(){
+       if (this.Value !== "") {
+      //  this.$store.dispatch("Search/searchaboutartist",this.Value);
+      }
       this.$store.dispatch("Search/searchfocus",false);
     }
     // ,
@@ -143,8 +164,7 @@ export default {
     const searchinput = document.getElementById("search-box");
     searchinput.addEventListener('focus', this.focus,true);
      searchinput.addEventListener('blur', this.leave,true);
-    },
-     computed: {
-    ...mapGetters({insearch: "Search/insearch",searchfocus:"Search/searchfocus"})}
+    }
+
 };
 </script>

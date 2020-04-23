@@ -36,6 +36,7 @@
             :ownerId="match_to.ownerId"
             :type="match_to.type"
             :playlist_id="match_to._id"
+            :ownerType="match_to.ownerType"
           ></top>
         </div>
         <div v-if="match_top[0].type === 'Track'">
@@ -214,12 +215,12 @@
           />
         </div>
       </div>
-      <div
+      <!-- <div
         v-if="match_artists.length==0 &&  match_albums.length==0 && match_playlists.length==0 && match_users.length==0 && match_track.length==0"
       >
         <p id="noresult">No Results </p>
         <p>please try using a small key words</p>
-      </div>
+      </div> -->
       
     </div>
     <div style="height:1000px"></div>

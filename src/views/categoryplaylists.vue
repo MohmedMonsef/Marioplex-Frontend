@@ -10,7 +10,7 @@
           <router-link
             v-if="playlists.length >= 5"
             class="ard-link playlistlink"
-            to="/HomeWebPlayer/category/:categoryId/seeallcategoryplaylists"
+            to="/HomeWebPlayer/category/:categoryId/:name/seeallcategoryplaylists"
             testid="seeallplaylist"
           >Popular playlists</router-link>
         </div>
@@ -18,12 +18,12 @@
           <router-link
             v-if="playlists.length >= 5"
             class="ard-link seelink"
-            to="/HomeWebPlayer/category/:categoryId/seeallcategoryplaylists"
+            to="/HomeWebPlayer/category/:categoryId/:name/seeallcategoryplaylists"
             testid="seeallplaylist"
           >SeeAll</router-link>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="playlistcont">
         <LibPlaylists
           v-for="playlist in playlists"
           :key="playlist.id"
@@ -54,8 +54,10 @@ h1 {
 }
 .row {
   margin-left: 5%;
-  margin-bottom: 100px;
   width: 95%;
+}
+#playlistcont{
+  margin-bottom: 100px;
 }
 .seelink {
   font-size: 30px;
