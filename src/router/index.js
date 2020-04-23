@@ -31,7 +31,8 @@ import seeallplaylist from "../views/seeallplaylist.vue";
 import category from"../views/categoryplaylists.vue";
 import seeallcategoryplaylists from"../views/seeallcategoryplaylists.vue";
 import seealluser from "../views/seealluser.vue";
-import seealltrack from '../views/seealltrack'
+import seealltrack from '../views/seealltrack';
+import UserProfile from "../views/UserProfile";
 Vue.use(VueRouter);
 
 const routes = [
@@ -123,6 +124,11 @@ const routes = [
         path: "ArtistProfile/:artist_id",
         name: "ArtistProfile",
         component: ArtistProfile
+      },
+      {
+        path: "UserProfile/:user_id",
+        name: "UserProfile",
+        component: UserProfile
       }
       , {
         path: "category/:categoryId/:name",

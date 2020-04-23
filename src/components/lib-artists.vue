@@ -36,7 +36,7 @@
       <!-- should navigate to artist page -->
       <router-link
         v-if="type==user"
-        to="/"
+        :to="{path :'/HomeWebPlayer/UserProfile/'+ artistId}"
         class="stretched-link"
         id="carglink"
         testid="artist card link"
@@ -98,6 +98,7 @@ i {
  * @displayName Artists card
  * @example [none]
  */
+
 export default {
   data: function() {
     return {
