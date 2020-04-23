@@ -25,6 +25,14 @@ export default {
   created() {
     window.localStorage.isMySessionActive = "true";
     initializeFirebase();
+    // fun();
+      // firebase.initializeApp(firebaseConfig);
+  //      const messaging = firebase.messaging();
+  //     console.log("xxxxxxxx");
+  //     messaging.onMessage((payload) => {
+  //   console.log('Message received. ', payload);
+  //   // ...
+  // });
   }
 };
 </script>

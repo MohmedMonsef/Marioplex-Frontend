@@ -9,14 +9,18 @@
         <h1>{{user.displayName}}</h1>
       </div>
         <div class="row m-0">
+            <div 
+             v-for="playlist in playlists"
+              :key="playlist.id"
+            >
           <lib-playlists
-            v-for="playlist in playlists"
-            :key="playlist.id"
+            v-if="playlist.isPublic"
             :images="'http://52.205.254.29/api/images/'+ id + '?belongs_to=artist'"
             :name="playlist.name"
             :ownerName="playlist.owner"
             :playlist_id="playlist.id"
           />
+            </div>
         </div>
     </div>
   </div>
@@ -45,7 +49,7 @@ img{
     border-radius: 200px;
 }
 h1{
-    font-size: 36px;
+font-size: 36px;
 line-height: 44px;
 letter-spacing: -.005em;
 font-weight: 600;
