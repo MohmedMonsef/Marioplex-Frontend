@@ -7,7 +7,8 @@ export default {
   state: {
     status: "",
     token: localStorage.getItem("x-auth-token") || "",
-    User: {}
+    User: {},
+    userid:""
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -37,6 +38,9 @@ export default {
       });
       //state.User +=payload
       console.log("nori", payload.Name);
+    },
+    Set_ID(state,id){
+      state.userid=id;
     }
   },
   actions: {
@@ -90,6 +94,8 @@ export default {
           const user = response.data[0];
           console.log(user);
           commit("auth_success", { token, user });
+          console.log("in authorization userid",user._id)
+          commit("Set_ID",user._id);
           if (flag) router.push("/");
         })
         .catch(error => {
@@ -156,6 +162,9 @@ export default {
   },
   getters: {
     Username: state => state.User.displayName,
-    GetStatus: state => state.status
+    GetStatus: state => state.status,
+    userid:state=>{
+      return state.userid;
+    }
   }
 };

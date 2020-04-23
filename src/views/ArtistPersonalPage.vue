@@ -4,6 +4,15 @@
       <div class="black_body">
         <ArtistHeader></ArtistHeader>
         <div class="coverphoto">
+          <!-- <input 
+          type="file" 
+          @change="OnPhotoUpload()" 
+          style="display:none" 
+          ref="inputfile" 
+          />
+          <button @click="$ref.inputfile.click()">change cover photo</button>
+          <button @click="UploadPhoto()">Upload</button> -->
+
           <img class="c_photo" src="../assets/black_ground.png" />
         </div>
         <EditBio v-if="show" />
@@ -191,6 +200,18 @@
         </div>
 
         <!--<DeleteSong></DeleteSong>-->
+        <!-- <form method="post" action="UploadPhoto()" enctype="multipart/form-data"> -->
+        <input 
+          type="file" 
+          @change="OnPhotoUpload()" 
+          style="display:none" 
+          ref="inputfile" 
+          accept="image/*"
+         
+          />  
+          <button class="uploadfile" @click="$refs.inputfile.click()">change cover photo</button>
+          <button class="uploadbutton" @click="UploadPhoto()">Upload</button>
+        <!-- </form> -->
       </div>
     </span>
   </body>
@@ -302,6 +323,54 @@ svg {
   height: 50%;
   width: 100%;
 }
+.uploadfile{
+  position: absolute;
+  top: 30%;
+  left: 70%;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 20px;
+  height: 50px;
+  width: 220px;
+  padding: 8px 34px;
+  background-color: #1ed760;
+  border-radius: 26px;
+  border-color: transparent;
+
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease-out;
+}
+.uploadbutton{
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 20px;
+  height: 50px;
+  width: 220px;
+  padding: 8px 34px;
+  background-color: #1ed760;
+  border-radius: 26px;
+  border-color: transparent;
+
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease-out;
+}
 /* .svg-container{
  
   position:absolute;
@@ -312,7 +381,7 @@ svg {
 </style>
 <script>
 //import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+import { mapState,mapGetters } from "vuex";
 import UploadSong from "../components/UploadSong";
 //import DeleteSong from "../components/DeleteSong";
 import ArtistHeader from "../components/ArtistHeader";
@@ -325,7 +394,16 @@ import EditBio from "../components/EditBio";
 export default {
   name: "ArtistPersonalPage",
   data: function() {
-    return {};
+    return {
+      selectedphoto:null,
+      //fakeval:null,
+      image:{
+      size:'',
+      height:'',
+      width:''
+    },
+    //imageLoaded:false
+    };
   },
   components: {
     UploadSong,
@@ -337,6 +415,9 @@ export default {
     ...mapState({
       show: state => state.artistproperties.showModal,
       showupload: state => state.artistproperties.showModalUpload
+    }),
+    ...mapGetters({
+      userid:"authorization/userid"
     })
   },
   methods: {
@@ -353,6 +434,65 @@ export default {
      */
     changeModalStateUpload() {
       this.$store.dispatch("artistproperties/toggleModalUpload");
+    },
+    OnPhotoUpload(){
+         console.log("in artist personal page event",event);
+         console.log("in artist personal page artist id",this.userid);
+         this.selectedphoto=event.target.files[0]
+         console.log("......",event.target.files)
+        // this.
+         //console.log("in artist personal page photo",this.selectedphoto);
+        //  this.imageLoaded = false;
+      
+      //this.selectedphoto = this.$refs.inputfile.files[0];
+      console.log("in artist personal page photo",this.selectedphoto);
+      console.log("in artist personal page photo name",this.selectedphoto.name);
+      if(!this.selectedphoto|| this.selectedphoto.type.indexOf('image/') !== 0) return;
+      
+      this.image.size = this.selectedphoto.size;
+      
+      let reader = new FileReader();
+      
+      reader.readAsDataURL(this.selectedphoto);
+      console.log("in artist personal page the reader",reader)
+      reader.onload = evt => {
+        let img = new Image();
+        img.onload = () => {
+          this.image.width = img.width;
+          this.image.height = img.height;
+          console.log("in artist personal page width",img.width);
+          //this.imageLoaded = true;
+        }
+        img.src = evt.target.result;
+        console.log("in artist personal page the img",img)
+      }
+    //console.log("in artist personal page the img",img)
+      reader.onerror = evt => {
+        console.error(evt);
+      }
+      
+    },
+    UploadPhoto(){
+      console.log("in artist personal page",this.userid);
+      console.log("in artist personal page photo name",this.selectedphoto.name);
+      var x=this.selectedphoto.name
+      console.log("in artist personal page photo name",x);
+      const photo=new FormData();
+      photo.append("image",this.selectedphoto);
+       console.log("in artist personal page formdata",...photo);
+       console.log("in artist personal page formdata:");
+       for (var key of photo.entries()) {
+			console.log(key[0] + ', ' + key[2])
+		}
+      let payload={
+         selphoto:this.selectedphoto,
+         width:this.image.width,
+         height:this.image.height,
+         belongs_to:"artist",
+         artist_id:this.userid
+      };
+      this.$store.dispatch("artistproperties/UploadPhoto",payload)
+
     }
   }
 };
