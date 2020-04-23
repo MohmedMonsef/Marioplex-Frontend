@@ -154,23 +154,21 @@ export default {
         });
       console.log(Request.headers);
     },
-    resetPassword({ commit }, user,token) {
+    resetPassword({ commit }, payload) {
+      console.log("reset",payload.token)
+      axios.defaults.headers.common["x-auth-token"] = payload.token;
       axios
         .post("api/login/reset_password", {
-           user
-        },
-        {
-          headers: { "x-auth-token": token }
-         } 
+          "password":payload.password
+    }
         )
-
         .then(() => {
           router.replace("/login");
         })
         .catch(error => {
-          commit("auth_error", "reset_err");
+          commit("logout");
           console.log(error);
-          localStorage.removeItem("x-auth-token");
+          delete axios.defaults.headers.common["x-auth-token"];
         });
       console.log(Request.headers);
     },

@@ -20,6 +20,18 @@ export default {
         track3: []
     },
     mutations: {
+        setclear(state){
+            state.topres=[];
+            state.result5=[];
+            state.albumres5=[];
+            state.albumres=[];
+            state.playlistres5=[];
+            state.playlistres=[];
+            state.user=[];
+            state.user5=[];
+            state.track=[];
+            state.track3=[];    
+        },
         set_value(state, searchvalue) {
             state.search_Value = searchvalue;
         },
@@ -71,6 +83,9 @@ export default {
         }
     },
     actions: {
+        clear({commit}){
+            commit("setclear");
+        },
         search_V({ commit }, searchvalue) {
             commit("set_value", searchvalue);
             console.log(searchvalue);
@@ -81,6 +96,17 @@ export default {
       },
         // when integrate with back
         searchaboutartist({ commit }, search_value) {
+                    commit("settopres", []);
+                    commit("setresult5", []);
+                    commit("setalbumres5", []);
+                    commit("setplaylistres5", []);
+                    commit("setuser5", []);
+                    commit("settrack3", []);
+                    commit("setresult", []);
+                    commit("setalbumres", []);
+                    commit("setplaylistres", []);
+                    commit("setuser", []);
+                    commit("settrack", []);
             // const requestOne = axios.get(
             //     "/api/search?name=" + search_value + "&type=top"
             // );
@@ -144,7 +170,7 @@ export default {
                             commit("setplaylistres5", match_valuep5);
                         }
                         else{commit("setplaylistres5", match_valuep);}
-                        console.log(match_valuep);
+                        console.log(match_valuep,'playlist in axios');
                         ////
                         if (match_valueu.length >= 5) {
                             for (let i = 0; i < 5; i++) {
@@ -165,7 +191,7 @@ export default {
                         console.log(match_value);
                         ///////
                         commit("settopres", match_valuet);
-                        
+                        console.log(match_valuet.length)
                         // if (match_value.length > 6) {
                         //   commit("setresult", match_value);
                         //   console.log(match_value);
@@ -179,13 +205,17 @@ export default {
                     })
                 //)
                 .catch((errors) => {
-                    const match_value1 = [];
-                    commit("settopres", match_value1);
-                    commit("setresult5", match_value1);
-                    commit("setalbumres5", match_value1);
-                    commit("setplaylistres5", match_value1);
-                    commit("setuser5", match_value1);
-                    commit("settrack3", match_value1);
+                    commit("settopres", []);
+                    commit("setresult5", []);
+                    commit("setalbumres5", []);
+                    commit("setplaylistres5", []);
+                    commit("setuser5", []);
+                    commit("settrack3", []);
+                    commit("setresult", []);
+                    commit("setalbumres", []);
+                    commit("setplaylistres", []);
+                    commit("setuser", []);
+                    commit("settrack", []);
                     // react on errors.
                     console.error(errors);
                 });

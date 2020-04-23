@@ -125,13 +125,13 @@ const routes = [
         component: ArtistProfile
       }
       , {
-        path: "category/:categoryId",
+        path: "category/:categoryId/:name",
         name: "category",
         component: category
       }
       ,
       {
-        path: "category/:categoryId/seeallcategoryplaylists",
+        path: "category/:categoryId/:name/seeallcategoryplaylists",
         name: "seeallcategoryplaylists",
         component: seeallcategoryplaylists
       }
@@ -153,7 +153,7 @@ const routes = [
     component: ForgetPassword
   },
   {
-    path: "/ResetPassword",
+    path: "/reset_password",
     name: "ResetPassword",
     component: ResetPassword,
     props: (route) => ({

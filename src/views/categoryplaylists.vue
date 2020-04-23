@@ -1,16 +1,16 @@
 <template>
   <div class="cont">
     <div style="height:300px;">
-        <h1>{{playlists[0].category_name}}</h1>
+        <h1>{{this.$route.params.name}}</h1>
     </div>
     <div v-if="playlists.length">
       <div class="row">
         <div class="col-lg-4">
-          <h3 v-if="playlists.length < 5">Popular playlists</h3>
+          <h2 v-if="playlists.length < 5">Popular playlists</h2>
           <router-link
             v-if="playlists.length >= 5"
             class="ard-link playlistlink"
-            to="/HomeWebPlayer/category/:categoryId/seeallcategoryplaylists"
+            to="/HomeWebPlayer/category/:categoryId/:name/seeallcategoryplaylists"
             testid="seeallplaylist"
           >Popular playlists</router-link>
         </div>
@@ -18,13 +18,12 @@
           <router-link
             v-if="playlists.length >= 5"
             class="ard-link seelink"
-            to="/HomeWebPlayer/category/:categoryId/seeallcategoryplaylists"
+            to="/HomeWebPlayer/category/:categoryId/:name/seeallcategoryplaylists"
             testid="seeallplaylist"
           >SeeAll</router-link>
         </div>
       </div>
-      <div style="z-index: 1; width:100%; background-color:#161516;height:400px; " >
-      <div class="row">
+      <div class="row" id="playlistcont">
         <LibPlaylists
           v-for="playlist in playlists"
           :key="playlist.id"
@@ -35,7 +34,7 @@
           :playlist_id="playlist._id"
         />
       </div>
-      </div>
+
     </div>
   </div>
 </template>
@@ -49,19 +48,16 @@ h1 {
     margin-left: 6%;
 }
 .cont {
-  background-image: linear-gradient(
-    to bottom left,
-     rgb(49, 49, 87),
-    #161516   
-  );
+   background-image: linear-gradient(0deg, #161516, rgb(20, 1, 59));
   width: 100%;
   height: 100vh;
-  z-index: 0;
 }
 .row {
   margin-left: 5%;
-  margin-bottom: 15px;
   width: 95%;
+}
+#playlistcont{
+  margin-bottom: 100px;
 }
 .seelink {
   font-size: 30px;
@@ -85,14 +81,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      playlists: "categorys/getcategoryplaylists5"
+      playlists: "categorys/getcategoryplaylists5",
+      category_name:"categorys/getcategory_name"
     })
-  }
-  //     created: function() {
-  //     this.$store.dispatch(
-  //       "categorys/categoryplaylists",
-  //       this.$route.params.categoryId
-  //     )
-  //   }
+  },
+      created: function() {
+      this.$store.dispatch(
+        "categorys/categoryplaylists",
+        this.$route.params.categoryId
+      )
+    }
 };
 </script>

@@ -133,7 +133,8 @@ export default {
       trigger_validation: false,
       can_submit: true,
       password_confirmation: "",
-      password: ""
+      password: "",
+      resettoken:""
     };
   },
   props: {
@@ -150,12 +151,18 @@ export default {
       this.req_confirm_password;
       this.short_password;
       this.matched_password;
+
       setTimeout(() => {
         if (this.can_submit) {
-          let pass = {
+        var token =this.$route.query.token;
+          console.log("too",token)
+          let payload = {
             password: this.password,
+            token:this.$route.query.token
           };
-          this.$store.dispatch("authorization/resetPassword", pass,this.$route.query.token);
+          console.log("cccc",payload.token)
+          
+          this.$store.dispatch("authorization/resetPassword",payload);
         } else return;
       }, 200);
     },
@@ -229,7 +236,8 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.query.token);
+    this.resettoken=this.$route.query.token;
+    console.log(this.resettoken);
   }
 };
 </script>
