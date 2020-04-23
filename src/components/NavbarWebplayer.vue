@@ -333,6 +333,9 @@ export default {
      * @public This is a public method
      */
     goprev: function() {
+       if( this.$router.currentRoute.path !==
+          "/HomeWebPlayer/search")
+          { this.$store.dispatch("Search/showresult",'h');}
       this.$router.go(-1);
     },
     /**

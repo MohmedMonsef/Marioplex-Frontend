@@ -8,9 +8,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 import axios from "axios";
 import { mockServer } from "../mockServer/mock";
+//import VueRx from 'vue-rx';
 
 Vue.config.productionTip = false;
 
+// Vue.use(VueRx);
 if (process.env.NODE_ENV === "production") {
   //if in development call the mockServer
   mockServer();

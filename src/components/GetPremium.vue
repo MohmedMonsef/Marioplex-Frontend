@@ -17,12 +17,12 @@
         </li>
       </ul>
     </div>
-    <div class="row justify-content-center m-0"  v-if="!choosingPlan">
+    <div class="row justify-content-center m-0" v-if="!choosingPlan">
       <div id="plan-nav">
         <p id="plan-inline">
           Your plan
         </p>
-        <a href="#" @click="choosingPlan=1">
+        <a href="#" @click="choosingPlan = 1">
           Change plan
         </a>
       </div>
@@ -34,7 +34,7 @@
           <p>599.88 EGP</p>
           <h6>Offer terms apply.</h6>
         </div>
-        <div class="plans-card"  v-if="Monthly && !choosingPlan">
+        <div class="plans-card" v-if="Monthly && !choosingPlan">
           <span class="card-badge">
             1-month free trial
           </span>
@@ -42,14 +42,21 @@
           <p>49.99 EGP / month after trial</p>
           <h6>Cancel anytime. Offer terms apply.</h6>
         </div>
-        <div class="plans-option"  v-if="choosingPlan">
+        <div class="plans-option" v-if="choosingPlan">
           <span class="card-badge">
             1-month free trial
           </span>
           <h3>Spotify Premium</h3>
           <p>49.99 EGP / month after trial</p>
           <h6>Cancel anytime.</h6>
-          <div class="choose-option"  @click="choosingPlan=0;Yearly=0;Monthly=1;">
+          <div
+            class="choose-option"
+            @click="
+              choosingPlan = 0;
+              Yearly = false;
+              Monthly = true;
+            "
+          >
             <p>
               49.99 EGP / month after trial
             </p>
@@ -59,7 +66,14 @@
         <div class="plans-option" v-if="choosingPlan">
           <h3>Spotify Premium Yearly</h3>
           <p>One year of Spotify Premium, paid once.</p>
-          <div class="choose-option"  @click="choosingPlan=0;Yearly=1;Monthly=0;">
+          <div
+            class="choose-option"
+            @click="
+              choosingPlan = 0;
+              Yearly = true;
+              Monthly = false;
+            "
+          >
             <p>599.88 EGP</p>
             <span><i class="fa fa-chevron-right"></i></span>
           </div>
@@ -67,15 +81,29 @@
       </div>
     </div>
 
-    <div class="row justify-content-center m-0"  v-if="!choosingPlan">
+    <div class="row justify-content-center m-0" v-if="!choosingPlan">
       <div class="premiumForm">
+        <div v-if="!upgraded" class="invalid">
+          <div id="error-icon">
+          <i class="fa fa-exclamation-circle"></i>
+          </div>
+          <div id="errors">
+          <p v-if="!upgraded">Enter a valid credit card number.</p>
+          <p v-if="vsecurity">
+            Please enter the last 3 numbers on the back of your card (or 4
+            numbers on the front if Amex).
+          </p>
+          <p v-if="vmonth">Select the expiration month.</p>
+          <p v-if="vyear">Select the expiration year.</p>
+          </div>
+        </div>
         <p>Card number:</p>
         <input
           type="text"
           id="CreditNumber"
           v-model="CreditNumber"
           placeholder="1111 2222 3333 4444"
-          maxlength="12"
+          maxlength="16"
         />
         <p>Expiration date:</p>
         <select
@@ -106,6 +134,7 @@
             >{{ year.text }}</option
           >
         </select>
+
         <p>
           Security code
         </p>
@@ -139,7 +168,7 @@
           apply.
         </p>
 
-        <button class="costum-btn" id="premium-btn" testid="get premium button">
+        <button class="costum-btn" id="premium-btn" @click.prevent="upgrade()" testid="get premium button">
           Get Premium
         </button>
       </div>
@@ -280,6 +309,34 @@
   font-size: 12px;
   border-radius: 4px;
 }
+.invalid {
+  width: 100%;
+  text-align: center;
+  background-color: #e22134;
+  color: #fff;
+  font-size: 18px;
+  padding: 14px 14px 12px;
+  font-weight: 400;
+  
+
+}
+#error-icon{
+   display: inline-block;
+   width: 10%;
+   position: relative;
+  justify-content: right;
+}
+#errors{
+  display: inline-block;
+   width: 100%;
+  p{
+    font-size: 10px;
+    margin: 0%;
+    padding: 0%;
+     font-weight: 400;
+     text-align: left;
+  }
+}
 .premiumForm {
   width: 460px;
   height: auto;
@@ -349,6 +406,8 @@ input {
 }
 </style>
 <script>
+import { mapGetters } from "vuex";
+//import { CreditCardField } from "vue-credit-card-field";
 /**
  * Body of home page for premium functionalities
  * @displayName HomeBody
@@ -376,25 +435,63 @@ export default {
         { text: "November", value: "11", disabled: false },
         { text: "December", value: "12", disabled: false }
       ],
-      Monthly: 1,
-      Yearly: 0,
+      Monthly: true,
+      Yearly: false,
       choosingPlan: 0,
       nextMonth: "",
       expYear: [{ text: "Year", value: 0, disabled: true }],
-      year: "0"
+      year: "0",
+      vyear:false,
+      vmonth:false,
+      vsecurity:false,
+      validform:false
     };
   },
-  methods: {},
+  methods:{
+    valid_month: function() {
+        if (this.month == "0") {
+          return this.vmonth=true;
+        } else {
+           return this.vmonth=false;
+        }
+    },
+    valid_year: function() {
+        if (this.year == "0") {
+          return this.vyear=true;
+        } else {
+           return this.vyear=false;
+        }
+    },
+    valid_security: function() {
+        if (this.SecurityCode.length < 3) {
+          return this.vsecurity=true;
+        } else {
+           return this.vsecurity=false;
+        }
+    },
+    upgrade:function(){
+        this.valid_year();
+        this.valid_security();
+        this.valid_month();
+         var d = new Date(this.year+'-'+this.month+'-01');
+      let newuser = {
+           expiresDate:d,
+          cardNumber: this.CreditNumber,
+          isMonth:this.Monthly
+          };
+        this.$store.dispatch("authorization/toPremium", newuser);
+    }
+  },
   watch: {
     CreditNumber: function() {
-      var res = this.CreditNumber.replace("x", "");
+      var res = this.CreditNumber.replace(" ", "");
       var len = res.length;
       if (isNaN(res)) {
         this.CreditNumber = this.CreditNumber.substr(0, len - 1);
       }
-      //    else if (len != 0 && len % 4 == 0) {
-      //     this.CreditNumber += "x";
-      //   }
+      // else if (len != 0 && len % 4 == 0) {
+      //   this.formatCard();
+      // }
     },
     SecurityCode: function() {
       if (isNaN(this.SecurityCode)) {
@@ -402,6 +499,11 @@ export default {
         this.SecurityCode = this.SecurityCode.substr(0, len - 1);
       }
     }
+  },
+  computed:{
+   ...mapGetters({
+      upgraded: "authorization/upgraded"
+    }),
   },
   mounted() {
     var today = new Date();

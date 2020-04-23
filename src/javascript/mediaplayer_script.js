@@ -16,7 +16,6 @@ const toast = {
   }
 };
 
-
 ////////////////////////////////////////////////////////////
 export default {
   data: function() {
@@ -47,6 +46,7 @@ export default {
     playSong() {
       this.song_state = true;
       let info;
+      console.log("sccccrippt", this.currentaudio);
       if (
         "playicon-component" == event.target.id ||
         "songComp" == event.target.id
@@ -89,7 +89,7 @@ export default {
           playlist_id: this.Get_Currentsong.playlistId,
           is_playlist: this.Get_Currentsong.isPlaylist
         };
-        console.log("nihal comp",info);
+        console.log("nihal comp", info);
         this.$store.dispatch("Queue/CreateQueue", info);
       }
     },

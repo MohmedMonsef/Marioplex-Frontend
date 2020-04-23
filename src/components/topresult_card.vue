@@ -42,7 +42,11 @@
         <div class="col-8">
           <h2 class="card-title">{{ name }}</h2>
           <div class="typecont">
-            <p class="card-text p" testid="type" id="typecont">
+            <p
+              class="card-text p"
+              testid="type"
+              id="typecont"
+            >
               {{ type }}
             </p>
           </div>
@@ -53,6 +57,27 @@
       </div>
       <router-link
         v-if="type == 'Artist'"
+        to="/ArtistProfile"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
+       <router-link
+        v-if="type == 'playlist'"
+        :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
+       <router-link
+        v-if="type == 'album'"
+        :to="{ path: '../album/' + albumId }"
+        class="stretched-link"
+        id="carglink"
+        testid="cardlink"
+      ></router-link>
+       <router-link
+        v-if="type == 'user'"
         to="/"
         class="stretched-link"
         id="carglink"

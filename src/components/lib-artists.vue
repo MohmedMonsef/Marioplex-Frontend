@@ -16,20 +16,31 @@
       <h4 class="card-title" id="cardtitle" testid="artist name">
         {{ name }}
       </h4>
-      <p class="card-text" id="carddescribtion">
+      <p class="card-text" id="carddescribtion" v-if="type!=user">
         Artist
+      </p>
+      <p class="card-text" id="carddescribtion" v-if="type==user">
+        User
       </p>
       <button v-if="hover" class="play-button" testid="play-button">
         <i class="fa fa-play"></i>
         <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
       </button>
       <router-link
+        v-if="type!=user"
         :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId}"
         class="stretched-link"
         id="carglink"
         testid="artist card link"
       ></router-link>
       <!-- should navigate to artist page -->
+      <router-link
+        v-if="type==user"
+        to="/"
+        class="stretched-link"
+        id="carglink"
+        testid="artist card link"
+      ></router-link>
     </div>
   </div>
 </template>
@@ -102,6 +113,9 @@ export default {
       type: String
     },
     artistId:{
+      type: String
+    },
+    type:{
       type: String
     }
   }

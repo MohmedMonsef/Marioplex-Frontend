@@ -6,6 +6,7 @@ export default {
   namespaced: true,
   state: {
     status: "",
+    upgraded: true,
     token: localStorage.getItem("x-auth-token") || "",
     User: {}
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
@@ -13,6 +14,9 @@ export default {
   mutations: {
     auth_request(state) {
       state.status = "loading";
+    },
+    upgrade(state, flag) {
+      state.upgraded = flag;
     },
     auth_success(state, { token, user }) {
       state.status = "success";
@@ -64,7 +68,6 @@ export default {
         });
     },
     facebook_signUp({ commit }) {
-     
       commit("auth_request");
       axios
         .get("/api/auth/facebook")
@@ -119,7 +122,23 @@ export default {
           console.log(error);
         });
     },
-
+    toPremium({ commit,state }, payload) {
+      console.log("payload",payload.cardNumber)
+      axios
+        .put("api/me/promote", {
+          expiresDate: payload.expiresDate,
+          cardNumber: payload.cardNumber,
+          isMonth: payload.isMonth
+        })
+        .then(() => {
+          state.User.product="premium";
+          store.dispatch("authorization/get_user", true);
+        })
+        .catch(error => {
+          console.log(error);
+          commit("upgrade", false);
+        });
+    },
     reset({ commit }, user) {
       axios
         .post("/api/login/forgetpassword", {
@@ -156,6 +175,7 @@ export default {
   },
   getters: {
     Username: state => state.User.displayName,
-    GetStatus: state => state.status
+    GetStatus: state => state.status,
+    upgraded: state => state.upgraded
   }
 };

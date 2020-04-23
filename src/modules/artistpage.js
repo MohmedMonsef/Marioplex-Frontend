@@ -2,10 +2,10 @@ import axios from "axios";
 export default {
   namespaced: true,
   state: {
-    artist_tracks:[],
-    artist_albums:[],
-    artist_relatedartists:[],
-    bio:"",
+    artist_tracks: [],
+    artist_albums: [],
+    artist_relatedartists: [],
+    bio: "",
     artist_name: "",
     artistcover_image: "",
     followartist: Boolean
@@ -39,40 +39,37 @@ export default {
         .get("api/Artists/" + artist_id)
         .then(response => {
           let artist = response.data;
-          console.log("module artist",artist);
+          console.log("module artist", artist);
           commit("set_artist_name", artist.Name);
           commit("set_artistcover_image", artist.images[0]);
-          commit("set_bio",artist.info);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    
-    artist_tracks({ commit }, artist_id) {
-      axios
-        .get("api/Artists/" + artist_id + "/top-tracks?country=EG")
-        .then(response => {
-          let artist = response.data;
-          this.artist_tracks = [];
-          console.log("array nihal" , this.artist_tracks);
-          var limitedtracks = [];
-          if (artist.length >= 5) {
-            for (let i = 0; i < 5; i++) {
-              limitedtracks.push(artist[i]);
-            }
-            commit("set_artist_tracks", limitedtracks);
-          }
-            else{
-              commit("set_artist_tracks", artist);
-            }
-          
+          commit("set_bio", artist.info);
         })
         .catch(error => {
           console.log(error);
         });
     },
 
+    artist_tracks({ commit }, artist_id) {
+      axios
+        .get("api/Artists/" + artist_id + "/top-tracks?country=EG")
+        .then(response => {
+          let artist = response.data;
+          this.artist_tracks = [];
+          console.log("array nihal", this.artist_tracks);
+          var limitedtracks = [];
+          if (artist.length >= 5) {
+            for (let i = 0; i < 5; i++) {
+              limitedtracks.push(artist[i]);
+            }
+            commit("set_artist_tracks", limitedtracks);
+          } else {
+            commit("set_artist_tracks", artist);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
 
     artist_albums({ commit }, artist_id) {
       axios
@@ -125,15 +122,14 @@ export default {
         });
     },
 
-    checkisfollowed({ commit }, artist_id) {
+    checkisfollowed({ commit }) {
       axios
-        .get("api/me/following/contains", {ids:artist_id})
+        .post("api/me/following/contains", { ids: "artist_id" })
         .then(response => {
           let artist = response.data;
           if (artist.follow == true) {
             commit("set_followartist", true);
-          }
-          else{
+          } else {
             commit("set_followartist", false);
           }
         })
@@ -141,8 +137,6 @@ export default {
           console.log(error);
         });
     }
-
-    
   },
   getters: {
     artist_name: state => state.artist_name,
@@ -152,6 +146,5 @@ export default {
     artist_albums: state => state.artist_albums,
     artist_bio: state => state.bio,
     artist_relatedartists: state => state.artist_relatedartists
-
   }
 };

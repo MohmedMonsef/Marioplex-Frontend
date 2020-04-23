@@ -1,23 +1,17 @@
 <template>
-  <div class="search_contaner">
+  <div class="search_contaner" id="search_contaner">
     <i class="fa fa-search hover"></i>
     <input
       testid="search-box"
       id="search-box"
-      placeholder="Search for artist"
+      placeholder="Search for artist or album"
       v-model="Value"
       autocomplete="off"
       @keydown.esc="reset"
-      v-on:input="check(Value), isinsearch"
+      v-on:input="check(Value),isinsearch"
     />
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      v-if="Value.length !== 0"
-      @click="reset"
-    >
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
+      <span aria-hidden="true" style="font-size:25px;">&times;</span>
     </button>
   </div>
 </template>
@@ -38,17 +32,20 @@
 }
 @media screen and (max-width: 900px) {
   #search-box {
+    width: 80%;
+  }
+   #search_contaner{
     width: 50%;
   }
 }
 @media screen and (max-width: 300px) {
-  #search-box {
-    width: 25%;
+  #search_contaner{
+    width: 30%;
   }
 }
-@media screen and (max-width: 100px) {
-  #search-box {
-    width: 10%;
+@media screen and (max-width: 650px) {
+  #search_contaner{
+    width: 80%;
   }
 }
 
@@ -67,7 +64,7 @@
   color: rgb(26, 24, 9);
 }
 </style>
-
+      
 <script>
 import { mapGetters } from "vuex";
 // let insearch = insearch;
@@ -76,6 +73,7 @@ import { mapGetters } from "vuex";
  * @displayName Search Bar
  * @example [none]
  */
+let insearch=insearch;
 export default {
   name: "searchcomponent",
   data() {
@@ -89,9 +87,14 @@ export default {
        * @public This is a public method
        */
       //console.log(value);
+      console.log(value,"in component");
       this.$store.dispatch("Search/search_V", this.Value);
       if (value !== "") {
-        this.$store.dispatch("Search/searchaboutartist", this.Value);
+        this.$store.dispatch("Search/searchaboutartist",this.Value);
+      }
+      else{
+        this.$router.currentRoute.path ==
+          "/HomeWebPlayer/search"
       }
     },
     /**
@@ -101,6 +104,18 @@ export default {
     reset() {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
+    },isinsearch(){if(insearch){this.Value=""}},
+    focus(){
+      this.$store.dispatch("Search/searchfocus",true);
+     if( this.$router.currentRoute.path !==
+          "/HomeWebPlayer/search")
+          { this.$store.dispatch("Search/showresult",'h');
+            this.$router.go(-1);
+    //      this.$store.dispatch("Search/actshower",true);
+      }
+    },
+    leave(){
+      this.$store.dispatch("Search/searchfocus",false);
     }
     // ,
     // /**
@@ -123,6 +138,11 @@ export default {
     search_value: {
       type: String
     }
-  }
+  },
+   mounted() {
+    const searchinput = document.getElementById("search-box");
+    searchinput.addEventListener('focus', this.focus,true);
+     searchinput.addEventListener('blur', this.leave,true);
+    }
 };
 </script>
