@@ -31,6 +31,8 @@ import HomeBody from "../components/HomeBody.vue";
 import AccountOverview from "../components/Account-overview.vue";
 import AccountEdit from "../components/Account-edit.vue";
 import AccountChange from "../components/Account-change.vue";
+import AccountRecover from "../components/Account-recover.vue";
+import AccountNotifications from "../components/Account-notifications.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -58,6 +60,14 @@ const routes = [
           {
             path: "Account-change",
             component: AccountChange
+          },
+          {
+            path: "Account-recover",
+            component: AccountRecover
+          },
+          {
+            path: "Account-notifications",
+            component: AccountNotifications
           },
         ]
       }

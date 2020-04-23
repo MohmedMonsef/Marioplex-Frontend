@@ -76,7 +76,7 @@
             <li @click="(show4=true) ,(show2=false) ,(show3=false) ,(show1=false),(show5=false)"
                 @mouseover="hover4=true"
                 @mouseleave="hover4=false">
-                <router-link to="/UserAccount/Account-overview" testid="notification_link">
+                <router-link to="/UserAccount/Account-notifications" testid="notification_link">
                     <div v-if="show4 || hover4" class="green_div"></div>
                     <svg 
                      class="Icon__root--20DBB Menu__icon--2YGXY" 
@@ -96,7 +96,7 @@
             <li @click="(show5=true) ,(show2=false) ,(show3=false) ,(show1=false) ,(show4=false)"
                 @mouseover="hover5=true"
                 @mouseleave="hover5=false">
-                <router-link to="/UserAccount/Account-overview" testid="recover_link">
+                <router-link to="/UserAccount/Account-recover" testid="recover_link">
                     <div v-if="show5 || hover5" class="green_div"></div>
                     <svg 
                      id="icon-refresh" 
@@ -193,5 +193,43 @@ export default {
     };
   },
     name: "AccountSidebar",
+    methods:{
+        check() {
+            if ( this.$router.currentRoute.path == "/UserAccount/Account-overview")
+                {
+                     this.show1 = true;
+                }
+            else {
+                this.show1 = false;
+            }
+            if ( this.$router.currentRoute.path == "/UserAccount/Account-edit")
+                {
+                     this.show2 = true;
+                }
+            else {
+                this.show2 = false;
+            }
+            if ( this.$router.currentRoute.path == "/UserAccount/Account-change")
+                {
+                     this.show3 = true;
+                }
+            else {
+                this.show3 = false;
+            }
+            if ( this.$router.currentRoute.path == "/UserAccount/Account-recover")
+                {
+                     this.show5 = true;
+                }
+            else {
+                this.show5 = false;
+            }
+        }
+    },
+    mounted() {
+        window.addEventListener("click", this.check);
+    },
+    destroyed() {
+        window.removeEventListener("click", this.check);
+    },
 }
 </script>
