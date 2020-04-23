@@ -119,13 +119,13 @@ const routes = [
         component: album
       }
       , {
-        path: "category/:categoryId",
+        path: "category/:categoryId/:name",
         name: "category",
         component: category
       }
       ,
       {
-        path: "category/:categoryId/seeallcategoryplaylists",
+        path: "category/:categoryId/:name/seeallcategoryplaylists",
         name: "seeallcategoryplaylists",
         component: seeallcategoryplaylists
       }

@@ -318,6 +318,7 @@ export default {
      */
     setsearch() {
       this.$store.dispatch("Search/search_V", "");
+      this.$store.dispatch("Search/clear")
     },
     /**
      * triggers navigating to search router
