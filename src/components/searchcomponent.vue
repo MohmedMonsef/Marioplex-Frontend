@@ -143,8 +143,6 @@ export default {
     const searchinput = document.getElementById("search-box");
     searchinput.addEventListener('focus', this.focus,true);
      searchinput.addEventListener('blur', this.leave,true);
-    },
-     computed: {
-    ...mapGetters({insearch: "Search/insearch",searchfocus:"Search/searchfocus"})}
+    }
 };
 </script>
