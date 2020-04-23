@@ -93,7 +93,7 @@ export default {
           const user = response.data[0];
           console.log(user);
           commit("auth_success", { token, user });
-          if (flag) router.push("/");
+          if (flag) router.replace("/");
         })
         .catch(error => {
           commit("auth_error", "user_err");
@@ -146,6 +146,26 @@ export default {
         })
         .then(() => {
           commit("logout");
+        })
+        .catch(error => {
+          commit("auth_error", "reset_err");
+          console.log(error);
+          localStorage.removeItem("x-auth-token");
+        });
+      console.log(Request.headers);
+    },
+    resetPassword({ commit }, user,token) {
+      axios
+        .post("api/login/reset_password", {
+           user
+        },
+        {
+          headers: { "x-auth-token": token }
+         } 
+        )
+
+        .then(() => {
+          router.replace("/login");
         })
         .catch(error => {
           commit("auth_error", "reset_err");

@@ -5,6 +5,7 @@ import HomeBody from "../components/HomeBody.vue";
 import SignUp from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import ForgetPassword from "../views/ForgetPassword.vue";
+import ResetPassword from "../views/ResetPassword.vue";
 import HomeWebPlayer from "../views/HomeWebPlayer.vue";
 import UserHome from "../views/UserHome.vue";
 import Search from "../views/Search.vue";
@@ -24,7 +25,6 @@ import GetPremium from "../components/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import album from "../views/album_view.vue";
 import ArtistProfile from "../views/ArtistProfile.vue";
-
 import seeallartist from "../views/seeallartist.vue";
 import seeallalbum from "../views/seeallalbum.vue";
 import seeallplaylist from "../views/seeallplaylist.vue";
@@ -151,6 +151,14 @@ const routes = [
     path: "/ForgetPassword",
     name: "ForgetPassword",
     component: ForgetPassword
+  },
+  {
+    path: "/ResetPassword",
+    name: "ResetPassword",
+    component: ResetPassword,
+    props: (route) => ({
+      token: route.query.token
+    })
   },
   {
     path: "/ForArtist",
