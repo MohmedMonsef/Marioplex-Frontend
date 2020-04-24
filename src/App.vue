@@ -23,6 +23,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import {initializeFirebase} from '../src/messaging/init';
 export default {
   beforeCreate() {
     window.localStorage.isMySessionActive = "false";
@@ -41,12 +42,22 @@ export default {
     }
   },
   created() {
-    window.localStorage.isMySessionActive = "true";
+    window.localStorage.isMySessionActive = "true";   
+     initializeFirebase();
+
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "authorization/GetStatus"
     })
+    // fun();
+      // firebase.initializeApp(firebaseConfig);
+  //      const messaging = firebase.messaging();
+  //     console.log("xxxxxxxx");
+  //     messaging.onMessage((payload) => {
+  //   console.log('Message received. ', payload);
+  //   // ...
+  // });
   }
 };
 </script>

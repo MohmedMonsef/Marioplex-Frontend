@@ -203,6 +203,7 @@
             testid="seeallartist"
           >SeeAll</router-link>
         </div>
+        
         <div class="row">
           <LibArtists
             class="col-lg-10% col-md-60% col-xs-6"

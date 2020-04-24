@@ -8,7 +8,9 @@ export default {
     status: "",
     upgraded: true,
     token: localStorage.getItem("x-auth-token") || "",
-    User: {}
+    User: {},
+    isEdited: "",
+    deleted_playlists: []
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -41,7 +43,13 @@ export default {
       });
       //state.User +=payload
       console.log("nori", payload.Name);
-    }
+    },
+    is_edit(state,msg){
+      state.isEdited = msg;
+    },
+    setDeletedPlaylists(state, playlists) {
+      state.deleted_playlists = playlists;
+    },
   },
   actions: {
     signUp({ commit }, user) {
@@ -189,11 +197,48 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    SaveEdit({commit}, user) {
+      console.log("user in save edit" , user);
+      commit("auth_request");
+      axios
+        .put("/api/me/update", {
+          // email: user.email, 
+          // password: user.password,
+          // newpassword: user.newpassword,
+          // gender: user.gender,
+          // country: user.country,
+          // birthday: user.birthday
+          user
+        })
+        .then(response =>{
+          console.log(response.data);
+          commit("is_edit" , "success");
+        })
+        .catch(error => {
+          commit("is_edit" , "faild");
+          console.log(error);
+        });
+    },
+    showDeletedPlaylists({ commit }) {
+      axios
+        .get("/api/me/deletedplaylists")
+        .then(response => {
+          console.log('deleted playlists dai' , response)
+          let playlists = response.data;
+          commit("setDeletedPlaylists", playlists);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
   getters: {
     Username: state => state.User.displayName,
     GetStatus: state => state.status,
+    user: state => state.User,
+    isEdited: state => state.isEdited,
+    deleted_playlists: state => state.deleted_playlists,
     upgraded: state => state.upgraded
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <home-navigation-bar />
-    <router-view></router-view>
+    <router-view class="child"></router-view>
     <home-footer />
   </div>
 </template>

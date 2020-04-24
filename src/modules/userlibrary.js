@@ -51,11 +51,10 @@ export default {
       axios
         .get("/api/me/followingArtist")
         .then(response => {
-          let artists = response.data;
+          let artists = response.data.Artists;
           if (response.status != 200) {
             artists = [];
           }
-          console.log("meeeeeeeeee", artists);
           commit("setUserArtists", artists);
           if (state.loadingartists == 0) {
             state.loadingartists = 1;
