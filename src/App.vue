@@ -1,9 +1,28 @@
 <template>
   <div id="app">
-    <router-view />
+    <div id="loadingscreen" v-if="isLoggedIn ==''" >    
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <router-view v-if="isLoggedIn !=''" />
   </div>
 </template>
+
+<style lang="scss">
+#loadingscreen{
+  // height: 100vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  i{
+     font-size: 70px;
+     margin-top: 40%;
+  }
+}
+</style>
+
 <script>
+import { mapGetters } from 'vuex';
 export default {
   beforeCreate() {
     window.localStorage.isMySessionActive = "false";
@@ -23,13 +42,11 @@ export default {
   },
   created() {
     window.localStorage.isMySessionActive = "true";
+  },
+  computed: {
+    ...mapGetters({
+      isLoggedIn: "authorization/GetStatus"
+    })
   }
 };
 </script>
-
-<style lang="scss">
-audio {
-  position: absolute;
-  z-index: 3000;
-}
-</style>
