@@ -195,7 +195,18 @@ export default {
     },
     showinputfield({commit}){
       commit("showinputfield")
-    }
+    },
+    Restore({commit},payload) {
+      axios
+        .put("/api/me/restoreplaylists",payload)
+        .then(response => {
+          console.log("the response", response);
+          commit("ChangePlaylistName",payload.id);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
   },
   
 };

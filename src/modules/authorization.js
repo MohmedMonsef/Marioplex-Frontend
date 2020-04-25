@@ -1,7 +1,7 @@
 import axios from "axios";
 import store from "../store";
 import router from "../router/index";
-
+import {initializeFirebase} from '../messaging/init';
 export default {
   namespaced: true,
   state: {
@@ -121,6 +121,7 @@ export default {
           const token = response.data.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
+          initializeFirebase();
           store.dispatch("authorization/get_user", true);
         })
         .catch(error => {
@@ -180,10 +181,15 @@ export default {
         });
       console.log(Request.headers);
     },
-    logout({ commit }) {
+    logout({ commit,state }) {
       commit("logout");
-      localStorage.removeItem("x-auth-token");
-      delete axios.defaults.headers.common["x-auth-token"];
+      axios
+      .post("/api/user/logout/?id="+state.User._id)
+      .then(()=>{
+        
+        localStorage.removeItem("x-auth-token");
+        delete axios.defaults.headers.common["x-auth-token"];
+      })
     },
     ClaimArtistProfile({ commit }, payload) {
       console.log("wslllllll", payload);

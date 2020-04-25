@@ -1,19 +1,30 @@
-importScripts("https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/6.4.0/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js");
+// import {get_messaging} from "../src/messaging/init";
 
 if (firebase.messaging.isSupported()) {
+  console.log("hooooooooo");
   var firebaseConfig = {
-    messagingSenderId: "648404578436"
+    apiKey: "AIzaSyAr0_LjcEdJVsvhQD8SC6Aggl9gzfgsRjA",
+    authDomain: "notif-demo-e8dae.firebaseapp.com",
+    databaseURL: "https://notif-demo-e8dae.firebaseio.com",
+    projectId: "notif-demo-e8dae",
+    storageBucket: "notif-demo-e8dae.appspot.com",
+    messagingSenderId: "356913468865",
+    appId: "1:356913468865:web:52bba10aea1a12265a4b40",
+    measurementId: "G-89JE5P29CZ"
   };
   firebase.initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
+  // let ms = get_messaging();
+  console.log("xxxxxxxx");
   messaging.setBackgroundMessageHandler(function(payload) {
     console.log(' Received background message ', payload);
-    var sender = JSON.parse(payload.data.message);
-    var notificationTitle = 'CometChat Pro Notification';
+    // var sender = JSON.parse(payload.data.message);
+    var notificationTitle = payload.data.title;
     var notificationOptions = {
-      body: payload.data.alert,
-      icon: sender.data.entities.sender.entity.avatar,
+      body: payload.data.body,
+      // icon: window.document.URL.replace(/^(.\/)./, "$1") + "../src/assets/icon.png",
     };
     return self.registration.showNotification(
       notificationTitle,
@@ -24,4 +35,7 @@ if (firebase.messaging.isSupported()) {
     event.notification.close();
     //handle click event onClick on Web Push Notification
   });
+}
+else{
+  console.log("not supported")
 }

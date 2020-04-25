@@ -29,16 +29,16 @@
                  :class="{playlist_row2: index%2==0}" 
                  :key="playlist.id">
                     <div class="col-lg">
-                        <h4 class="head1">{{playlist.deletedAt.slice(8,10) +"/"+ playlist.deletedAt.slice(5,7) +"/"+ playlist.deletedAt.slice(0,4)}}</h4>
+                        <h4 class="col1">{{playlist.deletedAt.slice(8,10) +"/"+ playlist.deletedAt.slice(5,7) +"/"+ playlist.deletedAt.slice(0,4)}}</h4>
                     </div>
                     <div class="col-lg">
-                        <h4 class="head2">{{playlist.name}}</h4>
+                        <h4 class="col2">{{playlist.name}}</h4>
                     </div>
                     <div class="col-lg">
-                        <h4 class="head3">{{playlist.songsNumber}}</h4>
+                        <h4 class="col3">{{playlist.songsNumber}}</h4>
                     </div>
                     <div class="col-lg">
-                        <button class="restore">RESTORE</button>
+                        <button class="restore" @click="restore()">RESTORE</button>
                     </div>
                 </div>
             </div>
@@ -71,9 +71,8 @@ h1{
 }
 .edit_border2{
     border-bottom: 1px solid rgb(230, 230, 230);
-    width: 90%;
-    margin-left: 1%;
-    margin-bottom: 3%;
+    width: 92%;
+    margin-left: -1%;
     margin-top: 1%;
 }
 .white_div{
@@ -120,12 +119,22 @@ h4{
     background: transparent;
     border: none;
     letter-spacing: 1px;
+    margin-left: 40%;
 }
 .playlist_row{
     height: 50px;
+    padding-top: 2.4%;
+    margin-left: -1%;
+    width: 92%;
 }
 .playlist_row2{
-    background: #C1C3C6;
+    background: #F8F8F8;
+}
+.col2{
+    margin-left: 20%;
+}
+.col3{
+    margin-left: 30%;
 }
 </style>
 <script>
@@ -143,6 +152,11 @@ export default {
         ...mapGetters({
       deleted_playlists: "authorization/deleted_playlists",
     })
+    },
+    methods:{
+        restore(){
+            this.$store.dispatch("creatplaylist/Restore");
+        }
     }
 }
 </script>
