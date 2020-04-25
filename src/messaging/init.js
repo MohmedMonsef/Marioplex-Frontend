@@ -28,10 +28,9 @@ export function initializeFirebase() {
       appId: "1:356913468865:web:52bba10aea1a12265a4b40",
       measurementId: "G-89JE5P29CZ",
     };
-    if (firebase.apps.length) {
-      return;
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
     }
-    firebase.initializeApp(firebaseConfig);
     messaging = firebase.messaging();
     messaging.onMessage((payload) => {
       console.log("Message received. ", payload);

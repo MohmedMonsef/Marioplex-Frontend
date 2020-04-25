@@ -14,9 +14,10 @@ if (firebase.messaging.isSupported()) {
     appId: "1:356913468865:web:52bba10aea1a12265a4b40",
     measurementId: "G-89JE5P29CZ"
   };
-  firebase.initializeApp(firebaseConfig);
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
   const messaging = firebase.messaging();
-  // let ms = get_messaging();
   console.log("xxxxxxxx");
   messaging.setBackgroundMessageHandler(function(payload) {
     console.log(' Received background message ', payload);

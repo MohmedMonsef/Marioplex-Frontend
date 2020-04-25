@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-// import {initializeFirebase} from '../src/messaging/init';
 export default {
   beforeCreate() {
     window.localStorage.isMySessionActive = "false";
@@ -24,8 +23,6 @@ export default {
   },
   created() {
     window.localStorage.isMySessionActive = "true";
-    // initializeFirebase();
-    // fun();
   }
 };
 </script>
