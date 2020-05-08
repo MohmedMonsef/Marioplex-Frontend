@@ -3,16 +3,21 @@ export default {
   namespaced: true,
   state: {
     artist_tracks:[],
+    tracks_length:"",
     artist_albums:[],
     artist_relatedartists:[],
     bio:"",
     artist_name: "",
     artistcover_image: "",
+    userID:"",
     followartist: Boolean
   },
   mutations: {
     set_artist_tracks(state, tracks) {
       state.artist_tracks = tracks;
+    },
+    set_tracks_length(state, length) {
+      state.tracks_length = length;
     },
     set_artist_relatedartists(state, artists) {
       state.artist_relatedartists = artists;
@@ -31,7 +36,10 @@ export default {
     },
     set_bio(state, bio) {
       state.bio = bio;
-    }
+    },
+    set_artist_ID(state, id) {
+      state.userID = id;
+    },
   },
   actions: {
     artist_page({ commit }, artist_id) {
@@ -43,6 +51,7 @@ export default {
           commit("set_artist_name", artist.Name);
           commit("set_artistcover_image", artist.images[0]);
           commit("set_bio",artist.info);
+          commit("set_artist_ID",artist.userId);
         })
         .catch(error => {
           console.log(error);
@@ -62,14 +71,17 @@ export default {
               limitedtracks.push(artist[i]);
             }
             commit("set_artist_tracks", limitedtracks);
+            commit("set_tracks_length", 5);
           }
             else{
               commit("set_artist_tracks", artist);
+              commit("set_tracks_length", artist.length);
             }
           
         })
         .catch(error => {
           console.log(error);
+          commit("set_artist_tracks", []);
         });
     },
 
@@ -100,7 +112,7 @@ export default {
 
     follow_artist({ commit }, artist_id) {
       axios
-        .put("api/me/following", { ids: [artist_id] })
+        .put("api/me/following", { ids: artist_id })
         .then(response => {
           let artist = response.status;
           if (artist == 200) {
@@ -113,7 +125,7 @@ export default {
     },
     unfollow_artist({ commit }, artist_id) {
       axios
-        .delete("api/me/following", { data: { ids: [artist_id] } })
+        .delete("api/me/following", { data: { ids: artist_id } })
         .then(response => {
           let artist = response.status;
           if (artist == 200) {
@@ -125,9 +137,10 @@ export default {
         });
     },
 
-    checkisfollowed({ commit }, artist_id) {
+    checkisfollowed({ commit}, artist_id) {
+      console.log("artistid",artist_id)
       axios
-        .get("api/me/following/contains" + artist_id)
+        .get("api/me/following/contains"+ artist_id)
         .then(response => {
           let artist = response.status;
           if (artist.follow == true) {
@@ -151,7 +164,8 @@ export default {
     artist_tracks: state => state.artist_tracks,
     artist_albums: state => state.artist_albums,
     artist_bio: state => state.bio,
-    artist_relatedartists: state => state.artist_relatedartists
+    artist_relatedartists: state => state.artist_relatedartists,
+    tracks_length: state=> state.tracks_length
 
   }
 };

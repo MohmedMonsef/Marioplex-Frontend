@@ -1,7 +1,7 @@
 <template>
   <div class="ArtistOverview">
     <div class="col col-lg-12">
-    <h1 class="title">Popular</h1>
+    <h1 class="title" v-if="tracks_length">Popular</h1>
     <song-component
           testid="songcomponent"
           v-for="p in artist_tracks" 
@@ -62,7 +62,8 @@ export default {
    computed: {
     ...mapGetters({
       artist_tracks: "artistpage/artist_tracks",
-      artist_albums: "artistpage/artist_albums"
+      artist_albums: "artistpage/artist_albums",
+      tracks_length: "artistpage/tracks_length"
     })
   },
     created: function() {

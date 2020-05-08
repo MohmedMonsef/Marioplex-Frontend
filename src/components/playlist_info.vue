@@ -368,8 +368,8 @@ export default {
      */
     likecurrentplaylist: function() {
       if (!this.liked) {
-        if(toast != null){
-        toast.show("Saved to Your Library");
+        if (toast != null) {
+          toast.show("Saved to Your Library");
         }
         this.$store.dispatch(
           "playlist/like_playlist",
@@ -377,8 +377,8 @@ export default {
         );
         this.$store.dispatch("creatplaylist/showplaylists");
       } else {
-        if(toast != null){
-        toast.show("Removed from Your Library");
+        if (toast != null) {
+          toast.show("Removed from Your Library");
         }
         this.$store.dispatch(
           "playlist/unlike_playist",

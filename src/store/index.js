@@ -17,6 +17,7 @@ import album from "../modules/album";
 import likedtracks from "../modules/likedtracks";
 import playlistpopup from "../modules/playlistpopup";
 import artistpage from "../modules/artistpage";
+import checkuserpopup from "../modules/checkuserpopup";
 //export const  bus = new Vue();
 Vue.use(Vuex);
 
@@ -38,6 +39,7 @@ export default new Vuex.Store({
     likedtracks,
     artistproperties,
     playlistpopup,
-    artistpage
+    artistpage,
+    checkuserpopup
   }
 });
