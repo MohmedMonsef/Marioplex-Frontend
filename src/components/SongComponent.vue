@@ -82,9 +82,10 @@
           Remove from Liked Songs
         </p>
         <p @click="addToQueue()">Add to Queue</p>
-        <p @click="changeModalStateAdd(), showplaylists()">Add to Playlist</p>
+        <p @click="changeModalStateAdd()">Add to Playlist</p>
+        <p @click="RemoveFromThisPlaylist()">Remove from this Playlist</p>
       </div>
-      <!-- <AddTrackPopup v-if="showAdd"></AddTrackPopup> -->
+      <AddTrackPopup v-if="showAdd"></AddTrackPopup>
     </div>
   </div>
 </template>
@@ -229,8 +230,8 @@
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
-// import AddTrackPopup from "../components/AddTrackPopup";
-import { mapGetters } from "vuex";
+import AddTrackPopup from "../components/AddTrackPopup";
+import { mapGetters, mapState } from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");
@@ -254,6 +255,7 @@ export default {
       hover: false,
       show: false,
       isclicked: false
+      //showAdd:false
     };
   },
   mixins: [song_functions],
@@ -303,7 +305,9 @@ export default {
     addToQueue() {
       this.$store.dispatch("Queue/AddToQueue", {
         trackId: this.song_id,
-        playlistId: this.playlistId
+        playlistId: this.playlistId,
+        isPlaylist:this.isPlaylist,
+        albumId:this.albumId
       });
     },
     /**
@@ -375,10 +379,17 @@ export default {
       }
     },
     changeModalStateAdd() {
+      console.log("in song component track", this.song_id);
       this.$store.dispatch("creatplaylist/toggleModalAdd", this.song_id);
     },
-    showplaylists() {
-      this.$store.dispatch("creatplaylist/showplaylists");
+    RemoveFromThisPlaylist() {
+      let payload = {
+        playlist_id: this.playlistId,
+        song_id: this.song_id
+      };
+      console.log("playlist id in song component", payload.playlist_id);
+      console.log("track in song component", payload.song_id);
+      this.$store.dispatch("playlist/RemoveFromThisPlaylist", payload);
     }
   },
   computed: {
@@ -390,8 +401,8 @@ export default {
     isCurrent: function() {
       return (
         this.song_id == this.Get_Currentsong.track._id &&
-        this.albumId == this.Get_Currentsong.album._id &&
-        this.playlistId == this.Get_Currentsong.playlistId
+        (this.albumId == this.Get_Currentsong.album._id ||
+          this.playlistId == this.Get_Currentsong.playlistId)
       );
     },
     length: function() {
@@ -402,13 +413,10 @@ export default {
     },
     ...mapGetters({
       Get_Currentsong: "mediaplayer/Get_Currentsong"
-      // trackid: "mediaplayer/toadd"
+    }),
+    ...mapState({
+      showAdd: state => state.creatplaylist.showModalAdd
     })
-    // ,
-    // not implemented yet
-    // ...mapState({
-    //   showAdd: state => state.creatplaylist.showModalAdd
-    // })
   },
   created: function() {
     window.addEventListener("click", this.hideshow);
@@ -416,8 +424,9 @@ export default {
   destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
-  // components: {
-  //   AddTrackPopup
-  // }
+  // ,
+  components: {
+    AddTrackPopup
+  }
 };
 </script>

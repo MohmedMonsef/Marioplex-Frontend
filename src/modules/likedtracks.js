@@ -5,10 +5,12 @@ export default {
     likedtracks_tracks: [],
     likedtracks_loaded: 0,
     likedtracks_length: "",
-    owner_name: ""
+    owner_name: "",
+    id:""
   },
   mutations: {
     set_likedtracks(state, likedtracks_tracks) {
+      state.likedtracks_tracks = [];
       state.likedtracks_tracks = likedtracks_tracks;
     },
     set_likedtracks_loaded(state, status) {
@@ -19,6 +21,9 @@ export default {
     },
     set_owner_name(state, name) {
       state.owner_name = name;
+    },
+    playlist_id(state,id){
+      state.id=id;
     }
   },
   actions: {
@@ -31,6 +36,7 @@ export default {
           commit("set_likedtracks_loaded", true);
           commit("set_likedtracks_length", likedtracks.tracks.length);
           commit("set_owner_name", likedtracks.ownerName);
+          commit("playlist_id",likedtracks.playlistId)
           if (state.likedtracks_loaded == 0) {
             state.likedtracks_loaded = 1;
           }
@@ -44,6 +50,7 @@ export default {
     likedtracks_tracks: state => state.likedtracks_tracks,
     likedtracks_loaded: state => state.likedtracks_loaded,
     likedtracks_length: state => state.likedtracks_length,
-    owner_name: state => state.owner_name
+    owner_name: state => state.owner_name,
+    playlist_id:state=>state.id
   }
 };

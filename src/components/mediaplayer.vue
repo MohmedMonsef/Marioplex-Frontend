@@ -528,9 +528,9 @@ export default {
      * @public This is a public method
      */
     moving_song_bar: function() {
+      //console.log("x")
       this.$store.dispatch("mediaplayer/advance_progress");
-      if (!this.drag && this.currentaudio) {
-        //console.log("this is the entering condition",this.drag && this.playicon)
+      if (!this.drag) {
         var SongSlider = document.getElementById("progressbar");
         if (SongSlider != null) {
           var ct = this.progress;
@@ -690,14 +690,14 @@ export default {
   },
   computed: {
     changeTime: function() {
-      if (this.currentaudio) {
+     if (this.currentaudio) {
         // console.log("in chnge time" , pos)
         var min = Math.floor((this.currentPos % 3600) / 60);
         var sec = Math.floor(this.currentPos % 60);
         if (sec < 10) sec = "0" + sec;
         console.log(" minute sec", min, ":", sec);
         return min + ":" + sec;
-      }
+     }
       return "0:00";
     },
     totalDuration: function() {

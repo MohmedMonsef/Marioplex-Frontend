@@ -27,4 +27,9 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+audio {
+  position: absolute;
+  z-index: 3000;
+}
+</style>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store";
 export default {
   namespaced: true,
   state: {
@@ -22,7 +23,7 @@ export default {
         track
       });
     },
-    AddTrack(state, tracks) {
+    AddTrackToNewPlayList(state, tracks) {
       state.playlist_tracks.push({
         tracks
       });
@@ -41,6 +42,12 @@ export default {
     },
     set_likedplaylist(state, like) {
       state.likedplaylist = like;
+    },
+    RemoveFromThisPlaylist(){
+
+    },
+    AddTrackToExsistPlaylist(){
+
     }
   },
   actions: {
@@ -78,22 +85,28 @@ export default {
           console.log(error);
         });
     },
-    async AddTrack({ commit }, payload) {
-      console.log(
-        "to add track in playlist.js the playlistid is",
-        payload.playlistoftrack
-      );
-      const data = axios
-        .post("/api/playlists/" + payload.playlistoftrack + "/tracks")
+    //async 
+    AddTrackToNewPlayList({ commit }, payload) {
+      // console.log(
+      //   "to add track in playlist.js the playlistid is",
+      //   payload.playlistoftrack
+      // );
+     // await store.dispatch("creatplaylist/CreatePlaylist")
+      //const data=axios
+      axios
+        .post("/api/playlists/" + payload.playlist_id + "/tracks",{tracks:payload.trackid})
         .then(response => {
-          let tracks = response.data;
-          commit("AddTracks", tracks);
+          console.log(response)
+          commit("AddTrackToNewPlayList");
+          store.dispatch("playlist_tracks",payload.playlist_id)
+          store.dispatch("creatplaylist/toggleModalAdd")
         })
         .catch(error => {
           console.log(error);
         });
-      return data;
+      //return data;
     },
+    
     // AddToPlaylist({commit},song_id){
     //   axios
     //   .post("api/")
@@ -128,6 +141,36 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    RemoveFromThisPlaylist({commit},payload){
+      console.log("playlistid in store",payload.playlist_id)
+      console.log("trackid in store",payload.song_id)
+
+      axios
+      .delete("/api/playlists/"+payload.playlist_id+"/tracks",{data:{track_ids:payload.song_id}})
+      .then (response=>{
+        console.log(response)
+        commit("RemoveFromThisPlaylist")
+        store.dispatch("playlist/playlist_tracks",payload.playlist_id)
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+
+    },
+   async AddTrackToExsistPlaylist({commit},payload){
+      console.log("playlistid in store",payload.playlistid)
+      console.log("trackid in store",payload.trackid)
+      axios
+      .post("/api/playlists/"+payload.playlistid+"/tracks",{tracks:payload.trackid})
+      .then(response=>{
+        console.log(response)
+       // store.dispatch("playlist/playlist_tracks",payload.playlistid)
+        commit("AddTrackToExsistPlaylist")
+      })
+      .catch(error=>{
+        console.log(error)
+      })
     }
   },
 

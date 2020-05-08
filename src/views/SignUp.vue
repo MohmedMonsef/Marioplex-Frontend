@@ -141,6 +141,7 @@
               <option
                 v-for="country in countries"
                 :key="country.value"
+                :value="country.value"
                 :disabled="country.disabled"
                 >{{ country.text }}
               </option>
@@ -395,34 +396,34 @@ export default {
       year: "",
       Months: [
         { text: "Month", value: "0", disabled: true },
-        { text: "January", value: "1", disabled: false },
-        { text: "Febuary", value: "2", disabled: false },
-        { text: "Mars", value: "3", disabled: false },
-        { text: "April", value: "4", disabled: false },
-        { text: "Mai", value: "5", disabled: false },
-        { text: "June", value: "6", disabled: false },
-        { text: "July", value: "7", disabled: false },
-        { text: "August", value: "8", disabled: false },
-        { text: "September", value: "9", disabled: false },
+        { text: "January", value: "01", disabled: false },
+        { text: "Febuary", value: "02", disabled: false },
+        { text: "March", value: "03", disabled: false },
+        { text: "April", value: "04", disabled: false },
+        { text: "May", value: "05", disabled: false },
+        { text: "June", value: "06", disabled: false },
+        { text: "July", value: "07", disabled: false },
+        { text: "August", value: "08", disabled: false },
+        { text: "September", value: "09", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
         { text: "December", value: "12", disabled: false }
       ],
-      country: "Choose a country",
+      country: "0",
       countries: [
         { text: "Choose a country", value: "0", disabled: true },
-        { text: "Egypt", value: "1", disabled: false },
-        { text: "France", value: "2", disabled: false },
-        { text: "USA", value: "3", disabled: false },
-        { text: "UK", value: "4", disabled: false },
-        { text: "Canada", value: "5", disabled: false },
-        { text: "Australia", value: "6", disabled: false },
-        { text: "Saudi Arabia", value: "7", disabled: false },
-        { text: "China", value: "8", disabled: false },
-        { text: "Japan", value: "9", disabled: false },
-        { text: "Tokio", value: "10", disabled: false },
-        { text: "Mexico", value: "11", disabled: false },
-        { text: "Brazil", value: "12", disabled: false }
+        { text: "Egypt", value: "EG", disabled: false },
+        { text: "France", value: "FR", disabled: false },
+        { text: "USA", value: "US", disabled: false },
+        { text: "Britain", value: "UK", disabled: false },
+        { text: "Canada", value: "CA", disabled: false },
+        { text: "Australia", value: "AU", disabled: false },
+        { text: "Saudi Arabia", value: "SA", disabled: false },
+        { text: "China", value: "CN", disabled: false },
+        { text: "Japan", value: "JP", disabled: false },
+        { text: "Korea", value: "KP", disabled: false },
+        { text: "Mexico", value: "MX", disabled: false },
+        { text: "Brazil", value: "BR", disabled: false }
       ]
     };
   },
@@ -453,7 +454,10 @@ export default {
       this.valid_year;
       setTimeout(() => {
         if (this.can_submit) {
-          this.birthday = this.day + "/" + this.month + "/" + this.year; //check date format with back
+          if(this.day>="1" && this.day<="9")
+            this.day = "0"+this.day;
+          var d = new Date(this.year+'-'+this.month+'-'+this.day);
+          this.birthday = d; //check date format with back
           let newuser = {
             username: this.username,
             password: this.password,
@@ -612,7 +616,7 @@ export default {
     },
     req_country: function() {
       if (this.trigger_validation) {
-        if (this.country == "Choose a country") {
+        if (this.country == "0") {
           this.cannotSubmit();
           return true;
         } else {

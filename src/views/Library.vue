@@ -1,6 +1,5 @@
 <template>
   <div class="library">
-    <!-- <library-navbar/> -->
     <div>
       <router-view class="child"></router-view>
     </div>
@@ -21,8 +20,6 @@
  * @example [none]
  */
 export default {
-  // components:{
-  //     LibraryNavbar,
-  // }
+  
 };
 </script>

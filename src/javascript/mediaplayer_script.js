@@ -47,8 +47,20 @@ export default {
       if (this.user != "success") {
         this.$store.dispatch("checkuserpopup/togglePopup");
       } else {
-        this.song_state = true;
-        let info;
+      this.song_state = true;
+      let info;
+      console.log("sccccrippt", this.currentaudio);
+      if (
+        "playicon-component" == event.target.id ||
+        "songComp" == event.target.id
+      ) {
+        info = {
+          index: this.index,
+          song_id: this.song_id,
+          album_id: this.albumId,
+          playlist_id: this.playlistId,
+          is_playlist: this.isPlaylist
+        };
         if (
           "playicon-component" == event.target.id ||
           "songComp" == event.target.id
@@ -88,7 +100,17 @@ export default {
           console.log("nihal comp", this.Get_Currentsong);
           this.$store.dispatch("Queue/CreateQueue", this.Get_Currentsong);
         }
+      } else {
+        info = {
+          song_id: this.Get_Currentsong.track._id,
+          album_id: this.Get_Currentsong.track.albumId,
+          playlist_id: this.Get_Currentsong.playlistId,
+          is_playlist: this.Get_Currentsong.isPlaylist
+        };
+        console.log("nihal comp", info);
+        this.$store.dispatch("Queue/CreateQueue", info);
       }
+    }
     },
     /**
      * this function is to pause current song

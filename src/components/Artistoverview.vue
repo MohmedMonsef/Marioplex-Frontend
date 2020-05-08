@@ -9,6 +9,7 @@
           :song_id="p._id"
           :song_name="p.name"
           :song_length="p.duration"
+          :albumId="p.albumId"
         />
         </div>
         <br/>

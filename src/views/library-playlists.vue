@@ -15,7 +15,7 @@
           <lib-playlists
             v-for="playlist in playlists1"
             :key="playlist.id"
-            :images="playlist.images"
+            :images="'http://52.205.254.29/api/images/5e9c9790fc69ad92e0a7eda5?belongs_to=artist'"
             :name="playlist.name"
             :ownerName="playlist.owner"
             :playlist_id="playlist.id"

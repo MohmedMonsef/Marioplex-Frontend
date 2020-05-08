@@ -71,14 +71,14 @@
         <div class="dropdown-menu">
           <a
             class="dropdown-item"
-            href="/UserAccount"
+            href="/UserAccount/Account-overview"
             target="_blank"
             testid="userprofilr link"
             id="account-link"
           >
             Account
           </a>
-          <div class="divider">________</div>
+          <div class="divider">________________________</div>
           <router-link to="/HomeWebPlayer" id="logout">
             <a
               class="dropdown-item"
@@ -91,7 +91,7 @@
           </router-link>
         </div>
       </div>
-      <a href="/GetPremium" target="_blank" v-if="!inlibrary && !insearch">
+      <a href="/Premium" target="_blank" v-if="!inlibrary && !insearch">
         <button class="upgrade_button" testid="upgrade_button">
           UPGRADE
         </button>
@@ -145,14 +145,6 @@
   margin-left: 8px;
   margin-top: 15px;
 }
-/* .divOnFocus1 {
-  width: 80px;
-  height: 30px;
-  border-radius:3px;
-  background: #161516;
-  margin-left: 8px;
-  margin-top: 15px; 
-} */
 .divOnFocus :focus {
   width: 100px;
   height: 30px;
@@ -195,7 +187,7 @@ svg {
 }
 .divider {
   color: rgb(85, 84, 84);
-  margin-top: -18px;
+  margin-top: -16px;
   margin-bottom: -3px;
   cursor: pointer;
 }
@@ -333,6 +325,9 @@ export default {
      * @public This is a public method
      */
     goprev: function() {
+       if( this.$router.currentRoute.path !==
+          "/HomeWebPlayer/search")
+          { this.$store.dispatch("Search/showresult",'h');}
       this.$router.go(-1);
     },
     /**

@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="{ path: '../album/' + albumId }"
+    :to="{ path: this.routing + albumId }"
     id="carglink"
     testid="album card link"
   >
@@ -20,7 +20,7 @@
       />
       <div class="card-body" id="cardbody" testid="album card body">
         <h4 class="card-title" id="cardtitle" testid="album name">
-          {{ name }}
+          {{ name | shorten}}
         </h4>
         <router-link
           class="ard-link artistlink"
@@ -103,7 +103,8 @@ i {
 export default {
   data: function() {
     return {
-      hover: false
+      hover: false,
+      routing:""
     };
   },
   name: "lib-albums",
@@ -122,6 +123,22 @@ export default {
     },
     artistId: {
       type: String
+    }
+  },
+  mounted(){
+
+    if(this.$route.path =="/HomeWebPlayer/search")
+      this.routing='album/';
+    else
+      this.routing="../album/";
+        
+  },
+  filters: {
+    shorten: function(value) {
+      if(value.length  > 17)
+        return value.substring(0, 17) + " ...";
+      else
+        return value;
     }
   }
 };

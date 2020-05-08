@@ -1,9 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import HomeBody from "../components/HomeBody.vue";
 import SignUp from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import ForgetPassword from "../views/ForgetPassword.vue";
+import ResetPassword from "../views/ResetPassword.vue";
 import HomeWebPlayer from "../views/HomeWebPlayer.vue";
 import UserHome from "../views/UserHome.vue";
 import Search from "../views/Search.vue";
@@ -17,20 +19,82 @@ import ForArtist from "../views/ForArtist.vue";
 import AccessArtist from "../views/AccessArtist";
 import ClaimArtist from "../views/ClaimArtist";
 import ArtistPersonalPage from "../views/ArtistPersonalPage";
+import Premium from "../components/HomePremium.vue";
 import playlist from "../views/playlist_view.vue";
-import GetPremium from "../views/GetPremium.vue";
+import GetPremium from "../components/GetPremium.vue";
 import UserAccount from "../views/UserAccount.vue";
 import album from "../views/album_view.vue";
+import AllLists from "../views/AllLists.vue";
+import AllArtists from "../views/AllArtists.vue";
+import AllAlbums from "../views/AllAlbums.vue";
+import AllReleases from "../views/AllReleases.vue";
+import AccountOverview from "../components/Account-overview.vue";
+import AccountEdit from "../components/Account-edit.vue";
+import AccountChange from "../components/Account-change.vue";
+import AccountRecover from "../components/Account-recover.vue";
+import AccountNotifications from "../components/Account-notifications.vue";
 import ArtistProfile from "../views/ArtistProfile.vue";
-
 import seeallartist from "../views/seeallartist.vue";
+import seeallalbum from "../views/seeallalbum.vue";
+import seeallplaylist from "../views/seeallplaylist.vue";
+import seeallcategoryplaylists from"../views/seeallcategoryplaylists.vue";
+import seealluser from "../views/seealluser.vue";
+import seealltrack from '../views/seealltrack';
+import UserProfile from "../views/UserProfile";
+import category from"../views/categoryplaylists.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: "",
+        component: HomeBody
+      },
+      {
+        path: "UserAccount",
+        component: UserAccount,
+        children:[
+          {
+            path: "Account-overview",
+            component: AccountOverview
+          },
+          {
+            path: "Account-edit",
+            component: AccountEdit
+          },
+          {
+            path: "Account-change",
+            component: AccountChange
+          },
+          {
+            path: "Account-recover",
+            component: AccountRecover
+          },
+          {
+            path: "Account-notifications",
+            component: AccountNotifications
+          },
+        ]
+      },
+      { path: "",
+        name:"HomePage",
+       component: HomeBody 
+      },
+      {
+       path: "premium",
+       name:"Premium",
+       component: Premium 
+      },
+      {
+        path: "/GetPremium",
+        name: "GetPremium",
+        component: GetPremium
+      },
+    ]
   },
   {
     path: "/HomeWebPlayer",
@@ -46,7 +110,23 @@ const routes = [
           {
             path: "seeallartist",
             component: seeallartist
-          }
+          },
+          {
+            path: "seeallalbum",
+            component: seeallalbum
+        }
+         ,
+         {
+            path: "seeallplaylist",
+            component: seeallplaylist
+        } ,
+        {
+          path: "seealluser",
+          component: seealluser
+      }, {
+        path: "seealltrack",
+        component: seealltrack
+    }
         ]
       },
       {
@@ -83,6 +163,42 @@ const routes = [
         path: "ArtistProfile/:artist_id",
         name: "ArtistProfile",
         component: ArtistProfile
+      },
+      {
+        path: "/AllLists",
+        name: "AllLists",
+        component: AllLists
+      },
+      {
+        path: "/AllArtists",
+        name: "AllArtists",
+        component: AllArtists
+      },
+      {
+        path: "/AllAlbums",
+        name: "AllAlbums",
+        component: AllAlbums
+      },
+      {
+        path: "/AllReleases",
+        name: "AllReleases",
+        component: AllReleases
+      },
+      {
+        path: "UserProfile/:user_id",
+        name: "UserProfile",
+        component: UserProfile
+      }
+      , {
+        path: "category/:categoryId/:name",
+        name: "category",
+        component: category
+      }
+      ,
+      {
+        path: "category/:categoryId/:name/seeallcategoryplaylists",
+        name: "seeallcategoryplaylists",
+        component: seeallcategoryplaylists
       }
     ]
   },
@@ -100,6 +216,14 @@ const routes = [
     path: "/ForgetPassword",
     name: "ForgetPassword",
     component: ForgetPassword
+  },
+  {
+    path: "/reset_password",
+    name: "ResetPassword",
+    component: ResetPassword,
+    props: (route) => ({
+      token: route.query.token
+    })
   },
   {
     path: "/ForArtist",
@@ -121,16 +245,6 @@ const routes = [
     name: "ArtistPersonalPage",
     component: ArtistPersonalPage
   },
-  {
-    path: "/GetPremium",
-    name: "GetPremium",
-    component: GetPremium
-  },
-  {
-    path: "/UserAccount",
-    name: "UserAccount",
-    component: UserAccount
-  }
 ];
 
 const router = new VueRouter({

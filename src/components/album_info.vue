@@ -345,6 +345,7 @@ export default {
         this.$store.dispatch("album/like_album", this.$route.params.album_id);
       } else {
         toast.show("Removed from Your Library");
+        console.log("ggg",this.$route.params.album_id)
         this.$store.dispatch("album/unlike_album", this.$route.params.album_id);
       }
     }

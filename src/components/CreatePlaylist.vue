@@ -306,7 +306,8 @@ export default {
   name: "CreatePlaylist",
   data: function() {
     return {
-      playlistname: ""
+      playlistname: "",
+     // withtrack:false
     };
   },
   //showModal:false,
@@ -317,7 +318,8 @@ export default {
     }),
     ...mapGetters({
       showModal: "creatplaylist/showModal",
-      username: "authorization/Username"
+      username: "authorization/Username",
+      withtrack:"creatplaylist/withtrack"
     })
   },
   methods: {
@@ -327,7 +329,7 @@ export default {
      */
 
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+      this.$store.dispatch("creatplaylist/toggleModal",this.withtrack);
     },
     /**
      * triggers the create playlist request

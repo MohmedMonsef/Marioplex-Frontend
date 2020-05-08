@@ -42,7 +42,9 @@
 
           <h1 class="title">Are you sure,you want to delete this song!!</h1>
 
-          <button class="cancel_button" @click="changeModalStateDelete()">
+          <button class="cancel_button" @click="changeModalStateDelete()"
+           @keyup.enter="DeletePlaylist()"
+          >
             cancle
           </button>
           <button
@@ -50,12 +52,15 @@
             testid="confirm_create"
             @click.prevent="DeletePlaylist()"
             @click="changeModalStateDelete()"
+            
           >
             Delete
           </button>
+          
         </div>
       </transition>
     </div>
+    <div class="toast" id="deleteplaylisttoast" testid="deleteplaylisttoast"></div>
   </span>
 </template>
 <style scoped>
@@ -192,15 +197,50 @@ div {
 
   border: none;
 }
+.toast {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 50%;
+  top: -55px;
+  margin: auto;
+  min-width: 300px;
+  background-color: rgb(8, 118, 243);
+  padding: 10px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: 0 0 10 rgb(9, 76, 131);
+  transition: opacity 0.2s, visibility 0.2s;
+  font-size: 15px;
+}
+.toast--visible {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
+import { default as song_functions } from "../javascript/mediaplayer_script.js";
 /**
  * Delete Playlist Pop Up to confirm delete action
  * @displayName Delete Playlist Pop Up
  * @example [none]
  */
+const toast = {
+  show(message) {
+    var mytoast = document.getElementById("liketoast");
+    //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
+    clearTimeout(mytoast.hideTimeout);
+    mytoast.textContent = message;
+    mytoast.className = "toast toast--visible";
+    mytoast.hideTimeout = setTimeout(() => {
+      mytoast.classList.remove("toast--visible");
+    }, 2000);
+  }
+};
 export default {
   computed: {
     ...mapState({
@@ -228,8 +268,16 @@ export default {
     DeletePlaylist() {
       //console.log("in delete component", this.todelete);
       this.$store.dispatch("creatplaylist/DeletePlaylist", this.todelete);
+            toast.show("Removed from your library");
       //console.log("removed");
     }
-  }
+  },
+   mixins: [song_functions],
+   created: function() {
+    window.addEventListener("click", this.hideshow);
+  },
+  destroyed: function() {
+    window.removeEventListener("click", this.hideshow);
+  },
 };
 </script>

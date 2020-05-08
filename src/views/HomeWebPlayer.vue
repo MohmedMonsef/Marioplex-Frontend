@@ -1,5 +1,5 @@
 <template>
-  <div class="home_webplayer">
+  <div class="home_webplayer" >
     <side-bar />
     <CreatePlaylist v-if="show" />
     <mediaplayerpopup v-if="showmediaplayerpopup" />
@@ -62,6 +62,11 @@ export default {
       showuserpopup: state => state.checkuserpopup.showpagesModal,
       showdelete: state => state.creatplaylist.showModalDelete
     })
-  }
+  },
+  // methods:{
+  //   showinputfield(){
+  //     this.$store.dispatch("creatplaylist/showinputfield");
+  //   }
+  // }
 };
 </script>

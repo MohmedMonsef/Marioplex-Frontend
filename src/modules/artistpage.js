@@ -47,7 +47,7 @@ export default {
         .get("api/Artists/" + artist_id)
         .then(response => {
           let artist = response.data;
-          console.log("module artist",artist);
+          console.log("module artist", artist);
           commit("set_artist_name", artist.Name);
           commit("set_artistcover_image", artist.images[0]);
           commit("set_bio",artist.info);
@@ -57,14 +57,14 @@ export default {
           console.log(error);
         });
     },
-    
+
     artist_tracks({ commit }, artist_id) {
       axios
         .get("api/Artists/" + artist_id + "/top-tracks?country=EG")
         .then(response => {
           let artist = response.data;
           this.artist_tracks = [];
-          console.log("array nihal" , this.artist_tracks);
+          console.log("array nihal", this.artist_tracks);
           var limitedtracks = [];
           if (artist.length >= 5) {
             for (let i = 0; i < 5; i++) {
@@ -84,7 +84,6 @@ export default {
           commit("set_artist_tracks", []);
         });
     },
-
 
     artist_albums({ commit }, artist_id) {
       axios
@@ -142,11 +141,10 @@ export default {
       axios
         .get("api/me/following/contains"+ artist_id)
         .then(response => {
-          let artist = response.status;
+          let artist = response.data;
           if (artist.follow == true) {
             commit("set_followartist", true);
-          }
-          else{
+          } else {
             commit("set_followartist", false);
           }
         })
@@ -154,8 +152,6 @@ export default {
           console.log(error);
         });
     }
-
-    
   },
   getters: {
     artist_name: state => state.artist_name,

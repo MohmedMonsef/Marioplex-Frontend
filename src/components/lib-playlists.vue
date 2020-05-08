@@ -15,7 +15,7 @@
       />
       <div class="card-body" id="cardbody" testid="playlist card body">
         <h4 class="card-title" id="cardtitle" testid="playlist name">
-          {{ name }}
+          {{ name |shorten }}
         </h4>
         <p
           v-if="!likedplaylist"
@@ -132,6 +132,14 @@ export default {
       Username: "authorization/Username",
       likedplaylist: "playlist/likeplaylist"
     })
+  },
+   filters: {
+    shorten: function(value) {
+      if(value.length  > 17)
+        return value.substring(0, 17) + " ...";
+      else
+        return value;
+    }
   }
 };
 </script>
