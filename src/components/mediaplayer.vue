@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-sm-3" id="song_info_col">
         <!-- here i need to link album image with mock server -->
-        <div class="album_image">
+        <div class="album_image" v-if="user == 'success'">
           <img src="../assets/cry.png" alt="album_image" testid="album_image" />
         </div>
         <!-- here i need to link both song name and artist name with mock server they navigate to another pages
           and i need to change <a> to router link -->
-        <div class="song_info">
+        <div class="song_info" v-if="user == 'success'">
           <a href="#" id="song_name" testid="song_name">{{
             Get_Currentsong.track.name
           }}</a>
@@ -168,7 +168,7 @@
         <!-- the end of the new code  -->
       </div>
       <div class="col-md-3 hidden-sm">
-        <div class="additional_actions">
+        <div class="additional_actions" v-if="user == 'success'">
           <button id="queue_button" testid="queuebutton" @click="queue_alter()">
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
           </button>
@@ -668,16 +668,24 @@ export default {
      * @public This is a public method
      */
     shuffle: function() {
-      this.isShuffle = !this.isShuffle;
-      this.$store.dispatch("mediaplayer/shufflesong_state", this.isShuffle);
+      if (this.user != "success") {
+        this.$store.dispatch("checkuserpopup/togglePopup");
+      } else {
+        this.isShuffle = !this.isShuffle;
+        this.$store.dispatch("mediaplayer/shufflesong_state", this.isShuffle);
+      }
     },
     /**
      * Alters Repeat mode for tracks
      * @public This is a public method
      */
     repeat_song: function() {
-      this.isRepeat = (this.isRepeat + 1) % 3;
-      this.$store.dispatch("mediaplayer/repeatsong_state", this.isRepeat);
+      if (this.user != "success") {
+        this.$store.dispatch("checkuserpopup/togglePopup");
+      } else {
+        this.isRepeat = (this.isRepeat + 1) % 3;
+        this.$store.dispatch("mediaplayer/repeatsong_state", this.isRepeat);
+      }
     }
   },
   computed: {

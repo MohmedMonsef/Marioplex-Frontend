@@ -3,7 +3,6 @@
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <!-- <playlistpopup v-if="showpopup" /> -->
     <div v-if="playlist_load" class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
         <playlist v-if="this.playlist_length == 0" />
@@ -12,7 +11,12 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
         <emptytracks v-if="this.playlist_length == 0" />
-        <draggable ghost-class="ghost" class="reordertracks" @end="ReorderTracks" v-else>
+        <draggable
+          ghost-class="ghost"
+          class="reordertracks"
+          @end="ReorderTracks"
+          v-else
+        >
           <transition-group type="transition" name="flip-list">
             <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
             <song-component
@@ -79,10 +83,9 @@ import SongComponent from "@/components/SongComponent.vue";
 import emptytracks from "@/components/emptytracks.vue";
 import playlist from "@/components/playlist.vue";
 import playlistinfo from "@/components/playlist_info.vue";
-//  import playlistpopup from "@/components/playlistpopup.vue";
 import { mapGetters } from "vuex";
 import draggable from "vuedraggable";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 /**
  * Playlist page which contains some information like its name and the name of user made by and of course some tracks and some information about them here you can like the whole playlist and add it to your liked playlists
  * @displayName Playlist page
@@ -109,7 +112,6 @@ export default {
     playlist,
     emptytracks,
     playlistinfo
-    // playlistpopup
   },
   methods: {
     toggleShow() {
@@ -140,9 +142,9 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      showpopup: state => state.playlistpopup.showModal
-    }),
+    // ...mapState({
+    //   showpopup: state => state.playlistpopup.showModal
+    // }),
     ...mapGetters({
       playlist_tracks: "playlist/playlist_tracks",
       playlist_length: "playlist/playlist_length",
@@ -159,4 +161,3 @@ export default {
   }
 };
 </script>
->

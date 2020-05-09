@@ -2,6 +2,7 @@
   <div class="home_webplayer" >
     <side-bar />
     <CreatePlaylist v-if="show" />
+    <mediaplayerpopup v-if="showmediaplayerpopup" />
     <DeletePlaylist v-if="showdelete" />
     <div id="HomeInWebPlayer">
       <router-view class="child"></router-view>
@@ -9,6 +10,7 @@
       <!-- <library-navbar/> -->
     </div>
     <mediaplayer />
+    <playlistpopup v-if="showuserpopup" />
   </div>
 </template>
 <style scoped>
@@ -29,6 +31,8 @@
 <script>
 import SideBar from "@/components/SideBar.vue";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
+import mediaplayerpopup from "@/components/mediaplayerpopup.vue";
+import playlistpopup from "@/components/playlistpopup.vue";
 import mediaplayer from "@/components/mediaplayer.vue";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
@@ -47,11 +51,15 @@ export default {
     mediaplayer,
     DeletePlaylist,
     // LibraryNavbar
-    NavbarWebplayer
+    NavbarWebplayer,
+    mediaplayerpopup,
+    playlistpopup
   },
   computed: {
     ...mapState({
       show: state => state.creatplaylist.showModal,
+      showmediaplayerpopup: state => state.checkuserpopup.showModal,
+      showuserpopup: state => state.checkuserpopup.showpagesModal,
       showdelete: state => state.creatplaylist.showModalDelete
     })
   },

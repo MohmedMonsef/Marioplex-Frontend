@@ -30,6 +30,7 @@ export default {
     this.artistid = this.$route.params.artist_id;
     this.$store.dispatch("artistpage/artist_page", this.$route.params.artist_id);
     this.$store.dispatch("artistpage/checkisfollowed", this.$route.params.artist_id);
+     
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
