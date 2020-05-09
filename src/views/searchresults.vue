@@ -212,7 +212,7 @@
             :images="match_user.images"
             :name="match_user.displayName"
             :artistId="match_user._id"
-            :type="match_user.user"
+            :type="match_user.type"
           />
         </div>
       </div>
