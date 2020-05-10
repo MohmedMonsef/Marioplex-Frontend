@@ -2,6 +2,7 @@ let currentaudio = new Audio();
 let audioKeyID = "";
 let audioKey = "";
 
+
 export function get_currentaudio(){
     return currentaudio;
   }
@@ -19,6 +20,13 @@ export function currentaudio_play(){
   }
  export function currentaudio_src(){
     return currentaudio.src;
+  }
+  export function currentaudio_repeat(value){
+    currentaudio.loop=value;
+  }
+  export function reset_audio(){
+    currentaudio.src = null;
+
   }
  export function loadSourceBuffer(mediaSource, mediaURL, mediaMimeType) {
     console.log("loadSourceBuffer")
@@ -128,6 +136,7 @@ export function currentaudio_play(){
   setupMediaKeys(mediaElement, config).then(
       () => {
         //console.log("messageHandler")
+        currentaudio.autoplay =true;
         mediaElement.addEventListener("encrypted", encryptedEventHandler);
         mediaElement.src = URL.createObjectURL(mediaSource);
         mediaSource.addEventListener("sourceopen", () => {

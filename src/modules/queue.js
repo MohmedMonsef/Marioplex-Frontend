@@ -89,18 +89,17 @@ export default {
               "?isPlaylist=" +
               info.is_playlist
           )
-          .then(response => {
-            console.log("success", response);
-            var cs = store.getters["mediaplayer/currentaudio"];
-            if (cs) {
+          .then( () => {
+           // var cs = store.getters["mediaplayer/currentaudio"];
+           // if (cs) {
               store.dispatch("mediaplayer/get_currentsong");
               store.dispatch("mediaplayer/playsong_state", info);
-            } else {
-              setTimeout(() => {
-                store.dispatch("mediaplayer/playsong_state", info);
-              }, 500);
-              store.dispatch("mediaplayer/get_currentsong");
-            }
+           // } else {
+            //  setTimeout(() => {
+             //   store.dispatch("mediaplayer/playsong_state", info);
+           //   }, 500);
+           //   store.dispatch("mediaplayer/get_currentsong");
+         //   }
           })
           .catch(error => {
             console.log(error);
@@ -115,18 +114,17 @@ export default {
               "?isPlaylist=" +
               info.is_playlist
           )
-          .then(response => {
-            console.log("success", response);
-            var cs = store.getters["mediaplayer/currentaudio"];
-            if (cs) {
+          .then( () => {
+           // var cs = store.getters["mediaplayer/currentaudio"];
+           // if (cs) {
               store.dispatch("mediaplayer/get_currentsong");
               store.dispatch("mediaplayer/playsong_state", info);
-            } else {
-              setTimeout(() => {
-                store.dispatch("mediaplayer/playsong_state", info);
-              }, 500);
-              store.dispatch("mediaplayer/get_currentsong");
-            }
+           // } else {
+           //   setTimeout(() => {
+            //    store.dispatch("mediaplayer/playsong_state", info);
+            //  }, 500);
+            //  store.dispatch("mediaplayer/get_currentsong");
+           // }
           })
           .catch(error => {
             console.log(error);

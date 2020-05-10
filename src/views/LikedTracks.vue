@@ -11,8 +11,9 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
           <song-component
             testid="songcomponent"
-            v-for="p in likedtracks_tracks"
+            v-for="(p,i) in likedtracks_tracks"
             :key="p._id"
+            :index="i"
             :song_id="p._id"
             :song_artists="p.artistName"
             :song_name="p.name"

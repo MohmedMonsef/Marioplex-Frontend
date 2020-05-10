@@ -1,29 +1,29 @@
 <template>
   <div id="app">
-    <div id="loadingscreen" v-if="isLoggedIn ==''" >    
+    <div id="loadingscreen" v-if="loading">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <router-view v-if="isLoggedIn !=''" />
+    <router-view v-if="!loading" />
   </div>
 </template>
 
 <style lang="scss">
-#loadingscreen{
-  // height: 100vh;
+#loadingscreen {
+  // height: 200%;
   background-color: black;
   color: white;
   display: flex;
   justify-content: center;
-  i{
-     font-size: 70px;
-     margin-top: 40%;
+  i {
+    font-size: 70px;
+    margin-top: 40.7vh;
+    margin-bottom: 50vh;
   }
 }
 </style>
 
 <script>
-import { mapGetters } from 'vuex';
-import {initializeFirebase} from '../src/messaging/init';
+import { initializeFirebase } from "../src/messaging/init";
 export default {
   beforeCreate() {
     window.localStorage.isMySessionActive = "false";
@@ -42,22 +42,17 @@ export default {
     }
   },
   created() {
-    window.localStorage.isMySessionActive = "true";   
-     initializeFirebase();
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
 
+    window.localStorage.isMySessionActive = "true";
+    initializeFirebase();
   },
-  computed: {
-    ...mapGetters({
-      isLoggedIn: "authorization/GetStatus"
-    })
-    // fun();
-      // firebase.initializeApp(firebaseConfig);
-  //      const messaging = firebase.messaging();
-  //     console.log("xxxxxxxx");
-  //     messaging.onMessage((payload) => {
-  //   console.log('Message received. ', payload);
-  //   // ...
-  // });
+  data: function() {
+    return {
+      loading: true
+    };
   }
 };
 </script>

@@ -12,10 +12,17 @@
   </div>
 </template>
 <style scoped>
+/* .home_webplayer{
+   width: calc(100vw);
+   height: calc(100vh);
+   background-color: #161516;
+   
+} */
 #HomeInWebPlayer {
   width: calc(100vw - 235px);
-  height: 100vh;
+  height: calc(100vh - 90px);
   margin-left: 235px;
+  padding-bottom: 90px;
   background-color: #161516;
   position: fixed;
   top: 0%;

@@ -10,23 +10,22 @@ if (firebase.messaging.isSupported()) {
   const messaging = firebase.messaging();
   console.log("xxxxxxxx");
   messaging.setBackgroundMessageHandler(function(payload) {
-    console.log(' Received background message ', payload);
+    console.log(" Received background message ", payload);
     var sender = JSON.parse(payload.data.message);
-    var notificationTitle = 'CometChat Pro Notification';
+    var notificationTitle = "CometChat Pro Notification";
     var notificationOptions = {
       body: payload.data.alert,
-      icon: sender.data.entities.sender.entity.avatar,
+      icon: sender.data.entities.sender.entity.avatar
     };
     return self.registration.showNotification(
       notificationTitle,
       notificationOptions
     );
   });
-  self.addEventListener('notificationclick', function(event) {
+  self.addEventListener("notificationclick", function(event) {
     event.notification.close();
     //handle click event onClick on Web Push Notification
   });
-}
-else{
-  console.log("not supported")
+} else {
+  console.log("not supported");
 }

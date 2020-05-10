@@ -1,5 +1,14 @@
 import axios from "axios";
-import {setupPlayer,currentaudio_pause,currentaudio_play,currentaudio_volume,get_currentaudio,currentaudio_time,currentaudio_src} from "../javascript/play.js";
+import {
+  setupPlayer,
+  currentaudio_pause,
+  currentaudio_play,
+  currentaudio_volume,
+  get_currentaudio,
+  currentaudio_time,
+  currentaudio_src,
+  currentaudio_repeat
+} from "../javascript/play.js";
 export default {
   namespaced: true,
   state: {
@@ -40,49 +49,12 @@ export default {
       isPlayable: true
     },
     //component info
-    currentsong_info: {
-      track: {
-        availableMarkets: ["EG,US"],
-        _id: "5e80ceb853e67b1e284a0f15",
-        trackNumber: 1,
-        name: "HAVANA",
-        artistId: "5e80c9b614c8566d6cd9b40e",
-        albumId: "5e80cc2b14c8566d6cd9b40f",
-        discNumber: 1,
-        explicit: false,
-        type: "Track",
-        acousticness: 10,
-        danceability: 23,
-        energy: 100,
-        instrumentalness: 4,
-        key: 90,
-        liveness: 25,
-        loudness: 70,
-        mode: 56,
-        speechiness: 67,
-        tempo: 76,
-        timeSignature: "2020-03-29T16:37:12.554Z",
-        valence: 70,
-        __v: 0,
-        images: []
-      },
-      isLiked: false,
-      album: {
-        name: "HELLO KIDS",
-        _id: "5e80cc2b14c8566d6cd9b40f",
-        artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
-      },
-      isPlaylist: true,
-      playlistId: "5e891c8edb96e26db4efc790",
-      isPlayable: true
-    },
+    currentSongIndex: 0,
     //flag weather the song is playing or not
-    currentaudio:null,
     playicon: false,
     volumeprogress: 0,
     progress: 0,
     trackduration: 0
-    // toAdd: 0
   },
   mutations: {
     setplayicon(state, playicon) {
@@ -102,8 +74,7 @@ export default {
     },
     setpausesong(state) {
       state.playicon = false;
-      if (currentaudio_src)
-      {
+      if (currentaudio_src) {
         currentaudio_pause();
       }
     },
@@ -111,9 +82,9 @@ export default {
       state.currentsong = currentsong;
     },
     startcurrentaudio(state, info) {
-      state.playicon = true;
+      state.currentSongIndex = info.index;
       if (
-        currentaudio_src() &&
+        state.playicon &&
         info.song_id == state.currentsong.track._id &&
         (info.album_id == state.currentsong.album._id ||
           info.playlist_id == state.currentsong.playlistId)
@@ -121,15 +92,11 @@ export default {
         currentaudio_play();
         currentaudio_volume(state.volumeprogress);
       } else {
-        if (state.currentaudio) {
-          currentaudio_pause();
-          state.currentaudio = null;
-        }
-        state.currentaudio = get_currentaudio();
         currentaudio_play();
         currentaudio_volume(state.volumeprogress);
-        state.currentsong_info = info;
+        state.currentSongIndex = info.index;
       }
+      state.playicon = true;
     }
   },
   actions: {
@@ -144,18 +111,26 @@ export default {
           var currentsong = response.data;
           console.log("in get currentsong", currentsong);
           commit("set_currentsong", currentsong);
-          dispatch("trackUrl");
+          var id = currentsong.track._id;
+          dispatch("trackUrl", id);
         })
         .catch(error => {
           console.log(error);
         });
     },
-    trackUrl({ state }) {
+    trackUrl({ state }, id) {
+      console.log("idd", id);
+      // let token = localStorage.getItem("x-auth-token");
+      // let keyRoute =
+      //   "/api/tracks/encryption/" + id + "/keys";
+      // let trackroute =
+      //   "http://52.205.254.29/api/tracks/web-player/"+id+"/?type=medium&token="+token;
       let token = localStorage.getItem("x-auth-token");
       let keyRoute =
         "/api/tracks/encryption/" + "5e9b64e4e9c8d87fdc2ecbd8" + "/keys";
       let trackroute =
-        "http://52.205.254.29/api/tracks/web-player/5e9b64e4e9c8d87fdc2ecbd8/?type=medium&token="+token;
+        "http://52.205.254.29/api/tracks/web-player/5e9b64e4e9c8d87fdc2ecbd8/?type=medium&token=" +
+        token;
       axios
         .get(keyRoute)
         .then(async response => {
@@ -166,13 +141,7 @@ export default {
         .catch(error => {
           console.log("get trackurl error", error);
         })
-        .then(() => {
-          
-        });
-
-      //  state.currentaudio = new Audio("http://localhost:3000/api/tracks/android/5e9b64e4e9c8d87fdc2ecbd8?type=medium");
-      //  state.currentaudio.controls=false;
-      //  state.currentaudio.setAttribute("content-type","audio/webm");
+        .then(() => {});
     },
     //start playing the current audio
     playsong_state({ commit }, info) {
@@ -183,19 +152,26 @@ export default {
       commit("setpausesong");
     },
     nextsong_state({ state, commit, dispatch }) {
+      dispatch("update_progress", 0);
       axios
         .post("/api/me/player/next-playing")
         .then(response => {
           var nextsong = response.data;
-          console.log("in get currentsong", nextsong);
-          commit("set_currentsong", nextsong);
+          commit("set_currentsong", nextsong)
+          if(typeof nextsong.fristInSource == "undefined")
+              state.currentSongIndex = state.currentSongIndex + 1;
+          else
+              state.currentSongIndex = 0;
+         
           let info = {
             //should handle if its the first track on playlist or album return to zero
+            index: state.currentSongIndex,
             song_id: nextsong.track._id,
             album_id: nextsong.album._id,
             playlist_id: state.playlist_id,
             is_playlist: state.currentsong.isPlaylist
           };
+          dispatch("trackUrl", nextsong.track._id);
           dispatch("playsong_state", info);
           dispatch("Queue/Queue", null, { root: true });
         })
@@ -205,7 +181,6 @@ export default {
     },
     prevsong_state({ state, commit, dispatch }) {
       console.log("in prev action", state.progress);
-
       if (state.progress <= 5) {
         axios
           .post("/api/me/player/prev-playing")
@@ -213,16 +188,18 @@ export default {
             var prevsong = response.data;
             console.log("in get currentsong", prevsong);
             commit("set_currentsong", prevsong);
+            var i =
+              state.currentSongIndex == 0 ? 0 : state.currentSongIndex - 1;
+            state.currentSongIndex = i;
+            console.log("in preeev", state.currentSongIndex);
             let info = {
-              index:
-                state.currentsong_info.index == 0
-                  ? 0
-                  : state.currentsong_info.index - 1, //
+              index: i,
               song_id: prevsong.track._id,
               album_id: prevsong.album._id,
               playlist_id: prevsong.playlistId,
               is_playlist: prevsong.isPlaylist
             };
+            dispatch("trackUrl", prevsong.track._id);
             dispatch("playsong_state", info);
             dispatch("Queue/Queue", null, { root: true });
           })
@@ -233,12 +210,11 @@ export default {
         dispatch("update_progress", 0);
       }
     },
-    repeatsong_state({ state, dispatch }, flag) {
+    repeatsong_state({ dispatch }, flag) {
       console.log("kkk", flag);
-      if (flag == 1 && currentaudio_src())
-      get_currentaudio().loop = true;
-      else if (flag == 0 && state.currentaudio) {
-        get_currentaudio().loop = false;
+      if (flag == 1) currentaudio_repeat(true);
+      else if (flag == 0 ) {
+        currentaudio_repeat(false);
         axios
           .put("/api/player/repeat?state=" + false)
           .then(() => {
@@ -247,8 +223,8 @@ export default {
           .catch(error => {
             console.log(error);
           });
-      } else if (flag == 2 && state.currentaudio) {
-        get_currentaudio().loop = false;
+      } else if (flag == 2) {
+        currentaudio_repeat(false);
         axios
           .put("/api/player/repeat?state=" + true)
           .then(() => {
@@ -307,15 +283,16 @@ export default {
         });
     },
     advance_progress({ state, dispatch }) {
-     if (currentaudio_src()) {
+      if (currentaudio_src()) {
         if (!get_currentaudio().ispaused) {
           state.trackduration = get_currentaudio().duration;
           state.progress = get_currentaudio().currentTime;
           if (state.progress == state.trackduration) {
+            console.log("p", state.progress, "d", state.trackduration);
             dispatch("nextsong_state");
           }
         }
-     }
+      }
     },
     update_progress({ state }, pos) {
       if (get_currentaudio()) {
@@ -340,8 +317,8 @@ export default {
     liked: state => {
       return state.currentsong.isLiked;
     },
-    currentaudio: state => {
-      return state.currentaudio;
+    currentaudio: () => {
+      return currentaudio_src();
     },
     progress: state => {
       return state.progress;
@@ -352,14 +329,8 @@ export default {
     volume: state => {
       return state.volumeprogress;
     },
-    currentsong_info: state => {
-      return state.currentsong_info;
-    },
-    audioKey: state => {
-      return state.audioKey;
-    },
-    audioKeyID: state => {
-      return state.audioKeyID;
+    Index: state => {
+      return state.currentSongIndex;
     }
   }
 };

@@ -10,7 +10,11 @@
 import firebase from 'firebase/app';
 import 'firebase/messaging';
 import axios from "axios";
+let messaging;
 
+export function get_messaging(){
+   return messaging;
+}
   // Your web app's Firebase configuration
   export function initializeFirebase() {
 if (firebase.messaging.isSupported()) {
@@ -25,7 +29,7 @@ if (firebase.messaging.isSupported()) {
     measurementId: "G-NVT784M93P"
   };
   firebase.initializeApp(firebaseConfig);
-  const messaging = firebase.messaging();
+  messaging = firebase.messaging();
   messaging.usePublicVapidKey('BPofaWkDJxOAGwQFhhZs7FoEl07BYF1AybbDuz9eSebQXgAI0RLu2jNwvV3l5C8AJw6_1_9wzLQA4p_enila8ZM');
       messaging
       .requestPermission()

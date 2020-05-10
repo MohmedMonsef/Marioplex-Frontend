@@ -46,7 +46,6 @@ export default {
     playSong() {
       this.song_state = true;
       let info;
-      console.log("sccccrippt", this.currentaudio);
       if (
         "playicon-component" == event.target.id ||
         "songComp" == event.target.id
@@ -61,36 +60,23 @@ export default {
         if (
           this.song_id == this.Get_Currentsong.track._id &&
           this.albumId == this.Get_Currentsong.album._id &&
-          // this.index == this.currentsong_info.index &&
           this.playlistId == this.Get_Currentsong.playlistId
         ) {
           this.$store.dispatch("mediaplayer/playsong_state", info);
-          console.log("my compmmm", {
-            index: this.index,
-            song_id: this.song_id,
-            album_id: this.albumId,
-            playlist_id: this.playlistId,
-            is_playlist: this.isPlaylist
-          });
-        } else {
+        }
+        else
+        {
           this.$store.dispatch("Queue/CreateQueue", info);
-          console.log("my comp", {
-            index: this.index,
-            song_id: this.song_id,
-            album_id: this.albumId,
-            playlist_id: this.playlistId,
-            is_playlist: this.isPlaylist
-          });
         }
       } else {
         info = {
           song_id: this.Get_Currentsong.track._id,
+          index: this.Index,
           album_id: this.Get_Currentsong.track.albumId,
           playlist_id: this.Get_Currentsong.playlistId,
           is_playlist: this.Get_Currentsong.isPlaylist
         };
-        console.log("nihal comp", info);
-        this.$store.dispatch("Queue/CreateQueue", info);
+        this.$store.dispatch("mediaplayer/playsong_state", info);
       }
     },
     /**
@@ -107,7 +93,7 @@ export default {
      * @public This is a public method
      */
     prev_song: function() {
-      if (this.currentsong_info.index != 0)
+      if (this.Index != 0)
         this.$store.dispatch("mediaplayer/prevsong_state");
     },
     /**
@@ -161,7 +147,7 @@ export default {
       progress: "mediaplayer/progress",
       duration: "mediaplayer/duration",
       volume: "mediaplayer/volume",
-      currentsong_info: "mediaplayer/currentsong_info",
+      Index: "mediaplayer/Index",
       Get_Currentsong: "mediaplayer/Get_Currentsong"
     })
   }

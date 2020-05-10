@@ -7,8 +7,9 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <song-component
           testid="songcomponent"
-          v-for="p in album_tracks"
+          v-for="(p,i) in album_tracks"
           :key="p._id"
+          :index="i"
           :song_id="p._id"
           :song_artists="artist_name"
           :song_name="p.name"

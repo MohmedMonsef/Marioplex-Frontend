@@ -4,8 +4,9 @@
     <h1 class="title">Popular</h1>
     <song-component
           testid="songcomponent"
-          v-for="p in artist_tracks" 
+          v-for="(p,i) in artist_tracks" 
           :key="p._id"
+          :index="i"
           :song_id="p._id"
           :song_name="p.name"
           :song_length="p.duration"

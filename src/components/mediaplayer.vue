@@ -52,7 +52,7 @@
             v-bind:key="artist.id"
             >{{ artist.songs.artist_name }}</a
           > -->
-          <a href="#" id="artist_name" testid="artist_name">Artist1Name</a>
+          <a href="#" id="artist_name" testid="artist_name">{{ Index }}</a>
         </div>
       </div>
       <div class="col-sm-6">
@@ -77,14 +77,19 @@
               <span data-toggle="tooltip" title="Previous">
                 <i
                   class="fa fa-step-backward"
-                  :class="{ disabledicon: currentsong_info.index == 0 }"
+                  :class="{ disabledicon: Index == 0 }"
                   id="playbackicon"
                   testid="previcon"
                 ></i>
               </span>
             </button>
+            <p>{{ Index }}</p>
             <!-- /////////////////////////////////////////////// -->
-            <button id="play_button" testid="playbutton" v-if="playicon">
+            <button
+              id="play_button"
+              testid="playbutton"
+              v-if="playicon && !isNaN(duration)"
+            >
               <span data-toggle="tooltip" title="Pause">
                 <i
                   class="fa fa-pause"
@@ -95,10 +100,18 @@
                 </i>
               </span>
             </button>
-
+            <div
+              class="spinner-border spinner-border-md text-light"
+              style="margin=-5px;"
+              v-if="isNaN(duration)"
+            ></div>
             <!-- //////////////////////////////// -->
             <!-- ///////////////////////////////// -->
-            <button id="pause_button" testid="pausebutton" v-if="!playicon">
+            <button
+              id="pause_button"
+              testid="pausebutton"
+              v-if="!playicon && !isNaN(duration)"
+            >
               <!-- //\\ -->
               <span data-toggle="tooltip" title="Play">
                 <i
@@ -138,8 +151,6 @@
                     >.</span
                   >
                 </i>
-                <!-- style="background-color:red;border-radius:40px;min-width:21px;max-height:16px;" -->
-                <!-- <span v-if="isRepeat==2" style="font-size:26px;max-height:16px;">.</span> -->
               </div>
             </button>
           </div>
@@ -461,6 +472,8 @@ input:focus {
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
+import { currentaudio_src } from "../javascript/play.js";
+import { mapGetters } from "vuex";
 /**
 
      * @displayName Media Player
@@ -484,23 +497,16 @@ export default {
         this.moving_song_bar();
       }, 300);
     });
-    // if(localStorage.volumepos){
-    //   this.volumepos = localStorage.volumepos;
-    //   console.log("localstorage volumepos" , localStorage.volumepos )
-    // }
-    // if(localStorage.sound){
-    //   this.sound = localStorage.sound;
-    //   console.log("localstorage sound" , localStorage.sound)
-    // }
+    setTimeout(() => {
+      console.log("in song component mount", this.user);
+      if (this.user.player.is_repeat) {
+        this.isRepeat = 2;
+      } else {
+        this.isRepeat = 0;
+      }
+      this.isShuffle = this.user.player.is_shuffled;
+    }, 1000);
   },
-  // watch:{
-  //   volumepos(newvolume) {
-  //     localStorage.volumepos = newvolume;
-  //   },
-  //   sound(newsound){
-  //     localStorage.sound = newsound;
-  //   }
-  // },
   created: function() {
     window.addEventListener("mouseup", () => {
       this.stopDrag();
@@ -681,23 +687,24 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      user: "authorization/user"
+    }),
     changeTime: function() {
-     if (this.currentaudio) {
-        // console.log("in chnge time" , pos)
+      console.log(currentaudio_src());
+      if (!isNaN(this.currentPos)) {
         var min = Math.floor((this.currentPos % 3600) / 60);
         var sec = Math.floor(this.currentPos % 60);
         if (sec < 10) sec = "0" + sec;
-        console.log(" minute sec", min, ":", sec);
         return min + ":" + sec;
-     }
+      }
       return "0:00";
     },
     totalDuration: function() {
-      if (this.currentaudio) {
+      if (!isNaN(this.duration)) {
         var min = Math.floor((this.duration % 3600) / 60);
         var sec = Math.floor(this.duration % 60);
         if (sec < 10) sec = "0" + sec;
-        console.log(" minute sec", min, ":", sec);
         return min + ":" + sec;
       }
       return "0:00";
