@@ -45,8 +45,8 @@ h2 {
 </style>
 
 <script>
-import LibArtistsDefault from "@/components/lib-artists-default.vue";
-import LibArtists from "@/components/lib-artists.vue";
+import LibArtistsDefault from "@/components/LibArtistsDefault.vue";
+import LibArtists from "@/components/LibArtists.vue";
 import { mapGetters } from "vuex";
 /**
  * library artists page is where artists followed by the user exist
@@ -60,13 +60,13 @@ export default {
     LibArtists
   },
   mounted() {
-    this.$store.dispatch("userlibrary/showUserArtists");
+    this.$store.dispatch("UserLibrary/showUserArtists");
   },
   computed: {
     ...mapGetters({
       // map `this.artists1` to `this.$store.getters.artists`
-      artists1: "userlibrary/artists",
-      loadingartists: "userlibrary/loadingartists"
+      artists1: "UserLibrary/artists",
+      loadingartists: "UserLibrary/loadingartists"
     })
   }
 };

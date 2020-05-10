@@ -26,7 +26,7 @@ export default {
     name: "aboutartist",
        computed: {
     ...mapGetters({
-      about: "artistpage/artist_bio"
+      about: "ArtistPage/artist_bio"
     })
   },
 }

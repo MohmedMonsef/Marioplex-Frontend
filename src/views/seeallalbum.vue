@@ -7,7 +7,7 @@
                     class="col-lg-10% col-md-60% col-xs-6"
                     v-for="match_album in match_albums"
                     :key="match_album.id"
-                    :images="match_album.images"
+                    :images="'http://52.205.254.29/api/images/'+ match_album.images[0]._id + '?belongs_to=artist'"
                     :name="match_album.name"
                     :albumId="match_album._id"
                     :artistname="match_album.artistName"
@@ -35,7 +35,7 @@ h3 {
 }
 </style>
 <script>
-import LibAlbums from "@/components/lib-albums.vue";
+import LibAlbums from "@/components/LibAlbums.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "seeallalbum",

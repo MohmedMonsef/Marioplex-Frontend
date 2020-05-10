@@ -176,8 +176,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      playlist_name: "playlist/playlist_name",
-      owner_name: "playlist/owner_name"
+      playlist_name: "Playlist/playlist_name",
+      owner_name: "Playlist/owner_name"
     })
   }
 };

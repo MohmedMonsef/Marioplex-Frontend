@@ -115,11 +115,11 @@ export default {
   },
   name: "lib-likedsongs",
   mounted() {
-    this.$store.dispatch("userlibrary/showUserSongs");
+    this.$store.dispatch("UserLibrary/showUserSongs");
   },
   computed: {
     ...mapGetters({
-      songs1: "userlibrary/songs"
+      songs1: "UserLibrary/songs"
     })
   },
   filters: {

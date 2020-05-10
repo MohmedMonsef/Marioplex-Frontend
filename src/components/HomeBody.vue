@@ -8,8 +8,8 @@
 </style>
 <script>
 import { mapGetters } from "vuex";
-import homeBodyNoUser from "@/components/HomeBody_NoUser.vue";
-import homeBodyUser from "@/components/HomeBody_User.vue";
+import homeBodyNoUser from "@/components/HomeBodyNoUser.vue";
+import homeBodyUser from "@/components/HomeBodyUser.vue";
 /**
  * Body of home page
  * @displayName HomeBody
@@ -23,7 +23,7 @@ homeBodyUser
 },
   computed: {
     ...mapGetters({
-      isLoggedIn: "authorization/GetStatus"
+      isLoggedIn: "Authorization/GetStatus"
     })
   }
 };

@@ -47,8 +47,8 @@ h2 {
 </style>
 
 <script>
-import LibAlbumsDefault from "@/components/lib-albums-default.vue";
-import LibAlbums from "@/components/lib-albums.vue";
+import LibAlbumsDefault from "@/components/LibAlbumsDefault.vue";
+import LibAlbums from "@/components/LibAlbums.vue";
 import { mapGetters } from "vuex";
 /**
  * albums saved by the user and stored inside his library
@@ -62,13 +62,13 @@ export default {
     LibAlbums
   },
   mounted() {
-    this.$store.dispatch("userlibrary/showUserAlbums");
+    this.$store.dispatch("UserLibrary/showUserAlbums");
   },
   computed: {
     ...mapGetters({
       // map `this.albums1` to `this.$store.getters.albums`
-      albums1: "userlibrary/albums",
-      loadingalbums: "userlibrary/loadingalbums"
+      albums1: "UserLibrary/albums",
+      loadingalbums: "UserLibrary/loadingalbums"
     })
   }
 };

@@ -164,7 +164,7 @@ export default {
         this.isNormal = false;
         (this.isSubmitted = true), (this.isError = false);
         this.$store
-          .dispatch("authorization/reset", { email: this.email })
+          .dispatch("Authorization/reset", { email: this.email })
           .catch(err => console.log(err));
       }
     }

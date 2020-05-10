@@ -28,7 +28,7 @@ h2 {
 }
 </style>
 <script>
-import ShowPopularplaylists from "@/components/ShowPopularplaylists.vue";
+import ShowPopularplaylists from "@/components/ShowPopularPlaylists.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "AllLists",

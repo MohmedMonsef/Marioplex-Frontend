@@ -223,9 +223,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      likedtracks_length: "likedtracks/likedtracks_length",
-      playicon: "mediaplayer/playicon",
-      owner_name: "likedtracks/owner_name"
+      likedtracks_length: "LikedTracks/likedtracks_length",
+      playicon: "Mediaplayer/playicon",
+      owner_name: "LikedTracks/owner_name"
     })
   }
 };

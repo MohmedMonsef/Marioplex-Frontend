@@ -366,8 +366,8 @@
 
 <script>
 // @ is an alias to /src
-import LogoHeader from "@/components/logo-header.vue";
-import Divider from "@/components/divider.vue";
+import LogoHeader from "@/components/LogoHeader.vue";
+import Divider from "@/components/Divider.vue";
 import { mapGetters } from "vuex";
 /**
  * Signup page to create new account
@@ -466,7 +466,7 @@ export default {
             gender: this.gender,
             birthday: this.birthday
           };
-          this.$store.dispatch("authorization/signUp", newuser);
+          this.$store.dispatch("Authorization/signUp", newuser);
         } else return;
       }, 200);
     },
@@ -475,7 +475,7 @@ export default {
      * @public This is a public method
      */
     facebook_signUp() {
-      this.$store.dispatch("authorization/facebook_signUp");
+      this.$store.dispatch("Authorization/facebook_signUp");
     },
     /**
      * This function indicates that there is problem occurs while Signup with new account
@@ -494,7 +494,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "authorization/GetStatus"
+      isLoggedIn: "Authorization/GetStatus"
     }),
     req_email: function() {
       if (this.trigger_validation) {

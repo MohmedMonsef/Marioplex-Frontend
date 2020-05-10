@@ -1,17 +1,12 @@
 <template>
-  <div class="album_info">
-    <div
-      class="image"
-      testid="image"
-      @mouseover="onhoverimage()"
-      @mouseleave="onleaveimage()"
-    >
+  <div class="playlist_info">
+    <div class="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
       <img
-        :src="album_image"
-        alt="album_image"
-        class="album_image"
-        id="album_image"
-        testid="album_image"
+        :src="playlist_image"
+        alt="playlist_image"
+        class="playlist_image"
+        id="playlist_image"
+        testid="playlistimage"
       />
       <i
         v-if="!play"
@@ -29,14 +24,21 @@
         @click="pauseSong(), stopplaying()"
       >
       </i>
+
+      <!-- this comment to try to change the shape of play pause icon -->
+      <!-- <button v-if="!play" id="imageplayicon"  @click="playSong() , isplaying()">
+             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px"><title>MUSIC</title><path d="M41.37,71.64H36.88a2.51,2.51,0,0,1-2.5-2.5V34.84a2.51,2.51,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,41.37,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M60.92,71.64H56.43a2.5,2.5,0,0,1-2.5-2.5V34.84a2.5,2.5,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,60.92,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M49.63,93.8A41.81,41.81,0,1,1,91.44,52,41.85,41.85,0,0,1,49.63,93.8Zm0-82.62A40.81,40.81,0,1,0,90.44,52,40.85,40.85,0,0,0,49.63,11.18Z"></path></svg>
+            </button> -->
     </div>
     <div>
-      <span data-toggle="tooltip" :title="album_name">
-        <h2 class="albumname" testid="album_name">{{ this.album_name }}</h2>
+      <span data-toggle="tooltip" :title="playlist_name">
+        <h2 class="playlistname" testid="playlistname">
+          {{ this.playlist_name }}
+        </h2>
       </span>
 
-      <router-link to="/HomeWebPlayer" id="artist_name" testid="artist_name">{{
-        artist_name
+      <router-link to="/" id="owner_name" testid="ownername">{{
+        owner_name
       }}</router-link>
     </div>
     <button
@@ -47,6 +49,12 @@
     >
       PLAY
     </button>
+
+    <!-- /////////////////////////////////////////// -->
+    <!-- this comment to try to connect the popup to the user -->
+    <!-- <button v-if="!play" class="playbutton" testid="playbutton" @click="checkuserstate()">PLAY</button> -->
+    <!-- ////////////////////////////////////// -->
+
     <button
       v-if="play"
       class="pausebutton"
@@ -60,7 +68,7 @@
         class="emptyheartbutton"
         testid="emptyheartbutton"
         v-if="!this.liked"
-        @click="likecurrentalbum()"
+        @click="likecurrentplaylist()"
       >
         <span data-toggle="tooltip" title="Save to Your Library">
           <i
@@ -75,7 +83,7 @@
         class="filledheartbutton"
         testid="filledheartbutton"
         v-if="this.liked"
-        @click="likecurrentalbum()"
+        @click="likecurrentplaylist()"
       >
         <span data-toggle="tooltip" title="Remove from Your Library">
           <i
@@ -86,6 +94,8 @@
           ></i>
         </span>
       </button>
+
+      <!-- this comment is to add ... if needed -->
       <!-- <span data-toggle="tooltip" title="More">
             <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
             </span>
@@ -93,24 +103,28 @@
         <p v-if="!isLiked">Add to Liked Songs</p>
         <p v-if="isLiked">Remove from Liked Songs</p>
       </div>-->
-      <p testid="albumlength" id="albumlength">{{ album_length }} SONGS</p>
-      <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
+
+      <p testid="playlistlength" id="playlistlength">
+        {{ playlist_length }} SONGS
+      </p>
+      <div class="toast" id="playlistliketoast" testid="playlisttoast"></div>
     </div>
   </div>
 </template>
+
 <style lang="scss" scoped>
-.album_info {
+.playlist_info {
   width: 100%;
   height: 100%;
   position: absolute;
   text-align: center;
 }
-.album_image {
+.playlist_image {
   height: 350px;
   width: 350px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.albumname {
+.playlistname {
   color: white;
   margin: 25px;
   margin-bottom: 5px;
@@ -203,13 +217,13 @@ p {
     cursor: pointer;
   }
 }
-#artist_name {
+#owner_name {
   color: #b3b3b3;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.015em;
 }
-#artist_name:hover {
+#owner_name:hover {
   color: white;
 }
 .toast {
@@ -241,7 +255,7 @@ import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import { mapGetters } from "vuex";
 const toast = {
   show(message) {
-    var mytoast = document.getElementById("albumliketoast");
+    var mytoast = document.getElementById("playlistliketoast");
     //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
     clearTimeout(mytoast.hideTimeout);
     mytoast.textContent = message;
@@ -253,8 +267,8 @@ const toast = {
   }
 };
 /**
- * Displays Album information
- * @displayName Album information
+ *  * apperars when there is tracks in playlist
+ * @displayName Playlist info
  * @example [none]
  */
 export default {
@@ -265,51 +279,64 @@ export default {
     };
   },
   mixins: [song_functions],
-  name: "album_info",
+  name: "playlist_info",
   methods: {
+    //    checkuserstate:function(){
+    //     if (this.user != "success")
+    //      {
+    //       this.changeModalState();
+    //      }
+    //      else{
+    //        this.playsong();
+    //        this.isplaying();
+    //      }
+    //    },
+    //      changeModalState() {
+    //   this.$store.dispatch("playlistpopup/toggleModal");
+    // },
+    /**
+     * Playlist list options(not implemnted yet)
+     * @public This is a public method
+     */
     toggleShow() {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
     },
     /**
-     * checks if song in currently playing
+     * start playing song and changes style
      * @public This is a public method
      */
     isplaying() {
       this.play = true;
       if (this.playicon) {
-        var albumimage = document.getElementById("album_image");
+        var playlistimage = document.getElementById("playlist_image");
         var pausebutton = document.getElementById("imageplayicon");
-        albumimage.style.opacity = "0.3";
+        playlistimage.style.opacity = "0.3";
         pausebutton.style.opacity = "1";
       }
     },
     /**
-     * pause current playing song
+     * Pauses current song and changes style
      * @public This is a public method
      */
     stopplayingbutton() {
       this.play = false;
-      var albumimage = document.getElementById("album_image");
-      albumimage.style.opacity = "1";
+      var playlistimage = document.getElementById("playlist_image");
+      playlistimage.style.opacity = "1";
       var playbutton = document.getElementById("imagepauseicon");
       playbutton.style.opacity = "0";
     },
-    /**
-     * pause current playing song
-     * @public This is a public method
-     */
     stopplaying() {
       this.play = false;
     },
     /**
-     * changes image appearance on hover
+     * changes image style on hover
      * @public This is a public method
      */
     onhoverimage: function() {
-      var albumimage = document.getElementById("album_image");
-      albumimage.style.opacity = "0.3";
+      var playlistimage = document.getElementById("playlist_image");
+      playlistimage.style.opacity = "0.3";
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "1";
@@ -319,50 +346,58 @@ export default {
       }
     },
     /**
-     * Returns image apperance to normal
+     * returns style to normal(before hover)
      * @public This is a public method
      */
     onleaveimage: function() {
-      var albumimage = document.getElementById("album_image");
-      albumimage.style.opacity = "1";
+      var playlistimage = document.getElementById("playlist_image");
+      playlistimage.style.opacity = "1";
 
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "0";
       } else {
-        albumimage.style.opacity = "0.3";
+        playlistimage.style.opacity = "0.3";
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
       }
     },
     /**
-     * triggers request to like current album
+     * triggers liking/unliking current playlist request
      * @public This is a public method
      */
-    likecurrentalbum: function() {
+    likecurrentplaylist: function() {
       if (!this.liked) {
+        if(toast != null){
         toast.show("Saved to Your Library");
-        this.$store.dispatch("album/like_album", this.$route.params.album_id);
+        }
+        this.$store.dispatch(
+          "Playlist/like_playlist",
+          this.$route.params.playlist_id
+        );
+        this.$store.dispatch("Playlist/showplaylists");
       } else {
+        if(toast != null){
         toast.show("Removed from Your Library");
-        console.log("ggg",this.$route.params.album_id)
-        this.$store.dispatch("album/unlike_album", this.$route.params.album_id);
+        }
+        this.$store.dispatch(
+          "Playlist/unlike_playist",
+          this.$route.params.playlist_id
+        );
+        this.$store.dispatch("Playlist/showplaylists");
       }
     }
   },
   computed: {
     ...mapGetters({
-      album_length: "album/album_length",
-      album_name: "album/album_name",
-      playicon: "mediaplayer/playicon",
-      artist_name: "album/artist_name",
-      album_image: "album/album_image",
-      liked: "album/likealbum"
+      user: "Authorization/GetStatus",
+      playlist_length: "Playlist/playlist_length",
+      playlist_name: "Playlist/playlist_name",
+      playicon: "Mediaplayer/playicon",
+      owner_name: "Playlist/owner_name",
+      playlist_image: "Playlist/playlist_image",
+      liked: "Playlist/likeplaylist"
     })
   }
-  //       created: function() {
-  //    this.$store.dispatch("album/like_album" , this.$route.params.album_id),
-  //    this.$store.dispatch("album/unlike_album" , this.$route.params.album_id)
-  //      }
 };
 </script>

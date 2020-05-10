@@ -27,7 +27,7 @@ h2 {
 }
 </style>
 <script>
-import ShowPopularartists from "@/components/ShowPopularartists.vue";
+import ShowPopularartists from "@/components/ShowPopularArtists.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "AllArtists",

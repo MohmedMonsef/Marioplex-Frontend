@@ -111,7 +111,7 @@
 }
 </style>
 <script>
-import HomeNavigationBar from "../components/home-navigation-bar";
+import HomeNavigationBar from "../components/HomeNavigationBar";
 /**
  * This page is to describe how user be an artist
  * @displayName ForArtist Page

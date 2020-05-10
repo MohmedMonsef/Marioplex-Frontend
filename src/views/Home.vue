@@ -8,8 +8,8 @@
 
 <script>
 // @ is an alias to /src
-import HomeNavigationBar from "@/components/home-navigation-bar.vue";
-import HomeFooter from "@/components/home-footer.vue";
+import HomeNavigationBar from "@/components/HomeNavigationBar.vue";
+import HomeFooter from "@/components/HomeFooter.vue";
 /**
  * Spotify home page
  * @displayName Spotify Home Page

@@ -119,9 +119,9 @@ h2 {
 </style>
 
 <script>
-import category from "@/components/category.vue";
-import searchcomponent from "@/components/searchcomponent.vue";
-import searchresults from '@/views/searchresults';
+import category from "@/components/Category.vue";
+import searchcomponent from "@/components/SearchComponent.vue";
+import searchresults from '@/views/SearchResults';
 import { mapGetters, mapState } from "vuex";
 /**
  * Search Page is the place where you can search for certain playlist , album , artist or even certain category
@@ -136,7 +136,7 @@ export default {
     searchresults
   },
   mounted() {
-    this.$store.dispatch("categorys/showcategory");
+    this.$store.dispatch("Categorys/showcategory");
   },
   methods: {
     /**
@@ -149,14 +149,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      categorys: "categorys/getcategory",
-      loadingcategory: "categorys/loading",
+      categorys: "Categorys/getcategory",
+      loadingcategory: "Categorys/loading",
       loadingsearch: "Search/loadingsearch",
       search_value: "Search/get_value",
      showresl: "Search/showeres"
     }),
     ...mapState({
-      show: state => state.creatplaylist.showModal,
+      show: state => state.Playlist.showModal,
       inartist: state => state.Search.in
     })
   }

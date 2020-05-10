@@ -150,7 +150,7 @@ button:focus {
 <script>
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 import { mapGetters } from "vuex";
-import artistnavbar from "@/components/Artistnavbar.vue";
+import artistnavbar from "@/components/ArtistNavbar.vue";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("artistliketoast");
@@ -185,20 +185,20 @@ export default {
     followartist: function() {
       if (!this.followed) {
         toast.show("Saved to Your Library");
-        this.$store.dispatch("artistpage/follow_artist",this.$route.params.artist_id);
+        this.$store.dispatch("ArtistPage/follow_artist",this.$route.params.artist_id);
       } 
       else {
         toast.show("Removed from Your Library");
-        this.$store.dispatch("artistpage/unfollow_artist",this.$route.params.artist_id);
+        this.$store.dispatch("ArtistPage/unfollow_artist",this.$route.params.artist_id);
       }
     }
   },
   computed: {
     ...mapGetters({
-      playicon: "mediaplayer/playicon",
-      artist_name: "artistpage/artist_name",
-      album_image: "artistpage/artistcover_image",
-      followed: "artistpage/followartist"
+      playicon: "Mediaplayer/playicon",
+      artist_name: "ArtistPage/artist_name",
+      album_image: "ArtistPage/artistcover_image",
+      followed: "ArtistPage/followartist"
     })
   }
 };

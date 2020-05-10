@@ -5,7 +5,7 @@
     </div>
     <div v-if="loading" class="notloading">
       <div class="row justify-content-center img-user m-0">
-        <img  :src="'http://52.205.254.29/api/images/'+ id + '?belongs_to=artist'"/>
+        <img  :src="getImg(user.images[0])"/>
         <h1>{{user.displayName}}</h1>
       </div>
         <div class="row m-0">
@@ -15,7 +15,7 @@
             >
           <lib-playlists
             v-if="playlist.isPublic"
-            :images="'http://52.205.254.29/api/images/'+ id + '?belongs_to=artist'"
+            :images="'http://52.205.254.29/api/images/'+ playlist.images[0]._id + '?belongs_to=playlist'"
             :name="playlist.name"
             :ownerName="playlist.owner"
             :playlist_id="playlist.id"
@@ -62,7 +62,7 @@ width: 100%;
 </style>
 
 <script>
-import LibPlaylists from "@/components/lib-playlists.vue";
+import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
 /**
  * Album page made by Artist and you can like and add it to your liked songs also it contains the artist name which will move you to the artist page where you can find more and more of songs you like
@@ -84,10 +84,20 @@ export default {
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      user:"user/user",
-      playlists: "user/playlists", // creat new object "playlists1" and map to it
-      loading: "user/loading"
+      user:"UserUpdate/user",
+      playlists: "UserUpdate/playlists", // creat new object "playlists1" and map to it
+      loading: "UserUpdate/loading"
     })
+  },
+  methods:{
+    getImg(imgSrc){
+      if(typeof imgSrc == "undefined")
+          {
+            return 'https://dummyimage.com/250x400.jpg/dddddd/000000'
+          }
+      else
+        return 'http://52.205.254.29/api/images/'+ imgSrc._id+ '?belongs_to=user'
+    }
   },
   /**
    * Called at loading the page to display album tracks and send the id to get that specific album
@@ -95,8 +105,8 @@ export default {
    */
   beforeCreate:function(){
        this.userid = this.$route.params.user_id;
-       this.$store.dispatch("user/user_playlists",this.userid);
-       this.$store.dispatch("user/user_info",this.userid);
+       this.$store.dispatch("UserUpdate/user_playlists",this.userid);
+       this.$store.dispatch("UserUpdate/user_info",this.userid);
   },
   mounted() {
    

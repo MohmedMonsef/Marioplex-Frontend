@@ -109,7 +109,7 @@ export default {
   name: "Queue",
 
   beforeCreate() {
-    this.$store.dispatch("mediaplayer/get_currentsong");
+    this.$store.dispatch("Mediaplayer/get_currentsong");
     this.$store.dispatch("Queue/Queue");
   },
   components: {
@@ -118,7 +118,7 @@ export default {
   computed: {
     ...mapGetters({
       loading: "Queue/loading",
-      currentSong: "mediaplayer/Get_Currentsong",
+      currentSong: "Mediaplayer/Get_Currentsong",
       NextUp: "Queue/Get_Nextup",
       Queued: "Queue/Get_Queued"
     })

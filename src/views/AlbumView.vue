@@ -38,7 +38,7 @@
 
 <script>
 import SongComponent from "@/components/SongComponent.vue";
-import albuminfo from "@/components/album_info.vue";
+import albuminfo from "@/components/AlbumInfo.vue";
 import { mapGetters } from "vuex";
 /**
  * Album page made by Artist and you can like and add it to your liked songs also it contains the artist name which will move you to the artist page where you can find more and more of songs you like
@@ -59,11 +59,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-      album_tracks: "album/album_tracks",
-      album_length: "album/album_length",
-      album_load: "album/album_loaded",
-      artist_name: "album/artist_name",
-      album_name: "album/album_name"
+      album_tracks: "Album/album_tracks",
+      album_length: "Album/album_length",
+      album_load: "Album/album_loaded",
+      artist_name: "Album/artist_name",
+      album_name: "Album/album_name"
     })
   },
   /**
@@ -73,7 +73,7 @@ export default {
   created: function() {
     this.albumid = this.$route.params.album_id;
     
-    this.$store.dispatch("album/album_tracks", this.$route.params.album_id);
+    this.$store.dispatch("Album/album_tracks", this.$route.params.album_id);
   },
   mounted() {
     this.albumid = this.$route.params.album_id;

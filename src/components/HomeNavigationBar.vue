@@ -480,7 +480,7 @@ export default {
      * @public This is a public method
      */
     logout() {
-      this.$store.dispatch("authorization/logout");
+      this.$store.dispatch("Authorization/logout");
       console.log("logout");
     },
     /**
@@ -493,7 +493,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "authorization/GetStatus"
+      isLoggedIn: "Authorization/GetStatus"
     }),
     islogged() {
       return this.isLoggedIn == "success";

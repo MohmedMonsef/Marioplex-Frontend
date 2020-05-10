@@ -24,8 +24,7 @@ export default {
           let playlists = response.data;
           console.log("user playlists", playlists);
           commit("set_playlists", playlists);
-          
-            state.loading= true;
+          state.loading= true;
         })
         .catch(error => {
             let playlists = [];

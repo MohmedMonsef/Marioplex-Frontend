@@ -283,15 +283,15 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("creatplaylist/showplaylists");
+    this.$store.dispatch("Playlist/showplaylists");
   },
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      playlists1: "creatplaylist/playlists",
-      showModalDelete: "creatplaylist/showModalDelete",
-      isLoggedIn: "authorization/GetStatus",
-      showinput:"creatplaylist/showinput"
+      playlists1: "Playlist/playlists",
+      showModalDelete: "Playlist/showModalDelete",
+      isLoggedIn: "Authorization/GetStatus",
+      showinput:"Playlist/showinput"
       // renamepl:"creatplaylist/renamepl"
 
     })
@@ -303,14 +303,14 @@ export default {
      * @public This is a public method
      */
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+      this.$store.dispatch("Playlist/toggleModal");
     },
     /**
      * triggers deleting playlist popup
      * @public This is a public method
      */
     changeModalStateDelete() {
-      this.$store.dispatch("creatplaylist/toggleModalDelete", this.playlistid);
+      this.$store.dispatch("Playlist/toggleModalDelete", this.playlistid);
     },
     /**
      * triggers navigating to search action
@@ -329,7 +329,7 @@ export default {
       this.$store.dispatch("Search/searchfocus", this.searchfocus);
     },
     showinputfield() {
-        this.$store.dispatch("creatplaylist/showinputfield");
+        this.$store.dispatch("Playlist/showinputfield");
       //this.showinput = !this.showinput;
       this.$nextTick(function() {
         var i = document.getElementById("in_rename");
@@ -355,7 +355,7 @@ export default {
       console.log("inputstaplaylistids", this.showinput);
       console.log("playlistname", this.newname);
       console.log("id", this.p_id);
-      this.$store.dispatch("creatplaylist/ChangePlaylistName", payload);
+      this.$store.dispatch("Playlist/ChangePlaylistName", payload);
     },
     PubPriChange(){
       if(this.public){
@@ -368,7 +368,7 @@ export default {
       public:this.public,
       playlist_id:this.p_id
       };
-      this.$store.dispatch("creatplaylist/PubPriChange",payload)
+      this.$store.dispatch("Playlist/PubPriChange",payload)
     }
   }
 };

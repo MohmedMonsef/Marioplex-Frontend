@@ -8,7 +8,7 @@
           <top
             v-for="match_to in match_top"
             :key="match_to.id"
-            :image="match_to.images"
+            :image="'http://52.205.254.29/api/images/'+ match_to.images[0]._id + '?belongs_to=artist'"
             :name="match_to.name"
             :type="match_to.type"
             :artistId="match_to._id"
@@ -18,7 +18,7 @@
           <top
             v-for="match_to in match_top"
             :key="match_to.id"
-            :image="match_to.images"
+            :image="'http://52.205.254.29/api/images/'+ match_to.images[0]._id + '?belongs_to=album'"
             :name="match_to.name"
             :artistId="match_to.artistId"
             :artistName="match_to.artistName"
@@ -30,7 +30,7 @@
           <top
             v-for="match_to in match_top"
             :key="match_to.id"
-            :images="match_to.images"
+            :images="'http://52.205.254.29/api/images/'+ match_to.images[0]._id + '?belongs_to=playlist'"
             :name="match_to.name"
             :ownerName="match_to.ownerName"
             :ownerId="match_to.ownerId"
@@ -43,7 +43,7 @@
           <top
             v-for="match_to in match_top"
             :key="match_to.id"
-            :images="match_to.images"
+            :images="'http://52.205.254.29/api/images/'+ match_to.images[0]._id + '?belongs_to=track'"
             :name="match_to.name"
             :type="match_to.type"
             :artistName="match_to.artistName"
@@ -55,7 +55,7 @@
           <top
             v-for="match_to in match_top"
             :key="match_to.id"
-            :images="match_to.images"
+            :images="'http://52.205.254.29/api/images/'+ match_to.images[0]._id + '?belongs_to=user'"
             :name="match_to.displayName"
             :type="match_to.type"
             :Id="match_to._id"
@@ -117,7 +117,7 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_artist in match_artists"
             :key="match_artist.id"
-            :images="match_artist.images"
+            :images="'http://52.205.254.29/api/images/'+ match_artist.images[0]._id + '?belongs_to=artist'"
             :name="match_artist.name"
             :artistId="match_artist._id"
             :type="match_artist.type"
@@ -147,7 +147,7 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_album in match_albums"
             :key="match_album.id"
-            :images="match_album.images"
+            :images="'http://52.205.254.29/api/images/'+ match_album.images[0]._id + '?belongs_to=album'"
             :name="match_album.name"
             :albumId="match_album._id"
             :artistname="match_album.artistName"
@@ -177,7 +177,7 @@
           <LibPlaylists
             v-for="match_playlist in match_playlists"
             :key="match_playlist.id"
-            :images="match_playlist.images"
+            :images="'http://52.205.254.29/api/images/'+ match_playlist.images[0]._id + '?belongs_to=playlist'"
             :name="match_playlist.name"
             :ownerName="match_playlist.ownerName"
             :ownerId="match_playlist.ownerId"
@@ -209,7 +209,7 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_user in match_users"
             :key="match_user.id"
-            :images="match_user.images"
+            :images="getImg(match_user.images[0])"
             :name="match_user.displayName"
             :artistId="match_user._id"
             :type="match_user.user"
@@ -270,11 +270,11 @@ h2 {
 }
 </style>
 <script>
-import LibArtists from "@/components/lib-artists.vue";
-import top from "@/components/topresult_card.vue";
-import LibAlbums from "@/components/lib-albums.vue";
-import LibPlaylists from "@/components/lib-playlists.vue";
-import trackcomponent from "@/components/trackcomponent.vue";
+import LibArtists from "@/components/LibArtists.vue";
+import top from "@/components/TopresultCard.vue";
+import LibAlbums from "@/components/LibAlbums.vue";
+import LibPlaylists from "@/components/LibPlaylists.vue";
+import trackcomponent from "@/components/TrackComponent.vue";
 import { mapGetters } from "vuex";
 /**
  * Here is the place where results of the search appear
@@ -312,6 +312,14 @@ export default {
        // this.$store.dispatch("Search/actshower",false);
       // this.$store.dispatch("Search/searchfocus",false);
     this.$store.dispatch("Search/showresult",'');
+    },
+    getImg(imgSrc){
+      if(typeof imgSrc == "undefined")
+          {
+            return 'https://dummyimage.com/250x400.jpg/dddddd/000000'
+          }
+      else
+        return 'http://52.205.254.29/api/images/'+ imgSrc._id+ '?belongs_to=user'
     }
   },
   //  mounted() {

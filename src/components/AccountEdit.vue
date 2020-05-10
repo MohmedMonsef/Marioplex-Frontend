@@ -344,7 +344,7 @@ export default {
                     birthday: this.birthday
                 };
                 this.saved = true;
-                this.$store.dispatch("authorization/SaveEdit", edituser);
+                this.$store.dispatch("Authorization/SaveEdit", edituser);
             } 
             else {
                 this.saved = false;
@@ -394,8 +394,8 @@ export default {
     }, 
     computed: {
         ...mapGetters({
-            isEdited: "authorization/isEdited",
-            user: "authorization/user",
+            isEdited: "Authorization/isEdited",
+            user: "Authorization/user",
         })
     }
 }

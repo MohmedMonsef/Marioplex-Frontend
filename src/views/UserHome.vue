@@ -10,7 +10,7 @@
           <show-popularplaylists
             v-for="POPplaylist in POPplaylists1.playlists.slice(0, 5)"
             :key="POPplaylist.id"
-            :images="POPplaylist.images"
+            :images="'http://52.205.254.29/api/images/'+POPplaylist.images[0]._id+'?belongs_to=playlist'"
             :name="POPplaylist.name"
             :Description="POPplaylist.Description"
             :playlist_id="POPplaylist.id"
@@ -28,7 +28,7 @@
           <show-popularartists
             v-for="POPartist in POPartists1.artists.slice(0, 5)"
             :key="POPartist.id"
-            :images="POPartist.images"
+            :images="'http://52.205.254.29/api/images/'+POPartist.images[0]._id+'?belongs_to=artist'"
             :name="POPartist.name"
             :artistId="POPartist.id"
           />
@@ -45,7 +45,7 @@
           <show-popularalbums
             v-for="POPalbum in POPalbums1.albums.slice(0, 5)"
             :key="POPalbum.id"
-            :images="POPalbum.images"
+            :images="'http://52.205.254.29/api/images/'+POPalbum.images[0]._id+'?belongs_to=album'"
             :name="POPalbum.name"
             :artistname="POPalbum.artist.name"
             :albumId="POPalbum.id"
@@ -66,7 +66,7 @@
           <show-popularreleases
             v-for="POPnewrelease in POPnewreleases1.albums.slice(0, 5)"
             :key="POPnewrelease.id"
-            :images="POPnewrelease.images"
+            :images="'http://52.205.254.29/api/images/'+POPnewrelease.images[0]._id+'?belongs_to=album'"
             :name="POPnewrelease.name"
             :artistname="POPnewrelease.artist.name"
             :albumId="POPnewrelease.id"
@@ -82,7 +82,7 @@
             <lib-playlists
               v-for="playlist in playlists1.slice(0, 5)"
               :key="playlist.id"
-              :images="playlist.images"
+              :images="'http://52.205.254.29/api/images/'+playlist.images[0]._id+'?belongs_to=playlist'"
               :name="playlist.name"
               :ownerName="playlist.owner"
               :playlist_id="playlist.id"
@@ -149,11 +149,11 @@ h2 {
 </style>
 
 <script>
-import ShowPopularplaylists from "@/components/ShowPopularplaylists.vue";
-import ShowPopularartists from "@/components/ShowPopularartists.vue";
-import ShowPopularalbums from "@/components/ShowPopularalbums.vue";
-import ShowPopularreleases from "@/components/ShowPopularreleases.vue";
-import LibPlaylists from "@/components/lib-playlists.vue";
+import ShowPopularplaylists from "@/components/ShowPopularPlaylists.vue";
+import ShowPopularartists from "@/components/ShowPopularArtists.vue";
+import ShowPopularalbums from "@/components/ShowPopularAlbums.vue";
+import ShowPopularreleases from "@/components/ShowPopularReleases.vue";
+import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
 /**
  * This page show popular playlists,albums,releases and artists also shows at the end of the page user's liked playists
@@ -186,7 +186,7 @@ export default {
     this.$store.dispatch("ShowWebPlayer/showPopularArtists");
     this.$store.dispatch("ShowWebPlayer/showPopularAlbums");
     this.$store.dispatch("ShowWebPlayer/showPopularNewreleases");
-    this.$store.dispatch("creatplaylist/showplaylists");
+    this.$store.dispatch("Playlist/showplaylists");
   },
   methods: {
     handler: function(e) {
@@ -201,8 +201,8 @@ export default {
       POPartists1: "ShowWebPlayer/POPartists",
       POPalbums1: "ShowWebPlayer/POPalbums",
       POPnewreleases1: "ShowWebPlayer/POPnewreleases",
-      playlists1: "creatplaylist/playlists",
-      isLoggedIn: "authorization/GetStatus",
+      playlists1: "Playlist/playlists",
+      isLoggedIn: "Authorization/GetStatus",
     }),
   },
 };

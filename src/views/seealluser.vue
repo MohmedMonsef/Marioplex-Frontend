@@ -7,7 +7,7 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_user in match_users"
             :key="match_user.id"
-            :images="match_user.images"
+            :images="'http://52.205.254.29/api/images/'+ match_user.images[0]._id + '?belongs_to=user'"
             :name="match_user.displayName"
             :artistId="match_user._id"
             :type="match_user.user"
@@ -34,7 +34,7 @@ h3 {
 }
 </style>
 <script>
-import LibArtists from "@/components/lib-artists.vue";
+import LibArtists from "@/components/LibArtists.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "seealluser",

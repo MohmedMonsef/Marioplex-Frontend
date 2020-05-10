@@ -263,7 +263,7 @@ export default {
   components: {},
   computed: {
     ...mapGetters({
-      showModal: "artistproperties/showModal"
+      showModal: "ArtistProperties/showModalClaim"
     })
   },
   methods: {
@@ -272,7 +272,7 @@ export default {
      * @public This is a public method
      */
     changeModalState() {
-      this.$store.dispatch("artistproperties/toggleModal");
+      this.$store.dispatch("ArtistProperties/toggleModalClaim");
     },
     /**
      * triggers the edit request
@@ -285,7 +285,7 @@ export default {
         Description: this.Description
       };
       console.log("nerd");
-      this.$store.dispatch("artistproperties/EditBio", payload);
+      this.$store.dispatch("ArtistProperties/EditBio", payload);
     }
   }
 };

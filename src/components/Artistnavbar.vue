@@ -74,9 +74,9 @@ button:focus {
 </style> 
 
 <script>
-import ArtistOverview from "@/components/Artistoverview.vue";
+import ArtistOverview from "@/components/ArtistOverview.vue";
 import RelatedArtists from "@/components/RelatedArtists.vue";
-import About from "@/components/Aboutartist.vue";
+import About from "@/components/AboutArtist.vue";
 export default {
      data: function() {
     return {

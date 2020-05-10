@@ -6,7 +6,7 @@
                 <LibPlaylists
                     v-for="match_playlist in match_playlists"
                     :key="match_playlist.id"
-                    :images="match_playlist.images"
+                    :images="'http://52.205.254.29/api/images/'+ match_playlist.images[0]._id + '?belongs_to=playlist'"
                     :name="match_playlist.name"
                     :ownerName="match_playlist.ownerName"
                     :ownerId="match_playlist.ownerId"
@@ -34,7 +34,7 @@ h3 {
 }
 </style>
 <script>
-import LibPlaylists from "@/components/lib-playlists.vue";
+import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "seeallplaylist",

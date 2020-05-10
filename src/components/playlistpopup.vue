@@ -205,7 +205,7 @@ export default {
      * @public This is a public method
      */
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+      this.$store.dispatch("Playlist/toggleModal");
     }
   }
 };

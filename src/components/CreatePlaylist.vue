@@ -314,12 +314,12 @@ export default {
   components: {},
   computed: {
     ...mapState({
-      Playlists: state => state.creatplaylist.Playlists
+      Playlists: state => state.Playlist.Playlists
     }),
     ...mapGetters({
-      showModal: "creatplaylist/showModal",
-      username: "authorization/Username",
-      withtrack:"creatplaylist/withtrack"
+      showModal: "Playlist/showModal",
+      username: "Authorization/Username",
+      withtrack:"Playlist/withtrack"
     })
   },
   methods: {
@@ -329,7 +329,7 @@ export default {
      */
 
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal",this.withtrack);
+      this.$store.dispatch("Playlist/toggleModal",this.withtrack);
     },
     /**
      * triggers the create playlist request
@@ -350,7 +350,7 @@ export default {
           owner: this.username
         };
       }
-      this.$store.dispatch("creatplaylist/CreatePlaylist", payload);
+      this.$store.dispatch("Playlist/CreatePlaylist", payload);
       // Addtrack();
     }
     // DeletePlaylist(id) {

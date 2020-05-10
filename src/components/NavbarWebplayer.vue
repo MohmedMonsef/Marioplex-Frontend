@@ -308,8 +308,8 @@ export default {
   name: "LibraryNavbar",
   computed: {
     ...mapGetters({
-      isLoggedIn: "authorization/GetStatus",
-      Username: "authorization/Username"
+      isLoggedIn: "Authorization/GetStatus",
+      Username: "Authorization/Username"
     })
   },
   methods: {
@@ -318,7 +318,7 @@ export default {
      * @public This is a public method
      */
     logout() {
-      this.$store.dispatch("authorization/logout");
+      this.$store.dispatch("Authorization/logout");
     },
     /**
      * Go to previous router page

@@ -169,7 +169,7 @@ export default {
   },
    computed: {
     ...mapGetters({
-      playicon: "mediaplayer/playicon",
+      playicon: "Mediaplayer/playicon",
     })
   }
 }

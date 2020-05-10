@@ -162,7 +162,7 @@ export default {
           };
           console.log("cccc",payload.token)
           
-          this.$store.dispatch("authorization/resetPassword",payload);
+          this.$store.dispatch("Authorization/resetPassword",payload);
         } else return;
       }, 200);
     },

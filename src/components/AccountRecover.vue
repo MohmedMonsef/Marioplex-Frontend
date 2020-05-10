@@ -137,11 +137,11 @@ export default {
         AccountSidebar
     },
     mounted() {
-    this.$store.dispatch("authorization/showDeletedPlaylists");
+    this.$store.dispatch("Authorization/showDeletedPlaylists");
     },
     computed:{
         ...mapGetters({
-      deleted_playlists: "authorization/deleted_playlists",
+      deleted_playlists: "Authorization/deleted_playlists",
     })
     }
 }

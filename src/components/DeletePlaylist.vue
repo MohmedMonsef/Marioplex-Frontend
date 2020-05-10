@@ -244,11 +244,11 @@ const toast = {
 export default {
   computed: {
     ...mapState({
-      Playlists: state => state.creatplaylist.Playlists
+      Playlists: state => state.Playlist.Playlists
     }),
     ...mapGetters({
-      showModalDelete: "creatplaylist/showModalDelete",
-      todelete: "creatplaylist/todelete"
+      showModalDelete: "Playlist/showModalDelete",
+      todelete: "Playlist/todelete"
     })
   },
   methods: {
@@ -259,7 +259,7 @@ export default {
 
     changeModalStateDelete() {
       //console.log("in methods");
-      this.$store.dispatch("creatplaylist/toggleModalDelete");
+      this.$store.dispatch("Playlist/toggleModalDelete");
     },
     /**
      * triggers the delete playlist request
@@ -267,7 +267,7 @@ export default {
      */
     DeletePlaylist() {
       //console.log("in delete component", this.todelete);
-      this.$store.dispatch("creatplaylist/DeletePlaylist", this.todelete);
+      this.$store.dispatch("Playlist/DeletePlaylist", this.todelete);
             toast.show("Removed from your library");
       //console.log("removed");
     }

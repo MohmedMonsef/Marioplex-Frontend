@@ -10,7 +10,7 @@
 }
 </style>
 <script>
-import artistcoverphoto from "@/components/Artistpagecoverphoto.vue";
+import artistcoverphoto from "@/components/ArtistPageCoverPhoto.vue";
 /**
  * Artist page inside webplayer that shows a collection of his/her playlists, albums and tracks
  * @displayName Artist Page
@@ -28,8 +28,8 @@ export default {
   },
     created: function() {
     this.artistid = this.$route.params.artist_id;
-    this.$store.dispatch("artistpage/artist_page", this.$route.params.artist_id);
-    this.$store.dispatch("artistpage/checkisfollowed", this.$route.params.artist_id);
+    this.$store.dispatch("ArtistPage/artist_page", this.$route.params.artist_id);
+    this.$store.dispatch("ArtistPage/checkisfollowed", this.$route.params.artist_id);
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;

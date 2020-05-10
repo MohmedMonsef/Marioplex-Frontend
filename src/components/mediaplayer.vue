@@ -535,7 +535,7 @@ export default {
      */
     moving_song_bar: function() {
       //console.log("x")
-      this.$store.dispatch("mediaplayer/advance_progress");
+      this.$store.dispatch("Mediaplayer/advance_progress");
       if (!this.drag) {
         var SongSlider = document.getElementById("progressbar");
         if (SongSlider != null) {
@@ -585,7 +585,7 @@ export default {
         var w = bar.getBoundingClientRect().width;
         l = event.clientX - l;
         var pos = (l / w) * this.duration;
-        this.$store.dispatch("mediaplayer/update_progress", pos);
+        this.$store.dispatch("Mediaplayer/update_progress", pos);
         console.log("stop draging", this.drag);
         this.drag = false;
       }
@@ -630,7 +630,7 @@ export default {
         if (l > 0 && l / w <= 1) this.sound = l / w;
         else if (l < 0) this.sound = 0;
         else this.sound = 1;
-        this.$store.dispatch("mediaplayer/update_volume", this.sound);
+        this.$store.dispatch("Mediaplayer/update_volume", this.sound);
         console.log("stop draging", this.volumedrag);
         this.sound = this.sound * 100;
         var volumeSlider = document.getElementById("volumeprogressbar");
@@ -657,15 +657,15 @@ export default {
       ) {
         changevolumeicon.className = "fa fa-volume-off";
         volumeSlider.style.width = 0 + "%";
-        this.$store.dispatch("mediaplayer/update_volume", 0);
+        this.$store.dispatch("Mediaplayer/update_volume", 0);
       } else if (changevolumeicon.className == "fa fa-volume-off") {
         volumeSlider.style.width = this.volumepos;
         if (this.sound > 0 && this.sound <= 50) {
           changevolumeicon.className = "fa fa-volume-down";
-          this.$store.dispatch("mediaplayer/update_volume", this.sound / 100);
+          this.$store.dispatch("Mediaplayer/update_volume", this.sound / 100);
         } else {
           changevolumeicon.className = "fa fa-volume-up";
-          this.$store.dispatch("mediaplayer/update_volume", this.sound / 100);
+          this.$store.dispatch("Mediaplayer/update_volume", this.sound / 100);
         }
       }
     },
@@ -675,7 +675,7 @@ export default {
      */
     shuffle: function() {
       this.isShuffle = !this.isShuffle;
-      this.$store.dispatch("mediaplayer/shufflesong_state", this.isShuffle);
+      this.$store.dispatch("Mediaplayer/shufflesong_state", this.isShuffle);
     },
     /**
      * Alters Repeat mode for tracks
@@ -683,12 +683,12 @@ export default {
      */
     repeat_song: function() {
       this.isRepeat = (this.isRepeat + 1) % 3;
-      this.$store.dispatch("mediaplayer/repeatsong_state", this.isRepeat);
+      this.$store.dispatch("Mediaplayer/repeatsong_state", this.isRepeat);
     }
   },
   computed: {
     ...mapGetters({
-      user: "authorization/user"
+      user: "Authorization/user"
     }),
     changeTime: function() {
       console.log(currentaudio_src());

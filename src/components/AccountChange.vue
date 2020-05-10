@@ -161,7 +161,7 @@ export default {
                     birthday: this.birthday
                 };
                 this.saved = true;
-                this.$store.dispatch("authorization/SaveEdit", edituser);
+                this.$store.dispatch("Authorization/SaveEdit", edituser);
             }
             else {
                 this.saved = false;

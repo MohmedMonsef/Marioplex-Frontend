@@ -72,7 +72,7 @@ h1 {
 }
 </style>      
 <script>
-import LibPlaylists from "@/components/lib-playlists.vue";
+import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "category",
@@ -81,13 +81,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      playlists: "categorys/getcategoryplaylists5",
-      category_name:"categorys/getcategory_name"
+      playlists: "Categorys/getcategoryplaylists5",
+      category_name:"Categorys/getcategory_name"
     })
   },
       created: function() {
       this.$store.dispatch(
-        "categorys/categoryplaylists",
+        "Categorys/categoryplaylists",
         this.$route.params.categoryId
       )
     }

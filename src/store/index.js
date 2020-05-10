@@ -1,45 +1,34 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import ShowWebPlayer from "../modules/ShowWebPlayer";
-import creatplaylist from "../modules/creatplaylist";
-import deleteplaylist from "../modules/deleteplaylist";
-import authorization from "../modules/authorization";
-import mediaplayer from "../modules/mediaplayer";
-import Queue from "../modules/queue";
-import categorys from "../modules/categorys";
+import Authorization from "../modules/Authorization";
+import Mediaplayer from "../modules/Mediaplayer";
+import Queue from "../modules/Queue";
+import Categorys from "../modules/Categorys";
 import Search from "../modules/Search";
-import userlibrary from "../modules/userlibrary";
-import uploadsong from "../modules/uploadsong";
-import claimartistprofile from "../modules/claimartistprofile";
-import playlist from "../modules/playlist";
-import artistproperties from "../modules/artistproperties";
-import album from "../modules/album";
-import likedtracks from "../modules/likedtracks";
-import playlistpopup from "../modules/playlistpopup";
-import artistpage from "../modules/artistpage";
-import user from "../modules/user";
-//export const  bus = new Vue();
+import UserLibrary from "../modules/UserLibrary";
+import Playlist from "../modules/Playlist";
+import ArtistProperties from "../modules/ArtistProperties";
+import Album from "../modules/Album";
+import LikedTracks from "../modules/LikedTracks";
+import ArtistPage from "../modules/ArtistPage";
+import UserUpdate from "../modules/UserUpdate";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     ShowWebPlayer,
-    creatplaylist,
-    deleteplaylist,
-    authorization,
-    mediaplayer,
+    Authorization,
+    Mediaplayer,
     Queue,
-    categorys,
+    Categorys,
     Search,
-    userlibrary,
-    uploadsong,
-    claimartistprofile,
-    playlist,
-    album,
-    likedtracks,
-    artistproperties,
-    playlistpopup,
-    artistpage,
-    user
+    UserLibrary,
+    Playlist,
+    Album,
+    LikedTracks,
+    ArtistProperties,
+    ArtistPage,
+    UserUpdate
   }
 });

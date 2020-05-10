@@ -36,7 +36,7 @@
 <script>
 import SideBar from "@/components/SideBar.vue";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
-import mediaplayer from "@/components/mediaplayer.vue";
+import mediaplayer from "@/components/Mediaplayer.vue";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
 import { mapState } from "vuex";
@@ -58,14 +58,9 @@ export default {
   },
   computed: {
     ...mapState({
-      show: state => state.creatplaylist.showModal,
-      showdelete: state => state.creatplaylist.showModalDelete
+      show: state => state.Playlist.showModal,
+      showdelete: state => state.Playlist.showModalDelete
     })
   },
-  // methods:{
-  //   showinputfield(){
-  //     this.$store.dispatch("creatplaylist/showinputfield");
-  //   }
-  // }
 };
 </script>

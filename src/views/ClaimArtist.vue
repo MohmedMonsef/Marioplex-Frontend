@@ -342,7 +342,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      showModal: "creatplaylist/showModal"
+      showModal: "Playlist/showModal"
     })
   },
   methods: {
@@ -351,7 +351,7 @@ export default {
      * @public This is a public method
      */
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+      this.$store.dispatch("Playlist/toggleModal");
     },
     /**
      * pop up that takes information about the user to be artist like name , genre and description
@@ -366,7 +366,7 @@ export default {
         genre: this.Genre,
         info: this.Description
       };
-      this.$store.dispatch("authorization/ClaimArtistProfile", payload);
+      this.$store.dispatch("Authorization/ClaimArtistProfile", payload);
     }
   }
 };

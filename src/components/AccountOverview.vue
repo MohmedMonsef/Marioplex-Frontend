@@ -252,8 +252,8 @@ export default {
     },
     computed: {
     ...mapGetters({
-      user: "authorization/user",
-      Username: "authorization/Username"
+      user: "Authorization/user",
+      Username: "Authorization/Username"
     })
   },
 }

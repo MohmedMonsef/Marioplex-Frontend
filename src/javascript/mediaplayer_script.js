@@ -62,7 +62,7 @@ export default {
           this.albumId == this.Get_Currentsong.album._id &&
           this.playlistId == this.Get_Currentsong.playlistId
         ) {
-          this.$store.dispatch("mediaplayer/playsong_state", info);
+          this.$store.dispatch("Mediaplayer/playsong_state", info);
         }
         else
         {
@@ -76,7 +76,7 @@ export default {
           playlist_id: this.Get_Currentsong.playlistId,
           is_playlist: this.Get_Currentsong.isPlaylist
         };
-        this.$store.dispatch("mediaplayer/playsong_state", info);
+        this.$store.dispatch("Mediaplayer/playsong_state", info);
       }
     },
     /**
@@ -86,7 +86,7 @@ export default {
     pauseSong() {
       this.song_state = false;
       console.log("pause song");
-      this.$store.dispatch("mediaplayer/pausesong_state");
+      this.$store.dispatch("Mediaplayer/pausesong_state");
     },
     /**
      * this function is to get the previous song in playlist or album
@@ -94,21 +94,21 @@ export default {
      */
     prev_song: function() {
       if (this.Index != 0)
-        this.$store.dispatch("mediaplayer/prevsong_state");
+        this.$store.dispatch("Mediaplayer/prevsong_state");
     },
     /**
      * this function is to get the next song in playlist or album
      * @public This is a public method
      */
     next_song: function() {
-      this.$store.dispatch("mediaplayer/nextsong_state");
+      this.$store.dispatch("Mediaplayer/nextsong_state");
     },
     /**
      * this function is used to random the play of songs inside the playlist and it appears also in the queue
      * @public This is a public method
      */
     random_songs: function() {
-      this.$store.dispatch("mediaplayer/shufflesong_state");
+      this.$store.dispatch("Mediaplayer/shufflesong_state");
     },
     /**
      * this function is to like the current song and save it to user's liked tracks page
@@ -116,10 +116,10 @@ export default {
      */
     likecurrentsong: function() {
       if (!this.liked) {
-        this.$store.dispatch("mediaplayer/Like", "");
+        this.$store.dispatch("Mediaplayer/Like", "");
         toast.show("Added to your Liked Songs");
       } else {
-        this.$store.dispatch("mediaplayer/UnLike", "");
+        this.$store.dispatch("Mediaplayer/UnLike", "");
         toast.show("Removed from your Liked Songs");
       }
     },
@@ -140,15 +140,15 @@ export default {
       media_player: state => state.mediaplayer.songs
     }),
     ...mapGetters({
-      playicon: "mediaplayer/playicon",
-      user: "authorization/GetStatus",
-      liked: "mediaplayer/liked",
-      currentaudio: "mediaplayer/currentaudio",
-      progress: "mediaplayer/progress",
-      duration: "mediaplayer/duration",
-      volume: "mediaplayer/volume",
-      Index: "mediaplayer/Index",
-      Get_Currentsong: "mediaplayer/Get_Currentsong"
+      playicon: "Mediaplayer/playicon",
+      user: "Authorization/GetStatus",
+      liked: "Mediaplayer/liked",
+      currentaudio: "Mediaplayer/currentaudio",
+      progress: "Mediaplayer/progress",
+      duration: "Mediaplayer/duration",
+      volume: "Mediaplayer/volume",
+      Index: "Mediaplayer/Index",
+      Get_Currentsong: "Mediaplayer/Get_Currentsong"
     })
   }
 };

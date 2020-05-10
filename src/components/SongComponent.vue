@@ -354,11 +354,11 @@ export default {
      */
     likecurrentsong: function() {
       if (!this.isLiked) {
-        this.$store.dispatch("mediaplayer/Like", this.song_id);
+        this.$store.dispatch("Mediaplayer/Like", this.song_id);
         toast.show("Added to your Liked Songs");
         this.isLiked = true;
       } else {
-        this.$store.dispatch("mediaplayer/UnLike", this.song_id);
+        this.$store.dispatch("Mediaplayer/UnLike", this.song_id);
         toast.show("Removed from your Liked Songs");
         this.isLiked = false;
       }
@@ -380,7 +380,7 @@ export default {
     },
     changeModalStateAdd() {
       console.log("in song component track", this.song_id);
-      this.$store.dispatch("creatplaylist/toggleModalAdd", this.song_id);
+      this.$store.dispatch("Playlist/toggleModalAdd", this.song_id);
     },
     RemoveFromThisPlaylist() {
       let payload = {
@@ -389,7 +389,7 @@ export default {
       };
       console.log("playlist id in song component", payload.playlist_id);
       console.log("track in song component", payload.song_id);
-      this.$store.dispatch("playlist/RemoveFromThisPlaylist", payload);
+      this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
     }
   },
   computed: {
@@ -412,10 +412,10 @@ export default {
       return min + ":" + sec;
     },
     ...mapGetters({
-      Get_Currentsong: "mediaplayer/Get_Currentsong"
+      Get_Currentsong: "Mediaplayer/Get_Currentsong"
     }),
     ...mapState({
-      showAdd: state => state.creatplaylist.showModalAdd
+      showAdd: state => state.Playlist.showModalAdd
     })
   },
   created: function() {

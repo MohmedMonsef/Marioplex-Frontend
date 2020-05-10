@@ -56,8 +56,8 @@
 
 <script>
 import SongComponent from "@/components/SongComponent.vue";
-import LikedTracks from "@/components/likedtracks_info.vue";
-import emptylikedtracks from "@/components/emptylikedtracks.vue";
+import LikedTracks from "@/components/LikedTracksInfo.vue";
+import emptylikedtracks from "@/components/EmptyLikedTracks.vue";
 import { mapGetters } from "vuex";
 /**
  * User's liked tracks page here is the place of all tracks liked by the user
@@ -74,14 +74,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      likedtracks_tracks: "likedtracks/likedtracks_tracks",
-      likedtracks_length: "likedtracks/likedtracks_length",
-      likedtracks_load: "likedtracks/likedtracks_loaded",
-      playlist_id:"likedtracks/playlist_id"
+      likedtracks_tracks: "LikedTracks/likedtracks_tracks",
+      likedtracks_length: "LikedTracks/likedtracks_length",
+      likedtracks_load: "LikedTracks/likedtracks_loaded",
+      playlist_id:"LikedTracks/playlist_id"
     })
   },
   beforeCreate: function() {
-    this.$store.dispatch("likedtracks/likedtracks_tracks");
+    this.$store.dispatch("LikedTracks/likedtracks_tracks");
   }
 };
 </script>

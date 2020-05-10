@@ -30,12 +30,12 @@ export default {
     const token = localStorage.getItem("x-auth-token");
     console.log("nada" + token);
     if (token) {
-      this.$store.dispatch("authorization/get_user", false);
+      this.$store.dispatch("Authorization/get_user", false);
       setTimeout(() => {
         var status = this.isLoggedIn;
         if (status == "error") {
           //token is expired
-          this.$store.dispatch("authorization/logout");
+          this.$store.dispatch("Authorization/logout");
           this.$router.replace("/login");
         }
       }, 500);

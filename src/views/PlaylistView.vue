@@ -76,9 +76,9 @@
 
 <script>
 import SongComponent from "@/components/SongComponent.vue";
-import emptytracks from "@/components/emptytracks.vue";
-import playlist from "@/components/playlist.vue";
-import playlistinfo from "@/components/playlist_info.vue";
+import emptytracks from "@/components/EmptyTracks.vue";
+import playlist from "@/components/Playlist.vue";
+import playlistinfo from "@/components/PlaylistInfo.vue";
 //  import playlistpopup from "@/components/playlistpopup.vue";
 import { mapGetters } from "vuex";
 import draggable from "vuedraggable";
@@ -136,7 +136,7 @@ export default {
         playlist_id: this.playlist_id
       };
       console.log("in playlist_view ", this.playlist_id);
-      this.$store.dispatch("playlist/ReorderTracks", payload);
+      this.$store.dispatch("Playlist/ReorderTracks", payload);
     }
   },
   computed: {
@@ -144,14 +144,14 @@ export default {
       showpopup: state => state.playlistpopup.showModal
     }),
     ...mapGetters({
-      playlist_tracks: "playlist/playlist_tracks",
-      playlist_length: "playlist/playlist_length",
-      playlist_load: "playlist/playlist_loaded"
+      playlist_tracks: "Playlist/playlist_tracks",
+      playlist_length: "Playlist/playlist_length",
+      playlist_load: "Playlist/playlist_loaded"
     })
   },
   created: function() {
     this.$store.dispatch(
-      "playlist/playlist_tracks",
+      "Playlist/playlist_tracks",
       this.$route.params.playlist_id
     ),
       console.log("Playlist_id", this.$route.params.playlist_id);

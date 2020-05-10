@@ -129,8 +129,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      Username: "authorization/Username",
-      likedplaylist: "playlist/likeplaylist"
+      Username: "Authorization/Username",
+      likedplaylist: "Playlist/likeplaylist"
     })
   },
    filters: {

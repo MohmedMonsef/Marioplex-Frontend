@@ -199,19 +199,18 @@ export default {
   name: "AddTrackPopup",
   computed: {
     ...mapState({
-      show: state => state.creatplaylist.showModal
+      show: state => state.Playlist.showModal
     }),
     ...mapGetters({
-      showModalAdd: "creatplaylist/showModalAdd",
-      playlists: "creatplaylist/playlists",
-      trackid: "creatplaylist/trackid",
-      //withtrack:"creatplaylist/withtrack",
-      playlistoftrack: "creatplaylist/playlistoftrack"
+      showModalAdd: "Playlist/showModalAdd",
+      playlists: "Playlist/playlists",
+      trackid: "Playlist/trackid",
+      playlistoftrack: "Playlist/playlistoftrack"
     })
   },
   methods: {
     changeModalStateAdd() {
-      this.$store.dispatch("creatplaylist/toggleModalAdd");
+      this.$store.dispatch("Playlist/toggleModalAdd");
     },
     // AddTrackToNewPlayList() {
     //   console.log(
@@ -231,7 +230,7 @@ export default {
     changeModalState() {
       this.withtrack=true; 
       console.log("in add track pop up the bool",this.withtrack)   
-      this.$store.dispatch("creatplaylist/toggleModal",this.withtrack);
+      this.$store.dispatch("Playlist/toggleModal",this.withtrack);
     }
   },
   components: {
@@ -239,7 +238,7 @@ export default {
     PlaylistsToTracks
   },
   mounted() {
-    this.$store.dispatch("creatplaylist/showplaylists");
+    this.$store.dispatch("Playlist/showplaylists");
   },
   data:function(){
     return{

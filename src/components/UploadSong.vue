@@ -233,7 +233,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      showModalUpload: "artistproperties/showModalUpload"
+      showModalUpload: "ArtistProperties/showModalUpload"
     })
   },
   methods: {
@@ -242,7 +242,7 @@ export default {
      * @public This is a public method
      */
     changeModalStateUpload() {
-      this.$store.dispatch("artistproperties/toggleModalUpload");
+      this.$store.dispatch("ArtistProperties/toggleModalUpload");
     },
     /**
      * check track selected to upload(not implemnted yet)
@@ -288,8 +288,7 @@ export default {
           AvailableMarket: this.AvailableMarket
         }
       );*/
-      //  this.$store.dispatch("uploadsong/OnUpload",payload)
-      this.$store.dispatch("uploadsong/OnUpload", {
+      this.$store.dispatch("ArtistProperties/OnUpload", {
         Name: this.Name,
         TrackNumber: this.TrackNumber,
         AvailableMarket: this.AvailableMarket,

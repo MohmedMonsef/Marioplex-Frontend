@@ -52,9 +52,9 @@ h2 {
 </style>
 
 <script>
-import LibPlaylistsDefault from "@/components/lib-playlists-default.vue";
-import LibPlaylists from "@/components/lib-playlists.vue";
-import LibLikedsongs from "@/components/lib-likedsongs.vue";
+import LibPlaylistsDefault from "@/components/LibPlaylistsDefault.vue";
+import LibPlaylists from "@/components/LibPlaylists.vue";
+import LibLikedsongs from "@/components/LibLikedSongs.vue";
 import { mapGetters } from "vuex";
 /**
  * playlists saved by the user and stored inside his library
@@ -69,15 +69,15 @@ export default {
     LibLikedsongs
   },
   mounted() {
-    this.$store.dispatch("creatplaylist/showplaylists");
-    this.$store.dispatch("userlibrary/showUserSongs");
+    this.$store.dispatch("Playlist/showplaylists");
+    this.$store.dispatch("UserLibrary/showUserSongs");
   },
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      playlists1: "creatplaylist/playlists", // creat new object "playlists1" and map to it
-      songs1: "userlibrary/songs",
-      loadingplaylists: "creatplaylist/loadingplaylists"
+      playlists1: "Playlist/playlists", // creat new object "playlists1" and map to it
+      songs1: "UserLibrary/songs",
+      loadingplaylists: "Playlist/loadingplaylists"
     })
   }
 };

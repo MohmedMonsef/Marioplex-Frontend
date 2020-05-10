@@ -90,16 +90,8 @@ export default {
               info.is_playlist
           )
           .then( () => {
-           // var cs = store.getters["mediaplayer/currentaudio"];
-           // if (cs) {
-              store.dispatch("mediaplayer/get_currentsong");
-              store.dispatch("mediaplayer/playsong_state", info);
-           // } else {
-            //  setTimeout(() => {
-             //   store.dispatch("mediaplayer/playsong_state", info);
-           //   }, 500);
-           //   store.dispatch("mediaplayer/get_currentsong");
-         //   }
+              store.dispatch("Mediaplayer/get_currentsong");
+              store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch(error => {
             console.log(error);
@@ -115,16 +107,8 @@ export default {
               info.is_playlist
           )
           .then( () => {
-           // var cs = store.getters["mediaplayer/currentaudio"];
-           // if (cs) {
-              store.dispatch("mediaplayer/get_currentsong");
-              store.dispatch("mediaplayer/playsong_state", info);
-           // } else {
-           //   setTimeout(() => {
-            //    store.dispatch("mediaplayer/playsong_state", info);
-            //  }, 500);
-            //  store.dispatch("mediaplayer/get_currentsong");
-           // }
+              store.dispatch("Mediaplayer/get_currentsong");
+              store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch(error => {
             console.log(error);

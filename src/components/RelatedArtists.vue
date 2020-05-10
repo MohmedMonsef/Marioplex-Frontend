@@ -19,7 +19,7 @@
 </style>
 
 <script>
-import LibArtists from "@/components/lib-artists.vue";
+import LibArtists from "@/components/LibArtists.vue";
 import { mapGetters } from "vuex";
 export default {
      components: {
@@ -27,12 +27,12 @@ export default {
   },
     computed: {
     ...mapGetters({
-     relatedartists: "artistpage/artist_relatedartists",
+     relatedartists: "ArtistPage/artist_relatedartists",
     })
   },
    created: function() {
     this.artistid = this.$route.params.artist_id;
-    this.$store.dispatch("artistpage/artist_relatedartists", this.$route.params.artist_id);
+    this.$store.dispatch("ArtistPage/artist_relatedartists", this.$route.params.artist_id);
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;

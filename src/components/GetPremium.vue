@@ -407,7 +407,6 @@ input {
 </style>
 <script>
 import { mapGetters } from "vuex";
-//import { CreditCardField } from "vue-credit-card-field";
 /**
  * Body of home page for premium functionalities
  * @displayName HomeBody
@@ -479,7 +478,7 @@ export default {
           cardNumber: this.CreditNumber,
           isMonth:this.Monthly
           };
-        this.$store.dispatch("authorization/toPremium", newuser);
+        this.$store.dispatch("Authorization/toPremium", newuser);
     }
   },
   watch: {
@@ -502,7 +501,7 @@ export default {
   },
   computed:{
    ...mapGetters({
-      upgraded: "authorization/upgraded"
+      upgraded: "Authorization/upgraded"
     }),
   },
   mounted() {

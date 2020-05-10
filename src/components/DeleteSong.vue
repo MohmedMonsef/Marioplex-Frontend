@@ -175,7 +175,7 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      showModal: "creatplaylist/showModal"
+      showModal: "Playlist/showModal"
     })
   },
   methods: {
@@ -185,7 +185,7 @@ export default {
      */
 
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+      this.$store.dispatch("Playlist/toggleModal");
     },
     /**
      * triggers the delete song request
@@ -193,7 +193,7 @@ export default {
      */
     DeleteSong(id) {
       console.log(id);
-      this.$store.dispatch("uploadsong/DeletePlaylist", id);
+      this.$store.dispatch("UserPropreties/DeletePlaylist", id);
       console.log("removed");
     }
   }

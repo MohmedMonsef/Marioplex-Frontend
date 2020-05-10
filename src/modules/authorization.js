@@ -67,7 +67,7 @@ export default {
           const token = response.data.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
-          store.dispatch("authorization/get_user", true);
+          store.dispatch("Authorization/get_user", true);
         })
         .catch(error => {
           commit("auth_error", "signup_err");
@@ -83,7 +83,7 @@ export default {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
-          store.dispatch("authorization/get_user", true);
+          store.dispatch("Authorization/get_user", true);
         })
         .catch(error => {
           commit("auth_error", "facebook_err");
@@ -121,7 +121,7 @@ export default {
           const token = response.data.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
-          store.dispatch("authorization/get_user", true);
+          store.dispatch("Authorization/get_user", true);
         })
         .catch(error => {
           console.log(error);
@@ -140,7 +140,7 @@ export default {
         })
         .then(() => {
           state.User.product = "premium";
-          store.dispatch("authorization/get_user", true);
+          store.dispatch("Authorization/get_user", true);
         })
         .catch(error => {
           console.log(error);

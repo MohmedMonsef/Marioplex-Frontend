@@ -79,7 +79,7 @@ export default {
      */
 
     changeModalState() {
-      this.$store.dispatch("creatplaylist/toggleModal");
+      this.$store.dispatch("Playlist/toggleModal");
     }
   }
 };

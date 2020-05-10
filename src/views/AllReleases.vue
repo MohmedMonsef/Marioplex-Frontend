@@ -28,7 +28,7 @@ h2 {
 }
 </style>
 <script>
-import ShowPopularreleases from "@/components/ShowPopularreleases.vue";
+import ShowPopularreleases from "@/components/ShowPopularReleases.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "AllAlbums",

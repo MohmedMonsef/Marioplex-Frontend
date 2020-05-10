@@ -7,7 +7,7 @@
           class="col-lg-10% col-md-60% col-xs-6"
           v-for="match_artist in match_artists"
           :key="match_artist.id"
-          :images="match_artist.images"
+          :images="'http://52.205.254.29/api/images/'+ match_artist.images[0]._id + '?belongs_to=artist'"
           :name="match_artist.name"
           :artistId="match_artist._id"
         />
@@ -33,7 +33,7 @@ h3 {
 }
 </style>
 <script>
-import LibArtists from "@/components/lib-artists.vue";
+import LibArtists from "@/components/LibArtists.vue";
 import { mapGetters } from "vuex";
 /**
  * Part of the Search page where results of search for artists appear but also part of them till press seeall button

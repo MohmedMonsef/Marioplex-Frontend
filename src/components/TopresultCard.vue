@@ -10,7 +10,7 @@
     >
       <img
         v-if="type == 'Artist'"
-        src="http://dummyimage.com/250x400.jpg/dddddd/000000"
+        :src="image"
         testid="artistimage"
         class="col-md-4 img-card rounded-circle"
         alt="..."
@@ -18,7 +18,7 @@
       />
       <img
         v-if="type !== 'Artist'"
-        src="http://dummyimage.com/250x400.jpg/dddddd/000000"
+        :src="image"
         class="col-md-4 img-card"
         alt="..."
         style="max-width: 40%;max-height: 100px; display:block; margin-left:0; margin-bottom:15px;"

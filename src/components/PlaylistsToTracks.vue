@@ -100,7 +100,7 @@ export default {
   mixins: [song_functions],
   computed:{
       ...mapGetters({
-          trackid: "creatplaylist/trackid"
+          trackid: "Playlist/trackid"
       })
   },
   methods:{
@@ -111,11 +111,11 @@ export default {
           }
           console.log("in card track",this.trackid)
           console.log("in card playlist",payload.playlistid)
-          this.$store.dispatch("playlist/AddTrackToExsistPlaylist",payload)
+          this.$store.dispatch("Playlist/AddTrackToExsistPlaylist",payload)
 
       },
       changeModalStateAdd(){
-          this.$store.dispatch("creatplaylist/toggleModalAdd");
+          this.$store.dispatch("Playlist/toggleModalAdd");
           toast.show("Added to your library");
       }
   },

@@ -88,7 +88,7 @@ h1 {
 </style>
 <script>
 import { mapGetters } from "vuex";
-import homeBodyCard from "@/components/HomeBody_Cards.vue";
+import homeBodyCard from "@/components/HomeBodyCards.vue";
 /**
  * Body of home page
  * @displayName HomeBody
@@ -100,7 +100,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "authorization/GetStatus",
+      isLoggedIn: "Authorization/GetStatus",
       RecentlyPlayed: "ShowWebPlayer/RecenlyPlayed"
     })
   },

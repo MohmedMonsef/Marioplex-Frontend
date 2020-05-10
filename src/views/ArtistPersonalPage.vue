@@ -335,8 +335,8 @@ export default {
   },
   computed: {
     ...mapState({
-      show: state => state.artistproperties.showModal,
-      showupload: state => state.artistproperties.showModalUpload
+      show: state => state.ArtistProperties.showModal,
+      showupload: state => state.ArtistProperties.showModalUpload
     })
   },
   methods: {
@@ -345,14 +345,14 @@ export default {
      * @public This is a public method
      */
     changeModalState() {
-      this.$store.dispatch("artistproperties/toggleModal");
+      this.$store.dispatch("ArtistProperties/toggleModal");
     },
     /**
      * toggle upload state of song
      * @public This is a public method
      */
     changeModalStateUpload() {
-      this.$store.dispatch("artistproperties/toggleModalUpload");
+      this.$store.dispatch("ArtistProperties/toggleModalUpload");
     }
   }
 };

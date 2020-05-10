@@ -120,16 +120,12 @@ export default {
     },
     trackUrl({ state }, id) {
       console.log("idd", id);
-      // let token = localStorage.getItem("x-auth-token");
-      // let keyRoute =
-      //   "/api/tracks/encryption/" + id + "/keys";
-      // let trackroute =
-      //   "http://52.205.254.29/api/tracks/web-player/"+id+"/?type=medium&token="+token;
       let token = localStorage.getItem("x-auth-token");
-      let keyRoute =
-        "/api/tracks/encryption/" + "5e9b64e4e9c8d87fdc2ecbd8" + "/keys";
+      let keyRoute = "/api/tracks/encryption/" + id + "/keys";
       let trackroute =
-        "http://52.205.254.29/api/tracks/web-player/5e9b64e4e9c8d87fdc2ecbd8/?type=medium&token=" +
+        "http://52.205.254.29/api/tracks/web-player/" +
+        id +
+        "/?type=medium&token=" +
         token;
       axios
         .get(keyRoute)
@@ -157,12 +153,11 @@ export default {
         .post("/api/me/player/next-playing")
         .then(response => {
           var nextsong = response.data;
-          commit("set_currentsong", nextsong)
-          if(typeof nextsong.fristInSource == "undefined")
-              state.currentSongIndex = state.currentSongIndex + 1;
-          else
-              state.currentSongIndex = 0;
-         
+          commit("set_currentsong", nextsong);
+          if (typeof nextsong.fristInSource == "undefined")
+            state.currentSongIndex = state.currentSongIndex + 1;
+          else state.currentSongIndex = 0;
+
           let info = {
             //should handle if its the first track on playlist or album return to zero
             index: state.currentSongIndex,
@@ -213,7 +208,7 @@ export default {
     repeatsong_state({ dispatch }, flag) {
       console.log("kkk", flag);
       if (flag == 1) currentaudio_repeat(true);
-      else if (flag == 0 ) {
+      else if (flag == 0) {
         currentaudio_repeat(false);
         axios
           .put("/api/player/repeat?state=" + false)
@@ -276,7 +271,7 @@ export default {
           if (songbar || track_id == state.currentsong.track._id)
             commit("setliked", false);
           dispatch("get_currentsong");
-          dispatch("likedtracks/likedtracks_tracks", null, { root: true });
+          dispatch("LikedTracks/likedtracks_tracks", null, { root: true });
         })
         .catch(error => {
           console.log(error);

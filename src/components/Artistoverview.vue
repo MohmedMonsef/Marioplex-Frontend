@@ -48,7 +48,7 @@ margin-top: 5px;
 </style>
 <script>
 import SongComponent from "@/components/SongComponent.vue";
-import homecards from "@/components/Artisthomecards.vue";
+import homecards from "@/components/ArtistHomeCards.vue";
 import { mapGetters } from "vuex";
 export default {
     data: function() {
@@ -63,14 +63,14 @@ export default {
   },
    computed: {
     ...mapGetters({
-      artist_tracks: "artistpage/artist_tracks",
-      artist_albums: "artistpage/artist_albums"
+      artist_tracks: "ArtistPage/artist_tracks",
+      artist_albums: "ArtistPage/artist_albums"
     })
   },
     created: function() {
     this.artistid = this.$route.params.artist_id;
-    this.$store.dispatch("artistpage/artist_tracks", this.$route.params.artist_id);
-    this.$store.dispatch("artistpage/artist_albums", this.$route.params.artist_id);
+    this.$store.dispatch("ArtistPage/artist_tracks", this.$route.params.artist_id);
+    this.$store.dispatch("ArtistPage/artist_albums", this.$route.params.artist_id);
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
