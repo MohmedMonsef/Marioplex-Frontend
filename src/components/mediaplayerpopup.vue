@@ -255,12 +255,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      showModal: "checkuserpopup/showModal",
+      showModal: "CheckUserPopup/showModal",
     }),
   },
   methods: {
     changeModalState() {
-      this.$store.dispatch("checkuserpopup/togglePopup");
+      this.$store.dispatch("CheckUserPopup/togglePopup");
     },
   },
 };

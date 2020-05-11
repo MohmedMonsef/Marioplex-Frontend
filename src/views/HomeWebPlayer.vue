@@ -38,8 +38,8 @@
 <script>
 import SideBar from "@/components/SideBar.vue";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
-import mediaplayerpopup from "@/components/mediaplayerpopup.vue";
-import playlistpopup from "@/components/playlistpopup.vue";
+import mediaplayerpopup from "@/components/MediaplayerPopup.vue";
+import playlistpopup from "@/components/PlaylistPopup.vue";
 import mediaplayer from "@/components/Mediaplayer.vue";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
@@ -61,13 +61,13 @@ export default {
     playlistpopup,
     // LibraryNavbar
     NavbarWebplayer,
-    
+
   },
   computed: {
     ...mapState({
       show: (state) => state.Playlist.showModal,
-      showmediaplayerpopup: (state) => state.checkuserpopup.showModal,
-      showuserpopup: (state) => state.checkuserpopup.showpagesModal,
+      showmediaplayerpopup: (state) => state.CheckUserPopup.showModal,
+      showuserpopup: (state) => state.CheckUserPopup.showpagesModal,
       showdelete: (state) => state.Playlist.showModalDelete,
     }),
   },

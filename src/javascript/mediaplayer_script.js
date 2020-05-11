@@ -45,7 +45,7 @@ export default {
      */
     playSong() {
       if (this.user != "success") {
-        this.$store.dispatch("checkuserpopup/togglePopup");
+        this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         this.song_state = true;
         let info;
@@ -87,7 +87,7 @@ export default {
      */
     pauseSong() {
       if (this.user != "success") {
-        this.$store.dispatch("checkuserpopup/togglePopup");
+        this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         this.song_state = false;
         console.log("pause song");
@@ -100,7 +100,7 @@ export default {
      */
     prev_song: function () {
       if (this.user != "success") {
-        this.$store.dispatch("checkuserpopup/togglePopup");
+        this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         if (this.currentsong_info.index != 0)
           this.$store.dispatch("Mediaplayer/prevsong_state");
@@ -112,7 +112,7 @@ export default {
      */
     next_song: function () {
       if (this.user != "success") {
-        this.$store.dispatch("checkuserpopup/togglePopup");
+        this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         this.$store.dispatch("Mediaplayer/nextsong_state");
       }
@@ -123,7 +123,7 @@ export default {
      */
     random_songs: function () {
       if (this.user != "success") {
-        this.$store.dispatch("checkuserpopup/togglePopup");
+        this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         this.$store.dispatch("mediaplayer/shufflesong_state");
       }

@@ -679,7 +679,7 @@ export default {
      */
     shuffle: function () {
       if (this.user != "success") {
-        this.$store.dispatch("checkuserpopup/togglePopup");
+        this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         this.isShuffle = !this.isShuffle;
         this.$store.dispatch("Mediaplayer/shufflesong_state", this.isShuffle);
@@ -691,7 +691,7 @@ export default {
      */
     repeat_song: function () {
       if (this.user != "success") {
-        this.$store.dispatch("checkuserpopup/togglePopup");
+        this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         this.isRepeat = (this.isRepeat + 1) % 3;
         this.$store.dispatch("Mediaplayer/repeatsong_state", this.isRepeat);

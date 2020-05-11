@@ -85,9 +85,9 @@ export default {
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      user: "UserUpdate/user",
-      playlists: "UserUpdate/playlists", // creat new object "playlists1" and map to it
-      loading: "UserUpdate/loading",
+      user: "UserPage/user",
+      playlists: "UserPage/playlists", // creat new object "playlists1" and map to it
+      loading: "UserPage/loading",
     }),
   },
   methods: {
@@ -106,8 +106,8 @@ export default {
    */
   beforeCreate: function () {
     this.userid = this.$route.params.user_id;
-    this.$store.dispatch("UserUpdate/user_playlists", this.userid);
-    this.$store.dispatch("UserUpdate/user_info", this.userid);
+    this.$store.dispatch("UserPage/user_playlists", this.userid);
+    this.$store.dispatch("UserPage/user_info", this.userid);
   },
   mounted() {},
 };
