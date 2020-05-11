@@ -108,7 +108,7 @@ export default {
   name: "lib-artists",
   props: {
     images: {
-      type: Array,
+      type: String,
     },
     name: {
       type: String,

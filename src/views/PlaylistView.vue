@@ -3,7 +3,6 @@
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <!-- <playlistpopup v-if="showpopup" /> -->
     <div v-if="playlist_load" class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
         <playlist v-if="this.playlist_length == 0" />
@@ -164,4 +163,3 @@ export default {
   },
 };
 </script>
->

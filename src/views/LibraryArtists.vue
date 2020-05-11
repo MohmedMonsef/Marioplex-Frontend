@@ -18,6 +18,7 @@
             "
             :name="artist.Name"
             :artistId="artist._id"
+            :type="'Artist'"
           />
         </div>
       </div>

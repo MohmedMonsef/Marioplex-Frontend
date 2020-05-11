@@ -4,28 +4,29 @@
       <div
         class="modal-overlay"
         v-if="showModal"
-        @click="showModal = false"
+        @click="changeModalState()"
       ></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <div class="child">
           <div class="grandchild">
-            <div class="firstcolumn">
-              <img class="image" src="../assets/cry.png" alt="image" />
-            </div>
-            <div class="secondcolumn">
-              <h2>Start listening with a free Spotify account</h2>
+            <h2>Start listening with a free Spotify account</h2>
+            <router-link to="../../SignUp">
               <button class="signupbutton" testid="signupbutton">
                 SIGN UP FREE
               </button>
-              <p>Already have an account? <span class="login">LOG IN</span></p>
-            </div>
+            </router-link>
+            <p>
+              Already have an account?
+              <router-link to="../../Login">
+                <button class="login">LOG IN</button>
+              </router-link>
+            </p>
           </div>
-
-          <p class="close" testid="closepopup" @click="showModal = false">
+          <button class="close" testid="closepopup" @click="showModal = false">
             Close
-          </p>
+          </button>
         </div>
       </div>
     </transition>
@@ -39,37 +40,33 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "montserrat", sans-serif;
-}
-
 div {
   position: relative;
   display: block;
   width: 500%;
-  height: 100vh;
+  height: 100%;
 }
-
 .modal-overlay {
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: none;
-
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 200%;
-  z-index: 98;
+  z-index: 104;
+  width: 100%;
+  height: 200%;
   background-color: rgba(0, 0, 0, 0);
 }
 
 .modal {
   position: fixed;
-  z-index: 98;
+  z-index: 9998;
   top: 0;
   left: 0;
   width: 100%;
@@ -77,6 +74,8 @@ div {
   background-color: rgba(0, 0, 0, 0.8);
   display: table;
   transition: opacity 0.3s ease;
+  animation: UpsellShowAnimation 0.2s 1;
+  animation-fill-mode: both;
 }
 
 .fade-enter-active,
@@ -97,57 +96,78 @@ div {
 .slide-enter,
 .slide-leave-to {
   transform: translateZ(-50%) translateX(100vw);
-  transition: transform 0.5s;
+  // transition: transform 0.5s;
 }
 
-.firstcolumn {
-  width: 5%;
-}
-.secondcolumn {
-  width: 5%;
-}
+// @keyframes fadeIn {
+//   from {opacity: 0;}
+//   to {opacity:1 ;}
+// }
+
 .child {
   position: fixed;
   align-items: center;
   align-content: center;
   border-radius: 10px;
-  width: 60%;
-  height: 60%;
+  width: 50%;
+  height: 50%;
   bottom: 50%;
-  top: 15%;
-  left: 20%;
+  top: 20%;
+  left: 23%;
   background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
   .grandchild {
+    top: 10%;
     position: relative;
-    align-items: center;
+    // align-items: center;
+    text-align: center;
+    align-content: center;
     width: 100%;
     height: 100%;
-    .image {
-      width: 350px;
-      height: auto;
-      position: relative;
-      top: 6%;
-      left: 50%;
-      bottom: 2%;
-    }
     h2 {
-      position: fixed;
+      position: relative;
       color: white;
       font-weight: bold;
       font-size: 32px;
+      padding: 15px;
     }
     p {
-      position: fixed;
+      position: relative;
       color: white;
       font-size: 13px;
+      padding: 15px;
+    }
+    .signupbutton {
+      width: 300px;
+      padding: 10px;
+      background-color: #1ed760;
+      border-color: transparent;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 1.76px;
+      border-radius: 500px;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
+      will-change: transform;
+      white-space: nowrap;
     }
     .login {
-      font-size: 15px;
+      background-color: transparent;
+      color: white;
+      border-color: transparent;
+    }
+    .signupbutton:hover {
+      transform: scale(1.06);
     }
     .login:hover {
-      font-size: 17px;
+      transform: scale(1.06);
     }
   }
+}
+button:focus {
+  outline: 0 !important;
 }
 .close {
   position: relative;
@@ -168,6 +188,9 @@ div {
     height: 70%;
     align-content: center;
   }
+  .close {
+    bottom: 3%;
+  }
 }
 @media screen and (max-width: 650px) {
   .child {
@@ -176,29 +199,26 @@ div {
     width: 100%;
     height: 100%;
     align-content: center;
-    .image {
-      top: 10%;
-      left: 6%;
-    }
+  }
+  .close {
+    bottom: 40%;
   }
 }
 </style>
 <script>
-/**
- * appears when user tries to create playlist with being registered
- * @displayName No User Popup
- * @example [none]
- */
+import { mapGetters } from "vuex";
 export default {
-  name: "CreatePlaylist",
+  name: "playlistpopup",
   data: function () {
     return {
-      playlistname: "",
-      showModal: true,
+      // showModal: true
     };
   },
-
-  components: {},
+  computed: {
+    ...mapGetters({
+      showModal: "checkuserpopup/showpagesModal",
+    }),
+  },
   methods: {
     /**
      * triggers create playlist song

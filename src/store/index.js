@@ -13,6 +13,7 @@ import Album from "../modules/Album";
 import LikedTracks from "../modules/LikedTracks";
 import ArtistPage from "../modules/ArtistPage";
 import UserUpdate from "../modules/UserUpdate";
+import checkuserpopup from "../modules/checkuserpopup"
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -30,5 +31,6 @@ export default new Vuex.Store({
     ArtistProperties,
     ArtistPage,
     UserUpdate,
+    checkuserpopup
   },
 });

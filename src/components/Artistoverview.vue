@@ -69,6 +69,7 @@ export default {
     ...mapGetters({
       artist_tracks: "ArtistPage/artist_tracks",
       artist_albums: "ArtistPage/artist_albums",
+      tracks_length: "ArtistPage/tracks_length",
     }),
   },
   created: function () {

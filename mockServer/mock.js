@@ -13,8 +13,8 @@ export function mockServer({ environment = "development" } = {}) {
             _id: "5e7648a37966e84270c96b48",
             name: "sherenyat",
             type: "playlist",
-            images: []
-          }
+            images: [],
+          },
         ],
         currentsong: {
           track: {
@@ -26,19 +26,19 @@ export function mockServer({ environment = "development" } = {}) {
             duration: 236,
             url:
               "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-            _id: "5e7d93dad82adf07f4121bb6"
+            _id: "5e7d93dad82adf07f4121bb6",
           },
           album: {
             name: "album1",
             _id: "5e833b412b9d7718a491c850",
             artist: {
               name: "ahmedsamir",
-              _id: "5e833a51a51d971174923f17"
-            }
+              _id: "5e833a51a51d971174923f17",
+            },
           },
           isLiked: true,
           playlistId: "5e85f4ca1ba5cf17ccca66eb",
-          isPlayable: true
+          isPlayable: true,
         },
         queue: [
           {
@@ -69,7 +69,7 @@ export function mockServer({ environment = "development" } = {}) {
                 timeSignature: "2020-04-02T14:18:16.464Z",
                 valence: 70,
                 like: 0,
-                __v: 0
+                __v: 0,
               },
               isLiked: false,
               album: {
@@ -77,13 +77,13 @@ export function mockServer({ environment = "development" } = {}) {
                 _id: "5e833b412b9d7718a491c850",
                 artist: {
                   name: "ahmedsamir",
-                  _id: "5e833a51a51d971174923f17"
-                }
-              }
+                  _id: "5e833a51a51d971174923f17",
+                },
+              },
             },
             isQueue: false,
             isPlaylist: true,
-            index: 2
+            index: 2,
           },
           {
             fulltrack: {
@@ -113,7 +113,7 @@ export function mockServer({ environment = "development" } = {}) {
                 timeSignature: "2020-04-02T14:18:24.079Z",
                 valence: 70,
                 like: 0,
-                __v: 0
+                __v: 0,
               },
               isLiked: false,
               album: {
@@ -121,55 +121,55 @@ export function mockServer({ environment = "development" } = {}) {
                 _id: "5e833b412b9d7718a491c850",
                 artist: {
                   name: "ahmedsamir",
-                  _id: "5e833a51a51d971174923f17"
-                }
-              }
+                  _id: "5e833a51a51d971174923f17",
+                },
+              },
             },
             isQueue: false,
             isPlaylist: true,
-            index: 3
-          }
+            index: 3,
+          },
         ],
         popular_playlists: [
           {
             image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             title: "playlist name1",
-            des: "be happy"
+            des: "be happy",
           },
           {
             image: "http://dummyimage.com/250x400.jpg/dddddd/000000",
             title: "playlist name2",
-            des: "be happy1"
+            des: "be happy1",
           },
           {
             image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
             title: "playlist name3",
-            des: "be happy2"
+            des: "be happy2",
           },
           {
             image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             title: "playlist name4",
-            des: "be happy3"
+            des: "be happy3",
           },
           {
             image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             title: "Mood playlist name5",
-            des: "be happy4"
-          }
+            des: "be happy4",
+          },
         ],
         Playlists: [
           {
             name: "playlist name*",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             owner: "Amr",
-            _id: "5e7d93dad82adf07f4121bac"
+            _id: "5e7d93dad82adf07f4121bac",
           },
           {
             name: "playlist name**",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             owner: "shreen",
-            _id: "5e7d93dad82adf0ksksksksksksksk"
-          }
+            _id: "5e7d93dad82adf0ksksksksksksksk",
+          },
         ],
         users: [
           {
@@ -178,7 +178,7 @@ export function mockServer({ environment = "development" } = {}) {
             password: "123",
             country: "Egypt",
             gender: "m",
-            birthday: "3/12/1999"
+            birthday: "3/12/1999",
           },
           {
             username: "Habiba",
@@ -186,8 +186,8 @@ export function mockServer({ environment = "development" } = {}) {
             password: "555",
             country: "Egypt",
             gender: "m",
-            birthday: "3/12/1998"
-          }
+            birthday: "3/12/1998",
+          },
         ],
         songs: [
           {
@@ -198,7 +198,7 @@ export function mockServer({ environment = "development" } = {}) {
               "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
             start_time: "0:00",
             end_time: "3:45",
-            liked: false
+            liked: false,
           },
           {
             song_name: "Second_Song",
@@ -208,7 +208,7 @@ export function mockServer({ environment = "development" } = {}) {
               "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
             start_time: "0:00",
             end_time: "4:40",
-            liked: true
+            liked: true,
           },
           {
             song_name: "Third_Song",
@@ -218,7 +218,7 @@ export function mockServer({ environment = "development" } = {}) {
               "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
             start_time: "0:00",
             end_time: "5:13",
-            liked: true
+            liked: true,
           },
           {
             song_name: "Forth_Song",
@@ -228,98 +228,98 @@ export function mockServer({ environment = "development" } = {}) {
               "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
             start_time: "0:00",
             end_time: "2:60",
-            liked: false
-          }
+            liked: false,
+          },
         ],
         category: [
           {
             name: "pop",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "roke",
             images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "rab",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "sad",
             images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "happy",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "pop",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "roke",
             images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "rab",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "sad",
             images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-            categoryId: "123"
+            categoryId: "123",
           },
           {
             name: "happy",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            categoryId: "123"
-          }
+            categoryId: "123",
+          },
         ],
         artist: [
           {
             name: "akram",
             image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             href: "",
-            type: "artist"
+            type: "artist",
           },
           {
             name: "tamer",
             image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
             href: "",
-            type: "artist"
+            type: "artist",
           },
           {
             name: "eslam",
             image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             href: "",
-            type: "artist"
+            type: "artist",
           },
           {
             name: "ali",
             image: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
             href: "",
-            type: "artist"
+            type: "artist",
           },
           {
             name: "amr",
             image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             href: "",
-            type: "artist"
+            type: "artist",
           },
           {
             name: "ahmed",
             image: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             href: "",
-            type: "artist"
-          }
+            type: "artist",
+          },
         ],
         user_albums: [
           {
@@ -327,69 +327,69 @@ export function mockServer({ environment = "development" } = {}) {
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             name: "album name1",
             artistName: "artist name1",
-            artistId: 1
+            artistId: 1,
           },
           {
             _id: "5e7d93daddf07f4121bac",
             images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
             name: "album name2",
             artistName: "artist name2",
-            artistId: 2
+            artistId: 2,
           },
           {
             _id: "5e7d93daddf07f4121bac",
             images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
             name: "album name3",
             artistName: "artist name3",
-            artistId: 3
+            artistId: 3,
           },
           {
             _id: "5e7d93daddf07f4121bac",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             name: "album name4",
             artistName: "artist name4",
-            artistId: 4
+            artistId: 4,
           },
           {
             _id: "5e7d93daddf07f4121bac",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             name: "album name5",
             artistName: "artist name5",
-            artistId: 5
+            artistId: 5,
           },
           {
             _id: "5e7d93daddf07f4121bac",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             name: "album name6",
             artistName: "artist name6",
-            artistId: 6
-          }
+            artistId: 6,
+          },
         ],
         user_artists: [
           {
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            Name: "artist name1"
+            Name: "artist name1",
           },
           {
             images: "http://dummyimage.com/250x400.jpg/dddddd/000000",
-            Name: "artist name2"
+            Name: "artist name2",
           },
           {
             images: "http://dummyimage.com/250x400.jpg/cc0000/ffffff",
-            Name: "artist name3"
+            Name: "artist name3",
           },
           {
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            Name: "artist name4"
+            Name: "artist name4",
           },
           {
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            Name: "artist name5"
+            Name: "artist name5",
           },
           {
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
-            Name: "artist name6"
-          }
+            Name: "artist name6",
+          },
         ],
         playlist_info: [
           {
@@ -409,7 +409,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121baf",
-                albumName: "album2"
+                albumName: "album2",
               },
               {
                 trackid: "5e7d93dad82adf07f4121bb7",
@@ -417,7 +417,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb3",
                 artistName: "artist4",
                 albumId: "5e7d93dad82adf07f4121bb1",
-                albumName: "album4"
+                albumName: "album4",
               },
               {
                 trackid: "5e7d93dad82adf07f4121bb6",
@@ -425,7 +425,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121bb0",
-                albumName: "album3"
+                albumName: "album3",
               },
               {
                 trackid: "5e7d93dad82adf07f4121bb4",
@@ -433,7 +433,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121bae",
-                albumName: "album1"
+                albumName: "album1",
               },
               {
                 trackid: "5e7d93dad82adf07f4b5",
@@ -441,7 +441,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121baf",
-                albumName: "album2"
+                albumName: "album2",
               },
               {
                 trackid: "5e7dad82adf07f4121bb7",
@@ -449,7 +449,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb3",
                 artistName: "artist4",
                 albumId: "5e7d93dad82adf07f4121bb1",
-                albumName: "album4"
+                albumName: "album4",
               },
               {
                 trackid: "5e7d93dad82adf0721bb6",
@@ -457,7 +457,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121bb0",
-                albumName: "album3"
+                albumName: "album3",
               },
               {
                 trackid: "5e7d93dad8207f4121bb4",
@@ -465,9 +465,9 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121bae",
-                albumName: "album1"
-              }
-            ]
+                albumName: "album1",
+              },
+            ],
           },
           {
             _id: "5e7d93dad82adf0ksksksksksksksk",
@@ -478,8 +478,8 @@ export function mockServer({ environment = "development" } = {}) {
             collaborative: false,
             isPublic: true,
             images: [],
-            tracks: []
-          }
+            tracks: [],
+          },
         ],
         album_info: [
           {
@@ -498,7 +498,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121baf",
-                albumName: "album2"
+                albumName: "album2",
               },
               {
                 trackid: "5e7d93dad82adf07f4121bb4",
@@ -506,7 +506,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121bae",
-                albumName: "album1"
+                albumName: "album1",
               },
               {
                 trackid: "5e7d93dad82adf07f4b5",
@@ -514,7 +514,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121baf",
-                albumName: "album2"
+                albumName: "album2",
               },
               {
                 trackid: "5e7dad82adf07f4121bb7",
@@ -522,7 +522,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb3",
                 artistName: "artist4",
                 albumId: "5e7d93dad82adf07f4121bb1",
-                albumName: "album4"
+                albumName: "album4",
               },
               {
                 trackid: "5e7d93dad82adf0721bb6",
@@ -530,7 +530,7 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121bb0",
-                albumName: "album3"
+                albumName: "album3",
               },
               {
                 trackid: "5e7d93dad8207f4121bb4",
@@ -538,10 +538,10 @@ export function mockServer({ environment = "development" } = {}) {
                 artistId: "5e7d93dad82adf07f4121bb2",
                 artistName: "artist1",
                 albumId: "5e7d93dad82adf07f4121bae",
-                albumName: "album1"
-              }
-            ]
-          }
+                albumName: "album1",
+              },
+            ],
+          },
         ],
         likedtracks: {
           ownerName: "Nihal Mansour",
@@ -552,7 +552,7 @@ export function mockServer({ environment = "development" } = {}) {
               artistId: "5e7d93dad82adf07f4121bb2",
               artistName: "artist1",
               albumId: "5e7d93dad82adf07f4121baf",
-              albumName: "album2"
+              albumName: "album2",
             },
             {
               trackid: "5e7d93dad82adf07f4121bb4",
@@ -560,7 +560,7 @@ export function mockServer({ environment = "development" } = {}) {
               artistId: "5e7d93dad82adf07f4121bb2",
               artistName: "artist1",
               albumId: "5e7d93dad82adf07f4121bae",
-              albumName: "album1"
+              albumName: "album1",
             },
             {
               trackid: "5e7d93dad8207f4121bb4",
@@ -568,9 +568,9 @@ export function mockServer({ environment = "development" } = {}) {
               artistId: "5e7d93dad82adf07f4121bb2",
               artistName: "artist1",
               albumId: "5e7d93dad82adf07f4121bae",
-              albumName: "album1"
-            }
-          ]
+              albumName: "album1",
+            },
+          ],
         },
         nextsong: {
           track: {
@@ -582,11 +582,11 @@ export function mockServer({ environment = "development" } = {}) {
             length: "3:33",
             url:
               "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-            _id: "5e7d93dad82adf07f4121bb7"
+            _id: "5e7d93dad82adf07f4121bb7",
           },
           albumName: "Barton Hallow",
           isLiked: false,
-          isPlayable: true
+          isPlayable: true,
         },
         prevsong: {
           track: {
@@ -598,49 +598,49 @@ export function mockServer({ environment = "development" } = {}) {
             length: "3:33",
             url:
               "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-            _id: "5e7d93dad82adf07f4121bb5"
+            _id: "5e7d93dad82adf07f4121bb5",
           },
           albumName: "Barton Hallow",
           isLiked: true,
-          isPlayable: true
+          isPlayable: true,
         },
         user_songs: [
           {
             name: "ya sattar",
-            artistName: "Hamaki"
+            artistName: "Hamaki",
           },
           {
             name: "nour el3en",
-            artistName: "Amr Diab"
+            artistName: "Amr Diab",
           },
           {
             name: "el nas",
-            artistName: "Hamaki"
+            artistName: "Hamaki",
           },
           {
             name: "el nas",
-            artistName: "Hamaki"
+            artistName: "Hamaki",
           },
           {
             name: "el nas",
-            artistName: "Hamaki"
+            artistName: "Hamaki",
           },
           {
             name: "el nas",
-            artistName: "Hamaki"
+            artistName: "Hamaki",
           },
           {
             name: "el nas",
-            artistName: "Hamaki"
+            artistName: "Hamaki",
           },
           {
             name: "el nas",
-            artistName: "Hamaki"
+            artistName: "Hamaki",
           },
           {
             name: "el nas",
-            artistName: "Hamaki"
-          }
+            artistName: "Hamaki",
+          },
         ],
         Artist_Songs: [
           {
@@ -648,8 +648,8 @@ export function mockServer({ environment = "development" } = {}) {
             Name: "",
             TrackNumber: "",
             PreviewURL: "",
-            AvailableMarket: ""
-          }
+            AvailableMarket: "",
+          },
         ],
         search_artist: [
           {
@@ -657,8 +657,8 @@ export function mockServer({ environment = "development" } = {}) {
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             name: "this is Amr diab",
             type: "Artist",
-            genre: ["pop"]
-          }
+            genre: ["pop"],
+          },
         ],
         search_album: [
           {
@@ -666,8 +666,8 @@ export function mockServer({ environment = "development" } = {}) {
             name: "diabiat",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             artistId: "5e76461b7ee20d39b463988c",
-            artistName: "this is Amr diab"
-          }
+            artistName: "this is Amr diab",
+          },
         ],
         search_playlist: [
           {
@@ -676,8 +676,8 @@ export function mockServer({ environment = "development" } = {}) {
             type: "function String() { [native code] }",
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             ownerId: "5e695daf488e9342b8b18bcf",
-            ownerName: "dina"
-          }
+            ownerName: "dina",
+          },
         ],
         search_top: [
           {
@@ -685,9 +685,9 @@ export function mockServer({ environment = "development" } = {}) {
             images: "http://dummyimage.com/250x400.jpg/ff4444/ffffff",
             name: "Amr diab",
             type: "Artist",
-            genre: ["pop"]
-          }
-        ]
+            genre: ["pop"],
+          },
+        ],
       });
     },
     routes() {
@@ -705,38 +705,38 @@ export function mockServer({ environment = "development" } = {}) {
       // this.get("/api/users", (schema)=>{
       //   return schema.db.user_play_lists
       // });
-      this.get("/api/artist/:id", schema => {
+      this.get("/api/artist/:id", (schema) => {
         return schema.db.artist;
       });
-      this.get("/api/category", schema => {
+      this.get("/api/category", (schema) => {
         console.log("in mirage", schema.db.category);
         return schema.db.category;
       });
-      this.get("/api/player/currently-playing", schema => {
+      this.get("/api/player/currently-playing", (schema) => {
         return schema.db.songs;
       });
-      this.get("/api/player/play", schema => {
+      this.get("/api/player/play", (schema) => {
         return schema.db.songs;
       });
-      this.get("/api/player/pause", schema => {
+      this.get("/api/player/pause", (schema) => {
         return schema.db.songs;
       });
-      this.get("/player/next", schema => {
+      this.get("/player/next", (schema) => {
         return new Response(200, {}, { nextsong: schema.db.nextsong });
       });
-      this.get("/player/previous", schema => {
+      this.get("/player/previous", (schema) => {
         return new Response(200, {}, { prevsong: schema.db.prevsong });
       });
-      this.get("/api/player/repeat", schema => {
+      this.get("/api/player/repeat", (schema) => {
         return schema.db.songs;
       });
-      this.put("/api/player/shuffle", schema => {
+      this.put("/api/player/shuffle", (schema) => {
         return schema.db.songs;
       });
-      this.get("/api/user", schema => {
+      this.get("/api/user", (schema) => {
         return schema.db.popular_playlists;
       });
-      this.get("/api/playlists", schema => {
+      this.get("/api/playlists", (schema) => {
         console.log("in get", schema.db.Playlists);
         return schema.db.Playlists;
       }),
@@ -759,12 +759,12 @@ export function mockServer({ environment = "development" } = {}) {
           return new Response(
             201,
             {
-              token: "menna"
+              token: "menna",
             },
             schema.db.users.insert({
               username: user.username,
               email: user.email,
-              password: user.password
+              password: user.password,
             })
           );
         } else {
@@ -793,19 +793,19 @@ export function mockServer({ environment = "development" } = {}) {
       this.post("/api/logout", () => {
         return new Response(200);
       });
-      this.get("/api/me/albums", schema => {
+      this.get("/api/me/albums", (schema) => {
         return schema.db.user_albums;
       });
-      this.get("/api/me/followingArtist", schema => {
+      this.get("/api/me/followingArtist", (schema) => {
         return schema.db.user_artists;
       });
-      this.get("/api/me/tracks", schema => {
+      this.get("/api/me/tracks", (schema) => {
         return schema.db.user_songs;
       });
-      this.get("/api/me/like", schema => {
+      this.get("/api/me/like", (schema) => {
         return schema.db.songs;
       });
-      this.get("/api/me/unlike", schema => {
+      this.get("/api/me/unlike", (schema) => {
         return schema.db.songs;
       });
       this.post("/api/uploadsong", (schema, request) => {
@@ -816,7 +816,7 @@ export function mockServer({ environment = "development" } = {}) {
           Name: uploadedsong.Name,
           TrackNumber: uploadedsong.TrackNumber,
           PreviewURL: uploadedsong.PreviewURL,
-          AvailableMarket: uploadedsong.AvailableMarket
+          AvailableMarket: uploadedsong.AvailableMarket,
         });
       });
       this.put("/api/claimartist", (schema, request) => {
@@ -829,7 +829,7 @@ export function mockServer({ environment = "development" } = {}) {
           schema.db.users.update({
             Name: claimartist.Name,
             Genre: claimartist.Genre,
-            Description: claimartist.Description
+            Description: claimartist.Description,
           })
         );
       });
@@ -857,7 +857,7 @@ export function mockServer({ environment = "development" } = {}) {
           Name: uploadedsong.Name,
           TrackNumber: uploadedsong.TrackNumber,
           PreviewURL: uploadedsong.PreviewURL,
-          AvailableMarket: uploadedsong.AvailableMarket
+          AvailableMarket: uploadedsong.AvailableMarket,
         });
       });
       this.put("/api/claimartist", (schema, request) => {
@@ -873,12 +873,12 @@ export function mockServer({ environment = "development" } = {}) {
           return new Response(
             201,
             {
-              token: "menna"
+              token: "menna",
             },
             schema.db.users.insert({
               username: user.username,
               email: user.email,
-              password: user.password
+              password: user.password,
             })
           );
         } else {
@@ -901,7 +901,7 @@ export function mockServer({ environment = "development" } = {}) {
           return new Response(403, { error: "no user with such data" });
         }
       });
-      this.get("/me", schema => {
+      this.get("/me", (schema) => {
         return new Response(
           201,
           { token: "menna" },
@@ -918,10 +918,10 @@ export function mockServer({ environment = "development" } = {}) {
         return new Response(200);
       });
       //albums
-      this.get("/api/me/albums", schema => {
+      this.get("/api/me/albums", (schema) => {
         return schema.db.user_albums;
       });
-      this.get("/api/me/following", schema => {
+      this.get("/api/me/following", (schema) => {
         console.log("in main dai");
         return schema.db.user_artists;
       });
@@ -929,19 +929,19 @@ export function mockServer({ environment = "development" } = {}) {
       //   return schema.db.user_play_lists
       // });
       //albums
-      this.get("/api/me/like", schema => {
+      this.get("/api/me/like", (schema) => {
         return schema.db.songs;
       });
-      this.get("/api/me/unlike", schema => {
+      this.get("/api/me/unlike", (schema) => {
         return schema.db.songs;
       });
       ///////////////////////////////////////////////////queue requests
 
       //queue requests
-      this.get("/api/currentsong", schema => {
+      this.get("/api/currentsong", (schema) => {
         return new Response(200, {}, { currentsong: schema.db.currentsong });
       });
-      this.get("/api/queue", schema => {
+      this.get("/api/queue", (schema) => {
         return new Response(200, {}, { queue: schema.db.queue });
       });
       this.post("/api/addtoqueue", (schema, request) => {
@@ -969,16 +969,16 @@ export function mockServer({ environment = "development" } = {}) {
         return new Response(200, {}, { mes: "created with success" });
       });
       //////
-      this.get("/api/search/top", schema => {
+      this.get("/api/search/top", (schema) => {
         return schema.db.search_top;
       });
-      this.get("/api/search/artist", schema => {
+      this.get("/api/search/artist", (schema) => {
         return schema.db.search_artist;
       });
-      this.get("/api/search/album", schema => {
+      this.get("/api/search/album", (schema) => {
         return schema.db.search_album;
       });
-      this.get("/api/search/playlist", schema => {
+      this.get("/api/search/playlist", (schema) => {
         return schema.db.search_playlist;
       });
       /////////////////
@@ -1012,7 +1012,7 @@ export function mockServer({ environment = "development" } = {}) {
         return schema.db.album_info.findBy({ _id: id });
       });
       //////////////////liked tracks
-      this.get("/me/tracks", schema => {
+      this.get("/me/tracks", (schema) => {
         return schema.db.likedtracks;
       });
       this.post("playlists/:playlist_id/tracks", (schema, request) => {
@@ -1024,11 +1024,11 @@ export function mockServer({ environment = "development" } = {}) {
           { Playlists: schema.db.songs.insert(tracks) }
         );
       });
-      this.get("/api/me/playlists", schema => {
+      this.get("/api/me/playlists", (schema) => {
         console.log("in get", schema.db.Playlists);
         return schema.db.Playlists;
       });
-    }
+    },
   });
   return server;
 }

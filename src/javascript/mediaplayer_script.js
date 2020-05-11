@@ -44,37 +44,41 @@ export default {
      * @param {String} playlist_id id of the playlist where the song exists
      */
     playSong() {
-      this.song_state = true;
-      let info;
-      if (
-        "playicon-component" == event.target.id ||
-        "songComp" == event.target.id
-      ) {
-        info = {
-          index: this.index,
-          song_id: this.song_id,
-          album_id: this.albumId,
-          playlist_id: this.playlistId,
-          is_playlist: this.isPlaylist,
-        };
-        if (
-          this.song_id == this.Get_Currentsong.track._id &&
-          this.albumId == this.Get_Currentsong.album._id &&
-          this.playlistId == this.Get_Currentsong.playlistId
-        ) {
-          this.$store.dispatch("Mediaplayer/playsong_state", info);
-        } else {
-          this.$store.dispatch("Queue/CreateQueue", info);
-        }
+      if (this.user != "success") {
+        this.$store.dispatch("checkuserpopup/togglePopup");
       } else {
-        info = {
-          song_id: this.Get_Currentsong.track._id,
-          index: this.Index,
-          album_id: this.Get_Currentsong.track.albumId,
-          playlist_id: this.Get_Currentsong.playlistId,
-          is_playlist: this.Get_Currentsong.isPlaylist,
-        };
-        this.$store.dispatch("Mediaplayer/playsong_state", info);
+        this.song_state = true;
+        let info;
+        if (
+          "playicon-component" == event.target.id ||
+          "songComp" == event.target.id
+        ) {
+          info = {
+            index: this.index,
+            song_id: this.song_id,
+            album_id: this.albumId,
+            playlist_id: this.playlistId,
+            is_playlist: this.isPlaylist,
+          };
+          if (
+            this.song_id == this.Get_Currentsong.track._id &&
+            this.albumId == this.Get_Currentsong.album._id &&
+            this.playlistId == this.Get_Currentsong.playlistId
+          ) {
+            this.$store.dispatch("Mediaplayer/playsong_state", info);
+          } else {
+            this.$store.dispatch("Queue/CreateQueue", info);
+          }
+        } else {
+          info = {
+            song_id: this.Get_Currentsong.track._id,
+            index: this.Index,
+            album_id: this.Get_Currentsong.track.albumId,
+            playlist_id: this.Get_Currentsong.playlistId,
+            is_playlist: this.Get_Currentsong.isPlaylist,
+          };
+          this.$store.dispatch("Mediaplayer/playsong_state", info);
+        }
       }
     },
     /**
@@ -82,30 +86,47 @@ export default {
      * @public This is a public method
      */
     pauseSong() {
-      this.song_state = false;
-      console.log("pause song");
-      this.$store.dispatch("Mediaplayer/pausesong_state");
+      if (this.user != "success") {
+        this.$store.dispatch("checkuserpopup/togglePopup");
+      } else {
+        this.song_state = false;
+        console.log("pause song");
+        this.$store.dispatch("Mediaplayer/pausesong_state");
+      }
     },
     /**
      * this function is to get the previous song in playlist or album
      * @public This is a public method
      */
     prev_song: function () {
-      if (this.Index != 0) this.$store.dispatch("Mediaplayer/prevsong_state");
+      if (this.user != "success") {
+        this.$store.dispatch("checkuserpopup/togglePopup");
+      } else {
+        if (this.currentsong_info.index != 0)
+          this.$store.dispatch("Mediaplayer/prevsong_state");
+      }
     },
     /**
      * this function is to get the next song in playlist or album
      * @public This is a public method
      */
     next_song: function () {
-      this.$store.dispatch("Mediaplayer/nextsong_state");
+      if (this.user != "success") {
+        this.$store.dispatch("checkuserpopup/togglePopup");
+      } else {
+        this.$store.dispatch("Mediaplayer/nextsong_state");
+      }
     },
     /**
      * this function is used to random the play of songs inside the playlist and it appears also in the queue
      * @public This is a public method
      */
     random_songs: function () {
-      this.$store.dispatch("Mediaplayer/shufflesong_state");
+      if (this.user != "success") {
+        this.$store.dispatch("checkuserpopup/togglePopup");
+      } else {
+        this.$store.dispatch("mediaplayer/shufflesong_state");
+      }
     },
     /**
      * this function is to like the current song and save it to user's liked tracks page

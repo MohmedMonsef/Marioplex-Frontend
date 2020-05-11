@@ -1,7 +1,6 @@
 import axios from "axios";
 import store from "../store";
 import router from "../router/index";
-
 export default {
   namespaced: true,
   state: {
@@ -179,9 +178,9 @@ export default {
         });
       console.log(Request.headers);
     },
-    logout({ commit }) {
+    logout({ commit, state }) {
       commit("logout");
-      axios.post("/api/user/logout").then(() => {
+      axios.post("/api/user/logout/?id=" + state.User._id).then(() => {
         localStorage.removeItem("x-auth-token");
         delete axios.defaults.headers.common["x-auth-token"];
       });
