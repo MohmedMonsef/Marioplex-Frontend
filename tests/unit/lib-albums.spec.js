@@ -9,8 +9,8 @@ describe("LibAlbums.vue", () => {
       localVue,
       propsData: {
         name: "album name",
-        artistname: "artist name"
-      }
+        artistname: "artist name",
+      },
     });
     const name = wrapper.find("#cardtitle");
     const artistname = wrapper.find(".artistlink");
@@ -18,12 +18,11 @@ describe("LibAlbums.vue", () => {
     expect(artistname.text()).toBe("artist name");
   });
   it("renders", () => {
-    const wrapper = shallowMount(LibAlbums, {localVue});
+    const wrapper = shallowMount(LibAlbums, { localVue });
     expect(wrapper.exists()).toBe(true);
-  }); 
+  });
   it("renders a vue instance", () => {
-    const wrapper = shallowMount(LibAlbums, {localVue});
+    const wrapper = shallowMount(LibAlbums, { localVue });
     expect(wrapper.isVueInstance()).toBe(true);
   });
-
 });

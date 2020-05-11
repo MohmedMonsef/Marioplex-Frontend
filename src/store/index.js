@@ -29,6 +29,6 @@ export default new Vuex.Store({
     LikedTracks,
     ArtistProperties,
     ArtistPage,
-    UserUpdate
-  }
+    UserUpdate,
+  },
 });

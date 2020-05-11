@@ -1,11 +1,11 @@
 <template>
-    <div >
+  <div>
     <div
       class="card rounded col-lg-16.5%"
       testid="playlist card"
       @mouseover="hover = true"
       @mouseleave="hover = false"
-     @click="AddTrackToExsistPlaylist(),changeModalStateAdd()"
+      @click="AddTrackToExsistPlaylist(), changeModalStateAdd()"
     >
       <img
         class="card-img-top mx-auto d-block"
@@ -18,24 +18,23 @@
         <h4 class="card-title" id="cardtitle" testid="playlist name">
           {{ name }}
         </h4>
-         <!-- <h4 class="card-text" id="cardtext" testid="playlist name">
+        <!-- <h4 class="card-text" id="cardtext" testid="playlist name">
           {{ tracksnum }}
         </h4> -->
         <!-- should navigate to playlist page -->
         <div
-          
           class="stretched-link"
           id="carglink"
           testid="playlist card link"
         ></div>
       </div>
     </div>
-     <div class="toast" id="addtracktoast" testid="addtracktoast"></div>
+    <div class="toast" id="addtracktoast" testid="addtracktoast"></div>
   </div>
 </template>
 <style lang="scss" scoped>
 .card {
-  background:transparent;
+  background: transparent;
   width: 250px;
   height: 200px;
   margin-left: 15px;
@@ -87,43 +86,42 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  }
+  },
 };
 export default {
-    data: function() {
+  data: function () {
     return {
-      hover: false
+      hover: false,
     };
   },
   name: "PlaylistsToTracks",
   props: ["name", "playlist_id", "tracksnum"],
   mixins: [song_functions],
-  computed:{
-      ...mapGetters({
-          trackid: "Playlist/trackid"
-      })
+  computed: {
+    ...mapGetters({
+      trackid: "Playlist/trackid",
+    }),
   },
-  methods:{
-      AddTrackToExsistPlaylist(){
-          let payload={
-              trackid:this.trackid,
-              playlistid:this.playlist_id
-          }
-          console.log("in card track",this.trackid)
-          console.log("in card playlist",payload.playlistid)
-          this.$store.dispatch("Playlist/AddTrackToExsistPlaylist",payload)
-
-      },
-      changeModalStateAdd(){
-          this.$store.dispatch("Playlist/toggleModalAdd");
-          toast.show("Added to your library");
-      }
+  methods: {
+    AddTrackToExsistPlaylist() {
+      let payload = {
+        trackid: this.trackid,
+        playlistid: this.playlist_id,
+      };
+      console.log("in card track", this.trackid);
+      console.log("in card playlist", payload.playlistid);
+      this.$store.dispatch("Playlist/AddTrackToExsistPlaylist", payload);
+    },
+    changeModalStateAdd() {
+      this.$store.dispatch("Playlist/toggleModalAdd");
+      toast.show("Added to your library");
+    },
   },
-  created: function() {
+  created: function () {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function() {
+  destroyed: function () {
     window.removeEventListener("click", this.hideshow);
   },
-}
+};
 </script>

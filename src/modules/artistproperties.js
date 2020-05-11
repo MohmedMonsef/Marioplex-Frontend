@@ -6,18 +6,18 @@ export default {
     showModal: false,
     showModalUpload: false,
     showModalClaimArtist: false,
-    Artist_Songs: []
+    Artist_Songs: [],
   },
   getters: {
-    showModal: state => {
+    showModal: (state) => {
       return state.showModal;
     },
-    showModalUpload: state => {
+    showModalUpload: (state) => {
       return state.showModalUpload;
     },
-    showModalClaimArtist: state => {
+    showModalClaimArtist: (state) => {
       return state.showModalClaimArtist;
-    }
+    },
   },
   mutations: {
     toggleModal(state) {
@@ -34,7 +34,7 @@ export default {
         id: payload.id,
         Name: payload.name,
         Genre: payload.Genre,
-        Description: payload.Description
+        Description: payload.Description,
       });
       console.log("nori", this.users);
     },
@@ -44,12 +44,12 @@ export default {
         TrackNumber: data.TrackNumber,
         AvailableMarket: data.AvailableMarket,
         selectedfile: data.selectedfile,
-        selectedpreview: data.selectedpreview
+        selectedpreview: data.selectedpreview,
       });
     },
     DeleteSong(state, id) {
       state.Artist_Songs.splice(id, 1);
-    }
+    },
   },
   actions: {
     toggleModalUpload({ commit }) {
@@ -65,7 +65,7 @@ export default {
       console.log("wslllllll", payload);
       axios
         .post("/api/me/ToArtist", payload)
-        .then(response => {
+        .then((response) => {
           const claim = response.status;
           if (claim == 200) {
             commit("logout");
@@ -75,7 +75,7 @@ export default {
             commit("ClaimArtistProfile");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -96,17 +96,17 @@ export default {
 
         .post("/api/uploadsong", songdata, {
           headers: {
-            "Content-Type": "aplication/jason"
+            "Content-Type": "aplication/jason",
             // 'Content-Type': 'multipart/form-data'
-          }
+          },
         })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           console.log("SUCCESS!!");
           const song = this.res.data;
           commit("OnUpload", song);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log("FAILURE!!");
           console.log(error);
         });
@@ -114,17 +114,17 @@ export default {
     DeleteSong({ commit }, id) {
       axios
         .delete(`/api/song/${id}`)
-        .then(response => {
+        .then((response) => {
           console.log(response.data);
           console.log("wsl");
           commit("DeleteSong", id);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
-    }
+    },
     /* EditBio({commit},payload){
 
     }*/
-  }
+  },
 };

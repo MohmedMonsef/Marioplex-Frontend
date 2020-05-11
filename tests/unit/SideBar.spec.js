@@ -13,11 +13,11 @@ describe("SideBar.vue", () => {
         authorization: {
           namespaced: true,
           state: {
-            status: "success"
+            status: "success",
           },
           getters: {
-            GetStatus: state => state.status
-          }
+            GetStatus: (state) => state.status,
+          },
         },
         creatplaylist: {
           namespaced: true,
@@ -25,45 +25,45 @@ describe("SideBar.vue", () => {
             showModalDelete: true,
             Playlists: [
               {
-                name: "play"
-              }
-            ]
+                name: "play",
+              },
+            ],
           },
           getters: {
-            showModalDelete: state => {
+            showModalDelete: (state) => {
               return state.showModalDelete;
             },
-            playlists: state => state.Playlists
+            playlists: (state) => state.Playlists,
           },
           actions: {
-            showplaylists: jest.fn()
-          }
-        },
-        Search:{
-          namespaced:true,
-          state:{
-            search_Value: "",
-    topres: [],
-    result5: [],
-    result: [],
-    albumres5: [],
-    playlistres5: [],
-    load: false,
-    in: false,
-    searchfocus: false
+            showplaylists: jest.fn(),
           },
-          actions:{
+        },
+        Search: {
+          namespaced: true,
+          state: {
+            search_Value: "",
+            topres: [],
+            result5: [],
+            result: [],
+            albumres5: [],
+            playlistres5: [],
+            load: false,
+            in: false,
+            searchfocus: false,
+          },
+          actions: {
             searchfocus: jest.fn(),
             search_V: jest.fn(),
-          }
-        }
-      }
+          },
+        },
+      },
     });
   });
   it("has a home router", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     expect(wrapper.exists("#homepage1")).toBe(true);
   });
@@ -71,7 +71,7 @@ describe("SideBar.vue", () => {
   it("has a library router", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     expect(wrapper.exists(".librarypage")).toBe(true);
   });
@@ -79,27 +79,25 @@ describe("SideBar.vue", () => {
   it("has a search page router", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     expect(wrapper.exists(".searchpage")).toBe(true);
   });
 
   it("has a changeModalState dispatch", () => {
-    store.dispatch = jest.fn()
+    store.dispatch = jest.fn();
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
-    wrapper.find(".createbutton").trigger("click")
-    expect(store.dispatch).toHaveBeenCalledWith(
-      'creatplaylist/toggleModal'
-    )
+    wrapper.find(".createbutton").trigger("click");
+    expect(store.dispatch).toHaveBeenCalledWith("creatplaylist/toggleModal");
   });
 
   it("call setsearch function", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     const setsearch = jest.fn();
     wrapper.setMethods({
@@ -113,11 +111,11 @@ describe("SideBar.vue", () => {
   it("call setfocus function", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     const setfocus = jest.fn();
     wrapper.setMethods({
-      setfocus: setfocus
+      setfocus: setfocus,
     });
     const search_div = wrapper.find("#callsearch");
     search_div.trigger("click");
@@ -127,11 +125,11 @@ describe("SideBar.vue", () => {
   it("call change Modal State function", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const create_button = wrapper.find(".createbutton");
     create_button.trigger("click");
@@ -140,7 +138,7 @@ describe("SideBar.vue", () => {
   it("show playlists names", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     const playlist_name = wrapper.find(".userplaylists");
     expect(playlist_name.text()).toBe("play");
@@ -148,16 +146,16 @@ describe("SideBar.vue", () => {
   it("call change Modal StateDelete function", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     wrapper.setData({
       showdelete: true,
       show: false,
-      playlistid: 0
+      playlistid: 0,
     });
     const changeModalStateDelete = jest.fn();
     wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete
+      changeModalStateDelete: changeModalStateDelete,
     });
     const delete_button = wrapper.find(".delete_div");
     delete_button.trigger("click");
@@ -166,14 +164,14 @@ describe("SideBar.vue", () => {
   it("renders", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     expect(wrapper.exists()).toBe(true);
   });
   it("renders a vue instance", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,
-      store
+      store,
     });
     expect(wrapper.isVueInstance()).toBe(true);
   });

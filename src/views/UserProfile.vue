@@ -1,27 +1,28 @@
 <template>
   <div id="user">
-      <div class="loading" v-if="!loading">
+    <div class="loading" v-if="!loading">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="loading" class="notloading">
       <div class="row justify-content-center img-user m-0">
-        <img  :src="getImg(user.images[0])"/>
-        <h1>{{user.displayName}}</h1>
+        <img :src="getImg(user.images[0])" />
+        <h1>{{ user.displayName }}</h1>
       </div>
-        <div class="row m-0">
-            <div 
-             v-for="playlist in playlists"
-              :key="playlist.id"
-            >
+      <div class="row m-0">
+        <div v-for="playlist in playlists" :key="playlist.id">
           <lib-playlists
             v-if="playlist.isPublic"
-            :images="'http://52.205.254.29/api/images/'+ playlist.images[0]._id + '?belongs_to=playlist'"
+            :images="
+              'http://52.205.254.29/api/images/' +
+              playlist.images[0]._id +
+              '?belongs_to=playlist'
+            "
             :name="playlist.name"
             :ownerName="playlist.owner"
             :playlist_id="playlist.id"
           />
-            </div>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -36,28 +37,28 @@
     margin-top: 100px;
   }
 }
-#user{
-    height: 100vh;
-     background-image: linear-gradient(#333232 2%, #161516 98%);
-     background-size: 100% 40%;
-     background-repeat: no-repeat;
-     padding: 1%;
+#user {
+  height: 100vh;
+  background-image: linear-gradient(#333232 2%, #161516 98%);
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
+  padding: 1%;
 }
-img{
-    width: 200px;
-    height: 200px;
-    border-radius: 200px;
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
 }
-h1{
-font-size: 36px;
-line-height: 44px;
-letter-spacing: -.005em;
-font-weight: 600;
-color: #fff;
-text-transform: none;
-margin-top: 32px;
-text-align: center;
-width: 100%;
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.005em;
+  font-weight: 600;
+  color: #fff;
+  text-transform: none;
+  margin-top: 32px;
+  text-align: center;
+  width: 100%;
 }
 </style>
 
@@ -71,46 +72,43 @@ import { mapGetters } from "vuex";
  */
 export default {
   name: "albumview",
-  data: function() {
+  data: function () {
     return {
       userid: "",
-      id:"5e9c9790fc69ad92e0a7eda5"
+      id: "5e9c9790fc69ad92e0a7eda5",
     };
   },
   props: {},
-   components: {
+  components: {
     LibPlaylists,
   },
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
-      user:"UserUpdate/user",
+      user: "UserUpdate/user",
       playlists: "UserUpdate/playlists", // creat new object "playlists1" and map to it
-      loading: "UserUpdate/loading"
-    })
+      loading: "UserUpdate/loading",
+    }),
   },
-  methods:{
-    getImg(imgSrc){
-      if(typeof imgSrc == "undefined")
-          {
-            return 'https://dummyimage.com/250x400.jpg/dddddd/000000'
-          }
-      else
-        return 'http://52.205.254.29/api/images/'+ imgSrc._id+ '?belongs_to=user'
-    }
+  methods: {
+    getImg(imgSrc) {
+      if (typeof imgSrc == "undefined") {
+        return "https://dummyimage.com/250x400.jpg/dddddd/000000";
+      } else
+        return (
+          "http://52.205.254.29/api/images/" + imgSrc._id + "?belongs_to=user"
+        );
+    },
   },
   /**
    * Called at loading the page to display album tracks and send the id to get that specific album
    * @public This is a public method
    */
-  beforeCreate:function(){
-       this.userid = this.$route.params.user_id;
-       this.$store.dispatch("UserUpdate/user_playlists",this.userid);
-       this.$store.dispatch("UserUpdate/user_info",this.userid);
+  beforeCreate: function () {
+    this.userid = this.$route.params.user_id;
+    this.$store.dispatch("UserUpdate/user_playlists", this.userid);
+    this.$store.dispatch("UserUpdate/user_info", this.userid);
   },
-  mounted() {
-   
-  }
+  mounted() {},
 };
 </script>
-

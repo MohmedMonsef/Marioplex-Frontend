@@ -1,59 +1,65 @@
 <template>
   <div class="ArtistProfile">
-    <div class="image"></div>
-      <div class="coverphotoinfo">
-      <h1 class="Artistname" id="artistname">{{artist_name}}</h1>
+    <div id="image"></div>
+    <div class="coverphotoinfo">
+      <h1 class="Artistname" id="artistname">{{ artist_name }}</h1>
       <button
         v-if="!play"
         class="playbutton"
         id="playbutton"
-        @click="playSong(), isplaying()">
+        @click="playSong(), isplaying()"
+      >
         PLAY
       </button>
       <button
         v-if="play"
         class="pausebutton"
         id="pausebutton"
-        @click="pauseSong(), stopplaying()">
+        @click="pauseSong(), stopplaying()"
+      >
         PAUSE
       </button>
       <button
         v-if="!followed"
         class="followartistbutton"
         id="followartistbutton"
-        @click="followartist()">
+        @click="followartist()"
+      >
         FOLLOW
       </button>
       <button
         v-if="followed"
         class="unfollowartistbutton"
         id="unfollowartistbutton"
-        @click="followartist()">
+        @click="followartist()"
+      >
         UNFOLLOW
       </button>
-      <artistnavbar/>
+      <artistnavbar />
     </div>
     <div class="toast" id="artistliketoast" testid="artistliketoast"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.ArtistProfile{
-    height: 350px;
-    margin: 0px;
-    padding: 0px;
-    top: 0%;
-    position: relative;
+.ArtistProfile {
+  height: 350px;
+  margin: 0px;
+  padding: 0px;
+  top: 0%;
+  position: relative;
 }
-.image{
-   width: 100%;
-   height: 100%;
-   background: linear-gradient(to top,#161516 , #161510 8% , transparent), url("../assets/island.png") no-repeat center; 
-   background-size: cover; 
+#image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #161516, #161510 8%, transparent),
+    no-repeat center;
+
+  background-size: cover;
 }
-.coverphotoinfo{
-    top: 34%;
-    position: absolute;
+.coverphotoinfo {
+  top: 34%;
+  position: absolute;
 }
 .Artistname {
   margin: 20px;
@@ -114,8 +120,11 @@ button {
 .pausebutton:hover {
   transform: scale(1.06);
 }
-.followartistbutton:active,.unfollowartistbutton:active,.playbutton:active,.pausebutton:active{
-transform: scale(1.06);
+.followartistbutton:active,
+.unfollowartistbutton:active,
+.playbutton:active,
+.pausebutton:active {
+  transform: scale(1.06);
 }
 .unfollowartistbutton {
   color: #1db954;
@@ -162,44 +171,64 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  }
+  },
 };
 export default {
-  data: function() {
+  data: function () {
     return {
-      play: false
+      play: false,
+      imgId: "",
     };
   },
-   components: {
-    artistnavbar
+  components: {
+    artistnavbar,
   },
   mixins: [song_functions],
   name: "artist_coverimage",
   methods: {
-    isplaying: function() {
+    isplaying: function () {
       this.play = true;
     },
-    stopplaying: function() {
+    stopplaying: function () {
       this.play = false;
     },
-    followartist: function() {
+    followartist: function () {
       if (!this.followed) {
         toast.show("Saved to Your Library");
-        this.$store.dispatch("ArtistPage/follow_artist",this.$route.params.artist_id);
-      } 
-      else {
+        this.$store.dispatch(
+          "ArtistPage/follow_artist",
+          this.$route.params.artist_id
+        );
+      } else {
         toast.show("Removed from Your Library");
-        this.$store.dispatch("ArtistPage/unfollow_artist",this.$route.params.artist_id);
+        this.$store.dispatch(
+          "ArtistPage/unfollow_artist",
+          this.$route.params.artist_id
+        );
       }
-    }
+    },
+    getImg() {
+      var coverImg = document.getElementById("image");
+      coverImg.style.backgroundImage =
+        "url(http://52.205.254.29/api/images/" +
+        this.imgId +
+        "?belongs_to=artist)";
+    },
   },
   computed: {
     ...mapGetters({
       playicon: "Mediaplayer/playicon",
       artist_name: "ArtistPage/artist_name",
       album_image: "ArtistPage/artistcover_image",
-      followed: "ArtistPage/followartist"
-    })
-  }
+      followed: "ArtistPage/followartist",
+    }),
+  },
+  mounted() {
+    setTimeout(() => {
+      (this.imgId = this.album_image._id),
+        console.log("bbbbbbbbbbbbbbbbbb", this.imgId);
+      this.getImg();
+    }, 2000);
+  },
 };
 </script>

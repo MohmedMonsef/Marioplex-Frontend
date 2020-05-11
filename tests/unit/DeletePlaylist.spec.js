@@ -15,27 +15,25 @@ describe("DeletePlaylist", () => {
           state: {
             showModalDelete: true,
             todelete: 0,
-            Playlists: []
+            Playlists: [],
           },
           getters: {
-            todelete: state => {
+            todelete: (state) => {
               return state.todelete;
             },
-            showModalDelete: state => {
+            showModalDelete: (state) => {
               return state.showModalDelete;
-            }
+            },
           },
-          mutations:{
-            toggleModalDelete:jest.fn(),
-
-
+          mutations: {
+            toggleModalDelete: jest.fn(),
           },
-          actions:{
-            DeletePlaylist:jest.fn(),
-            toggleModalDelete:jest.fn(),
-          }
-        }
-      }
+          actions: {
+            DeletePlaylist: jest.fn(),
+            toggleModalDelete: jest.fn(),
+          },
+        },
+      },
     });
   });
   it("has a button", () => {
@@ -51,7 +49,7 @@ describe("DeletePlaylist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     const Delete = jest.fn();
     wrapper.setMethods({
-      DeletePlaylist: Delete
+      DeletePlaylist: Delete,
     });
     const btn = wrapper.find(".delete_button");
     btn.trigger("click");
@@ -61,7 +59,7 @@ describe("DeletePlaylist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     const changeModalStateDelete = jest.fn();
     wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete
+      changeModalStateDelete: changeModalStateDelete,
     });
     const btn = wrapper.find(".cancel");
     btn.trigger("click");
@@ -71,7 +69,7 @@ describe("DeletePlaylist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     const changeModalStateDelete = jest.fn();
     wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete
+      changeModalStateDelete: changeModalStateDelete,
     });
     const btn = wrapper.find(".cancel_button");
     btn.trigger("click");
@@ -90,7 +88,7 @@ describe("DeletePlaylist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     const changeModalStateDelete = jest.fn();
     wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete
+      changeModalStateDelete: changeModalStateDelete,
     });
     const btn = wrapper.find(".delete_button");
     btn.trigger("click");

@@ -17,14 +17,14 @@ describe("ForgetPassword", () => {
           namespaced: true,
           actions: {
             facebook_signUp: jest.fn(),
-            reset: jest.fn()
-          }
-        }
-      }
+            reset: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(ForgetPassword, {
       store,
-      localVue
+      localVue,
     });
   });
   it("renders", () => {
@@ -45,7 +45,7 @@ describe("ForgetPassword", () => {
     send_btn.trigger("click");
     const send = jest.fn();
     wrapper.setMethods({
-      send: send
+      send: send,
     });
     expect("send").toHaveBeenCalled;
     await wrapper.vm.$nextTick();
@@ -60,7 +60,7 @@ describe("ForgetPassword", () => {
     send_btn.trigger("click");
     const send = jest.fn();
     wrapper.setMethods({
-      send: send
+      send: send,
     });
     expect("send").toHaveBeenCalled;
     await wrapper.vm.$nextTick();

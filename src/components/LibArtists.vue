@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card rounded col-lg-20% "
+    class="card rounded col-lg-20%"
     testid="artist card"
     @mouseover="hover = true"
     @mouseleave="hover = false"
@@ -14,12 +14,12 @@
     />
     <div class="card-body" id="cardbody" testid="artist card body">
       <h4 class="card-title" id="cardtitle" testid="artist name">
-        {{ name | shorten}}
+        {{ name | shorten }}
       </h4>
-      <p class="card-text" id="carddescribtion" v-if="type!=user">
+      <p class="card-text" id="carddescribtion" v-if="type != 'user'">
         Artist
       </p>
-      <p class="card-text" id="carddescribtion" v-if="type==user">
+      <p class="card-text" id="carddescribtion" v-if="type == 'user'">
         User
       </p>
       <button v-if="hover" class="play-button" testid="play-button">
@@ -27,16 +27,16 @@
         <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
       </button>
       <router-link
-        v-if="type!=user"
-        :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId}"
+        v-if="type != 'user'"
+        :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId }"
         class="stretched-link"
         id="carglink"
         testid="artist card link"
       ></router-link>
       <!-- should navigate to artist page -->
       <router-link
-        v-if="type==user"
-        :to="{path :'/HomeWebPlayer/UserProfile/'+ artistId}"
+        v-if="type == 'user'"
+        :to="{ path: '/HomeWebPlayer/UserProfile/' + artistId }"
         class="stretched-link"
         id="carglink"
         testid="artist card link"
@@ -100,33 +100,31 @@ i {
  */
 
 export default {
-  data: function() {
+  data: function () {
     return {
-      hover: false
+      hover: false,
     };
   },
   name: "lib-artists",
   props: {
     images: {
-      type: Array
+      type: Array,
     },
     name: {
-      type: String
+      type: String,
     },
-    artistId:{
-      type: String
+    artistId: {
+      type: String,
     },
-    type:{
-      type: String
-    }
+    type: {
+      type: String,
+    },
   },
-   filters: {
-    shorten: function(value) {
-      if(value.length  > 17)
-        return value.substring(0, 17) + " ...";
-      else
-        return value;
-    }
-   }
+  filters: {
+    shorten: function (value) {
+      if (value.length > 17) return value.substring(0, 17) + " ...";
+      else return value;
+    },
+  },
 };
 </script>

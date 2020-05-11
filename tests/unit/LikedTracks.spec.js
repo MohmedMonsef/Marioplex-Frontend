@@ -20,19 +20,18 @@ describe("ForArtist", () => {
             likedtracks_tracks: [],
             likedtracks_loaded: 0,
             likedtracks_length: "",
-            owner_name: ""
+            owner_name: "",
           },
           getters: {
-            likedtracks_tracks: state => state.likedtracks_tracks,
-            likedtracks_loaded: state => state.likedtracks_loaded,
-            likedtracks_length: state => state.likedtracks_length
+            likedtracks_tracks: (state) => state.likedtracks_tracks,
+            likedtracks_loaded: (state) => state.likedtracks_loaded,
+            likedtracks_length: (state) => state.likedtracks_length,
           },
           actions: {
-            likedtracks_tracks: jest.fn()
-           
-          }
-        }
-      }
+            likedtracks_tracks: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(LikedTracks, {
       localVue,
@@ -40,8 +39,8 @@ describe("ForArtist", () => {
       stubs: {
         SongComponent,
         likedtracks_info,
-        emptylikedtracks
-      }
+        emptylikedtracks,
+      },
     });
   });
   it("renders", () => {

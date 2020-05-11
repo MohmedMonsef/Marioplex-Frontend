@@ -1,11 +1,11 @@
 <template>
   <div class="ArtistProfile">
-    <artistcoverphoto/>
+    <artistcoverphoto />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.ArtistProfile{
+.ArtistProfile {
   min-width: 920px;
 }
 </style>
@@ -17,22 +17,28 @@ import artistcoverphoto from "@/components/ArtistPageCoverPhoto.vue";
  * @example [none]
  */
 export default {
-    data: function() {
+  data: function () {
     return {
-      artistid: ""
+      artistid: "",
     };
   },
   name: "ArtistProfile",
-   components: {
+  components: {
     artistcoverphoto,
   },
-    created: function() {
+  created: function () {
     this.artistid = this.$route.params.artist_id;
-    this.$store.dispatch("ArtistPage/artist_page", this.$route.params.artist_id);
-    this.$store.dispatch("ArtistPage/checkisfollowed", this.$route.params.artist_id);
+    this.$store.dispatch(
+      "ArtistPage/artist_page",
+      this.$route.params.artist_id
+    );
+    this.$store.dispatch(
+      "ArtistPage/checkisfollowed",
+      this.$route.params.artist_id
+    );
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
-  }
+  },
 };
 </script>

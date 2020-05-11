@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="row 
-  justify-content-center
-   homecard
-   px-0 "
-  >
+  <div class="row justify-content-center homecard px-0">
     <div class="layer px-0 m-0">
       <!-- <h2>{{name}}</h2> -->
       <h2>xx</h2>
@@ -86,21 +81,21 @@
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
-      hover: false
+      hover: false,
     };
   },
   props: {
     name: {
-      type: String
+      type: String,
     },
     images: {
-      type: String
+      type: String,
     },
     playlist_id: {
-      type: String
-    }
-  }
+      type: String,
+    },
+  },
 };
 </script>

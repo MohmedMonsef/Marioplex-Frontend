@@ -82,7 +82,7 @@
             class="fa fa-heart"
             id="filledhearticon"
             testid="filledhearticon"
-            style="color:green"
+            style="color: green;"
           ></i>
         </span>
       </button>
@@ -250,7 +250,7 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  }
+  },
 };
 /**
  * Displays Album information
@@ -258,10 +258,10 @@ const toast = {
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
       show: false,
-      play: false
+      play: false,
     };
   },
   mixins: [song_functions],
@@ -307,7 +307,7 @@ export default {
      * changes image appearance on hover
      * @public This is a public method
      */
-    onhoverimage: function() {
+    onhoverimage: function () {
       var albumimage = document.getElementById("album_image");
       albumimage.style.opacity = "0.3";
       if (!this.play) {
@@ -322,7 +322,7 @@ export default {
      * Returns image apperance to normal
      * @public This is a public method
      */
-    onleaveimage: function() {
+    onleaveimage: function () {
       var albumimage = document.getElementById("album_image");
       albumimage.style.opacity = "1";
 
@@ -339,16 +339,16 @@ export default {
      * triggers request to like current album
      * @public This is a public method
      */
-    likecurrentalbum: function() {
+    likecurrentalbum: function () {
       if (!this.liked) {
         toast.show("Saved to Your Library");
         this.$store.dispatch("Album/like_album", this.$route.params.album_id);
       } else {
         toast.show("Removed from Your Library");
-        console.log("ggg",this.$route.params.album_id)
+        console.log("ggg", this.$route.params.album_id);
         this.$store.dispatch("Album/unlike_album", this.$route.params.album_id);
       }
-    }
+    },
   },
   computed: {
     ...mapGetters({
@@ -357,8 +357,8 @@ export default {
       playicon: "Mediaplayer/playicon",
       artist_name: "Album/artist_name",
       album_image: "Album/album_image",
-      liked: "Album/likealbum"
-    })
-  }
+      liked: "Album/likealbum",
+    }),
+  },
 };
 </script>

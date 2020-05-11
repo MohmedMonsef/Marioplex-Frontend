@@ -1,33 +1,33 @@
 <template>
-    <div class="biography">
-        <h2 class="biotitle">Biography</h2>
-        <p>
-           {{about}}
-        </p>
-    </div>
+  <div class="biography">
+    <h2 class="biotitle">Biography</h2>
+    <p>
+      {{ about }}
+    </p>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.biography{
-margin: 25px;
+.biography {
+  margin: 25px;
 }
-.biotitle{
-color: white;
+.biotitle {
+  color: white;
 }
-p{
-    color: #b3b3b3;
-    margin-top: 20px;
+p {
+  color: #b3b3b3;
+  margin-top: 20px;
 }
 </style>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
-    name: "aboutartist",
-       computed: {
+  name: "aboutartist",
+  computed: {
     ...mapGetters({
-      about: "ArtistPage/artist_bio"
-    })
+      about: "ArtistPage/artist_bio",
+    }),
   },
-}
+};
 </script>

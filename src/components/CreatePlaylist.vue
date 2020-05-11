@@ -304,23 +304,23 @@ import { mapState } from "vuex";
  */
 export default {
   name: "CreatePlaylist",
-  data: function() {
+  data: function () {
     return {
       playlistname: "",
-     // withtrack:false
+      // withtrack:false
     };
   },
   //showModal:false,
   components: {},
   computed: {
     ...mapState({
-      Playlists: state => state.Playlist.Playlists
+      Playlists: (state) => state.Playlist.Playlists,
     }),
     ...mapGetters({
       showModal: "Playlist/showModal",
       username: "Authorization/Username",
-      withtrack:"Playlist/withtrack"
-    })
+      withtrack: "Playlist/withtrack",
+    }),
   },
   methods: {
     /**
@@ -329,7 +329,7 @@ export default {
      */
 
     changeModalState() {
-      this.$store.dispatch("Playlist/toggleModal",this.withtrack);
+      this.$store.dispatch("Playlist/toggleModal", this.withtrack);
     },
     /**
      * triggers the create playlist request
@@ -341,25 +341,25 @@ export default {
         payload = {
           name: this.playlistname,
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username
+          owner: this.username,
         };
       } else {
         payload = {
           name: "New Playlist",
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username
+          owner: this.username,
         };
       }
       this.$store.dispatch("Playlist/CreatePlaylist", payload);
       // Addtrack();
-    }
+    },
     // DeletePlaylist(id) {
     //   console.log(id);
 
     //   this.$store.dispatch("creatplaylist/DeletePlaylist", id);
     //   console.log("removed");
     // }
-  }
+  },
 
   // When the user clicks on <div>, open the popup
 };

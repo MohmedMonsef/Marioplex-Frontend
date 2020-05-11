@@ -49,10 +49,10 @@ export default {
     window.localStorage.isMySessionActive = "true";
     initializeFirebase();
   },
-  data: function() {
+  data: function () {
     return {
-      loading: true
+      loading: true,
     };
-  }
+  },
 };
 </script>

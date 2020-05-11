@@ -25,5 +25,5 @@ axios.defaults.baseURL = "http://52.205.254.29";
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

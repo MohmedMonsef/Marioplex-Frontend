@@ -1,11 +1,10 @@
 <template>
   <div>
-    <homeBodyNoUser v-if="isLoggedIn!='success'" />
-    <homeBodyUser v-if="isLoggedIn=='success'" />
+    <homeBodyNoUser v-if="isLoggedIn != 'success'" />
+    <homeBodyUser v-if="isLoggedIn == 'success'" />
   </div>
 </template>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
 <script>
 import { mapGetters } from "vuex";
 import homeBodyNoUser from "@/components/HomeBodyNoUser.vue";
@@ -16,15 +15,14 @@ import homeBodyUser from "@/components/HomeBodyUser.vue";
  * @example [none]
  */
 export default {
-components:{
-homeBodyNoUser,
-homeBodyUser
-
-},
+  components: {
+    homeBodyNoUser,
+    homeBodyUser,
+  },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus"
-    })
-  }
+      isLoggedIn: "Authorization/GetStatus",
+    }),
+  },
 };
 </script>

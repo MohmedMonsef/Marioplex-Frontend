@@ -1,13 +1,13 @@
 <template>
   <body>
     <div class="conatiner px-0">
-      <div class="row  header m-0">
-        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+      <div class="row header m-0">
+        <router-link to="/"> <img src="../assets/logo.png" /></router-link>
       </div>
     </div>
 
     <div class="conatiner reset_body px-0" v-if="normal">
-      <div class="row justify-content-center  m-0">
+      <div class="row justify-content-center m-0">
         <div class="col-5" align="center">
           <h1>Password Reset</h1>
           <p>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="conatiner reset_body px-0" v-if="submitted" id="submitted">
-      <div class="row justify-content-center  m-0">
+      <div class="row justify-content-center m-0">
         <div class="col-6" align="center">
           <h1>Password Reset</h1>
           <p>
@@ -59,7 +59,7 @@
     </div>
 
     <div class="conatiner px-0">
-      <div class="row footer  m-0"></div>
+      <div class="row footer m-0"></div>
     </div>
   </body>
 </template>
@@ -141,12 +141,12 @@ h1 {
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
       isNormal: true,
       isError: false,
       isSubmitted: false,
-      email: ""
+      email: "",
     };
   },
   methods: {
@@ -165,20 +165,20 @@ export default {
         (this.isSubmitted = true), (this.isError = false);
         this.$store
           .dispatch("Authorization/reset", { email: this.email })
-          .catch(err => console.log(err));
+          .catch((err) => console.log(err));
       }
-    }
+    },
   },
   computed: {
-    normal: function() {
+    normal: function () {
       return this.isNormal;
     },
-    error: function() {
+    error: function () {
       return this.isError;
     },
-    submitted: function() {
+    submitted: function () {
       return this.isSubmitted;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -7,7 +7,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <song-component
           testid="songcomponent"
-          v-for="(p,i) in album_tracks"
+          v-for="(p, i) in album_tracks"
           :key="p._id"
           :index="i"
           :song_id="p._id"
@@ -47,15 +47,15 @@ import { mapGetters } from "vuex";
  */
 export default {
   name: "albumview",
-  data: function() {
+  data: function () {
     return {
-      albumid: ""
+      albumid: "",
     };
   },
   props: {},
   components: {
     SongComponent,
-    albuminfo
+    albuminfo,
   },
   computed: {
     ...mapGetters({
@@ -63,21 +63,20 @@ export default {
       album_length: "Album/album_length",
       album_load: "Album/album_loaded",
       artist_name: "Album/artist_name",
-      album_name: "Album/album_name"
-    })
+      album_name: "Album/album_name",
+    }),
   },
   /**
    * Called at loading the page to display album tracks and send the id to get that specific album
    * @public This is a public method
    */
-  created: function() {
+  created: function () {
     this.albumid = this.$route.params.album_id;
-    
+
     this.$store.dispatch("Album/album_tracks", this.$route.params.album_id);
   },
   mounted() {
     this.albumid = this.$route.params.album_id;
-  }
+  },
 };
 </script>
-

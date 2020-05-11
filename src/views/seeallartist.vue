@@ -1,5 +1,5 @@
 <template>
-  <div class="cont" v-if="search_value!==''&&!searchfocus" >
+  <div class="cont" v-if="search_value !== '' && !searchfocus">
     <div v-if="match_artists.length" v-on:load="inartist" class="margin">
       <h3>Show Artists For"{{ search_value }}"</h3>
       <div class="row">
@@ -7,7 +7,11 @@
           class="col-lg-10% col-md-60% col-xs-6"
           v-for="match_artist in match_artists"
           :key="match_artist.id"
-          :images="'http://52.205.254.29/api/images/'+ match_artist.images[0]._id + '?belongs_to=artist'"
+          :images="
+            'http://52.205.254.29/api/images/' +
+            match_artist.images[0]._id +
+            '?belongs_to=artist'
+          "
           :name="match_artist.name"
           :artistId="match_artist._id"
         />
@@ -16,7 +20,7 @@
   </div>
 </template>
 <style scoped>
-.margin{
+.margin {
   margin-bottom: 200px;
 }
 h3 {
@@ -43,7 +47,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "seeallartist",
   components: {
-    LibArtists
+    LibArtists,
   },
   methods: {
     /**
@@ -52,14 +56,14 @@ export default {
      */
     inartist() {
       this.$store.dispatch("Search/artistin", true);
-    }
+    },
   },
   computed: {
     ...mapGetters({
       match_artists: "Search/getresult",
       search_value: "Search/get_value",
-      searchfocus:"Search/searchfocus"
-    })
-  }
+      searchfocus: "Search/searchfocus",
+    }),
+  },
 };
 </script>

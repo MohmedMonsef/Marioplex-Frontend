@@ -14,46 +14,46 @@ describe("ClaimArtist", () => {
         creatplaylist: {
           namespaced: true,
           state: {
-            showModal: true
+            showModal: true,
           },
           getters: {
-            showModal: state => {
+            showModal: (state) => {
               return state.showModal;
-            }
+            },
           },
-          actions:{
-            toggleModal:jest.fn()
-          }
+          actions: {
+            toggleModal: jest.fn(),
+          },
         },
 
         authorization: {
           namespaced: true,
           state: {
-            status: ""
+            status: "",
           },
           getters: {
-            GetStatus: state => {
+            GetStatus: (state) => {
               return state.status;
-            }
+            },
           },
           actions: {
             facebook_signUp: jest.fn(),
             signUp: jest.fn(),
-            ClaimArtistProfile:jest.fn(),
-          }
-        }
-      }
+            ClaimArtistProfile: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(ClaimArtist, {
       localVue,
-      store
+      store,
     });
   });
   it("it claim artistpopup ", () => {
     //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".popup_button");
     btn.trigger("click");
@@ -63,7 +63,7 @@ describe("ClaimArtist", () => {
     //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".cancel");
     btn.trigger("click");
@@ -73,7 +73,7 @@ describe("ClaimArtist", () => {
     //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".cancel_button");
     btn.trigger("click");
@@ -83,7 +83,7 @@ describe("ClaimArtist", () => {
     //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".creat_button");
     btn.trigger("click");
@@ -93,7 +93,7 @@ describe("ClaimArtist", () => {
     //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const ClaimArtistProfile = jest.fn();
     wrapper.setMethods({
-      ClaimArtistProfile: ClaimArtistProfile
+      ClaimArtistProfile: ClaimArtistProfile,
     });
     const btn = wrapper.find(".creat_button");
     btn.trigger("click");

@@ -27,17 +27,17 @@
               :name="category.name"
               :categoryId="category._id"
               />-->
-            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="loading" v-if="!loadingsearch && search_value !== ''">
-        <i class="fa fa-spinner fa-spin"></i>
-      </div>
-      <div v-if="showresl=='h'&&search_value!==''">
-      <searchresults/>
-      </div>
+    <div class="loading" v-if="!loadingsearch && search_value !== ''">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <div v-if="showresl == 'h' && search_value !== ''">
+      <searchresults />
+    </div>
   </div>
 </template>
 
@@ -121,7 +121,7 @@ h2 {
 <script>
 import category from "@/components/Category.vue";
 import searchcomponent from "@/components/SearchComponent.vue";
-import searchresults from '@/views/SearchResults';
+import searchresults from "@/views/SearchResults";
 import { mapGetters, mapState } from "vuex";
 /**
  * Search Page is the place where you can search for certain playlist , album , artist or even certain category
@@ -133,7 +133,7 @@ export default {
   components: {
     category,
     searchcomponent,
-    searchresults
+    searchresults,
   },
   mounted() {
     this.$store.dispatch("Categorys/showcategory");
@@ -153,12 +153,12 @@ export default {
       loadingcategory: "Categorys/loading",
       loadingsearch: "Search/loadingsearch",
       search_value: "Search/get_value",
-     showresl: "Search/showeres"
+      showresl: "Search/showeres",
     }),
     ...mapState({
-      show: state => state.Playlist.showModal,
-      inartist: state => state.Search.in
-    })
-  }
+      show: (state) => state.Playlist.showModal,
+      inartist: (state) => state.Search.in,
+    }),
+  },
 };
 </script>

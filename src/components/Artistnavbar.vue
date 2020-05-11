@@ -1,37 +1,49 @@
 <template>
   <div class="Artistnavbar">
-<ul class="nav">
-          <li class="nav-item active">
-            <div class="divOnFocus">
-              <button
-                testid="overview"
-                id="overview"
-                @click="overview = true,relatedartists=false,about = false"
-                >Overview</button>
-            </div>
-          </li>
-          <li class="nav-item">
-            <div class="divOnFocus">
-              <button
-                testid="RelatedArtists"
-                id="RelatedArtists"
-                @click="overview = false,about = false,relatedartists = true"
-                >RelatedArtists</button>
-            </div>
-          </li>
-          <li class="nav-item">
-            <div class="divOnFocus">
-              <button
-                testid="About"
-                id="About"
-                @click="overview = false,about = true,relatedartists = false"
-                >About</button>
-            </div>
-          </li>
-        </ul>
-   <ArtistOverview v-if="overview"/>
-   <RelatedArtists v-if="relatedartists && !overview && !about"/>
-   <About v-if="about && !relatedartists && !overview"/>
+    <ul class="nav">
+      <li class="nav-item active">
+        <div class="divOnFocus">
+          <button
+            testid="overview"
+            id="overview"
+            @click="
+              (overview = true), (relatedartists = false), (about = false)
+            "
+          >
+            Overview
+          </button>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="divOnFocus">
+          <button
+            testid="RelatedArtists"
+            id="RelatedArtists"
+            @click="
+              (overview = false), (about = false), (relatedartists = true)
+            "
+          >
+            RelatedArtists
+          </button>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="divOnFocus">
+          <button
+            testid="About"
+            id="About"
+            @click="
+              (overview = false), (about = true), (relatedartists = false)
+            "
+          >
+            About
+          </button>
+        </div>
+      </li>
+    </ul>
+    <ArtistOverview v-if="overview" />
+    <RelatedArtists v-if="relatedartists && !overview && !about" />
+    <About v-if="about && !relatedartists && !overview" />
   </div>
 </template>
 
@@ -52,10 +64,10 @@
 }
 .home-navbar {
   width: 100%;
-//   height: 60px;
+  //   height: 60px;
   top: 0%;
   z-index: 1;
-  background:transparent; 
+  background: transparent;
 }
 .divOnFocus {
   border-radius: 3px;
@@ -71,25 +83,25 @@
 button:focus {
   outline: 0 !important;
 }
-</style> 
+</style>
 
 <script>
 import ArtistOverview from "@/components/ArtistOverview.vue";
 import RelatedArtists from "@/components/RelatedArtists.vue";
 import About from "@/components/AboutArtist.vue";
 export default {
-     data: function() {
+  data: function () {
     return {
-      overview : true,
-      relatedartists : false,
-      about : false
+      overview: true,
+      relatedartists: false,
+      about: false,
     };
   },
   name: "Artistnavbar",
-     components: {
+  components: {
     ArtistOverview,
     RelatedArtists,
-    About
+    About,
   },
 };
 </script>

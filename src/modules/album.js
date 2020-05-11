@@ -8,7 +8,7 @@ export default {
     album_name: "",
     artist_name: "",
     album_image: "",
-    likedalbum: Boolean
+    likedalbum: Boolean,
   },
   mutations: {
     set_album(state, album_tracks) {
@@ -31,14 +31,14 @@ export default {
     },
     set_likedalbum(state, like) {
       state.likedalbum = like;
-    }
+    },
   },
   actions: {
     album_tracks({ commit }, album_id) {
       commit("set_album_loaded", false);
       axios
         .get("/api/albums/" + album_id)
-        .then(response => {
+        .then((response) => {
           let album = response.data;
           console.log("nihal id", album_id);
           commit("set_album", album.track);
@@ -51,7 +51,7 @@ export default {
           console.log("data album object", album);
           console.log("my album", album.isSaved);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -59,37 +59,37 @@ export default {
     like_album({ commit }, album_id) {
       axios
         .put("/api/me/Albums", { ids: album_id })
-        .then(response => {
+        .then((response) => {
           let album = response.status;
           if (album == 200) {
             commit("set_likedalbum", true);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     unlike_album({ commit }, album_id) {
       axios
         .delete("/api/me/albums", { data: { ids: album_id } })
-        .then(response => {
+        .then((response) => {
           let album = response.status;
           if (album == 200) {
             commit("set_likedalbum", false);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
   getters: {
-    album_tracks: state => state.album_tracks,
-    album_loaded: state => state.album_loaded,
-    album_length: state => state.album_length,
-    album_name: state => state.album_name,
-    artist_name: state => state.artist_name,
-    album_image: state => state.album_image,
-    likealbum: state => state.likedalbum
-  }
+    album_tracks: (state) => state.album_tracks,
+    album_loaded: (state) => state.album_loaded,
+    album_length: (state) => state.album_length,
+    album_name: (state) => state.album_name,
+    artist_name: (state) => state.artist_name,
+    album_image: (state) => state.album_image,
+    likealbum: (state) => state.likedalbum,
+  },
 };

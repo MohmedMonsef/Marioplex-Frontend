@@ -1,17 +1,19 @@
 <template>
   <div>
     <div class="conatiner px-0">
-      <div class="row  header m-0">
-        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+      <div class="row header m-0">
+        <router-link to="/"> <img src="../assets/logo.png" /></router-link>
       </div>
     </div>
     <div class="row justify-content-center m-0">
       <div class="reset-form">
-        <input type="password" 
-        v-model="password"
-        placeholder="Password"
-         testid="password input" />
-         <br/>
+        <input
+          type="password"
+          v-model="password"
+          placeholder="Password"
+          testid="password input"
+        />
+        <br />
         <p
           class="invalid"
           id="req_error"
@@ -32,7 +34,7 @@
         <input
           type="password"
           v-model="password_confirmation"
-           placeholder="Confirm Password"
+          placeholder="Confirm Password"
           testid="password confirmation input"
         />
         <p
@@ -43,7 +45,7 @@
         >
           This field is required
         </p>
-          <p
+        <p
           class="invalid"
           id="req_error"
           v-if="matched_password"
@@ -51,15 +53,15 @@
         >
           passwords doesnot match
         </p>
-           <button
-              @click.prevent="reset()"
-              class="costum-btn"
-              id="reset-btn"
-              type="submit"
-              testid="sign up button"
-            >
-              Submit
-            </button>
+        <button
+          @click.prevent="reset()"
+          class="costum-btn"
+          id="reset-btn"
+          type="submit"
+          testid="sign up button"
+        >
+          Submit
+        </button>
       </div>
     </div>
   </div>
@@ -89,33 +91,31 @@ img {
   padding: 24px;
   margin: 24px 0;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
-
 }
-input{
-    width:70%;
-    margin: 3% 15% 0 15% ;
-    justify-self: center;
-    
+input {
+  width: 70%;
+  margin: 3% 15% 0 15%;
+  justify-self: center;
 }
-input::placeholder{
-    text-align: center;
+input::placeholder {
+  text-align: center;
 }
 #reset-btn {
   background-color: #1db954;
   max-width: 320px;
-  width:80%;
-  margin: 3% 10% 0 10% ;
+  width: 80%;
+  margin: 3% 10% 0 10%;
 }
 #reset-btn:hover {
   background-color: #1ed760;
 }
-p{
-    text-align: center;
+p {
+  text-align: center;
 }
 @media screen and (max-width: 450px) {
-.reset-form {
-  width: 100%;
-}
+  .reset-form {
+    width: 100%;
+  }
 }
 </style>
 
@@ -127,21 +127,21 @@ p{
  */
 export default {
   name: "resetPassword",
-  data: function() {
+  data: function () {
     return {
       //User's data that will be passed from the v-model
       trigger_validation: false,
       can_submit: true,
       password_confirmation: "",
       password: "",
-      resettoken:""
+      resettoken: "",
     };
   },
   props: {
     token: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     reset() {
@@ -154,15 +154,15 @@ export default {
 
       setTimeout(() => {
         if (this.can_submit) {
-        var token =this.$route.query.token;
-          console.log("too",token)
+          var token = this.$route.query.token;
+          console.log("too", token);
           let payload = {
             password: this.password,
-            token:this.$route.query.token
+            token: this.$route.query.token,
           };
-          console.log("cccc",payload.token)
-          
-          this.$store.dispatch("Authorization/resetPassword",payload);
+          console.log("cccc", payload.token);
+
+          this.$store.dispatch("Authorization/resetPassword", payload);
         } else return;
       }, 200);
     },
@@ -179,10 +179,10 @@ export default {
      */
     canSubmit() {
       this.can_submit = this.can_submit && true;
-    }
+    },
   },
   computed: {
-    req_password: function() {
+    req_password: function () {
       if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();
@@ -195,7 +195,7 @@ export default {
         return false;
       }
     },
-    req_confirm_password: function() {
+    req_confirm_password: function () {
       if (this.trigger_validation) {
         if (this.password_confirmation == "") {
           this.cannotSubmit();
@@ -208,7 +208,7 @@ export default {
         return false;
       }
     },
-    short_password: function() {
+    short_password: function () {
       if (this.trigger_validation) {
         if (this.password.length <= 7 && this.password != "") {
           this.cannotSubmit();
@@ -221,9 +221,12 @@ export default {
         return false;
       }
     },
-    matched_password: function() {
+    matched_password: function () {
       if (this.trigger_validation) {
-        if (this.password_confirmation !="" && this.password != this.password_confirmation) {
+        if (
+          this.password_confirmation != "" &&
+          this.password != this.password_confirmation
+        ) {
           this.cannotSubmit();
           return true;
         } else {
@@ -233,11 +236,11 @@ export default {
       } else {
         return false;
       }
-    }
+    },
   },
   mounted() {
-    this.resettoken=this.$route.query.token;
+    this.resettoken = this.$route.query.token;
     console.log(this.resettoken);
-  }
+  },
 };
 </script>

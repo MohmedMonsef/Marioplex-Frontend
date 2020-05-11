@@ -10,15 +10,20 @@
     @click.right="toggleShow"
   >
     <div id="icon">
-    <img
+      <img
         src="http://dummyimage.com/250x400.jpg/dddddd/000000"
-        style="max-width: 50%;max-height: 50%; display:inline; margin-left:0;"
+        style="
+          max-width: 50%;
+          max-height: 50%;
+          display: inline;
+          margin-left: 0;
+        "
       />
     </div>
     <div id="song_body">
       <div class="song_name" :class="isCurrentClass">
-          <router-link tag="p" id="song_album" to="library">
-             {{ song_name }}
+        <router-link tag="p" id="song_album" to="library">
+          {{ song_name }}
         </router-link>
       </div>
       <div id="song_info">
@@ -102,7 +107,6 @@
 
   float: left;
   height: inherit;
-
 }
 #song_body {
   float: left;
@@ -188,60 +192,60 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  }
+  },
 };
 export default {
-  data: function() {
+  data: function () {
     return {
       hover: false,
       show: false,
-      isclicked: false
+      isclicked: false,
     };
   },
   mixins: [song_functions],
   props: {
     song_name: {
-      type: String
+      type: String,
     },
     song_album: {
-      type: String
+      type: String,
     },
     song_artists: {
-      type: String
+      type: String,
     },
     artist_id: {
-      type: String
+      type: String,
     },
     song_length: {
-      type: Number
+      type: Number,
     },
     isLiked: {
-      type: Boolean
+      type: Boolean,
     },
     song_id: {
-      type: String
+      type: String,
     },
     index: {
-      type: Number
+      type: Number,
     },
     albumId: {
       type: String,
-      default: "0"
+      default: "0",
     },
     playlistId: {
       type: String,
-      default: "0"
+      default: "0",
     },
     isPlaylist: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   }, //must add isplayable also
   methods: {
     addToQueue() {
       this.$store.dispatch("Queue/AddToQueue", {
         trackId: this.song_id,
-        playlistId: this.playlistId
+        playlistId: this.playlistId,
       });
     },
     toggleShow(event) {
@@ -251,7 +255,7 @@ export default {
       window.Element.show = false;
       this.show = !x;
       if (!x) {
-        this.$nextTick(function() {
+        this.$nextTick(function () {
           var div = document.getElementById("mydropdown");
           var left = event.screenX - 203 + "px";
           var top = event.screenY + 0 + "px";
@@ -271,7 +275,7 @@ export default {
     clicked() {
       this.isclicked = true;
     },
-    likecurrentsong: function() {
+    likecurrentsong: function () {
       if (!this.isLiked) {
         this.$store.dispatch("Mediaplayer/Like", this.song_id);
         toast.show("Added to your Liked Songs");
@@ -282,7 +286,7 @@ export default {
         this.isLiked = false;
       }
     },
-    playOnDblCLk: function() {
+    playOnDblCLk: function () {
       console.log("11");
       if (this.isCurrent) {
         if (this.playicon) {
@@ -301,22 +305,22 @@ export default {
     },
     showplaylists() {
       this.$store.dispatch("Playlist/showplaylists");
-    }
+    },
   },
   computed: {
-    isCurrentClass: function() {
+    isCurrentClass: function () {
       return {
-        currently: this.isCurrent
+        currently: this.isCurrent,
       };
     },
-    isCurrent: function() {
+    isCurrent: function () {
       return (
         this.song_id == this.Get_Currentsong.track._id &&
         this.albumId == this.Get_Currentsong.album._id &&
         this.playlistId == this.Get_Currentsong.playlistId
       );
     },
-    length: function() {
+    length: function () {
       var min = Math.floor((this.song_length % 3600) / 60);
       var sec = Math.floor(this.song_length % 60);
       if (sec < 10) sec = "0" + sec;
@@ -325,20 +329,20 @@ export default {
     },
     ...mapGetters({
       Get_Currentsong: "Mediaplayer/Get_Currentsong",
-      trackid: "Mediaplayer/toadd"
+      trackid: "Mediaplayer/toadd",
     }),
     ...mapState({
-      showAdd: state => state.Playlist.showModalAdd
-    })
+      showAdd: (state) => state.Playlist.showModalAdd,
+    }),
   },
-  created: function() {
+  created: function () {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function() {
+  destroyed: function () {
     window.removeEventListener("click", this.hideshow);
   },
   components: {
-    AddTrackPopup
-  }
+    AddTrackPopup,
+  },
 };
 </script>

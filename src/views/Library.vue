@@ -19,7 +19,5 @@
  * @displayName Library page
  * @example [none]
  */
-export default {
-  
-};
+export default {};
 </script>

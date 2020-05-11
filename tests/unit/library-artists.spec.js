@@ -16,22 +16,21 @@ describe("libraryArtists", () => {
           namespaced: true,
           state: {
             artists: [],
-            loadingartists: 0
+            loadingartists: 0,
           },
           getters: {
-            artists: state => state.artists,
-            loadingartists: state => state.loadingartists
+            artists: (state) => state.artists,
+            loadingartists: (state) => state.loadingartists,
           },
           actions: {
-            showUserArtists: jest.fn()
-          }
-        }
-    }
-        
+            showUserArtists: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(libraryArtists, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {

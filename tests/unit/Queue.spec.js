@@ -44,7 +44,7 @@ describe("Queue", () => {
                     timeSignature: "2020-04-02T14:18:16.464Z",
                     valence: 70,
                     like: 0,
-                    __v: 0
+                    __v: 0,
                   },
                   isLiked: false,
                   album: {
@@ -52,26 +52,26 @@ describe("Queue", () => {
                     _id: "5e833b412b9d7718a491c850",
                     artist: {
                       name: "ahmedsamir",
-                      _id: "5e833a51a51d971174923f17"
-                    }
-                  }
+                      _id: "5e833a51a51d971174923f17",
+                    },
+                  },
                 },
                 isQueue: false,
                 isPlaylist: true,
-                index: 2
-              }
+                index: 2,
+              },
             ],
             NextUp: [],
-            loading: 1
+            loading: 1,
           },
           getters: {
-            Get_Queued: state => state.Queue,
-            Get_Nextup: state => state.NextUp,
-            loading: state => state.loading
+            Get_Queued: (state) => state.Queue,
+            Get_Nextup: (state) => state.NextUp,
+            loading: (state) => state.loading,
           },
           actions: {
-            Queue: jest.fn()
-          }
+            Queue: jest.fn(),
+          },
         },
         mediaplayer: {
           namespaced: true,
@@ -100,33 +100,33 @@ describe("Queue", () => {
                 timeSignature: "2020-03-29T16:37:12.554Z",
                 valence: 70,
                 __v: 0,
-                images: []
+                images: [],
               },
               isLiked: true,
               album: {
                 name: "HELLO KIDS",
                 _id: "5e80cc2b14c8566d6cd9b40f",
-                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
+                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" },
               },
               isPlaylist: true,
               playlistId: "5e891c8edb96e26db4efc790",
-              isPlayable: true
-            }
+              isPlayable: true,
+            },
           },
           getters: {
-            Get_Currentsong: state => {
+            Get_Currentsong: (state) => {
               return state.currentsong;
-            }
+            },
           },
           actions: {
-            get_currentsong: jest.fn()
-          }
-        }
-      }
+            get_currentsong: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(Queue, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {

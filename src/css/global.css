@@ -1,10 +1,10 @@
 input {
-    padding: 0px 11.25px;
-    height: 48px;
-    border-radius: 2px;
-    border: 1px solid #dfe0e6;
-    color: #1c1c1f;
-  }
+  padding: 0px 11.25px;
+  height: 48px;
+  border-radius: 2px;
+  border: 1px solid #dfe0e6;
+  color: #1c1c1f;
+}
 .costum-btn {
   font-size: 14px;
   line-height: 1;
@@ -12,7 +12,7 @@ input {
   padding: 16px 48px 18px;
   margin-bottom: 14px;
   margin-top: 31px;
-  
+
   margin-left: auto;
   margin-right: auto;
   color: #fff;
@@ -21,7 +21,7 @@ input {
   font-weight: 700;
   text-align: center;
   cursor: pointer;
-  
+
   transition-duration: 0.3s;
   border-width: 0;
   letter-spacing: 2px;
@@ -31,29 +31,28 @@ input {
 }
 
 select {
-    border-radius: 2px;
-    background-color: #fff;
-    border: 1px solid #dfe0e6;
-    color: #88898c;
-    font-size: 0.9375em;
-    height: 3em;
-    padding: 0.625em 0.625em 0.625em;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  }
+  border-radius: 2px;
+  background-color: #fff;
+  border: 1px solid #dfe0e6;
+  color: #88898c;
+  font-size: 0.9375em;
+  height: 3em;
+  padding: 0.625em 0.625em 0.625em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
-  
 .highlight {
-    color: #1db954;
-    display: inline-block;
-  }
-  .highlight:hover {
-    color: #1ed760;
-    cursor: pointer;
-  }
+  color: #1db954;
+  display: inline-block;
+}
+.highlight:hover {
+  color: #1ed760;
+  cursor: pointer;
+}
 
-  .invalid {
-    color: #bd3200;
-    text-align: left;
-  }
+.invalid {
+  color: #bd3200;
+  text-align: left;
+}

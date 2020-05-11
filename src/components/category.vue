@@ -9,12 +9,12 @@
     <div class="card-img-overlay">
       <h4 class="card-title" id="categoryname">{{ name }}</h4>
       <div @click="setcategoryname">
-      <router-link
-        :to="{ path: '/HomeWebPlayer/category/' + categoryId+'/'+name  }"
-        class="stretched-link"
-        id="carglink"
-        testid="cardlink"
-      ></router-link>
+        <router-link
+          :to="{ path: '/HomeWebPlayer/category/' + categoryId + '/' + name }"
+          class="stretched-link"
+          id="carglink"
+          testid="cardlink"
+        ></router-link>
       </div>
     </div>
   </div>
@@ -59,23 +59,23 @@ export default {
   name: "category",
   props: {
     image: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     categoryId: {
-      type: String
-    }
+      type: String,
+    },
   },
-  methods:{
-    setcategoryname(){
-      console.log( document.getElementById("categoryname"))
+  methods: {
+    setcategoryname() {
+      console.log(document.getElementById("categoryname"));
       this.$store.dispatch(
         "Categorys/categoryname",
-    document.getElementById("categoryname").innerHTML
-      )
-    }
-  }
+        document.getElementById("categoryname").innerHTML
+      );
+    },
+  },
 };
 </script>

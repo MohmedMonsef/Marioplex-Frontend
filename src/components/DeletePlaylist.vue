@@ -42,8 +42,10 @@
 
           <h1 class="title">Are you sure,you want to delete this song!!</h1>
 
-          <button class="cancel_button" @click="changeModalStateDelete()"
-           @keyup.enter="DeletePlaylist()"
+          <button
+            class="cancel_button"
+            @click="changeModalStateDelete()"
+            @keyup.enter="DeletePlaylist()"
           >
             cancle
           </button>
@@ -52,15 +54,17 @@
             testid="confirm_create"
             @click.prevent="DeletePlaylist()"
             @click="changeModalStateDelete()"
-            
           >
             Delete
           </button>
-          
         </div>
       </transition>
     </div>
-    <div class="toast" id="deleteplaylisttoast" testid="deleteplaylisttoast"></div>
+    <div
+      class="toast"
+      id="deleteplaylisttoast"
+      testid="deleteplaylisttoast"
+    ></div>
   </span>
 </template>
 <style scoped>
@@ -239,17 +243,17 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  }
+  },
 };
 export default {
   computed: {
     ...mapState({
-      Playlists: state => state.Playlist.Playlists
+      Playlists: (state) => state.Playlist.Playlists,
     }),
     ...mapGetters({
       showModalDelete: "Playlist/showModalDelete",
-      todelete: "Playlist/todelete"
-    })
+      todelete: "Playlist/todelete",
+    }),
   },
   methods: {
     /**
@@ -268,15 +272,15 @@ export default {
     DeletePlaylist() {
       //console.log("in delete component", this.todelete);
       this.$store.dispatch("Playlist/DeletePlaylist", this.todelete);
-            toast.show("Removed from your library");
+      toast.show("Removed from your library");
       //console.log("removed");
-    }
+    },
   },
-   mixins: [song_functions],
-   created: function() {
+  mixins: [song_functions],
+  created: function () {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function() {
+  destroyed: function () {
     window.removeEventListener("click", this.hideshow);
   },
 };

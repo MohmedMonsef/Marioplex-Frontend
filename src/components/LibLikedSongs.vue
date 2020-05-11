@@ -107,10 +107,10 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
       hover: false,
-      rawId: "rawid"
+      rawId: "rawid",
     };
   },
   name: "lib-likedsongs",
@@ -119,13 +119,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      songs1: "UserLibrary/songs"
-    })
+      songs1: "UserLibrary/songs",
+    }),
   },
   filters: {
-    shorten: function(value) {
+    shorten: function (value) {
       return value.substring(0, 20) + " ...";
-    }
-  }
+    },
+  },
 };
 </script>

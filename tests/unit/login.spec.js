@@ -19,28 +19,28 @@ describe("Login", () => {
           state: {
             status: "",
             token: "",
-            User: {}
+            User: {},
           },
           getters: {
-            GetStatus: state => {
+            GetStatus: (state) => {
               return state.status;
-            }
+            },
           },
           actions: {
             facebook_signUp: jest.fn(),
             login: jest.fn(),
-            get_user: jest.fn()
-          }
-        }
-      }
+            get_user: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(Login, {
       localVue,
       store,
-      stubs:{
+      stubs: {
         LogoHeader,
-        Divider
-      }
+        Divider,
+      },
     });
   });
   it("renders", () => {
@@ -70,7 +70,7 @@ describe("Login", () => {
     expect(wrapper.find("#req_password").exists()).toBe(true);
     const cannotSubmit = jest.fn();
     wrapper.setMethods({
-      cannotSubmit: cannotSubmit
+      cannotSubmit: cannotSubmit,
     });
   });
   it("facebook login", () => {
@@ -78,7 +78,7 @@ describe("Login", () => {
     facebook.trigger("click");
     const facebook_login = jest.fn();
     wrapper.setMethods({
-      facebook_login: facebook_login
+      facebook_login: facebook_login,
     });
     expect("facebook_login").toHaveBeenCalled;
   });
@@ -87,7 +87,7 @@ describe("Login", () => {
     login_btn.trigger("click");
     const login = jest.fn();
     wrapper.setMethods({
-      login: login
+      login: login,
     });
     expect("login").toHaveBeenCalled;
   });

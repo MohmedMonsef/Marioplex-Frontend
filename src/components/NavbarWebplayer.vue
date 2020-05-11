@@ -299,18 +299,18 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
       inlibrary: false,
-      insearch: false
+      insearch: false,
     };
   },
   name: "LibraryNavbar",
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
-      Username: "Authorization/Username"
-    })
+      Username: "Authorization/Username",
+    }),
   },
   methods: {
     /**
@@ -324,17 +324,17 @@ export default {
      * Go to previous router page
      * @public This is a public method
      */
-    goprev: function() {
-       if( this.$router.currentRoute.path !==
-          "/HomeWebPlayer/search")
-          { this.$store.dispatch("Search/showresult",'h');}
+    goprev: function () {
+      if (this.$router.currentRoute.path !== "/HomeWebPlayer/search") {
+        this.$store.dispatch("Search/showresult", "h");
+      }
       this.$router.go(-1);
     },
     /**
      * Go to next router page
      * @public This is a public method
      */
-    gonext: function() {
+    gonext: function () {
       this.$router.go(1);
     },
     handleScroll() {
@@ -368,7 +368,7 @@ export default {
       } else {
         this.insearch = false;
       }
-    }
+    },
   },
   created() {
     // this.handleScroll();
@@ -380,6 +380,6 @@ export default {
   mounted() {
     window.addEventListener("click", this.check);
     window.addEventListener("scroll", this.handleScroll);
-  }
+  },
 };
 </script>

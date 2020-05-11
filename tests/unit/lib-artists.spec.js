@@ -8,18 +8,18 @@ describe("LibArtists.vue", () => {
     const wrapper = shallowMount(LibArtists, {
       localVue,
       propsData: {
-        name: "artist name"
-      }
+        name: "artist name",
+      },
     });
     const name = wrapper.find("#cardtitle");
     expect(name.text()).toBe("artist name");
   });
   it("renders", () => {
-    const wrapper = shallowMount(LibArtists, {localVue});
+    const wrapper = shallowMount(LibArtists, { localVue });
     expect(wrapper.exists()).toBe(true);
-  }); 
+  });
   it("renders a vue instance", () => {
-    const wrapper = shallowMount(LibArtists, {localVue});
+    const wrapper = shallowMount(LibArtists, { localVue });
     expect(wrapper.isVueInstance()).toBe(true);
   });
 });

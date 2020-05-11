@@ -157,9 +157,9 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
-      show: false
+      show: false,
     };
   },
   name: "playlist",
@@ -172,13 +172,13 @@ export default {
       var x = this.show;
       window.Element.show = false;
       this.show = !x;
-    }
+    },
   },
   computed: {
     ...mapGetters({
       playlist_name: "Playlist/playlist_name",
-      owner_name: "Playlist/owner_name"
-    })
-  }
+      owner_name: "Playlist/owner_name",
+    }),
+  },
 };
 </script>

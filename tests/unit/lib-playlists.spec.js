@@ -14,31 +14,31 @@ describe("LibPlaylists.vue", () => {
           namespaced: true,
           state: {
             User: {
-              displayName: "user name"
-            }
+              displayName: "user name",
+            },
           },
           getters: {
-            Username: state => state.User.displayName
-          }
+            Username: (state) => state.User.displayName,
+          },
         },
         playlist: {
           namespaced: true,
           state: {
-            likedplaylist: true
+            likedplaylist: true,
           },
           getters: {
-            likeplaylist: state => state.likedplaylist
-          }
-        }
-      }
+            likeplaylist: (state) => state.likedplaylist,
+          },
+        },
+      },
     });
     const wrapper = shallowMount(LibPlaylists, {
       localVue,
       store,
       propsData: {
         name: "playlist name",
-        ownerName: "dai"
-      }
+        ownerName: "dai",
+      },
     });
     const name = wrapper.find("#cardtitle");
     const ownerName = wrapper.find("#carddescribtion");
@@ -52,31 +52,31 @@ describe("LibPlaylists.vue", () => {
           namespaced: true,
           state: {
             User: {
-              displayName: "user name"
-            }
+              displayName: "user name",
+            },
           },
           getters: {
-            Username: state => state.User.displayName
-          }
+            Username: (state) => state.User.displayName,
+          },
         },
         playlist: {
           namespaced: true,
           state: {
-            likedplaylist: false
+            likedplaylist: false,
           },
           getters: {
-            likeplaylist: state => state.likedplaylist
-          }
-        }
-      }
+            likeplaylist: (state) => state.likedplaylist,
+          },
+        },
+      },
     });
     const wrapper = shallowMount(LibPlaylists, {
       localVue,
       store,
       propsData: {
         name: "playlist name",
-        ownerName: "dai"
-      }
+        ownerName: "dai",
+      },
     });
     const name = wrapper.find("#cardtitle");
     const ownerName = wrapper.find("#carddescribtion");
@@ -86,14 +86,14 @@ describe("LibPlaylists.vue", () => {
   it("renders", () => {
     const wrapper = shallowMount(LibPlaylists, {
       localVue,
-      store
+      store,
     });
     expect(wrapper.exists()).toBe(true);
-  }); 
+  });
   it("renders a vue instance", () => {
     const wrapper = shallowMount(LibPlaylists, {
       localVue,
-      store
+      store,
     });
     expect(wrapper.isVueInstance()).toBe(true);
   });

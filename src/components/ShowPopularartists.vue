@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card rounded col-lg-20% "
+    class="card rounded col-lg-20%"
     testid="popularartist card"
     @mouseover="hover = true"
     @mouseleave="hover = false"
@@ -14,7 +14,7 @@
     />
     <div class="card-body" id="cardbody" testid="popularartist card body">
       <h4 class="card-title" id="cardtitle" testid="popularartist card title">
-        {{ name | shorten}}
+        {{ name | shorten }}
       </h4>
       <p
         class="card-text"
@@ -28,7 +28,7 @@
         <!-- <i class="fa fa-pause" id="pauseicone"></i> -->
       </button>
       <router-link
-        :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId}"
+        :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artistId }"
         class="stretched-link"
         id="carglink"
         testid="popularartist card link"
@@ -94,29 +94,28 @@ i {
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
-      hover: false
+      hover: false,
     };
   },
   name: "ShowPopularartists",
   props: {
     images: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
-    artistId:{
-      type: String
-    }
+    artistId: {
+      type: String,
+    },
   },
   filters: {
-    shorten: function(value) {
-      if(value.length  > 17)
-        return value.substring(0, 17) + " ...";
-      else
-        return value;}
-  }
+    shorten: function (value) {
+      if (value.length > 17) return value.substring(0, 17) + " ...";
+      else return value;
+    },
+  },
 };
 </script>

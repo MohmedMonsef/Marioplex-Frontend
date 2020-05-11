@@ -37,11 +37,11 @@ import ArtistProfile from "../views/ArtistProfile.vue";
 import seeallartist from "../views/SeeallArtist.vue";
 import seeallalbum from "../views/SeeallAlbum.vue";
 import seeallplaylist from "../views/SeeallPlaylist.vue";
-import seeallcategoryplaylists from"../views/SeeallCategoryPlaylists.vue";
+import seeallcategoryplaylists from "../views/SeeallCategoryPlaylists.vue";
 import seealluser from "../views/SeeallUser.vue";
-import seealltrack from '../views/SeeallTrack';
+import seealltrack from "../views/SeeallTrack";
 import UserProfile from "../views/UserProfile";
-import category from"../views/CategoryPlaylists.vue";
+import category from "../views/CategoryPlaylists.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -52,49 +52,46 @@ const routes = [
     children: [
       {
         path: "",
-        component: HomeBody
+        component: HomeBody,
       },
       {
         path: "UserAccount",
         component: UserAccount,
-        children:[
+        children: [
           {
             path: "Account-overview",
-            component: AccountOverview
+            component: AccountOverview,
           },
           {
             path: "Account-edit",
-            component: AccountEdit
+            component: AccountEdit,
           },
           {
             path: "Account-change",
-            component: AccountChange
+            component: AccountChange,
           },
           {
             path: "Account-recover",
-            component: AccountRecover
+            component: AccountRecover,
           },
           {
             path: "Account-notifications",
-            component: AccountNotifications
+            component: AccountNotifications,
           },
-        ]
+        ],
       },
-      { path: "",
-        name:"HomePage",
-       component: HomeBody 
-      },
+      { path: "", name: "HomePage", component: HomeBody },
       {
-       path: "premium",
-       name:"Premium",
-       component: Premium 
+        path: "premium",
+        name: "Premium",
+        component: Premium,
       },
       {
         path: "/GetPremium",
         name: "GetPremium",
-        component: GetPremium
+        component: GetPremium,
       },
-    ]
+    ],
   },
   {
     path: "/HomeWebPlayer",
@@ -109,25 +106,25 @@ const routes = [
         children: [
           {
             path: "seeallartist",
-            component: seeallartist
+            component: seeallartist,
           },
           {
             path: "seeallalbum",
-            component: seeallalbum
-        }
-         ,
-         {
+            component: seeallalbum,
+          },
+          {
             path: "seeallplaylist",
-            component: seeallplaylist
-        } ,
-        {
-          path: "seealluser",
-          component: seealluser
-      }, {
-        path: "seealltrack",
-        component: seealltrack
-    }
-        ]
+            component: seeallplaylist,
+          },
+          {
+            path: "seealluser",
+            component: seealluser,
+          },
+          {
+            path: "seealltrack",
+            component: seealltrack,
+          },
+        ],
       },
       {
         path: "library",
@@ -135,122 +132,121 @@ const routes = [
         children: [
           {
             path: "library-playlists",
-            component: LibraryPlaylists
+            component: LibraryPlaylists,
           },
           {
             path: "library-artists",
-            component: LibraryArtists
+            component: LibraryArtists,
           },
           {
             path: "library-albums",
-            component: LibraryAlbums
-          }
-        ]
+            component: LibraryAlbums,
+          },
+        ],
       },
       { path: "liked-tracks", component: LikedTracks },
       { path: "queue", component: Queue },
       {
         path: "playlist/:playlist_id",
         name: "playlist",
-        component: playlist
+        component: playlist,
       },
       {
         path: "album/:album_id",
         name: "album",
-        component: album
+        component: album,
       },
       {
         path: "ArtistProfile/:artist_id",
         name: "ArtistProfile",
-        component: ArtistProfile
+        component: ArtistProfile,
       },
       {
         path: "/AllLists",
         name: "AllLists",
-        component: AllLists
+        component: AllLists,
       },
       {
         path: "/AllArtists",
         name: "AllArtists",
-        component: AllArtists
+        component: AllArtists,
       },
       {
         path: "/AllAlbums",
         name: "AllAlbums",
-        component: AllAlbums
+        component: AllAlbums,
       },
       {
         path: "/AllReleases",
         name: "AllReleases",
-        component: AllReleases
+        component: AllReleases,
       },
       {
         path: "UserProfile/:user_id",
         name: "UserProfile",
-        component: UserProfile
-      }
-      , {
+        component: UserProfile,
+      },
+      {
         path: "category/:categoryId/:name",
         name: "category",
-        component: category
-      }
-      ,
+        component: category,
+      },
       {
         path: "category/:categoryId/:name/seeallcategoryplaylists",
         name: "seeallcategoryplaylists",
-        component: seeallcategoryplaylists
-      }
-    ]
+        component: seeallcategoryplaylists,
+      },
+    ],
   },
   {
     path: "/signup",
     name: "SignUp",
-    component: SignUp
+    component: SignUp,
   },
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
   },
   {
     path: "/ForgetPassword",
     name: "ForgetPassword",
-    component: ForgetPassword
+    component: ForgetPassword,
   },
   {
     path: "/reset_password",
     name: "ResetPassword",
     component: ResetPassword,
     props: (route) => ({
-      token: route.query.token
-    })
+      token: route.query.token,
+    }),
   },
   {
     path: "/ForArtist",
     name: "ForArtist",
-    component: ForArtist
+    component: ForArtist,
   },
   {
     path: "/ClaimArtist",
     name: "ClaimArtist",
-    component: ClaimArtist
+    component: ClaimArtist,
   },
   {
     path: "/AccessArtist",
     name: "AccessArtist",
-    component: AccessArtist
+    component: AccessArtist,
   },
   {
     path: "/ArtistPersonalPage",
     name: "ArtistPersonalPage",
-    component: ArtistPersonalPage
+    component: ArtistPersonalPage,
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

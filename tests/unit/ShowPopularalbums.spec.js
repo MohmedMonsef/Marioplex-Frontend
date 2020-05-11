@@ -9,8 +9,8 @@ describe("ShowPopularalbums.vue", () => {
       localVue,
       propsData: {
         name: "album_name",
-        artistname: "artist_name"
-      }
+        artistname: "artist_name",
+      },
     });
     const name = wrapper.find("#cardtitle");
     const artistname = wrapper.find(".card-text");
@@ -18,11 +18,11 @@ describe("ShowPopularalbums.vue", () => {
     expect(artistname.text()).toBe("artist_name");
   });
   it("renders", () => {
-    const wrapper = shallowMount(ShowPopularalbums, {localVue});
+    const wrapper = shallowMount(ShowPopularalbums, { localVue });
     expect(wrapper.exists()).toBe(true);
-  }); 
+  });
   it("renders a vue instance", () => {
-    const wrapper = shallowMount(ShowPopularalbums, {localVue});
+    const wrapper = shallowMount(ShowPopularalbums, { localVue });
     expect(wrapper.isVueInstance()).toBe(true);
   });
 });

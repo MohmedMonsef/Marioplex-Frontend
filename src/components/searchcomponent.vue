@@ -8,10 +8,16 @@
       v-model="Value"
       autocomplete="off"
       @keydown.esc="reset"
-      v-on:input="check(Value),isinsearch"
+      v-on:input="check(Value), isinsearch"
     />
-    <button type="button" class="close" aria-label="Close" v-if="Value.length!==0" @click="reset">
-      <span aria-hidden="true" style="font-size:25px;">&times;</span>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      v-if="Value.length !== 0"
+      @click="reset"
+    >
+      <span aria-hidden="true" style="font-size: 25px;">&times;</span>
     </button>
   </div>
 </template>
@@ -34,17 +40,17 @@
   #search-box {
     width: 80%;
   }
-   #search_contaner{
+  #search_contaner {
     width: 50%;
   }
 }
 @media screen and (max-width: 300px) {
-  #search_contaner{
+  #search_contaner {
     width: 30%;
   }
 }
 @media screen and (max-width: 650px) {
-  #search_contaner{
+  #search_contaner {
     width: 80%;
   }
 }
@@ -64,7 +70,7 @@
   color: rgb(26, 24, 9);
 }
 </style>
-      
+
 <script>
 import { mapGetters } from "vuex";
 // let insearch = insearch;
@@ -73,24 +79,24 @@ import { mapGetters } from "vuex";
  * @displayName Search Bar
  * @example [none]
  */
-let insearch=insearch;
+let insearch = insearch;
 export default {
   name: "searchcomponent",
   data() {
-    return { Value: "",awaitingSearch: false };
+    return { Value: "", awaitingSearch: false };
   },
-   watch: {
-      Value: function() {
-        if (!this.awaitingSearch) {
-          setTimeout(() => {
-          this.$store.dispatch("Search/searchaboutartist",this.Value);
-            this.awaitingSearch = false;
-          }, 2000); // 2 sec delay
-        }
-        this.awaitingSearch = true;
-       this.$store.dispatch("Search/clear")
+  watch: {
+    Value: function () {
+      if (!this.awaitingSearch) {
+        setTimeout(() => {
+          this.$store.dispatch("Search/searchaboutartist", this.Value);
+          this.awaitingSearch = false;
+        }, 2000); // 2 sec delay
       }
-      },
+      this.awaitingSearch = true;
+      this.$store.dispatch("Search/clear");
+    },
+  },
   methods: {
     check(value) {
       /**
@@ -99,16 +105,14 @@ export default {
        * @public This is a public method
        */
       //console.log(value);
-      console.log(value,"in component");
+      console.log(value, "in component");
       this.$store.dispatch("Search/search_V", this.Value);
       if (value !== "") {
-      //  this.$store.dispatch("Search/searchaboutartist",this.Value);
-        this.$store.dispatch("Search/should",'yes');
-      }
-      else{
-        this.$store.dispatch("Search/should",'no');
-        this.$router.currentRoute.path ==
-          "/HomeWebPlayer/search"
+        //  this.$store.dispatch("Search/searchaboutartist",this.Value);
+        this.$store.dispatch("Search/should", "yes");
+      } else {
+        this.$store.dispatch("Search/should", "no");
+        this.$router.currentRoute.path == "/HomeWebPlayer/search";
       }
     },
     /**
@@ -118,26 +122,30 @@ export default {
     reset() {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
-    },isinsearch(){if(insearch){this.Value=""}},
-    focus(){
-       if (this.Value !== "") {
-       // this.$store.dispatch("Search/searchaboutartist",this.Value);
-      }
-      
-      this.$store.dispatch("Search/searchfocus",true);
-     if( this.$router.currentRoute.path !==
-          "/HomeWebPlayer/search")
-          { this.$store.dispatch("Search/showresult",'h');
-            this.$router.go(-1);
-    //      this.$store.dispatch("Search/actshower",true);
+    },
+    isinsearch() {
+      if (insearch) {
+        this.Value = "";
       }
     },
-    leave(){
-       if (this.Value !== "") {
-      //  this.$store.dispatch("Search/searchaboutartist",this.Value);
+    focus() {
+      if (this.Value !== "") {
+        // this.$store.dispatch("Search/searchaboutartist",this.Value);
       }
-      this.$store.dispatch("Search/searchfocus",false);
-    }
+
+      this.$store.dispatch("Search/searchfocus", true);
+      if (this.$router.currentRoute.path !== "/HomeWebPlayer/search") {
+        this.$store.dispatch("Search/showresult", "h");
+        this.$router.go(-1);
+        //      this.$store.dispatch("Search/actshower",true);
+      }
+    },
+    leave() {
+      if (this.Value !== "") {
+        //  this.$store.dispatch("Search/searchaboutartist",this.Value);
+      }
+      this.$store.dispatch("Search/searchfocus", false);
+    },
     // ,
     // /**
     //  * When confirm search reset
@@ -152,18 +160,18 @@ export default {
   computed: {
     ...mapGetters({
       insearch: "Search/insearch",
-      searchfocus: "Search/searchfocus"
-    })
+      searchfocus: "Search/searchfocus",
+    }),
   },
   props: {
     search_value: {
-      type: String
-    }
+      type: String,
+    },
   },
-   mounted() {
+  mounted() {
     const searchinput = document.getElementById("search-box");
-    searchinput.addEventListener('focus', this.focus,true);
-     searchinput.addEventListener('blur', this.leave,true);
-    }
+    searchinput.addEventListener("focus", this.focus, true);
+    searchinput.addEventListener("blur", this.leave, true);
+  },
 };
 </script>

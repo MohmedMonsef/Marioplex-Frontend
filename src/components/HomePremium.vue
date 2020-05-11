@@ -17,21 +17,21 @@
       <!-- <div> -->
       <h1>Why go Premium?</h1>
       <!-- </div> -->
-      <div class=" col-sm-6 col-md-3 col-lg-3 benefits-card">
+      <div class="col-sm-6 col-md-3 col-lg-3 benefits-card">
         <div class="benefits-img img1"></div>
         <div class="benefits-desc">
           <header>Download music.</header>
           <p>Listen anywhere.</p>
         </div>
       </div>
-      <div class=" col-sm-6 col-md-3 col-lg-3 benefits-card">
+      <div class="col-sm-6 col-md-3 col-lg-3 benefits-card">
         <div class="benefits-img img2"></div>
         <div class="benefits-desc">
           <header>No ad interruptions.</header>
           <p>Enjoy nonstop music.</p>
         </div>
       </div>
-      <div class=" col-sm-6 col-md-3 col-lg-3 benefits-card">
+      <div class="col-sm-6 col-md-3 col-lg-3 benefits-card">
         <div class="benefits-img img3"></div>
         <div class="benefits-desc">
           <header>Play any song.</header>

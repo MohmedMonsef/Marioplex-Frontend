@@ -4,12 +4,12 @@
   </div>
 </template>
 <style scoped>
-.account{
+.account {
   background: linear-gradient(#212c39, #121e3d 50%, #090c0f);
   background-repeat: no-repeat;
   height: 100%;
 }
-.child{
+.child {
   padding-top: 39px;
 }
 </style>

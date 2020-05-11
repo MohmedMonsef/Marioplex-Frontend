@@ -7,7 +7,7 @@ export default {
     user_artists: [],
     user_songs: [],
     loadingalbums: 0,
-    loadingartists: 0
+    loadingartists: 0,
   },
   mutations: {
     setUserAlbums(state, albums) {
@@ -24,13 +24,13 @@ export default {
     },
     set_loading_artists(state, status) {
       state.loadingartists = status;
-    }
+    },
   },
   actions: {
     showUserAlbums({ commit, state }) {
       axios
         .get("/api/me/albums")
-        .then(response => {
+        .then((response) => {
           let albums = response.data;
           console.log(albums);
           commit("setUserAlbums", albums);
@@ -38,7 +38,7 @@ export default {
             state.loadingalbums = 1;
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
           let albums = [];
           commit("setUserAlbums", albums);
@@ -50,7 +50,7 @@ export default {
     showUserArtists({ commit, state }) {
       axios
         .get("/api/me/followingArtist")
-        .then(response => {
+        .then((response) => {
           let artists = response.data.Artists;
           if (response.status != 200) {
             artists = [];
@@ -60,7 +60,7 @@ export default {
             state.loadingartists = 1;
           }
         })
-        .catch(error => {
+        .catch((error) => {
           let artists = [];
           commit("setUserArtists", artists);
           if (state.loadingartists == 0) {
@@ -72,20 +72,20 @@ export default {
     showUserSongs({ commit }) {
       axios
         .get("/api/me/tracks")
-        .then(response => {
+        .then((response) => {
           let songs = response.data;
           commit("setUserSongs", songs.tracks);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
   getters: {
-    albums: state => state.user_albums,
-    artists: state => state.user_artists,
-    songs: state => state.user_songs,
-    loadingalbums: state => state.loadingalbums,
-    loadingartists: state => state.loadingartists
-  }
+    albums: (state) => state.user_albums,
+    artists: (state) => state.user_artists,
+    songs: (state) => state.user_songs,
+    loadingalbums: (state) => state.loadingalbums,
+    loadingartists: (state) => state.loadingartists,
+  },
 };

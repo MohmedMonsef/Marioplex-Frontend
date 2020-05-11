@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card rounded col-lg-20% "
+    class="card rounded col-lg-20%"
     testid="popularalbums card"
     @mouseover="hover = true"
     @mouseleave="hover = false"
@@ -14,7 +14,7 @@
     />
     <div class="card-body" id="cardbody" testid="popularalbums card body">
       <h4 class="card-title" id="cardtitle" testid="popularalbums card title">
-        {{ name |shorten }}
+        {{ name | shorten }}
       </h4>
       <p
         class="card-text"
@@ -96,32 +96,31 @@ i {
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
-      hover: false
+      hover: false,
     };
   },
   name: "ShowPopularalbums",
   props: {
     images: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     artistname: {
-      type: String
+      type: String,
     },
     albumId: {
-      type: String
-    }
+      type: String,
+    },
   },
   filters: {
-    shorten: function(value) {
-      if(value.length  > 17)
-        return value.substring(0, 17) + " ...";
-      else
-        return value;}
-  }
+    shorten: function (value) {
+      if (value.length > 17) return value.substring(0, 17) + " ...";
+      else return value;
+    },
+  },
 };
 </script>

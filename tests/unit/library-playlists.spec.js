@@ -15,36 +15,34 @@ describe("libraryPlaylists", () => {
         creatplaylist: {
           namespaced: true,
           state: {
-            playlists:[],
-            loadingplaylists: 1
+            playlists: [],
+            loadingplaylists: 1,
           },
           getters: {
-            playlists: state => state.playlists,
-            loadingplaylists: state => state.loadingplaylists
+            playlists: (state) => state.playlists,
+            loadingplaylists: (state) => state.loadingplaylists,
           },
           actions: {
-            showplaylists: jest.fn()
-          }
+            showplaylists: jest.fn(),
+          },
         },
         userlibrary: {
-            namespaced: true,
-            state: {
-              songs: [],
-            },
-            getters: {
-              songs: state => state.songs,
-             
-            },
-            actions: {
-              showUserSongs: jest.fn()
-            }
-          }
-    }
-        
+          namespaced: true,
+          state: {
+            songs: [],
+          },
+          getters: {
+            songs: (state) => state.songs,
+          },
+          actions: {
+            showUserSongs: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(libraryPlaylists, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {
@@ -54,9 +52,9 @@ describe("libraryPlaylists", () => {
   it("renders a vue instance", () => {
     expect(wrapper.isVueInstance()).toBe(true);
   });
-  it("Default screen Rendering",async () => {
+  it("Default screen Rendering", async () => {
     let defaultscreen = wrapper.find("#defaultscreen");
-    
+
     expect(defaultscreen.exists()).toBe(true);
   });
 });

@@ -3,7 +3,7 @@
     <logo-header />
     <!-- Sign Up form -->
     <div class="conatiner signup-form px-0">
-      <div class="row justify-content-center  m-0">
+      <div class="row justify-content-center m-0">
         <div class="col-4" align="center">
           <button
             class="costum-btn"
@@ -77,10 +77,10 @@
             <p
               v-if="
                 invalid_email == false &&
-                  invalid_confirm_email == false &&
-                  req_email == false &&
-                  req_confirm_email == false &&
-                  matched_email == true
+                invalid_confirm_email == false &&
+                req_email == false &&
+                req_confirm_email == false &&
+                matched_email == true
               "
               class="invalid"
               testid="emails not matched error"
@@ -378,9 +378,9 @@ export default {
   name: "SignUp",
   components: {
     LogoHeader,
-    Divider
+    Divider,
   },
-  data: function() {
+  data: function () {
     return {
       //User's data that will be passed from the v-model
       trigger_validation: false,
@@ -407,7 +407,7 @@ export default {
         { text: "September", value: "09", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
-        { text: "December", value: "12", disabled: false }
+        { text: "December", value: "12", disabled: false },
       ],
       country: "0",
       countries: [
@@ -423,8 +423,8 @@ export default {
         { text: "Japan", value: "JP", disabled: false },
         { text: "Korea", value: "KP", disabled: false },
         { text: "Mexico", value: "MX", disabled: false },
-        { text: "Brazil", value: "BR", disabled: false }
-      ]
+        { text: "Brazil", value: "BR", disabled: false },
+      ],
     };
   },
   methods: {
@@ -454,9 +454,8 @@ export default {
       this.valid_year;
       setTimeout(() => {
         if (this.can_submit) {
-          if(this.day>="1" && this.day<="9")
-            this.day = "0"+this.day;
-          var d = new Date(this.year+'-'+this.month+'-'+this.day);
+          if (this.day >= "1" && this.day <= "9") this.day = "0" + this.day;
+          var d = new Date(this.year + "-" + this.month + "-" + this.day);
           this.birthday = d; //check date format with back
           let newuser = {
             username: this.username,
@@ -464,7 +463,7 @@ export default {
             country: this.country,
             email: this.email,
             gender: this.gender,
-            birthday: this.birthday
+            birthday: this.birthday,
           };
           this.$store.dispatch("Authorization/signUp", newuser);
         } else return;
@@ -490,13 +489,13 @@ export default {
      */
     canSubmit() {
       this.can_submit = this.can_submit && true;
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus"
+      isLoggedIn: "Authorization/GetStatus",
     }),
-    req_email: function() {
+    req_email: function () {
       if (this.trigger_validation) {
         if (this.email == "") {
           this.cannotSubmit();
@@ -509,7 +508,7 @@ export default {
         return false;
       }
     },
-    invalid_email: function() {
+    invalid_email: function () {
       if (this.trigger_validation) {
         var to_check = this.email;
         if (
@@ -529,7 +528,7 @@ export default {
         return false;
       }
     },
-    req_confirm_email: function() {
+    req_confirm_email: function () {
       if (this.trigger_validation) {
         if (this.email_confirmation == "") {
           this.cannotSubmit();
@@ -542,7 +541,7 @@ export default {
         return false;
       }
     },
-    invalid_confirm_email: function() {
+    invalid_confirm_email: function () {
       if (this.trigger_validation) {
         var to_check = this.email_confirmation;
         if (
@@ -562,7 +561,7 @@ export default {
         return false;
       }
     },
-    matched_email: function() {
+    matched_email: function () {
       if (this.trigger_validation) {
         if (this.email != this.email_confirmation) {
           this.cannotSubmit();
@@ -575,7 +574,7 @@ export default {
         return false;
       }
     },
-    req_password: function() {
+    req_password: function () {
       if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();
@@ -588,7 +587,7 @@ export default {
         return false;
       }
     },
-    short_password: function() {
+    short_password: function () {
       if (this.trigger_validation) {
         if (this.password.length <= 7 && this.password != "") {
           this.cannotSubmit();
@@ -601,7 +600,7 @@ export default {
         return false;
       }
     },
-    req_username: function() {
+    req_username: function () {
       if (this.trigger_validation) {
         if (this.username == "") {
           this.cannotSubmit();
@@ -614,7 +613,7 @@ export default {
         return false;
       }
     },
-    req_country: function() {
+    req_country: function () {
       if (this.trigger_validation) {
         if (this.country == "0") {
           this.cannotSubmit();
@@ -627,7 +626,7 @@ export default {
         return false;
       }
     },
-    valid_day: function() {
+    valid_day: function () {
       if (this.trigger_validation) {
         if (
           this.day == "" ||
@@ -645,7 +644,7 @@ export default {
         return false;
       }
     },
-    valid_month: function() {
+    valid_month: function () {
       if (this.trigger_validation) {
         if (this.month == "0") {
           this.cannotSubmit();
@@ -658,7 +657,7 @@ export default {
         return false;
       }
     },
-    valid_year: function() {
+    valid_year: function () {
       if (this.trigger_validation) {
         var d = new Date();
         if (
@@ -677,7 +676,7 @@ export default {
         return false;
       }
     },
-    valid_age: function() {
+    valid_age: function () {
       var d = new Date();
       if (this.trigger_validation) {
         if (
@@ -695,7 +694,7 @@ export default {
         return false;
       }
     },
-    req_gender: function() {
+    req_gender: function () {
       if (this.trigger_validation) {
         if (this.gender == "") {
           this.cannotSubmit();
@@ -707,7 +706,7 @@ export default {
       } else {
         return false;
       }
-    }
-  }
+    },
+  },
 };
 </script>

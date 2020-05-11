@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="container-fluid row  m-0" id="recently-played">
+    <div class="container-fluid row m-0" id="recently-played">
       <homeBodyCard />
       <homeBodyCard />
       <homeBodyCard />
@@ -96,16 +96,16 @@ import homeBodyCard from "@/components/HomeBodyCards.vue";
  */
 export default {
   components: {
-    homeBodyCard
+    homeBodyCard,
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
-      RecentlyPlayed: "ShowWebPlayer/RecenlyPlayed"
-    })
+      RecentlyPlayed: "ShowWebPlayer/RecenlyPlayed",
+    }),
   },
   beforeCreate() {
     this.$store.dispatch("ShowWebPlayer/RecenlyPlayed", 6);
-  }
+  },
 };
 </script>

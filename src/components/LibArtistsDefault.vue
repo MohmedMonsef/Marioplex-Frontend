@@ -70,6 +70,6 @@ p {
  * @example [none]
  */
 export default {
-  name: "lib-artists-default"
+  name: "lib-artists-default",
 };
 </script>

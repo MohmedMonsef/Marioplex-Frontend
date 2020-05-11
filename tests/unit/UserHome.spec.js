@@ -16,65 +16,59 @@ describe("UserHome", () => {
           namespaced: true,
           state: {
             POPplaylists: {
-                playlists: []
+              playlists: [],
             },
-            POPartists: 
-              {
-                artists: []
-              }
-            ,
-            POPalbums: 
-              {
-                albums: []
-              }
-            ,
-            POPnewreleases: 
-              {
-                albums: []
-              }
-            
+            POPartists: {
+              artists: [],
+            },
+            POPalbums: {
+              albums: [],
+            },
+            POPnewreleases: {
+              albums: [],
+            },
           },
           getters: {
-            POPplaylists: state => state.POPplaylists,
-            POPartists: state => state.POPartists,
-            POPalbums: state => state.POPalbums,
-            POPnewreleases: state => state.POPnewreleases
+            POPplaylists: (state) => state.POPplaylists,
+            POPartists: (state) => state.POPartists,
+            POPalbums: (state) => state.POPalbums,
+            POPnewreleases: (state) => state.POPnewreleases,
           },
           actions: {
             showPopularPlaylists: jest.fn(),
             showPopularArtists: jest.fn(),
             showPopularAlbums: jest.fn(),
-            showPopularNewreleases: jest.fn()
-          }
+            showPopularNewreleases: jest.fn(),
+          },
         },
         creatplaylist: {
           namespaced: true,
           state: {
             playlists: [],
-            loadingplaylists: 1
+            loadingplaylists: 1,
           },
           getters: {
-            playlists: state => state.playlists,
-            loadingplaylists: state => state.loadingplaylists
+            playlists: (state) => state.playlists,
+            loadingplaylists: (state) => state.loadingplaylists,
           },
           actions: {
-            showplaylists: jest.fn()
-          }
+            showplaylists: jest.fn(),
+          },
         },
         authorization: {
           namespaced: true,
           state: {
-            status: "success"
+            status: "success",
           },
           getters: {
-            GetStatus: state => state.status
-          }
-        }
-      }
+            GetStatus: (state) => state.status,
+          },
+        },
+      },
     });
     wrapper = shallowMount(UserHome, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {

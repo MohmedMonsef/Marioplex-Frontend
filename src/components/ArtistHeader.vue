@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid navbar-container ">
-    <div class="row navbar-inner  justify-content-center">
-      <div class=" navbar navbar-expand-sm  justify-content-center ">
+  <div class="container-fluid navbar-container">
+    <div class="row navbar-inner justify-content-center">
+      <div class="navbar navbar-expand-sm justify-content-center">
         <span>
           <ul>
             <router-link to="/ArtistPersonalPage" tag="li">
@@ -82,6 +82,6 @@
  * @example [none]
  */
 export default {
-  name: "ArtistHeader"
+  name: "ArtistHeader",
 };
 </script>

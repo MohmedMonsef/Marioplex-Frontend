@@ -1,8 +1,7 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import CreatePlaylist from "@/components/CreatePlaylist.vue";
-import VueRouter from 'vue-router';
+import VueRouter from "vue-router";
 import Vuex from "vuex";
-
 
 describe("CreatePlaylist", () => {
   const localVue = createLocalVue();
@@ -18,13 +17,13 @@ describe("CreatePlaylist", () => {
           namespaced: true,
           state: {
             showModal: true,
-           // Playlists: []
+            // Playlists: []
           },
           getters: {
-            showModal: state => {
+            showModal: (state) => {
               return state.showModal;
             },
-            playlists: state => state.Playlists
+            playlists: (state) => state.Playlists,
           },
           //     mutations:{
           //         toggleModal(state) {
@@ -41,21 +40,21 @@ describe("CreatePlaylist", () => {
           //    },
           actions: {
             toggleModal: jest.fn(),
-            CreatePlaylist: jest.fn()
-          }
+            CreatePlaylist: jest.fn(),
+          },
         },
         authorization: {
           namespaced: true,
           state: {
             User: {
-              displayName: "user name"
-            }
+              displayName: "user name",
+            },
           },
           getters: {
-            Username: state => state.User.displayName
-          }
-        }
-      }
+            Username: (state) => state.User.displayName,
+          },
+        },
+      },
     });
   });
 
@@ -71,7 +70,7 @@ describe("CreatePlaylist", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".creat_button");
     btn.trigger("click");
@@ -93,7 +92,7 @@ describe("CreatePlaylist", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".cancel");
     btn.trigger("click");
@@ -103,7 +102,7 @@ describe("CreatePlaylist", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".cancel_button");
     btn.trigger("click");
@@ -135,7 +134,7 @@ describe("CreatePlaylist", () => {
     // pname.element.value="hello";
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     pname.trigger("keyup.enter");
     // expect(wrapper.vm.playlistname).toBe("hello");
@@ -153,7 +152,7 @@ describe("CreatePlaylist", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState
+      changeModalState: changeModalState,
     });
     const btn = wrapper.find(".creat_button");
     btn.trigger("click");
@@ -163,6 +162,4 @@ describe("CreatePlaylist", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     expect(wrapper.exists(".modal-overlay")).toBe(true);
   });
-
 });
-

@@ -7,7 +7,7 @@ export default {
     popular_artists: [],
     popular_albums: [],
     popular_newreleases: [],
-    recently_played: []
+    recently_played: [],
   },
   mutations: {
     setPopularPlaylists(state, POPplaylists) {
@@ -24,70 +24,70 @@ export default {
     },
     setRecentlyPlayed(state, recently_played) {
       state.recently_played = recently_played;
-    }
+    },
   },
   actions: {
     showPopularPlaylists({ commit }) {
       axios
         .get("/api/browse/popular-playlists")
-        .then(response => {
+        .then((response) => {
           let POPplaylists = response.data;
           commit("setPopularPlaylists", POPplaylists);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     showPopularArtists({ commit }) {
       axios
         .get("/api/browse/popular-artists")
-        .then(response => {
+        .then((response) => {
           let POPartists = response.data;
           commit("setPopularArtists", POPartists);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     showPopularAlbums({ commit }) {
       axios
         .get("/api/browse/popular-albums")
-        .then(response => {
+        .then((response) => {
           let POPalbums = response.data;
           commit("setPopularAlbums", POPalbums);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     showPopularNewreleases({ commit }) {
       axios
         .get("/api/browse/new-releases")
-        .then(response => {
+        .then((response) => {
           let POPnewreleases = response.data;
           commit("setPopularNewreleases", POPnewreleases);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     RecenlyPlayed({ commit }, limit) {
       axios
         .get("api/me/player/recently-played?limit=" + limit)
-        .then(response => {
+        .then((response) => {
           let recently_played = response.data;
           commit("setPopularNewreleases", recently_played);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
   getters: {
-    POPplaylists: state => state.popular_playlists,
-    POPartists: state => state.popular_artists,
-    POPalbums: state => state.popular_albums,
-    POPnewreleases: state => state.popular_newreleases,
-    RecenlyPlayed: state => state.recently_played
-  }
+    POPplaylists: (state) => state.popular_playlists,
+    POPartists: (state) => state.popular_artists,
+    POPalbums: (state) => state.popular_albums,
+    POPnewreleases: (state) => state.popular_newreleases,
+    RecenlyPlayed: (state) => state.recently_played,
+  },
 };

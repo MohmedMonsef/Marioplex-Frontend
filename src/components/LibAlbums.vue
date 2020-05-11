@@ -20,7 +20,7 @@
       />
       <div class="card-body" id="cardbody" testid="album card body">
         <h4 class="card-title" id="cardtitle" testid="album name">
-          {{ name | shorten}}
+          {{ name | shorten }}
         </h4>
         <router-link
           class="ard-link artistlink"
@@ -101,45 +101,39 @@ i {
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
       hover: false,
-      routing:""
+      routing: "",
     };
   },
   name: "lib-albums",
   props: {
     images: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     artistname: {
-      type: String
+      type: String,
     },
     albumId: {
-      type: String
+      type: String,
     },
     artistId: {
-      type: String
-    }
+      type: String,
+    },
   },
-  mounted(){
-
-    if(this.$route.path =="/HomeWebPlayer/search")
-      this.routing='album/';
-    else
-      this.routing="../album/";
-        
+  mounted() {
+    if (this.$route.path == "/HomeWebPlayer/search") this.routing = "album/";
+    else this.routing = "../album/";
   },
   filters: {
-    shorten: function(value) {
-      if(value.length  > 17)
-        return value.substring(0, 17) + " ...";
-      else
-        return value;
-    }
-  }
+    shorten: function (value) {
+      if (value.length > 17) return value.substring(0, 17) + " ...";
+      else return value;
+    },
+  },
 };
 </script>

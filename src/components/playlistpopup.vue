@@ -191,22 +191,22 @@ div {
  */
 export default {
   name: "CreatePlaylist",
-  data: function() {
+  data: function () {
     return {
       playlistname: "",
-      showModal: true
+      showModal: true,
     };
   },
 
   components: {},
   methods: {
-     /**
+    /**
      * triggers create playlist song
      * @public This is a public method
      */
     changeModalState() {
       this.$store.dispatch("Playlist/toggleModal");
-    }
-  }
+    },
+  },
 };
 </script>

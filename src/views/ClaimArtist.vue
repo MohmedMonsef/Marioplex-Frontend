@@ -331,19 +331,19 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
       Name: "",
       Genre: "",
-      Description: ""
+      Description: "",
     };
   },
   components: {},
 
   computed: {
     ...mapGetters({
-      showModal: "Playlist/showModal"
-    })
+      showModal: "Playlist/showModal",
+    }),
   },
   methods: {
     /**
@@ -364,10 +364,10 @@ export default {
       let payload = {
         name: this.Name,
         genre: this.Genre,
-        info: this.Description
+        info: this.Description,
       };
       this.$store.dispatch("Authorization/ClaimArtistProfile", payload);
-    }
-  }
+    },
+  },
 };
 </script>

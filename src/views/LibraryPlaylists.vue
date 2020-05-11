@@ -16,7 +16,9 @@
             v-for="playlist in playlists1"
             :key="playlist.id"
             :images="
-              'http://52.205.254.29/api/images/5e9c9790fc69ad92e0a7eda5?belongs_to=artist'
+              'http://52.205.254.29/api/images/' +
+              playlist.images[0]._id +
+              '?belongs_to=playlist'
             "
             :name="playlist.name"
             :ownerName="playlist.owner"
@@ -66,7 +68,7 @@ export default {
   components: {
     LibPlaylistsDefault,
     LibPlaylists,
-    LibLikedsongs
+    LibLikedsongs,
   },
   mounted() {
     this.$store.dispatch("Playlist/showplaylists");
@@ -77,8 +79,8 @@ export default {
       // map `this.playlists1` to `this.$store.getters.playlists`
       playlists1: "Playlist/playlists", // creat new object "playlists1" and map to it
       songs1: "UserLibrary/songs",
-      loadingplaylists: "Playlist/loadingplaylists"
-    })
-  }
+      loadingplaylists: "Playlist/loadingplaylists",
+    }),
+  },
 };
 </script>

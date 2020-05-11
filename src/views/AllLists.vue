@@ -1,19 +1,23 @@
 <template>
-<div>
+  <div>
     <h2 v-if="POPplaylists1.playlists.length">Popular playlists</h2>
-      <div class="container">
-        <div class="row">
-          <show-popularplaylists
-            v-for="POPplaylist in POPplaylists1.playlists"
-            :key="POPplaylist.id"
-            :images="POPplaylist.images"
-            :name="POPplaylist.name"
-            :Description="POPplaylist.Description"
-            :playlist_id="POPplaylist.id"
-          />
-        </div>
+    <div class="container">
+      <div class="row">
+        <show-popularplaylists
+          v-for="POPplaylist in POPplaylists1.playlists"
+          :key="POPplaylist.id"
+          :images="
+            'http://52.205.254.29/api/images/' +
+            POPplaylist.images[0]._id +
+            '?belongs_to=playlist'
+          "
+          :name="POPplaylist.name"
+          :Description="POPplaylist.Description"
+          :playlist_id="POPplaylist.id"
+        />
       </div>
-</div>
+    </div>
+  </div>
 </template>
 <style scoped>
 h2 {
@@ -31,18 +35,17 @@ h2 {
 import ShowPopularplaylists from "@/components/ShowPopularPlaylists.vue";
 import { mapGetters } from "vuex";
 export default {
-    name: "AllLists",
-     components: {
+  name: "AllLists",
+  components: {
     ShowPopularplaylists,
-     },
-      mounted() {
+  },
+  mounted() {
     this.$store.dispatch("ShowWebPlayer/showPopularPlaylists");
-      },
-      computed: {
+  },
+  computed: {
     ...mapGetters({
-      POPplaylists1: "ShowWebPlayer/POPplaylists", 
-    })
-      }
-    
-}
+      POPplaylists1: "ShowWebPlayer/POPplaylists",
+    }),
+  },
+};
 </script>

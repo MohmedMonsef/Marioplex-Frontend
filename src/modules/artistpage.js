@@ -8,7 +8,7 @@ export default {
     bio: "",
     artist_name: "",
     artistcover_image: "",
-    followartist: Boolean
+    followartist: Boolean,
   },
   mutations: {
     set_artist_tracks(state, tracks) {
@@ -31,20 +31,20 @@ export default {
     },
     set_bio(state, bio) {
       state.bio = bio;
-    }
+    },
   },
   actions: {
     artist_page({ commit }, artist_id) {
       axios
         .get("api/Artists/" + artist_id)
-        .then(response => {
+        .then((response) => {
           let artist = response.data;
           console.log("module artist", artist);
           commit("set_artist_name", artist.Name);
           commit("set_artistcover_image", artist.images[0]);
           commit("set_bio", artist.info);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -52,7 +52,7 @@ export default {
     artist_tracks({ commit }, artist_id) {
       axios
         .get("api/Artists/" + artist_id + "/top-tracks?country=EG")
-        .then(response => {
+        .then((response) => {
           let artist = response.data;
           this.artist_tracks = [];
           console.log("array nihal", this.artist_tracks);
@@ -66,7 +66,7 @@ export default {
             commit("set_artist_tracks", artist);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -74,11 +74,11 @@ export default {
     artist_albums({ commit }, artist_id) {
       axios
         .get("api/Artists/" + artist_id + "/Albums")
-        .then(response => {
+        .then((response) => {
           let albums = response.data;
           commit("set_artist_albums", albums);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -86,11 +86,11 @@ export default {
     artist_relatedartists({ commit }, artist_id) {
       axios
         .get("api/Artists/" + artist_id + "/related_artists")
-        .then(response => {
+        .then((response) => {
           let artists = response.data;
           commit("set_artist_relatedartists", artists);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -98,26 +98,26 @@ export default {
     follow_artist({ commit }, artist_id) {
       axios
         .put("api/me/following", { ids: artist_id })
-        .then(response => {
+        .then((response) => {
           let artist = response.status;
           if (artist == 200) {
             commit("set_followartist", true);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     unfollow_artist({ commit }, artist_id) {
       axios
         .delete("api/me/following", { data: { ids: artist_id } })
-        .then(response => {
+        .then((response) => {
           let artist = response.status;
           if (artist == 200) {
             commit("set_followartist", false);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -125,7 +125,7 @@ export default {
     checkisfollowed({ commit }) {
       axios
         .post("api/me/following/contains", { ids: "artist_id" })
-        .then(response => {
+        .then((response) => {
           let artist = response.data;
           if (artist.follow == true) {
             commit("set_followartist", true);
@@ -133,18 +133,18 @@ export default {
             commit("set_followartist", false);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
   getters: {
-    artist_name: state => state.artist_name,
-    artistcover_image: state => state.artistcover_image,
-    followartist: state => state.followartist,
-    artist_tracks: state => state.artist_tracks,
-    artist_albums: state => state.artist_albums,
-    artist_bio: state => state.bio,
-    artist_relatedartists: state => state.artist_relatedartists
-  }
+    artist_name: (state) => state.artist_name,
+    artistcover_image: (state) => state.artistcover_image,
+    followartist: (state) => state.followartist,
+    artist_tracks: (state) => state.artist_tracks,
+    artist_albums: (state) => state.artist_albums,
+    artist_bio: (state) => state.bio,
+    artist_relatedartists: (state) => state.artist_relatedartists,
+  },
 };

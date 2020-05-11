@@ -225,16 +225,16 @@ export default {
       Name: "",
       TrackNumber: "",
       selectedpreview: "",
-      AvailableMarket: ""
+      AvailableMarket: "",
     };
   },
   state: {
-    Artist_Songs: []
+    Artist_Songs: [],
   },
   computed: {
     ...mapGetters({
-      showModalUpload: "ArtistProperties/showModalUpload"
-    })
+      showModalUpload: "ArtistProperties/showModalUpload",
+    }),
   },
   methods: {
     /**
@@ -293,9 +293,9 @@ export default {
         TrackNumber: this.TrackNumber,
         AvailableMarket: this.AvailableMarket,
         selectedfile: this.selectedfile,
-        selectedpreview: this.selectedpreview
+        selectedpreview: this.selectedpreview,
       });
-    }
-  }
+    },
+  },
 };
 </script>

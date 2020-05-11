@@ -7,7 +7,7 @@ import {
   get_currentaudio,
   currentaudio_time,
   currentaudio_src,
-  currentaudio_repeat
+  currentaudio_repeat,
 } from "../javascript/play.js";
 export default {
   namespaced: true,
@@ -36,17 +36,17 @@ export default {
         timeSignature: "2020-03-29T16:37:12.554Z",
         valence: 70,
         __v: 0,
-        images: []
+        images: [],
       },
       isLiked: false,
       album: {
         name: "HELLO KIDS",
         _id: "5e80cc2b14c8566d6cd9b40f",
-        artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
+        artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" },
       },
       isPlaylist: true,
       playlistId: "5e891c8edb96e26db4efc790",
-      isPlayable: true
+      isPlayable: true,
     },
     //component info
     currentSongIndex: 0,
@@ -54,7 +54,7 @@ export default {
     playicon: false,
     volumeprogress: 0,
     progress: 0,
-    trackduration: 0
+    trackduration: 0,
   },
   mutations: {
     setplayicon(state, playicon) {
@@ -97,7 +97,7 @@ export default {
         state.currentSongIndex = info.index;
       }
       state.playicon = true;
-    }
+    },
   },
   actions: {
     playicon_state({ commit }, status) {
@@ -107,14 +107,14 @@ export default {
     get_currentsong({ commit, dispatch }) {
       axios
         .get("/api/me/player/currently-playing")
-        .then(response => {
+        .then((response) => {
           var currentsong = response.data;
           console.log("in get currentsong", currentsong);
           commit("set_currentsong", currentsong);
           var id = currentsong.track._id;
           dispatch("trackUrl", id);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -129,12 +129,12 @@ export default {
         token;
       axios
         .get(keyRoute)
-        .then(async response => {
+        .then(async (response) => {
           state.audioKey = response.data.key;
           state.audioKeyID = response.data.keyId;
           setupPlayer(trackroute, state.audioKey, state.audioKeyID);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log("get trackurl error", error);
         })
         .then(() => {});
@@ -151,7 +151,7 @@ export default {
       dispatch("update_progress", 0);
       axios
         .post("/api/me/player/next-playing")
-        .then(response => {
+        .then((response) => {
           var nextsong = response.data;
           commit("set_currentsong", nextsong);
           if (typeof nextsong.fristInSource == "undefined")
@@ -164,13 +164,13 @@ export default {
             song_id: nextsong.track._id,
             album_id: nextsong.album._id,
             playlist_id: state.playlist_id,
-            is_playlist: state.currentsong.isPlaylist
+            is_playlist: state.currentsong.isPlaylist,
           };
           dispatch("trackUrl", nextsong.track._id);
           dispatch("playsong_state", info);
           dispatch("Queue/Queue", null, { root: true });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -179,7 +179,7 @@ export default {
       if (state.progress <= 5) {
         axios
           .post("/api/me/player/prev-playing")
-          .then(response => {
+          .then((response) => {
             var prevsong = response.data;
             console.log("in get currentsong", prevsong);
             commit("set_currentsong", prevsong);
@@ -192,13 +192,13 @@ export default {
               song_id: prevsong.track._id,
               album_id: prevsong.album._id,
               playlist_id: prevsong.playlistId,
-              is_playlist: prevsong.isPlaylist
+              is_playlist: prevsong.isPlaylist,
             };
             dispatch("trackUrl", prevsong.track._id);
             dispatch("playsong_state", info);
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       } else {
@@ -215,7 +215,7 @@ export default {
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       } else if (flag == 2) {
@@ -225,7 +225,7 @@ export default {
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       }
@@ -236,7 +236,7 @@ export default {
         .then(() => {
           dispatch("Queue/Queue", null, { root: true });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -255,7 +255,7 @@ export default {
             commit("setliked", true);
           dispatch("get_currentsong");
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -273,7 +273,7 @@ export default {
           dispatch("get_currentsong");
           dispatch("LikedTracks/likedtracks_tracks", null, { root: true });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -300,32 +300,32 @@ export default {
         currentaudio_volume(pos);
         state.volumeprogress = pos;
       }
-    }
+    },
   },
   getters: {
-    Get_Currentsong: state => {
+    Get_Currentsong: (state) => {
       return state.currentsong;
     },
-    playicon: state => {
+    playicon: (state) => {
       return state.playicon;
     },
-    liked: state => {
+    liked: (state) => {
       return state.currentsong.isLiked;
     },
     currentaudio: () => {
       return currentaudio_src();
     },
-    progress: state => {
+    progress: (state) => {
       return state.progress;
     },
-    duration: state => {
+    duration: (state) => {
       return state.trackduration;
     },
-    volume: state => {
+    volume: (state) => {
       return state.volumeprogress;
     },
-    Index: state => {
+    Index: (state) => {
       return state.currentSongIndex;
-    }
-  }
+    },
+  },
 };

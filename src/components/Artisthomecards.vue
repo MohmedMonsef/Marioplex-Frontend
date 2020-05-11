@@ -1,27 +1,23 @@
 <template>
-    <div
-      class="card rounded col-lg-20%"
-      id="albumcard"
-      testid="album card"
-    >
+  <div class="card rounded col-lg-20%" id="albumcard" testid="album card">
     <div class="hoveralbumimage">
-         <router-link
-    :to="{ path: '../album/' + albumId }"
-    id="cardlink"
-    testid="album card link"
-  >
-      <!-- <img
+      <router-link
+        :to="{ path: '../album/' + albumId }"
+        id="cardlink"
+        testid="album card link"
+      >
+        <!-- <img
       donot forget to change the image while connecting with back
         :src="images"
       /> -->
         <img
-        class="card-img-top mx-auto d-block"
-        src="../assets/heart.png"
-        alt="Card image"
-        id="cardimg"
-        testid="album image"
-      />
-        </router-link>
+          class="card-img-top mx-auto d-block"
+          :src="images"
+          alt="Card image"
+          id="cardimg"
+          testid="album image"
+        />
+      </router-link>
       <!-- <i
         v-if="!this.play"
         class="fa fa-play"
@@ -39,12 +35,12 @@
       >
       </i> -->
     </div>
-      <div class="card-body" id="cardbody" testid="album card body">
-        <h4 class="card-title" id="cardtitle" testid="album name">
-          {{name}}
-        </h4>
-      </div>
+    <div class="card-body" id="cardbody" testid="album card body">
+      <h4 class="card-title" id="cardtitle" testid="album name">
+        {{ name }}
+      </h4>
     </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -68,10 +64,10 @@ i {
   margin-top: 10px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#cardimg:active{
+#cardimg:active {
   transform: scale(1.06);
 }
-.hoveralbumimage{
+.hoveralbumimage {
   position: relative;
   text-align: center;
   align-content: center;
@@ -88,7 +84,7 @@ i {
     color: white;
   }
 }
-#cardimg:hover{
+#cardimg:hover {
   opacity: 0.3;
 }
 #imageplayicon:hover,
@@ -106,7 +102,7 @@ h4 {
   outline: none;
   text-decoration: none;
 }
-#cardbody{
+#cardbody {
   align-content: center;
   text-align: center;
 }
@@ -115,21 +111,24 @@ h4 {
 <script>
 import { mapGetters } from "vuex";
 export default {
-    data: function() {
+  data: function () {
     return {
-      play: false
+      play: false,
     };
   },
-    name:"Artisthomecards",
-    props: {
-      name: {
-      type: String
+  name: "Artisthomecards",
+  props: {
+    name: {
+      type: String,
     },
     albumId: {
-      type: String
-    }
+      type: String,
+    },
+    images: {
+      type: String,
+    },
   },
-  methods:{
+  methods: {
     //  iSplaying() {
     //   this.play = true;
     //   if (!this.playicon) {
@@ -156,7 +155,6 @@ export default {
     // onleaveImage: function() {
     //   var albumimage = document.getElementById("cardimg");
     //   albumimage.style.opacity = "1";
-
     //   if (!this.play) {
     //     var playbutton = document.getElementById("imageplayicon");
     //     playbutton.style.opacity = "0";
@@ -167,10 +165,10 @@ export default {
     //   }
     // },
   },
-   computed: {
+  computed: {
     ...mapGetters({
       playicon: "Mediaplayer/playicon",
-    })
-  }
-}
+    }),
+  },
+};
 </script>

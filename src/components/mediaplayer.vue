@@ -36,7 +36,7 @@
                   class="fa fa-heart"
                   id="filledhearticon"
                   testid="filledhearticon"
-                  style="color:green"
+                  style="color: green;"
                 ></i>
               </span>
             </button>
@@ -136,7 +136,12 @@
               <div
                 data-toggle="tooltip"
                 title="Enable repeat"
-                style="box-sizing:border-box;overflow:none;min-width:21px;min-height:16px;"
+                style="
+                  box-sizing: border-box;
+                  overflow: none;
+                  min-width: 21px;
+                  min-height: 16px;
+                "
               >
                 <i
                   class="fa fa-repeat"
@@ -147,7 +152,7 @@
                 >
                   <span
                     :class="{ hidecoloring: isRepeat != 2 }"
-                    style="font-size:26px;max-height:16px;"
+                    style="font-size: 26px; max-height: 16px;"
                     >.</span
                   >
                 </i>
@@ -184,7 +189,7 @@
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
           </button>
 
-          <button id="sound_button" testid="soundbutton" style="width:37px;">
+          <button id="sound_button" testid="soundbutton" style="width: 37px;">
             <i
               class="fa fa-volume-off"
               id="soundicon"
@@ -479,7 +484,7 @@ import { mapGetters } from "vuex";
      * @displayName Media Player
      */
 export default {
-  data: function() {
+  data: function () {
     return {
       isRepeat: 0, //0=>no repeat 1=>repeat the song 2=>repeat playlist,album
       isShuffle: false,
@@ -487,12 +492,12 @@ export default {
       drag: false,
       currentPos: 0,
       volumepos: 0,
-      sound: 0
+      sound: 0,
     };
   },
   mixins: [song_functions],
-  mounted: function() {
-    this.$nextTick(function() {
+  mounted: function () {
+    this.$nextTick(function () {
       window.setInterval(() => {
         this.moving_song_bar();
       }, 300);
@@ -507,7 +512,7 @@ export default {
       this.isShuffle = this.user.player.is_shuffled;
     }, 1000);
   },
-  created: function() {
+  created: function () {
     window.addEventListener("mouseup", () => {
       this.stopDrag();
       this.volumestopDrag();
@@ -517,7 +522,7 @@ export default {
         this.volumeisDrag();
       });
   },
-  destroyed: function() {
+  destroyed: function () {
     window.addEventListener("mouseup", () => {
       this.stopDrag();
       this.volumestopDrag();
@@ -533,7 +538,7 @@ export default {
      * changed song bar style when it is playing
      * @public This is a public method
      */
-    moving_song_bar: function() {
+    moving_song_bar: function () {
       //console.log("x")
       this.$store.dispatch("Mediaplayer/advance_progress");
       if (!this.drag) {
@@ -551,7 +556,7 @@ export default {
      * changed song bar style while draging
      * @public This is a public method
      */
-    isDrag: function() {
+    isDrag: function () {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
         var l = bar.getBoundingClientRect().left;
@@ -570,7 +575,7 @@ export default {
      * signals that the user is dragging song bar
      * @public This is a public method
      */
-    startDrag: function() {
+    startDrag: function () {
       this.drag = true;
       console.log("in start drag", this.drag);
     },
@@ -578,7 +583,7 @@ export default {
      * sets song current time on stop dragging
      * @public This is a public method
      */
-    stopDrag: function() {
+    stopDrag: function () {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
         var l = bar.getBoundingClientRect().left;
@@ -594,7 +599,7 @@ export default {
      * signals that the user is dragging volume bar
      * @public This is a public method
      */
-    volumestartDrag: function() {
+    volumestartDrag: function () {
       this.volumedrag = true;
       console.log("in start volume drag", this.volumedrag);
     },
@@ -602,7 +607,7 @@ export default {
      * changed volume bar style while draging
      * @public This is a public method
      */
-    volumeisDrag: function() {
+    volumeisDrag: function () {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -621,7 +626,7 @@ export default {
      * sets currently playing track audio volume when we stop dragging it
      * @public This is a public method
      */
-    volumestopDrag: function() {
+    volumestopDrag: function () {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -648,7 +653,7 @@ export default {
      * changes currently playing track audio volume
      * @public This is a public method
      */
-    volume_song: function() {
+    volume_song: function () {
       var volumeSlider = document.getElementById("volumeprogressbar");
       var changevolumeicon = document.getElementById("soundicon");
       if (
@@ -673,7 +678,7 @@ export default {
      * Alters shuffle mode for list of tracks
      * @public This is a public method
      */
-    shuffle: function() {
+    shuffle: function () {
       this.isShuffle = !this.isShuffle;
       this.$store.dispatch("Mediaplayer/shufflesong_state", this.isShuffle);
     },
@@ -681,16 +686,16 @@ export default {
      * Alters Repeat mode for tracks
      * @public This is a public method
      */
-    repeat_song: function() {
+    repeat_song: function () {
       this.isRepeat = (this.isRepeat + 1) % 3;
       this.$store.dispatch("Mediaplayer/repeatsong_state", this.isRepeat);
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      user: "Authorization/user"
+      user: "Authorization/user",
     }),
-    changeTime: function() {
+    changeTime: function () {
       console.log(currentaudio_src());
       if (!isNaN(this.currentPos)) {
         var min = Math.floor((this.currentPos % 3600) / 60);
@@ -700,7 +705,7 @@ export default {
       }
       return "0:00";
     },
-    totalDuration: function() {
+    totalDuration: function () {
       if (!isNaN(this.duration)) {
         var min = Math.floor((this.duration % 3600) / 60);
         var sec = Math.floor(this.duration % 60);
@@ -708,7 +713,7 @@ export default {
         return min + ":" + sec;
       }
       return "0:00";
-    }
-  }
+    },
+  },
 };
 </script>

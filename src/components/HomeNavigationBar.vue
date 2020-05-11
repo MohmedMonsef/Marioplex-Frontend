@@ -1,18 +1,18 @@
 <template>
   <div
-    class="container-fluid navbar-container "
+    class="container-fluid navbar-container"
     :class="[
       islogged ? 'nav-hover-user' : 'nav-hover',
       {
         classA: scrollPosition == 0 && ispremium,
-        classB: scrollPosition > 0 || !ispremium
-      }
+        classB: scrollPosition > 0 || !ispremium,
+      },
     ]"
   >
     <div class="row navbar-inner">
       <!-- logo -->
       <div class="logo-div">
-        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+        <router-link to="/"> <img src="../assets/logo.png" /></router-link>
       </div>
       <!-- logo -->
       <!--nav items-->
@@ -33,7 +33,7 @@
           </router-link>
           <div class="dropdown" v-if="isLoggedIn == 'success'">
             <div
-              class="btn  dropdown-toggle dropdown-custom"
+              class="btn dropdown-toggle dropdown-custom"
               id="dropdownMenuButton"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -59,7 +59,7 @@
     <div id="nav-small">
       <!-- logo -->
       <div class="logo-small">
-        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+        <router-link to="/"> <img src="../assets/logo.png" /></router-link>
       </div>
       <!-- logo -->
       <div id="disable-page"></div>
@@ -120,7 +120,7 @@
               <a> Account</a>
             </router-link>
           </ul>
-          <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+          <router-link to="/"> <img src="../assets/logo.png" /></router-link>
         </div>
       </div>
     </div>
@@ -452,11 +452,11 @@ import { mapGetters } from "vuex";
  */
 export default {
   name: "home-navigation-bar",
-  data: function() {
+  data: function () {
     return {
       togglelength: false,
       scrollPosition: null,
-      ispremium: true
+      ispremium: true,
     };
   },
   methods: {
@@ -489,24 +489,24 @@ export default {
      */
     updateScroll() {
       this.scrollPosition = window.scrollY;
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus"
+      isLoggedIn: "Authorization/GetStatus",
     }),
     islogged() {
       return this.isLoggedIn == "success";
-    }
+    },
   },
   watch: {
-    $route: function() {
+    $route: function () {
       if (this.$route.path == "/premium") {
         this.ispremium = true;
       } else {
         this.ispremium = false;
       }
-    }
+    },
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
@@ -518,6 +518,6 @@ export default {
   },
   destroy() {
     window.removeEventListener("scroll", this.updateScroll);
-  }
+  },
 };
 </script>

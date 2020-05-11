@@ -11,7 +11,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
           <song-component
             testid="songcomponent"
-            v-for="(p,i) in likedtracks_tracks"
+            v-for="(p, i) in likedtracks_tracks"
             :key="p._id"
             :index="i"
             :song_id="p._id"
@@ -70,18 +70,18 @@ export default {
   components: {
     SongComponent,
     LikedTracks,
-    emptylikedtracks
+    emptylikedtracks,
   },
   computed: {
     ...mapGetters({
       likedtracks_tracks: "LikedTracks/likedtracks_tracks",
       likedtracks_length: "LikedTracks/likedtracks_length",
       likedtracks_load: "LikedTracks/likedtracks_loaded",
-      playlist_id:"LikedTracks/playlist_id"
-    })
+      playlist_id: "LikedTracks/playlist_id",
+    }),
   },
-  beforeCreate: function() {
+  beforeCreate: function () {
     this.$store.dispatch("LikedTracks/likedtracks_tracks");
-  }
+  },
 };
 </script>

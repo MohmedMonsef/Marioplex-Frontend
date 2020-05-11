@@ -195,16 +195,16 @@ export default {
   name: "Login",
   components: {
     LogoHeader,
-    Divider
+    Divider,
   },
-  data: function() {
+  data: function () {
     return {
       //User's data that will be passed from the v-model
       email: "",
       password: "",
       //required for validation
       trigger_validation: false,
-      can_submit: true
+      can_submit: true,
     };
   },
   methods: {
@@ -223,7 +223,7 @@ export default {
         if (this.can_submit) {
           let user = {
             email: this.email,
-            password: this.password
+            password: this.password,
           };
           this.$store.dispatch("Authorization/login", user);
         }
@@ -249,13 +249,13 @@ export default {
      */
     facebook_login() {
       this.$store.dispatch("Authorization/facebook_signUp");
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus"
+      isLoggedIn: "Authorization/GetStatus",
     }),
-    req_email: function() {
+    req_email: function () {
       if (this.trigger_validation) {
         if (this.email == "") {
           this.cannotSubmit();
@@ -268,7 +268,7 @@ export default {
         return false;
       }
     },
-    req_password: function() {
+    req_password: function () {
       if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();
@@ -280,7 +280,7 @@ export default {
       } else {
         return false;
       }
-    }
-  }
+    },
+  },
 };
 </script>

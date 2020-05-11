@@ -26,18 +26,15 @@
           </svg>
         </button>
         <h1 class="title">Add to playlist</h1>
-        <button
-          class="cratenewplaylist"
-          @click="changeModalState()"
-        >
+        <button class="cratenewplaylist" @click="changeModalState()">
           New playlist
         </button>
-        
+
         <div class="playlistscards">
           <div class="container">
             <div class="row">
               <PlaylistsToTracks
-              class="userplaylists"
+                class="userplaylists"
                 v-for="playlist in playlists"
                 :key="playlist.id"
                 :name="playlist.name"
@@ -48,7 +45,6 @@
         </div>
       </div>
     </transition>
-   
   </div>
 </template>
 <style lang="scss" scoped>
@@ -179,7 +175,7 @@ h2 {
   top: 40%;
 }
 .userplaylists {
-  z-index:99999;
+  z-index: 99999;
 }
 </style>
 <script>
@@ -199,14 +195,14 @@ export default {
   name: "AddTrackPopup",
   computed: {
     ...mapState({
-      show: state => state.Playlist.showModal
+      show: (state) => state.Playlist.showModal,
     }),
     ...mapGetters({
       showModalAdd: "Playlist/showModalAdd",
       playlists: "Playlist/playlists",
       trackid: "Playlist/trackid",
-      playlistoftrack: "Playlist/playlistoftrack"
-    })
+      playlistoftrack: "Playlist/playlistoftrack",
+    }),
   },
   methods: {
     changeModalStateAdd() {
@@ -228,23 +224,22 @@ export default {
     //   this.$store.dispatch("playlist/AddTrackToNewPlayList", payload);
     // },
     changeModalState() {
-      this.withtrack=true; 
-      console.log("in add track pop up the bool",this.withtrack)   
-      this.$store.dispatch("Playlist/toggleModal",this.withtrack);
-    }
+      this.withtrack = true;
+      console.log("in add track pop up the bool", this.withtrack);
+      this.$store.dispatch("Playlist/toggleModal", this.withtrack);
+    },
   },
   components: {
     CreatePlaylist,
-    PlaylistsToTracks
+    PlaylistsToTracks,
   },
   mounted() {
     this.$store.dispatch("Playlist/showplaylists");
   },
-  data:function(){
-    return{
-    withtrack:true
-    }
+  data: function () {
+    return {
+      withtrack: true,
+    };
   },
- 
 };
 </script>

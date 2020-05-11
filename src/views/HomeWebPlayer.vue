@@ -1,5 +1,5 @@
 <template>
-  <div class="home_webplayer" >
+  <div class="home_webplayer">
     <side-bar />
     <CreatePlaylist v-if="show" />
     <DeletePlaylist v-if="showdelete" />
@@ -54,13 +54,13 @@ export default {
     mediaplayer,
     DeletePlaylist,
     // LibraryNavbar
-    NavbarWebplayer
+    NavbarWebplayer,
   },
   computed: {
     ...mapState({
-      show: state => state.Playlist.showModal,
-      showdelete: state => state.Playlist.showModalDelete
-    })
+      show: (state) => state.Playlist.showModal,
+      showdelete: (state) => state.Playlist.showModalDelete,
+    }),
   },
 };
 </script>

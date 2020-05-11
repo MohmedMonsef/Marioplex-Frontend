@@ -15,23 +15,23 @@ describe("SignUp", () => {
         authorization: {
           namespaced: true,
           state: {
-            status: ""
+            status: "",
           },
           getters: {
-            GetStatus: state => {
+            GetStatus: (state) => {
               return state.status;
-            }
+            },
           },
           actions: {
             facebook_signUp: jest.fn(),
-            signUp: jest.fn()
-          }
-        }
-      }
+            signUp: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(SignUp, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {
@@ -170,7 +170,7 @@ describe("SignUp", () => {
     facebook.trigger("click");
     const facebook_login = jest.fn();
     wrapper.setMethods({
-      facebook_login: facebook_login
+      facebook_login: facebook_login,
     });
     expect("facebook_login").toHaveBeenCalled;
   });
@@ -179,7 +179,7 @@ describe("SignUp", () => {
     signup_btn.trigger("click");
     const signUp = jest.fn();
     wrapper.setMethods({
-      signUp: signUp
+      signUp: signUp,
     });
     expect("signUp").toHaveBeenCalled;
   });

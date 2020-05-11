@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="row  header m-0">
+    <div class="row header m-0">
       <h1>Get Premium</h1>
       <ul class="row justify-content-center m-0">
         <li class="col-lg-3 col-sm-3 col-md-3">
@@ -85,16 +85,16 @@
       <div class="premiumForm">
         <div v-if="!upgraded" class="invalid">
           <div id="error-icon">
-          <i class="fa fa-exclamation-circle"></i>
+            <i class="fa fa-exclamation-circle"></i>
           </div>
           <div id="errors">
-          <p v-if="!upgraded">Enter a valid credit card number.</p>
-          <p v-if="vsecurity">
-            Please enter the last 3 numbers on the back of your card (or 4
-            numbers on the front if Amex).
-          </p>
-          <p v-if="vmonth">Select the expiration month.</p>
-          <p v-if="vyear">Select the expiration year.</p>
+            <p v-if="!upgraded">Enter a valid credit card number.</p>
+            <p v-if="vsecurity">
+              Please enter the last 3 numbers on the back of your card (or 4
+              numbers on the front if Amex).
+            </p>
+            <p v-if="vmonth">Select the expiration month.</p>
+            <p v-if="vyear">Select the expiration year.</p>
           </div>
         </div>
         <p>Card number:</p>
@@ -168,7 +168,12 @@
           apply.
         </p>
 
-        <button class="costum-btn" id="premium-btn" @click.prevent="upgrade()" testid="get premium button">
+        <button
+          class="costum-btn"
+          id="premium-btn"
+          @click.prevent="upgrade()"
+          testid="get premium button"
+        >
           Get Premium
         </button>
       </div>
@@ -317,24 +322,22 @@
   font-size: 18px;
   padding: 14px 14px 12px;
   font-weight: 400;
-  
-
 }
-#error-icon{
-   display: inline-block;
-   width: 10%;
-   position: relative;
+#error-icon {
+  display: inline-block;
+  width: 10%;
+  position: relative;
   justify-content: right;
 }
-#errors{
+#errors {
   display: inline-block;
-   width: 100%;
-  p{
+  width: 100%;
+  p {
     font-size: 10px;
     margin: 0%;
     padding: 0%;
-     font-weight: 400;
-     text-align: left;
+    font-weight: 400;
+    text-align: left;
   }
 }
 .premiumForm {
@@ -414,7 +417,7 @@ import { mapGetters } from "vuex";
  */
 export default {
   name: "premiumform",
-  data: function() {
+  data: function () {
     return {
       CreditNumber: "",
       SecurityCode: "",
@@ -432,7 +435,7 @@ export default {
         { text: "September", value: "9", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
-        { text: "December", value: "12", disabled: false }
+        { text: "December", value: "12", disabled: false },
       ],
       Monthly: true,
       Yearly: false,
@@ -440,49 +443,49 @@ export default {
       nextMonth: "",
       expYear: [{ text: "Year", value: 0, disabled: true }],
       year: "0",
-      vyear:false,
-      vmonth:false,
-      vsecurity:false,
-      validform:false
+      vyear: false,
+      vmonth: false,
+      vsecurity: false,
+      validform: false,
     };
   },
-  methods:{
-    valid_month: function() {
-        if (this.month == "0") {
-          return this.vmonth=true;
-        } else {
-           return this.vmonth=false;
-        }
+  methods: {
+    valid_month: function () {
+      if (this.month == "0") {
+        return (this.vmonth = true);
+      } else {
+        return (this.vmonth = false);
+      }
     },
-    valid_year: function() {
-        if (this.year == "0") {
-          return this.vyear=true;
-        } else {
-           return this.vyear=false;
-        }
+    valid_year: function () {
+      if (this.year == "0") {
+        return (this.vyear = true);
+      } else {
+        return (this.vyear = false);
+      }
     },
-    valid_security: function() {
-        if (this.SecurityCode.length < 3) {
-          return this.vsecurity=true;
-        } else {
-           return this.vsecurity=false;
-        }
+    valid_security: function () {
+      if (this.SecurityCode.length < 3) {
+        return (this.vsecurity = true);
+      } else {
+        return (this.vsecurity = false);
+      }
     },
-    upgrade:function(){
-        this.valid_year();
-        this.valid_security();
-        this.valid_month();
-         var d = new Date(this.year+'-'+this.month+'-01');
+    upgrade: function () {
+      this.valid_year();
+      this.valid_security();
+      this.valid_month();
+      var d = new Date(this.year + "-" + this.month + "-01");
       let newuser = {
-           expiresDate:d,
-          cardNumber: this.CreditNumber,
-          isMonth:this.Monthly
-          };
-        this.$store.dispatch("Authorization/toPremium", newuser);
-    }
+        expiresDate: d,
+        cardNumber: this.CreditNumber,
+        isMonth: this.Monthly,
+      };
+      this.$store.dispatch("Authorization/toPremium", newuser);
+    },
   },
   watch: {
-    CreditNumber: function() {
+    CreditNumber: function () {
       var res = this.CreditNumber.replace(" ", "");
       var len = res.length;
       if (isNaN(res)) {
@@ -492,16 +495,16 @@ export default {
       //   this.formatCard();
       // }
     },
-    SecurityCode: function() {
+    SecurityCode: function () {
       if (isNaN(this.SecurityCode)) {
         var len = this.SecurityCode.length;
         this.SecurityCode = this.SecurityCode.substr(0, len - 1);
       }
-    }
+    },
   },
-  computed:{
-   ...mapGetters({
-      upgraded: "Authorization/upgraded"
+  computed: {
+    ...mapGetters({
+      upgraded: "Authorization/upgraded",
     }),
   },
   mounted() {
@@ -515,11 +518,11 @@ export default {
       var yearObj = {
         text: begYear.toString().substring(2, 4),
         value: begYear,
-        disabled: false
+        disabled: false,
       };
       begYear++;
       this.expYear.push(yearObj);
     }
-  }
+  },
 };
 </script>

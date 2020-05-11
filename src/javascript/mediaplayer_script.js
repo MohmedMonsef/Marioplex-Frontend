@@ -13,14 +13,14 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  }
+  },
 };
 
 ////////////////////////////////////////////////////////////
 export default {
-  data: function() {
+  data: function () {
     return {
-      song_state: false //0=>Not playing 1=>playing
+      song_state: false, //0=>Not playing 1=>playing
     };
   },
   methods: {
@@ -55,7 +55,7 @@ export default {
           song_id: this.song_id,
           album_id: this.albumId,
           playlist_id: this.playlistId,
-          is_playlist: this.isPlaylist
+          is_playlist: this.isPlaylist,
         };
         if (
           this.song_id == this.Get_Currentsong.track._id &&
@@ -63,9 +63,7 @@ export default {
           this.playlistId == this.Get_Currentsong.playlistId
         ) {
           this.$store.dispatch("Mediaplayer/playsong_state", info);
-        }
-        else
-        {
+        } else {
           this.$store.dispatch("Queue/CreateQueue", info);
         }
       } else {
@@ -74,7 +72,7 @@ export default {
           index: this.Index,
           album_id: this.Get_Currentsong.track.albumId,
           playlist_id: this.Get_Currentsong.playlistId,
-          is_playlist: this.Get_Currentsong.isPlaylist
+          is_playlist: this.Get_Currentsong.isPlaylist,
         };
         this.$store.dispatch("Mediaplayer/playsong_state", info);
       }
@@ -92,29 +90,28 @@ export default {
      * this function is to get the previous song in playlist or album
      * @public This is a public method
      */
-    prev_song: function() {
-      if (this.Index != 0)
-        this.$store.dispatch("Mediaplayer/prevsong_state");
+    prev_song: function () {
+      if (this.Index != 0) this.$store.dispatch("Mediaplayer/prevsong_state");
     },
     /**
      * this function is to get the next song in playlist or album
      * @public This is a public method
      */
-    next_song: function() {
+    next_song: function () {
       this.$store.dispatch("Mediaplayer/nextsong_state");
     },
     /**
      * this function is used to random the play of songs inside the playlist and it appears also in the queue
      * @public This is a public method
      */
-    random_songs: function() {
+    random_songs: function () {
       this.$store.dispatch("Mediaplayer/shufflesong_state");
     },
     /**
      * this function is to like the current song and save it to user's liked tracks page
      * @public This is a public method
      */
-    likecurrentsong: function() {
+    likecurrentsong: function () {
       if (!this.liked) {
         this.$store.dispatch("Mediaplayer/Like", "");
         toast.show("Added to your Liked Songs");
@@ -127,17 +124,17 @@ export default {
      * this function is used to change the router according to place stands for if inside playlist or album then move to queue on click and vice versa
      * @public This is a public method
      */
-    queue_alter: function() {
+    queue_alter: function () {
       if (this.$router.currentRoute.path == "/HomeWebPlayer/queue") {
         this.$router.go(-1);
       } else {
         this.$router.push("/HomeWebPlayer/queue");
       }
-    }
+    },
   },
   computed: {
     ...mapState({
-      media_player: state => state.mediaplayer.songs
+      media_player: (state) => state.mediaplayer.songs,
     }),
     ...mapGetters({
       playicon: "Mediaplayer/playicon",
@@ -148,7 +145,7 @@ export default {
       duration: "Mediaplayer/duration",
       volume: "Mediaplayer/volume",
       Index: "Mediaplayer/Index",
-      Get_Currentsong: "Mediaplayer/Get_Currentsong"
-    })
-  }
+      Get_Currentsong: "Mediaplayer/Get_Currentsong",
+    }),
+  },
 };

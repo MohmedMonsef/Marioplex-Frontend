@@ -14,7 +14,6 @@
           >
             Get Spotify free
           </router-link>
-         
         </div>
       </div>
     </div>
@@ -70,7 +69,6 @@ h4 {
 }
 @media screen and (max-width: 1000px) {
   .home-background {
- 
     background-repeat: no-repeat;
     background-size: 800px;
     width: 878px;
@@ -107,8 +105,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus"
-    })
-  }
+      isLoggedIn: "Authorization/GetStatus",
+    }),
+  },
 };
 </script>

@@ -1,19 +1,23 @@
 <template>
-<div>
+  <div>
     <h2 v-if="POPalbums1.albums.length">Popular albums</h2>
-      <div class="container">
-        <div class="row">
-          <show-popularalbums
-            v-for="POPalbum in POPalbums1.albums"
-            :key="POPalbum.id"
-            :images="POPalbum.images"
-            :name="POPalbum.name"
-            :artistname="POPalbum.artist.name"
-            :albumId="POPalbum.id"
-          />
-        </div>
+    <div class="container">
+      <div class="row">
+        <show-popularalbums
+          v-for="POPalbum in POPalbums1.albums"
+          :key="POPalbum.id"
+          :images="
+            'http://52.205.254.29/api/images/' +
+            POPalbum.images[0]._id +
+            '?belongs_to=album'
+          "
+          :name="POPalbum.name"
+          :artistname="POPalbum.artist.name"
+          :albumId="POPalbum.id"
+        />
       </div>
-</div>
+    </div>
+  </div>
 </template>
 <style scoped>
 h2 {
@@ -31,18 +35,17 @@ h2 {
 import ShowPopularalbums from "@/components/ShowPopularAlbums.vue";
 import { mapGetters } from "vuex";
 export default {
-    name: "AllAlbums",
-     components: {
-  ShowPopularalbums,
-     },
-      mounted() {
+  name: "AllAlbums",
+  components: {
+    ShowPopularalbums,
+  },
+  mounted() {
     this.$store.dispatch("ShowWebPlayer/showPopularAlbums");
-      },
-      computed: {
+  },
+  computed: {
     ...mapGetters({
-       POPalbums1: "ShowWebPlayer/POPalbums",
-    })
-      }
-    
-}
+      POPalbums1: "ShowWebPlayer/POPalbums",
+    }),
+  },
+};
 </script>

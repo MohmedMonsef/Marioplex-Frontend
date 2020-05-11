@@ -42,30 +42,30 @@ describe("SongComponent", () => {
                 timeSignature: "2020-03-29T16:37:12.554Z",
                 valence: 70,
                 __v: 0,
-                images: []
+                images: [],
               },
               isLiked: true,
               album: {
                 name: "HELLO KIDS",
                 _id: "5e80cc2b14c8566d6cd9b40f",
-                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
+                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" },
               },
               isPlaylist: true,
               playlistId: "5e891c8edb96e26db4efc790",
-              isPlayable: true
+              isPlayable: true,
             },
-            playicon: "false"
+            playicon: "false",
           },
           getters: {
-            Get_Currentsong: state => {
+            Get_Currentsong: (state) => {
               return state.currentsong;
             },
-            playicon: state => {
+            playicon: (state) => {
               return state.playicon;
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     });
     wrapper = shallowMount(SongComponent, {
       localVue,
@@ -74,8 +74,8 @@ describe("SongComponent", () => {
         song_name: "my song",
         song_album: "burtonhollow",
         song_artists: "civil wars",
-        song_length: 500
-      }
+        song_length: 500,
+      },
     });
   });
   it("renders", () => {
@@ -99,11 +99,11 @@ describe("SongComponent", () => {
     const music_icon = wrapper.find(".music_icon");
     music_icon.trigger("click");
     wrapper.setData({
-      isclicked: true
+      isclicked: true,
     });
     const playSong = jest.fn();
     wrapper.setMethods({
-      playSong: playSong
+      playSong: playSong,
     });
     expect("playSong").toHaveBeenCalled;
   });
@@ -112,11 +112,11 @@ describe("SongComponent", () => {
       localVue,
       store,
       propsData: {
-        isLiked: true
-      }
+        isLiked: true,
+      },
     });
     ifliked.setData({
-      show: false
+      show: false,
     });
     const menu = ifliked.find("#icondiv");
     menu.trigger("click");
@@ -134,11 +134,11 @@ describe("SongComponent", () => {
       localVue,
       store,
       propsData: {
-        isLiked: false
-      }
+        isLiked: false,
+      },
     });
     ifnotliked.setData({
-      show: false
+      show: false,
     });
     const menu = ifnotliked.find("#icondiv");
     menu.trigger("click");
@@ -152,15 +152,14 @@ describe("SongComponent", () => {
     expect(isnotliked.exists()).toBe(true);
   });
   it("if mouse hover on component", async () => {
-    
     let icon = wrapper.find(".fa-music");
     expect(icon.exists()).toBe(true);
 
     wrapper.setData({
-      hover:true
+      hover: true,
     });
     await wrapper.vm.$nextTick();
     icon = wrapper.find(".fa-play");
     expect(icon.exists()).toBe(true);
-});
+  });
 });

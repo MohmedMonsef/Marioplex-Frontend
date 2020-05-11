@@ -12,7 +12,12 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
         <emptytracks v-if="this.playlist_length == 0" />
-        <draggable ghost-class="ghost" class="reordertracks" @end="ReorderTracks" v-else>
+        <draggable
+          ghost-class="ghost"
+          class="reordertracks"
+          @end="ReorderTracks"
+          v-else
+        >
           <transition-group type="transition" name="flip-list">
             <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
             <song-component
@@ -95,12 +100,12 @@ export default {
     //   type: Boolean
     // }
   },
-  data: function() {
+  data: function () {
     return {
       show: false,
       oldIndex: "",
       newIndex: "",
-      playlist_id: ""
+      playlist_id: "",
     };
   },
   components: {
@@ -108,7 +113,7 @@ export default {
     draggable,
     playlist,
     emptytracks,
-    playlistinfo
+    playlistinfo,
     // playlistpopup
   },
   methods: {
@@ -133,30 +138,30 @@ export default {
       let payload = {
         start: this.oldIndex,
         before: this.newIndex,
-        playlist_id: this.playlist_id
+        playlist_id: this.playlist_id,
       };
       console.log("in playlist_view ", this.playlist_id);
       this.$store.dispatch("Playlist/ReorderTracks", payload);
-    }
+    },
   },
   computed: {
     ...mapState({
-      showpopup: state => state.playlistpopup.showModal
+      showpopup: (state) => state.playlistpopup.showModal,
     }),
     ...mapGetters({
       playlist_tracks: "Playlist/playlist_tracks",
       playlist_length: "Playlist/playlist_length",
-      playlist_load: "Playlist/playlist_loaded"
-    })
+      playlist_load: "Playlist/playlist_loaded",
+    }),
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch(
       "Playlist/playlist_tracks",
       this.$route.params.playlist_id
     ),
       console.log("Playlist_id", this.$route.params.playlist_id);
     console.log("nihal here is the length", this.playlist_length);
-  }
+  },
 };
 </script>
 >

@@ -17,25 +17,25 @@ describe("playlist", () => {
           namespaced: true,
           state: {
             playlist_name: "NEW PlayList",
-            owner_name: "User"
+            owner_name: "User",
           },
           getters: {
-            playlist_name: state => state.playlist_name,
-            owner_name: state => state.owner_name
-          }
-        }
-      }
+            playlist_name: (state) => state.playlist_name,
+            owner_name: (state) => state.owner_name,
+          },
+        },
+      },
     });
     wrapper = shallowMount(playlist, {
       localVue,
       store,
-      propsData: {}
+      propsData: {},
     });
   });
-  it("renders" , () => {
+  it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance" , () => {
+  it("renders a vue instance", () => {
     expect(wrapper.isVueInstance()).toBe(true);
   });
   it("renders empty playlist information", () => {
@@ -43,20 +43,19 @@ describe("playlist", () => {
     expect(playlist_name.text()).toBe("NEW PlayList");
   });
   it("renders empty playlist information", () => {
-    const owner_name = wrapper.find('#owner_name');
+    const owner_name = wrapper.find("#owner_name");
     expect(owner_name.text()).toBe("User");
   });
   it("list icon click", () => {
-      wrapper.setData({
-        show:false
-      });
-      const listicon = wrapper.find("#list_icon");
-      listicon.trigger("click");
-      const toggleShow = jest.fn();
-      wrapper.setMethods({
-        toggleShow:toggleShow,
-      });
-      expect(toggleShow).toHaveBeenCalled;
+    wrapper.setData({
+      show: false,
+    });
+    const listicon = wrapper.find("#list_icon");
+    listicon.trigger("click");
+    const toggleShow = jest.fn();
+    wrapper.setMethods({
+      toggleShow: toggleShow,
+    });
+    expect(toggleShow).toHaveBeenCalled;
   });
-
 });

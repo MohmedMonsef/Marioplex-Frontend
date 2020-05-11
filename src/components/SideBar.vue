@@ -1,11 +1,11 @@
 <template>
-  <div class="SideBar" testid="sidebar component"  >
+  <div class="SideBar" testid="sidebar component">
     <!-- spotify logo -->
     <router-link to="/HomeWebPlayer" testid="logo in sidebar">
       <img
         src="../assets/spotify logo.png"
         alt="Logo"
-        style="width:150px; height:65px; margin:20px;"
+        style="width: 150px; height: 65px; margin: 20px;"
       />
     </router-link>
     <!-- navigations to pages -->
@@ -75,7 +75,7 @@
           >
             <img
               src="../assets/like.png"
-              style="width:30px; height:30px; margin-right: 15px; "
+              style="width: 30px; height: 30px; margin-right: 15px;"
             />Liked Songs
           </router-link>
           <!-- router link should navigate to liked songs page -->
@@ -106,16 +106,14 @@
         v-if="showinput"
         id="in_rename"
         v-model="newname"
-        @keyup.enter="ChangePlaylistName(),showinputfield()"
-       
+        @keyup.enter="ChangePlaylistName(), showinputfield()"
       />
       <ul v-if="showdelete" id="right-click-menu">
         <li class="rename_input" @click="showinputfield()">Rename</li>
         <li class="delete_div" @click="changeModalStateDelete()">Delete</li>
-        
+
         <li class="rename_input" @click="PubPriChange()">Secret</li>
         <li class="rename_input" @click="PubPriChange()">Public</li>
-        
       </ul>
     </div>
   </div>
@@ -270,7 +268,7 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function() {
+  data: function () {
     return {
       show: false,
       showdelete: false,
@@ -279,7 +277,7 @@ export default {
       posy: "",
       newname: "",
       p_id: "",
-      public:true
+      public: true,
     };
   },
   mounted() {
@@ -291,10 +289,9 @@ export default {
       playlists1: "Playlist/playlists",
       showModalDelete: "Playlist/showModalDelete",
       isLoggedIn: "Authorization/GetStatus",
-      showinput:"Playlist/showinput"
+      showinput: "Playlist/showinput",
       // renamepl:"creatplaylist/renamepl"
-
-    })
+    }),
   },
   name: "SideBar",
   methods: {
@@ -318,7 +315,7 @@ export default {
      */
     setsearch() {
       this.$store.dispatch("Search/search_V", "");
-      this.$store.dispatch("Search/clear")
+      this.$store.dispatch("Search/clear");
     },
     /**
      * triggers navigating to search router
@@ -329,9 +326,9 @@ export default {
       this.$store.dispatch("Search/searchfocus", this.searchfocus);
     },
     showinputfield() {
-        this.$store.dispatch("Playlist/showinputfield");
+      this.$store.dispatch("Playlist/showinputfield");
       //this.showinput = !this.showinput;
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         var i = document.getElementById("in_rename");
         console.log("the element", this.posy);
         if (i) {
@@ -339,7 +336,6 @@ export default {
 
           // this.showinput = true;
         }
-       
       });
     },
     getpos() {
@@ -350,26 +346,25 @@ export default {
       // this.showinput = false;
       let payload = {
         name: this.newname,
-        playlist_id: this.p_id
+        playlist_id: this.p_id,
       };
       console.log("inputstaplaylistids", this.showinput);
       console.log("playlistname", this.newname);
       console.log("id", this.p_id);
       this.$store.dispatch("Playlist/ChangePlaylistName", payload);
     },
-    PubPriChange(){
-      if(this.public){
-      this.public=false;
+    PubPriChange() {
+      if (this.public) {
+        this.public = false;
+      } else {
+        this.public = true;
       }
-      else{
-        this.public=true;
-      }
-      let payload={
-      public:this.public,
-      playlist_id:this.p_id
+      let payload = {
+        public: this.public,
+        playlist_id: this.p_id,
       };
-      this.$store.dispatch("Playlist/PubPriChange",payload)
-    }
-  }
+      this.$store.dispatch("Playlist/PubPriChange", payload);
+    },
+  },
 };
 </script>

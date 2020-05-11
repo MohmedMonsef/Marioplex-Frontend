@@ -1,12 +1,12 @@
 <template>
   <div class="col-40%" id="top-card">
-    <h2 style="margin-bottom:15px;" class="col-lg-30%">TopResult</h2>
+    <h2 style="margin-bottom: 15px;" class="col-lg-30%">TopResult</h2>
     <div
       class="card rounded col-lg-30%"
       testid="top card"
       @mouseover="hover = true"
       @mouseleave="hover = false"
-      style="max-width:100%;"
+      style="max-width: 100%;"
     >
       <img
         v-if="type == 'Artist'"
@@ -14,14 +14,26 @@
         testid="artistimage"
         class="col-md-4 img-card rounded-circle"
         alt="..."
-        style="max-width: 40%;max-height: 120px; display:block; margin-left:0; margin-bottom:15px;"
+        style="
+          max-width: 40%;
+          max-height: 120px;
+          display: block;
+          margin-left: 0;
+          margin-bottom: 15px;
+        "
       />
       <img
         v-if="type !== 'Artist'"
         :src="image"
         class="col-md-4 img-card"
         alt="..."
-        style="max-width: 40%;max-height: 100px; display:block; margin-left:0; margin-bottom:15px;"
+        style="
+          max-width: 40%;
+          max-height: 100px;
+          display: block;
+          margin-left: 0;
+          margin-bottom: 15px;
+        "
       />
       <!-- <img
                 v-if="type == 'Artist'"
@@ -42,60 +54,69 @@
         <div class="col-6">
           <h2 class="card-title">{{ name }}</h2>
           <div class="row">
-          <div class="typecont col-6">
-            <p
-              class="card-text p"
-              testid="type"
-              id="typecont"
-            >
-              {{ type }}
-            </p>
-          </div>
-          <div class="col-5">
-        <router-link style="color:white"
-        v-if="type == 'Track' || type == 'Album'"
-        :to="{ path: '/HomeWebPlayer/Artist/' + artistId }"
-        class="stretched-link"
-        id="carglink"
-        testid="cardlink"
-      >{{artistName}}</router-link>
-       <router-link style="color:white"
-        v-if="type == 'playlist' && ownerType=='Artist' "
-        :to="{ path: '/HomeWebPlayer/Artist/' + ownerId }"
-        class="stretched-link"
-        id="carglink"
-        testid="cardlink"
-      >{{ownerName}}</router-link>
-       <router-link style="color:white"
-        v-if="type == 'playlist' && ownerType=='user' "
-        to='/' 
-        class="stretched-link"
-        id="carglink"
-        testid="cardlink"
-      >{{ownerName}}</router-link>
-          </div>
+            <div class="typecont col-6">
+              <p class="card-text p" testid="type" id="typecont">
+                {{ type }}
+              </p>
+            </div>
+            <div class="col-5">
+              <router-link
+                style="color: white;"
+                v-if="type == 'Track' || type == 'Album'"
+                :to="{ path: '/HomeWebPlayer/Artist/' + artistId }"
+                class="stretched-link"
+                id="carglink"
+                testid="cardlink"
+                >{{ artistName }}</router-link
+              >
+              <router-link
+                style="color: white;"
+                v-if="type == 'playlist' && ownerType == 'Artist'"
+                :to="{ path: '/HomeWebPlayer/Artist/' + ownerId }"
+                class="stretched-link"
+                id="carglink"
+                testid="cardlink"
+                >{{ ownerName }}</router-link
+              >
+              <router-link
+                style="color: white;"
+                v-if="type == 'playlist' && ownerType == 'user'"
+                to="/"
+                class="stretched-link"
+                id="carglink"
+                testid="cardlink"
+                >{{ ownerName }}</router-link
+              >
+            </div>
           </div>
         </div>
         <div class="playcon col-1" v-if="hover">
-           <router-link
-        v-if="type == 'playlist'"
-        :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"
-        id="carglink"
-        testid="cardlink"
-      ><i class="fa fa-play-circle" testid="topplay icon"></i></router-link>
-       <router-link
-        v-if="type == 'album'"
-        :to="{ path: '../album/' + albumId }"
-        id="carglink"
-        testid="cardlink"
-      ><i class="fa fa-play-circle" testid="topplay icon"></i></router-link>
-       <router-link
-        v-if="type == 'Track'"
-        :to="{ path: '../album/' + albumId }"
-        id="carglink"
-        testid="cardlink"
-      ><i class="fa fa-play-circle" testid="topplay icon"></i></router-link>
-      <i   v-if="type == 'Artist'|| type == 'user'" class="fa fa-play-circle" testid="topplay icon"></i>
+          <router-link
+            v-if="type == 'playlist'"
+            :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"
+            id="carglink"
+            testid="cardlink"
+            ><i class="fa fa-play-circle" testid="topplay icon"></i
+          ></router-link>
+          <router-link
+            v-if="type == 'album'"
+            :to="{ path: '../album/' + albumId }"
+            id="carglink"
+            testid="cardlink"
+            ><i class="fa fa-play-circle" testid="topplay icon"></i
+          ></router-link>
+          <router-link
+            v-if="type == 'Track'"
+            :to="{ path: '../album/' + albumId }"
+            id="carglink"
+            testid="cardlink"
+            ><i class="fa fa-play-circle" testid="topplay icon"></i
+          ></router-link>
+          <i
+            v-if="type == 'Artist' || type == 'user'"
+            class="fa fa-play-circle"
+            testid="topplay icon"
+          ></i>
         </div>
       </div>
       <router-link
@@ -105,8 +126,8 @@
         id="carglink"
         testid="cardlink"
       ></router-link>
-      
-       <router-link
+
+      <router-link
         v-if="type == 'user'"
         to="/"
         class="stretched-link"
@@ -212,9 +233,9 @@ i {
  */
 export default {
   name: "top",
-  data: function() {
+  data: function () {
     return {
-      hover: false
+      hover: false,
     };
   },
   props: {
@@ -222,50 +243,50 @@ export default {
      * src for the img displayed
      */
     image: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     type: {
-      type: String
+      type: String,
     },
     /**
      *if artist to go his page
      */
     artistId: {
-      type: String
+      type: String,
     },
     artistName: {
-      type: String
+      type: String,
     },
     /**
      *to navigate to album page
      */
     albumId: {
       type: String,
-      default: "0"
+      default: "0",
     },
     playlist_id: {
       type: String,
 
-      default: "0"
+      default: "0",
     },
     track_id: {
-      type: String
+      type: String,
     },
     ownerId: {
-      type: String
+      type: String,
     },
     ownerName: {
-      type: String
+      type: String,
     },
-    ownerType:{
-       type: String
+    ownerType: {
+      type: String,
     },
     Id: {
-      type: String
-    }
-  }
+      type: String,
+    },
+  },
 };
 </script>

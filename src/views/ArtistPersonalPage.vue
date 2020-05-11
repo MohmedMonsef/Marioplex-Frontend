@@ -324,20 +324,20 @@ import EditBio from "../components/EditBio";
  */
 export default {
   name: "ArtistPersonalPage",
-  data: function() {
+  data: function () {
     return {};
   },
   components: {
     UploadSong,
     // DeleteSong,
     ArtistHeader,
-    EditBio
+    EditBio,
   },
   computed: {
     ...mapState({
-      show: state => state.ArtistProperties.showModal,
-      showupload: state => state.ArtistProperties.showModalUpload
-    })
+      show: (state) => state.ArtistProperties.showModal,
+      showupload: (state) => state.ArtistProperties.showModalUpload,
+    }),
   },
   methods: {
     /**
@@ -353,7 +353,7 @@ export default {
      */
     changeModalStateUpload() {
       this.$store.dispatch("ArtistProperties/toggleModalUpload");
-    }
-  }
+    },
+  },
 };
 </script>
