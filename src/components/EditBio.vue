@@ -252,19 +252,19 @@ import { mapGetters } from "vuex";
  */
 export default {
   name: "EditBio",
-  data: function () {
+  data: function() {
     return {
       Name: "",
       Genre: "",
-      Description: "",
+      Description: ""
     };
   },
   //showModal:false,
   components: {},
   computed: {
     ...mapGetters({
-      showModal: "ArtistProperties/showModalClaim",
-    }),
+      showModal: "ArtistProperties/showModalClaim"
+    })
   },
   methods: {
     /**
@@ -282,11 +282,11 @@ export default {
       let payload = {
         Name: this.Name,
         Genre: this.Genre,
-        Description: this.Description,
+        Description: this.Description
       };
       console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditBio", payload);
-    },
-  },
+    }
+  }
 };
 </script>

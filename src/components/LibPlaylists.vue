@@ -104,40 +104,40 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
-      hover: false,
+      hover: false
     };
   },
   name: "lib-playlists",
   props: {
     name: {
-      type: String,
+      type: String
     },
     images: {
-      type: String,
+      type: String
     },
     ownerId: {
-      type: String,
+      type: String
     },
     playlist_id: {
-      type: String,
+      type: String
     },
     ownerName: {
-      type: String,
-    },
+      type: String
+    }
   },
   computed: {
     ...mapGetters({
       Username: "Authorization/Username",
-      likedplaylist: "Playlist/likeplaylist",
-    }),
+      likedplaylist: "Playlist/likeplaylist"
+    })
   },
   filters: {
-    shorten: function (value) {
+    shorten: function(value) {
       if (value.length > 17) return value.substring(0, 17) + " ...";
       else return value;
-    },
-  },
+    }
+  }
 };
 </script>

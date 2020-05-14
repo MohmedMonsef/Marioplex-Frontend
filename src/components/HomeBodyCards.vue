@@ -1,8 +1,9 @@
 <template>
-  <div class="row justify-content-center homecard px-0">
+  <div class="row justify-content-center homecard px-0"
+   :style="{ backgroundImage: `url(${ getImg })`}"
+   @click="navigate">
     <div class="layer px-0 m-0">
-      <!-- <h2>{{name}}</h2> -->
-      <h2>xx</h2>
+      <h2>{{ name }}</h2>
       <p>PLAY NOW</p>
     </div>
   </div>
@@ -11,7 +12,6 @@
 .homecard {
   display: inline-block;
   float: none;
-  background: url("../assets/homecard.jpg");
   position: relative;
   width: 375px;
   height: 375px;
@@ -81,21 +81,35 @@
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
-      hover: false,
+      hover: false
     };
   },
   props: {
     name: {
-      type: String,
+      type: String
     },
     images: {
-      type: String,
+      type: String
     },
-    playlist_id: {
-      type: String,
-    },
+    playlistId: {
+      type: String
+    }
+  },
+  computed: {
+    getImg () {
+      let img = "http://52.205.254.29/api/images/" +
+        this.images +
+        "?belongs_to=playlist";
+
+      return  img;
+    }
+  },
+  methods: {
+  navigate(){
+    this.$router.push("/HomeWebPlayer/playlist/"+this.playlistId)
+  }
   },
 };
 </script>

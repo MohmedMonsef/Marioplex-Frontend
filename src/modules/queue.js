@@ -93,7 +93,7 @@ export default {
               info.is_playlist
           )
           .then(() => {
-            store.dispatch("Mediaplayer/get_currentsong");
+            store.dispatch("Mediaplayer/get_currentsong",true);
             store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch((error) => {
@@ -110,7 +110,7 @@ export default {
               info.is_playlist
           )
           .then(() => {
-            store.dispatch("Mediaplayer/get_currentsong");
+            store.dispatch("Mediaplayer/get_currentsong",true);
             store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch((error) => {

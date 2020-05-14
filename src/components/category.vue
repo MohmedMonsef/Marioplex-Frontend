@@ -59,14 +59,14 @@ export default {
   name: "category",
   props: {
     image: {
-      type: String,
+      type: String
     },
     name: {
-      type: String,
+      type: String
     },
     categoryId: {
-      type: String,
-    },
+      type: String
+    }
   },
   methods: {
     setcategoryname() {
@@ -75,7 +75,7 @@ export default {
         "Categorys/categoryname",
         document.getElementById("categoryname").innerHTML
       );
-    },
-  },
+    }
+  }
 };
 </script>

@@ -17,12 +17,12 @@ import homeBodyUser from "@/components/HomeBodyUser.vue";
 export default {
   components: {
     homeBodyNoUser,
-    homeBodyUser,
+    homeBodyUser
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus",
-    }),
-  },
+      isLoggedIn: "Authorization/GetStatus"
+    })
+  }
 };
 </script>

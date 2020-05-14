@@ -101,39 +101,39 @@ i {
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       hover: false,
-      routing: "",
+      routing: ""
     };
   },
   name: "lib-albums",
   props: {
     images: {
-      type: String,
+      type: String
     },
     name: {
-      type: String,
+      type: String
     },
     artistname: {
-      type: String,
+      type: String
     },
     albumId: {
-      type: String,
+      type: String
     },
     artistId: {
-      type: String,
-    },
+      type: String
+    }
   },
   mounted() {
     if (this.$route.path == "/HomeWebPlayer/search") this.routing = "album/";
     else this.routing = "../album/";
   },
   filters: {
-    shorten: function (value) {
+    shorten: function(value) {
       if (value.length > 17) return value.substring(0, 17) + " ...";
       else return value;
-    },
-  },
+    }
+  }
 };
 </script>

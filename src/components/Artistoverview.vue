@@ -23,8 +23,8 @@
           :albumId="album._id"
           :images="
             'http://52.205.254.29/api/images/' +
-            album.images[0]._id +
-            '?belongs_to=album'
+              album.images[0]._id +
+              '?belongs_to=album'
           "
           :name="album.name"
         />
@@ -55,24 +55,24 @@ import SongComponent from "@/components/SongComponent.vue";
 import homecards from "@/components/ArtistHomeCards.vue";
 import { mapGetters } from "vuex";
 export default {
-  data: function () {
+  data: function() {
     return {
-      artistid: "",
+      artistid: ""
     };
   },
   name: "ArtistProfile",
   components: {
     SongComponent,
-    homecards,
+    homecards
   },
   computed: {
     ...mapGetters({
       artist_tracks: "ArtistPage/artist_tracks",
       artist_albums: "ArtistPage/artist_albums",
-      tracks_length: "ArtistPage/tracks_length",
-    }),
+      tracks_length: "ArtistPage/tracks_length"
+    })
   },
-  created: function () {
+  created: function() {
     this.artistid = this.$route.params.artist_id;
     this.$store.dispatch(
       "ArtistPage/artist_tracks",
@@ -85,6 +85,6 @@ export default {
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
-  },
+  }
 };
 </script>

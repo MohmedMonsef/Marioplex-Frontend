@@ -90,18 +90,18 @@ import ArtistOverview from "@/components/ArtistOverview.vue";
 import RelatedArtists from "@/components/RelatedArtists.vue";
 import About from "@/components/AboutArtist.vue";
 export default {
-  data: function () {
+  data: function() {
     return {
       overview: true,
       relatedartists: false,
-      about: false,
+      about: false
     };
   },
   name: "Artistnavbar",
   components: {
     ArtistOverview,
     RelatedArtists,
-    About,
-  },
+    About
+  }
 };
 </script>

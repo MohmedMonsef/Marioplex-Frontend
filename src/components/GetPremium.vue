@@ -417,7 +417,7 @@ import { mapGetters } from "vuex";
  */
 export default {
   name: "premiumform",
-  data: function () {
+  data: function() {
     return {
       CreditNumber: "",
       SecurityCode: "",
@@ -435,7 +435,7 @@ export default {
         { text: "September", value: "9", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
-        { text: "December", value: "12", disabled: false },
+        { text: "December", value: "12", disabled: false }
       ],
       Monthly: true,
       Yearly: false,
@@ -446,32 +446,32 @@ export default {
       vyear: false,
       vmonth: false,
       vsecurity: false,
-      validform: false,
+      validform: false
     };
   },
   methods: {
-    valid_month: function () {
+    valid_month: function() {
       if (this.month == "0") {
         return (this.vmonth = true);
       } else {
         return (this.vmonth = false);
       }
     },
-    valid_year: function () {
+    valid_year: function() {
       if (this.year == "0") {
         return (this.vyear = true);
       } else {
         return (this.vyear = false);
       }
     },
-    valid_security: function () {
+    valid_security: function() {
       if (this.SecurityCode.length < 3) {
         return (this.vsecurity = true);
       } else {
         return (this.vsecurity = false);
       }
     },
-    upgrade: function () {
+    upgrade: function() {
       this.valid_year();
       this.valid_security();
       this.valid_month();
@@ -479,13 +479,13 @@ export default {
       let newuser = {
         expiresDate: d,
         cardNumber: this.CreditNumber,
-        isMonth: this.Monthly,
+        isMonth: this.Monthly
       };
       this.$store.dispatch("Authorization/toPremium", newuser);
-    },
+    }
   },
   watch: {
-    CreditNumber: function () {
+    CreditNumber: function() {
       var res = this.CreditNumber.replace(" ", "");
       var len = res.length;
       if (isNaN(res)) {
@@ -495,17 +495,17 @@ export default {
       //   this.formatCard();
       // }
     },
-    SecurityCode: function () {
+    SecurityCode: function() {
       if (isNaN(this.SecurityCode)) {
         var len = this.SecurityCode.length;
         this.SecurityCode = this.SecurityCode.substr(0, len - 1);
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
-      upgraded: "Authorization/upgraded",
-    }),
+      upgraded: "Authorization/upgraded"
+    })
   },
   mounted() {
     var today = new Date();
@@ -518,11 +518,11 @@ export default {
       var yearObj = {
         text: begYear.toString().substring(2, 4),
         value: begYear,
-        disabled: false,
+        disabled: false
       };
       begYear++;
       this.expYear.push(yearObj);
     }
-  },
+  }
 };
 </script>

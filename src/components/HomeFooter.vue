@@ -2,7 +2,7 @@
   <div class="row justify-content-center footer px-0 m-0">
     <!-- <div class="col-9"> -->
     <div class="col-sm-2 logo-div">
-      <router-link to="/"> <img src="../assets/logo.png" /></router-link>
+      <router-link to="/"> <img src="../assets/logo.png"/></router-link>
     </div>
     <!-- <div class="col-sm-6"> -->
     <div class="col-sm-2">
@@ -32,9 +32,17 @@
       </ul>
     </div>
     <div class="col-sm-2 icon-div">
-      <span><i class="fa fa-facebook-f"></i></span>
-      <span><i class="fa fa-twitter"></i></span>
-      <span><i class="fa fa-instagram"></i></span>
+      <span
+        ><a href="https://www.facebook.com/spotifyegypt"
+          ><i class="fa fa-facebook-f"></i></a
+      ></span>
+      <span
+        ><a href="https://twitter.com/spotify"><i class="fa fa-twitter"></i></a
+      ></span>
+      <span
+        ><a href="https://www.instagram.com/spotify/"
+          ><i class="fa fa-instagram"></i></a
+      ></span>
     </div>
     <!-- </div> -->
   </div>

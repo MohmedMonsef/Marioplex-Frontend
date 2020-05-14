@@ -19,12 +19,13 @@
     </div>
 
     <div class="container-fluid row m-0" id="recently-played">
-      <homeBodyCard />
-      <homeBodyCard />
-      <homeBodyCard />
-      <homeBodyCard />
-      <homeBodyCard />
-      <homeBodyCard />
+      <homeBodyCard
+      v-for="(homePlaylist,i) in homePlaylists"
+      :key="i"
+      :images="homePlaylist.images[0]._id"
+      :playlistId="homePlaylist.id"
+      :name="homePlaylist.name"
+       />
     </div>
   </div>
 </template>
@@ -96,16 +97,16 @@ import homeBodyCard from "@/components/HomeBodyCards.vue";
  */
 export default {
   components: {
-    homeBodyCard,
+    homeBodyCard
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
-      RecentlyPlayed: "ShowWebPlayer/RecenlyPlayed",
-    }),
+      homePlaylists: "ShowWebPlayer/homePlaylists"
+    })
   },
   beforeCreate() {
-    this.$store.dispatch("ShowWebPlayer/RecenlyPlayed", 6);
-  },
+    this.$store.dispatch("ShowWebPlayer/homePlaylists");
+  }
 };
 </script>

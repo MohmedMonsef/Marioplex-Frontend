@@ -243,17 +243,17 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 export default {
   computed: {
     ...mapState({
-      Playlists: (state) => state.Playlist.Playlists,
+      Playlists: state => state.Playlist.Playlists
     }),
     ...mapGetters({
       showModalDelete: "Playlist/showModalDelete",
-      todelete: "Playlist/todelete",
-    }),
+      todelete: "Playlist/todelete"
+    })
   },
   methods: {
     /**
@@ -274,14 +274,14 @@ export default {
       this.$store.dispatch("Playlist/DeletePlaylist", this.todelete);
       toast.show("Removed from your library");
       //console.log("removed");
-    },
+    }
   },
   mixins: [song_functions],
-  created: function () {
+  created: function() {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function () {
+  destroyed: function() {
     window.removeEventListener("click", this.hideshow);
-  },
+  }
 };
 </script>

@@ -68,6 +68,6 @@ p {
  * @example [none]
  */
 export default {
-  name: "lib-albums-default",
+  name: "lib-albums-default"
 };
 </script>

@@ -82,6 +82,6 @@
  * @example [none]
  */
 export default {
-  name: "ArtistHeader",
+  name: "ArtistHeader"
 };
 </script>

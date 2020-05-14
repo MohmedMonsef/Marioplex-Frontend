@@ -2,7 +2,11 @@
   <div class="playlist_info">
     <div class="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
       <img
-        :src="playlist_image"
+        :src="
+          'http://52.205.254.29/api/images/' +
+            playlist_image +
+            '?belongs_to=playlist'
+        "
         alt="playlist_image"
         class="playlist_image"
         id="playlist_image"
@@ -264,7 +268,7 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  },
+  }
 };
 /**
  *  * apperars when there is tracks in playlist
@@ -272,10 +276,10 @@ const toast = {
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       show: false,
-      play: false,
+      play: false
     };
   },
   mixins: [song_functions],
@@ -334,7 +338,7 @@ export default {
      * changes image style on hover
      * @public This is a public method
      */
-    onhoverimage: function () {
+    onhoverimage: function() {
       var playlistimage = document.getElementById("playlist_image");
       playlistimage.style.opacity = "0.3";
       if (!this.play) {
@@ -349,7 +353,7 @@ export default {
      * returns style to normal(before hover)
      * @public This is a public method
      */
-    onleaveimage: function () {
+    onleaveimage: function() {
       var playlistimage = document.getElementById("playlist_image");
       playlistimage.style.opacity = "1";
 
@@ -366,7 +370,7 @@ export default {
      * triggers liking/unliking current playlist request
      * @public This is a public method
      */
-    likecurrentplaylist: function () {
+    likecurrentplaylist: function() {
       if (!this.liked) {
         if (toast != null) {
           toast.show("Saved to Your Library");
@@ -386,7 +390,7 @@ export default {
         );
         this.$store.dispatch("Playlist/showplaylists");
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -396,8 +400,8 @@ export default {
       playicon: "Mediaplayer/playicon",
       owner_name: "Playlist/owner_name",
       playlist_image: "Playlist/playlist_image",
-      liked: "Playlist/likeplaylist",
-    }),
-  },
+      liked: "Playlist/likeplaylist"
+    })
+  }
 };
 </script>
