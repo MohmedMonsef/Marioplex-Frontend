@@ -10,6 +10,7 @@
           :images="match_artist.images"
           :name="match_artist.name"
           :artistId="match_artist._id"
+          :type="match_artist.type"
         />
       </div>
     </div>

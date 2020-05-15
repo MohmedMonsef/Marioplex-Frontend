@@ -23,7 +23,7 @@
         <li class="disabled">
           Useful links
         </li>
-        <router-link class="able" to="/HomeWebPlayer" tag="li" replace>
+        <router-link class="able" to="/Help" tag="li" replace>
           Help
         </router-link>
         <router-link class="able" to="/HomeWebPlayer" tag="li" replace>

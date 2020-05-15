@@ -30,7 +30,8 @@ import seeallplaylist from "../views/seeallplaylist.vue";
 import category from"../views/categoryplaylists.vue";
 import seeallcategoryplaylists from"../views/seeallcategoryplaylists.vue";
 import seealluser from "../views/seealluser.vue";
-import seealltrack from '../views/seealltrack'
+import seealltrack from '../views/seealltrack';
+import Help from '../views/helppage.vue'
 Vue.use(VueRouter);
 
 const routes = [
@@ -53,6 +54,11 @@ const routes = [
         name: "GetPremium",
         component: GetPremium
       },
+      {
+        path: "/Help",
+        name: "Help",
+        component: Help
+      }
     ]
   },
   {
