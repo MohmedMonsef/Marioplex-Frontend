@@ -60,7 +60,7 @@ export default {
 
     artist_tracks({ commit }, artist_id) {
       axios
-        .get("api/Artists/" + artist_id + "/top-tracks?country=EG")
+        .get("api/Artists/" + artist_id + "/top-tracks?country=eg")
         .then((response) => {
           let artist = response.data;
           this.artist_tracks = [];
@@ -137,7 +137,7 @@ export default {
     checkisfollowed({ commit }, artist_id) {
       console.log("artistid", artist_id);
       axios
-        .get("api/me/following/contains" + artist_id)
+        .get("api/me/following/contains/" + artist_id)
         .then((response) => {
           let artist = response.data;
           if (artist.follow == true) {
