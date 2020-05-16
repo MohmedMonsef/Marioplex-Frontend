@@ -19,6 +19,9 @@
     >
       <span aria-hidden="true" style="font-size: 25px;">&times;</span>
     </button>
+    <button type="button" id="voicesearchingbutton" @click="detectvoice()">
+      <i class="fa fa-microphone" id="microphone"></i>
+    </button>
   </div>
 </template>
 <style scoped>
@@ -69,9 +72,17 @@
   background-color: white;
   color: rgb(26, 24, 9);
 }
+#voicesearchingbutton {
+  background: transparent;
+  border: transparent;
+}
+#microphone {
+  font-size: 18px;
+}
 </style>
 
 <script>
+import { default as voice_Recognition } from "../javascript/voiceSearching.js";
 import { mapGetters } from "vuex";
 // let insearch = insearch;
 /**
@@ -85,8 +96,9 @@ export default {
   data() {
     return { Value: "", awaitingSearch: false };
   },
+  mixins: [voice_Recognition],
   watch: {
-    Value: function () {
+    Value: function() {
       if (!this.awaitingSearch) {
         setTimeout(() => {
           this.$store.dispatch("Search/searchaboutartist", this.Value);
@@ -95,7 +107,7 @@ export default {
       }
       this.awaitingSearch = true;
       this.$store.dispatch("Search/clear");
-    },
+    }
   },
   methods: {
     check(value) {
@@ -145,7 +157,7 @@ export default {
         //  this.$store.dispatch("Search/searchaboutartist",this.Value);
       }
       this.$store.dispatch("Search/searchfocus", false);
-    },
+    }
     // ,
     // /**
     //  * When confirm search reset
@@ -160,18 +172,18 @@ export default {
   computed: {
     ...mapGetters({
       insearch: "Search/insearch",
-      searchfocus: "Search/searchfocus",
-    }),
+      searchfocus: "Search/searchfocus"
+    })
   },
   props: {
     search_value: {
-      type: String,
-    },
+      type: String
+    }
   },
   mounted() {
     const searchinput = document.getElementById("search-box");
     searchinput.addEventListener("focus", this.focus, true);
     searchinput.addEventListener("blur", this.leave, true);
-  },
+  }
 };
 </script>
