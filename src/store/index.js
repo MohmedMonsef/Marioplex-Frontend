@@ -12,7 +12,7 @@ import ArtistProperties from "../modules/ArtistProperties";
 import Album from "../modules/Album";
 import LikedTracks from "../modules/LikedTracks";
 import ArtistPage from "../modules/ArtistPage";
-import UserUpdate from "../modules/UserPage";
+import UserPage from "../modules/UserPage";
 import CheckUserPopup from "../modules/CheckUserPopup"
 Vue.use(Vuex);
 
@@ -30,7 +30,7 @@ export default new Vuex.Store({
     LikedTracks,
     ArtistProperties,
     ArtistPage,
-    UserUpdate,
+    UserPage,
     CheckUserPopup
   },
 });

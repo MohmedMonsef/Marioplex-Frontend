@@ -1,7 +1,12 @@
 let currentaudio = new Audio();
 let audioKeyID = "";
 let audioKey = "";
-
+/**
+ * Album page made by Artist and you can like and add it to your liked songs also it contains the artist name which will move you to the artist page where you can find more and more of songs you like
+ * @displayName Album Page
+ * @example [none]
+ */
+export default {};
 export function get_currentaudio() {
   return currentaudio;
 }
@@ -106,7 +111,7 @@ export function messageHandler(e) {
     console.log("update() failed: " + failureReason.message);
   });
 }
-export function setupPlayer(audioURL, key, keyid) {
+export function setupPlayer(audioURL, key, keyid,value) {
   if (!audioURL) return 0;
   audioKey = key;
   audioKeyID = keyid;
@@ -134,7 +139,7 @@ export function setupPlayer(audioURL, key, keyid) {
   setupMediaKeys(mediaElement, config).then(
     () => {
       //console.log("messageHandler")
-      currentaudio.autoplay = true;
+      currentaudio.autoplay = value;
       mediaElement.addEventListener("encrypted", encryptedEventHandler);
       mediaElement.src = URL.createObjectURL(mediaSource);
       mediaSource.addEventListener("sourceopen", () => {

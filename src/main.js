@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 import axios from "axios";
 import { mockServer } from "../mockServer/mock";
-//import VueRx from 'vue-rx';
 
 Vue.config.productionTip = false;
 
@@ -19,9 +18,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 axios.defaults.baseURL = "http://52.205.254.29";
-// axios.defaults.baseURL = "http://127.0.0.1:3000";
-//setting the Authorization on axios header to our token, so requests can be processed if a token is required.
-// This way, we do not have to set token anytime we want to make a request.
 
 new Vue({
   router,

@@ -17,6 +17,8 @@
           :isLiked="true"
           :song_album="album_name"
           :albumId="albumid"
+          :isPlaylist="false"
+          :playlistId="albumid"
         />
       </div>
     </div>

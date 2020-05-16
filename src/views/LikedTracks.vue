@@ -18,6 +18,7 @@
             :song_artists="p.artistName"
             :song_name="p.name"
             :song_album="p.albumName"
+            :albumId="p.albumId"
             :song_length="500"
             :playlistId="playlist_id"
             :isLiked="true"

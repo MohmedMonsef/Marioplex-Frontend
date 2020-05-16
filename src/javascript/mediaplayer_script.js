@@ -63,7 +63,8 @@ export default {
           if (
             this.song_id == this.Get_Currentsong.track._id &&
             this.albumId == this.Get_Currentsong.album._id &&
-            this.playlistId == this.Get_Currentsong.playlistId
+            (this.playlistId == this.Get_Currentsong.playlistId
+              || !this.isPlaylist)
           ) {
             this.$store.dispatch("Mediaplayer/playsong_state", info);
           } else {
@@ -102,7 +103,7 @@ export default {
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
-        if (this.currentsong_info.index != 0)
+        if (this.Index != 0)
           this.$store.dispatch("Mediaplayer/prevsong_state");
       }
     },
@@ -161,7 +162,6 @@ export default {
       playicon: "Mediaplayer/playicon",
       user: "Authorization/GetStatus",
       liked: "Mediaplayer/liked",
-      currentaudio: "Mediaplayer/currentaudio",
       progress: "Mediaplayer/progress",
       duration: "Mediaplayer/duration",
       volume: "Mediaplayer/volume",

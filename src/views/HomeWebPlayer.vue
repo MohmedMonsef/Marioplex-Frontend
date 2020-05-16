@@ -4,6 +4,8 @@
     <CreatePlaylist v-if="show" />
     <mediaplayerpopup v-if="showmediaplayerpopup" />
     <DeletePlaylist v-if="showdelete" />
+    
+    <PremiumAd v-if="premiumPopup"/>
     <div id="HomeInWebPlayer">
       <router-view class="child"></router-view>
       <navbar-webplayer />
@@ -43,8 +45,9 @@ import playlistpopup from "@/components/PlaylistPopup.vue";
 import mediaplayer from "@/components/Mediaplayer.vue";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
-import { mapState } from "vuex";
-// import LibraryNavbar from "@/components/library-navbar.vue";
+import PremiumAd from "@/components/PremiumAd.vue";
+import { mapState ,mapGetters} from "vuex";
+//import LibraryNavbar from "@/components/library-navbar.vue";
 /**
  * Web player home page where all albums and playlists exist
  * @displayName Web Player Home page
@@ -59,6 +62,7 @@ export default {
     DeletePlaylist,
     mediaplayerpopup,
     playlistpopup,
+    PremiumAd,
     // LibraryNavbar
     NavbarWebplayer,
 
@@ -69,7 +73,11 @@ export default {
       showmediaplayerpopup: (state) => state.CheckUserPopup.showModal,
       showuserpopup: (state) => state.CheckUserPopup.showpagesModal,
       showdelete: (state) => state.Playlist.showModalDelete,
-    }),
+    })
+    ,
+    ...mapGetters({
+      premiumPopup: "Mediaplayer/premiumPopup",
+    })
   },
 };
 </script>

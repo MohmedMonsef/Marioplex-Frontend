@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store";
 import {
   setupPlayer,
   currentaudio_pause,
@@ -54,9 +55,14 @@ export default {
     playicon: false,
     volumeprogress: 0,
     progress: 0,
-    trackduration: 0
+    trackduration: 0,
+    premiumPopup: false,
+    premiumAd: 1
   },
   mutations: {
+    setPopup(state, value) {
+      state.premiumPopup = value;
+    },
     setplayicon(state, playicon) {
       state.playicon = playicon;
     },
@@ -113,14 +119,14 @@ export default {
           commit("set_currentsong", currentsong);
           if (getTrack) {
             var id = currentsong.track._id;
-            dispatch("trackUrl", id);
+            dispatch("trackUrl", {id:id,playFlag:true});
           }
         })
         .catch(error => {
           console.log(error);
         });
     },
-    trackUrl({ state }, id) {
+    trackUrl({ state }, {id,playFlag}) {
       console.log("idd", id);
       let token = localStorage.getItem("x-auth-token");
       let keyRoute = "/api/tracks/encryption/" + id + "/keys";
@@ -134,7 +140,7 @@ export default {
         .then(async response => {
           state.audioKey = response.data.key;
           state.audioKeyID = response.data.keyId;
-          setupPlayer(trackroute, state.audioKey, state.audioKeyID);
+          setupPlayer(trackroute, state.audioKey, state.audioKeyID,playFlag);
         })
         .catch(error => {
           console.log("get trackurl error", error);
@@ -151,30 +157,84 @@ export default {
     },
     nextsong_state({ state, commit, dispatch }) {
       dispatch("update_progress", 0);
-      axios
-        .post("/api/me/player/next-playing")
-        .then(response => {
-          var nextsong = response.data;
-          commit("set_currentsong", nextsong);
-          if (typeof nextsong.fristInSource == "undefined")
-            state.currentSongIndex = state.currentSongIndex + 1;
-          else state.currentSongIndex = 0;
+      var user = store.getters["Authorization/user"];
+      if (user.product != "premium") {
+        currentaudio_pause();
+        state.premiumPopup = true;
+        var ad = new Audio();
+        if (state.premiumAd % 2 == 0) {
+          ad.src = require("../assets/ad1.mp3");
+        } else {
+          ad.src = require("../assets/ad2.mp3");
+        }
+        state.premiumAd = (state.premiumAd + 1) % 4;
+        ad.play();
+        ad.volume = 1;
+        setTimeout(() => {
+          state.premiumPopup = false;
+          axios
+            .post("/api/me/player/next-playing")
+            .then(response => {
+              var nextsong = response.data;
+              commit("set_currentsong", nextsong);
+              if (typeof nextsong.fristInSource == "undefined")
+                state.currentSongIndex = state.currentSongIndex + 1;
+              else state.currentSongIndex = 0;
 
-          let info = {
-            //should handle if its the first track on playlist or album return to zero
-            index: state.currentSongIndex,
-            song_id: nextsong.track._id,
-            album_id: nextsong.album._id,
-            playlist_id: state.playlist_id,
-            is_playlist: state.currentsong.isPlaylist
-          };
-          dispatch("trackUrl", nextsong.track._id);
-          dispatch("playsong_state", info);
-          dispatch("Queue/Queue", null, { root: true });
-        })
-        .catch(error => {
-          console.log(error);
-        });
+              let info = {
+                //should handle if its the first track on playlist or album return to zero
+                index: state.currentSongIndex,
+                song_id: nextsong.track._id,
+                album_id: nextsong.album._id,
+                playlist_id: state.playlist_id,
+                is_playlist: state.currentsong.isPlaylist
+              };
+              if(state.playicon)
+              {
+                  dispatch("playsong_state", info);
+                  dispatch("trackUrl", { id:nextsong.track._id,playFlag:true});
+             }
+             else{
+                   dispatch("trackUrl", { id:nextsong.track._id,playFlag:false});
+              }
+              dispatch("Queue/Queue", null, { root: true });
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }, 17000);
+      } else {
+        axios
+          .post("/api/me/player/next-playing")
+          .then(response => {
+            var nextsong = response.data;
+            commit("set_currentsong", nextsong);
+            if (typeof nextsong.fristInSource == "undefined")
+              state.currentSongIndex = state.currentSongIndex + 1;
+            else state.currentSongIndex = 0;
+
+            let info = {
+              //should handle if its the first track on playlist or album return to zero
+              index: state.currentSongIndex,
+              song_id: nextsong.track._id,
+              album_id: nextsong.album._id,
+              playlist_id: state.playlist_id,
+              is_playlist: state.currentsong.isPlaylist
+            };
+            if(state.playicon)
+              {
+                  dispatch("playsong_state", info);
+                  dispatch("trackUrl", { id:nextsong.track._id,playFlag:true});
+             }
+             else{
+                   dispatch("trackUrl", { id:nextsong.track._id,playFlag:false});
+              }
+            dispatch("Queue/Queue", null, { root: true });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
     },
     prevsong_state({ state, commit, dispatch }) {
       console.log("in prev action", state.progress);
@@ -196,8 +256,14 @@ export default {
               playlist_id: prevsong.playlistId,
               is_playlist: prevsong.isPlaylist
             };
-            dispatch("trackUrl", prevsong.track._id);
-            dispatch("playsong_state", info);
+            if(state.playicon)
+            { 
+              dispatch("playsong_state", info);
+              dispatch("trackUrl",{id:prevsong.track._id,playFlag:true});
+            }
+            else{
+              dispatch("trackUrl",{id:prevsong.track._id,playFlag:false});
+            }
             dispatch("Queue/Queue", null, { root: true });
           })
           .catch(error => {
@@ -314,9 +380,6 @@ export default {
     liked: state => {
       return state.currentsong.isLiked;
     },
-    currentaudio: () => {
-      return currentaudio_src();
-    },
     progress: state => {
       return state.progress;
     },
@@ -328,6 +391,12 @@ export default {
     },
     Index: state => {
       return state.currentSongIndex;
+    },
+    premiumPopup: state => {
+      return state.premiumPopup;
+    },
+    premiumAd: state => {
+      return state.premiumAd;
     }
   }
 };

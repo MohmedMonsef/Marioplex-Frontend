@@ -48,6 +48,6 @@ export default {
   getters: {
     playlists: (state) => state.playlists,
     user: (state) => state.user,
-    loading: (state) => state.loading,
+    loading: (state) => state.loading
   },
 };

@@ -87,7 +87,7 @@ export default {
       // map `this.playlists1` to `this.$store.getters.playlists`
       user: "UserPage/user",
       playlists: "UserPage/playlists", // creat new object "playlists1" and map to it
-      loading: "UserPage/loading",
+      loading: "UserPage/loading"
     }),
   },
   methods: {

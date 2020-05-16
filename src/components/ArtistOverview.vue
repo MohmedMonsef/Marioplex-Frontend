@@ -11,6 +11,7 @@
         :song_name="p.name"
         :song_length="p.duration"
         :albumId="p.albumId"
+        :isPlaylist="false"
       />
     </div>
     <br />

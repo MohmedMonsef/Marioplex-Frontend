@@ -207,19 +207,21 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+    children:[
+      {
+        path: "/reset_password",
+        name: "ResetPassword",
+        component: ResetPassword,
+        props: (route) => ({
+          token: route.query.token,
+        }),
+      }
+    ]
   },
   {
     path: "/ForgetPassword",
     name: "ForgetPassword",
     component: ForgetPassword,
-  },
-  {
-    path: "/reset_password",
-    name: "ResetPassword",
-    component: ResetPassword,
-    props: (route) => ({
-      token: route.query.token,
-    }),
   },
   {
     path: "/ForArtist",

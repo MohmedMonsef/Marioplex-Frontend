@@ -46,7 +46,7 @@
   margin-bottom: 200px;
 }
 .img-card {
-  width: 100%;
+ width: 100%;
   height: 80px;
 }
 .card-top {
@@ -60,11 +60,11 @@
 .cont {
   margin-left: 30px;
   margin-bottom: 25px;
-  width: 100%;
+  // width: 100%;
   height: 100vh;
 }
 .scroll {
-  width: 2000;
+ // width: 2000;
   height: 100%;
   overflow-x: visible;
   overflow-y: scroll;
@@ -104,8 +104,8 @@ h2 {
 }
 .container {
   margin-left: 15px;
-  // height: 100vh;
-  width: 100%;
+  height: 100vh;
+ width: 100%;
 }
 .loading {
   display: flex;
