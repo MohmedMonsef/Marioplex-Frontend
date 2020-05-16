@@ -90,36 +90,53 @@
           v-for="(playlist, i) in playlists1"
           :key="i"
           @click.right="
-            (playlistid = playlist),
-              (showdelete = true),
+              (playlistid = playlist),
+              toggleSideMenu(),
               getpos(),
               (p_id = playlist.id)
           "
         >
-          <router-link to="/" testid="userplaylists" class="userplaylists">{{
-            playlist.name
-          }}</router-link>
+          <router-link
+        :to="{ path: '/HomeWebPlayer/playlist/' + playlist.id}"
+         testid="userplaylists"
+          class="userplaylists">
+          {{playlist.name}}
+          </router-link>
           <!-- router link should navigate to play list page-->
         </li>
       </ul>
+
+        <!-- try -->
+
+      <div id="mydropdown" class="db" v-if="showSideMenu">
+        <p @click="showinputfield()">
+          Rename
+        </p>
+        <p @click="changeModalStateDelete()">
+          Delete
+        </p>
+        <p  @click="PubPriChange()">Secret</p>
+        <p  @click="PubPriChange()">Public</p>
+      </div>
+
+      <!-- try -->
       <input
         v-if="showinput"
         id="in_rename"
         v-model="newname"
         @keyup.enter="ChangePlaylistName(), showinputfield()"
       />
-      <ul v-if="showdelete" id="right-click-menu">
+      <!-- <ul v-if="showdelete" id="right-click-menu">
         <li class="rename_input" @click="showinputfield()">Rename</li>
         <li class="delete_div" @click="changeModalStateDelete()">Delete</li>
-
         <li class="rename_input" @click="PubPriChange()">Secret</li>
         <li class="rename_input" @click="PubPriChange()">Public</li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0;
@@ -258,6 +275,34 @@ label {
   color: black;
   height: 20px;
 }
+// #mydropdown {
+//   position: fixed;
+// }
+.db {
+ position: absolute;
+  background-color: #282828;
+  width: 203px;
+  padding: 5px 0;
+  z-index: 1000;
+  border-radius: 0.25rem;
+  right: 20px;
+  p {
+    color: darkgray;
+    margin: 0%;
+    margin-top: 2px;
+    padding: 10px 20px;
+    font-size: 14px;
+    height: 38px;
+  }
+  p:hover {
+    background-color: #313030;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+.song:hover {
+  background-color: #313030;
+}
 </style>
 
 <script>
@@ -278,6 +323,7 @@ export default {
       newname: "",
       p_id: "",
       public: true,
+      showSideMenu:false
     };
   },
   mounted() {
@@ -290,6 +336,7 @@ export default {
       showModalDelete: "Playlist/showModalDelete",
       isLoggedIn: "Authorization/GetStatus",
       showinput: "Playlist/showinput",
+      sideMenu:"UserLibrary/sideMenu"
       // renamepl:"creatplaylist/renamepl"
     }),
   },
@@ -365,6 +412,43 @@ export default {
       };
       this.$store.dispatch("Playlist/PubPriChange", payload);
     },
+    toggleSideMenu() {
+      console.log("7mada");
+      var x = this.showSideMenu;
+      this.$store.dispatch("UserLibrary/sideMenu", true);
+      window.Element.showSideMenu = false;
+      this.showSideMenu = !x;
+      if (!x) {
+        this.$nextTick(function () {
+          var div = document.getElementById("mydropdown");
+          var left;
+          console.log("my xxxx",event.screenX)
+          if(event.screenX > 68)
+              left = event.screenX -70 + "px";
+          else
+              left = event.screenX - 30+ "px";
+          var top = event.screenY - 70 + "px";
+          if (div) {
+            div.style.left = left;
+            div.style.top = top;
+          }
+        });
+      }
+    },
+    hideMenu(event) {
+    // var targetId = event.target.id;
+    console.log("whaaaaaaaaaaaaaattt");
+     this.showSideMenu = false;
+     if (!this.$el.contains(event.target)) {
+        this.showSideMenu = false;
+      }
+    },
+  },
+  created: function () {
+    document.addEventListener("click", this.hideMenu);
+   },
+   destroyed: function () {
+    document.removeEventListener("click", this.hideMenu);
   },
 };
 </script>

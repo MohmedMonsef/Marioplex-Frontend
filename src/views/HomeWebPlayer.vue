@@ -1,10 +1,9 @@
 <template>
-  <div class="home_webplayer">
+  <div class="home_webplayer" @contextmenu.prevent="handler" @click="closeMenu">
     <side-bar />
     <CreatePlaylist v-if="show" />
     <mediaplayerpopup v-if="showmediaplayerpopup" />
     <DeletePlaylist v-if="showdelete" />
-    
     <PremiumAd v-if="premiumPopup"/>
     <div id="HomeInWebPlayer">
       <router-view class="child"></router-view>
@@ -79,5 +78,13 @@ export default {
       premiumPopup: "Mediaplayer/premiumPopup",
     })
   },
+  methods:{
+    handler(){
+      
+    },
+    closeMenu(){
+      this.$store.dispatch("UserLibrary/sideMenu", false);
+    }
+  }
 };
 </script>

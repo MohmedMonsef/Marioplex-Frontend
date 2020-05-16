@@ -27,6 +27,7 @@
               :index="i"
               :song_id="p.trackid"
               :song_artists="p.artistName"
+              :artist_id="p.artistId"
               :song_name="p.name"
               :song_album="p.albumName"
               :albumId="p.albumId"
@@ -34,6 +35,7 @@
               :isLiked="p.isLiked"
               :playlistId="$route.params.playlist_id"
               :isPlaylist="true"
+              :isPlayable="p.playable"
             />
           </transition-group>
         </draggable>

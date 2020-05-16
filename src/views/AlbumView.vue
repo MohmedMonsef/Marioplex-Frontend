@@ -19,6 +19,7 @@
           :albumId="albumid"
           :isPlaylist="false"
           :playlistId="albumid"
+          :isPlayable="p.playable"
         />
       </div>
     </div>

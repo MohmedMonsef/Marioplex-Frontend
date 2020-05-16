@@ -13,6 +13,7 @@
             '?belongs_to=artist'
           "
           :name="POPartist.name"
+          :artistId="POPartist.id"
         />
       </div>
     </div>

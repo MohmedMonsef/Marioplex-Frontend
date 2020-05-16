@@ -22,6 +22,7 @@
         :isLiked="currentSong.isLiked"
         :albumId="currentSong.album._id"
         :artist_id="currentSong.album.artist._id"
+        
       />
 
       <h2 v-if="Queued.length" id="queued_header">
@@ -40,6 +41,7 @@
         :isLiked="q.fulltrack.isLiked"
         :albumId="q.fulltrack.album._id"
         :artist_id="q.fulltrack.album.artist._id"
+        :isPlayable="q.isPlayable"
       />
 
       <h2 v-if="NextUp.length" id="next_header">
@@ -58,6 +60,7 @@
         :isLiked="next.fulltrack.isLiked"
         :albumId="next.fulltrack.album._id"
         :artist_id="next.fulltrack.album.artist._id"
+        :isPlayable="next.isPlayable"
       />
     </div>
   </div>

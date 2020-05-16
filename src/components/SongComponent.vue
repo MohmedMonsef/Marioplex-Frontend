@@ -50,7 +50,7 @@
         <div id="s">
           <router-link
             tag="p"
-            to="library"
+            :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artist_id}"
             id="song_artist"
             testid="artist name"
           >
@@ -60,12 +60,15 @@
             .
           </span>
         </div>
-        <router-link tag="p" id="song_album" testid="album name" to="library">
+        <router-link 
+        tag="p" 
+        id="song_album" 
+        testid="album name" 
+        :to="{ path: '/HomeWebPlayer/album/' + albumId}">
           {{ song_album }}
         </router-link>
       </div>
     </div>
-    <!-- <p>{{isLiked}}</p> -->
     <div testid="song length" class="song_length" :class="isCurrentClass">
       {{ length }}
     </div>
@@ -97,7 +100,6 @@
   margin: 0%;
   padding: 0%;
   display: block;
-  // box-sizing: border-box;
   line-height: 20px;
   background-color: transparent;
   clear: both;
@@ -136,7 +138,6 @@
     color: #fff;
     cursor: pointer;
   }
-  // background-color: #b3b3b3;
 }
 .song:hover {
   background-color: #313030;
@@ -161,7 +162,6 @@
   #icondiv {
     height: 18px;
     width: 15px;
-    // margin-right: 50px;
   }
 }
 #mydropdown {
@@ -296,7 +296,11 @@ export default {
       type: Boolean,
       default: false,
     },
-  }, //must add isplayable also
+    isPlayable:{
+      type:Boolean,
+      default:true
+    }
+  }, 
   methods: {
     /**
      * add the component chosen to the queue
@@ -322,7 +326,7 @@ export default {
         this.$nextTick(function () {
           var div = document.getElementById("mydropdown");
           var left = event.screenX - 203 + "px";
-          var top = event.screenY + 0 + "px";
+          var top = event.screenY - 70 + "px";
           if (div) {
             div.style.left = left;
             div.style.top = top;
@@ -379,7 +383,6 @@ export default {
       }
     },
     changeModalStateAdd() {
-      console.log("in song component track", this.song_id);
       this.$store.dispatch("Playlist/toggleModalAdd", this.song_id);
     },
     RemoveFromThisPlaylist() {
@@ -387,8 +390,6 @@ export default {
         playlist_id: this.playlistId,
         song_id: this.song_id,
       };
-      console.log("playlist id in song component", payload.playlist_id);
-      console.log("track in song component", payload.song_id);
       this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
     },
   },
@@ -418,13 +419,13 @@ export default {
       showAdd: (state) => state.Playlist.showModalAdd,
     }),
   },
+
   created: function () {
     window.addEventListener("click", this.hideshow);
   },
   destroyed: function () {
     window.removeEventListener("click", this.hideshow);
   },
-  // ,
   components: {
     AddTrackPopup,
   },

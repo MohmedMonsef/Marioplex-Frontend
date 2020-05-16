@@ -8,6 +8,7 @@ export default {
     user_songs: [],
     loadingalbums: 0,
     loadingartists: 0,
+    sideMenu:false
   },
   mutations: {
     setUserAlbums(state, albums) {
@@ -80,6 +81,9 @@ export default {
           console.log(error);
         });
     },
+    sideMenu({ state },value) {
+       state.sideMenu = value;
+    },
   },
   getters: {
     albums: (state) => state.user_albums,
@@ -87,5 +91,6 @@ export default {
     songs: (state) => state.user_songs,
     loadingalbums: (state) => state.loadingalbums,
     loadingartists: (state) => state.loadingartists,
+    sideMenu:(state)=>state.sideMenu
   },
 };
