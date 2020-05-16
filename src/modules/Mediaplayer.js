@@ -1,3 +1,17 @@
+//creating toast object with function show
+const toast = {
+  show(message) {
+    var mytoast = document.getElementById("liketoast");
+    //cleartimeout used to reset the 3 seconds every time so not to override time when open another one while the first one is still shown
+    clearTimeout(mytoast.hideTimeout);
+    mytoast.textContent = message;
+    mytoast.className = "toast toast--visible";
+    mytoast.hideTimeout = setTimeout(() => {
+      mytoast.classList.remove("toast--visible");
+    }, 2000);
+    console.log("message", message);
+  },
+};
 import axios from "axios";
 import store from "../store";
 import {
@@ -211,6 +225,9 @@ export default {
             })
             .catch(error => {
               console.log(error);
+              if(error.response.status){
+                toast.show("Sorry,You can't click previous button for the next hour.");
+                }
             });
         }, 17000);
       } else {
@@ -276,6 +293,9 @@ export default {
           })
           .catch(error => {
             console.log(error);
+            if(error.response.status){
+              toast.show("Sorry,You can't click previous button for the next hour.");
+              }
           });
       } else {
         dispatch("update_progress", 0);
