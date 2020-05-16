@@ -127,14 +127,24 @@ export default {
         });
     },
     trackUrl({ state }, {id,playFlag}) {
-      console.log("idd", id);
+      var user = store.getters["Authorization/user"];
       let token = localStorage.getItem("x-auth-token");
       let keyRoute = "/api/tracks/encryption/" + id + "/keys";
-      let trackroute =
+      let trackroute;
+      if(user.product != "premium"){
+      trackroute =
         "http://52.205.254.29/api/tracks/web-player/" +
         id +
         "/?type=medium&token=" +
         token;
+      }
+      else{
+        trackroute =
+        "http://52.205.254.29/api/tracks/web-player/" +
+        id +
+        "/?type=high&token=" +
+        token;
+      }
       axios
         .get(keyRoute)
         .then(async response => {
@@ -245,10 +255,8 @@ export default {
             var prevsong = response.data;
             console.log("in get currentsong", prevsong);
             commit("set_currentsong", prevsong);
-            var i =
-              state.currentSongIndex == 0 ? 0 : state.currentSongIndex - 1;
+            var i =state.currentSongIndex == 0 ? 0 : state.currentSongIndex - 1;
             state.currentSongIndex = i;
-            console.log("in preeev", state.currentSongIndex);
             let info = {
               index: i,
               song_id: prevsong.track._id,
