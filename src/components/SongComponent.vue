@@ -50,7 +50,7 @@
         <div id="s">
           <router-link
             tag="p"
-            :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artist_id}"
+            :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artist_id }"
             id="song_artist"
             testid="artist name"
           >
@@ -60,11 +60,12 @@
             .
           </span>
         </div>
-        <router-link 
-        tag="p" 
-        id="song_album" 
-        testid="album name" 
-        :to="{ path: '/HomeWebPlayer/album/' + albumId}">
+        <router-link
+          tag="p"
+          id="song_album"
+          testid="album name"
+          :to="{ path: '/HomeWebPlayer/album/' + albumId }"
+        >
           {{ song_album }}
         </router-link>
       </div>
@@ -242,7 +243,7 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 /**
  * Song component appearing in views(playlists,albums..etc)
@@ -250,57 +251,60 @@ const toast = {
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       hover: false,
       show: false,
-      isclicked: false,
-      //showAdd:false
+      isclicked: false
     };
   },
   mixins: [song_functions],
   props: {
     song_name: {
-      type: String,
+      type: String
     },
     song_album: {
-      type: String,
+      type: String
     },
     song_artists: {
-      type: String,
+      type: String
     },
     artist_id: {
-      type: String,
+      type: String
     },
     song_length: {
-      type: Number,
+      type: Number
     },
     isLiked: {
-      type: Boolean,
+      type: Boolean
     },
     song_id: {
-      type: String,
+      type: String
     },
     index: {
-      type: Number,
+      type: Number
     },
     albumId: {
       type: String,
-      default: "0",
+      default: "0"
     },
     playlistId: {
       type: String,
-      default: "0",
+      default: "0"
     },
     isPlaylist: {
       type: Boolean,
-      default: false,
+      default: false
     },
-    isPlayable:{
-      type:Boolean,
-      default:true
+    isPlayable: {
+      type: Boolean,
+      default: true
+    },
+    isQueue:{
+      type: Boolean,
+      default: false
     }
-  }, 
+  },
   methods: {
     /**
      * add the component chosen to the queue
@@ -311,7 +315,7 @@ export default {
         trackId: this.song_id,
         playlistId: this.playlistId,
         isPlaylist: this.isPlaylist,
-        albumId: this.albumId,
+        albumId: this.albumId
       });
     },
     /**
@@ -323,7 +327,7 @@ export default {
       window.Element.show = false;
       this.show = !x;
       if (!x) {
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           var div = document.getElementById("mydropdown");
           var left = event.screenX - 203 + "px";
           var top = event.screenY - 70 + "px";
@@ -356,7 +360,7 @@ export default {
      * triggers the like request for the component
      * @public This is a public method
      */
-    likecurrentsong: function () {
+    likecurrentsong: function() {
       if (!this.isLiked) {
         this.$store.dispatch("Mediaplayer/Like", this.song_id);
         toast.show("Added to your Liked Songs");
@@ -371,7 +375,7 @@ export default {
      * plays song on double click
      * @public This is a public method
      */
-    playOnDblCLk: function () {
+    playOnDblCLk: function() {
       if (this.isCurrent) {
         if (this.playicon) {
           this.pauseSong();
@@ -388,46 +392,49 @@ export default {
     RemoveFromThisPlaylist() {
       let payload = {
         playlist_id: this.playlistId,
-        song_id: this.song_id,
+        song_id: this.song_id
       };
       this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
-    },
+    }
   },
   computed: {
-    isCurrentClass: function () {
+    isCurrentClass: function() {
       return {
-        currently: this.isCurrent,
+        currently: this.isCurrent
       };
     },
-    isCurrent: function () {
+    isCurrent: function() {
       return (
         this.song_id == this.Get_Currentsong.track._id &&
         (this.albumId == this.Get_Currentsong.album._id ||
           this.playlistId == this.Get_Currentsong.playlistId)
       );
     },
-    length: function () {
+    length: function() {
       var min = Math.floor((this.song_length % 3600) / 60);
       var sec = Math.floor(this.song_length % 60);
       if (sec < 10) sec = "0" + sec;
       return min + ":" + sec;
     },
     ...mapGetters({
-      Get_Currentsong: "Mediaplayer/Get_Currentsong",
+      Get_Currentsong: "Mediaplayer/Get_Currentsong"
     }),
     ...mapState({
-      showAdd: (state) => state.Playlist.showModalAdd,
+      showAdd: state => state.Playlist.showModalAdd
     }),
+    canPlay:function() {
+      return this.isPlayable || this.userinfo.product == "premium";
+    }
   },
 
-  created: function () {
+  created: function() {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function () {
+  destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
   components: {
-    AddTrackPopup,
-  },
+    AddTrackPopup
+  }
 };
 </script>

@@ -477,7 +477,6 @@ input:focus {
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
-import { mapGetters } from "vuex";
 /**
 
      * @displayName Media Player
@@ -698,9 +697,6 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({
-      userinfo: "Authorization/user",
-    }),
     changeTime: function () {
       if (!isNaN(this.currentPos)) {
         var min = Math.floor((this.currentPos % 3600) / 60);

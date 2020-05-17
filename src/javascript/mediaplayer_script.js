@@ -44,6 +44,8 @@ export default {
      * @param {String} playlist_id id of the playlist where the song exists
      */
     playSong() {
+      
+      if(this.canPlay){
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
@@ -81,6 +83,7 @@ export default {
           this.$store.dispatch("Mediaplayer/playsong_state", info);
         }
       }
+    }
     },
     /**
      * this function is to pause current song
@@ -167,6 +170,7 @@ export default {
       volume: "Mediaplayer/volume",
       Index: "Mediaplayer/Index",
       Get_Currentsong: "Mediaplayer/Get_Currentsong",
+      userinfo: "Authorization/user",
     }),
   },
 };
