@@ -28,7 +28,8 @@ export default {
         .catch((error) => {
           let playlists = [];
           commit("set_playlists", playlists);
-          if (!state.loading) state.loading = true;
+          if (!state.loading) 
+              state.loading = true;
           console.log(error);
         });
     },

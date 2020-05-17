@@ -30,20 +30,20 @@ export default {
       state.withtrack = withtrack;
     },
     toggleModalDelete(state, todeleteid) {
-      console.log("in mutations");
       state.showModalDelete = !state.showModalDelete;
       state.todelete = todeleteid;
     },
 
     CreatePlaylist(state, playlists) {
       state.Playlists.push(
-        //id: id,
-        // playlistname: i
         playlists
       );
-      console.log("nori");
     },
     setUserPlaylist(state, playlists) {
+      playlists.forEach(playlist => {
+        if(playlist.images.length == 0)
+        playlist.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.Playlists = playlists;
     },
     ChangePlaylistName(state, payload) {
@@ -99,7 +99,7 @@ export default {
   },
   actions: {
     playlist_tracks({ commit }, playlist_id) {
-      // commit("set_playlist_loaded", false);
+      commit("set_playlist_loaded", false);
       axios
         .get("/api/playlists/" + playlist_id)
         .then((response) => {
@@ -108,7 +108,10 @@ export default {
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
           commit("set_owner_name", playlist[1].ownerName);
-          commit("set_playlist_image", playlist[0].images[0]._id);
+          if(typeof playlist[0].images[0] =="undefined")
+              commit("set_playlist_image","5eb52f1863eea332d416b9fa" );
+          else
+              commit("set_playlist_image", playlist[0].images[0]._id);
           commit("set_likedplaylist", playlist[0].isfollowed);
           commit("set_playlist_loaded", true);
         })

@@ -1,9 +1,14 @@
 <template>
   <div class="album">
+     <div class="loading" v-if="!album_load">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <div v-if="album_load">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
         <albuminfo testid="albuminformation" />
       </div>
+
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
         <song-component
           testid="songcomponent"
@@ -20,13 +25,24 @@
           :isPlaylist="false"
           :playlistId="albumid"
           :isPlayable="p.playable"
+          :artist_id="artist_id"
         />
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.loading {
+  display: flex;
+  justify-content: center;
+  i {
+    font-size: 70px;
+    margin-top: 100px;
+    color: white;
+  }
+}
 .album {
   // min-width: 768px;
   min-height: 900px;
@@ -67,6 +83,7 @@ export default {
       album_load: "Album/album_loaded",
       artist_name: "Album/artist_name",
       album_name: "Album/album_name",
+      artist_id:"Album/artist_id"
     }),
   },
   /**

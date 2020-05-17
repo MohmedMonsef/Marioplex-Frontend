@@ -9,9 +9,13 @@
         <!-- here i need to link both song name and artist name with mock server they navigate to another pages
           and i need to change <a> to router link -->
         <div class="song_info" v-if="user == 'success'">
-          <a href="#" id="song_name" testid="song_name">{{
-            Get_Currentsong.track.name
-          }}</a>
+          <router-link
+           id="song_name" 
+           testid="song_name"
+           :to="{path:'/HomeWebPlayer/album/'+Get_Currentsong.album._id}"
+           >
+            {{Get_Currentsong.track.name}}
+          </router-link>
           <!-- this div is for like songs and them to the library of the user -->
           <!-- donot forget that the second icon is still weird -->
           <div class="actionbuttons">
@@ -43,16 +47,13 @@
 
             <!-- /////////////////////////////////// -->
           </div>
-
           <br />
-          <!-- <a
-            href="#"
-            id="artist_name"
-            v-for="artist in artist_name"
-            v-bind:key="artist.id"
-            >{{ artist.songs.artist_name }}</a
-          > -->
-          <a href="#" id="artist_name" testid="artist_name">{{ Index }}</a>
+          <router-link
+           id="artist_name"
+           testid="artist_name" 
+           :to="{path:'/HomeWebPlayer/ArtistProfile/'+Get_Currentsong.album.artist._id}">
+            {{ Get_Currentsong.album.artist.name }}
+          </router-link>
         </div>
       </div>
       <div class="col-sm-6">
@@ -83,7 +84,6 @@
                 ></i>
               </span>
             </button>
-            <p>{{ Index }}</p>
             <!-- /////////////////////////////////////////////// -->
             <button
               id="play_button"
@@ -259,7 +259,7 @@ img {
 }
 #artist_name {
   color: #b3b3b3;
-  text-decoration: none;
+  //text-decoration: none;
   font-size: 12px;
 }
 #artist_name:hover {

@@ -12,9 +12,17 @@ export default {
   },
   mutations: {
     setUserAlbums(state, albums) {
+      albums.forEach(album => {
+        if(album.images.length == 0)
+           album.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.user_albums = albums;
     },
     setUserArtists(state, artists) {
+      artists.forEach(artist => {
+        if(artist.images.length == 0)
+        artist.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.user_artists = artists;
     },
     setUserSongs(state, songs) {
@@ -33,7 +41,6 @@ export default {
         .get("/api/me/albums")
         .then((response) => {
           let albums = response.data;
-          console.log(albums);
           commit("setUserAlbums", albums);
           if (state.loadingalbums == 0) {
             state.loadingalbums = 1;

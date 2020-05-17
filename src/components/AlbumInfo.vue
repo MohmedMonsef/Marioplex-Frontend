@@ -6,8 +6,13 @@
       @mouseover="onhoverimage()"
       @mouseleave="onleaveimage()"
     >
+
       <img
-        :src="album_image"
+       :src="
+          'http://52.205.254.29/api/images/' +
+          album_image +
+            '?belongs_to=album'
+        "
         alt="album_image"
         class="album_image"
         id="album_image"

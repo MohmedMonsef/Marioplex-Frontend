@@ -6,7 +6,7 @@ export default {
     likedtracks_loaded: 0,
     likedtracks_length: "",
     owner_name: "",
-    id: "",
+    id: ""
   },
   mutations: {
     set_likedtracks(state, likedtracks_tracks) {
@@ -33,7 +33,6 @@ export default {
         .then((response) => {
           let likedtracks = response.data;
           commit("set_likedtracks", likedtracks.tracks);
-          commit("set_likedtracks_loaded", true);
           commit("set_likedtracks_length", likedtracks.tracks.length);
           commit("set_owner_name", likedtracks.ownerName);
           commit("playlist_id", likedtracks.playlistId);
@@ -42,6 +41,7 @@ export default {
           }
         })
         .catch((error) => {
+          state.likedtracks_loaded = 1;
           console.log(error);
         });
     },

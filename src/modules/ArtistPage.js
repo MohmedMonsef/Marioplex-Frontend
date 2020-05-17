@@ -11,6 +11,7 @@ export default {
     artistcover_image: "",
     userID: "",
     followartist: Boolean,
+    loading:false
   },
   mutations: {
     set_artist_tracks(state, tracks) {
@@ -20,9 +21,17 @@ export default {
       state.tracks_length = length;
     },
     set_artist_relatedartists(state, artists) {
+      artists.forEach(artist => {
+        if(artist.images.length == 0)
+        artist.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.artist_relatedartists = artists;
     },
     set_artist_albums(state, albums) {
+      albums.forEach(album => {
+        if(album.images.length == 0)
+           album.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.artist_albums = albums;
     },
     set_artist_name(state, name) {
@@ -109,7 +118,7 @@ export default {
 
     follow_artist({ commit }, artist_id) {
       axios
-        .put("api/me/following", { ids: artist_id })
+        .put("api/me/following", { id: artist_id })
         .then((response) => {
           let artist = response.status;
           if (artist == 200) {
@@ -122,7 +131,7 @@ export default {
     },
     unfollow_artist({ commit }, artist_id) {
       axios
-        .delete("api/me/following", { data: { ids: artist_id } })
+        .delete("api/me/following", { data: { id: artist_id } })
         .then((response) => {
           let artist = response.status;
           if (artist == 200) {

@@ -280,7 +280,7 @@
 .music_icon {
   color: darkgray;
 }
-.currently {
+.currently {  
   color: #1db954;
 }
 .unPlayableIcon{

@@ -36,24 +36,55 @@ export default {
       state.search_Value = searchvalue;
     },
     settopres(state, match_valuet) {
+    
+      if(match_valuet.length){
+      if(match_valuet[0].images.length==0)
+          match_valuet[0].images.push({_id:"5eb52f1863eea332d416b9fa"});
+      }
       state.topres = match_valuet;
     },
     setresult5(state, match_value5) {
+      match_value5.forEach(match => {
+        if(match.images.length == 0)
+        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.result5 = match_value5;
     },
     setresult(state, match_value) {
+      match_value.forEach(match => {
+        if(match.images.length == 0)
+        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.result = match_value;
     },
     setalbumres5(state, match_valuea5) {
+      match_valuea5.forEach(match => {
+        if(match.images.length == 0)
+        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.albumres5 = match_valuea5;
     },
     setalbumres(state, match_valuea) {
+      match_valuea.forEach(match => {
+        if(match.images.length == 0)
+        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.albumres = match_valuea;
     },
     setplaylistres5(state, match_valuep5) {
+      console.log("match_valuep5",match_valuep5);
+      match_valuep5.forEach(match => {
+        if(match.images.length == 0)
+        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.playlistres5 = match_valuep5;
     },
     setplaylistres(state, match_valuep) {
+      console.log("match_valuep",match_valuep);
+      match_valuep.forEach(match => {
+        if(match.images.length == 0)
+        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      });
       state.playlistres = match_valuep;
     },
     set_load(state, status) {

@@ -27,42 +27,7 @@ import {
 export default {
   namespaced: true,
   state: {
-    currentsong: {
-      track: {
-        availableMarkets: ["EG,US"],
-        _id: "5e80ceb853e67b1e284a0f15",
-        trackNumber: 1,
-        name: "HAVANA",
-        artistId: "5e80c9b614c8566d6cd9b40e",
-        albumId: "5e80cc2b14c8566d6cd9b40f",
-        discNumber: 1,
-        explicit: false,
-        type: "Track",
-        acousticness: 10,
-        danceability: 23,
-        energy: 100,
-        instrumentalness: 4,
-        key: 90,
-        liveness: 25,
-        loudness: 70,
-        mode: 56,
-        speechiness: 67,
-        tempo: 76,
-        timeSignature: "2020-03-29T16:37:12.554Z",
-        valence: 70,
-        __v: 0,
-        images: []
-      },
-      isLiked: false,
-      album: {
-        name: "HELLO KIDS",
-        _id: "5e80cc2b14c8566d6cd9b40f",
-        artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
-      },
-      isPlaylist: true,
-      playlistId: "5e891c8edb96e26db4efc790",
-      isPlayable: true
-    },
+    currentsong:"",
     //component info
     currentSongIndex: 0,
     //flag weather the song is playing or not
@@ -129,7 +94,6 @@ export default {
         .get("/api/me/player/currently-playing")
         .then(response => {
           var currentsong = response.data;
-          console.log("in get currentsong", currentsong);
           commit("set_currentsong", currentsong);
           if (getTrack) {
             var id = currentsong.track._id;

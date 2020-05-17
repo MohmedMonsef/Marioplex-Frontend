@@ -23,8 +23,6 @@ export default {
       state.status = "success";
       state.token = token;
       state.User = user;
-      console.log("this is the user state");
-      console.log(state.User);
     },
     auth_error(state, err_msg) {
       state.status = err_msg;
@@ -90,7 +88,7 @@ export default {
           console.log(error);
         });
     },
-    get_user({ commit }, flag) {
+    get_user({ commit, dispatch }, flag) {
       const token = localStorage.getItem("x-auth-token");
       axios.defaults.headers.common["x-auth-token"] = token;
       commit("auth_request");
@@ -98,7 +96,13 @@ export default {
         .get("/api/me-player")
         .then((response) => {
           const user = response.data[0];
-          console.log(user);
+          console.log("soong");
+          if(typeof user.player.current_track == "undefined"){
+            dispatch("Queue/CreateQueue","", { root: true });
+          }
+          else{
+            dispatch("Mediaplayer/get_currentsong",false, { root: true });
+          }
           commit("auth_success", { token, user });
           if (flag) router.replace("/");
         })

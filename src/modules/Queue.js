@@ -69,19 +69,36 @@ export default {
           console.log(error);
         });
     },
-    CreateQueue({ commit }, info) {
+    async CreateQueue({ commit }, info) {
       commit("demo");
+      var firstTime=true;
       if (info == "") {
-        info = {
-          index: 1,
-          song_id: "5e7d93dad82adf07f4121bb6",
-          album_id: "5e7d93dad82adf07f4121bb0",
-          playlist_id: "0",
-          is_playlist: false,
-        };
+        firstTime=false;
+        var albumId;
+        await axios
+        .get("/api/browse/new-releases")
+        .then((response) => {
+          albumId = response.data.albums[0].id;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        await axios
+        .get("/api/albums/" + albumId)
+        .then((response) => {
+          let album = response.data;
+          info = {
+            index: 0,
+            song_id: album.track[0]._id,
+            album_id: albumId,
+            playlist_id: "0",
+            is_playlist: false,
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       }
-      console.log("in queue front", info);
-      //var isPlaylist=true
       if (info.playlist_id != "0") {
         axios
           .post(
@@ -93,7 +110,7 @@ export default {
               info.is_playlist
           )
           .then(() => {
-            store.dispatch("Mediaplayer/get_currentsong",true);
+            store.dispatch("Mediaplayer/get_currentsong",firstTime);
             store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch((error) => {
@@ -110,7 +127,7 @@ export default {
               info.is_playlist
           )
           .then(() => {
-            store.dispatch("Mediaplayer/get_currentsong",true);
+            store.dispatch("Mediaplayer/get_currentsong",firstTime);
             store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch((error) => {
