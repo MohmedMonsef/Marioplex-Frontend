@@ -33,7 +33,7 @@ export default {
      * @param {String} playlist_id id of the playlist where the song exists
      */
     playSong() {
-      if(this.canPlay){
+    //  if(this.canPlay){
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
@@ -41,8 +41,9 @@ export default {
         let info;
         if (
           "playicon-component" == event.target.id ||
-          "songComp" == event.target.id
+          ("songComp" == event.target.id)
         ) {
+          // if(this.isPlayable && !this.isQueue) {
           info = {
             index: this.index,
             song_id: this.song_id,
@@ -70,7 +71,8 @@ export default {
           };
           this.$store.dispatch("Mediaplayer/playsong_state", info);
         }
-      }
+      // }
+     // }
     }
     },
     /**

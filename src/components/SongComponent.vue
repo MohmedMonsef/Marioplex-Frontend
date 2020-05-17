@@ -17,12 +17,13 @@
     <div id="icon">
       <i
         v-if="!canPlay || (!hover && !isclicked && !(playicon && isCurrent))"
-        class="fa fa-music music_icon isCurrentClass"
+        class="fa fa-music music_icon"
         testid="music icon"
          :class="
-          {
-          unPlayableIcon: !canPlay
-          }
+          [{
+          unPlayableIcon: !canPlay,
+         currently: this.isCurrent && this.canPlay
+          }]
           "
       ></i>
       <i
@@ -52,12 +53,13 @@
     </div>
     <div id="song_body">
       <div 
-      class="song_name isCurrentClass"  
+      class="song_name"  
       testid="song name"
        :class="
-          {
-          unPlayableIcon: !canPlay
-          }
+          [{
+            currently: this.isCurrent && this.canPlay,
+            unPlayableIcon: !canPlay
+          }]
           ">
         {{ song_name }}
       </div>
