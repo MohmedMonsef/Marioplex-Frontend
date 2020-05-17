@@ -3,7 +3,11 @@
     class="song"
     id="songComp"
     @click="clicked"
-    :class="{ clicked: isclicked }"
+    :class="[
+    { clicked: isclicked,
+      unPlayable: !canPlay
+    }
+    ]"
     @mouseover="hover = true"
     @mouseleave="hover = false"
     @dblclick="playOnDblCLk()"
@@ -12,13 +16,17 @@
   >
     <div id="icon">
       <i
-        v-if="!hover && !isclicked && !(playicon && isCurrent)"
-        :class="isCurrentClass"
-        class="fa fa-music music_icon"
+        v-if="!canPlay || (!hover && !isclicked && !(playicon && isCurrent))"
+        class="fa fa-music music_icon isCurrentClass"
         testid="music icon"
+         :class="
+          {
+          unPlayableIcon: !canPlay
+          }
+          "
       ></i>
       <i
-        v-if="(isclicked || hover) && !(playicon && isCurrent)"
+        v-if="canPlay && (isclicked || hover) && !(playicon && isCurrent)"
         :class="isCurrentClass"
         @click="playSong()"
         class="fa fa-play"
@@ -27,7 +35,7 @@
       >
       </i>
       <i
-        v-if="playicon && isCurrent && (isclicked || hover)"
+        v-if="canPlay && playicon && isCurrent && (isclicked || hover)"
         @click="pauseSong()"
         class="fa fa-pause"
         :class="isCurrentClass"
@@ -35,7 +43,7 @@
       >
       </i>
       <i
-        v-if="playicon && isCurrent && !isclicked && !hover"
+        v-if="canPlay && playicon && isCurrent && !isclicked && !hover"
         class="fa fa-volume-up"
         :class="isCurrentClass"
         testid="volume icon"
@@ -43,15 +51,27 @@
       </i>
     </div>
     <div id="song_body">
-      <div class="song_name" :class="isCurrentClass" testid="song name">
+      <div 
+      class="song_name isCurrentClass"  
+      testid="song name"
+       :class="
+          {
+          unPlayableIcon: !canPlay
+          }
+          ">
         {{ song_name }}
       </div>
-      <div id="song_info">
-        <div id="s">
+      <div class="song_info"
+       :class="[
+       {
+         songUnPlayable: !canPlay
+       }
+       ]">
+        <div class="s">
           <router-link
             tag="p"
             :to="{ path: '/HomeWebPlayer/ArtistProfile/' + artist_id }"
-            id="song_artist"
+            class="song_artist"
             testid="artist name"
           >
             {{ song_artists }}
@@ -62,7 +82,7 @@
         </div>
         <router-link
           tag="p"
-          id="song_album"
+          class="song_album"
           testid="album name"
           :to="{ path: '/HomeWebPlayer/album/' + albumId }"
         >
@@ -75,7 +95,14 @@
     </div>
     <div id="song_options" class="dropdownlist">
       <div id="icondiv" @click="this.toggleShow">
-        <i id="list_icon" v-show="hover" class="fa fa-ellipsis-h dots_icon"></i>
+        <i id="list_icon"
+         v-show="hover"
+         class="fa fa-ellipsis-h dots_icon"
+          :class="
+          {
+          unPlayableIcon: !canPlay
+          }
+          "></i>
       </div>
       <div id="mydropdown" class="db" v-if="show">
         <p>Start Radio</p>
@@ -113,6 +140,7 @@
   font-weight: 400;
   position: relative;
 }
+
 .clicked {
   background-color: #313030;
 }
@@ -143,6 +171,9 @@
 .song:hover {
   background-color: #313030;
 }
+.unPlayable:hover{
+   background-color: transparent;
+}
 
 #icon {
   width: 43px;
@@ -168,8 +199,8 @@
 #mydropdown {
   position: fixed;
 }
-#song_info {
-  #s {
+.song_info {
+  .s {
     display: inline;
     p {
       transition: color 0.2s linear, border 0.2s linear;
@@ -184,16 +215,41 @@
       padding-right: 4px;
     }
   }
-  #song_album {
+  .song_album {
     display: inline;
     color: darkgray;
     cursor: pointer;
     transition: color 0.2s linear, border 0.2s linear;
   }
-  #song_album:hover {
+  .song_album:hover {
     color: white;
     cursor: pointer;
     border-bottom: white solid 1px;
+  }
+}
+.songUnPlayable{
+  .s {
+    display: inline;
+    p {
+      color: rgb(102, 95, 95);
+      cursor: pointer;
+    }
+    p:hover {
+      color: rgb(139, 133, 133);
+      border-bottom: rgb(139, 133, 133) solid 1px;
+      cursor: pointer;
+      }
+    span {
+      padding-right: 4px;
+    }
+  }
+  .song_album {
+    display: inline;
+    color: rgb(102, 95, 95);
+  }
+  .song_album:hover {
+    color: rgb(139, 133, 133);
+    border-bottom: rgb(139, 133, 133) solid 1px;
   }
 }
 .song_length {
@@ -210,7 +266,7 @@
   height: 20px;
   color: #fff;
 }
-#song_artist {
+.song_artist {
   display: inline-block;
   height: 20px;
   color: darkgray;
@@ -226,6 +282,9 @@
 }
 .currently {
   color: #1db954;
+}
+.unPlayableIcon{
+   color: rgb(150, 141, 141);
 }
 </style>
 
@@ -300,7 +359,7 @@ export default {
       type: Boolean,
       default: true
     },
-    isQueue:{
+    isQueue: {
       type: Boolean,
       default: false
     }
@@ -323,19 +382,21 @@ export default {
      * @public This is a public method
      */
     toggleShow(event) {
-      var x = this.show;
-      window.Element.show = false;
-      this.show = !x;
-      if (!x) {
-        this.$nextTick(function() {
-          var div = document.getElementById("mydropdown");
-          var left = event.screenX - 203 + "px";
-          var top = event.screenY - 70 + "px";
-          if (div) {
-            div.style.left = left;
-            div.style.top = top;
-          }
-        });
+      if (this.canPlay) {
+        var x = this.show;
+        window.Element.show = false;
+        this.show = !x;
+        if (!x) {
+          this.$nextTick(function() {
+            var div = document.getElementById("mydropdown");
+            var left = event.screenX - 203 + "px";
+            var top = event.screenY - 70 + "px";
+            if (div) {
+              div.style.left = left;
+              div.style.top = top;
+            }
+          });
+        }
       }
     },
     /**
@@ -354,6 +415,7 @@ export default {
      * @public This is a public method
      */
     clicked() {
+      if(this.canPlay)
       this.isclicked = true;
     },
     /**
@@ -400,7 +462,7 @@ export default {
   computed: {
     isCurrentClass: function() {
       return {
-        currently: this.isCurrent
+        currently: this.isCurrent && this.canPlay
       };
     },
     isCurrent: function() {
@@ -422,7 +484,7 @@ export default {
     ...mapState({
       showAdd: state => state.Playlist.showModalAdd
     }),
-    canPlay:function() {
+    canPlay: function() {
       return this.isPlayable || this.userinfo.product == "premium";
     }
   },

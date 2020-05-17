@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
   mockServer();
 }
 
-axios.defaults.baseURL = "http://52.205.254.29";
+axios.defaults.baseURL = "http://marioplex.ninja";
 
 new Vue({
   router,

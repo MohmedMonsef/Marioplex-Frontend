@@ -24,17 +24,6 @@ export default {
     };
   },
   methods: {
-    ////////////////////////////////////
-    // useraccount : function(){
-    // if (this.user != "success")
-    // {
-    //  var nouser_songinfo = document.getElementById("song_info_col");
-    //  //var nouser_buttons = document.querySelectorAll("buttons");
-    //  //var nouser_sliders = document.querySelectorAll("input");
-    //  nouser_songinfo.style.visibility = "hidden";
-    // }
-    // },
-    ////////////////////////////////////
     /**
      * this function is to play current song
      * @public This is a public method
@@ -44,7 +33,6 @@ export default {
      * @param {String} playlist_id id of the playlist where the song exists
      */
     playSong() {
-      
       if(this.canPlay){
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
