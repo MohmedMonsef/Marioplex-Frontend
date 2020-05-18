@@ -6,7 +6,7 @@
     <DeletePlaylist v-if="showdelete" />
     <PremiumAd v-if="premiumPopup"/>
     <div id="HomeInWebPlayer">
-      <router-view class="child"></router-view>
+      <router-view class="child" :key="componentKey"></router-view>
       <navbar-webplayer />
       <!-- <library-navbar/> -->
     </div>
@@ -15,12 +15,6 @@
   </div>
 </template>
 <style scoped>
-/* .home_webplayer{
-   width: calc(100vw);
-   height: calc(100vh);
-   background-color: #161516;
-   
-} */
 #HomeInWebPlayer {
   width: calc(100vw - 235px);
   height: calc(100vh - 90px);
@@ -54,6 +48,11 @@ import { mapState ,mapGetters} from "vuex";
  */
 export default {
   name: "HomeWebPlayer",
+    data: function () {
+    return {
+      componentKey:0
+    };
+  },
   components: {
     SideBar,
     CreatePlaylist,
@@ -85,6 +84,11 @@ export default {
     closeMenu(){
       this.$store.dispatch("UserLibrary/sideMenu", false);
     }
-  }
+  },
+    watch: {
+    $route() {
+       this.componentKey = (this.componentKey+1)%4
+    }
+}
 };
 </script>
