@@ -144,6 +144,8 @@ export default {
         .then(() => {
           state.User.product = "premium";
           store.dispatch("Authorization/get_user", true);
+          store.dispatch("Authorization/logout");
+          router.replace("/login");
         })
         .catch((error) => {
           console.log(error);
@@ -207,12 +209,6 @@ export default {
       commit("auth_request");
       axios
         .put("/api/me/update", {
-          // email: user.email,
-          // password: user.password,
-          // newpassword: user.newpassword,
-          // gender: user.gender,
-          // country: user.country,
-          // birthday: user.birthday
           user,
         })
         .then((response) => {

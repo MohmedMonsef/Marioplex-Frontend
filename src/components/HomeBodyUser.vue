@@ -2,7 +2,8 @@
   <div>
     <div class="row justify-content-center home px-0 m-0">
       <div class="col-9 headers px-0 m-0">
-        <h1>Go Premium. Be happy.</h1>
+        <h1  v-if="user.product != 'premium'">Go Premium. Be happy.</h1>
+        <h1  v-if="user.product == 'premium'">MarioPlex. Infinite Music.</h1>
         <div class="row justify-content-center px-0 m-0">
           <router-link
             class="costum-btn"
@@ -10,7 +11,7 @@
             to="/GetPremium"
             tag="button"
             testid="log in link"
-            v-if="isLoggedIn == 'success'"
+            v-if="isLoggedIn == 'success' && user.product != 'premium'"
           >
             Start Free Trail
           </router-link>
@@ -102,6 +103,7 @@ export default {
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
+       user:"Authorization/user",
       homePlaylists: "ShowWebPlayer/homePlaylists"
     })
   },

@@ -18,7 +18,11 @@
       <!--nav items-->
       <div class="navbar-list">
         <ul>
-          <router-link to="/premium" tag="li">
+          <router-link
+           to="/premium" 
+           tag="li"
+           v-if="user.product != 'premium'"
+           >
             <a> Premium</a>
           </router-link>
           <router-link to="/Help" tag="li">
@@ -78,6 +82,7 @@
               class="big"
               testid="premium link"
               tag="li"
+              v-if="user.product != 'premium'"
             >
               <a> Premium</a>
             </router-link>
@@ -493,7 +498,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus"
+      isLoggedIn: "Authorization/GetStatus",
+      user:"Authorization/user"
     }),
     islogged() {
       return this.isLoggedIn == "success";

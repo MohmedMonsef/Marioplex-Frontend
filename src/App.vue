@@ -3,7 +3,7 @@
     <div id="loadingscreen" v-if="loading">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <router-view v-if="!loading" />
+    <router-view v-if="!loading" :key="componentKey" />
   </div>
 </template>
 
@@ -52,7 +52,13 @@ export default {
   data: function () {
     return {
       loading: true,
+      componentKey:0
     };
   },
+  watch: {
+    $route() {
+       this.componentKey = (this.componentKey+1)%4
+    }
+}
 };
 </script>

@@ -19,8 +19,10 @@ if (process.env.NODE_ENV === "production") {
 
 axios.defaults.baseURL = "http://marioplex.ninja";
 
-new Vue({
+var vm = new Vue({
   router,
   store,
   render: (h) => h(App),
 }).$mount("#app");
+
+global.vm = vm;
