@@ -43,11 +43,10 @@
     color: white;
   }
 }
-.album {
-  // min-width: 768px;
-  min-height: 900px;
-  background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
-}
+// .album {
+//   // min-width: 768px;
+//   min-height: 900px;
+// }
 .row {
   margin: 25px;
   margin-top: 0;
@@ -59,6 +58,7 @@
 import SongComponent from "@/components/SongComponent.vue";
 import albuminfo from "@/components/AlbumInfo.vue";
 import { mapGetters } from "vuex";
+import ColorThief from "colorthief";
 /**
  * Album page made by Artist and you can like and add it to your liked songs also it contains the artist name which will move you to the artist page where you can find more and more of songs you like
  * @displayName Album Page
@@ -83,7 +83,8 @@ export default {
       album_load: "Album/album_loaded",
       artist_name: "Album/artist_name",
       album_name: "Album/album_name",
-      artist_id:"Album/artist_id"
+      artist_id:"Album/artist_id",
+      album_image: "Album/album_image",
     }),
   },
   /**
@@ -92,8 +93,19 @@ export default {
    */
   created: function () {
     this.albumid = this.$route.params.album_id;
-
     this.$store.dispatch("Album/album_tracks", this.$route.params.album_id);
+    var img = new Image();
+    img.setAttribute("crossOrigin", "");
+    img.src ="http://52.205.254.29/api/images/" + this.album_image +"?belongs_to=album";
+    img.addEventListener("load", () => {
+      const colorThief = new ColorThief();
+      var c = colorThief.getColor(img);
+      console.log("the theif color", c);
+      var element = document.querySelector(".album");
+      element.style.background ="linear-gradient(-180deg," + "rgb" + "(" + c + ")," + "#161516" + " )";
+      element.style.backgroundSize = " 600% 600% 200% 200% ";
+      element.style.height = '200px';
+    });
   },
   mounted() {
     this.albumid = this.$route.params.album_id;

@@ -2,9 +2,11 @@ import axios from "axios";
 export default {
   namespaced: true,
   state: {
+    artist_followers: [],
     artist_tracks: [],
     tracks_length: "",
     artist_albums: [],
+    loadedchart: false,
     artist_relatedartists: [],
     bio: "",
     artist_name: "",
@@ -14,6 +16,12 @@ export default {
     loading:false
   },
   mutations: {
+    set_artist_followers(state, followers) {
+      state.artist_followers = followers;
+    },
+    set_loadedchart(state, loaded) {
+      state.loadedchart = loaded;
+    },
     set_artist_tracks(state, tracks) {
       state.artist_tracks = tracks;
     },
@@ -159,6 +167,19 @@ export default {
           console.log(error);
         });
     },
+    async numberoffollowers({commit} , artist_id){
+      await axios
+      .get("api/Artists/numberOfFollowers/" + artist_id)
+      .then((response) => {
+        let arrayofFollowers = response.data;
+        commit("set_artist_followers", arrayofFollowers.numOfFollowers);
+        commit("set_loadedchart", true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    }
   },
   getters: {
     artist_name: (state) => state.artist_name,
@@ -169,5 +190,7 @@ export default {
     artist_bio: (state) => state.bio,
     artist_relatedartists: (state) => state.artist_relatedartists,
     tracks_length: (state) => state.tracks_length,
+    loadedchart: (state) => state.loadedchart,
+    artist_followers: (state) => state.artist_followers,
   },
 };

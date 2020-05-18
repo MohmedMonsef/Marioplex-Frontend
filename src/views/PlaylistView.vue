@@ -45,11 +45,10 @@
 </template>
 
 <style lang="scss" scoped>
-.playlist {
-  // min-width: 768px;
-  min-height: 900px;
-  background-image: linear-gradient(0deg, #161516, rgb(66, 64, 64));
-}
+// .playlist {
+//   // min-width: 768px;
+//   // min-height: 900px;
+// }
 .loading {
   display: flex;
   justify-content: center;
@@ -89,6 +88,7 @@ import playlistinfo from "@/components/PlaylistInfo.vue";
 import { mapGetters } from "vuex";
 import draggable from "vuedraggable";
 import { mapState } from "vuex";
+import ColorThief from "colorthief";
 /**
  * Playlist page which contains some information like its name and the name of user made by and of course some tracks and some information about them here you can like the whole playlist and add it to your liked playlists
  * @displayName Playlist page
@@ -101,12 +101,12 @@ export default {
     //   type: Boolean
     // }
   },
-  data: function () {
+  data: function() {
     return {
       show: false,
       oldIndex: "",
       newIndex: "",
-      playlist_id: "",
+      playlist_id: ""
     };
   },
   components: {
@@ -114,7 +114,7 @@ export default {
     draggable,
     playlist,
     emptytracks,
-    playlistinfo,
+    playlistinfo
     // playlistpopup
   },
   methods: {
@@ -139,29 +139,42 @@ export default {
       let payload = {
         start: this.oldIndex,
         before: this.newIndex,
-        playlist_id: this.playlist_id,
+        playlist_id: this.playlist_id
       };
       console.log("in playlist_view ", this.playlist_id);
       this.$store.dispatch("Playlist/ReorderTracks", payload);
-    },
+    }
   },
   computed: {
     ...mapState({
-      showpopup: (state) => state.playlistpopup.showModal,
+      showpopup: state => state.playlistpopup.showModal
     }),
     ...mapGetters({
       playlist_tracks: "Playlist/playlist_tracks",
       playlist_length: "Playlist/playlist_length",
       playlist_load: "Playlist/playlist_loaded",
-    }),
+      playlist_image: "Playlist/playlist_image",
+    })
   },
-  created: function () {
+  created: function() {
     this.$store.dispatch(
       "Playlist/playlist_tracks",
       this.$route.params.playlist_id
     ),
       console.log("Playlist_id", this.$route.params.playlist_id);
     console.log("nihal here is the length", this.playlist_length);
-  },
+    var img = new Image();
+    img.setAttribute("crossOrigin", "");
+    img.src ="http://52.205.254.29/api/images/" + this.playlist_image +"?belongs_to=playlist";
+    img.addEventListener("load", () => {
+      const colorThief = new ColorThief();
+      var c = colorThief.getColor(img);
+      console.log("the theif color", c);
+      var element = document.querySelector(".playlist");
+      element.style.background ="linear-gradient(-180deg," + "rgb" + "(" + c + ")," + "#161516" + " )";
+      element.style.backgroundSize = " 600% 600% 300% 300% ";
+      element.style.height = '200px';
+    });
+  }
 };
 </script>
