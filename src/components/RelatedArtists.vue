@@ -5,7 +5,7 @@
         v-for="artist in relatedartists"
         :key="artist.id"
         :images="
-          $user+'/api/images/' +
+          $url+'/api/images/' +
           artist.images[0]._id +
           '?belongs_to=artist'
         "

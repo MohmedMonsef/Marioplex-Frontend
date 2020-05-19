@@ -24,7 +24,7 @@
           :key="album._id"
           :albumId="album._id"
           :images="
-            $user+'/api/images/' +
+            $url+'/api/images/' +
               album.images[0]._id +
               '?belongs_to=album'
           "

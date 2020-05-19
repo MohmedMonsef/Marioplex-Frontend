@@ -13,7 +13,7 @@
           <lib-playlists
             v-if="playlist.isPublic"
             :images="
-              $user +'/api/images/' +
+              $url +'/api/images/' +
               playlist.images[0]._id +
               '?belongs_to=playlist'
             "
@@ -96,7 +96,7 @@ export default {
         return "https://dummyimage.com/250x400.jpg/dddddd/000000";
       } else
         return (
-          this.$user+"/api/images/" + imgSrc._id + "?belongs_to=user"
+          this.$url+"/api/images/" + imgSrc._id + "?belongs_to=user"
         );
     },
   },

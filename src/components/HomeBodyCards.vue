@@ -99,7 +99,7 @@ export default {
   },
   computed: {
     getImg () {
-      let img = this.$user +"/api/images/" +
+      let img = this.$url +"/api/images/" +
         this.images +
         "?belongs_to=playlist";
 

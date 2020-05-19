@@ -9,7 +9,7 @@
 
       <img
        :src="
-          $user +'/api/images/' +
+          $url +'/api/images/' +
           album_image +
             '?belongs_to=album'
         "

@@ -8,7 +8,7 @@
           v-for="match_user in match_users"
           :key="match_user.id"
           :images="
-            $user+'/api/images/' +
+            $url+'/api/images/' +
             match_user.images[0]._id +
             '?belongs_to=user'
           "

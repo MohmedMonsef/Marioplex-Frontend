@@ -7,7 +7,7 @@
           v-for="POPplaylist in POPplaylists1.playlists"
           :key="POPplaylist.id"
           :images="
-           $user+'/api/images/' +
+           $url+'/api/images/' +
             POPplaylist.images[0]._id +
             '?belongs_to=playlist'
           "

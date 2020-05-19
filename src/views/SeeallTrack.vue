@@ -8,7 +8,7 @@
           v-for="match_track in match_tracks"
           :key="match_track.id"
           :images="
-            $user+'/api/images/' +
+            $url+'/api/images/' +
             match_track.images[0]._id +
             '?belongs_to=album'
           "

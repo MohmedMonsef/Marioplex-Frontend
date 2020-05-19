@@ -16,7 +16,7 @@
             v-for="playlist in playlists1"
             :key="playlist.id"
             :images="
-              $user+'/api/images/' +
+              $url+'/api/images/' +
               playlist.images[0]._id +
               '?belongs_to=playlist'
             "

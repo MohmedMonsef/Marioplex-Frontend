@@ -3,7 +3,7 @@
     <div class="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
       <img
         :src="
-         $user+'/api/images/' +
+         $url+'/api/images/' +
             playlist_image +
             '?belongs_to=playlist'
         "
