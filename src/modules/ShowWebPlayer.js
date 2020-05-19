@@ -108,7 +108,7 @@ export default {
     async homePlaylists({state,dispatch}){
      await dispatch("RecenlyPlayed");
      await dispatch("showPopularPlaylists");
-      state.homePlaylists=state.recently_played;
+     state.homePlaylists=state.recently_played;
       var i =0
         while(state.homePlaylists.length < 6){
           console.log(state.popular_playlists.playlists[i])

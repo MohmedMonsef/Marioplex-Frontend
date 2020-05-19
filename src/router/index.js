@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "../store"
 import Home from "../views/Home.vue";
 import HomeBody from "../components/HomeBody.vue";
 import SignUp from "../views/SignUp.vue";
@@ -51,6 +52,7 @@ import HelpMadeForYou from "../views/HelpMadeForYou.vue"
 import HelpMangePaymentDetail from "../views/HelpMangePaymentDetail.vue"
 import  HelpAccountHelp from "../views/HelpAccountHelp.vue"
 
+import UnAuthorized from "../views/UnAuthorized.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -88,17 +90,27 @@ const routes = [
             component: AccountNotifications,
           },
         ],
+        meta: { 
+          requiresAuth: true
+        }
       },
       { path: "", name: "HomePage", component: HomeBody },
       {
         path: "premium",
         name: "Premium",
         component: Premium,
+        meta: { 
+          isPremium:true
+        }
       },
       {
         path: "/GetPremium",
         name: "GetPremium",
         component: GetPremium,
+        meta: { 
+          toPremium: true,
+          isPremium:true
+        }
       },
       {
         path: "/Help",
@@ -190,9 +202,23 @@ const routes = [
             component: LibraryAlbums,
           },
         ],
+        meta: { 
+          requiresAuth: true
+        }
       },
-      { path: "liked-tracks", component: LikedTracks },
-      { path: "queue", component: Queue },
+      { 
+        path: "liked-tracks",
+         component: LikedTracks,
+         meta: { 
+          requiresAuth: true
+        }
+        },
+      { path: "queue",
+       component: Queue,
+       meta: { 
+        requiresAuth: true
+      }
+       },
       {
         path: "playlist/:playlist_id",
         name: "playlist",
@@ -249,6 +275,9 @@ const routes = [
     path: "/signup",
     name: "SignUp",
     component: SignUp,
+    meta: { 
+      isLogged:true
+    }
   },
   {
     path: "/login",
@@ -263,7 +292,10 @@ const routes = [
           token: route.query.token,
         }),
       }
-    ]
+    ],
+    meta: { 
+      isLogged:true
+    }
   },
   {
     path: "/ForgetPassword",
@@ -290,12 +322,58 @@ const routes = [
     name: "ArtistPersonalPage",
     component: ArtistPersonalPage,
   },
+  {
+    path: "/UnAuthorized",
+    name: "UnAuthorized",
+    component: UnAuthorized
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  store
 });
 
+router.beforeEach((to, from, next) => {
+  console.log(store.getters["Authorization/GetStatus"])
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+  
+    if (store.getters["Authorization/GetStatus"] != "success") {
+      next('/UnAuthorized')
+      return
+    }
+  } 
+  else {
+    next() 
+  }
+  if(to.matched.some(record => record.meta.toPremium)) {
+    if (store.getters["Authorization/GetStatus"] != "success") {
+      next('/login')
+      return
+    }
+  } 
+  else {
+    next() 
+  }
+  if(to.matched.some(record => record.meta.isLogged)) {
+    if (store.getters["Authorization/GetStatus"] == "success") {
+      next('/')
+      return
+    }
+  } 
+  else {
+    next() 
+  }
+  if(to.matched.some(record => record.meta.isPremium)) {
+    if (store.getters["Authorization/user"].product == "premium") {
+      next(from.path)
+      return
+    }
+  } 
+  else {
+    next() 
+  }
+})
 export default router;

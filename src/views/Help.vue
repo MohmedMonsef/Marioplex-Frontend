@@ -217,7 +217,9 @@
                                     >
                                         Account Help
                                     </h3>
-                                    <a href="/HelpFixed/HelpCantLogIn" class="fontsizelarge"
+                                    <a
+                                        href="/HelpFixed/HelpCantLogIn"
+                                        class="fontsizelarge"
                                         >Can't log in</a
                                     >
                                 </div>
@@ -227,7 +229,9 @@
                                     >
                                         Account Help
                                     </h3>
-                                    <a href="/HelpFixed/HelpRestPassword" class="fontsizelarge"
+                                    <a
+                                        href="/HelpFixed/HelpRestPassword"
+                                        class="fontsizelarge"
                                         >Reset your password</a
                                     >
                                 </div>
@@ -237,7 +241,9 @@
                                     >
                                         Account Help
                                     </h3>
-                                    <a href="/HelpFixed/HelpFindingAccount" class="fontsizelarge"
+                                    <a
+                                        href="/HelpFixed/HelpFindingAccount"
+                                        class="fontsizelarge"
                                         >Finding accounts</a
                                     >
                                 </div>
@@ -247,7 +253,9 @@
                                     >
                                         Payment Help
                                     </h3>
-                                    <a href="/HelpFixed/HelpMangePaymentDetail" class="fontsizelarge"
+                                    <a
+                                        href="/HelpFixed/HelpMangePaymentDetail"
+                                        class="fontsizelarge"
                                         >Manage payment details</a
                                     >
                                 </div>
@@ -262,19 +270,19 @@
         <div class="background">
             <div class="container">
                 <a class="scroll-button pull-left" href="#navigation">
-                        <use xlink:href="#scroll-down">
-                            <svg
-                                id="scroll-down"
-                                width="20"
-                                height="20"
-                                viewBox="643.5 386 22.1 21.9"
-                            >
-                                <path
-                                    d="M665.6,396.3c0,0.3-0.1,0.7-0.4,0.9l-9.8,10.4c-0.5,0.5-1.3,0.5-1.7,0l-9.8-10.4c-0.5-0.5-0.5-1.3,0-1.8
+                    <use xlink:href="#scroll-down">
+                        <svg
+                            id="scroll-down"
+                            width="20"
+                            height="20"
+                            viewBox="643.5 386 22.1 21.9"
+                        >
+                            <path
+                                d="M665.6,396.3c0,0.3-0.1,0.7-0.4,0.9l-9.8,10.4c-0.5,0.5-1.3,0.5-1.7,0l-9.8-10.4c-0.5-0.5-0.5-1.3,0-1.8
       s1.3-0.5,1.7,0l8.9,9.5l8.9-9.5c0.5-0.5,1.3-0.5,1.7,0C665.5,395.6,665.6,396,665.6,396.3z"
-                                />
-                            </svg>
-                        </use>
+                            />
+                        </svg>
+                    </use>
                 </a>
 
                 <div class="row justify-content-center">
@@ -286,7 +294,9 @@
                                 </h3>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="/HelpFixed/HelpAccountHelp" class="item__link"
+                                        <a
+                                            href="/HelpFixed/HelpAccountHelp"
+                                            class="item__link"
                                             >Account Help</a
                                         >
                                     </li>
@@ -427,9 +437,6 @@
                     <svg>
                         <use xlink:href="#scroll-down" />
                     </svg>
-                    <svg>
-                        <use xlink:href="#scroll-down" />
-                    </svg>
                 </a>
 
                 <div class="row text-center">
@@ -468,9 +475,6 @@
         <div class="front-how-to-use front-box front-box-dark" id="how-to-use">
             <div class="container">
                 <a class="scroll-button pull-left" href="#how-to-use">
-                    <svg>
-                        <use xlink:href="#scroll-down" />
-                    </svg>
                     <svg>
                         <use xlink:href="#scroll-down" />
                     </svg>
@@ -671,9 +675,6 @@
         <div class="front-box front-video" name="videos" id="videos">
             <div class="container container-carousel">
                 <a class="scroll-button pull-left" href="#videos">
-                    <svg>
-                        <use xlink:href="#scroll-down" />
-                    </svg>
                     <svg>
                         <use xlink:href="#scroll-down" />
                     </svg>
@@ -928,9 +929,6 @@
         >
             <div class="container">
                 <a class="scroll-button pull-left" href="#using-spotify">
-                    <svg>
-                        <use xlink:href="#scroll-down" />
-                    </svg>
                     <svg>
                         <use xlink:href="#scroll-down" />
                     </svg>

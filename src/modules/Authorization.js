@@ -96,8 +96,8 @@ export default {
         .get("/api/me-player")
         .then((response) => {
           const user = response.data[0];
-          console.log("soong");
-          if(typeof user.player.current_track == "undefined"){
+          console.log("soong",!user.player.haveQueue);
+        if(!user.player.haveQueue){
             dispatch("Queue/CreateQueue","", { root: true });
           }
           else{
@@ -144,6 +144,8 @@ export default {
         .then(() => {
           state.User.product = "premium";
           store.dispatch("Authorization/get_user", true);
+          store.dispatch("Authorization/logout");
+          router.replace("/login");
         })
         .catch((error) => {
           console.log(error);
@@ -207,12 +209,6 @@ export default {
       commit("auth_request");
       axios
         .put("/api/me/update", {
-          // email: user.email,
-          // password: user.password,
-          // newpassword: user.newpassword,
-          // gender: user.gender,
-          // country: user.country,
-          // birthday: user.birthday
           user,
         })
         .then((response) => {

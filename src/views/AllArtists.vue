@@ -8,7 +8,7 @@
           v-for="POPartist in POPartists1.artists"
           :key="POPartist.id"
           :images="
-            'http://52.205.254.29/api/images/' +
+            $url+'/api/images/' +
             POPartist.images[0]._id +
             '?belongs_to=artist'
           "

@@ -8,7 +8,7 @@
           v-for="match_album in match_albums"
           :key="match_album.id"
           :images="
-            'http://52.205.254.29/api/images/' +
+            $url+'/api/images/' +
             match_album.images[0]._id +
             '?belongs_to=artist'
           "

@@ -17,10 +17,13 @@ if (process.env.NODE_ENV === "production") {
   mockServer();
 }
 
-axios.defaults.baseURL = "http://marioplex.ninja";
+axios.defaults.baseURL = "http://52.87.106.56";
+Vue.prototype.$user= "http://52.87.106.56"
 
-new Vue({
+var vm = new Vue({
   router,
   store,
   render: (h) => h(App),
 }).$mount("#app");
+
+global.vm = vm;
