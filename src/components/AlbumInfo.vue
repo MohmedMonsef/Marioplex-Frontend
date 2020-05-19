@@ -9,7 +9,7 @@
 
       <img
        :src="
-          'http://52.205.254.29/api/images/' +
+          $user +'/api/images/' +
           album_image +
             '?belongs_to=album'
         "

@@ -111,14 +111,14 @@ export default {
       let trackroute;
       if(user.product != "premium"){
       trackroute =
-        "http://52.205.254.29/api/tracks/web-player/" +
+        "http://52.87.106.56/api/tracks/web-player/" +
         id +
         "/?type=medium&token=" +
         token;
       }
       else{
         trackroute =
-        "http://52.205.254.29/api/tracks/web-player/" +
+        "http://52.87.106.56/api/tracks/web-player/" +
         id +
         "/?type=high&token=" +
         token;

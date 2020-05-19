@@ -7,7 +7,7 @@
           v-for="POPalbum in POPalbums1.albums"
           :key="POPalbum.id"
           :images="
-            'http://52.205.254.29/api/images/' +
+            $user+'/api/images/' +
             POPalbum.images[0]._id +
             '?belongs_to=album'
           "

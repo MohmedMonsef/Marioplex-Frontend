@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="loading" v-if="!loadingsearch && search_value !== ''">
+    <div class="loading" v-if="!loadingsearch && search_value !== ''" style="backgrou">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="showresl == 'h' && search_value !== ''">

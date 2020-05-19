@@ -7,7 +7,7 @@
           v-for="match_playlist in match_playlists"
           :key="match_playlist.id"
           :images="
-            'http://52.205.254.29/api/images/' +
+             $user+'/api/images/' +
             match_playlist.images[0]._id +
             '?belongs_to=playlist'
           "

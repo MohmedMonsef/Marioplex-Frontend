@@ -96,7 +96,7 @@ export default {
     this.$store.dispatch("Album/album_tracks", this.$route.params.album_id);
     var img = new Image();
     img.setAttribute("crossOrigin", "");
-    img.src ="http://52.205.254.29/api/images/" + this.album_image +"?belongs_to=album";
+    img.src = this.$url+"/api/images/" + this.album_image +"?belongs_to=album";
     img.addEventListener("load", () => {
       const colorThief = new ColorThief();
       var c = colorThief.getColor(img);

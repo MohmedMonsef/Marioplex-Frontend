@@ -9,7 +9,7 @@
               v-for="match_to in match_top"
               :key="match_to.id"
               :image="
-                'http://52.205.254.29/api/images/' +
+                $user+'/api/images/' +
                 match_to.images[0]._id +
                 '?belongs_to=artist'
               "
@@ -23,7 +23,7 @@
               v-for="match_to in match_top"
               :key="match_to.id"
               :image="
-                'http://52.205.254.29/api/images/' +
+                $user+'/api/images/' +
                 match_to.images[0]._id +
                 '?belongs_to=album'
               "
@@ -39,7 +39,7 @@
               v-for="match_to in match_top"
               :key="match_to.id"
               :images="
-                'http://52.205.254.29/api/images/' +
+                $user+'/api/images/' +
                 match_to.images[0]._id +
                 '?belongs_to=playlist'
               "
@@ -56,7 +56,7 @@
               v-for="match_to in match_top"
               :key="match_to.id"
               :images="
-                'http://52.205.254.29/api/images/' +
+               $user+'/api/images/' +
                 match_to.images[0]._id +
                 '?belongs_to=track'
               "
@@ -72,7 +72,7 @@
               v-for="match_to in match_top"
               :key="match_to.id"
               :images="
-                'http://52.205.254.29/api/images/' +
+                $user+'/api/images/' +
                 match_to.images[0]._id +
                 '?belongs_to=user'
               "
@@ -142,7 +142,7 @@
             v-for="match_artist in match_artists"
             :key="match_artist.id"
             :images="
-              'http://52.205.254.29/api/images/' +
+              $user+'/api/images/' +
               match_artist.images[0]._id +
               '?belongs_to=artist'
             "
@@ -178,7 +178,7 @@
             v-for="match_album in match_albums"
             :key="match_album.id"
             :images="
-              'http://52.205.254.29/api/images/' +
+              $user+'/api/images/' +
               match_album.images[0]._id +
               '?belongs_to=album'
             "
@@ -214,7 +214,7 @@
             v-for="match_playlist in match_playlists"
             :key="match_playlist.id"
             :images="
-              'http://52.205.254.29/api/images/' +
+              $user+'/api/images/' +
               match_playlist.images[0]._id +
               '?belongs_to=playlist'
             "
@@ -359,7 +359,7 @@ export default {
         return "https://dummyimage.com/250x400.jpg/dddddd/000000";
       } else
         return (
-          "http://52.205.254.29/api/images/" + imgSrc._id + "?belongs_to=user"
+           this.$user+"/api/images/" + imgSrc._id + "?belongs_to=user"
         );
     },
   },

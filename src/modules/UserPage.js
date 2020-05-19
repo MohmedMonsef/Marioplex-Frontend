@@ -11,6 +11,8 @@ export default {
       state.playlists = playlists;
     },
     set_user(state, user) {
+      if(user.images.length==0)
+           user.images.push({_id:"5eb52f1863eea332d416b9fa"});
       state.user = user;
     },
   },

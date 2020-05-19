@@ -165,7 +165,7 @@ export default {
     console.log("nihal here is the length", this.playlist_length);
     var img = new Image();
     img.setAttribute("crossOrigin", "");
-    img.src ="http://52.205.254.29/api/images/" + this.playlist_image +"?belongs_to=playlist";
+    img.src = this.$user+"/api/images/" + this.playlist_image +"?belongs_to=playlist";
     img.addEventListener("load", () => {
       const colorThief = new ColorThief();
       var c = colorThief.getColor(img);

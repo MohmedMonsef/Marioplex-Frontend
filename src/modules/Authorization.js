@@ -96,8 +96,8 @@ export default {
         .get("/api/me-player")
         .then((response) => {
           const user = response.data[0];
-          console.log("soong");
-          if(typeof user.player.current_track == "undefined"){
+          console.log("soong",!user.player.haveQueue);
+        if(!user.player.haveQueue){
             dispatch("Queue/CreateQueue","", { root: true });
           }
           else{
