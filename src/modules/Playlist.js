@@ -19,6 +19,7 @@ export default {
     owner_name: "",
     playlist_image: "",
     likedplaylist: Boolean,
+    restored: ""
   },
   mutations: {
     toggleModal(state, withtrack) {
@@ -96,6 +97,9 @@ export default {
     },
     RemoveFromThisPlaylist() {},
     AddTrackToExsistPlaylist() {},
+    isRestored(state, msg) {
+      state.restored = msg;
+    }
   },
   actions: {
     playlist_tracks({ commit }, playlist_id) {
@@ -317,6 +321,19 @@ export default {
           console.log(error);
         });
     },
+    restorePlaylist({commit}, ID) {
+      console.log("restore playlist in axios");
+      console.log("ID: " , ID);
+      axios
+        .put("/api/me/restoreplaylists?playlistsIds=" + ID)
+        .then((response) => {
+          console.log(response.data);
+          commit("isRestored", "success");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
   getters: {
     playlist_tracks: (state) => state.playlist_tracks,
@@ -335,5 +352,6 @@ export default {
     trackid: (state) => state.trackid,
     withtrack: (state) => state.withtrack,
     showinput: (state) => state.showinput,
+    restored: (state) => state.restored
   },
 };

@@ -204,9 +204,8 @@ export default {
           console.log(error);
         });
     },
-    SaveEdit({ commit }, user) {
+    saveEdit({ commit }, user) {
       console.log("user in save edit", user);
-      commit("auth_request");
       axios
         .put("/api/me/update", {
           user,
