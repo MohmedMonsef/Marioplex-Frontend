@@ -210,7 +210,7 @@ export default {
     getImg() {
       var coverImg = document.getElementById("image");
       coverImg.style.backgroundImage =
-        "url(http://52.205.254.29/api/images/" +
+       "url("+ this.$url+"/api/images/" +
         this.imgId +
         "?belongs_to=artist)";
     }

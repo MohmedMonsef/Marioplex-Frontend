@@ -292,15 +292,15 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   console.log(store.getters["Authorization/GetStatus"])
   if(to.matched.some(record => record.meta.requiresAuth)) {
-  
-    if (store.getters["Authorization/GetStatus"] != "success") {
+    var status= localStorage.getItem("x-auth-token");
+    if (!status) {
       next('/UnAuthorized')
       return
     }
-  } 
-  else {
-    next() 
-  }
+} 
+else {
+  next() 
+}
   if(to.matched.some(record => record.meta.toPremium)) {
     if (store.getters["Authorization/GetStatus"] != "success") {
       next('/login')

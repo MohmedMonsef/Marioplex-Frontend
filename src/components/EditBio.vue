@@ -30,7 +30,7 @@
 
         <div class="child">
           <div class="grandchild">
-            <h4 class="artist_name">Name</h4>
+            <!-- <h4 class="artist_name">Name</h4>
             <input
               class="name_input"
               type="text"
@@ -43,7 +43,7 @@
               type="text"
               placeholder="Genre"
               v-model="Genre"
-            />
+            /> -->
             <h4 class="artist_description">Description</h4>
             <input
               class="name_input"
@@ -263,7 +263,8 @@ export default {
   components: {},
   computed: {
     ...mapGetters({
-      showModal: "ArtistProperties/showModalClaim"
+      showModal: "ArtistProperties/showModal",  
+  
     })
   },
   methods: {
@@ -272,7 +273,7 @@ export default {
      * @public This is a public method
      */
     changeModalState() {
-      this.$store.dispatch("ArtistProperties/toggleModalClaim");
+      this.$store.dispatch("ArtistProperties/toggleModal");
     },
     /**
      * triggers the edit request
@@ -280,10 +281,11 @@ export default {
      */
     EditBio() {
       let payload = {
-        Name: this.Name,
-        Genre: this.Genre,
+        // Name: this.Name,
+        // Genre: this.Genre,
         Description: this.Description
       };
+      console.log("in aEDIT BIO POPUP",payload.Description)
       console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditBio", payload);
     }

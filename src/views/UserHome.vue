@@ -10,8 +10,8 @@
           <show-popularplaylists
             v-for="POPplaylist in POPplaylists1.playlists.slice(0, 5)"
             :key="POPplaylist.id"
-            :images="
-              'http://52.205.254.29/api/images/' +
+            :images="$url+
+              '/api/images/' +
               POPplaylist.images[0]._id +
               '?belongs_to=playlist'
             "
@@ -32,8 +32,8 @@
           <show-popularartists
             v-for="POPartist in POPartists1.artists.slice(0, 5)"
             :key="POPartist.id"
-            :images="
-              'http://52.205.254.29/api/images/' +
+            :images="$url+
+              '/api/images/' +
               POPartist.images[0]._id +
               '?belongs_to=artist'
             "
@@ -53,8 +53,8 @@
           <show-popularalbums
             v-for="POPalbum in POPalbums1.albums.slice(0, 5)"
             :key="POPalbum.id"
-            :images="
-              'http://52.205.254.29/api/images/' +
+            :images="$url+
+              '/api/images/' +
               POPalbum.images[0]._id +
               '?belongs_to=album'
             "
@@ -78,8 +78,8 @@
           <show-popularreleases
             v-for="POPnewrelease in POPnewreleases1.albums.slice(0, 5)"
             :key="POPnewrelease.id"
-            :images="
-              'http://52.205.254.29/api/images/' +
+            :images="$url+
+              '/api/images/' +
               POPnewrelease.images[0]._id +
               '?belongs_to=album'
             "
@@ -98,8 +98,8 @@
             <lib-playlists
               v-for="playlist in playlists1.slice(0, 5)"
               :key="playlist.id"
-              :images="
-                'http://52.205.254.29/api/images/' +
+              :images="$url+
+                '/api/images/' +
                 playlist.images[0]._id +
                 '?belongs_to=playlist'
               "

@@ -12,8 +12,8 @@
             v-for="album in albums1"
             :key="album._id"
             :albumId="album._id"
-            :images="
-              'http://52.205.254.29/api/images/' +
+            :images="$url+
+              '/api/images/' +
               album.images[0]._id +
               '?belongs_to=album'
             "

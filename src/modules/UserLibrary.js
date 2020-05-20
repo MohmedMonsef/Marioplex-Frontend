@@ -40,7 +40,7 @@ export default {
       axios
         .get("/api/me/albums")
         .then((response) => {
-          let albums = response.data;
+          let albums = response.data.savedAlbums;
           commit("setUserAlbums", albums);
           if (state.loadingalbums == 0) {
             state.loadingalbums = 1;

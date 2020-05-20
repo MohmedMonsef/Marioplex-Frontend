@@ -15,8 +15,8 @@
           <lib-playlists
             v-for="playlist in playlists1"
             :key="playlist.id"
-            :images="
-              'http://52.205.254.29/api/images/' +
+            :images="$url+
+              '/api/images/' +
               playlist.images[0]._id +
               '?belongs_to=playlist'
             "

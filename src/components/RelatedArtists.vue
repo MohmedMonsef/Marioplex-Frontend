@@ -4,8 +4,8 @@
       <lib-artists
         v-for="artist in relatedartists"
         :key="artist.id"
-        :images="
-          'http://52.205.254.29/api/images/' +
+        :images="$url+
+          '/api/images/' +
           artist.images[0]._id +
           '?belongs_to=artist'
         "

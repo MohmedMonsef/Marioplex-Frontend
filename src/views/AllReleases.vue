@@ -6,8 +6,8 @@
         <show-popularreleases
           v-for="POPnewrelease in POPnewreleases1.albums"
           :key="POPnewrelease.id"
-          :images="
-            'http://52.205.254.29/api/images/' +
+          :images="$url+
+            '/api/images/' +
             POPnewrelease.images[0]._id +
             '?belongs_to=album'
           "
