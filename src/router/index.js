@@ -43,6 +43,15 @@ import seealluser from "../views/SeeallUser.vue";
 import seealltrack from "../views/SeeallTrack";
 import UserProfile from "../views/UserProfile";
 import category from "../views/CategoryPlaylists.vue";
+import Help from "../views/Help.vue";
+import HelpFixed from "../views/HelpFixed.vue"
+import HelpCantLogIn from "../views/HelpCantLogIn.vue"
+import HelpRestPassword from "../views/HelpRestPassword.vue"
+import  HelpFindingAccount from "../views/HelpFindingAccount.vue"
+import HelpMadeForYou from "../views/HelpMadeForYou.vue"
+import HelpMangePaymentDetail from "../views/HelpMangePaymentDetail.vue"
+import  HelpAccountHelp from "../views/HelpAccountHelp.vue"
+
 import UnAuthorized from "../views/UnAuthorized.vue"
 Vue.use(VueRouter);
 
@@ -103,6 +112,44 @@ const routes = [
           isPremium:true
         }
       },
+      {
+        path: "/Help",
+        name: "Help",
+        component: Help
+      },
+      {
+        path: "/HelpFixed",
+        name: "HelpFixed",
+        component: HelpFixed,
+        children:[
+         {path:"HelpCantLogIn",
+          name:"HelpCantLogIn",
+          component:HelpCantLogIn},
+          {
+          path:"HelpRestPassword",
+          name:"HelpRestPassword",
+          component:HelpRestPassword
+          },{
+            path:"HelpFindingAccount",
+            name:"HelpFindingAccount",
+            component: HelpFindingAccount
+          },
+          {
+            path:"HelpMadeForYou",
+            name:"HelpMadeForYou",
+            component: HelpMadeForYou
+          },{
+            path:"HelpMangePaymentDetail",
+            name:"HelpMangePaymentDetail",
+            component: HelpMangePaymentDetail
+          },
+          {
+            path:"HelpAccountHelp",
+            name:"HelpAccountHelp",
+            component: HelpAccountHelp
+          }
+        ]
+      }
     ],
   },
   {
