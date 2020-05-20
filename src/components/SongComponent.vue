@@ -487,7 +487,7 @@ export default {
       showAdd: state => state.Playlist.showModalAdd
     }),
     canPlay: function() {
-      return this.isPlayable || this.userinfo.product == "premium";
+      return (this.isPlayable || this.userinfo.product == "premium") && !this.isQueue;
     }
   },
 

@@ -42,6 +42,7 @@
         :albumId="q.fulltrack.album._id"
         :artist_id="q.fulltrack.album.artist._id"
         :isPlayable="q.isPlayable"
+        :isQueue="true"
       />
 
       <h2 v-if="NextUp.length" id="next_header">
@@ -61,6 +62,7 @@
         :albumId="next.fulltrack.album._id"
         :artist_id="next.fulltrack.album.artist._id"
         :isPlayable="next.isPlayable"
+        :isQueue="true"
       />
     </div>
   </div>
