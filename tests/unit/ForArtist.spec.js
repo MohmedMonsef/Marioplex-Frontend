@@ -2,7 +2,7 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import ForArtist from "../../src/views/ForArtist";
-import HomeNavigationBar from "@/components/home-navigation-bar";
+import HomeNavigationBar from "@/components/HomeNavigationBar";
 describe("ForArtist", () => {
   let wrapper;
   let store;
@@ -12,7 +12,7 @@ describe("ForArtist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "",

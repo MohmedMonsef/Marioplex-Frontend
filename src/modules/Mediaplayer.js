@@ -89,16 +89,20 @@ export default {
       commit("setplayicon", status);
     },
     //get the current song from backend
-    get_currentsong({ commit, dispatch }, getTrack) {
+   get_currentsong({ commit, dispatch }, getTrack) {
       axios
         .get("/api/me/player/currently-playing")
         .then(response => {
           var currentsong = response.data;
           commit("set_currentsong", currentsong);
-          if (getTrack) {
-            var id = currentsong.track._id;
+          var id = currentsong.track._id;
+          if (getTrack == 1) {
             dispatch("trackUrl", {id:id,playFlag:true});
           }
+          else if(getTrack == 2){
+            dispatch("trackUrl", {id:id,playFlag:false});
+          }
+
         })
         .catch(error => {
           console.log(error);
@@ -137,7 +141,6 @@ export default {
     },
     //start playing the current audio
     playsong_state({ commit }, info) {
-      console.log("in plaay state", info);
       commit("startcurrentaudio", info);
     },
     pausesong_state({ commit }) {
@@ -307,13 +310,12 @@ export default {
         track_id = state.currentsong.track._id;
         songbar = true;
       }
-      console.log("in likke", track_id);
       axios
         .put("/api/me/like/" + track_id)
         .then(() => {
           if (songbar || track_id == state.currentsong.track._id)
             commit("setliked", true);
-          dispatch("get_currentsong", false);
+          dispatch("get_currentsong", 0);
         })
         .catch(error => {
           console.log(error);
@@ -330,7 +332,7 @@ export default {
         .then(() => {
           if (songbar || track_id == state.currentsong.track._id)
             commit("setliked", false);
-          dispatch("get_currentsong", false);
+          dispatch("get_currentsong", 0);
           dispatch("LikedTracks/likedtracks_tracks", null, { root: true });
         })
         .catch(error => {

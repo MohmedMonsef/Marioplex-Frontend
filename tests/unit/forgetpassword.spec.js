@@ -13,7 +13,7 @@ describe("ForgetPassword", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           actions: {
             facebook_signUp: jest.fn(),
@@ -29,10 +29,6 @@ describe("ForgetPassword", () => {
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("input email", () => {
     let email = wrapper.find("#email");

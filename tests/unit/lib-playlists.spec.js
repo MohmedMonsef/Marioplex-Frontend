@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import LibPlaylists from "@/components/lib-playlists.vue";
+import LibPlaylists from "@/components/LibPlaylists.vue";
 import Vuex from "vuex";
 describe("LibPlaylists.vue", () => {
   const localVue = createLocalVue();
@@ -10,7 +10,7 @@ describe("LibPlaylists.vue", () => {
   it("test playlist name & owner", () => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             User: {
@@ -21,7 +21,7 @@ describe("LibPlaylists.vue", () => {
             Username: (state) => state.User.displayName,
           },
         },
-        playlist: {
+        Playlist: {
           namespaced: true,
           state: {
             likedplaylist: true,

@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import ShowPopularreleases from "@/components/ShowPopularreleases.vue";
+import ShowPopularreleases from "@/components/ShowPopularReleases.vue";
 describe("ShowPopularreleases.vue", () => {
   const localVue = createLocalVue();
   localVue.use(VueRouter);

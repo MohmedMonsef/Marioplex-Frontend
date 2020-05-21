@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import ShowPopularartists from "@/components/ShowPopularartists.vue";
+import ShowPopularartists from "@/components/ShowPopularArtists.vue";
 describe("ShowPopularartists.vue", () => {
   const localVue = createLocalVue();
   localVue.use(VueRouter);

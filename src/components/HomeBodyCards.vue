@@ -1,12 +1,15 @@
 <template>
-  <div class="row justify-content-center homecard px-0"
+  <router-link
+   :to="{path:'/HomeWebPlayer/playlist/'+playlistId}"
+   tag="div"
+   class="row justify-content-center homecard px-0"
    :style="{ backgroundImage: `url(${ getImg })`}"
-   @click="navigate">
+   >
     <div class="layer px-0 m-0">
       <h2>{{ name }}</h2>
       <p>PLAY NOW</p>
     </div>
-  </div>
+  </router-link>
 </template>
 <style lang="scss" scoped>
 .homecard {
@@ -105,11 +108,6 @@ export default {
 
       return  img;
     }
-  },
-  methods: {
-  navigate(){
-    this.$router.push("/HomeWebPlayer/playlist/"+this.playlistId)
-  }
   },
 };
 </script>

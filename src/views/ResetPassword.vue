@@ -11,6 +11,7 @@
           type="password"
           v-model="password"
           placeholder="Password"
+          id="passwordInput"
           testid="password input"
         />
         <br />
@@ -35,6 +36,7 @@
           type="password"
           v-model="password_confirmation"
           placeholder="Confirm Password"
+          id="confirmInput"
           testid="password confirmation input"
         />
         <p
@@ -83,7 +85,6 @@ img {
   width: 120px;
   margin-top: 20px;
   margin-left: 10%;
-  /* display: inline-block; */
 }
 .reset-form {
   width: 460px;
@@ -151,17 +152,12 @@ export default {
       this.req_confirm_password;
       this.short_password;
       this.matched_password;
-
       setTimeout(() => {
         if (this.can_submit) {
-          var token = this.$route.query.token;
-          console.log("too", token);
           let payload = {
             password: this.password,
             token: this.$route.query.token,
           };
-          console.log("cccc", payload.token);
-
           this.$store.dispatch("Authorization/resetPassword", payload);
         } else return;
       }, 200);
@@ -240,7 +236,6 @@ export default {
   },
   mounted() {
     this.resettoken = this.$route.query.token;
-    console.log(this.resettoken);
   },
 };
 </script>

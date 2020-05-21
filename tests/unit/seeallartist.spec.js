@@ -2,7 +2,7 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 
-import seeallartist from "../../src/views/seeallartist";
+import seeallartist from "../../src/views/SeeallArtist";
 
 describe("seeallartist", () => {
   let wrapper;

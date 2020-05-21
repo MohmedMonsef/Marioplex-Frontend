@@ -10,7 +10,7 @@ describe("SideBar.vue", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "success",
@@ -19,7 +19,7 @@ describe("SideBar.vue", () => {
             GetStatus: (state) => state.status,
           },
         },
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             showModalDelete: true,
@@ -91,7 +91,7 @@ describe("SideBar.vue", () => {
       store,
     });
     wrapper.find(".createbutton").trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith("creatplaylist/toggleModal");
+    expect(store.dispatch).toHaveBeenCalledWith("Playlist/toggleModal");
   });
 
   it("call setsearch function", () => {

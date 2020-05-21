@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import LibAlbums from "@/components/lib-albums.vue";
+import LibAlbums from "@/components/LibAlbums.vue";
 describe("LibAlbums.vue", () => {
   const localVue = createLocalVue();
   localVue.use(VueRouter);

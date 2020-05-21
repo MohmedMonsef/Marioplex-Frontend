@@ -2,7 +2,7 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 
-import category from "../../src/components/category";
+import category from "../../src/components/Category";
 
 describe("category", () => {
   let Wrapper;
@@ -15,7 +15,7 @@ describe("category", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       moduales: {
-        categorys: {
+        Categorys: {
           namespace: true,
           state: {
             category: [],

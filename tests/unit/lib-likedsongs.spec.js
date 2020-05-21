@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import LibLikedsongs from "@/components/lib-likedsongs.vue";
+import LibLikedsongs from "@/components/LibLikedsongs.vue";
 import Vuex from "vuex";
 describe("LibLikedsongs.vue", () => {
   const localVue = createLocalVue();
@@ -10,7 +10,7 @@ describe("LibLikedsongs.vue", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        userlibrary: {
+        UserLibrary: {
           namespaced: true,
           state: {
             user_songs: [

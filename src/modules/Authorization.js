@@ -96,12 +96,11 @@ export default {
         .get("/api/me-player")
         .then((response) => {
           const user = response.data[0];
-          console.log("soong",!user.player.haveQueue);
         if(!user.player.haveQueue){
             dispatch("Queue/CreateQueue","", { root: true });
           }
           else{
-            dispatch("Mediaplayer/get_currentsong",false, { root: true });
+            dispatch("Mediaplayer/get_currentsong",2, { root: true });
           }
           commit("auth_success", { token, user });
           if (flag) router.replace("/");

@@ -10,7 +10,7 @@ describe("DeletePlaylist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             showModalDelete: true,
@@ -101,7 +101,7 @@ describe("DeletePlaylist", () => {
     const btn = wrapper.find(".delete_button");
     btn.trigger("click");
     expect(store.dispatch).toHaveBeenCalledWith(
-      "creatplaylist/DeletePlaylist",
+      "Playlist/DeletePlaylist",
       0
     );
   });
@@ -111,7 +111,7 @@ describe("DeletePlaylist", () => {
     const btn = wrapper.find(".delete_button");
     btn.trigger("click");
     expect(store.dispatch).toHaveBeenCalledWith(
-      "creatplaylist/toggleModalDelete"
+      "Playlist/toggleModalDelete"
     );
   });
   // it("commits a mutation when a button is clicked",  () => {

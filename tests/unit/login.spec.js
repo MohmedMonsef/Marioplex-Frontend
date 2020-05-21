@@ -2,8 +2,8 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import Login from "../../src/views/Login";
-import LogoHeader from "@/components/logo-header.vue";
-import Divider from "@/components/divider.vue";
+import LogoHeader from "@/components/LogoHeader.vue";
+import Divider from "@/components/Divider.vue";
 
 describe("Login", () => {
   let wrapper;
@@ -14,7 +14,7 @@ describe("Login", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "",

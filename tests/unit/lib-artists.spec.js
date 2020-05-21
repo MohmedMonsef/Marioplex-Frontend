@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import LibArtists from "@/components/lib-artists.vue";
+import LibArtists from "@/components/LibArtists.vue";
 describe("LibArtists.vue", () => {
   const localVue = createLocalVue();
   localVue.use(VueRouter);

@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="{ path: this.routing + albumId }"
+    :to="{ path:  '/HomeWebPlayer/album/'+ albumId }"
     id="carglink"
     testid="album card link"
   >
@@ -104,7 +104,6 @@ export default {
   data: function() {
     return {
       hover: false,
-      routing: ""
     };
   },
   name: "lib-albums",
@@ -124,10 +123,6 @@ export default {
     artistId: {
       type: String
     }
-  },
-  mounted() {
-    if (this.$route.path == "/HomeWebPlayer/search") this.routing = "album/";
-    else this.routing = "../album/";
   },
   filters: {
     shorten: function(value) {

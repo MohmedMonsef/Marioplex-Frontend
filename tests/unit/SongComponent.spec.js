@@ -15,7 +15,7 @@ describe("SongComponent", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        mediaplayer: {
+        Mediaplayer: {
           namespaced: true,
           state: {
             currentsong: {
@@ -65,6 +65,12 @@ describe("SongComponent", () => {
             },
           },
         },
+        Playlist:{
+          namespaced:true,
+          state:{
+            showModalAdd:false
+          }
+        }
       },
     });
     wrapper = shallowMount(SongComponent, {
@@ -87,7 +93,7 @@ describe("SongComponent", () => {
   });
   it("renders song info", () => {
     const song_name = wrapper.find(".song_name");
-    const song_album = wrapper.find("#song_album");
+    const song_album = wrapper.find(".song_album");
     const song_artists = wrapper.find("#song_artist");
     const song_length = wrapper.find(".song_length");
     expect(song_name.text()).toBe("my song");

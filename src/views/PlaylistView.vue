@@ -131,7 +131,6 @@ export default {
      * @param {String} playlist_id playlist id
      */
     ReorderTracks(event) {
-      // console.log("inplaylist_view",event)
       let playlist_Id = this.$route.params.playlist_id;
       this.playlist_id = playlist_Id;
       this.oldIndex = event.oldIndex;
@@ -141,7 +140,6 @@ export default {
         before: this.newIndex,
         playlist_id: this.playlist_id
       };
-      console.log("in playlist_view ", this.playlist_id);
       this.$store.dispatch("Playlist/ReorderTracks", payload);
     }
   },
@@ -160,16 +158,13 @@ export default {
     this.$store.dispatch(
       "Playlist/playlist_tracks",
       this.$route.params.playlist_id
-    ),
-      console.log("Playlist_id", this.$route.params.playlist_id);
-    console.log("nihal here is the length", this.playlist_length);
+    );
     var img = new Image();
     img.setAttribute("crossOrigin", "");
     img.src =this.$url+"/api/images/" + this.playlist_image +"?belongs_to=playlist";
     img.addEventListener("load", () => {
       const colorThief = new ColorThief();
       var c = colorThief.getColor(img);
-      console.log("the theif color", c);
       var element = document.querySelector(".playlist");
       element.style.background ="linear-gradient(-180deg," + "rgb" + "(" + c + ")," + "#161516" + " )";
       element.style.backgroundSize = " 600% 600% 300% 300% ";

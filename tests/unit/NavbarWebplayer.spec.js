@@ -10,7 +10,7 @@ describe("NavbarWebplayer.vue", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "success",

@@ -12,7 +12,7 @@ describe("SignUp", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "",
@@ -97,12 +97,12 @@ describe("SignUp", () => {
   });
   it("input country", async () => {
     let country = wrapper.find(".country_select");
-    country.element.value = "Egypt";
+    country.element.value = "eg";
     country.selected = true;
     country.trigger("change");
-    expect(wrapper.vm.country).toBe("Egypt");
+    expect(wrapper.vm.country).toBe("eg");
 
-    country.element.value = "Choose a country";
+    country.element.value = "0";
     country.selected = true;
     country.trigger("change");
     //invalid input

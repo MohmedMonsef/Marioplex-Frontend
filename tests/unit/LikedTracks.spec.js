@@ -3,8 +3,8 @@ import Vuex from "vuex";
 import VueRouter from "vue-router";
 import LikedTracks from "../../src/views/LikedTracks";
 import SongComponent from "@/components/SongComponent.vue";
-import likedtracks_info from "@/components/likedtracks_info.vue";
-import emptylikedtracks from "@/components/emptylikedtracks.vue";
+import likedtracks_info from "@/components/LikedtracksInfo.vue";
+import emptylikedtracks from "@/components/EmptyLikedTracks.vue";
 describe("ForArtist", () => {
   let wrapper;
   let store;
@@ -14,7 +14,7 @@ describe("ForArtist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        likedtracks: {
+        LikedTracks: {
           namespaced: true,
           state: {
             likedtracks_tracks: [],

@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import playlist from "../../src/components/playlist";
+import playlist from "../../src/components/Playlist";
 
 describe("playlist", () => {
   let wrapper;
@@ -13,7 +13,7 @@ describe("playlist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        playlist: {
+        Playlist: {
           namespaced: true,
           state: {
             playlist_name: "NEW PlayList",

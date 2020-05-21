@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import album_info from "../../src/components/album_info";
+import album_info from "../../src/components/AlbumInfo";
 
 describe("album_info", () => {
   let wrapper;
@@ -13,7 +13,7 @@ describe("album_info", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        album: {
+        Album: {
           namespaced: true,
           state: {
             album_length: 5,

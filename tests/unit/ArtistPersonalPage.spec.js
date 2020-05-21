@@ -14,7 +14,7 @@ describe("ArtistPersonalPage", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        artistproperties: {
+        ArtistProperties: {
           namespaced: true,
           state: {
             showModal: true,
@@ -74,14 +74,14 @@ describe("ArtistPersonalPage", () => {
     store.dispatch = jest.fn();
     const btn = wrapper.find(".svg-container");
     btn.trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith("artistproperties/toggleModal");
+    expect(store.dispatch).toHaveBeenCalledWith("ArtistProperties/toggleModal");
   });
   it("it calls toglemodalupload dispatch ti change modalstateupload", () => {
     store.dispatch = jest.fn();
     const btn = wrapper.find(".c_track");
     btn.trigger("click");
     expect(store.dispatch).toHaveBeenCalledWith(
-      "artistproperties/toggleModalUpload"
+      "ArtistProperties/toggleModalUpload"
     );
   });
 });

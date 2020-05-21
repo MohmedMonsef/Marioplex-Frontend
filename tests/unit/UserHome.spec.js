@@ -41,7 +41,7 @@ describe("UserHome", () => {
             showPopularNewreleases: jest.fn(),
           },
         },
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             playlists: [],
@@ -55,7 +55,7 @@ describe("UserHome", () => {
             showplaylists: jest.fn(),
           },
         },
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "success",

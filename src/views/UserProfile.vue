@@ -5,8 +5,8 @@
     </div>
     <div v-if="loading" class="notloading">
       <div class="row justify-content-center img-user m-0">
-        <img :src="getImg(user.images[0])" />
-        <h1>{{ user.displayName }}</h1>
+        <img :src="$url+'/api/images/' + user.images[0]._id + '?belongs_to=user'" />
+        <h1 id ="userName">{{ user.displayName }}</h1>
       </div>
       <div class="row m-0">
         <div v-for="playlist in playlists" :key="playlist.id">
@@ -74,11 +74,9 @@ export default {
   name: "albumview",
   data: function () {
     return {
-      userid: "",
-      id: "5e9c9790fc69ad92e0a7eda5",
+      userid: ""
     };
   },
-  props: {},
   components: {
     LibPlaylists,
   },
@@ -90,16 +88,6 @@ export default {
       loading: "UserPage/loading"
     }),
   },
-  methods: {
-    getImg(imgSrc) {
-      if (typeof imgSrc == "undefined") {
-        return "https://dummyimage.com/250x400.jpg/dddddd/000000";
-      } else
-        return (
-          this.$url+"/api/images/" + imgSrc._id + "?belongs_to=user"
-        );
-    },
-  },
   /**
    * Called at loading the page to display album tracks and send the id to get that specific album
    * @public This is a public method
@@ -109,6 +97,5 @@ export default {
     this.$store.dispatch("UserPage/user_playlists", this.userid);
     this.$store.dispatch("UserPage/user_info", this.userid);
   },
-  mounted() {},
 };
 </script>

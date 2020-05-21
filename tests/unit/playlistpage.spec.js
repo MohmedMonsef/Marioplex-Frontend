@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import playlist_info from "../../src/components/playlist_info.vue";
+import playlist_info from "../../src/components/PlaylistInfo.vue";
 
 describe("playlist_info", () => {
   let wrapper;
@@ -13,7 +13,7 @@ describe("playlist_info", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        playlist: {
+        Playlist: {
           namespaced: true,
           state: {
             playlist_length: 3,
@@ -21,6 +21,11 @@ describe("playlist_info", () => {
             owner_name: "User",
             playlist_image: "cry.png",
             likedplaylist: false,
+            showModalDelete: false,
+            showModal: false,
+            todelete: 0,
+            Playlists: [],
+            loadingplaylists: 0,
           },
           getters: {
             playlist_length: (state) => state.playlist_length,
@@ -33,9 +38,10 @@ describe("playlist_info", () => {
             like_playlist: jest.fn(),
             unlike_playist: jest.fn(),
             playlist_tracks: jest.fn(),
+            showplaylists: jest.fn(),
           },
         },
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: {},
@@ -44,7 +50,7 @@ describe("playlist_info", () => {
             GetStatus: (state) => state.status,
           },
         },
-        mediaplayer: {
+        Mediaplayer: {
           namespaced: true,
           state: {
             playicon: false,
@@ -52,20 +58,7 @@ describe("playlist_info", () => {
           getters: {
             playicon: (state) => state.playicon,
           },
-        },
-        creatplaylist: {
-          namespaced: true,
-          state: {
-            showModalDelete: false,
-            showModal: false,
-            todelete: 0,
-            Playlists: [],
-            loadingplaylists: 0,
-          },
-          actions: {
-            showplaylists: jest.fn(),
-          },
-        },
+        }
       },
     });
     // wrapper = shallowMount(playlist_info, {

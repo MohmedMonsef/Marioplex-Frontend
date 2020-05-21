@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import libraryArtists from "../../src/views/library-artists";
+import libraryArtists from "../../src/views/LibraryArtists";
 
 describe("libraryArtists", () => {
   let wrapper;
@@ -12,7 +12,7 @@ describe("libraryArtists", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        userlibrary: {
+        UserLibrary: {
           namespaced: true,
           state: {
             artists: [],

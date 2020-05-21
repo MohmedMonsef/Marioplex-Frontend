@@ -109,10 +109,10 @@
         <!-- try -->
 
       <div id="mydropdown" class="db" v-if="showSideMenu">
-        <p @click="showinputfield()">
+        <p class="rename_input" @click="showinputfield()">
           Rename
         </p>
-        <p @click="changeModalStateDelete()">
+        <p class="delete_div" @click="changeModalStateDelete()">
           Delete
         </p>
         <p  @click="PubPriChange()">Secret</p>

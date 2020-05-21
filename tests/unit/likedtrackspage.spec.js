@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import likedtracks_info from "../../src/components/likedtracks_info";
+import likedtracks_info from "../../src/components/LikedTracksInfo";
 
 describe("likedtracks_info", () => {
   let wrapper;
@@ -13,7 +13,7 @@ describe("likedtracks_info", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        likedtracks: {
+        LikedTracks: {
           namespaced: true,
           state: {
             likedtracks_length: 5,
@@ -24,7 +24,7 @@ describe("likedtracks_info", () => {
             owner_name: (state) => state.owner_name,
           },
         },
-        mediaplayer: {
+        Mediaplayer: {
           namespaced: true,
           state: {
             playicon: false,
