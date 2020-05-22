@@ -1,1 +1,2 @@
-echo "Directed by Belal & Monsef."
+sudo service nginx restart
+tail -f /dev/null
