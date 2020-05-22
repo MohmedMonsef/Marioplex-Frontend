@@ -1,1 +1,1 @@
-echo "Directed by Belal & Monsef"
+echo "Directed by Belal & Monsef."
