@@ -158,8 +158,8 @@ export default {
             password: this.password,
             token: this.$route.query.token,
           };
-          this.$store.dispatch("Authorization/resetPassword", payload);
-        } else return;
+          this.$store.dispatch("Authorization/resetPassword", payload);} 
+        else return;
       }, 200);
     },
     /**
