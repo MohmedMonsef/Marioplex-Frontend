@@ -4,6 +4,7 @@ WORKDIR '/app'
 
 COPY ./package.json /app/package.json
 COPY ./default /etc/nginx/sites-available
+RUN  sudo service nginx restart
 
 WORKDIR /app
 RUN npm install
