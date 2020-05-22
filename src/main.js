@@ -7,18 +7,11 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 import axios from "axios";
-import { mockServer } from "../mockServer/mock";
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
-// Vue.use(VueRx);
-if (process.env.NODE_ENV === "production") {
-  //if in development call the mockServer
-  mockServer();
-}
-
-axios.defaults.baseURL = "http://52.87.106.56";
-Vue.prototype.$url="http://52.87.106.56"
+axios.defaults.baseURL = "http://52.54.133.87";
+Vue.prototype.$url="http://52.54.133.87"
 var vm = new Vue({
   router,
   store,
