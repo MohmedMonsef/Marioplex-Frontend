@@ -11,6 +11,7 @@ RUN npm install
 
 COPY . /app
 EXPOSE 80
+RUN npm run build
 
 ENTRYPOINT ["/bin/bash"]
 CMD ["startcommand.sh"]
