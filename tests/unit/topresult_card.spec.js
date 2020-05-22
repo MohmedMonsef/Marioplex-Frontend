@@ -43,10 +43,6 @@ describe("topresult_card", () => {
     expect(Wrapper.exists()).toBe(true);
   });
 
-  it("renders a vue instance", () => {
-    expect(Wrapper.isVueInstance()).toBe(true);
-  });
-
   it("renders topresult_card name", () => {
     const topresult_card_name = Wrapper.find(".card-title");
 

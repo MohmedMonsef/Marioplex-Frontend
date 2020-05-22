@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+    "unit": "jest --watch",
     "lint": "vue-cli-service lint",
     "styleguide": "vue-styleguidist server",
     "styleguide:build": "vue-styleguidist build"
@@ -93,20 +94,7 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.vue",
-      "!**/node_modules/**",
-      "!**/App.vue",
-      "!**/home-navigation-bar.vue",
-      "!**/UploadSong.vue",
-      "!**/playlistpopup.vue",
-      "!**/Home.vue",
-      "!**/AddTrackPopup.vue",
-      "!**/DeleteSong.vue",
-      "!**/EditBio.vue",
-      "!**/likedtracks_info.vue",
-      "!**/HomeWebPlayer.vue",
-      "!**/album_view.vue",
-      "!**/playlist_view.vue",
-      "!**/searchresults.vue"
+      "!**/node_modules/**"
     ]
   }
 }

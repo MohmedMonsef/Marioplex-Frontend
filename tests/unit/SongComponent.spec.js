@@ -88,13 +88,10 @@ describe("SongComponent", () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("renders song info", () => {
     const song_name = wrapper.find(".song_name");
     const song_album = wrapper.find(".song_album");
-    const song_artists = wrapper.find("#song_artist");
+    const song_artists = wrapper.find(".song_artist");
     const song_length = wrapper.find(".song_length");
     expect(song_name.text()).toBe("my song");
     expect(song_album.text()).toBe("burtonhollow");

@@ -28,6 +28,9 @@ describe("ResetPassword", () => {
     wrapper = shallowMount(ResetPassword, {
       localVue,
       store,
+      propsData: {
+        token: "",
+      },
     });
   });
   it("renders", () => {
@@ -47,16 +50,11 @@ describe("ResetPassword", () => {
   it("reset password", () => {
     const reset_btn = wrapper.find("#reset-btn");
     reset_btn.trigger("click");
-    const reset = jest.fn();
-    const canSubmit =jest.fn();
-    const cannotSubmit =jest.fn();
-    wrapper.setMethods({
-      reset: reset,
-      canSubmit:canSubmit,
-      cannotSubmit:cannotSubmit 
-    });
-    expect("reset").toHaveBeenCalled;
-    expect("cannotSubmit").toHaveBeenCalled;
+
+    wrapper.vm.reset();
+    wrapper.vm.canSubmit();
+    wrapper.vm.cannotSubmit();
+  
     wrapper.setData({
       trigger_validation: true,
       can_submit:true
@@ -71,7 +69,7 @@ describe("ResetPassword", () => {
     pass.trigger("input");
 
     reset_btn.trigger("click");
-    expect("canSubmit").toHaveBeenCalled;
+    wrapper.vm.canSubmit();
   
     //invalid password and cofirmation
 
@@ -84,19 +82,12 @@ describe("ResetPassword", () => {
     pass.trigger("input");
 
     reset_btn.trigger("click");
-    expect("cannotSubmit").toHaveBeenCalled;
+    wrapper.vm.cannotSubmit();
   });
   it("set time out to call dispatch reset password", () => {
     const reset_btn = wrapper.find("#reset-btn");
     reset_btn.trigger("click");
-    const reset = jest.fn();
-    const canSubmit =jest.fn();
-    const cannotSubmit =jest.fn();
-    wrapper.setMethods({
-      reset: reset,
-      canSubmit:canSubmit,
-      cannotSubmit:cannotSubmit 
-    });
+
     wrapper.setData({
       trigger_validation: true,
       can_submit:true,
@@ -114,21 +105,16 @@ describe("ResetPassword", () => {
     reset_btn.trigger("click");
     jest.runAllTimers(); 
     expect(wrapper.exists()).toBe(true);
-   // expect(store.dispatch).toHaveBeenCalledWith("Authorization/resetPassword");
   });
   it("set time out to call dispatch reset password", () => {
     const reset_btn = wrapper.find("#reset-btn");
     reset_btn.trigger("click");
-    const reset = jest.fn();
-    wrapper.setMethods({
-      reset: reset,
-    });
+    
     wrapper.setData({
       can_submit:false,
     });    
     reset_btn.trigger("click");
     jest.runAllTimers(); 
     expect(wrapper.exists()).toBe(true);
-    //expect(store.dispatch).not.toHaveBeenCalledWith("Authorization/resetPassword");
   });
 });

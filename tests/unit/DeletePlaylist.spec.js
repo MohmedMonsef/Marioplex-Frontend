@@ -110,15 +110,4 @@ describe("DeletePlaylist", () => {
       "Playlist/toggleModalDelete"
     );
   });
-  // it("commits a mutation when a button is clicked",  () => {
-  //   const wrapper = mount(DeletePlaylist, {
-  //     store, localVue
-  //   })
-
-  //   wrapper.find(".cancel_button").trigger("click")
-  //   expect(store.mutations).toHaveBeenCalledWith(
-  //     "toggleModalDelete",
-  //     0
-  //   )
-  // });
 });

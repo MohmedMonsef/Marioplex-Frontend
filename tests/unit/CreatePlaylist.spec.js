@@ -43,7 +43,7 @@ describe("CreatePlaylist", () => {
             CreatePlaylist: jest.fn(),
           },
         },
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             User: {

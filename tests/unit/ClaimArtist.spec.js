@@ -25,8 +25,7 @@ describe("ClaimArtist", () => {
             toggleModal: jest.fn(),
           },
         },
-
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "",

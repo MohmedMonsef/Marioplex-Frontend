@@ -73,7 +73,7 @@ describe("Queue", () => {
             Queue: jest.fn(),
           },
         },
-        mediaplayer: {
+        Mediaplayer: {
           namespaced: true,
           state: {
             currentsong: {

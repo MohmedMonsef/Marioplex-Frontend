@@ -18,8 +18,5 @@ describe("ShowPopularartists.vue", () => {
     const wrapper = shallowMount(ShowPopularartists, { localVue });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(ShowPopularartists, { localVue });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
+
 });

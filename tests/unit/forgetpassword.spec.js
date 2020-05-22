@@ -39,30 +39,14 @@ describe("ForgetPassword", () => {
   it("invalid input", async () => {
     const send_btn = wrapper.find("#send-btn");
     send_btn.trigger("click");
-    const send = jest.fn();
-    wrapper.setMethods({
-      send: send,
-    });
-    expect("send").toHaveBeenCalled;
+    wrapper.vm.send();
     await wrapper.vm.$nextTick();
     const req_error = wrapper.find("#req_error");
     expect(req_error.exists()).toBe(true);
   });
-  it("valid input", async () => {
-    let email = wrapper.find("#email");
-    email.element.value = "mm@gmail.com";
-    email.trigger("input");
-    const send_btn = wrapper.find("#send-btn");
-    send_btn.trigger("click");
-    const send = jest.fn();
-    wrapper.setMethods({
-      send: send,
-    });
-    expect("send").toHaveBeenCalled;
-    await wrapper.vm.$nextTick();
-    const req_error = wrapper.find("#req_error");
-    expect(req_error.exists()).toBe(false);
-    const submitted = wrapper.find("#submitted");
-    expect(submitted.exists()).toBe(true);
+  it("valid input",() => {
+    wrapper.vm.email = "mm@gmail.com";
+    wrapper.vm.send();
+    expect("reset").toHaveBeenCalled;
   });
 });
