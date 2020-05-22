@@ -3,7 +3,7 @@ FROM belalelhossany/start as builder
 WORKDIR '/app'
 
 COPY ./package.json /app/package.json
-COPY ./default /etc/nginx/sites-available
+#COPY ./default /etc/nginx/sites-available
 
 WORKDIR /app
 RUN npm install
