@@ -1,1 +1,1 @@
-npm run build
+echo "Directed by Belal & Monsef"
