@@ -46,7 +46,4 @@ describe("ForArtist", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
 });

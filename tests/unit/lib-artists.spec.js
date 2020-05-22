@@ -18,8 +18,4 @@ describe("LibArtists.vue", () => {
     const wrapper = shallowMount(LibArtists, { localVue });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(LibArtists, { localVue });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
 });

@@ -105,7 +105,6 @@ export default {
       let img = this.$url+"/api/images/" +
         this.images +
         "?belongs_to=playlist";
-
       return  img;
     }
   },

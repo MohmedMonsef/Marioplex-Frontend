@@ -35,9 +35,6 @@ describe("playlist", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("renders empty playlist information", () => {
     const playlist_name = wrapper.find(".playlistname");
     expect(playlist_name.text()).toBe("NEW PlayList");

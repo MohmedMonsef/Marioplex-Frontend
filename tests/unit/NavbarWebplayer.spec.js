@@ -161,11 +161,4 @@ describe("NavbarWebplayer.vue", () => {
     });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(NavbarWebplayer, {
-      localVue,
-      store,
-    });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
 });

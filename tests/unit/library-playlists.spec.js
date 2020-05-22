@@ -48,10 +48,6 @@ describe("libraryPlaylists", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("Default screen Rendering", async () => {
     let defaultscreen = wrapper.find("#defaultscreen");
 

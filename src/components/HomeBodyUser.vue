@@ -103,7 +103,7 @@ export default {
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
-       user:"Authorization/user",
+      user:"Authorization/user",
       homePlaylists: "ShowWebPlayer/homePlaylists"
     })
   },

@@ -44,8 +44,4 @@ describe("LibPlaylistsDefault.vue", () => {
     const wrapper = shallowMount(LibPlaylistsDefault, { localVue });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(LibPlaylistsDefault, { localVue });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
 });

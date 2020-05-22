@@ -75,13 +75,6 @@ describe("playlist_info", () => {
     });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("renders playlist name", () => {
     const wrapper = shallowMount(playlist_info, {
       localVue,

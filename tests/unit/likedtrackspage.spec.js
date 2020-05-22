@@ -47,9 +47,6 @@ describe("likedtracks_info", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("renders likedtracks information", () => {
     const owner_name = wrapper.find("#owner_name");
     expect(owner_name.text()).toBe("User");

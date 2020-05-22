@@ -36,10 +36,6 @@ describe("libraryAlbums", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("Default screen Rendering", () => {
     let defaultscreen = wrapper.find("#defaultscreen");
 

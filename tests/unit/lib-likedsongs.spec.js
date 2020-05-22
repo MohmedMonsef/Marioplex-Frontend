@@ -54,6 +54,5 @@ describe("LibLikedsongs.vue", () => {
       localVue,
       store,
     });
-    expect(wrapper.isVueInstance()).toBe(true);
   });
 });

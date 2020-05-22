@@ -21,8 +21,4 @@ describe("LibAlbums.vue", () => {
     const wrapper = shallowMount(LibAlbums, { localVue });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(LibAlbums, { localVue });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
 });

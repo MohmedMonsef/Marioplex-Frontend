@@ -112,10 +112,6 @@ describe("CreatePlaylist", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("has a cancel button", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     expect(wrapper.exists(".cancel_button")).toBe(true);

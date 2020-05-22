@@ -40,15 +40,8 @@ describe("category", () => {
   it("renders", () => {
     expect(Wrapper.exists()).toBe(true);
   });
-
-  it("renders a vue instance", () => {
-    expect(Wrapper.isVueInstance()).toBe(true);
-  });
-
   it("renders category info", () => {
     const category_name = Wrapper.find(".card-title");
-    // const category_id = wrapper.find('');
-
     expect(category_name.text()).toBe("pop");
   });
 });

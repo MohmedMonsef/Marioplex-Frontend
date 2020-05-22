@@ -36,10 +36,6 @@ describe("libraryArtists", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("loading screen Rendering", () => {
     let loading = wrapper.find(".loading");
 

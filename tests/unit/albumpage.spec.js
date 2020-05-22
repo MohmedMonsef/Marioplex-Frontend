@@ -46,9 +46,6 @@ describe("album_info", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("renders album name", () => {
     const album_name = wrapper.find(".albumname");
     expect(album_name.text()).toBe("Album");

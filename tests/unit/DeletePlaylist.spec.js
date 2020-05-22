@@ -80,10 +80,6 @@ describe("DeletePlaylist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("it deletes a playlist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     const changeModalStateDelete = jest.fn();
