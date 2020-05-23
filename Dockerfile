@@ -5,6 +5,8 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+FROM nginx:alpine
 EXPOSE 80
-COPY ./default /etc/nginx/sites-available/
-RUN sudo systemctl restart nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+CMD ["nginx", "-g", "daemon off;"]
