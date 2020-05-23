@@ -29,5 +29,7 @@ COPY --from=builder /app/default /etc/nginx/sites-available/default
 COPY --from=builder /app/dist /app
 #COPY --from=builder ./app/dist ./usr/share/nginx/html
 # run nginx
+COPY --from=builder /app/startcommand.sh /app
+WORKDIR /app
 ENTRYPOINT ["/bin/bash"]
 CMD ["startcommand.sh"]
