@@ -2,7 +2,7 @@ server {
   listen 80 default_server;
   server_name _;
   
-   # Front-End reverse proxy
+  # Front-End reverse proxy
  
   location /{
     root /app/dist;
