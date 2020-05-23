@@ -16,14 +16,17 @@ RUN npm run build
 #CMD ["startcommand.sh"]
 
 
-FROM nginx:alpine
+FROM ubuntu
 EXPOSE 80
+RUN apt update
+RUN apt-get install -y sudo
+RUN sudo apt-get install -y nginx
 # copy artifact build from the 'build environment'
 #COPY --from=builder /app/dist /usr/share/nginx/html
 # get configuration filees
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/default /etc/nginx/sites-available/default
 # expose port 80
-
-COPY --from=builder ./app/dist ./usr/share/nginx/html
+COPY --from=builder /app/dist /app
+#COPY --from=builder ./app/dist ./usr/share/nginx/html
 # run nginx
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["startcommand.sh"]
