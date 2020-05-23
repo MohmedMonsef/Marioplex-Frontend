@@ -9,7 +9,7 @@ WORKDIR /app
 RUN npm install
 
 COPY . /app
-EXPOSE 80
+#EXPOSE 80
 RUN npm run build
 
 #ENTRYPOINT ["/bin/bash"]
@@ -19,11 +19,11 @@ RUN npm run build
 FROM nginx:alpine
 
 # copy artifact build from the 'build environment'
-COPY --from=builder /app/dist /usr/share/nginx/html
+#COPY --from=builder /app/dist /usr/share/nginx/html
 # get configuration filees
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+#COPY ./default.conf /etc/nginx/conf.d/default.conf
 # expose port 80
 EXPOSE 80
-
+COPY --from=builder /app/dist /usr/share/nginx/html
 # run nginx
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
