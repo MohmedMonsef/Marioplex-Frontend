@@ -27,4 +27,5 @@ EXPOSE 80
 
 # run nginx
 #CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/bin/bash"]
 CMD ["startcommand.sh"]
