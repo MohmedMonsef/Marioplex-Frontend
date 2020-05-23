@@ -5,7 +5,7 @@ server {
   # Front-End reverse proxy
  
   location /{
-    root /app/dist;
+    root /user/share/nginx/html;
     try_files $uri /index.html;
   }
 
