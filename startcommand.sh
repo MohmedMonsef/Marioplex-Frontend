@@ -1,1 +1,2 @@
-sudo nginx -g daemon off;
+sudo service nginx restart
+tail -f /dev/null
