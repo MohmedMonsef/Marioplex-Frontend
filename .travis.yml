@@ -14,7 +14,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-1
   app: MarioPlexFront
-  env: Marioplexfronthaha-env
+  env: Marioplexfronthehe-env
   bucket_name: elasticbeanstalk-us-east-1-658647886370
   bucket_path: MarioPlexFront
   on:
