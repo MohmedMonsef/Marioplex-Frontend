@@ -26,6 +26,4 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 
 # run nginx
-#CMD ["nginx", "-g", "daemon off;"]
-ENTRYPOINT ["/bin/bash"]
-CMD ["startcommand.sh"]
+CMD ["nginx", "-g", "daemon off;"]
