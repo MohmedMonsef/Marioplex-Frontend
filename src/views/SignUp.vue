@@ -454,19 +454,20 @@ export default {
       this.valid_year;
       setTimeout(() => {
         if (this.can_submit) {
-          if ( Number(this.day) >= 1 && Number(this.day) <= 9) 
-               this.day = "0" + this.day;
-          var d = new Date(this.year + "-" + this.month + "-" + this.day);
-          this.birthday = d; //check date format with back
-          let newuser = {
-            username: this.username,
-            password: this.password,
-            country: this.country,
-            email: this.email,
-            gender: this.gender,
-            birthday: this.birthday,
-          };
-          this.$store.dispatch("Authorization/signUp", newuser);
+          // if ( Number(this.day) >= 1 && Number(this.day) <= 9) 
+          //      this.day = "0" + this.day;
+          // var d = new Date(this.year + "-" + this.month + "-" + this.day);
+          // this.birthday = d; //check date format with back
+          // let newuser = {
+          //   username: this.username,
+          //   password: this.password,
+          //   country: this.country,
+          //   email: this.email,
+          //   gender: this.gender,
+          //   birthday: this.birthday,
+          // };
+          // this.$store.dispatch("Authorization/signUp", newuser);
+          this.$router.replace("/EmailConfirmation");
         } else return;
       }, 200);
     },
