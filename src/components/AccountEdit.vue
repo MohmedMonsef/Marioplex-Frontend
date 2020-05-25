@@ -29,17 +29,17 @@
           <option
             v-for="month in months"
             :key="month.value"
-            :value="month.value"
+            :value="month.text"
             >{{ month.text }}</option
           >
         </select>
         <select v-model="day" class="select_month">
-          <option v-for="day in days" :key="day.value" :value="day.value">{{
+          <option v-for="day in days" :key="day.value" :value="day.text">{{
             day.text
           }}</option>
         </select>
         <select v-model="year" class="select_month">
-          <option v-for="year in years" :key="year.value" :value="year.value">{{
+          <option v-for="year in years" :key="year.value" :value="year.text">{{
             year.text
           }}</option>
         </select>
@@ -48,7 +48,7 @@
           <option
             v-for="country in countries"
             :key="country.value"
-            :value="country.value"
+            :value="country.text"
             >{{ country.text }}</option
           >
         </select>
@@ -56,7 +56,7 @@
         <router-link to="/UserAccount/Account-overview">
           <button class="cancel">CANCEL</button>
         </router-link>
-        <button class="save" @click="save_edit()">SAVE PROFILE</button>
+        <button class="save" @click="saveEdit()">SAVE PROFILE</button>
       </div>
     </div>
   </div>
@@ -201,12 +201,12 @@ export default {
       password: "",
       newpassword: "",
       repeatpassword: "",
-      gender: "0",
+      gender: "f",
       genders: [
-        { text: "Female", value: "0" },
-        { text: "male", value: "1" },
+        { text: "Female", value: "f" },
+        { text: "Male", value: "m" },
       ],
-      month: "0",
+      month: "01",
       months: [
         { text: "01", value: "0" },
         { text: "02", value: "1" },
@@ -221,7 +221,7 @@ export default {
         { text: "11", value: "10" },
         { text: "12", value: "11" },
       ],
-      day: "0",
+      day: "01",
       days: [
         { text: "01", value: "0" },
         { text: "02", value: "1" },
@@ -255,7 +255,7 @@ export default {
         { text: "30", value: "29" },
         { text: "31", value: "30" },
       ],
-      year: "29",
+      year: "2000",
       years: [
         { text: "1970", value: "0" },
         { text: "1971", value: "1" },
@@ -290,7 +290,7 @@ export default {
         { text: "2000", value: "30" },
         { text: "2001", value: "31" },
       ],
-      country: "1",
+      country: "Egypt",
       countries: [
         { text: "Egypt", value: "1" },
         { text: "France", value: "2" },
@@ -308,22 +308,26 @@ export default {
     };
   },
   methods: {
-    save_edit() {
+    saveEdit() {
+      console.log("email dai " ,this.email );
+      console.log("gender dai " , this.gender );
+      console.log("country dai " ,this.country );
+      console.log("pass dai " ,this.password );
       this.req_email();
       this.invalid_email();
       this.req_password();
       if (this.can_submit) {
-        this.birthday = this.day + "/" + this.month + "/" + this.year;
+        var birthDate = new Date(this.year + "-" + this.month + "-" + this.day);
+        this.birthday = birthDate;
         let edituser = {
           email: this.email,
           password: this.password,
-          newpassword: this.newpassword,
           country: this.country,
           gender: this.gender,
           birthday: this.birthday,
         };
         this.saved = true;
-        this.$store.dispatch("Authorization/SaveEdit", edituser);
+        this.$store.dispatch("Authorization/saveEdit", edituser);
       } else {
         this.saved = false;
         console.log("can not submit");

@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker 
+script:
+  - true
+  - echo " SCRIPT FINISHED " 
+after_success:
+  - docker build -t belalelhossany/frontend .
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push belalelhossany/frontend
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: MarioPlexFront
+  env: Marioplexfronthehe-env
+  bucket_name: elasticbeanstalk-us-east-1-658647886370
+  bucket_path: MarioPlexFront
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

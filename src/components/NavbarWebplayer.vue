@@ -305,7 +305,7 @@ export default {
       insearch: false,
     };
   },
-  name: "LibraryNavbar",
+  name: "NavbarWebplayer",
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
