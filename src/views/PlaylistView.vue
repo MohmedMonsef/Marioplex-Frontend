@@ -3,17 +3,17 @@
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div v-if="playlist_load" class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+    <div v-if="playlist_load" class="myrow" >
+      <div >
         <playlist v-if="this.playlist_length == 0" />
-        <playlistinfo v-else />
+        <playlistinfo  class="left" v-else />
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+      <div class="right">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
         <emptytracks v-if="this.playlist_length == 0" />
         <draggable
           ghost-class="ghost"
-          class="reordertracks"
+          class="reordertracks right"
           @end="ReorderTracks"
           v-else
         >
@@ -69,14 +69,32 @@
 .ghost {
   border-bottom: 1px solid #1ed760;
 }
-// @media screen and (max-width: 1196px) {
-//  .row{
-// flex-direction: column;
-//  }
-// .col{
-//   flex: 50%;
-// }
-// }
+.left {
+   display: inline;
+   position: absolute;
+   width: 40%;
+   left: 0;
+}
+
+.right {
+   display:inline;
+   position: absolute;
+   width: 75%;
+   right: 0;
+}
+@media screen and (max-width: 1000px) {
+.left {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.right {
+   display: block;
+   width: 100%;
+   position: relative;
+}
+}
 </style>
 
 <script>

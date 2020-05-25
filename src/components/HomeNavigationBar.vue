@@ -467,7 +467,6 @@ export default {
   methods: {
     collapseBar() {
       this.togglelength = !this.togglelength;
-      console.log(this.togglelength);
       var element = document.getElementById("menu-icon");
       element.classList.toggle("change");
       element = document.getElementById("collapsed");
@@ -486,7 +485,6 @@ export default {
      */
     logout() {
       this.$store.dispatch("Authorization/logout");
-      console.log("logout");
     },
     /**
      * Update the scroll position
@@ -496,6 +494,7 @@ export default {
       this.scrollPosition = window.scrollY;
     }
   },
+  
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",

@@ -44,16 +44,11 @@ describe("seeallartist", () => {
   });
 
   it("when render dispatch", () => {
-    store.dispatch = jest.fn();
     wrapper = shallowMount(seeallartist, {
       store,
       localVue,
-      methods: {
-        inartist: jest.fn(),
-      },
     });
+    wrapper.vm.inartist()
     expect("inartist").toHaveBeenCalled;
-    // expect(store.dispatch).toHaveBeenCalledWith(
-    //      "Search/artistin",true)
   });
 });
