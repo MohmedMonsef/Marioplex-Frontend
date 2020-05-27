@@ -3,14 +3,14 @@
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div v-if="playlist_load" class="myrow" >
-      <div >
-        <playlist v-if="this.playlist_length == 0" />
-        <playlistinfo  class="left" v-else />
+    <div v-if="playlist_load">
+      <div>
+        <playlist class="image left" v-if="this.playlist_length == 0" />
+        <playlistinfo class="left" v-else />
       </div>
       <div class="right">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
-        <emptytracks v-if="this.playlist_length == 0" />
+        <emptytracks class="right noinfo" v-if="this.playlist_length == 0" />
         <draggable
           ghost-class="ghost"
           class="reordertracks right"
@@ -45,10 +45,7 @@
 </template>
 
 <style lang="scss" scoped>
-// .playlist {
-//   // min-width: 768px;
-//   // min-height: 900px;
-// }
+@import "../css/global.css";
 .loading {
   display: flex;
   justify-content: center;
@@ -70,30 +67,39 @@
   border-bottom: 1px solid #1ed760;
 }
 .left {
-   display: inline;
-   position: absolute;
-   width: 40%;
-   left: 0;
+  display: inline;
+  position: absolute;
+  width: 40%;
+  left: 0;
 }
 
 .right {
-   display:inline;
-   position: absolute;
-   width: 75%;
-   right: 0;
+  display: inline;
+  position: absolute;
+  width: 75%;
+  right: 10px;
 }
 @media screen and (max-width: 1000px) {
-.left {
-  display: block;
-  width: 100%;
-  position: relative;
-}
+  .left {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
 
-.right {
-   display: block;
-   width: 100%;
-   position: relative;
-}
+  .right {
+    display: block;
+    width: 100%;
+    position: relative;
+    right: 0;
+  }
+  .image {
+    display: none;
+  }
+  .noinfo{
+  display: inline;
+  position: absolute;
+  width: 100%;
+  }
 }
 </style>
 
@@ -124,7 +130,7 @@ export default {
       show: false,
       oldIndex: "",
       newIndex: "",
-      playlist_id: ""
+      playlist_id: "",
     };
   },
   components: {
@@ -132,7 +138,7 @@ export default {
     draggable,
     playlist,
     emptytracks,
-    playlistinfo
+    playlistinfo,
     // playlistpopup
   },
   methods: {
@@ -156,21 +162,21 @@ export default {
       let payload = {
         start: this.oldIndex,
         before: this.newIndex,
-        playlist_id: this.playlist_id
+        playlist_id: this.playlist_id,
       };
       this.$store.dispatch("Playlist/ReorderTracks", payload);
-    }
+    },
   },
   computed: {
     ...mapState({
-      showpopup: state => state.playlistpopup.showModal
+      showpopup: (state) => state.playlistpopup.showModal,
     }),
     ...mapGetters({
       playlist_tracks: "Playlist/playlist_tracks",
       playlist_length: "Playlist/playlist_length",
       playlist_load: "Playlist/playlist_loaded",
       playlist_image: "Playlist/playlist_image",
-    })
+    }),
   },
   created: function() {
     this.$store.dispatch(
@@ -179,15 +185,17 @@ export default {
     );
     var img = new Image();
     img.setAttribute("crossOrigin", "");
-    img.src =this.$url+"/api/images/" + this.playlist_image +"?belongs_to=playlist";
+    img.src =
+      this.$url + "/api/images/" + this.playlist_image + "?belongs_to=playlist";
     img.addEventListener("load", () => {
       const colorThief = new ColorThief();
       var c = colorThief.getColor(img);
       var element = document.querySelector(".playlist");
-      element.style.background ="linear-gradient(-180deg," + "rgb" + "(" + c + ")," + "#161516" + " )";
+      element.style.background =
+        "linear-gradient(-180deg," + "rgb" + "(" + c + ")," + "#161516" + " )";
       element.style.backgroundSize = " 600% 600% 300% 300% ";
-      element.style.height = '200px';
+      element.style.height = "200px";
     });
-  }
+  },
 };
 </script>

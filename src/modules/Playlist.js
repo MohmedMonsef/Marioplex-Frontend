@@ -35,24 +35,21 @@ export default {
     },
 
     CreatePlaylist(state, playlists) {
-      state.Playlists.push(
-        playlists
-      );
+      state.Playlists.push(playlists);
     },
     setUserPlaylist(state, playlists) {
-      playlists.forEach(playlist => {
-        if(playlist.images.length == 0)
-        playlist.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      playlists.forEach((playlist) => {
+        if (playlist.images.length == 0)
+          playlist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.Playlists = playlists;
     },
-    ChangePlaylistName(state, payload) {
-      state.playlists.update({
-        name: payload,
-      });
+    ChangePlaylistName(state, { name, id }) {
+      let obj = state.Playlists.find((f) => f.id == id);
+      if (obj) obj.name = name;
     },
     PubPriChange(state, payload) {
-      state.playlists.push({
+      state.Playlists.push({
         public: payload,
       });
     },
@@ -60,8 +57,8 @@ export default {
       state.showModalAdd = !state.showModalAdd;
       state.trackid = trackid;
     },
-    showinputfield(state) {
-      state.showinput = !state.showinput;
+    showinputfield(state,flag) {
+      state.showinput = flag;
     },
     set_playlist(state, playlist_tracks) {
       state.playlist_tracks = playlist_tracks;
@@ -108,10 +105,9 @@ export default {
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
           commit("set_owner_name", playlist[1].ownerName);
-          if(typeof playlist[0].images[0] =="undefined")
-              commit("set_playlist_image","5eb52f1863eea332d416b9fa" );
-          else
-              commit("set_playlist_image", playlist[0].images[0]._id);
+          if (typeof playlist[0].images[0] == "undefined")
+            commit("set_playlist_image", "5eb52f1863eea332d416b9fa");
+          else commit("set_playlist_image", playlist[0].images[0]._id);
           commit("set_likedplaylist", playlist[0].isfollowed);
           commit("set_playlist_loaded", true);
         })
@@ -131,17 +127,24 @@ export default {
       commit("toggleModal", withtrack);
     },
     CreatePlaylist({ commit, state }, payload) {
-      console.log("my payload", payload);
+      var user = store.getters["Authorization/user"];
       axios
         .post("/api/users/playlists", { name: payload.name })
         .then((response) => {
           const playlists = response.data;
           let x = response.data._id;
-          //var id = response.data.id;
-          console.log("wsl", x);
-          // var i = playlists.playlistname;
-          console.log("de i");
-          commit("CreatePlaylist", playlists);
+          var toAdd = {
+            id: playlists._id,
+            name: playlists.name,
+            ownerId: playlists.ownerId,
+            isPublic: playlists.isPublic,
+            type: "created",
+            images:[{
+              _id:"1"
+            }],
+            owner:user.displayName
+          };
+          commit("CreatePlaylist", toAdd);
           console.log("in createplaylist module the bool ", state.withtrack);
           if (state.withtrack == true) {
             let d = {
@@ -179,29 +182,30 @@ export default {
           console.log(error);
         });
     },
-    DeletePlaylist({ state }) {
-      var to_del;
-      if (typeof state.todelete._id == "undefined") to_del = state.todelete.id;
-      else to_del = state.todelete._id;
-      axios
-        .delete("/api/me/delete/playlists/" + to_del)
-        .then((response) => {
-          console.log(response.data);
-          console.log("wsl");
-          store.dispatch("Playlist/showplaylists");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    DeletePlaylist({ state, dispatch }) {
+      var to_del = state.todelete.id;
+      if (state.todelete.type == "created") {
+        axios
+          .delete("/api/me/delete/playlists/" + to_del)
+          .then(() => {
+            store.dispatch("Playlist/showplaylists");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        dispatch("unlike_playist",to_del);
+        store.dispatch("Playlist/showplaylists");
+      }
     },
     ChangePlaylistName({ commit }, payload) {
-      console.log("in store name", payload.name);
-      console.log("in store id", payload.playlist_id);
       axios
         .put("/api/playlists/" + payload.playlist_id, { name: payload.name })
-        .then((response) => {
-          console.log("the response", response);
-          commit("ChangePlaylistName", payload.name);
+        .then(() => {
+          commit("ChangePlaylistName", {
+            name: payload.name,
+            id: payload.playlist_id,
+          });
           store.dispatch("Playlist/showplaylists");
         })
         .catch((error) => {
@@ -224,8 +228,8 @@ export default {
           console.log(error);
         });
     },
-    showinputfield({ commit }) {
-      commit("showinputfield");
+    showinputfield({ commit },flag) {
+      commit("showinputfield",flag);
     },
     ReorderTracks({ commit }, payload) {
       axios

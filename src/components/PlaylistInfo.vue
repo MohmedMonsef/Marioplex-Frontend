@@ -2,11 +2,7 @@
   <div class="playlist_info">
     <div class="image" @mouseover="onhoverimage()" @mouseleave="onleaveimage()">
       <img
-        :src="$url+
-          '/api/images/' +
-            playlist_image +
-            '?belongs_to=playlist'
-        "
+        :src="$url + '/api/images/' + playlist_image + '?belongs_to=playlist'"
         alt="playlist_image"
         class="playlist_image"
         id="playlist_image"
@@ -98,16 +94,6 @@
           ></i>
         </span>
       </button>
-
-      <!-- this comment is to add ... if needed -->
-      <!-- <span data-toggle="tooltip" title="More">
-            <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
-            </span>
-            <div id="mydropdown" class="db" v-show="show">
-        <p v-if="!isLiked">Add to Liked Songs</p>
-        <p v-if="isLiked">Remove from Liked Songs</p>
-      </div>-->
-
       <p testid="playlistlength" id="playlistlength">
         {{ playlist_length }} SONGS
       </p>
@@ -268,7 +254,7 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  }
+  },
 };
 /**
  *  * apperars when there is tracks in playlist
@@ -279,7 +265,7 @@ export default {
   data: function() {
     return {
       show: false,
-      play: false
+      play: false,
     };
   },
   mixins: [song_functions],
@@ -390,7 +376,7 @@ export default {
         );
         this.$store.dispatch("Playlist/showplaylists");
       }
-    }
+    },
   },
   computed: {
     ...mapGetters({
@@ -400,8 +386,8 @@ export default {
       playicon: "Mediaplayer/playicon",
       owner_name: "Playlist/owner_name",
       playlist_image: "Playlist/playlist_image",
-      liked: "Playlist/likeplaylist"
-    })
-  }
+      liked: "Playlist/likeplaylist",
+    }),
+  },
 };
 </script>
