@@ -7,10 +7,11 @@
       <h4>To Continue with Marioplex-Spotify click proceed button</h4>
     </div>
     <div class="row">
-      <router-link to="/Login">
+          <router-link to="/Login">
         <button class="proceedbutton" @click="thanksForConfirmation()">Proceed</button>
       </router-link>
     </div>
+     <div class="stars"></div>
   </div>
 </template>
 
@@ -18,9 +19,10 @@
 .ThanksForConfirmation {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(180deg, #21accc, #ffff 60%);
+  background-color: black;
 }
 .row {
+  margin: 0px 5px 0px 5px;
   justify-content: center;
 }
 #first_row {
@@ -30,20 +32,22 @@ h1 {
   font-size: 50px;
   font-weight: bold;
   text-align: center;
+  color: white;
+  text-shadow:2px 2px  #5e6063;
 }
 h4 {
   font-size: 12px;
-  color: rgb(37, 36, 36);
+  color: rgb(116, 110, 110);
 }
 .proceedbutton {
-  background-color: #32393f;
+  background-color: white;
   border-radius: 500px;
-  border-color: #32393f;
-  width: 270px;
+  border-color: transparent;
+  width: 250px;
   height: 45px;
   padding: 8px 34px;
   display: inline-block;
-  color: white;
+  color: black;
   margin: 25px 25px 0px 25px;
   align-content: center;
   font-size: 15px;
@@ -52,10 +56,24 @@ h4 {
   letter-spacing: 1.76px;
 }
 .proceedbutton:hover {
-  transform: scale(1.06);
+  background-color: rgb(100, 97, 97);
 }
 button:focus {
   outline: 0 !important;
+}
+.stars{
+  background: url("../assets/stars2.gif");
+  width: 100%;
+  height: 450px;
+  position: absolute;
+  top: 300px;
+}
+@media only screen and (max-width: 870px) {
+.stars{
+top: 425px;
+left: 0;
+height: 290px;
+}
 }
 </style>
 

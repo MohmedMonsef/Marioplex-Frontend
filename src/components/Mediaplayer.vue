@@ -1,7 +1,8 @@
 <template>
   <div class="mediaplayer">
-    <div class="row">
+    <div class="row" id="mediaplayerrow">
       <div class="col-sm-3" id="song_info_col">
+        <!-- <div class="songinfocolumn" id="song_info_col"> -->
         <!-- here i need to link album image with mock server -->
         <div class="album_image" v-if="user == 'success'">
           <img src="../assets/cry.png" alt="album_image" testid="album_image" />
@@ -57,6 +58,7 @@
         </div>
       </div>
       <div class="col-sm-6">
+        <!-- <div class="mediaplayerbarcolumn" id="mediaplayerbarcolumn"> -->
         <div
           class="play_controllers"
           id="test_play_controllers"
@@ -184,6 +186,7 @@
         <!-- the end of the new code  -->
       </div>
       <div class="col-md-3 hidden-sm">
+        <!-- <div class="volumebarcolumn"> -->
         <div class="additional_actions" v-if="user == 'success'">
           <button id="queue_button" testid="queuebutton" @click="queue_alter()">
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
@@ -473,6 +476,24 @@ input:focus {
 .disabledicon:active {
   color: #b3b3b3;
 }
+
+// .songinfocolumn{
+//   margin-left: 15px;
+//   width: 22%;
+// }
+// .mediaplayerbarcolumn{
+//   margin-left: 15px;
+//   width: 56%;
+// }
+// .volumebarcolumn{
+//   margin-left: 15px;
+//   width: 22%;
+// }
+// @media only screen and (max-width: 750px) {
+// .volumebarcolumn{
+//   visibility: hidden;
+// }
+// }
 </style>
 
 <script type="module">
@@ -508,6 +529,11 @@ export default {
       }
       this.isShuffle = this.userinfo.player.is_shuffled;
     }, 1000);
+    // if (this.user != "success") {
+    //    var mediaplayerbar = document.getElementById("mediaplayerrow");
+    //    mediaplayerbar.style.justifyContent = "center";
+    //    mediaplayerbar.style.alignContent = "center";
+    // }
   },
   created: function () {
     window.addEventListener("mouseup", () => {

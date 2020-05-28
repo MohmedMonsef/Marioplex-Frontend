@@ -292,15 +292,7 @@ const routes = [
         props: (route) => ({
           token: route.query.token,
         }),
-      },
-      // {
-      //   path: "confirm",
-      //   name: "ThanksForConfirmation",
-      //   component: ThanksForConfirmation,
-      //   props: (route) => ({
-      //     id: route.query.id,
-      //   }),
-      // }
+      }
     ],
     meta: { 
       isLogged:true
