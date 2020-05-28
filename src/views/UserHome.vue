@@ -116,6 +116,7 @@
 
 <style lang="scss" scoped>
 .home {
+ 
   min-height: 2000px;
 }
 .section {

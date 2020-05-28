@@ -1,7 +1,7 @@
 <template>
   <div class="SideBar" testid="sidebar component">
     <!-- spotify logo -->
-    <router-link to="/HomeWebPlayer" testid="logo in sidebar">
+    <router-link to="/HomeWebPlayer" class="smallbar" testid="logo in sidebar">
       <img
         src="../assets/spotify logo.png"
         alt="Logo"
@@ -18,7 +18,8 @@
             class="homepage"
             id="homepage1"
           >
-            <i class="fa fa-home"></i>Home
+            <i class="fa fa-home"></i>
+           <span class="smallbar"> Home </span>
           </router-link>
         </div>
       </li>
@@ -33,7 +34,8 @@
             testid="searchpage link"
             class="searchpage"
           >
-            <i class="fa fa-search"></i>Search
+            <i class="fa fa-search"></i>
+           <span class="smallbar"> Search</span>
           </router-link>
           <!-- router link should navigate to search page -->
         </div>
@@ -45,14 +47,15 @@
             testid="librarypage link"
             class="librarypage"
           >
-            <i class="fa fa-bars"></i> Your Library
+            <i class="fa fa-bars"></i>
+            <span class="smallbar"> Your Library</span>
           </router-link>
           <!-- router link should navigate to library page -->
         </div>
       </li>
     </ul>
     <div class="loggedin" v-if="isLoggedIn == 'success'">
-      <label testid="PLAYLISTS lable">PLAYLISTS</label>
+      <label testid="PLAYLISTS lable" class="smallbar">PLAYLISTS</label>
       <!-- creat play lists or show liked songs -->
       <ul>
         <li>
@@ -62,7 +65,8 @@
             testid="create button"
             class="createbutton"
           >
-            <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
+            <i class="fa fa-plus-square" id="CreatePlaylist"></i>
+            <span class="smallbar">Create Playlist</span>
           </button>
           <!-- router link should navigate to pop up -->
           <!-- </CreatePlaylist> -->
@@ -75,25 +79,27 @@
           >
             <img
               src="../assets/like.png"
-              style="width: 30px; height: 30px; margin-right: 15px;"
-            />Liked Songs
+              class="likedimg"
+            />
+            <span class="smallbar">Liked Songs</span>
           </router-link>
           <!-- router link should navigate to liked songs page -->
         </li>
       </ul>
       <!-- lower border -->
-      <div testid="border in sidebar" class="border"></div>
+      <div testid="border in sidebar" class="border smallbar"></div>
       <!-- user's play lists -->
       <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
-      <ul>
+      <ul class="smallbar">
         <li
           v-for="(playlist, i) in playlists1"
           :key="i"
           @click.right="
-            (playlistid = playlist),
-              toggleSideMenu(),
+              (playlistid = playlist),
+              toggleSideMenu(playlist.type, playlist.isPublic),
               getpos(),
               (p_id = playlist.id)
+
           "
         >
           <router-link
@@ -110,14 +116,14 @@
       <!-- try -->
 
       <div id="mydropdown" class="db" v-if="showSideMenu">
-        <p class="rename_input" id="renameInput" @click="showinputfield(true)">
+        <p v-if="type == 'created'" class="rename_input" id="renameInput" @click="showinputfield(true)">
           Rename
         </p>
         <p class="delete_div" @click="changeModalStateDelete()">
           Delete
         </p>
-        <p @click="PubPriChange()">Secret</p>
-        <p @click="PubPriChange()">Public</p>
+        <p v-if="isPublic && type == 'created'"  @click="PubPriChange()">Secret</p>
+        <p v-if="!isPublic && type == 'created'"  @click="PubPriChange()">Public</p>
       </div>
 
       <!-- try -->
@@ -297,6 +303,35 @@ label {
 .song:hover {
   background-color: #313030;
 }
+.likedimg{
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+@media screen and (max-width: 700px) {
+  .smallbar {
+    display: none;
+  }
+  .SideBar {
+   width: 60px;
+   padding-top: 20px;
+  }
+  .divOnFocus{
+    width: 45px;
+    text-align: center;
+    a{
+      padding-left: 12px;
+    }
+  }
+  .createbutton{
+    width: 60px;
+    margin-left: 8px;
+  }
+  .likedimg{
+    margin-left: -10px;
+    width:30px;
+  }
+}
 </style>
 
 <script>
@@ -312,12 +347,14 @@ export default {
       show: false,
       showdelete: false,
       playlistid: 0,
-      //showinput: false,
       posy: "",
       newname: "",
       p_id: "",
       public: true,
       showSideMenu: false,
+      type:"",
+      isPublic:false
+
     };
   },
   mounted() {
@@ -367,7 +404,7 @@ export default {
       this.$store.dispatch("Search/searchfocus", this.searchfocus);
     },
     showinputfield(flag) {
-      this.$store.dispatch("Playlist/showinputfield",flag);
+      this.$store.dispatch("Playlist/showinputfield", flag);
       //this.showinput = !this.showinput;
       this.$nextTick(function() {
         var i = document.getElementById("in_rename");
@@ -389,7 +426,7 @@ export default {
         playlist_id: this.p_id,
       };
       this.$store.dispatch("Playlist/ChangePlaylistName", payload);
-      this.newname="";
+      this.newname = "";
     },
     PubPriChange() {
       if (this.public) {
@@ -403,8 +440,9 @@ export default {
       };
       this.$store.dispatch("Playlist/PubPriChange", payload);
     },
-    toggleSideMenu() {
-      console.log("7mada");
+    toggleSideMenu(type,isPublic) {
+     this.type = type;
+     this.isPublic = isPublic;
       var x = this.showSideMenu;
       this.$store.dispatch("UserLibrary/sideMenu", true);
       window.Element.showSideMenu = false;
@@ -426,8 +464,8 @@ export default {
     hideMenu(event) {
       var targetId = event.target.id;
       this.showSideMenu = false;
-      if(targetId !="renameInput" && targetId != "in_rename")
-          this.$store.dispatch("Playlist/showinputfield",false);
+      if (targetId != "renameInput" && targetId != "in_rename")
+        this.$store.dispatch("Playlist/showinputfield", false);
       if (!this.$el.contains(event.target)) {
         this.showSideMenu = false;
       }

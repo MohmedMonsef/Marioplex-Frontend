@@ -5,7 +5,7 @@
     <mediaplayerpopup v-if="showmediaplayerpopup" />
     <DeletePlaylist v-if="showdelete" />
     <PremiumAd v-if="premiumPopup"/>
-    <div id="HomeInWebPlayer">
+    <div class="HomeInWebPlayer">
       <router-view class="child" :key="componentKey"></router-view>
       <navbar-webplayer />
       <!-- <library-navbar/> -->
@@ -15,7 +15,7 @@
   </div>
 </template>
 <style scoped>
-#HomeInWebPlayer {
+.HomeInWebPlayer {
   width: calc(100vw - 235px);
   height: calc(100vh - 90px);
   margin-left: 235px;
@@ -28,6 +28,12 @@
 }
 .child {
   padding-top: 80px;
+}
+@media screen and (max-width: 700px) {
+.HomeInWebPlayer {
+  width: calc(100vw - 60px);
+  margin-left: 60px;
+}
 }
 </style>
 <script>

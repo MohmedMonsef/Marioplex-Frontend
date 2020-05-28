@@ -107,7 +107,7 @@
           "></i>
       </div>
       <div id="mydropdown" class="db" v-if="show">
-        <p>Start Radio</p>
+        <!-- <p>Start Radio</p> -->
         <p @click="likecurrentsong()" id="ifnotliked" v-if="!isLiked">
           Add to Liked Songs
         </p>
@@ -125,7 +125,7 @@
 
 <style lang="scss" scoped>
 .song {
-  min-width: 426px;
+  min-width: 300px;
   height: 64px;
   margin: 0%;
   padding: 0%;
