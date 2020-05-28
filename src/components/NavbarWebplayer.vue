@@ -299,7 +299,7 @@ i:hover {
   color: rgb(202, 202, 202);
 }
 .notScrolled{
-  background-color:red;
+  background-color:transparent;
   transition: background-color 0.2s linear;
 }
 .scrolled{
