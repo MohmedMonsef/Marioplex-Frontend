@@ -205,7 +205,7 @@ svg {
   margin-bottom: 3%;
   fill: darkgray;
 }
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 880px){
   svg{
   visibility: hidden;
   position: absolute;

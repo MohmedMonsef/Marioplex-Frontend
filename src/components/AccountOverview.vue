@@ -30,10 +30,10 @@
       </div>
     </div>
     <div class="row" id="row2">
-      <div class="col-lg-30% side_bar">
+      <div class="col-sm-30% side_bar">
         <account-sidebar />
       </div>
-      <div class="col-lg-70%" id="white_div">
+      <div class="col-sm-70%" id="white_div">
         <h1>Account overview</h1>
         <h2>Profile</h2>
         <ul>
@@ -101,7 +101,7 @@
   /* padding-top: 70px; */
   position: relative;
 }
-@media only screen and (max-width:800px){
+@media only screen and (max-width:880px){
   .music{
   width: 100%;
   margin-left: 0%;
@@ -174,10 +174,12 @@
 #row2 {
   margin-left: 7%;
 }
-@media only screen and (max-width:800px){
+@media only screen and (max-width:880px){
   #row2{
+  width: 100%;
   margin-left: 0%;
   margin-right: 0%;
+  position: relative;
   }
 }
 #white_div {
@@ -187,6 +189,17 @@
   padding-right: 5%;
   padding-bottom: 5%;
   position:relative;
+}
+@media only screen and (max-width: 880px){
+  #white_div{
+  background-color: white;
+  width: 77%;
+  height: 100%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  position:relative;
+  margin-right: 0%;
+  }
 }
 @media only screen and (max-width: 800px){
   #white_div{

@@ -12,7 +12,17 @@
 .child {
   padding-top: 39px;
 }
-@media only screen and (max-width: 780px){
+@media only screen and (max-width: 1000px){
+  .child{
+    padding-top: 28px;
+  }
+}
+@media only screen and (max-width: 880px){
+  .child{
+    padding-top: 26px;
+  }
+}
+@media only screen and (max-width: 800px){
   .child{
     padding-top: 20px;
   }
