@@ -90,10 +90,10 @@
   .image {
     display: none;
   }
-  .noinfo{
-  display: inline;
-  position: absolute;
-  width: 100%;
+  .noinfo {
+    display: inline;
+    position: absolute;
+    width: 100%;
   }
 }
 </style>
@@ -152,7 +152,7 @@ export default {
     ReorderTracks(event) {
       let playlist_Id = this.$route.params.playlist_id;
       this.playlist_id = playlist_Id;
-      this.oldIndex = event.oldIndex +1;
+      this.oldIndex = event.oldIndex + 1;
       this.newIndex = event.newIndex + 1;
       let payload = {
         range_start: this.oldIndex,

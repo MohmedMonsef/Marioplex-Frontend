@@ -10,10 +10,11 @@
           <show-popularplaylists
             v-for="POPplaylist in POPplaylists1.playlists.slice(0, 5)"
             :key="POPplaylist.id"
-            :images="$url+
-              '/api/images/' +
-              POPplaylist.images[0]._id +
-              '?belongs_to=playlist'
+            :images="
+              $url +
+                '/api/images/' +
+                POPplaylist.images[0]._id +
+                '?belongs_to=playlist'
             "
             :name="POPplaylist.name"
             :Description="POPplaylist.Description"
@@ -32,10 +33,11 @@
           <show-popularartists
             v-for="POPartist in POPartists1.artists.slice(0, 5)"
             :key="POPartist.id"
-            :images="$url+
-              '/api/images/' +
-              POPartist.images[0]._id +
-              '?belongs_to=artist'
+            :images="
+              $url +
+                '/api/images/' +
+                POPartist.images[0]._id +
+                '?belongs_to=artist'
             "
             :name="POPartist.name"
             :artistId="POPartist.id"
@@ -53,10 +55,11 @@
           <show-popularalbums
             v-for="POPalbum in POPalbums1.albums.slice(0, 5)"
             :key="POPalbum.id"
-            :images="$url+
-              '/api/images/' +
-              POPalbum.images[0]._id +
-              '?belongs_to=album'
+            :images="
+              $url +
+                '/api/images/' +
+                POPalbum.images[0]._id +
+                '?belongs_to=album'
             "
             :name="POPalbum.name"
             :artistname="POPalbum.artist.name"
@@ -78,10 +81,11 @@
           <show-popularreleases
             v-for="POPnewrelease in POPnewreleases1.albums.slice(0, 5)"
             :key="POPnewrelease.id"
-            :images="$url+
-              '/api/images/' +
-              POPnewrelease.images[0]._id +
-              '?belongs_to=album'
+            :images="
+              $url +
+                '/api/images/' +
+                POPnewrelease.images[0]._id +
+                '?belongs_to=album'
             "
             :name="POPnewrelease.name"
             :artistname="POPnewrelease.artist.name"
@@ -98,10 +102,11 @@
             <lib-playlists
               v-for="playlist in playlists1.slice(0, 5)"
               :key="playlist.id"
-              :images="$url+
-                '/api/images/' +
-                playlist.images[0]._id +
-                '?belongs_to=playlist'
+              :images="
+                $url +
+                  '/api/images/' +
+                  playlist.images[0]._id +
+                  '?belongs_to=playlist'
               "
               :name="playlist.name"
               :ownerName="playlist.owner"
@@ -116,7 +121,6 @@
 
 <style lang="scss" scoped>
 .home {
- 
   min-height: 2000px;
 }
 .section {
@@ -191,10 +195,10 @@ export default {
     LibPlaylists,
     //  NavbarWebplayer
   },
-  created: function () {
+  created: function() {
     window.addEventListener(
       "contextmenu",
-      function (e) {
+      function(e) {
         // do something here...
         e.preventDefault();
       },
@@ -210,7 +214,7 @@ export default {
     this.$store.dispatch("Playlist/showplaylists");
   },
   methods: {
-    handler: function (e) {
+    handler: function(e) {
       //do stuff
       e.preventDefault();
     },

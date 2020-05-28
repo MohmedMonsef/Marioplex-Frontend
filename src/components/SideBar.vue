@@ -19,7 +19,7 @@
             id="homepage1"
           >
             <i class="fa fa-home"></i>
-           <span class="smallbar"> Home </span>
+            <span class="smallbar"> Home </span>
           </router-link>
         </div>
       </li>
@@ -35,7 +35,7 @@
             class="searchpage"
           >
             <i class="fa fa-search"></i>
-           <span class="smallbar"> Search</span>
+            <span class="smallbar"> Search</span>
           </router-link>
           <!-- router link should navigate to search page -->
         </div>
@@ -77,10 +77,7 @@
             testid="likedsongs link"
             class="likedsongs"
           >
-            <img
-              src="../assets/like.png"
-              class="likedimg"
-            />
+            <img src="../assets/like.png" class="likedimg" />
             <span class="smallbar">Liked Songs</span>
           </router-link>
           <!-- router link should navigate to liked songs page -->
@@ -95,11 +92,10 @@
           v-for="(playlist, i) in playlists1"
           :key="i"
           @click.right="
-              (playlistid = playlist),
+            (playlistid = playlist),
               toggleSideMenu(playlist.type, playlist.isPublic),
               getpos(),
               (p_id = playlist.id)
-
           "
         >
           <router-link
@@ -116,14 +112,23 @@
       <!-- try -->
 
       <div id="mydropdown" class="db" v-if="showSideMenu">
-        <p v-if="type == 'created'" class="rename_input" id="renameInput" @click="showinputfield(true)">
+        <p
+          v-if="type == 'created'"
+          class="rename_input"
+          id="renameInput"
+          @click="showinputfield(true)"
+        >
           Rename
         </p>
         <p class="delete_div" @click="changeModalStateDelete()">
           Delete
         </p>
-        <p v-if="isPublic && type == 'created'"  @click="PubPriChange()">Secret</p>
-        <p v-if="!isPublic && type == 'created'"  @click="PubPriChange()">Public</p>
+        <p v-if="isPublic && type == 'created'" @click="PubPriChange()">
+          Secret
+        </p>
+        <p v-if="!isPublic && type == 'created'" @click="PubPriChange()">
+          Public
+        </p>
       </div>
 
       <!-- try -->
@@ -303,7 +308,7 @@ label {
 .song:hover {
   background-color: #313030;
 }
-.likedimg{
+.likedimg {
   width: 30px;
   height: 30px;
   margin-right: 15px;
@@ -313,23 +318,23 @@ label {
     display: none;
   }
   .SideBar {
-   width: 60px;
-   padding-top: 20px;
+    width: 60px;
+    padding-top: 20px;
   }
-  .divOnFocus{
+  .divOnFocus {
     width: 45px;
     text-align: center;
-    a{
+    a {
       padding-left: 12px;
     }
   }
-  .createbutton{
+  .createbutton {
     width: 60px;
     margin-left: 8px;
   }
-  .likedimg{
+  .likedimg {
     margin-left: -10px;
-    width:30px;
+    width: 30px;
   }
 }
 </style>
@@ -352,9 +357,8 @@ export default {
       p_id: "",
       public: true,
       showSideMenu: false,
-      type:"",
-      isPublic:false
-
+      type: "",
+      isPublic: false,
     };
   },
   mounted() {
@@ -440,9 +444,9 @@ export default {
       };
       this.$store.dispatch("Playlist/PubPriChange", payload);
     },
-    toggleSideMenu(type,isPublic) {
-     this.type = type;
-     this.isPublic = isPublic;
+    toggleSideMenu(type, isPublic) {
+      this.type = type;
+      this.isPublic = isPublic;
       var x = this.showSideMenu;
       this.$store.dispatch("UserLibrary/sideMenu", true);
       window.Element.showSideMenu = false;

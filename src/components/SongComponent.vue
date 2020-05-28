@@ -3,11 +3,7 @@
     class="song"
     id="songComp"
     @click="clicked"
-    :class="[
-    { clicked: isclicked,
-      unPlayable: !canPlay
-    }
-    ]"
+    :class="[{ clicked: isclicked, unPlayable: !canPlay }]"
     @mouseover="hover = true"
     @mouseleave="hover = false"
     @dblclick="playOnDblCLk()"
@@ -19,12 +15,12 @@
         v-if="!canPlay || (!hover && !isclicked && !(playicon && isCurrent))"
         class="fa fa-music music_icon"
         testid="music icon"
-         :class="
-          [{
-          unPlayableIcon: !canPlay,
-         currently: this.isCurrent && this.canPlay
-          }]
-          "
+        :class="[
+          {
+            unPlayableIcon: !canPlay,
+            currently: this.isCurrent && this.canPlay,
+          },
+        ]"
       ></i>
       <i
         v-if="canPlay && (isclicked || hover) && !(playicon && isCurrent)"
@@ -52,23 +48,26 @@
       </i>
     </div>
     <div id="song_body">
-      <div 
-      class="song_name"  
-      testid="song name"
-       :class="
-          [{
+      <div
+        class="song_name"
+        testid="song name"
+        :class="[
+          {
             currently: this.isCurrent && this.canPlay,
-            unPlayableIcon: !canPlay
-          }]
-          ">
+            unPlayableIcon: !canPlay,
+          },
+        ]"
+      >
         {{ song_name }}
       </div>
-      <div class="song_info"
-       :class="[
-       {
-         songUnPlayable: !canPlay
-       }
-       ]">
+      <div
+        class="song_info"
+        :class="[
+          {
+            songUnPlayable: !canPlay,
+          },
+        ]"
+      >
         <div class="s">
           <router-link
             tag="p"
@@ -97,14 +96,14 @@
     </div>
     <div id="song_options" class="dropdownlist">
       <div id="icondiv" @click="this.toggleShow">
-        <i id="list_icon"
-         v-show="hover"
-         class="fa fa-ellipsis-h dots_icon"
-          :class="
-          {
-          unPlayableIcon: !canPlay
-          }
-          "></i>
+        <i
+          id="list_icon"
+          v-show="hover"
+          class="fa fa-ellipsis-h dots_icon"
+          :class="{
+            unPlayableIcon: !canPlay,
+          }"
+        ></i>
       </div>
       <div id="mydropdown" class="db" v-if="show">
         <!-- <p>Start Radio</p> -->
@@ -173,8 +172,8 @@
 .song:hover {
   background-color: #313030;
 }
-.unPlayable:hover{
-   background-color: transparent;
+.unPlayable:hover {
+  background-color: transparent;
 }
 
 #icon {
@@ -229,7 +228,7 @@
     border-bottom: white solid 1px;
   }
 }
-.songUnPlayable{
+.songUnPlayable {
   .s {
     display: inline;
     p {
@@ -240,7 +239,7 @@
       color: rgb(139, 133, 133);
       border-bottom: rgb(139, 133, 133) solid 1px;
       cursor: pointer;
-      }
+    }
     span {
       padding-right: 4px;
     }
@@ -282,11 +281,11 @@
 .music_icon {
   color: darkgray;
 }
-.currently {  
+.currently {
   color: #1db954;
 }
-.unPlayableIcon{
-   color: rgb(150, 141, 141);
+.unPlayableIcon {
+  color: rgb(150, 141, 141);
 }
 </style>
 
@@ -304,7 +303,7 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  }
+  },
 };
 /**
  * Song component appearing in views(playlists,albums..etc)
@@ -316,55 +315,55 @@ export default {
     return {
       hover: false,
       show: false,
-      isclicked: false
+      isclicked: false,
     };
   },
   mixins: [song_functions],
   props: {
     song_name: {
-      type: String
+      type: String,
     },
     song_album: {
-      type: String
+      type: String,
     },
     song_artists: {
-      type: String
+      type: String,
     },
     artist_id: {
-      type: String
+      type: String,
     },
     song_length: {
-      type: Number
+      type: Number,
     },
     isLiked: {
-      type: Boolean
+      type: Boolean,
     },
     song_id: {
-      type: String
+      type: String,
     },
     index: {
-      type: Number
+      type: Number,
     },
     albumId: {
       type: String,
-      default: "0"
+      default: "0",
     },
     playlistId: {
       type: String,
-      default: "0"
+      default: "0",
     },
     isPlaylist: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isPlayable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     isQueue: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     /**
@@ -376,7 +375,7 @@ export default {
         trackId: this.song_id,
         playlistId: this.playlistId,
         isPlaylist: this.isPlaylist,
-        albumId: this.albumId
+        albumId: this.albumId,
       });
     },
     /**
@@ -417,8 +416,7 @@ export default {
      * @public This is a public method
      */
     clicked() {
-      if(this.canPlay)
-      this.isclicked = true;
+      if (this.canPlay) this.isclicked = true;
     },
     /**
      * triggers the like request for the component
@@ -456,15 +454,15 @@ export default {
     RemoveFromThisPlaylist() {
       let payload = {
         playlist_id: this.playlistId,
-        song_id: this.song_id
+        song_id: this.song_id,
       };
       this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
-    }
+    },
   },
   computed: {
     isCurrentClass: function() {
       return {
-        currently: this.isCurrent && this.canPlay
+        currently: this.isCurrent && this.canPlay,
       };
     },
     isCurrent: function() {
@@ -481,14 +479,16 @@ export default {
       return min + ":" + sec;
     },
     ...mapGetters({
-      Get_Currentsong: "Mediaplayer/Get_Currentsong"
+      Get_Currentsong: "Mediaplayer/Get_Currentsong",
     }),
     ...mapState({
-      showAdd: state => state.Playlist.showModalAdd
+      showAdd: (state) => state.Playlist.showModalAdd,
     }),
     canPlay: function() {
-      return (this.isPlayable || this.userinfo.product == "premium") && !this.isQueue;
-    }
+      return (
+        (this.isPlayable || this.userinfo.product == "premium") && !this.isQueue
+      );
+    },
   },
 
   created: function() {
@@ -498,7 +498,7 @@ export default {
     window.removeEventListener("click", this.hideshow);
   },
   components: {
-    AddTrackPopup
-  }
+    AddTrackPopup,
+  },
 };
 </script>

@@ -16,17 +16,10 @@
               class="col-lg-10% col-md-60% col-xs-6"
               v-for="category in categorys"
               :key="category.id"
+              :image="category.images[0]._id"
               :name="category.name"
               :categoryId="category._id"
-            />
-            <!-- <category
-              class="col-lg-10% col-md-60% col-xs-6"
-              v-for="category in categorys"
-              :key="category.id"
-              :image="category.images"
-              :name="category.name"
-              :categoryId="category._id"
-              />-->
+              />
           </div>
         </div>
       </div>
@@ -64,10 +57,9 @@
   height: 100vh;
 }
 .scroll {
- // width: 2000;
   height: 100%;
   overflow-x: visible;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .all {
   width: 100%;

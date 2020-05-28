@@ -1,12 +1,14 @@
 <template>
-  <div class="home-navbar"
-   :class="[
+  <div
+    class="home-navbar"
+    :class="[
       {
-        notScrolled: scrollPosition == 0 ,
-        scrolled: scrollPosition > 0
-      }
+        notScrolled: scrolling == 0,
+        scrolled: scrolling > 0,
+      },
     ]"
-   id="navBar">
+    id="navBar"
+  >
     <button class="prev" @click="goprev()">
       <i class="fa fa-angle-left"></i>
     </button>
@@ -98,11 +100,13 @@
           </router-link>
         </div>
       </div>
-     <router-link to="/Premium"
-       class="upgrade_button"  
-       v-if="!inlibrary && !insearch" 
-       tag="button">
-          UPGRADE
+      <router-link
+        to="/Premium"
+        class="upgrade_button"
+        v-if="!inlibrary && !insearch"
+        tag="button"
+      >
+        UPGRADE
       </router-link>
     </div>
     <div class="logout" v-if="isLoggedIn == '' || isLoggedIn == 'error'">
@@ -143,7 +147,6 @@
   z-index: 0;
    transition: background-color 0.2s linear;
 }
-
 .divOnFocus {
   width: 100px;
   height: 30px;
@@ -315,11 +318,11 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       inlibrary: false,
       insearch: false,
-      scrollPosition: null
+      scrollPosition: null,
     };
   },
   name: "NavbarWebplayer",
@@ -327,6 +330,7 @@ export default {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
       Username: "Authorization/Username",
+      scrolling:"UserLibrary/scrolling"
     }),
   },
   methods: {
@@ -341,7 +345,7 @@ export default {
      * Go to previous router page
      * @public This is a public method
      */
-    goprev: function () {
+    goprev: function() {
       if (this.$router.currentRoute.path !== "/HomeWebPlayer/search") {
         this.$store.dispatch("Search/showresult", "h");
       }
@@ -351,21 +355,12 @@ export default {
      * Go to next router page
      * @public This is a public method
      */
-    gonext: function () {
+    gonext: function() {
       this.$router.go(1);
     },
-  /**
-     * Update the scroll position
-     * @public This is a public method
-     */
-    updateScroll() {
-      this.scrollPosition = window.scrollY;
-    },
-    /**
-     * Update navbar component based on current router
-     * @public This is a public method
-     */
-    check() {
+  },
+  watch: {
+    $route: function() {
       if (
         this.$router.currentRoute.path ==
           "/HomeWebPlayer/library/library-playlists" ||
@@ -384,14 +379,6 @@ export default {
         this.insearch = false;
       }
     },
-  },
-  destroyed() {
-    window.removeEventListener("click", this.check);
-    window.removeEventListener("scroll", this.updateScroll);
-  },
-  mounted() {
-    window.addEventListener("click", this.check);
-    window.addEventListener("scroll", this.updateScroll);
-  },
+  }
 };
 </script>

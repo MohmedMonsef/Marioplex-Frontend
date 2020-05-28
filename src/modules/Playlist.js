@@ -23,10 +23,6 @@ export default {
   },
   mutations: {
     toggleModal(state, withtrack) {
-      console.log(
-        "while toggeling in mutations in createplaylist module the bool",
-        withtrack
-      );
       state.showModal = !state.showModal;
       state.withtrack = withtrack;
     },
@@ -120,14 +116,9 @@ export default {
         });
     },
     toggleModalAdd({ commit }, trackid) {
-      console.log(" id of track in creatplaylist moudle", trackid);
       commit("toggleModalAdd", trackid);
     },
     toggleModal({ commit }, withtrack) {
-      console.log(
-        "while toggeling in actions in createplaylist module the bool",
-        withtrack
-      );
       commit("toggleModal", withtrack);
     },
     CreatePlaylist({ commit, state }, payload) {
@@ -149,7 +140,6 @@ export default {
             owner:user.displayName
           };
           commit("CreatePlaylist", toAdd);
-          console.log("in createplaylist module the bool ", state.withtrack);
           if (state.withtrack == true) {
             let d = {
               trackid: state.trackid,
@@ -163,17 +153,13 @@ export default {
         });
     },
     toggleModalDelete({ commit }, todeleteid) {
-      console.log("in actions");
       commit("toggleModalDelete", todeleteid);
     },
-    //  async
-
     showplaylists({ commit, state }) {
       axios
         .get("/api/me/playlists")
         .then((response) => {
           let playlists = response.data;
-          console.log("test function", playlists);
           commit("setUserPlaylist", playlists);
           if (state.loadingplaylists == 0) {
             state.loadingplaylists = 1;
@@ -217,14 +203,11 @@ export default {
         });
     },
     PubPriChange({ commit }, payload) {
-      console.log("in store pubpri", payload.public);
-      console.log("in store id", payload.playlist_id);
       axios
         .put("/api/playlists/" + payload.playlist_id+"/public", {
           public: payload.public,
         })
-        .then((response) => {
-          console.log("the response", response);
+        .then(() => {
           commit("PubPriChange", payload.public);
           store.dispatch("Playlist/showplaylists");
         })
@@ -245,7 +228,6 @@ export default {
         .then((response) => {
           if (status == 200) {
             let track = response.data;
-            console.log("theresponse from mirage is", response.data);
             commit("ReorderTracks", track);
           }
         })
@@ -258,8 +240,7 @@ export default {
         .post("/api/playlists/" + payload.playlist_id + "/tracks", {
           tracks: payload.trackid,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           commit("AddTrackToNewPlayList");
           store.dispatch("playlist_tracks", payload.playlist_id);
           store.dispatch("Playlist/toggleModalAdd");
@@ -295,15 +276,12 @@ export default {
         });
     },
     RemoveFromThisPlaylist({ commit }, payload) {
-      console.log("playlistid in store", payload.playlist_id);
-      console.log("trackid in store", payload.song_id);
 
       axios
         .delete("/api/playlists/" + payload.playlist_id + "/tracks", {
           data: { track_ids: payload.song_id },
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           commit("RemoveFromThisPlaylist");
           store.dispatch("Playlist/playlist_tracks", payload.playlist_id);
         })
@@ -312,15 +290,11 @@ export default {
         });
     },
     async AddTrackToExsistPlaylist({ commit }, payload) {
-      console.log("playlistid in store", payload.playlistid);
-      console.log("trackid in store", payload.trackid);
       axios
         .post("/api/playlists/" + payload.playlistid + "/tracks", {
           tracks: payload.trackid,
         })
-        .then((response) => {
-          console.log(response);
-          // store.dispatch("playlist/playlist_tracks",payload.playlistid)
+        .then(() => {
           commit("AddTrackToExsistPlaylist");
         })
         .catch((error) => {
@@ -328,12 +302,9 @@ export default {
         });
     },
     restorePlaylist({commit}, ID) {
-      console.log("restore playlist in axios");
-      console.log("ID: " , ID);
       axios
         .put("/api/me/restoreplaylists?playlistsIds=" + ID)
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
           commit("isRestored", "success");
         })
         .catch((error) => {

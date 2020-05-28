@@ -5,7 +5,7 @@
     <mediaplayerpopup v-if="showmediaplayerpopup" />
     <DeletePlaylist v-if="showdelete" />
     <PremiumAd v-if="premiumPopup"/>
-    <div class="HomeInWebPlayer">
+    <div class="HomeInWebPlayer" id="mainBody" @scroll="handler">
       <router-view class="child" :key="componentKey"></router-view>
       <navbar-webplayer />
       <!-- <library-navbar/> -->
@@ -24,7 +24,7 @@
   position: fixed;
   top: 0%;
   z-index: 0;
-  overflow-y: scroll;
+  overflow: auto;
 }
 .child {
   padding-top: 80px;
@@ -85,16 +85,18 @@ export default {
   },
   methods:{
     handler(){
-      
+      var element = document.getElementById("mainBody")
+      console.log(element.scrollTop);
+      this.$store.dispatch("UserLibrary/scrolling", element.scrollTop);
     },
     closeMenu(){
       this.$store.dispatch("UserLibrary/sideMenu", false);
-    }
+    },
   },
     watch: {
     $route() {
        this.componentKey = (this.componentKey+1)%4
     }
-}
+},
 };
 </script>

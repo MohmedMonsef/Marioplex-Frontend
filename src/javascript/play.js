@@ -32,7 +32,6 @@ export function reset_audio() {
   currentaudio.src = null;
 }
 export function loadSourceBuffer(mediaSource, mediaURL, mediaMimeType) {
-  console.log("loadSourceBuffer");
   ("use strict");
   let sourceBuffer = mediaSource.addSourceBuffer(mediaMimeType);
   // Promise to resolve when our source buffer has updateend
@@ -48,7 +47,6 @@ export function loadSourceBuffer(mediaSource, mediaURL, mediaMimeType) {
 }
 export function fetchArrayBuffer(url, onLoadFunc, onProgressFunc) {
   "use strict";
-  console.log("fetchArrayBuffer");
   let xhr = new XMLHttpRequest();
   xhr.onprogress = onProgressFunc;
   xhr.open("get", url);
@@ -59,7 +57,6 @@ export function fetchArrayBuffer(url, onLoadFunc, onProgressFunc) {
   xhr.send();
 }
 export async function setupMediaKeys(video, config) {
-  console.log("setupMediaKeys");
   ("use strict");
   let keySystemAccess = await navigator.requestMediaKeySystemAccess(
     "org.w3.clearkey",
@@ -69,16 +66,13 @@ export async function setupMediaKeys(video, config) {
   return video.setMediaKeys(mediaKeys);
 }
 export function encryptedEventHandler(e) {
-  console.log("encryptedEventHandler");
   ("use strict");
   let video = e.target;
   let session = video.mediaKeys.createSession();
   session.addEventListener("message", messageHandler);
-  console.log("init data " + e.initData);
   return session.generateRequest(e.initDataType, e.initData);
 }
 export function generateLicense(message) {
-  console.log("generateLicense");
   ("use strict");
   // Parse the clearkey license request.
   let request = JSON.parse(new TextDecoder().decode(message));
@@ -88,7 +82,6 @@ export function generateLicense(message) {
       `Got more than one key requested (got ${request.kids.length})! We don't expect this!`
     );
   }
-  console.log(audioKeyID, audioKey);
   // Create our clear key object, looking up the key based on the key id
   let keyObj = {
     kty: "oct",
@@ -98,29 +91,26 @@ export function generateLicense(message) {
   };
   return new TextEncoder().encode(
     JSON.stringify({
-      keys: [keyObj],
+      keys: [keyObj]
     })
   );
 }
 export function messageHandler(e) {
   "use strict";
-  console.log("messageHandler");
   let session = e.target;
   let license = generateLicense(e.message);
-  session.update(license).catch(function (failureReason) {
+  session.update(license).catch(function(failureReason) {
     console.log("update() failed: " + failureReason.message);
   });
 }
-export function setupPlayer(audioURL, key, keyid,value) {
+export function setupPlayer(audioURL, key, keyid, value) {
   if (!audioURL) return 0;
   audioKey = key;
   audioKeyID = keyid;
   const opusMimeType = 'audio/webm;codecs="opus"';
-  console.log("xx", currentaudio, "bb", audioKeyID, "kk", audioKey);
   let mediaElement = currentaudio; //add here my audio object
   mediaElement.controls = true;
   mediaElement.preload = "auto";
-  console.log("audio  :", audioURL);
   let audioUrl = audioURL;
   let audioMimeType = opusMimeType;
   // EME handling
@@ -138,7 +128,6 @@ export function setupPlayer(audioURL, key, keyid,value) {
 
   setupMediaKeys(mediaElement, config).then(
     () => {
-      //console.log("messageHandler")
       currentaudio.autoplay = value;
       mediaElement.addEventListener("encrypted", encryptedEventHandler);
       mediaElement.src = URL.createObjectURL(mediaSource);

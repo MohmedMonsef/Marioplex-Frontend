@@ -11,18 +11,30 @@ export default {
   },
   mutations: {
     setcategory(state, rescategory) {
+      rescategory.forEach((category) => {
+        if (category.images.length == 0)
+         category.images.push({ _id: "5eb52f1863eea332d416b9fa" });
+      });
       state.category = rescategory;
     },
     set_loading(state, status) {
       state.loading = status;
     },
     setcategoryplaylists(state, categoryplaylistsres) {
+      categoryplaylistsres.forEach((playlist) => {
+        if (playlist.images.length == 0)
+          playlist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
+      });
       state.categoryplaylists = categoryplaylistsres;
     },
     set_loadingplaylists(state, status) {
       state.loadingplaylists = status;
     },
     setcategoryplaylists5(state, categoryplaylistsres5) {
+      categoryplaylistsres5.forEach((playlist) => {
+        if (playlist.images.length == 0)
+          playlist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
+      });
       state.categoryplaylists5 = categoryplaylistsres5;
     },
     set_categoryname(state, name) {
@@ -36,8 +48,6 @@ export default {
         .get("/api/browse/categories/")
         .then((respons) => {
           let rescategory = respons.data.category;
-          console.log(respons.data);
-          console.log("test function", rescategory);
           commit("setcategory", rescategory);
           commit("set_loading", true);
         })
@@ -47,7 +57,6 @@ export default {
     },
     categoryname({ commit }, name) {
       commit("set_categoryname", name);
-      console.log(name);
     },
     categoryplaylists({ commit }, category_id) {
       var categoryplaylistsres5 = new Array();
@@ -60,7 +69,6 @@ export default {
             for (let i = 0; i < 5; i++) {
               categoryplaylistsres5.push(categoryplaylistsres[i]);
             }
-            console.log(categoryplaylistsres5);
             commit("setcategoryplaylists5", categoryplaylistsres5);
           } else {
             commit("setcategoryplaylists5", categoryplaylistsres);
@@ -83,8 +91,5 @@ export default {
     getcategoryplaylists: (state) => state.categoryplaylists,
     getcategoryplaylists5: (state) => state.categoryplaylists5,
     getcategory_name: (state) => state.category_name,
-    // /////totest////////////playlist_info
-    // getcategoryplaylists: state => state.playlist_info,
-    // getcategoryplaylists5: state => state.playlist_info5
   },
 };

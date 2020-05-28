@@ -9,7 +9,6 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-    console.log("message", message);
   },
 };
 import axios from "axios";
@@ -231,13 +230,11 @@ export default {
       }
     },
     prevsong_state({ state, commit, dispatch }) {
-      console.log("in prev action", state.progress);
       if (state.progress <= 5) {
         axios
           .post("/api/me/player/prev-playing")
           .then(response => {
             var prevsong = response.data;
-            console.log("in get currentsong", prevsong);
             commit("set_currentsong", prevsong);
             var i =state.currentSongIndex == 0 ? 0 : state.currentSongIndex - 1;
             state.currentSongIndex = i;
@@ -269,7 +266,6 @@ export default {
       }
     },
     repeatsong_state({ dispatch }, flag) {
-      console.log("kkk", flag);
       if (flag == 1) currentaudio_repeat(true);
       else if (flag == 0) {
         currentaudio_repeat(false);
@@ -345,7 +341,6 @@ export default {
           state.trackduration = get_currentaudio().duration;
           state.progress = get_currentaudio().currentTime;
           if (state.progress == state.trackduration) {
-            console.log("p", state.progress, "d", state.trackduration);
             dispatch("nextsong_state");
           }
         }
