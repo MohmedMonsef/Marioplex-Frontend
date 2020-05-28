@@ -55,11 +55,6 @@
     color: white;
   }
 }
-.row {
-  margin: 25px;
-  margin-top: 0;
-  display: flex;
-}
 .sortable-drag {
   opacity: 0;
 }
@@ -157,11 +152,11 @@ export default {
     ReorderTracks(event) {
       let playlist_Id = this.$route.params.playlist_id;
       this.playlist_id = playlist_Id;
-      this.oldIndex = event.oldIndex;
-      this.newIndex = event.newIndex;
+      this.oldIndex = event.oldIndex +1;
+      this.newIndex = event.newIndex + 1;
       let payload = {
-        start: this.oldIndex,
-        before: this.newIndex,
+        range_start: this.oldIndex,
+        insert_before: this.newIndex,
         playlist_id: this.playlist_id,
       };
       this.$store.dispatch("Playlist/ReorderTracks", payload);

@@ -238,6 +238,29 @@ p {
   visibility: visible;
   opacity: 1;
 }
+@media screen and (max-width: 1000px) {
+  .playlist_image {
+    height: 250px;
+    width: 250px;
+  }
+  .playbutton {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .pausebutton {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .playlistname {
+    margin-top: 15px;
+  }
+  .image {
+    #imageplayicon,
+    #imagepauseicon {
+      top: 90px;
+    }
+  }
+}
 </style>
 
 <script>

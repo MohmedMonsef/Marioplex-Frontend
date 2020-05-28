@@ -1,5 +1,12 @@
 <template>
-  <div class="home-navbar" id="navBar">
+  <div class="home-navbar"
+   :class="[
+      {
+        notScrolled: scrollPosition == 0 ,
+        scrolled: scrollPosition > 0
+      }
+    ]"
+   id="navBar">
     <button class="prev" @click="goprev()">
       <i class="fa fa-angle-left"></i>
     </button>
@@ -91,11 +98,12 @@
           </router-link>
         </div>
       </div>
-      <a href="/Premium" target="_blank" v-if="!inlibrary && !insearch">
-        <button class="upgrade_button" testid="upgrade_button">
+     <router-link to="/Premium"
+       class="upgrade_button"  
+       v-if="!inlibrary && !insearch" 
+       tag="button">
           UPGRADE
-        </button>
-      </a>
+      </router-link>
     </div>
     <div class="logout" v-if="isLoggedIn == '' || isLoggedIn == 'error'">
       <router-link to="/Login">
@@ -112,7 +120,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .home-navbar ul a {
   font-size: 18px;
   color: white;
@@ -131,11 +139,11 @@
   position: fixed;
   width: 100%;
   height: 60px;
-  /* background-color: #161516; */
   top: 0%;
   z-index: 0;
-  /* background:transparent; */
+   transition: background-color 0.2s linear;
 }
+
 .divOnFocus {
   width: 100px;
   height: 30px;
@@ -290,6 +298,14 @@ i {
 i:hover {
   color: rgb(202, 202, 202);
 }
+.notScrolled{
+  background-color:red;
+  transition: background-color 0.2s linear;
+}
+.scrolled{
+  background-color:black;
+  transition: background-color 0.2s linear;
+}
 </style>
 
 <script>
@@ -303,6 +319,7 @@ export default {
     return {
       inlibrary: false,
       insearch: false,
+      scrollPosition: null
     };
   },
   name: "LibraryNavbar",
@@ -337,14 +354,12 @@ export default {
     gonext: function () {
       this.$router.go(1);
     },
-    handleScroll() {
-      console.log("transparent dai");
-      var n = document.getElementById("navBar");
-      if (window.scrollY > 20) {
-        n.style.background = "#161516";
-      } else {
-        n.style.background = "transparent";
-      }
+  /**
+     * Update the scroll position
+     * @public This is a public method
+     */
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
     },
     /**
      * Update navbar component based on current router
@@ -370,16 +385,13 @@ export default {
       }
     },
   },
-  created() {
-    // this.handleScroll();
-  },
   destroyed() {
     window.removeEventListener("click", this.check);
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", this.updateScroll);
   },
   mounted() {
     window.addEventListener("click", this.check);
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.updateScroll);
   },
 };
 </script>

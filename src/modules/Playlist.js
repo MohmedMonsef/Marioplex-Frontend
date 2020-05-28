@@ -216,7 +216,7 @@ export default {
       console.log("in store pubpri", payload.public);
       console.log("in store id", payload.playlist_id);
       axios
-        .put("/api/playlists/" + payload.playlist_id, {
+        .put("/api/playlists/" + payload.playlist_id+"/public", {
           public: payload.public,
         })
         .then((response) => {
@@ -234,7 +234,9 @@ export default {
     ReorderTracks({ commit }, payload) {
       axios
         .put("/api/playlists/" + payload.playlist_id + "/tracks", {
-          data: payload,
+          range_start: payload.range_start,
+          insert_before: payload.insert_before,
+          range_length:1
         })
         .then((response) => {
           if (status == 200) {
