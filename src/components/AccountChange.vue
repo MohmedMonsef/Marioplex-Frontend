@@ -7,14 +7,14 @@
       <h1>Change your password</h1>
       <div class="edit_border"></div>
       <div class="white_div">
-        <!-- <div class="saved">Password updated</div> -->
+        <div class="saved" v-if="isEdited == 'success'">Password updated</div>
         <h2>Current password</h2>
         <input type="password" class="in_text" v-model="password" />
-        <!-- <p class="wrong">Sorry, wrong password</p> -->
+        <p class="wrong" v-if="isEdited == 'faild'">Sorry, wrong password</p>
         <h2>New password</h2>
         <input type="password" class="in_text" v-model="newpassword" />
         <h2>Repeat new password</h2>
-        <input type="password" class="in_text" v-model="repeatpassword" />
+        <input type="password" class="in_text" v-model="repeatedPassword" />
         <div class="end_border"></div>
         <router-link to="/UserAccount/Account-overview">
           <button class="cancel">CANCEL</button>
@@ -128,6 +128,7 @@ h2 {
 </style>
 <script>
 import AccountSidebar from "@/components/AccountSidebar.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "Account-change",
   components: {
@@ -137,12 +138,8 @@ export default {
     return {
       password: "",
       newpassword: "",
-      repeatpassword: "",
-      birthday: "",
-      email: "",
-      gender: "",
-      country: "",
-      can_set: false,
+      repeatedPassword: "",
+      canSet: false,
       saved: false,
     };
   },
@@ -151,17 +148,14 @@ export default {
       this.req_password();
       this.req_newpassword();
       this.req_repeatpassword();
-      if (this.can_set) {
+      if (this.canSet) {
         let edituser = {
           password: this.password,
           newpassword: this.newpassword,
-          email: this.email,
-          country: this.country,
-          gender: this.gender,
-          birthday: this.birthday,
+          repeatedPassword: this.repeatedPassword,
         };
         this.saved = true;
-        this.$store.dispatch("Authorization/SaveEdit", edituser);
+        this.$store.dispatch("Authorization/saveEdit", edituser);
       } else {
         this.saved = false;
         console.log("can not set password");
@@ -170,33 +164,38 @@ export default {
     req_password: function () {
       if (this.password == "") {
         console.log("password not found");
-        this.can_set = false;
+        this.canSet = false;
       } else {
         console.log("password found");
-        this.can_set = true;
+        this.canSet = true;
       }
       return;
     },
     req_newpassword: function () {
       if (this.newpassword == "") {
         console.log("newpassword not found");
-        this.can_set = false;
+        this.canSet = false;
       } else {
         console.log("newpassword found");
-        this.can_set = true;
+        this.canSet = true;
       }
       return;
     },
     req_repeatpassword: function () {
       if (this.repeatpassword == "") {
         console.log("repeat password not found");
-        this.can_set = false;
+        this.canSet = false;
       } else {
         console.log("repeat password found");
-        this.can_set = true;
+        this.canSet = true;
       }
       return;
     },
+  },
+  computed: {
+    ...mapGetters({
+      isEdited: "Authorization/isEdited"
+    }),
   },
 };
 </script>

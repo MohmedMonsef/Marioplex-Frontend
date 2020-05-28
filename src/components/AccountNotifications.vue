@@ -7,7 +7,20 @@
       <h1>Notification settings</h1>
       <div class="edit_border"></div>
       <div class="white_div">
-        <div></div>
+        <h2>Your Notifications</h2>
+        <div class="card col-lg">
+          <div class="card-body" id="cardbody">
+            <h4 class="card-title" id="cardtitle">
+             notification title
+            </h4>
+            <p
+              class="card-text"
+              id="carddescribtion"
+            >
+            notification body
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -43,6 +56,20 @@ h1 {
   background: white;
   padding-top: 6%;
   padding-left: 7%;
+}
+h2{
+  font-size: 23px;
+  margin-bottom: 5%;
+}
+.card{
+  width: 92%;
+  margin-bottom: 3%;
+  background-color: rgba(129, 238, 165, 0.2);
+  /* background-color: rgba(248, 136, 136, 0.2); */
+  padding-left: 1%;
+}
+h4{
+  font-size: 20px;
 }
 </style>
 <script>

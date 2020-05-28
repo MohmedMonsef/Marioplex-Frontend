@@ -322,7 +322,7 @@ export default {
       scrollPosition: null
     };
   },
-  name: "LibraryNavbar",
+  name: "NavbarWebplayer",
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
