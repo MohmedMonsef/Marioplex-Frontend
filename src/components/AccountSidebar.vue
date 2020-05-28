@@ -205,7 +205,7 @@ svg {
   margin-bottom: 3%;
   fill: darkgray;
 }
-@media only screen and (max-width: 880px){
+@media only screen and (max-width: 990px){
   svg{
   visibility: hidden;
   position: absolute;
@@ -218,6 +218,13 @@ svg {
   margin-left: 40%;
   margin-bottom: 9%;
   margin-top: 9%;
+}
+@media only screen and (max-width: 990px){
+  #user_svg{
+  visibility:visible;
+  position: relative;
+  margin-left: 20%;
+  }
 }
 .green_div {
   background: #1db954;

@@ -121,6 +121,13 @@
   top:5%;
   bottom: 60%;
 }
+@media only screen and (max-width: 988px){
+  #header{
+    position: absolute;
+    top: 1%;
+    font-size: 66px;
+  }
+}
 #paragraph {
   color: white;
   margin-bottom: 0px;
@@ -131,14 +138,6 @@
   right:43%;
   bottom: 40%;
 }
-/* #paragraph2{
-  color: white;
-  margin-bottom: 0px;
-  position: absolute;
-  left:6.5%;
-  top:66%;
-  right:40%;
-} */
 .premium {
   border: none;
   border-radius: 25px;
@@ -155,6 +154,24 @@
   position: absolute;
   top: 70%;
   bottom: 2%;
+}
+@media only screen and (max-width: 714px){
+  .premium{
+    position: absolute;
+    margin-top: 6%;
+  }
+}
+@media only screen and (max-width: 560px){
+  .premium{
+    position: absolute;
+    margin-top: 10%;
+  }
+}
+@media only screen and (max-width: 542px){
+  .premium{
+    position: absolute;
+    margin-top: 12%;
+  }
 }
 .premium:hover {
   background-color: #27ca60;

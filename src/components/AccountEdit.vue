@@ -53,10 +53,16 @@
           >
         </select>
         <div class="end_border"></div>
-        <router-link to="/UserAccount/Account-overview">
-          <button class="cancel">CANCEL</button>
-        </router-link>
-        <button class="save" @click="saveEdit()">SAVE PROFILE</button>
+          <!-- <div class="row"> -->
+            <div class="col-sm-60%">
+              <router-link to="/UserAccount/Account-overview">
+                <button class="cancel">CANCEL</button>
+              </router-link>
+            </div>
+            <div class="col-sm-30%">
+              <button class="save" @click="saveEdit()">SAVE PROFILE</button>
+            </div>
+          <!-- </div> -->
       </div>
     </div>
   </div>
@@ -65,6 +71,14 @@
 #row2 {
   margin-left: 7%;
 }
+@media only screen and (max-width:880px){
+  #row2{
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+  position: relative;
+  }
+}
 #grey_div {
   background: #f8f8f8;
   width: 68.5%;
@@ -72,6 +86,27 @@
   padding-right: 5%;
   padding-bottom: 5%;
   position:relative;
+}
+@media only screen and (max-width: 880px){
+  #grey_div{
+  background-color: #f8f8f8;
+  width: 77%;
+  height: 100%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  position:relative;
+  margin-right: 0%;
+  }
+}
+@media only screen and (max-width: 800px){
+  #grey_div{
+  background-color: #f8f8f8;
+  width: 100%;
+  height: 100%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  position:relative;
+  }
 }
 h1 {
   color: #1db954;
@@ -191,6 +226,12 @@ h2 {
 .side_bar{
   position: relative;
   width: 23%;
+}
+@media only screen and (max-width: 800px){
+  .side_bar{
+    visibility: hidden;
+    position: absolute;
+  }
 }
 </style>
 <script>
