@@ -2,24 +2,24 @@
   <div>
     <div class="music" testid="music div">
       <div class="row">
-        <div class="col-lg-50%">
+        <div class="col-sm-50%">
           <h1 id="header">
             Music without limits
           </h1>
           <p id="paragraph">
             Premium lets you play any song, anytime. You can even listen when
-            you’re offline.
+            you’re offline. No restrictions. No ads.
           </p>
-          <p id="paragraph">
+          <!-- <p id="paragraph2">
             No restrictions. No ads.
-          </p>
-          <router-link to="/">
+          </p> -->
+          <router-link to="/GetPremium">
             <button class="premium" testid="premium button">
               GET PREMIUM
             </button>
           </router-link>
         </div>
-        <div class="col-lg-50%">
+        <div class="col-sm-50%">
           <img
             src="../assets/music.png"
             alt="music"
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="row" id="row2">
-      <div class="col-lg-30%">
+      <div class="col-lg-30% side_bar">
         <account-sidebar />
       </div>
       <div class="col-lg-70%" id="white_div">
@@ -72,7 +72,7 @@
           <div class="your_plan_border"></div>
           <h2>Free</h2>
         </div>
-        <router-link to="/">
+        <router-link to="/GetPremium">
           <button class="trans_button">
             JOIN PREMIUM
           </button>
@@ -98,7 +98,15 @@
   width: 86%;
   height: 450px;
   margin-left: 7%;
-  padding-top: 70px;
+  /* padding-top: 70px; */
+  position: relative;
+}
+@media only screen and (max-width:800px){
+  .music{
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+  }
 }
 #header {
   color: white;
@@ -106,41 +114,71 @@
   font-size: 70px;
   font-family: Helvetica, Arial, sans-serif !important;
   margin-bottom: 5px;
-  margin-left: 12%;
+  /* margin-left: 12%; */
+  position: absolute;
+  left: 1%;
+  right: 40%;
+  top:5%;
+  bottom: 60%;
 }
 #paragraph {
   color: white;
   margin-bottom: 0px;
-  margin-left: 12%;
+  /* margin-left: 12%; */
+  position: absolute;
+  left:6.5%;
+  top:60%;
+  right:43%;
+  bottom: 40%;
 }
+/* #paragraph2{
+  color: white;
+  margin-bottom: 0px;
+  position: absolute;
+  left:6.5%;
+  top:66%;
+  right:40%;
+} */
 .premium {
   border: none;
   border-radius: 25px;
   outline: none;
   background-color: #1db954;
   color: white;
-  width: 28%;
-  height: 12%;
+  width: 17.5%;
+  height: 10%;
   margin-left: 12%;
   margin-top: 4%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
+  position: absolute;
+  top: 70%;
+  bottom: 2%;
 }
 .premium:hover {
   background-color: #27ca60;
-  width: 29%;
-  height: 13%;
+  width: 18%;
+  height: 11%;
 }
 .music_img {
-  width: 320px;
+  width: 30%;
   height: 350px;
   margin-left: 10%;
   margin-top: 9%;
+  position: absolute;
+  right: 10%;
+  bottom: 0%;
 }
 /*  */
 #row2 {
   margin-left: 7%;
+}
+@media only screen and (max-width:800px){
+  #row2{
+  margin-left: 0%;
+  margin-right: 0%;
+  }
 }
 #white_div {
   background-color: white;
@@ -148,6 +186,17 @@
   height: 100%;
   padding-right: 5%;
   padding-bottom: 5%;
+  position:relative;
+}
+@media only screen and (max-width: 800px){
+  #white_div{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  position:relative;
+  }
 }
 h1 {
   color: black;
@@ -250,6 +299,16 @@ ul li {
   width: 90%;
   margin-left: 5%;
   margin-bottom: 4%;
+}
+.side_bar{
+  position: relative;
+  width: 23%;
+}
+@media only screen and (max-width: 800px){
+  .side_bar{
+    visibility: hidden;
+    position: absolute;
+  }
 }
 </style>
 <script>

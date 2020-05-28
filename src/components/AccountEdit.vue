@@ -1,6 +1,6 @@
 <template>
   <div class="row" id="row2">
-    <div class="col-lg-30%">
+    <div class="col-lg-30% side_bar">
       <account-sidebar />
     </div>
     <div class="col-lg-70%" id="grey_div">
@@ -71,6 +71,7 @@
   height: 100%;
   padding-right: 5%;
   padding-bottom: 5%;
+  position:relative;
 }
 h1 {
   color: #1db954;
@@ -160,11 +161,13 @@ h2 {
   color: black;
   width: 20%;
   height: 4%;
-  margin-left: 50%;
+  /* margin-left: 50%; */
   margin-top: -1%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
+  position: absolute;
+  left: 45%;
 }
 .save {
   background-color: #1db954;
@@ -173,15 +176,21 @@ h2 {
   border-radius: 25px;
   color: white;
   width: 20%;
-  height: 4.5%;
-  margin-left: 5%;
+  height: 4%;
+  /* margin-left: 5%; */
   margin-top: -1%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
+  position: absolute;
+  left:65%;
 }
 .save:hover {
   background-color: #36e072;
+}
+.side_bar{
+  position: relative;
+  width: 23%;
 }
 </style>
 <script>

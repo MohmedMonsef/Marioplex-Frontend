@@ -205,6 +205,12 @@ svg {
   margin-bottom: 3%;
   fill: darkgray;
 }
+@media only screen and (max-width: 850px){
+  svg{
+  visibility: hidden;
+  position: absolute;
+  }
+}
 #user_svg {
   width: 60px;
   height: 60px;

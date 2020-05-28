@@ -12,6 +12,11 @@
 .child {
   padding-top: 39px;
 }
+@media only screen and (max-width: 780px){
+  .child{
+    padding-top: 20px;
+  }
+}
 </style>
 <script>
 /**

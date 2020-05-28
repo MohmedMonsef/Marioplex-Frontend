@@ -1,6 +1,6 @@
 <template>
     <div class="row" id="row2">
-        <div class="col-lg-30%">
+        <div class="col-lg-30% side_bar">
             <account-sidebar/>
         </div>
         <div class="col-lg-70%" id="grey_div">
@@ -55,6 +55,7 @@
  height: 100%;
  padding-right: 5%;
  padding-bottom: 5%;
+ position:relative;
 }  
 h1{
     color: #1DB954;
@@ -135,6 +136,10 @@ h4{
 }
 .col3{
     margin-left: 30%;
+}
+.side_bar{
+  position: relative;
+  width: 23%;
 }
 </style>
 <script>
