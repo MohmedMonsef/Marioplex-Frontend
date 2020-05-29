@@ -39,25 +39,32 @@
             />
           </div>
         </div>
-
-        <button class="cancel_button" @click="changeModalState()">
-          cancle
-        </button>
-        <!--<input @keyup.enter="CreatePlaylist()" />-->
-        <button
-          class="creat_button"
-          testid="confirm_create"
-          @click.prevent="CreatePlaylist()"
-          @click="changeModalState()"
-        >
-          create
-        </button>
+        <div class="myrow">
+          <div class="buttonWrapper">
+            <button
+              class="customButton cancel_button"
+              @click="changeModalState()"
+             >
+              cancel
+            </button>
+          </div>
+          <div class="buttonWrapper">
+            <button
+              class="customButton creat_button"
+              testid="confirm_create"
+              @click.prevent="CreatePlaylist()"
+              @click="changeModalState()"
+            >
+              create
+            </button>
+          </div>
+        </div>
       </div>
     </transition>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 * {
   margin: 10;
   padding: 10;
@@ -74,86 +81,58 @@ div {
   /* relative */
   position: relative;
   display: block;
-  width: 500%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
-
-.creat_button {
-  /* fixed */
-  /* absolute */
-  position: absolute;
+.myrow {
+  display: block;
+  width: 100vw;
+  height: 200px;
+  position: fixed;
   top: 70%;
-  left: 48%;
+}
+.customButton {
+  position: absolute;
   appearance: none;
   outline: none;
-  border: none;
-  background: none;
   cursor: pointer;
-  margin: 20px;
-  height: 6%;
-  width: 25%;
-  padding: 8px 34px;
-  background-color: #1ed760;
+  height: 10%;
+  width: 30%;
   border-radius: 500px;
   border-color: transparent;
   color: #fff;
   font-size: 12px;
   font-weight: 700;
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
-  transition: 0.4s ease-out;
   overflow-y: hidden;
   overflow-x: hidden;
   line-height: 18px;
   letter-spacing: 1.76px;
   text-transform: uppercase;
-  border: 2px solid transparent;
-  will-change: transform;
   white-space: nowrap;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   display: inline-block;
   text-align: center;
-  max-width: 130px;
-  max-height: 50px;
   z-index: 4;
-  margin-left: 1%;
+  background: none;
+}
+.creat_button {
+  border: none;
+  background-color: #1ed760;
+  transition: 0.4s ease-out;
+  border: 2px solid transparent;
 }
 .cancel_button {
-  /* fixed */
-  /* absolute */
-  position: absolute;
-  top: 70%;
-  left: 35%;
-  right: 50%;
-  appearance: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-  margin: 20px;
-  height: 6%;
-  width: 25%;
-  padding: 8px 34px;
-  background-color: transparent;
-  border-radius: 500px;
   border-color: #fff;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
   transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
-  overflow-y: hidden;
-  overflow-x: hidden;
-  z-index: 5;
-  line-height: 18px;
-  letter-spacing: 1.76px;
-  text-transform: uppercase;
   border: 2px solid;
-  will-change: transform;
-  white-space: nowrap;
+  margin-left: 30%;
+}
+.buttonWrapper {
+  width: 50%;
+  height: 500px;
   display: inline-block;
-  text-align: center;
-  max-width: 130px;
-  max-height: 50px;
-  margin-right: 1%;
-  /* margin-block-end: 200px; */
+  padding: 3% 10% 3% 10%;
 }
 
 .modal-overlay {
@@ -163,14 +142,13 @@ div {
   justify-content: center;
   align-items: center;
   margin: none;
-
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
   width: 100%;
-  height: 200%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0);
   overflow: hidden;
 }
@@ -206,11 +184,6 @@ input {
   z-index: 6;
   overflow: hidden;
 }
-ul {
-  color: red;
-  overflow: hidden;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -291,6 +264,36 @@ ul {
   max-height: 50px;
   z-index: 4;
 }
+@media screen and (max-width: 700px) {
+.customButton {
+  height: 10%;
+  width: 43%;
+  border-radius: 500px;
+  font-size: 10px;
+}
+.cancel_button {
+  margin-left: 43%;
+}
+.buttonWrapper {
+  width: 50%;
+  height: 500px;
+  display: inline-block;
+  padding: 3% 5% 3% 5%;
+}
+
+h4{
+    font-size: 18px;
+
+}
+
+.name_input{
+  font-size: 33px;
+}
+.title {
+  font-size: 38px;
+  line-height: 40px;
+}
+}
 </style>
 
 <script>
@@ -306,7 +309,7 @@ export default {
   name: "CreatePlaylist",
   data: function() {
     return {
-      playlistname: ""
+      playlistname: "",
       // withtrack:false
     };
   },
@@ -314,13 +317,13 @@ export default {
   components: {},
   computed: {
     ...mapState({
-      Playlists: state => state.Playlist.Playlists
+      Playlists: (state) => state.Playlist.Playlists,
     }),
     ...mapGetters({
       showModal: "Playlist/showModal",
       username: "Authorization/Username",
-      withtrack: "Playlist/withtrack"
-    })
+      withtrack: "Playlist/withtrack",
+    }),
   },
   methods: {
     /**
@@ -341,17 +344,17 @@ export default {
         payload = {
           name: this.playlistname,
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username
+          owner: this.username,
         };
       } else {
         payload = {
           name: "New Playlist",
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username
+          owner: this.username,
         };
       }
       this.$store.dispatch("Playlist/CreatePlaylist", payload);
-    }
-  }
+    },
+  },
 };
 </script>

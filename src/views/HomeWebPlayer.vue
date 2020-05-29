@@ -86,7 +86,6 @@ export default {
   methods:{
     handler(){
       var element = document.getElementById("mainBody")
-      console.log(element.scrollTop);
       this.$store.dispatch("UserLibrary/scrolling", element.scrollTop);
     },
     closeMenu(){

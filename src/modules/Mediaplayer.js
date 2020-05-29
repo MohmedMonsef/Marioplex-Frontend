@@ -26,7 +26,20 @@ import {
 export default {
   namespaced: true,
   state: {
-    currentsong:"",
+    currentsong:{
+      track:
+      {_id:"5eb0a55eec0c444e9c48982f",
+       images:[
+         {"_id":"5eb0b3f2de66c65e34c18b7a"}],
+         "duration":60,
+         "name":"track21",
+         "artistId":"5eb0a4559b15d854c08f7365",
+         "albumId":"5eb0a55cec0c444e9c48982d","type":"Track","like":1},
+         "isLiked":false,
+         "album":{"name":"Criss cross","_id":"5eb0a55cec0c444e9c48982d","artist":{"name":"artist4",
+         "_id":"5eb0a4559b15d854c08f7365"}},
+        "isPlaylist":true,"playlistId":"5eb5248b680ef51b4c4492a1","isPlayable":true},
+  
     //component info
     currentSongIndex: 0,
     //flag weather the song is playing or not
