@@ -280,12 +280,9 @@ input {
   display: inline-block;
   padding: 3% 5% 3% 5%;
 }
-
 h4{
     font-size: 18px;
-
 }
-
 .name_input{
   font-size: 33px;
 }
