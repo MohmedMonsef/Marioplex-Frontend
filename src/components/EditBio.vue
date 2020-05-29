@@ -256,16 +256,15 @@ export default {
     return {
       Name: "",
       Genre: "",
-      Description: ""
+      Description: "",
     };
   },
   //showModal:false,
   components: {},
   computed: {
     ...mapGetters({
-      showModal: "ArtistProperties/showModal",  
-  
-    })
+      showModal: "ArtistProperties/showModal",
+    }),
   },
   methods: {
     /**
@@ -283,12 +282,12 @@ export default {
       let payload = {
         // Name: this.Name,
         // Genre: this.Genre,
-        Description: this.Description
+        Description: this.Description,
       };
-      console.log("in aEDIT BIO POPUP",payload.Description)
+      console.log("in aEDIT BIO POPUP", payload.Description);
       console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditBio", payload);
-    }
-  }
+    },
+  },
 };
 </script>

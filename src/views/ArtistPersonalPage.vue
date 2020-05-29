@@ -15,11 +15,7 @@
 
           <img
             class="c_photo"
-            :src="
-              $url+'/api/images/' +
-                this.image_id +
-                '?belongs_to=artist'
-            "
+            :src="$url + '/api/images/' + this.image_id + '?belongs_to=artist'"
           />
         </div>
         <EditBio v-if="show" />
@@ -400,11 +396,11 @@ export default {
         artist_id: this.Artist_ID,
       };
       this.$store.dispatch("ArtistProperties/UploadPhoto", payload);
-    }
+    },
   },
   created: function() {
     this.$store.dispatch("ArtistProperties/Get_Artist_ID");
     this.$store.dispatch("ArtistProperties/Get_Artist_Bio");
-  }
+  },
 };
 </script>

@@ -192,7 +192,7 @@ export default {
   components: {
     AccountSidebar,
   },
-  data: function () {
+  data: function() {
     return {
       saved: false,
       can_submit: false,
@@ -309,10 +309,10 @@ export default {
   },
   methods: {
     saveEdit() {
-      console.log("email dai " ,this.email );
-      console.log("gender dai " , this.gender );
-      console.log("country dai " ,this.country );
-      console.log("pass dai " ,this.password );
+      console.log("email dai ", this.email);
+      console.log("gender dai ", this.gender);
+      console.log("country dai ", this.country);
+      console.log("pass dai ", this.password);
       this.req_email();
       this.invalid_email();
       this.req_password();
@@ -333,7 +333,7 @@ export default {
         console.log("can not submit");
       }
     },
-    req_email: function () {
+    req_email: function() {
       console.log(this.email);
       if (this.email == "") {
         console.log("required email not found");
@@ -344,7 +344,7 @@ export default {
       }
       return;
     },
-    invalid_email: function () {
+    invalid_email: function() {
       if (
         this.email != "" &&
         (this.email.indexOf("@") == -1 ||
@@ -360,7 +360,7 @@ export default {
       }
       return;
     },
-    req_password: function () {
+    req_password: function() {
       if (this.password == "") {
         console.log("password not found");
         this.can_submit = false;

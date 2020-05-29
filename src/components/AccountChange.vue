@@ -134,7 +134,7 @@ export default {
   components: {
     AccountSidebar,
   },
-  data: function () {
+  data: function() {
     return {
       password: "",
       newpassword: "",
@@ -161,7 +161,7 @@ export default {
         console.log("can not set password");
       }
     },
-    req_password: function () {
+    req_password: function() {
       if (this.password == "") {
         console.log("password not found");
         this.canSet = false;
@@ -171,7 +171,7 @@ export default {
       }
       return;
     },
-    req_newpassword: function () {
+    req_newpassword: function() {
       if (this.newpassword == "") {
         console.log("newpassword not found");
         this.canSet = false;
@@ -181,7 +181,7 @@ export default {
       }
       return;
     },
-    req_repeatpassword: function () {
+    req_repeatpassword: function() {
       if (this.repeatpassword == "") {
         console.log("repeat password not found");
         this.canSet = false;
@@ -194,7 +194,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isEdited: "Authorization/isEdited"
+      isEdited: "Authorization/isEdited",
     }),
   },
 };

@@ -14,9 +14,9 @@ export default {
             backgroundColor: "#172847",
             pointBackgroundColor: "white",
             borderWidth: 1,
-            pointBorderColor: "#249EBF"
-          }
-        ]
+            pointBorderColor: "#249EBF",
+          },
+        ],
       },
       //Chart.js options that controls the appearance of the chart
       options: {
@@ -24,27 +24,27 @@ export default {
           yAxes: [
             {
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
               },
               gridLines: {
-                display: true
-              }
-            }
+                display: true,
+              },
+            },
           ],
           xAxes: [
             {
               gridLines: {
-                display: false
-              }
-            }
-          ]
+                display: false,
+              },
+            },
+          ],
         },
         legend: {
-          display: true
+          display: true,
         },
         responsive: true,
-        maintainAspectRatio: false
-      }
+        maintainAspectRatio: false,
+      },
     };
   },
   async created() {
@@ -63,13 +63,13 @@ export default {
       this.datacollection.update;
       if (this.loadedchart == true)
         this.renderChart(this.datacollection, this.options);
-    }
+    },
   },
   computed: {
     ...mapGetters({
       artist_followers: "ArtistPage/artist_followers",
-      loadedchart: "ArtistPage/loadedchart"
-    })
-  }
+      loadedchart: "ArtistPage/loadedchart",
+    }),
+  },
 };
 </script>

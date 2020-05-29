@@ -43,7 +43,11 @@
               Profile
             </div>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <router-link to="/UserAccount/Account-overview" class="dropdown-item" tag="p">
+              <router-link
+                to="/UserAccount/Account-overview"
+                class="dropdown-item"
+                tag="p"
+              >
                 Account
               </router-link>
               <p to="/" @click="logout()" class="dropdown-item">

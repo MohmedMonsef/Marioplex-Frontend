@@ -435,7 +435,7 @@ export default {
         { text: "September", value: "9", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
-        { text: "December", value: "12", disabled: false }
+        { text: "December", value: "12", disabled: false },
       ],
       Monthly: true,
       Yearly: false,
@@ -446,7 +446,7 @@ export default {
       vyear: false,
       vmonth: false,
       vsecurity: false,
-      validform: false
+      validform: false,
     };
   },
   methods: {
@@ -479,10 +479,10 @@ export default {
       let newuser = {
         expiresDate: d,
         cardNumber: this.CreditNumber,
-        isMonth: this.Monthly
+        isMonth: this.Monthly,
       };
       this.$store.dispatch("Authorization/toPremium", newuser);
-    }
+    },
   },
   watch: {
     CreditNumber: function() {
@@ -497,12 +497,12 @@ export default {
         var len = this.SecurityCode.length;
         this.SecurityCode = this.SecurityCode.substr(0, len - 1);
       }
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      upgraded: "Authorization/upgraded"
-    })
+      upgraded: "Authorization/upgraded",
+    }),
   },
   mounted() {
     var today = new Date();
@@ -515,11 +515,11 @@ export default {
       var yearObj = {
         text: begYear.toString().substring(2, 4),
         value: begYear,
-        disabled: false
+        disabled: false,
       };
       begYear++;
       this.expYear.push(yearObj);
     }
-  }
+  },
 };
 </script>

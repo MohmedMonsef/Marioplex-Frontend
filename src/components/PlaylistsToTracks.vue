@@ -89,7 +89,7 @@ const toast = {
   },
 };
 export default {
-  data: function () {
+  data: function() {
     return {
       hover: false,
     };
@@ -117,10 +117,10 @@ export default {
       toast.show("Added to your library");
     },
   },
-  created: function () {
+  created: function() {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function () {
+  destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
 };

@@ -77,10 +77,10 @@
             <p
               v-if="
                 invalid_email == false &&
-                invalid_confirm_email == false &&
-                req_email == false &&
-                req_confirm_email == false &&
-                matched_email == true
+                  invalid_confirm_email == false &&
+                  req_email == false &&
+                  req_confirm_email == false &&
+                  matched_email == true
               "
               class="invalid"
               testid="emails not matched error"
@@ -380,7 +380,7 @@ export default {
     LogoHeader,
     Divider,
   },
-  data: function () {
+  data: function() {
     return {
       //User's data that will be passed from the v-model
       trigger_validation: false,
@@ -454,8 +454,8 @@ export default {
       this.valid_year;
       setTimeout(() => {
         if (this.can_submit) {
-          if ( Number(this.day) >= 1 && Number(this.day) <= 9) 
-               this.day = "0" + this.day;
+          if (Number(this.day) >= 1 && Number(this.day) <= 9)
+            this.day = "0" + this.day;
           var d = new Date(this.year + "-" + this.month + "-" + this.day);
           this.birthday = d; //check date format with back
           let newuser = {
@@ -496,7 +496,7 @@ export default {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
     }),
-    req_email: function () {
+    req_email: function() {
       if (this.trigger_validation) {
         if (this.email == "") {
           this.cannotSubmit();
@@ -509,7 +509,7 @@ export default {
         return false;
       }
     },
-    invalid_email: function () {
+    invalid_email: function() {
       if (this.trigger_validation) {
         var to_check = this.email;
         if (
@@ -529,7 +529,7 @@ export default {
         return false;
       }
     },
-    req_confirm_email: function () {
+    req_confirm_email: function() {
       if (this.trigger_validation) {
         if (this.email_confirmation == "") {
           this.cannotSubmit();
@@ -542,7 +542,7 @@ export default {
         return false;
       }
     },
-    invalid_confirm_email: function () {
+    invalid_confirm_email: function() {
       if (this.trigger_validation) {
         var to_check = this.email_confirmation;
         if (
@@ -562,7 +562,7 @@ export default {
         return false;
       }
     },
-    matched_email: function () {
+    matched_email: function() {
       if (this.trigger_validation) {
         if (this.email != this.email_confirmation) {
           this.cannotSubmit();
@@ -575,7 +575,7 @@ export default {
         return false;
       }
     },
-    req_password: function () {
+    req_password: function() {
       if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();
@@ -588,7 +588,7 @@ export default {
         return false;
       }
     },
-    short_password: function () {
+    short_password: function() {
       if (this.trigger_validation) {
         if (this.password.length <= 7 && this.password != "") {
           this.cannotSubmit();
@@ -601,7 +601,7 @@ export default {
         return false;
       }
     },
-    req_username: function () {
+    req_username: function() {
       if (this.trigger_validation) {
         if (this.username == "") {
           this.cannotSubmit();
@@ -614,7 +614,7 @@ export default {
         return false;
       }
     },
-    req_country: function () {
+    req_country: function() {
       if (this.trigger_validation) {
         if (this.country == "0") {
           this.cannotSubmit();
@@ -627,7 +627,7 @@ export default {
         return false;
       }
     },
-    valid_day: function () {
+    valid_day: function() {
       if (this.trigger_validation) {
         if (
           this.day == "" ||
@@ -645,7 +645,7 @@ export default {
         return false;
       }
     },
-    valid_month: function () {
+    valid_month: function() {
       if (this.trigger_validation) {
         if (this.month == "0") {
           this.cannotSubmit();
@@ -658,7 +658,7 @@ export default {
         return false;
       }
     },
-    valid_year: function () {
+    valid_year: function() {
       if (this.trigger_validation) {
         var d = new Date();
         if (
@@ -677,7 +677,7 @@ export default {
         return false;
       }
     },
-    valid_age: function () {
+    valid_age: function() {
       var d = new Date();
       if (this.trigger_validation) {
         if (
@@ -695,7 +695,7 @@ export default {
         return false;
       }
     },
-    req_gender: function () {
+    req_gender: function() {
       if (this.trigger_validation) {
         if (this.gender == "") {
           this.cannotSubmit();

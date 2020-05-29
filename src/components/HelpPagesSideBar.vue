@@ -4,7 +4,7 @@
       <h2 class="header">How can we help you?</h2>
       <div>
         <h3>Account &amp; Payment</h3>
-        <ul class="list-unstyled" >
+        <ul class="list-unstyled">
           <li class="active">
             <a href="/HelpFixed/HelpAccountHelp">Account Help</a>
           </li>
@@ -24,7 +24,7 @@
       </div>
       <div class="navigation-list">
         <h3>Using Spotify</h3>
-        <ul class="list-unstyled" >
+        <ul class="list-unstyled">
           <li>
             <a href="/">Video Tutorials</a>
           </li>
@@ -47,7 +47,7 @@
       </div>
       <div class="navigation-list">
         <h3>Listen Everywhere</h3>
-        <ul class="list-unstyled" >
+        <ul class="list-unstyled">
           <li>
             <a href="/">Speakers</a>
           </li>
@@ -79,27 +79,29 @@
         </div>
         <div>
           <p>
-            Have questions, answers, ideas about Spotify? Ask or
-            join our Community!
+            Have questions, answers, ideas about Spotify? Ask or join our
+            Community!
           </p>
-          <a href="/" class="big-underline" target="_blank">Go to the Community</a>
+          <a href="/" class="big-underline" target="_blank"
+            >Go to the Community</a
+          >
         </div>
         <div class="external">
           <p>Check out our Twitter or Facebook help:</p>
-            <div class="twitter-icon-container">
-              <span>
-                <a href="https://twitter.com/spotify">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </span>
-            </div>
-            <div class="facebook-icon-container">
-              <span>
-                <a href="https://www.facebook.com/spotifyegypt">
-                  <i class="fa fa-facebook-f"></i>
-                </a>
-              </span>
-            </div>
+          <div class="twitter-icon-container">
+            <span>
+              <a href="https://twitter.com/spotify">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </span>
+          </div>
+          <div class="facebook-icon-container">
+            <span>
+              <a href="https://www.facebook.com/spotifyegypt">
+                <i class="fa fa-facebook-f"></i>
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -107,20 +109,20 @@
 </template>
 <script>
 export default {
-  name: "HelpPagesSideBar"
+  name: "HelpPagesSideBar",
 };
 </script>
 <style scoped>
-.big-underline{
-    text-decoration: underline;
-    font-size:larger;
-    font-weight: 700;
-    letter-spacing: 0.05pc;
+.big-underline {
+  text-decoration: underline;
+  font-size: larger;
+  font-weight: 700;
+  letter-spacing: 0.05pc;
 }
-.big-underline:hover{
-    text-decoration: underline;
+.big-underline:hover {
+  text-decoration: underline;
 }
-p{
+p {
   font-size: 20px;
   margin-bottom: 0px;
   margin-top: 30px;
@@ -140,7 +142,7 @@ p{
   font-size: 25px;
 }
 .facebook-icon-container span {
-    float:left;
+  float: left;
   background-color: #1b0191;
   margin: 0 5px;
   width: 50px;

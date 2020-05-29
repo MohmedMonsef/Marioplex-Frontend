@@ -11,13 +11,10 @@
         <div class="card col-lg">
           <div class="card-body" id="cardbody">
             <h4 class="card-title" id="cardtitle">
-             notification title
+              notification title
             </h4>
-            <p
-              class="card-text"
-              id="carddescribtion"
-            >
-            notification body
+            <p class="card-text" id="carddescribtion">
+              notification body
             </p>
           </div>
         </div>
@@ -57,18 +54,18 @@ h1 {
   padding-top: 6%;
   padding-left: 7%;
 }
-h2{
+h2 {
   font-size: 23px;
   margin-bottom: 5%;
 }
-.card{
+.card {
   width: 92%;
   margin-bottom: 3%;
   background-color: rgba(129, 238, 165, 0.2);
   /* background-color: rgba(248, 136, 136, 0.2); */
   padding-left: 1%;
 }
-h4{
+h4 {
   font-size: 20px;
 }
 </style>

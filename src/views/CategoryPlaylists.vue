@@ -29,10 +29,11 @@
         <LibPlaylists
           v-for="playlist in playlists"
           :key="playlist.id"
-          :images="$url+
-            '/api/images/' +
-            playlist.images[0]._id +
-            '?belongs_to=playlist'
+          :images="
+            $url +
+              '/api/images/' +
+              playlist.images[0]._id +
+              '?belongs_to=playlist'
           "
           :name="playlist.name"
           :ownerName="playlist.ownerName"
@@ -90,7 +91,7 @@ export default {
       category_name: "Categorys/getcategory_name",
     }),
   },
-  created: function () {
+  created: function() {
     this.$store.dispatch(
       "Categorys/categoryplaylists",
       this.$route.params.categoryId

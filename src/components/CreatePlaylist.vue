@@ -44,7 +44,7 @@
             <button
               class="customButton cancel_button"
               @click="changeModalState()"
-             >
+            >
               cancel
             </button>
           </div>
@@ -265,31 +265,31 @@ input {
   z-index: 4;
 }
 @media screen and (max-width: 700px) {
-.customButton {
-  height: 10%;
-  width: 43%;
-  border-radius: 500px;
-  font-size: 10px;
-}
-.cancel_button {
-  margin-left: 43%;
-}
-.buttonWrapper {
-  width: 50%;
-  height: 500px;
-  display: inline-block;
-  padding: 3% 5% 3% 5%;
-}
-h4{
+  .customButton {
+    height: 10%;
+    width: 43%;
+    border-radius: 500px;
+    font-size: 10px;
+  }
+  .cancel_button {
+    margin-left: 43%;
+  }
+  .buttonWrapper {
+    width: 50%;
+    height: 500px;
+    display: inline-block;
+    padding: 3% 5% 3% 5%;
+  }
+  h4 {
     font-size: 18px;
-}
-.name_input{
-  font-size: 33px;
-}
-.title {
-  font-size: 38px;
-  line-height: 40px;
-}
+  }
+  .name_input {
+    font-size: 33px;
+  }
+  .title {
+    font-size: 38px;
+    line-height: 40px;
+  }
 }
 </style>
 

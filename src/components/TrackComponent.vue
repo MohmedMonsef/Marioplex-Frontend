@@ -195,7 +195,7 @@ const toast = {
   },
 };
 export default {
-  data: function () {
+  data: function() {
     return {
       hover: false,
       show: false,
@@ -255,7 +255,7 @@ export default {
       window.Element.show = false;
       this.show = !x;
       if (!x) {
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           var div = document.getElementById("mydropdown");
           var left = event.screenX - 203 + "px";
           var top = event.screenY + 0 + "px";
@@ -275,7 +275,7 @@ export default {
     clicked() {
       this.isclicked = true;
     },
-    likecurrentsong: function () {
+    likecurrentsong: function() {
       if (!this.isLiked) {
         this.$store.dispatch("Mediaplayer/Like", this.song_id);
         toast.show("Added to your Liked Songs");
@@ -286,7 +286,7 @@ export default {
         this.isLiked = false;
       }
     },
-    playOnDblCLk: function () {
+    playOnDblCLk: function() {
       console.log("11");
       if (this.isCurrent) {
         if (this.playicon) {
@@ -308,19 +308,19 @@ export default {
     },
   },
   computed: {
-    isCurrentClass: function () {
+    isCurrentClass: function() {
       return {
         currently: this.isCurrent,
       };
     },
-    isCurrent: function () {
+    isCurrent: function() {
       return (
         this.song_id == this.Get_Currentsong.track._id &&
         this.albumId == this.Get_Currentsong.album._id &&
         this.playlistId == this.Get_Currentsong.playlistId
       );
     },
-    length: function () {
+    length: function() {
       var min = Math.floor((this.song_length % 3600) / 60);
       var sec = Math.floor(this.song_length % 60);
       if (sec < 10) sec = "0" + sec;
@@ -335,10 +335,10 @@ export default {
       showAdd: (state) => state.Playlist.showModalAdd,
     }),
   },
-  created: function () {
+  created: function() {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function () {
+  destroyed: function() {
     window.removeEventListener("click", this.hideshow);
   },
   components: {

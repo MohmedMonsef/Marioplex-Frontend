@@ -220,28 +220,28 @@ div {
   opacity: 1;
 }
 @media screen and (max-width: 700px) {
-.customButton {
-  height: 10%;
-  width: 43%;
-  border-radius: 500px;
-  font-size: 10px;
-}
-.cancel_button {
-  margin-left: 43%;
-}
-.buttonWrapper {
-  width: 50%;
-  height: 500px;
-  display: inline-block;
-  padding: 3% 5% 3% 5%;
-}
-.title {
-  font-size: 44px;
-  line-height: 50px;
-}
-.myrow {
-  top: 60%;
-}
+  .customButton {
+    height: 10%;
+    width: 43%;
+    border-radius: 500px;
+    font-size: 10px;
+  }
+  .cancel_button {
+    margin-left: 43%;
+  }
+  .buttonWrapper {
+    width: 50%;
+    height: 500px;
+    display: inline-block;
+    padding: 3% 5% 3% 5%;
+  }
+  .title {
+    font-size: 44px;
+    line-height: 50px;
+  }
+  .myrow {
+    top: 60%;
+  }
 }
 </style>
 <script>

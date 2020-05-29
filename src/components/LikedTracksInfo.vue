@@ -152,7 +152,7 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       play: false,
     };
@@ -191,7 +191,7 @@ export default {
      * changes image style on hover
      * @public This is a public method
      */
-    onhoverimage: function () {
+    onhoverimage: function() {
       var likedtracksimage = document.getElementById("likedtracks_image");
       likedtracksimage.style.opacity = "0.3";
       if (!this.play) {
@@ -207,7 +207,7 @@ export default {
      * returns style to normal(before hover)
      * @public This is a public method
      */
-    onleaveimage: function () {
+    onleaveimage: function() {
       var likedtracksimage = document.getElementById("likedtracks_image");
       likedtracksimage.style.opacity = "1";
 

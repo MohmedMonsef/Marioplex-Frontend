@@ -35,9 +35,9 @@
           </svg>
           {{ this.ArtistName }}
         </button>
-         <div class="dropdown-menu">
+        <div class="dropdown-menu">
           <a
-            class="dropdown-item" 
+            class="dropdown-item"
             target="_blank"
             testid="userprofilr link"
             id="account-link"
@@ -45,11 +45,11 @@
           >
             Rename
           </a>
-          <input v-if="showinput"
-           id="in_rename"
-            v-model="newname" 
-           
-            @keyup.enter="ChangeArtistName(),showinputfield()"
+          <input
+            v-if="showinput"
+            id="in_rename"
+            v-model="newname"
+            @keyup.enter="ChangeArtistName(), showinputfield()"
           />
         </div>
       </div>
@@ -65,7 +65,7 @@
   /* display: block; */
   display: block;
   justify-content: space-around;
-  z-index:50;
+  z-index: 50;
   .navbar-inner {
     padding: 0px 15px;
     display: flex;
@@ -109,49 +109,49 @@
     }
   }
   #drop_button {
-  border: none;
-  border-radius: 20px;
-  width: 120px;
-  height: 30px;
-  background-color: black;
-  margin-left: 70%;
-  margin-top: 15px;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
-  outline: none;
-  position: absolute;
-  padding-bottom: 5px;
-  padding-top: 2px;
-  position:absolute;
-  top:15%;
-}
-.dropdown-menu {
-  background: #313030;
-  margin-right: 35px;
-  margin-top: 7px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  position:absolute;
-  top:47%;
-  left:80%
-}
-.dropdown-item {
-  background: #313030;
-  color: rgb(165, 165, 165);
-  font-size: 14px;
-  cursor: pointer;
-}
-#in_rename {
-  position: fixed;
-  top: 5%;
-  left: 55%;
-  background-color: white;
-  color: black;
-  height: 30px;
-  z-index:50px;
-}
+    border: none;
+    border-radius: 20px;
+    width: 120px;
+    height: 30px;
+    background-color: black;
+    margin-left: 70%;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    outline: none;
+    position: absolute;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    position: absolute;
+    top: 15%;
+  }
+  .dropdown-menu {
+    background: #313030;
+    margin-right: 35px;
+    margin-top: 7px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    position: absolute;
+    top: 47%;
+    left: 80%;
+  }
+  .dropdown-item {
+    background: #313030;
+    color: rgb(165, 165, 165);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  #in_rename {
+    position: fixed;
+    top: 5%;
+    left: 55%;
+    background-color: white;
+    color: black;
+    height: 30px;
+    z-index: 50px;
+  }
 }
 </style>
 <script>
@@ -163,22 +163,22 @@
 import { mapGetters } from "vuex";
 export default {
   name: "ArtistHeader",
-  data:function(){ 
+  data: function() {
     return {
       posy: "",
       newname: "",
-    }
+    };
   },
   computed: {
     ...mapGetters({
-      showinput:"ArtistProperties/showinput",
-      ArtistName:"ArtistProperties/ArtistName"
+      showinput: "ArtistProperties/showinput",
+      ArtistName: "ArtistProperties/ArtistName",
       // renamepl:"creatplaylist/renamepl"
-    })
+    }),
   },
-  methods:{
-  showinputfield() {
-        this.$store.dispatch("ArtistProperties/showinputfield");
+  methods: {
+    showinputfield() {
+      this.$store.dispatch("ArtistProperties/showinputfield");
       //this.showinput = !this.showinput;
       this.$nextTick(function() {
         var i = document.getElementById("in_rename");
@@ -188,26 +188,25 @@ export default {
 
           // this.showinput = true;
         }
-       
       });
     },
     getpos() {
       this.posy = event.screenY - 110 + "px";
       console.log(" posy", this.posy);
     },
-    ChangeArtistName(){
+    ChangeArtistName() {
       let payload = {
         // Name: this.Name,
         // Genre: this.Genre,
-        name: this.newname
+        name: this.newname,
       };
-      console.log("in aEDIT BIO POPUP",payload.name)
+      console.log("in aEDIT BIO POPUP", payload.name);
       console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditName", payload);
-    }
+    },
   },
-  beforeCreate:function(){
-   this.$store.dispatch("ArtistProperties/Get_Artist_Name");
-  }
+  beforeCreate: function() {
+    this.$store.dispatch("ArtistProperties/Get_Artist_Name");
+  },
 };
 </script>

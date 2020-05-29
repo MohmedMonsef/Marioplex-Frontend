@@ -4,10 +4,8 @@
       <lib-artists
         v-for="artist in relatedartists"
         :key="artist.id"
-        :images="$url+
-          '/api/images/' +
-          artist.images[0]._id +
-          '?belongs_to=artist'
+        :images="
+          $url + '/api/images/' + artist.images[0]._id + '?belongs_to=artist'
         "
         :name="artist.Name"
         :artistId="artist._id"
@@ -34,7 +32,7 @@ export default {
       relatedartists: "ArtistPage/artist_relatedartists",
     }),
   },
-  created: function () {
+  created: function() {
     this.artistid = this.$route.params.artist_id;
     this.$store.dispatch(
       "ArtistPage/artist_relatedartists",

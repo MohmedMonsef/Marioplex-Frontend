@@ -6,10 +6,11 @@
         <show-popularplaylists
           v-for="POPplaylist in POPplaylists1.playlists"
           :key="POPplaylist.id"
-          :images="$url+
-            '/api/images/' +
-            POPplaylist.images[0]._id +
-            '?belongs_to=playlist'
+          :images="
+            $url +
+              '/api/images/' +
+              POPplaylist.images[0]._id +
+              '?belongs_to=playlist'
           "
           :name="POPplaylist.name"
           :Description="POPplaylist.Description"

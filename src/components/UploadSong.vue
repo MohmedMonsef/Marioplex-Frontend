@@ -127,7 +127,7 @@
 
           <h4>Available Market</h4>
           <input type="text" name="file" v-model="AvailableMarket" />
-            <h4>Genre</h4>
+          <h4>Genre</h4>
           <input type="text" name="file" v-model="Genre" />
           <button class="cancel_button" @click="changeModalStateUpload">
             cancle
@@ -314,11 +314,11 @@ export default {
       TrackNumber: "",
       selectedpreview: "",
       AvailableMarket: "",
-      Genre:"",
+      Genre: "",
       audio: {
         myduration: 0,
       },
-      myaudio:[],
+      myaudio: [],
     };
   },
   state: {
@@ -343,31 +343,27 @@ export default {
      */
     OnHeighFileSelected() {
       this.Heighselectedfile = event.target.files[0];
-       console.log(this.Heighelectedfile, "noriHigh");
+      console.log(this.Heighelectedfile, "noriHigh");
 
-//        window.URL = window.URL || window.webkitURL;
+      //        window.URL = window.URL || window.webkitURL;
 
-//        this.myaudio.push(this.Heighselectedfile);
-//         console.log("please tell me my audio ",this.myaudio)
-//        let audioo = document.createElement('audioo');
-//        audioo.preload = 'metadata';
-//        audioo.src = URL.createObjectURL(this.Heighselectedfile);;
-//        audioo.onloadedmetadata =()=>  {
-//        window.URL.revokeObjectURL(audioo.src);
-//        let duration = audioo.duration;
-//        this.myaudio[this.myaudio.length - 1].duration = duration;
-//        console.log("please tell me the duration ",duration)
-       
-//  }
+      //        this.myaudio.push(this.Heighselectedfile);
+      //         console.log("please tell me my audio ",this.myaudio)
+      //        let audioo = document.createElement('audioo');
+      //        audioo.preload = 'metadata';
+      //        audioo.src = URL.createObjectURL(this.Heighselectedfile);;
+      //        audioo.onloadedmetadata =()=>  {
+      //        window.URL.revokeObjectURL(audioo.src);
+      //        let duration = audioo.duration;
+      //        this.myaudio[this.myaudio.length - 1].duration = duration;
+      //        console.log("please tell me the duration ",duration)
 
-  
+      //  }
 
       // var myVideos = [];
 
-      
-
       // document.getElementById("fileUp").onchange = OnHeighFileSelected;
-/////////////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////////////
       // console.log(this.Heighselectedfile, "noriHeigh");
       // let reader = new FileReader();
       // reader.readAsDataURL(this.Heighselectedfile);
@@ -431,11 +427,11 @@ export default {
      * @public This is a public method
      */
     UploadTrack() {
-      let payload={
+      let payload = {
         Name: this.Name,
         TrackNumber: this.TrackNumber,
         AvailableMarket: this.AvailableMarket,
-        Genre:this.Genre,
+        Genre: this.Genre,
         highselectedfile: this.Highselectedfile,
         mediumselectedfile: this.Mediumselectedfile,
         lowselectedfile: this.Lowselectedfile,
@@ -443,7 +439,7 @@ export default {
         medium_enc_selectedfile: this.Medium_Encselectedfile,
         low_enc_selectedfile: this.Low_Encselectedfile,
         selectedpreview: this.selectedpreview,
-      }
+      };
       this.$store.dispatch("ArtistProperties/UploadTrack", payload);
     },
   },

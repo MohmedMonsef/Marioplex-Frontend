@@ -5,17 +5,20 @@
     </div>
     <div v-if="loading" class="notloading">
       <div class="row justify-content-center img-user m-0">
-        <img :src="$url+'/api/images/' + user.images[0]._id + '?belongs_to=user'" />
-        <h1 id ="userName">{{ user.displayName }}</h1>
+        <img
+          :src="$url + '/api/images/' + user.images[0]._id + '?belongs_to=user'"
+        />
+        <h1 id="userName">{{ user.displayName }}</h1>
       </div>
       <div class="row m-0">
         <div v-for="playlist in playlists" :key="playlist.id">
           <lib-playlists
             v-if="playlist.isPublic"
-            :images="$url+
-              '/api/images/' +
-              playlist.images[0]._id +
-              '?belongs_to=playlist'
+            :images="
+              $url +
+                '/api/images/' +
+                playlist.images[0]._id +
+                '?belongs_to=playlist'
             "
             :name="playlist.name"
             :ownerName="playlist.owner"
@@ -72,13 +75,13 @@ import { mapGetters } from "vuex";
  */
 export default {
   name: "albumview",
-  data: function () {
+  data: function() {
     return {
       userid: ""
     };
   },
   components: {
-    LibPlaylists,
+    LibPlaylists
   },
   computed: {
     ...mapGetters({
@@ -86,16 +89,16 @@ export default {
       user: "UserPage/user",
       playlists: "UserPage/playlists", // creat new object "playlists1" and map to it
       loading: "UserPage/loading"
-    }),
+    })
   },
   /**
    * Called at loading the page to display album tracks and send the id to get that specific album
    * @public This is a public method
    */
-  beforeCreate: function () {
+  beforeCreate: function() {
     this.userid = this.$route.params.user_id;
     this.$store.dispatch("UserPage/user_playlists", this.userid);
     this.$store.dispatch("UserPage/user_info", this.userid);
-  },
+  }
 };
 </script>

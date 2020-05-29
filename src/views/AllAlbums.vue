@@ -6,10 +6,8 @@
         <show-popularalbums
           v-for="POPalbum in POPalbums1.albums"
           :key="POPalbum.id"
-          :images="$url+
-            '/api/images/' +
-            POPalbum.images[0]._id +
-            '?belongs_to=album'
+          :images="
+            $url + '/api/images/' + POPalbum.images[0]._id + '?belongs_to=album'
           "
           :name="POPalbum.name"
           :artistname="POPalbum.artist.name"

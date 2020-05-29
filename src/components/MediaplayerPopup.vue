@@ -248,7 +248,7 @@ button:focus {
 import { mapGetters } from "vuex";
 export default {
   name: "mediaplayerpopup",
-  data: function () {
+  data: function() {
     return {
       // showModal: true
     };

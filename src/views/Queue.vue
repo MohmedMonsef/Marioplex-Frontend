@@ -22,7 +22,6 @@
         :isLiked="currentSong.isLiked"
         :albumId="currentSong.album._id"
         :artist_id="currentSong.album.artist._id"
-        
       />
 
       <h2 v-if="Queued.length" id="queued_header">
@@ -81,7 +80,6 @@
 #main_queue {
   max-width: 1955px;
   padding: 0px 32px;
-  overflow: auto;
   height: calc(100vh - 140px);
 }
 h1 {
@@ -118,15 +116,15 @@ export default {
     this.$store.dispatch("Queue/Queue");
   },
   components: {
-    SongComponent
+    SongComponent,
   },
   computed: {
     ...mapGetters({
       loading: "Queue/loading",
       currentSong: "Mediaplayer/Get_Currentsong",
       NextUp: "Queue/Get_Nextup",
-      Queued: "Queue/Get_Queued"
-    })
-  }
+      Queued: "Queue/Get_Queued",
+    }),
+  },
 };
 </script>

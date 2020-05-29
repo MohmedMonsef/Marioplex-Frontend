@@ -8,10 +8,11 @@
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
-              :image="$url+
-                '/api/images/' +
-                match_to.images[0]._id +
-                '?belongs_to=artist'
+              :image="
+                $url +
+                  '/api/images/' +
+                  match_to.images[0]._id +
+                  '?belongs_to=artist'
               "
               :name="match_to.name"
               :type="match_to.type"
@@ -22,10 +23,11 @@
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
-              :image="$url+
-                '/api/images/' +
-                match_to.images[0]._id +
-                '?belongs_to=album'
+              :image="
+                $url +
+                  '/api/images/' +
+                  match_to.images[0]._id +
+                  '?belongs_to=album'
               "
               :name="match_to.name"
               :artistId="match_to.artistId"
@@ -38,10 +40,11 @@
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
-              :images="$url+
-                '/api/images/' +
-                match_to.images[0]._id +
-                '?belongs_to=playlist'
+              :images="
+                $url +
+                  '/api/images/' +
+                  match_to.images[0]._id +
+                  '?belongs_to=playlist'
               "
               :name="match_to.name"
               :ownerName="match_to.ownerName"
@@ -55,10 +58,11 @@
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
-              :images="$url+
-                '/api/images/' +
-                match_to.images[0]._id +
-                '?belongs_to=track'
+              :images="
+                $url +
+                  '/api/images/' +
+                  match_to.images[0]._id +
+                  '?belongs_to=track'
               "
               :name="match_to.name"
               :type="match_to.type"
@@ -71,10 +75,11 @@
             <top
               v-for="match_to in match_top"
               :key="match_to.id"
-              :images="$url+
-                '/api/images/' +
-                match_to.images[0]._id +
-                '?belongs_to=user'
+              :images="
+                $url +
+                  '/api/images/' +
+                  match_to.images[0]._id +
+                  '?belongs_to=user'
               "
               :name="match_to.displayName"
               :type="match_to.type"
@@ -141,10 +146,11 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_artist in match_artists"
             :key="match_artist.id"
-            :images="$url+
-              '/api/images/' +
-              match_artist.images[0]._id +
-              '?belongs_to=artist'
+            :images="
+              $url +
+                '/api/images/' +
+                match_artist.images[0]._id +
+                '?belongs_to=artist'
             "
             :name="match_artist.name"
             :artistId="match_artist._id"
@@ -177,10 +183,11 @@
             class="col-lg-10% col-md-60% col-xs-6"
             v-for="match_album in match_albums"
             :key="match_album.id"
-            :images="$url+
-              '/api/images/' +
-              match_album.images[0]._id +
-              '?belongs_to=album'
+            :images="
+              $url +
+                '/api/images/' +
+                match_album.images[0]._id +
+                '?belongs_to=album'
             "
             :name="match_album.name"
             :albumId="match_album._id"
@@ -213,10 +220,11 @@
           <LibPlaylists
             v-for="match_playlist in match_playlists"
             :key="match_playlist.id"
-            :images="$url+
-              '/api/images/' +
-              match_playlist.images[0]._id +
-              '?belongs_to=playlist'
+            :images="
+              $url +
+                '/api/images/' +
+                match_playlist.images[0]._id +
+                '?belongs_to=playlist'
             "
             :name="match_playlist.name"
             :ownerName="match_playlist.ownerName"
@@ -358,9 +366,7 @@ export default {
       if (typeof imgSrc == "undefined") {
         return "https://dummyimage.com/250x400.jpg/dddddd/000000";
       } else
-        return (
-          this.$url+"/api/images/" + imgSrc._id + "?belongs_to=user"
-        );
+        return this.$url + "/api/images/" + imgSrc._id + "?belongs_to=user";
     },
   },
   //  mounted() {

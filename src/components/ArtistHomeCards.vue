@@ -113,20 +113,20 @@ import { mapGetters } from "vuex";
 export default {
   data: function() {
     return {
-      play: false
+      play: false,
     };
   },
   name: "Artisthomecards",
   props: {
     name: {
-      type: String
+      type: String,
     },
     albumId: {
-      type: String
+      type: String,
     },
     images: {
-      type: String
-    }
+      type: String,
+    },
   },
   methods: {
     //  iSplaying() {
@@ -167,8 +167,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      playicon: "Mediaplayer/playicon"
-    })
-  }
+      playicon: "Mediaplayer/playicon",
+    }),
+  },
 };
 </script>

@@ -1,10 +1,10 @@
 <template>
   <router-link
-   :to="{path:'/HomeWebPlayer/playlist/'+playlistId}"
-   tag="div"
-   class="row justify-content-center homecard px-0"
-   :style="{ backgroundImage: `url(${ getImg })`}"
-   >
+    :to="{ path: '/HomeWebPlayer/playlist/' + playlistId }"
+    tag="div"
+    class="row justify-content-center homecard px-0"
+    :style="{ backgroundImage: `url(${getImg})` }"
+  >
     <div class="layer px-0 m-0">
       <h2>{{ name }}</h2>
       <p>PLAY NOW</p>
@@ -86,27 +86,26 @@
 export default {
   data: function() {
     return {
-      hover: false
+      hover: false,
     };
   },
   props: {
     name: {
-      type: String
+      type: String,
     },
     images: {
-      type: String
+      type: String,
     },
     playlistId: {
-      type: String
-    }
+      type: String,
+    },
   },
   computed: {
-    getImg () {
-      let img = this.$url+"/api/images/" +
-        this.images +
-        "?belongs_to=playlist";
-      return  img;
-    }
+    getImg() {
+      let img =
+        this.$url + "/api/images/" + this.images + "?belongs_to=playlist";
+      return img;
+    },
   },
 };
 </script>

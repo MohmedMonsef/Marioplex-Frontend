@@ -10,11 +10,11 @@
           and i need to change <a> to router link -->
         <div class="song_info" v-if="user == 'success'">
           <router-link
-           id="song_name" 
-           testid="song_name"
-           :to="{path:'/HomeWebPlayer/album/'+Get_Currentsong.album._id}"
-           >
-            {{Get_Currentsong.track.name}}
+            id="song_name"
+            testid="song_name"
+            :to="{ path: '/HomeWebPlayer/album/' + Get_Currentsong.album._id }"
+          >
+            {{ Get_Currentsong.track.name }}
           </router-link>
           <!-- this div is for like songs and them to the library of the user -->
           <!-- donot forget that the second icon is still weird -->
@@ -49,9 +49,14 @@
           </div>
           <br />
           <router-link
-           id="artist_name"
-           testid="artist_name" 
-           :to="{path:'/HomeWebPlayer/ArtistProfile/'+Get_Currentsong.album.artist._id}">
+            id="artist_name"
+            testid="artist_name"
+            :to="{
+              path:
+                '/HomeWebPlayer/ArtistProfile/' +
+                Get_Currentsong.album.artist._id,
+            }"
+          >
             {{ Get_Currentsong.album.artist.name }}
           </router-link>
         </div>
@@ -482,7 +487,7 @@ import { default as song_functions } from "../javascript/mediaplayer_script.js";
      * @displayName Media Player
      */
 export default {
-  data: function () {
+  data: function() {
     return {
       isRepeat: 0, //0=>no repeat 1=>repeat the song 2=>repeat playlist,album
       isShuffle: false,
@@ -494,8 +499,8 @@ export default {
     };
   },
   mixins: [song_functions],
-  mounted: function () {
-    this.$nextTick(function () {
+  mounted: function() {
+    this.$nextTick(function() {
       window.setInterval(() => {
         this.moving_song_bar();
       }, 300);
@@ -509,7 +514,7 @@ export default {
       this.isShuffle = this.userinfo.player.is_shuffled;
     }, 1000);
   },
-  created: function () {
+  created: function() {
     window.addEventListener("mouseup", () => {
       this.stopDrag();
       this.volumestopDrag();
@@ -519,7 +524,7 @@ export default {
         this.volumeisDrag();
       });
   },
-  destroyed: function () {
+  destroyed: function() {
     window.addEventListener("mouseup", () => {
       this.stopDrag();
       this.volumestopDrag();
@@ -535,7 +540,7 @@ export default {
      * changed song bar style when it is playing
      * @public This is a public method
      */
-    moving_song_bar: function () {
+    moving_song_bar: function() {
       //console.log("x")
       this.$store.dispatch("Mediaplayer/advance_progress");
       if (!this.drag) {
@@ -553,7 +558,7 @@ export default {
      * changed song bar style while draging
      * @public This is a public method
      */
-    isDrag: function () {
+    isDrag: function() {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
         var l = bar.getBoundingClientRect().left;
@@ -572,7 +577,7 @@ export default {
      * signals that the user is dragging song bar
      * @public This is a public method
      */
-    startDrag: function () {
+    startDrag: function() {
       this.drag = true;
       console.log("in start drag", this.drag);
     },
@@ -580,7 +585,7 @@ export default {
      * sets song current time on stop dragging
      * @public This is a public method
      */
-    stopDrag: function () {
+    stopDrag: function() {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
         var l = bar.getBoundingClientRect().left;
@@ -596,7 +601,7 @@ export default {
      * signals that the user is dragging volume bar
      * @public This is a public method
      */
-    volumestartDrag: function () {
+    volumestartDrag: function() {
       this.volumedrag = true;
       console.log("in start volume drag", this.volumedrag);
     },
@@ -604,7 +609,7 @@ export default {
      * changed volume bar style while draging
      * @public This is a public method
      */
-    volumeisDrag: function () {
+    volumeisDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -623,7 +628,7 @@ export default {
      * sets currently playing track audio volume when we stop dragging it
      * @public This is a public method
      */
-    volumestopDrag: function () {
+    volumestopDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -650,7 +655,7 @@ export default {
      * changes currently playing track audio volume
      * @public This is a public method
      */
-    volume_song: function () {
+    volume_song: function() {
       var volumeSlider = document.getElementById("volumeprogressbar");
       var changevolumeicon = document.getElementById("soundicon");
       if (
@@ -675,7 +680,7 @@ export default {
      * Alters shuffle mode for list of tracks
      * @public This is a public method
      */
-    shuffle: function () {
+    shuffle: function() {
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
@@ -687,7 +692,7 @@ export default {
      * Alters Repeat mode for tracks
      * @public This is a public method
      */
-    repeat_song: function () {
+    repeat_song: function() {
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
@@ -697,7 +702,7 @@ export default {
     },
   },
   computed: {
-    changeTime: function () {
+    changeTime: function() {
       if (!isNaN(this.currentPos)) {
         var min = Math.floor((this.currentPos % 3600) / 60);
         var sec = Math.floor(this.currentPos % 60);
@@ -706,7 +711,7 @@ export default {
       }
       return "0:00";
     },
-    totalDuration: function () {
+    totalDuration: function() {
       if (!isNaN(this.duration)) {
         var min = Math.floor((this.duration % 3600) / 60);
         var sec = Math.floor(this.duration % 60);

@@ -124,7 +124,7 @@
 
 <style lang="scss" scoped>
 .song {
-  min-width: 300px;
+  min-width: 350px;
   height: 64px;
   margin: 0%;
   padding: 0%;
@@ -469,7 +469,7 @@ export default {
       return (
         this.song_id == this.Get_Currentsong.track._id &&
         (this.albumId == this.Get_Currentsong.album._id ||
-        this.playlistId == this.Get_Currentsong.playlistId)
+          this.playlistId == this.Get_Currentsong.playlistId)
       );
     },
     length: function() {

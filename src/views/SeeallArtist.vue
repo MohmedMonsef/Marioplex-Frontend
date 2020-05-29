@@ -7,10 +7,11 @@
           class="col-lg-10% col-md-60% col-xs-6"
           v-for="match_artist in match_artists"
           :key="match_artist.id"
-          :images="$url+
-            '/api/images/' +
-            match_artist.images[0]._id +
-            '?belongs_to=artist'
+          :images="
+            $url +
+              '/api/images/' +
+              match_artist.images[0]._id +
+              '?belongs_to=artist'
           "
           :name="match_artist.name"
           :artistId="match_artist._id"

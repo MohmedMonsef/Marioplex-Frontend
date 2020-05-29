@@ -171,17 +171,17 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  }
+  },
 };
 export default {
   data: function() {
     return {
       play: false,
-      imgId: ""
+      imgId: "",
     };
   },
   components: {
-    artistnavbar
+    artistnavbar,
   },
   mixins: [song_functions],
   name: "artist_coverimage",
@@ -210,24 +210,25 @@ export default {
     getImg() {
       var coverImg = document.getElementById("image");
       coverImg.style.backgroundImage =
-       "url("+ this.$url+"/api/images/" +
+        "url(" +
+        this.$url +
+        "/api/images/" +
         this.imgId +
         "?belongs_to=artist)";
-    }
+    },
   },
   computed: {
     ...mapGetters({
       playicon: "Mediaplayer/playicon",
       artist_name: "ArtistPage/artist_name",
       album_image: "ArtistPage/artistcover_image",
-      followed: "ArtistPage/followartist"
-    })
+      followed: "ArtistPage/followartist",
+    }),
   },
   mounted() {
     setTimeout(() => {
-      (this.imgId = this.album_image._id),
-      this.getImg();
+      (this.imgId = this.album_image._id), this.getImg();
     }, 2000);
-  }
+  },
 };
 </script>

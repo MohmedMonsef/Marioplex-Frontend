@@ -209,7 +209,7 @@ button:focus {
 import { mapGetters } from "vuex";
 export default {
   name: "playlistpopup",
-  data: function () {
+  data: function() {
     return {
       // showModal: true
     };

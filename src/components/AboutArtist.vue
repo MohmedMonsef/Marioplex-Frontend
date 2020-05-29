@@ -32,12 +32,12 @@ import ArtistChart from "@/components/ArtistChart.vue";
 export default {
   name: "aboutartist",
   components: {
-    ArtistChart
+    ArtistChart,
   },
   computed: {
     ...mapGetters({
-      about: "ArtistPage/artist_bio"
-    })
-  }
+      about: "ArtistPage/artist_bio",
+    }),
+  },
 };
 </script>
