@@ -2,8 +2,8 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import Login from "../../src/views/Login";
-import LogoHeader from "@/components/logo-header.vue";
-import Divider from "@/components/divider.vue";
+import LogoHeader from "@/components/LogoHeader.vue";
+import Divider from "@/components/Divider.vue";
 
 describe("Login", () => {
   let wrapper;
@@ -14,7 +14,7 @@ describe("Login", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "",
@@ -28,8 +28,7 @@ describe("Login", () => {
           },
           actions: {
             facebook_signUp: jest.fn(),
-            login: jest.fn(),
-            get_user: jest.fn(),
+            login: jest.fn()
           },
         },
       },
@@ -45,10 +44,6 @@ describe("Login", () => {
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("input email", () => {
     let email = wrapper.find("#email");
@@ -66,29 +61,30 @@ describe("Login", () => {
     const login_btn = wrapper.find("#login-btn");
     login_btn.trigger("click");
     await wrapper.vm.$nextTick();
+    wrapper.vm.cannotSubmit();
     expect(wrapper.find("#req_email").exists()).toBe(true);
     expect(wrapper.find("#req_password").exists()).toBe(true);
-    const cannotSubmit = jest.fn();
-    wrapper.setMethods({
-      cannotSubmit: cannotSubmit,
-    });
+   
   });
   it("facebook login", () => {
-    const facebook = wrapper.find("#facebook-btn");
-    facebook.trigger("click");
-    const facebook_login = jest.fn();
-    wrapper.setMethods({
-      facebook_login: facebook_login,
-    });
-    expect("facebook_login").toHaveBeenCalled;
+    wrapper.vm.facebook_login();
+    expect("facebook_signUp").toHaveBeenCalled;
   });
   it("login", () => {
+    wrapper.vm.login();
+    expect("login").toHaveBeenCalled;
+  });
+  it("renders time out function", () => {
+    let email = wrapper.find("#email");
+    email.element.value = "mm@gmail.com";
+    email.trigger("input");
+   
+    let password = wrapper.find("#password");
+    password.element.value = "1010";
+    password.trigger("input");
+
     const login_btn = wrapper.find("#login-btn");
     login_btn.trigger("click");
-    const login = jest.fn();
-    wrapper.setMethods({
-      login: login,
-    });
-    expect("login").toHaveBeenCalled;
+    wrapper.vm.login();
   });
 });

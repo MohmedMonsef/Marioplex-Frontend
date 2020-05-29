@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import libraryPlaylists from "../../src/views/library-playlists";
+import libraryPlaylists from "../../src/views/LibraryPlaylists";
 
 describe("libraryPlaylists", () => {
   let wrapper;
@@ -12,7 +12,7 @@ describe("libraryPlaylists", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             playlists: [],
@@ -26,7 +26,7 @@ describe("libraryPlaylists", () => {
             showplaylists: jest.fn(),
           },
         },
-        userlibrary: {
+        UserLibrary: {
           namespaced: true,
           state: {
             songs: [],
@@ -47,10 +47,6 @@ describe("libraryPlaylists", () => {
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("Default screen Rendering", async () => {
     let defaultscreen = wrapper.find("#defaultscreen");

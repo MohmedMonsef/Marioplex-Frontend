@@ -14,6 +14,7 @@ import LikedTracks from "../modules/LikedTracks";
 import ArtistPage from "../modules/ArtistPage";
 import UserPage from "../modules/UserPage";
 import CheckUserPopup from "../modules/CheckUserPopup";
+import Notifications from "../modules/Notifications";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -31,6 +32,7 @@ export default new Vuex.Store({
     ArtistProperties,
     ArtistPage,
     UserPage,
-    CheckUserPopup
+    CheckUserPopup,
+    Notifications
   },
 });

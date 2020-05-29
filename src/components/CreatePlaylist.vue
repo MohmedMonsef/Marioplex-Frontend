@@ -351,16 +351,7 @@ export default {
         };
       }
       this.$store.dispatch("Playlist/CreatePlaylist", payload);
-      // Addtrack();
     }
-    // DeletePlaylist(id) {
-    //   console.log(id);
-
-    //   this.$store.dispatch("creatplaylist/DeletePlaylist", id);
-    //   console.log("removed");
-    // }
   }
-
-  // When the user clicks on <div>, open the popup
 };
 </script>

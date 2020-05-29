@@ -3,17 +3,17 @@
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <div v-if="playlist_load" class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-        <playlist v-if="this.playlist_length == 0" />
-        <playlistinfo v-else />
+    <div v-if="playlist_load">
+      <div>
+        <playlist class="image left" v-if="this.playlist_length == 0" />
+        <playlistinfo class="left" v-else />
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+      <div class="right">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
-        <emptytracks v-if="this.playlist_length == 0" />
+        <emptytracks class="right noinfo" v-if="this.playlist_length == 0" />
         <draggable
           ghost-class="ghost"
-          class="reordertracks"
+          class="reordertracks right"
           @end="ReorderTracks"
           v-else
         >
@@ -45,10 +45,7 @@
 </template>
 
 <style lang="scss" scoped>
-// .playlist {
-//   // min-width: 768px;
-//   // min-height: 900px;
-// }
+@import "../css/global.css";
 .loading {
   display: flex;
   justify-content: center;
@@ -58,25 +55,47 @@
     color: white;
   }
 }
-.row {
-  margin: 25px;
-  margin-top: 0;
-  display: flex;
-}
 .sortable-drag {
   opacity: 0;
 }
 .ghost {
   border-bottom: 1px solid #1ed760;
 }
-// @media screen and (max-width: 1196px) {
-//  .row{
-// flex-direction: column;
-//  }
-// .col{
-//   flex: 50%;
-// }
-// }
+.left {
+  display: inline;
+  position: absolute;
+  width: 40%;
+  left: 0;
+}
+
+.right {
+  display: inline;
+  position: absolute;
+  width: 75%;
+  right: 10px;
+}
+@media screen and (max-width: 1000px) {
+  .left {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+
+  .right {
+    display: block;
+    width: 100%;
+    position: relative;
+    right: 0;
+  }
+  .image {
+    display: none;
+  }
+  .noinfo {
+    display: inline;
+    position: absolute;
+    width: 100%;
+  }
+}
 </style>
 
 <script>
@@ -106,7 +125,7 @@ export default {
       show: false,
       oldIndex: "",
       newIndex: "",
-      playlist_id: ""
+      playlist_id: "",
     };
   },
   components: {
@@ -114,7 +133,7 @@ export default {
     draggable,
     playlist,
     emptytracks,
-    playlistinfo
+    playlistinfo,
     // playlistpopup
   },
   methods: {
@@ -131,50 +150,47 @@ export default {
      * @param {String} playlist_id playlist id
      */
     ReorderTracks(event) {
-      // console.log("inplaylist_view",event)
       let playlist_Id = this.$route.params.playlist_id;
       this.playlist_id = playlist_Id;
-      this.oldIndex = event.oldIndex;
-      this.newIndex = event.newIndex;
+      this.oldIndex = event.oldIndex + 1;
+      this.newIndex = event.newIndex + 1;
       let payload = {
-        start: this.oldIndex,
-        before: this.newIndex,
-        playlist_id: this.playlist_id
+        range_start: this.oldIndex,
+        insert_before: this.newIndex,
+        playlist_id: this.playlist_id,
       };
-      console.log("in playlist_view ", this.playlist_id);
       this.$store.dispatch("Playlist/ReorderTracks", payload);
-    }
+    },
   },
   computed: {
     ...mapState({
-      showpopup: state => state.playlistpopup.showModal
+      showpopup: (state) => state.playlistpopup.showModal,
     }),
     ...mapGetters({
       playlist_tracks: "Playlist/playlist_tracks",
       playlist_length: "Playlist/playlist_length",
       playlist_load: "Playlist/playlist_loaded",
       playlist_image: "Playlist/playlist_image",
-    })
+    }),
   },
   created: function() {
     this.$store.dispatch(
       "Playlist/playlist_tracks",
       this.$route.params.playlist_id
-    ),
-      console.log("Playlist_id", this.$route.params.playlist_id);
-    console.log("nihal here is the length", this.playlist_length);
+    );
     var img = new Image();
     img.setAttribute("crossOrigin", "");
-    img.src =this.$url+"/api/images/" + this.playlist_image +"?belongs_to=playlist";
+    img.src =
+      this.$url + "/api/images/" + this.playlist_image + "?belongs_to=playlist";
     img.addEventListener("load", () => {
       const colorThief = new ColorThief();
       var c = colorThief.getColor(img);
-      console.log("the theif color", c);
       var element = document.querySelector(".playlist");
-      element.style.background ="linear-gradient(-180deg," + "rgb" + "(" + c + ")," + "#161516" + " )";
+      element.style.background =
+        "linear-gradient(-180deg," + "rgb" + "(" + c + ")," + "#161516" + " )";
       element.style.backgroundSize = " 600% 600% 300% 300% ";
-      element.style.height = '200px';
+      element.style.height = "200px";
     });
-  }
+  },
 };
 </script>

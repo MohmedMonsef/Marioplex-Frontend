@@ -11,7 +11,7 @@ describe("ClaimArtist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             showModal: true,
@@ -25,8 +25,7 @@ describe("ClaimArtist", () => {
             toggleModal: jest.fn(),
           },
         },
-
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "",

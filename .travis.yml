@@ -13,10 +13,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: MarioPlexFront
-  env: Marioplexfronthehe-env
+  app: LaMarioPlexFront
+  env: Lamarioplexfront-env
   bucket_name: elasticbeanstalk-us-east-1-658647886370
-  bucket_path: MarioPlexFront
+  bucket_path: LaMarioPlexFront
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY

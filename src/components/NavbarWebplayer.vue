@@ -1,5 +1,14 @@
 <template>
-  <div class="home-navbar" id="navBar">
+  <div
+    class="home-navbar"
+    :class="[
+      {
+        notScrolled: scrolling == 0,
+        scrolled: scrolling > 0,
+      },
+    ]"
+    id="navBar"
+  >
     <button class="prev" @click="goprev()">
       <i class="fa fa-angle-left"></i>
     </button>
@@ -91,11 +100,14 @@
           </router-link>
         </div>
       </div>
-      <a href="/Premium" target="_blank" v-if="!inlibrary && !insearch">
-        <button class="upgrade_button" testid="upgrade_button">
-          UPGRADE
-        </button>
-      </a>
+      <router-link
+        to="/Premium"
+        class="upgrade_button"
+        v-if="!inlibrary && !insearch"
+        tag="button"
+      >
+        UPGRADE
+      </router-link>
     </div>
     <div class="logout" v-if="isLoggedIn == '' || isLoggedIn == 'error'">
       <router-link to="/Login">
@@ -112,7 +124,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .home-navbar ul a {
   font-size: 18px;
   color: white;
@@ -131,10 +143,9 @@
   position: fixed;
   width: 100%;
   height: 60px;
-  /* background-color: #161516; */
   top: 0%;
   z-index: 0;
-  /* background:transparent; */
+   transition: background-color 0.2s linear;
 }
 .divOnFocus {
   width: 100px;
@@ -290,6 +301,14 @@ i {
 i:hover {
   color: rgb(202, 202, 202);
 }
+.notScrolled{
+  background-color:transparent;
+  transition: background-color 0.2s linear;
+}
+.scrolled{
+  background-color:black;
+  transition: background-color 0.2s linear;
+}
 </style>
 
 <script>
@@ -299,10 +318,11 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       inlibrary: false,
       insearch: false,
+      scrollPosition: null,
     };
   },
   name: "NavbarWebplayer",
@@ -310,6 +330,7 @@ export default {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
       Username: "Authorization/Username",
+      scrolling:"UserLibrary/scrolling"
     }),
   },
   methods: {
@@ -324,7 +345,7 @@ export default {
      * Go to previous router page
      * @public This is a public method
      */
-    goprev: function () {
+    goprev: function() {
       if (this.$router.currentRoute.path !== "/HomeWebPlayer/search") {
         this.$store.dispatch("Search/showresult", "h");
       }
@@ -334,23 +355,12 @@ export default {
      * Go to next router page
      * @public This is a public method
      */
-    gonext: function () {
+    gonext: function() {
       this.$router.go(1);
     },
-    handleScroll() {
-      console.log("transparent dai");
-      var n = document.getElementById("navBar");
-      if (window.scrollY > 20) {
-        n.style.background = "#161516";
-      } else {
-        n.style.background = "transparent";
-      }
-    },
-    /**
-     * Update navbar component based on current router
-     * @public This is a public method
-     */
-    check() {
+  },
+  watch: {
+    $route: function() {
       if (
         this.$router.currentRoute.path ==
           "/HomeWebPlayer/library/library-playlists" ||
@@ -369,17 +379,6 @@ export default {
         this.insearch = false;
       }
     },
-  },
-  created() {
-    // this.handleScroll();
-  },
-  destroyed() {
-    window.removeEventListener("click", this.check);
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-  mounted() {
-    window.addEventListener("click", this.check);
-    window.addEventListener("scroll", this.handleScroll);
-  },
+  }
 };
 </script>

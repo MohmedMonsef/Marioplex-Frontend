@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import ShowPopularartists from "@/components/ShowPopularartists.vue";
+import ShowPopularartists from "@/components/ShowPopularArtists.vue";
 describe("ShowPopularartists.vue", () => {
   const localVue = createLocalVue();
   localVue.use(VueRouter);
@@ -18,8 +18,5 @@ describe("ShowPopularartists.vue", () => {
     const wrapper = shallowMount(ShowPopularartists, { localVue });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(ShowPopularartists, { localVue });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
+
 });

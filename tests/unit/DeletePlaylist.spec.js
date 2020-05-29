@@ -10,7 +10,7 @@ describe("DeletePlaylist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             showModalDelete: true,
@@ -80,10 +80,6 @@ describe("DeletePlaylist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
   it("it deletes a playlist", () => {
     const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     const changeModalStateDelete = jest.fn();
@@ -101,7 +97,7 @@ describe("DeletePlaylist", () => {
     const btn = wrapper.find(".delete_button");
     btn.trigger("click");
     expect(store.dispatch).toHaveBeenCalledWith(
-      "creatplaylist/DeletePlaylist",
+      "Playlist/DeletePlaylist",
       0
     );
   });
@@ -111,18 +107,7 @@ describe("DeletePlaylist", () => {
     const btn = wrapper.find(".delete_button");
     btn.trigger("click");
     expect(store.dispatch).toHaveBeenCalledWith(
-      "creatplaylist/toggleModalDelete"
+      "Playlist/toggleModalDelete"
     );
   });
-  // it("commits a mutation when a button is clicked",  () => {
-  //   const wrapper = mount(DeletePlaylist, {
-  //     store, localVue
-  //   })
-
-  //   wrapper.find(".cancel_button").trigger("click")
-  //   expect(store.mutations).toHaveBeenCalledWith(
-  //     "toggleModalDelete",
-  //     0
-  //   )
-  // });
 });

@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import LibAlbums from "@/components/lib-albums.vue";
+import LibAlbums from "@/components/LibAlbums.vue";
 describe("LibAlbums.vue", () => {
   const localVue = createLocalVue();
   localVue.use(VueRouter);
@@ -20,9 +20,5 @@ describe("LibAlbums.vue", () => {
   it("renders", () => {
     const wrapper = shallowMount(LibAlbums, { localVue });
     expect(wrapper.exists()).toBe(true);
-  });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(LibAlbums, { localVue });
-    expect(wrapper.isVueInstance()).toBe(true);
   });
 });

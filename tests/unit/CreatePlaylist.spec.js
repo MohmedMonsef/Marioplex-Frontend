@@ -13,7 +13,7 @@ describe("CreatePlaylist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             showModal: true,
@@ -43,7 +43,7 @@ describe("CreatePlaylist", () => {
             CreatePlaylist: jest.fn(),
           },
         },
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             User: {
@@ -111,10 +111,6 @@ describe("CreatePlaylist", () => {
   it("renders", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     expect(wrapper.exists()).toBe(true);
-  });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("has a cancel button", () => {
     const wrapper = shallowMount(CreatePlaylist, { localVue, store });

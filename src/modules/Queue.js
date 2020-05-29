@@ -38,7 +38,6 @@ export default {
         .get("/api/me/queue")
         .then((response) => {
           const queue = response.data;
-          console.log("My queue in action", queue);
           commit("set_nextup", queue);
           commit("set_queued", queue);
           if (state.loading == 0) {
@@ -71,9 +70,9 @@ export default {
     },
     async CreateQueue({ commit }, info) {
       commit("demo");
-      var firstTime=true;
+      var firstTime=1;
       if (info == "") {
-        firstTime=false;
+        firstTime=2;
         var albumId;
         await axios
         .get("/api/browse/new-releases")
@@ -112,6 +111,7 @@ export default {
           .then(() => {
             store.dispatch("Mediaplayer/get_currentsong",firstTime);
             store.dispatch("Mediaplayer/playsong_state", info);
+            
           })
           .catch((error) => {
             console.log(error);
@@ -127,7 +127,9 @@ export default {
               info.is_playlist
           )
           .then(() => {
+          
             store.dispatch("Mediaplayer/get_currentsong",firstTime);
+            if(firstTime !=2)
             store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch((error) => {

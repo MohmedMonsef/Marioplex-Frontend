@@ -10,7 +10,7 @@ describe("NavbarWebplayer.vue", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "success",
@@ -160,12 +160,5 @@ describe("NavbarWebplayer.vue", () => {
       store,
     });
     expect(wrapper.exists()).toBe(true);
-  });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(NavbarWebplayer, {
-      localVue,
-      store,
-    });
-    expect(wrapper.isVueInstance()).toBe(true);
   });
 });

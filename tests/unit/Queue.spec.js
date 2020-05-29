@@ -73,7 +73,7 @@ describe("Queue", () => {
             Queue: jest.fn(),
           },
         },
-        mediaplayer: {
+        Mediaplayer: {
           namespaced: true,
           state: {
             currentsong: {
@@ -131,10 +131,6 @@ describe("Queue", () => {
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("Headers Rendering", () => {
     let main_header = wrapper.find("#main_header");

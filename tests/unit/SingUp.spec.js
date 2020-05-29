@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import SignUp from "../../src/views/SignUp";
 
 describe("SignUp", () => {
+
   let wrapper;
   let store;
   const localVue = createLocalVue();
@@ -12,7 +13,7 @@ describe("SignUp", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "",
@@ -36,10 +37,6 @@ describe("SignUp", () => {
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("input email", async () => {
     let email = wrapper.find("#email");
@@ -97,12 +94,12 @@ describe("SignUp", () => {
   });
   it("input country", async () => {
     let country = wrapper.find(".country_select");
-    country.element.value = "Egypt";
+    country.element.value = "eg";
     country.selected = true;
     country.trigger("change");
-    expect(wrapper.vm.country).toBe("Egypt");
+    expect(wrapper.vm.country).toBe("eg");
 
-    country.element.value = "Choose a country";
+    country.element.value = "0";
     country.selected = true;
     country.trigger("change");
     //invalid input
@@ -168,19 +165,51 @@ describe("SignUp", () => {
   it("facebook login", () => {
     const facebook = wrapper.find("#facebook-btn");
     facebook.trigger("click");
-    const facebook_login = jest.fn();
-    wrapper.setMethods({
-      facebook_login: facebook_login,
-    });
-    expect("facebook_login").toHaveBeenCalled;
+    expect("facebook_signUp").toHaveBeenCalled;
   });
-  it("login", () => {
+  it("signup", () => {
+    let confirm_email = wrapper.find("#confirm_email");
+    confirm_email.element.value = "mm@gmail.com";
+    confirm_email.trigger("input");
+
+    let email = wrapper.find("#email");
+    email.element.value = "mm@gmail.com";
+    email.trigger("input");
+
+    let password = wrapper.find("#password");
+    password.element.value = "10100000";
+    password.trigger("input");
+
+    let username = wrapper.find("#username");
+    username.element.value = "menna";
+    username.trigger("input");
+
+    let day = wrapper.find("#day");
+    day.element.value = "1";
+    day.trigger("input");
+
+    let month = wrapper.find("#month");
+    month.element.value = "1";
+    month.trigger("input");
+
+    let year = wrapper.find("#year");
+    year.element.value = "1999";
+    year.trigger("input");
+
+    let country = wrapper.find(".country_select");
+    country.element.value = "eg";
+    country.selected = true;
+    country.trigger("change");
+
+    let fgender = wrapper.find("#female_gender");
+    fgender.selected = true;
+    fgender.trigger("change");
+
     const signup_btn = wrapper.find("#signup-btn");
     signup_btn.trigger("click");
-    const signUp = jest.fn();
-    wrapper.setMethods({
-      signUp: signUp,
-    });
+    jest.useFakeTimers();
+    jest.runAllTimers(); 
     expect("signUp").toHaveBeenCalled;
+    expect(wrapper.exists()).toBe(true);
   });
 });

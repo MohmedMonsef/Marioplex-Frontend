@@ -2,7 +2,7 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 
-import searchcomponent from "../../src/components/searchcomponent";
+import searchcomponent from "../../src/components/SearchComponent";
 
 describe("searchcomponent", () => {
   let Wrapper;
@@ -52,11 +52,6 @@ describe("searchcomponent", () => {
   it("renders", () => {
     expect(Wrapper.exists()).toBe(true);
   });
-
-  it("renders a vue instance", () => {
-    expect(Wrapper.isVueInstance()).toBe(true);
-  });
-
   it("the search icon apear", () => {
     expect(Wrapper.find(".search_contaner").html()).toContain(
       '<i class="fa fa-search hover"></i>'

@@ -491,9 +491,6 @@ export default {
       if (isNaN(res)) {
         this.CreditNumber = this.CreditNumber.substr(0, len - 1);
       }
-      // else if (len != 0 && len % 4 == 0) {
-      //   this.formatCard();
-      // }
     },
     SecurityCode: function() {
       if (isNaN(this.SecurityCode)) {

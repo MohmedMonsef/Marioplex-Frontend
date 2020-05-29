@@ -8,7 +8,8 @@ export default {
     user_songs: [],
     loadingalbums: 0,
     loadingartists: 0,
-    sideMenu:false
+    sideMenu:false,
+    scrolling:0
   },
   mutations: {
     setUserAlbums(state, albums) {
@@ -91,6 +92,9 @@ export default {
     sideMenu({ state },value) {
        state.sideMenu = value;
     },
+    scrolling({state},value){
+      state.scrolling =value;
+    }
   },
   getters: {
     albums: (state) => state.user_albums,
@@ -98,6 +102,7 @@ export default {
     songs: (state) => state.user_songs,
     loadingalbums: (state) => state.loadingalbums,
     loadingartists: (state) => state.loadingartists,
-    sideMenu:(state)=>state.sideMenu
+    sideMenu:(state)=>state.sideMenu,
+    scrolling: state => state.scrolling
   },
 };

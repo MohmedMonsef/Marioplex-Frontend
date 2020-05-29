@@ -162,10 +162,9 @@ export default {
         this.isSubmitted = false;
       } else {
         this.isNormal = false;
-        (this.isSubmitted = true), (this.isError = false);
-        this.$store
-          .dispatch("Authorization/reset", { email: this.email })
-          .catch((err) => console.log(err));
+        this.isSubmitted = true;
+        this.isError = false;
+        this.$store.dispatch("Authorization/reset", { email: this.email })
       }
     },
   },

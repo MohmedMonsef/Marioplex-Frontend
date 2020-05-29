@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import LibPlaylistsDefault from "@/components/lib-playlists-default.vue";
+import LibPlaylistsDefault from "@/components/LibPlaylistsDefault.vue";
 import Vuex from "vuex";
 describe("LibPlaylistsDefault.vue", () => {
   const localVue = createLocalVue();
@@ -10,7 +10,7 @@ describe("LibPlaylistsDefault.vue", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           actions: {
             toggleModal: jest.fn(),
@@ -38,14 +38,10 @@ describe("LibPlaylistsDefault.vue", () => {
       store,
     });
     wrapper.find(".create_button").trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith("creatplaylist/toggleModal");
+    expect(store.dispatch).toHaveBeenCalledWith("Playlist/toggleModal");
   });
   it("renders", () => {
     const wrapper = shallowMount(LibPlaylistsDefault, { localVue });
     expect(wrapper.exists()).toBe(true);
-  });
-  it("renders a vue instance", () => {
-    const wrapper = shallowMount(LibPlaylistsDefault, { localVue });
-    expect(wrapper.isVueInstance()).toBe(true);
   });
 });

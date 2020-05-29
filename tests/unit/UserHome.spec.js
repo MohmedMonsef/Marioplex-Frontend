@@ -41,7 +41,7 @@ describe("UserHome", () => {
             showPopularNewreleases: jest.fn(),
           },
         },
-        creatplaylist: {
+        Playlist: {
           namespaced: true,
           state: {
             playlists: [],
@@ -55,7 +55,7 @@ describe("UserHome", () => {
             showplaylists: jest.fn(),
           },
         },
-        authorization: {
+        Authorization: {
           namespaced: true,
           state: {
             status: "success",
@@ -73,10 +73,6 @@ describe("UserHome", () => {
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it("renders a vue instance", () => {
-    expect(wrapper.isVueInstance()).toBe(true);
   });
   it("popular playlists Rendering", async () => {
     let has_popular_playlists = wrapper.find(".has_popular_playlists");
