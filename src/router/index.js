@@ -284,16 +284,6 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-    children:[
-      {
-        path: "reset_password",
-        name: "ResetPassword",
-        component: ResetPassword,
-        props: (route) => ({
-          token: route.query.token,
-        }),
-      }
-    ],
     meta: { 
       isLogged:true
     }
@@ -340,6 +330,14 @@ const routes = [
     component: ThanksForConfirmation,
     props: (route) => ({
       id: route.query.id,
+    }),
+  },
+  {
+    path: "/reset_password",
+    name: "ResetPassword",
+    component: ResetPassword,
+    props: (route) => ({
+      token: route.query.token,
     }),
   }
 
