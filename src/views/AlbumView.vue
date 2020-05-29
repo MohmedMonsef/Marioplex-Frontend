@@ -4,12 +4,12 @@
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="album_load">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-        <albuminfo testid="albuminformation" />
+    <div>
+      <div>
+        <albuminfo class="left" testid="albuminformation" />
       </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+      <div class="right">
+      <div class="right">
         <song-component
           testid="songcomponent"
           v-for="(p, i) in album_tracks"
@@ -28,6 +28,7 @@
           :artist_id="artist_id"
         />
       </div>
+      </div>
     </div>
   </div>
   </div>
@@ -43,14 +44,37 @@
     color: white;
   }
 }
-// .album {
-//   // min-width: 768px;
-//   min-height: 900px;
-// }
 .row {
   margin: 25px;
   margin-top: 0;
   display: flex;
+}
+.left {
+   display: inline;
+   position: absolute;
+   width: 40%;
+   left: 0;
+}
+
+.right {
+   display:inline;
+   position: absolute;
+   width: 75%;
+   right: 10px;
+}
+@media screen and (max-width: 1000px) {
+.left {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.right {
+   display: block;
+   width: 100%;
+   position: relative;
+   right: 0;
+}
 }
 </style>
 

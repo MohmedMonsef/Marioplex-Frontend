@@ -12,7 +12,6 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-    console.log("message", message);
   },
 };
 
@@ -84,7 +83,6 @@ export default {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
         this.song_state = false;
-        console.log("pause song");
         this.$store.dispatch("Mediaplayer/pausesong_state");
       }
     },

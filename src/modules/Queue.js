@@ -38,7 +38,6 @@ export default {
         .get("/api/me/queue")
         .then((response) => {
           const queue = response.data;
-          console.log("My queue in action", queue);
           commit("set_nextup", queue);
           commit("set_queued", queue);
           if (state.loading == 0) {

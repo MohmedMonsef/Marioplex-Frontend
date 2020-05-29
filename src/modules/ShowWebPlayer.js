@@ -8,49 +8,48 @@ export default {
     popular_albums: [],
     popular_newreleases: [],
     recently_played: [],
-    homePlaylists:[]
+    homePlaylists: [],
   },
   mutations: {
     setPopularPlaylists(state, POPplaylists) {
-      (POPplaylists.playlists).forEach(playlist => {
-        if(playlist.images.length == 0)
-        playlist.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      POPplaylists.playlists.forEach((playlist) => {
+        if (playlist.images.length == 0)
+          playlist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.popular_playlists = POPplaylists;
     },
     setPopularArtists(state, POPartists) {
-      (POPartists.artists).forEach(artist => {
-        if(artist.images.length == 0)
-        artist.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      POPartists.artists.forEach((artist) => {
+        if (artist.images.length == 0)
+          artist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.popular_artists = POPartists;
     },
     setPopularAlbums(state, POPalbums) {
-      (POPalbums.albums).forEach(album => {
-        if(album.images.length == 0)
-        album.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      POPalbums.albums.forEach((album) => {
+        if (album.images.length == 0)
+          album.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.popular_albums = POPalbums;
     },
     setPopularNewreleases(state, POPnewreleases) {
-     
-      (POPnewreleases.albums).forEach(album => {
-        if(album.images.length == 0)
-        album.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      POPnewreleases.albums.forEach((album) => {
+        if (album.images.length == 0)
+          album.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.popular_newreleases = POPnewreleases;
     },
     setRecentlyPlayed(state, recently_played) {
-      recently_played.forEach(playlist => {
-          if(playlist.images.length == 0)
-          playlist.images.push({_id:"5eb52f1863eea332d416b9fa"});
-        });
+      recently_played.forEach((playlist) => {
+        if (playlist.images.length == 0)
+          playlist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
+      });
       state.recently_played = recently_played;
     },
   },
   actions: {
     async showPopularPlaylists({ commit }) {
-     await axios
+      await axios
         .get("/api/browse/popular-playlists")
         .then((response) => {
           let POPplaylists = response.data;
@@ -94,8 +93,7 @@ export default {
         });
     },
     async RecenlyPlayed({ commit }) {
-      await 
-      axios
+      await axios
         .get("api/me/player/recently-played")
         .then((response) => {
           let recently_played = response.data;
@@ -105,17 +103,16 @@ export default {
           console.log(error);
         });
     },
-    async homePlaylists({state,dispatch}){
-     await dispatch("RecenlyPlayed");
-     await dispatch("showPopularPlaylists");
-     state.homePlaylists=state.recently_played;
-      var i =0
-        while(state.homePlaylists.length < 6){
-          console.log(state.popular_playlists.playlists[i])
-          state.homePlaylists.push(state.popular_playlists.playlists[i]);
-          i++;
-        }
-    }
+    async homePlaylists({ state, dispatch }) {
+      await dispatch("RecenlyPlayed");
+      await dispatch("showPopularPlaylists");
+      state.homePlaylists = state.recently_played;
+      var i = 0;
+      while (state.homePlaylists.length < 6) {
+        state.homePlaylists.push(state.popular_playlists.playlists[i]);
+        i++;
+      }
+    },
   },
   getters: {
     POPplaylists: (state) => state.popular_playlists,
@@ -123,6 +120,6 @@ export default {
     POPalbums: (state) => state.popular_albums,
     POPnewreleases: (state) => state.popular_newreleases,
     RecenlyPlayed: (state) => state.recently_played,
-    homePlaylists: (state) => state.homePlaylists
+    homePlaylists: (state) => state.homePlaylists,
   },
 };

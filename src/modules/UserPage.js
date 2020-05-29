@@ -23,7 +23,6 @@ export default {
         .get("api/users/" + id + "/playlists")
         .then((response) => {
           let playlists = response.data;
-          console.log("user playlists", playlists);
           commit("set_playlists", playlists);
           state.loading = true;
         })
@@ -40,7 +39,6 @@ export default {
         .get("api/users/" + id)
         .then((response) => {
           let user = response.data;
-          console.log("user", user);
           commit("set_user", user);
         })
         .catch((error) => {

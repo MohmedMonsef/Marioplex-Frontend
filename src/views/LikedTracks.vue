@@ -4,26 +4,28 @@
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="likedtracks_load" class="likedtracks">
-      <div class="row" v-if="this.likedtracks_length != 0">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-          <LikedTracks testid="liketracks" />
+      <div v-if="this.likedtracks_length != 0">
+        <div>
+          <LikedTracks class="left" testid="liketracks" />
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
-          <song-component
-            testid="songcomponent"
-            v-for="(p, i) in likedtracks_tracks"
-            :key="p._id"
-            :index="i"
-            :song_id="p._id"
-            :song_artists="p.artistName"
-            :song_name="p.name"
-            :song_album="p.albumName"
-            :albumId="p.albumId"
-            :song_length="500"
-            :playlistId="playlist_id"
-            :isLiked="true"
-            :isPlaylist="true"
-          />
+        <div class="right">
+          <div class="right">
+            <song-component
+              testid="songcomponent"
+              v-for="(p, i) in likedtracks_tracks"
+              :key="p._id"
+              :index="i"
+              :song_id="p._id"
+              :song_artists="p.artistName"
+              :song_name="p.name"
+              :song_album="p.albumName"
+              :albumId="p.albumId"
+              :song_length="500"
+              :playlistId="playlist_id"
+              :isLiked="true"
+              :isPlaylist="true"
+            />
+          </div>
         </div>
       </div>
       <div class="row" v-else>
@@ -44,14 +46,37 @@
   }
 }
 .likedtracks {
-  // min-width: 768px;
   min-height: 300px;
   background-image: linear-gradient(0deg, #161516, rgb(20, 1, 59));
+  margin-top:-80px;
+  padding-top: 80px;
 }
-.row {
-  margin: 25px;
-  margin-top: 0;
-  display: flex;
+.left {
+  display: inline;
+  position: absolute;
+  width: 40%;
+  left: 0;
+}
+
+.right {
+  display: inline;
+  position: absolute;
+  width: 75%;
+  right: 10px;
+}
+@media screen and (max-width: 1000px) {
+  .left {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+
+  .right {
+    display: block;
+    width: 100%;
+    position: relative;
+    right: 0;
+  }
 }
 </style>
 
@@ -81,7 +106,7 @@ export default {
       playlist_id: "LikedTracks/playlist_id",
     }),
   },
-  beforeCreate: function () {
+  beforeCreate: function() {
     this.$store.dispatch("LikedTracks/likedtracks_tracks");
   },
 };

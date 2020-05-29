@@ -13,7 +13,7 @@ export default {
     artistcover_image: "",
     userID: "",
     followartist: Boolean,
-    loading:false
+    loading: false,
   },
   mutations: {
     set_artist_followers(state, followers) {
@@ -29,16 +29,16 @@ export default {
       state.tracks_length = length;
     },
     set_artist_relatedartists(state, artists) {
-      artists.forEach(artist => {
-        if(artist.images.length == 0)
-        artist.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      artists.forEach((artist) => {
+        if (artist.images.length == 0)
+          artist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.artist_relatedartists = artists;
     },
     set_artist_albums(state, albums) {
-      albums.forEach(album => {
-        if(album.images.length == 0)
-           album.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      albums.forEach((album) => {
+        if (album.images.length == 0)
+          album.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.artist_albums = albums;
     },
@@ -64,7 +64,6 @@ export default {
         .get("api/Artists/" + artist_id)
         .then((response) => {
           let artist = response.data;
-          console.log("module artist", artist);
           commit("set_artist_name", artist.Name);
           commit("set_artistcover_image", artist.images[0]);
           commit("set_bio", artist.info);
@@ -81,7 +80,6 @@ export default {
         .then((response) => {
           let artist = response.data;
           this.artist_tracks = [];
-          console.log("array nihal", this.artist_tracks);
           var limitedtracks = [];
           if (artist.length >= 5) {
             for (let i = 0; i < 5; i++) {
@@ -152,7 +150,6 @@ export default {
     },
 
     checkisfollowed({ commit }, artist_id) {
-      console.log("artistid", artist_id);
       axios
         .get("api/me/following/contains/" + artist_id)
         .then((response) => {
@@ -167,19 +164,18 @@ export default {
           console.log(error);
         });
     },
-    async numberoffollowers({commit} , artist_id){
+    async numberoffollowers({ commit }, artist_id) {
       await axios
-      .get("api/Artists/numberOfFollowers/" + artist_id)
-      .then((response) => {
-        let arrayofFollowers = response.data;
-        commit("set_artist_followers", arrayofFollowers.numOfFollowers);
-        commit("set_loadedchart", true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    }
+        .get("api/Artists/numberOfFollowers/" + artist_id)
+        .then((response) => {
+          let arrayofFollowers = response.data;
+          commit("set_artist_followers", arrayofFollowers.numOfFollowers);
+          commit("set_loadedchart", true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   getters: {
     artist_name: (state) => state.artist_name,

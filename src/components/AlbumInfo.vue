@@ -6,13 +6,8 @@
       @mouseover="onhoverimage()"
       @mouseleave="onleaveimage()"
     >
-
       <img
-       :src="
-          $url +'/api/images/' +
-          album_image +
-            '?belongs_to=album'
-        "
+        :src="$url + '/api/images/' + album_image + '?belongs_to=album'"
         alt="album_image"
         class="album_image"
         id="album_image"
@@ -239,6 +234,29 @@ p {
   visibility: visible;
   opacity: 1;
 }
+@media screen and (max-width: 1000px) {
+  .album_image {
+    height: 250px;
+    width: 250px;
+  }
+  .playbutton {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .pausebutton {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .albumname {
+    margin-top: 15px;
+  }
+  .image {
+    #imageplayicon,
+    #imagepauseicon {
+      top: 90px;
+    }
+  }
+}
 </style>
 
 <script>
@@ -255,7 +273,7 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  }
+  },
 };
 /**
  * Displays Album information
@@ -266,7 +284,7 @@ export default {
   data: function() {
     return {
       show: false,
-      play: false
+      play: false,
     };
   },
   mixins: [song_functions],
@@ -353,7 +371,7 @@ export default {
         console.log("ggg", this.$route.params.album_id);
         this.$store.dispatch("Album/unlike_album", this.$route.params.album_id);
       }
-    }
+    },
   },
   computed: {
     ...mapGetters({
@@ -362,8 +380,8 @@ export default {
       playicon: "Mediaplayer/playicon",
       artist_name: "Album/artist_name",
       album_image: "Album/album_image",
-      liked: "Album/likealbum"
-    })
-  }
+      liked: "Album/likealbum",
+    }),
+  },
 };
 </script>

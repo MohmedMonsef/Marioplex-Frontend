@@ -36,54 +36,51 @@ export default {
       state.search_Value = searchvalue;
     },
     settopres(state, match_valuet) {
-    
-      if(match_valuet.length){
-      if(match_valuet[0].images.length==0)
-          match_valuet[0].images.push({_id:"5eb52f1863eea332d416b9fa"});
+      if (match_valuet.length) {
+        if (match_valuet[0].images.length == 0)
+          match_valuet[0].images.push({ _id: "5eb52f1863eea332d416b9fa" });
       }
       state.topres = match_valuet;
     },
     setresult5(state, match_value5) {
-      match_value5.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_value5.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.result5 = match_value5;
     },
     setresult(state, match_value) {
-      match_value.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_value.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.result = match_value;
     },
     setalbumres5(state, match_valuea5) {
-      match_valuea5.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_valuea5.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.albumres5 = match_valuea5;
     },
     setalbumres(state, match_valuea) {
-      match_valuea.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_valuea.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.albumres = match_valuea;
     },
     setplaylistres5(state, match_valuep5) {
-      console.log("match_valuep5",match_valuep5);
-      match_valuep5.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_valuep5.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.playlistres5 = match_valuep5;
     },
     setplaylistres(state, match_valuep) {
-      console.log("match_valuep",match_valuep);
-      match_valuep.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_valuep.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.playlistres = match_valuep;
     },
@@ -94,23 +91,22 @@ export default {
       state.in = status;
     },
     searchfocus(state, status) {
-      console.log(status);
       state.searchfocus = status;
     },
     setshower(state, val) {
       state.showme = val;
     },
     setuser5(state, match_valueu5) {
-      match_valueu5.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_valueu5.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.user5 = match_valueu5;
     },
     setuser(state, match_valueu) {
-      match_valueu.forEach(match => {
-        if(match.images.length == 0)
-        match.images.push({_id:"5eb52f1863eea332d416b9fa"});
+      match_valueu.forEach((match) => {
+        if (match.images.length == 0)
+          match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.user = match_valueu;
     },
@@ -127,11 +123,9 @@ export default {
     },
     search_V({ commit }, searchvalue) {
       commit("set_value", searchvalue);
-      console.log(searchvalue);
     },
     showresult({ commit }, val) {
       commit("setshower", val);
-      console.log(val);
     },
     // when integrate with back
     searchaboutartist({ commit }, search_value) {
@@ -146,18 +140,6 @@ export default {
       commit("setplaylistres", []);
       commit("setuser", []);
       commit("settrack", []);
-      // const requestOne = axios.get(
-      //     "/api/search?name=" + search_value + "&type=top"
-      // );
-      // const requestTwo = axios.get(
-      //     "/api/search?name=" + search_value + "&type=artist"
-      // );
-      // const requestThree = axios.get(
-      //     "/api/search?name=" + search_value + "&type=album"
-      // );
-      // const requestfour = axios.get(
-      //     "/api/search?name=" + search_value + "&type=playlist"
-      // );
       var match_value5 = new Array();
       var match_valuea5 = new Array();
       var match_valuep5 = new Array();
@@ -165,88 +147,61 @@ export default {
       var match_valuetrack3 = new Array();
 
       commit("set_load", false);
-
-      // const requestOne = axios.get("/search/top");
-      //const requestTwo = axios.get("/search/artist");
-      // const requestThree = axios.get("/search/album");
-      //const requestfour = axios.get("/search/playlist");
       axios
-        // .all([requestTwo, requestThree, requestfour, requestOne])
         .get(
           "/api/search?name=" +
             search_value +
             "&type=top,artist,album,playlist,track,profile"
         )
         .then((response) => {
-          //  axios.spread((...responses) => {
           const match_value = response.data.artist;
           const match_valuea = response.data.album;
           const match_valuep = response.data.playlist;
           const match_valuet = [response.data.top];
           const match_valueu = response.data.profile;
           const match_valuetrack = response.data.track;
-          // use/access the results
           if (match_value.length >= 5) {
             for (let i = 0; i < 5; i++) {
               match_value5.push(match_value[i]);
             }
-            console.log(match_value5);
             commit("setresult5", match_value5);
           } else {
             commit("setresult5", match_value);
           }
-          console.log(match_value);
-          ///
           if (match_valuea.length >= 5) {
             for (let i = 0; i < 5; i++) {
               match_valuea5.push(match_valuea[i]);
             }
-            console.log(match_valuea5);
             commit("setalbumres5", match_valuea5);
           } else {
             commit("setalbumres5", match_valuea);
           }
-          console.log(match_valuea);
-          ////
           if (match_valuep.length >= 5) {
             for (let i = 0; i < 5; i++) {
               match_valuep5.push(match_valuep[i]);
             }
-            console.log(match_valuep5);
             commit("setplaylistres5", match_valuep5);
           } else {
             commit("setplaylistres5", match_valuep);
           }
-          console.log(match_valuep, "playlist in axios");
-          ////
           if (match_valueu.length >= 5) {
             for (let i = 0; i < 5; i++) {
               match_valueu5.push(match_valueu[i]);
             }
-            console.log(match_valueu5);
             commit("setuser5", match_valueu5);
           } else {
             commit("setuser5", match_valueu);
           }
-          console.log(match_valueu);
 
           if (match_valuetrack.length >= 3) {
             for (let i = 0; i < 3; i++) {
               match_valuetrack3.push(match_valuetrack[i]);
             }
-            console.log(match_valuetrack);
             commit("settrack3", match_valuetrack3);
           } else {
             commit("settrack3", match_valuetrack);
           }
-          console.log(match_value);
-          ///////
           commit("settopres", match_valuet);
-          console.log(match_valuet.length);
-          // if (match_value.length > 6) {
-          //   commit("setresult", match_value);
-          //   console.log(match_value);
-          // }
           commit("setresult", match_value);
           commit("setalbumres", match_valuea);
           commit("setplaylistres", match_valuep);
