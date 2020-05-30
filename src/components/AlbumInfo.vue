@@ -86,13 +86,6 @@
           ></i>
         </span>
       </button>
-      <!-- <span data-toggle="tooltip" title="More">
-            <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
-            </span>
-            <div id="mydropdown" class="db" v-show="show">
-        <p v-if="!isLiked">Add to Liked Songs</p>
-        <p v-if="isLiked">Remove from Liked Songs</p>
-      </div>-->
       <p testid="albumlength" id="albumlength">{{ album_length }} SONGS</p>
       <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
     </div>
@@ -283,18 +276,12 @@ const toast = {
 export default {
   data: function() {
     return {
-      show: false,
       play: false,
     };
   },
   mixins: [song_functions],
   name: "album_info",
   methods: {
-    toggleShow() {
-      var x = this.show;
-      window.Element.show = false;
-      this.show = !x;
-    },
     /**
      * checks if song in currently playing
      * @public This is a public method
