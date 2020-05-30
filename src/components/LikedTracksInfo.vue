@@ -154,7 +154,7 @@ import { mapGetters } from "vuex";
 export default {
   data: function() {
     return {
-      play: false,
+      play: false
     };
   },
   mixins: [song_functions],
@@ -197,9 +197,16 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "1";
+        return {
+          img: likedtracksimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          btn: pausebutton.style.opacity
+        };
       }
     },
 
@@ -214,20 +221,28 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "0";
+        return {
+          img: likedtracksimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         likedtracksimage.style.opacity = "0.3";
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          img: likedtracksimage.style.opacity,
+          btn: pausebutton.style.opacity
+        };
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
       likedtracks_length: "LikedTracks/likedtracks_length",
       playicon: "Mediaplayer/playicon",
-      owner_name: "LikedTracks/owner_name",
-    }),
-  },
+      owner_name: "LikedTracks/owner_name"
+    })
+  }
 };
 </script>
 >

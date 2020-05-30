@@ -266,7 +266,7 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  },
+  }
 };
 /**
  * Displays Album information
@@ -276,7 +276,7 @@ const toast = {
 export default {
   data: function() {
     return {
-      play: false,
+      play: false
     };
   },
   mixins: [song_functions],
@@ -323,9 +323,16 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "1";
+        return {
+          img: albumimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          btn: pausebutton.style.opacity
+        };
       }
     },
     /**
@@ -339,10 +346,18 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "0";
+        return {
+          img: albumimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         albumimage.style.opacity = "0.3";
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          img: albumimage.style.opacity,
+          btn: pausebutton.style.opacity
+        };
       }
     },
     /**
@@ -355,10 +370,9 @@ export default {
         this.$store.dispatch("Album/like_album", this.$route.params.album_id);
       } else {
         toast.show("Removed from Your Library");
-        console.log("ggg", this.$route.params.album_id);
         this.$store.dispatch("Album/unlike_album", this.$route.params.album_id);
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -367,8 +381,8 @@ export default {
       playicon: "Mediaplayer/playicon",
       artist_name: "Album/artist_name",
       album_image: "Album/album_image",
-      liked: "Album/likealbum",
-    }),
-  },
+      liked: "Album/likealbum"
+    })
+  }
 };
 </script>

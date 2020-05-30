@@ -9,8 +9,8 @@ describe("AlbumInfo", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      album_id: "",
-    },
+      album_id: ""
+    }
   };
   localVue.prototype.$route = $route;
   let spy;
@@ -20,36 +20,36 @@ describe("AlbumInfo", () => {
         Album: {
           namespaced: true,
           state: {
-            album_length: "",
-            album_name: "",
-            artist_name: "",
-            album_image: "",
-            likedalbum: Boolean,
+            album_length: 3,
+            album_name: "Album",
+            artist_name: "Artist",
+            album_image: "cry.png",
+            likedalbum: false
           },
           getters: {
-            album_length: (state) => state.album_length,
-            album_name: (state) => state.album_name,
-            artist_name: (state) => state.artist_name,
-            album_image: (state) => state.album_image,
-            likealbum: (state) => state.likealbum
+            album_length: state => state.album_length,
+            album_name: state => state.album_name,
+            artist_name: state => state.artist_name,
+            album_image: state => state.album_image,
+            likealbum: state => state.likedalbum
           },
           actions: {
             unlike_album: jest.fn(),
-            like_album: jest.fn(),
-          },
+            like_album: jest.fn()
+          }
         },
         Mediaplayer: {
           namespaced: true,
           state: {
-            playicon:true,
+            playicon: true
           },
           getters: {
-            playicon: (state) => state.playicon,
-          },
+            playicon: state => state.playicon
+          }
         }
-      },
+      }
     });
-    spy = jest.spyOn(document, 'getElementById');
+    spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(AlbumInfo, {
       localVue,
       store
@@ -60,7 +60,7 @@ describe("AlbumInfo", () => {
   });
   it("is playing function", () => {
     wrapper.setData({
-      play:false
+      play: false
     });
 
     let testId = "album_image";
@@ -75,9 +75,9 @@ describe("AlbumInfo", () => {
     newDiv = document.createElement("div");
     newDiv.setAttribute("id", testId);
     document.body.appendChild(newDiv);
-    store.state.Mediaplayer.playicon=true;
+    store.state.Mediaplayer.playicon = true;
     wrapper.vm.isplaying();
-    store.state.Mediaplayer.playicon=false;
+    store.state.Mediaplayer.playicon = false;
     wrapper.vm.isplaying();
 
     expect(wrapper.vm.play).toBe(true);
@@ -87,9 +87,8 @@ describe("AlbumInfo", () => {
     wrapper.vm.stopplayingbutton();
 
     expect(wrapper.vm.play).toBe(false);
-
   });
-  it("test hover on image",() => {
+  it("test hover on image", () => {
     let testId = "album_image";
     let albumimage = document.createElement("div");
     albumimage.setAttribute("id", testId);
@@ -105,21 +104,21 @@ describe("AlbumInfo", () => {
     pausebutton.setAttribute("id", testId);
     document.body.appendChild(pausebutton);
 
-    let obj =wrapper.vm.onhoverimage();
+    let obj = wrapper.vm.onhoverimage();
 
-    expect(obj.img).toBe('0.3');
-    expect(obj.btn).toBe('1');
+    expect(obj.img).toBe("0.3");
+    expect(obj.btn).toBe("1");
     obj = wrapper.vm.onleaveimage();
-    expect(obj.img).toBe('1');
-    expect(obj.btn).toBe('0');
-    wrapper.vm.play=true;
+    expect(obj.img).toBe("1");
+    expect(obj.btn).toBe("0");
+    wrapper.vm.play = true;
     obj = wrapper.vm.onhoverimage();
-    expect(obj.btn).toBe('1');
+    expect(obj.btn).toBe("1");
     obj = wrapper.vm.onleaveimage();
-    expect(obj.img).toBe('0.3');
-    expect(obj.btn).toBe('1');
+    expect(obj.img).toBe("0.3");
+    expect(obj.btn).toBe("1");
   });
-  it("test like album", () => {
+  it("test like / unlike album", () => {
     let testId = "albumliketoast";
     let toast = document.createElement("div");
     toast.setAttribute("id", testId);
@@ -127,7 +126,7 @@ describe("AlbumInfo", () => {
     wrapper.vm.likecurrentalbum();
     expect("like_album").toHaveBeenCalled;
     jest.useFakeTimers();
-    jest.runAllTimers(); 
+    jest.runAllTimers();
     store.state.Album.likedalbum = true;
     wrapper.vm.likecurrentalbum();
     expect("unlike_album").toHaveBeenCalled;
