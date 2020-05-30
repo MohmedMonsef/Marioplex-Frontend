@@ -25,7 +25,7 @@ h1 {
   font-size: 50px;
   font-weight: bold;
   text-align: center;
-  text-shadow:2px 2px  #5e6063;
+  text-shadow: 2px 2px #5e6063;
 }
 h6 {
   font-size: 13px;
@@ -39,7 +39,7 @@ h6 {
   padding: 20px;
 }
 
-.stars{
+.stars {
   background: url("../assets/star.gif");
   width: 100%;
   height: 370px;
@@ -50,8 +50,12 @@ h6 {
 </style>
 
 <script>
+/**
+ * Ask the user to confirm his/her email when signup for the first time
+ * @displayName Email Confirmation
+ * @example [none]
+ */
 export default {
-  name: "EmailConfirmation",
+  name: "EmailConfirmation"
 };
 </script>
->

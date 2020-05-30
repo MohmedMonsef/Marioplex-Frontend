@@ -248,14 +248,14 @@ button:focus {
   text-decoration-line: underline;
 }
 @media screen and (max-width: 1030px) {
-.child{
-  left: 10%;
-}
+  .child {
+    left: 10%;
+  }
 }
 @media screen and (max-width: 815px) {
-.child{
-  left: 0;
-}
+  .child {
+    left: 0;
+  }
 }
 @media screen and (max-width: 500px) {
   .child {
@@ -271,10 +271,10 @@ button:focus {
       height: 100vh;
       top: 0;
       position: relative;
-      li{
-       padding: 2px;
+      li {
+        padding: 2px;
       }
-      .closebutton{
+      .closebutton {
         margin: 5px;
       }
       .info {
@@ -299,19 +299,23 @@ button:focus {
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Popup appear when there is no user asking him/her to signup first or to login if already has an account
+ * @displayName Mediaplayer Popup
+ * @example [none]
+ */
 export default {
   name: "mediaplayerpopup",
-  data: function() {
-    return {
-      // showModal: true
-    };
-  },
   computed: {
     ...mapGetters({
       showModal: "CheckUserPopup/showModal"
     })
   },
   methods: {
+    /**
+     * Toggle the state of mediaplayer to appear or not
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("CheckUserPopup/togglePopup");
     }

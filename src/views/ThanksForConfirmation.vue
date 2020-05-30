@@ -7,11 +7,13 @@
       <h4>To Continue with Marioplex-Spotify click proceed button</h4>
     </div>
     <div class="row">
-          <router-link to="/Login">
-        <button class="proceedbutton" @click="thanksForConfirmation()">Proceed</button>
+      <router-link to="/Login">
+        <button class="proceedbutton" @click="thanksForConfirmation()">
+          Proceed
+        </button>
       </router-link>
     </div>
-     <div class="stars"></div>
+    <div class="stars"></div>
   </div>
 </template>
 
@@ -33,7 +35,7 @@ h1 {
   font-weight: bold;
   text-align: center;
   color: white;
-  text-shadow:2px 2px  #5e6063;
+  text-shadow: 2px 2px #5e6063;
 }
 h4 {
   font-size: 12px;
@@ -61,7 +63,7 @@ h4 {
 button:focus {
   outline: 0 !important;
 }
-.stars{
+.stars {
   background: url("../assets/stars2.gif");
   width: 100%;
   height: 450px;
@@ -69,32 +71,39 @@ button:focus {
   top: 300px;
 }
 @media only screen and (max-width: 870px) {
-.stars{
-top: 425px;
-left: 0;
-height: 290px;
-}
+  .stars {
+    top: 425px;
+    left: 0;
+    height: 290px;
+  }
 }
 </style>
 
 <script>
+/**
+ * This page appear after the user confirmed his/her email and should press proceed button to continue with Marioplex-Spotify
+ * @displayName Thanks For Confirmation
+ * @example [none]
+ */
 export default {
   name: "ThanksForConfirmation",
-    props: {
+  props: {
     id: {
       type: String,
-      required: true,
-    },
-  },
-  methods:{
-    thanksForConfirmation(){
-      this.$store.dispatch("Authorization/ConfirmEmail" , this.$route.query.id);
-      console.log("NNNNNNNNNN");
+      required: true
     }
   },
-    mounted() {
+  methods: {
+    /**
+     * Make sure that the user confirmed his/her email before login
+     * @public This is a public method
+     */
+    thanksForConfirmation() {
+      this.$store.dispatch("Authorization/ConfirmEmail", this.$route.query.id);
+    }
+  },
+  mounted() {
     this.id = this.$route.query.id;
   }
 };
 </script>
->

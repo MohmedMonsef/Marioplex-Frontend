@@ -24,9 +24,7 @@
           :key="album._id"
           :albumId="album._id"
           :images="
-            $url+'/api/images/' +
-              album.images[0]._id +
-              '?belongs_to=album'
+            $url + '/api/images/' + album.images[0]._id + '?belongs_to=album'
           "
           :name="album.name"
         />
@@ -56,6 +54,11 @@
 import SongComponent from "@/components/SongComponent.vue";
 import homecards from "@/components/ArtistHomeCards.vue";
 import { mapGetters } from "vuex";
+/**
+ * Displays Artist tracks and albums
+ * @displayName Artist Overview
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
