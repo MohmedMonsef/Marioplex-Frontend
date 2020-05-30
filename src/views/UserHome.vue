@@ -2,8 +2,8 @@
   <div class="home">
     <div class="section">
       <h2 v-if="POPplaylists1.playlists.length">Popular playlists</h2>
-      <a href="/AllLists" class="seeall" v-if="POPplaylists1.playlists.length"
-        >SEE All</a
+      <router-link to="/AllLists" class="seeall" v-if="POPplaylists1.playlists.length"
+        >SEE All</router-link
       >
       <div class="container">
         <div class="row">
@@ -25,8 +25,8 @@
     </div>
     <div class="section">
       <h2 v-if="POPartists1.artists.length">Popular artists</h2>
-      <a href="/AllArtists" class="seeall1" v-if="POPartists1.artists.length"
-        >SEE All</a
+      <router-link to="/AllArtists" class="seeall1" v-if="POPartists1.artists.length"
+        >SEE All</router-link
       >
       <div class="container">
         <div class="row">
@@ -47,8 +47,8 @@
     </div>
     <div class="section">
       <h2 v-if="POPalbums1.albums.length">Popular albums</h2>
-      <a href="/AllAlbums" class="seeall2" v-if="POPalbums1.albums.length"
-        >SEE All</a
+      <router-link to="/AllAlbums" class="seeall2" v-if="POPalbums1.albums.length"
+        >SEE All</router-link
       >
       <div class="container">
         <div class="row">
@@ -70,11 +70,11 @@
     </div>
     <div class="section">
       <h2 v-if="POPnewreleases1.albums.length">Popular new releases</h2>
-      <a
-        href="/AllReleases"
+      <router-link
+        to="/AllReleases"
         class="seeall3"
         v-if="POPnewreleases1.albums.length"
-        >SEE All</a
+        >SEE All</router-link
       >
       <div class="container">
         <div class="row">
@@ -130,8 +130,9 @@ h2 {
   font-size: 28px;
   font-weight: bold;
   color: white;
-  margin-left: 30px;
   display: inline;
+  position: relative;
+  left: 30px;
 }
 .container {
   margin-left: 15px;
@@ -140,8 +141,10 @@ h2 {
   font-size: 14px;
   color: gray;
   font-weight: bold;
-  margin-left: 70%;
   cursor: pointer;
+  position: relative;
+  left: 73.5%;
+  // bottom: 71%;
 }
 .seeall:hover,
 .seeall1:hover,
@@ -154,22 +157,62 @@ h2 {
   font-size: 14px;
   color: gray;
   font-weight: bold;
-  margin-left: 73%;
   cursor: pointer;
+  position: relative;
+  left: 76%;
+  // bottom: 6%;
 }
 .seeall2 {
   font-size: 14px;
   color: gray;
   font-weight: bold;
-  margin-left: 71%;
   cursor: pointer;
+  position: relative;
+  left: 75%;
 }
 .seeall3 {
   font-size: 14px;
   color: gray;
   font-weight: bold;
-  margin-left: 65%;
   cursor: pointer;
+  position: relative;
+  left: 68%;
+}
+@media only screen and (max-width: 1260px){
+  .seeall,
+  .seeall1,
+  .seeall2,
+  .seeall3{
+  left: 93%;
+  position: absolute;
+  }
+}
+@media only screen and (max-width: 980px){
+  .seeall,
+  .seeall1,
+  .seeall2,
+  .seeall3{
+  left: 91%;
+  position: absolute;
+  }
+}
+@media only screen and (max-width: 850px){
+  .seeall,
+  .seeall1,
+  .seeall2,
+  .seeall3{
+  left: 89%;
+  position: absolute;
+  }
+}
+@media only screen and (max-width: 700px){
+  .seeall,
+  .seeall1,
+  .seeall2,
+  .seeall3{
+  visibility: hidden;
+  position: absolute;
+  }
 }
 </style>
 

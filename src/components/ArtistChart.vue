@@ -1,6 +1,11 @@
 <script>
 import { mapGetters } from "vuex";
 import { Bar } from "vue-chartjs";
+/**
+ * Displays Artist number of Followers Chart
+ * @displayName Artist Followers Chart
+ * @example [none]
+ */
 export default {
   extends: Bar,
   data() {
@@ -52,12 +57,14 @@ export default {
       "ArtistPage/numberoffollowers",
       this.$route.params.artist_id
     );
-    console.log("the response", this.artist_followers);
     this.datacollection.datasets[0].data = this.artist_followers;
     this.numFollowers();
-    console.log("chart loaded", this.loadedchart);
   },
   methods: {
+    /**
+     * get number of followers for the artist for the current day, month and year
+     * @public This is a public method
+     */
     numFollowers() {
       this.options.update;
       this.datacollection.update;

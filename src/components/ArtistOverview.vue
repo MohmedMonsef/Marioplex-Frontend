@@ -54,6 +54,11 @@
 import SongComponent from "@/components/SongComponent.vue";
 import homecards from "@/components/ArtistHomeCards.vue";
 import { mapGetters } from "vuex";
+/**
+ * Displays Artist tracks and albums
+ * @displayName Artist Overview
+ * @example [none]
+ */
 export default {
   data: function() {
     return {

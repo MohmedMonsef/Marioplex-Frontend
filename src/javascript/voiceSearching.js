@@ -3,6 +3,10 @@ const SpeechRecognition =
 
 export default {
   methods: {
+    /**
+     * Voice Detection Method for searching in web player by using microphone
+     * @public This is a public method
+     */
     detectvoice() {
       if (SpeechRecognition) {
         const recognition = new SpeechRecognition();

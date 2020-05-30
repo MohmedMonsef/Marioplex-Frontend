@@ -1,6 +1,6 @@
 <template>
   <div class="row" id="row2">
-    <div class="col-lg-30%">
+    <div class="col-lg-30% side_bar">
       <account-sidebar />
     </div>
     <div class="col-lg-70%" id="grey_div">
@@ -28,12 +28,42 @@
 #row2 {
   margin-left: 7%;
 }
+@media only screen and (max-width:880px){
+  #row2{
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+  position: relative;
+  }
+}
 #grey_div {
   background: #f8f8f8;
   width: 68.5%;
   height: 100%;
   padding-right: 5%;
   padding-bottom: 5%;
+  position:relative;
+}
+@media only screen and (max-width: 880px){
+  #grey_div{
+  background-color: #f8f8f8;
+  width: 77%;
+  height: 100%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  position:relative;
+  margin-right: 0%;
+  }
+}
+@media only screen and (max-width: 800px){
+  #grey_div{
+  background-color: #f8f8f8;
+  width: 100%;
+  height: 100%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  position:relative;
+  }
 }
 h1 {
   color: #1db954;
@@ -82,11 +112,13 @@ h2 {
   color: black;
   width: 20%;
   height: 4%;
-  margin-left: 45%;
+  /* margin-left: 45%; */
   margin-top: -1%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
+  position: absolute;
+  left:42%;
 }
 .save {
   background-color: #1db954;
@@ -94,13 +126,15 @@ h2 {
   outline: none;
   border-radius: 25px;
   color: white;
-  width: 28%;
-  height: 6%;
+  width: 24%;
+  height: 4%;
   margin-left: 2%;
   margin-top: -1%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
+  position: absolute;
+  left: 59%;
 }
 .save:hover {
   background-color: #36e072;
@@ -124,6 +158,16 @@ h2 {
   margin-top: -2%;
   font-size: 15px;
   margin-bottom: 3%;
+}
+.side_bar{
+  position: relative;
+  width: 23%;
+}
+@media only screen and (max-width: 800px){
+  .side_bar{
+    visibility: hidden;
+    position: absolute;
+  }
 }
 </style>
 <script>

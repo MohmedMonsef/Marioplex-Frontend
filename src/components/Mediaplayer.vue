@@ -1,7 +1,7 @@
 <template>
   <div class="mediaplayer">
-    <div class="row">
-      <div class="col-sm-3" id="song_info_col">
+    <div class="row" id="mediaplayerrow">
+      <div class="col-sm-3 col-xs-6" id="song_info_col">
         <!-- here i need to link album image with mock server -->
         <div class="album_image" v-if="user == 'success'">
           <img src="../assets/cry.png" alt="album_image" testid="album_image" />
@@ -61,7 +61,7 @@
           </router-link>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-xs-12" id="mediaplayercontrollers">
         <div
           class="play_controllers"
           id="test_play_controllers"
@@ -188,7 +188,8 @@
         </div>
         <!-- the end of the new code  -->
       </div>
-      <div class="col-md-3 hidden-sm">
+      <!-- <div class="col-md-3 hidden-sm"> -->
+        <div class="col-md-3 col-xs-6" id="volumecontrollers">
         <div class="additional_actions" v-if="user == 'success'">
           <button id="queue_button" testid="queuebutton" @click="queue_alter()">
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
@@ -235,6 +236,7 @@
   transition: transform 0.25s cubic-bezier(0.3, 0, 0, 1);
   position: fixed;
   bottom: 0%;
+  min-width: 1090px;
 }
 .row {
   height: 90px;
@@ -478,6 +480,55 @@ input:focus {
 .disabledicon:active {
   color: #b3b3b3;
 }
+
+// @media screen and (max-width: 585px) {
+// .topcontrols{
+//   display: none;
+// }
+
+// .mediaplayer{
+// height: 100px;
+//   }
+//   #song_info_col{
+//     height: 30px;
+//     width: 50%;
+//     margin: 12px;
+//     margin-top:0; 
+//   }
+//   .album_image{
+//     display: none;
+//   }
+//   //heart
+//   .actionbuttons{
+//     right:500px;
+//   }
+//   .song_info{
+//     display: inline-block;
+//     margin: 4px;
+//   }
+//   .controllers{
+//     right: 20px;
+//   }
+//   .topcontrols{
+//   .seekbar,.progressbar{
+//     display: none;
+//   }
+
+//   .endtime{
+//     right: 300px;
+//   }
+//   }
+//   #randomicon,#playbackicon,#playforwardicon,#repeat_button{
+//     display: none;
+//   }
+//   #volumecontrollers{
+//     right: 20px;
+//   }
+// .row{
+//   display: flex;
+//    flex-flow:column-reverse;
+// }
+// }
 </style>
 
 <script type="module">
@@ -513,6 +564,11 @@ export default {
       }
       this.isShuffle = this.userinfo.player.is_shuffled;
     }, 1000);
+    // if (this.user != "success") {
+    //    var mediaplayerbar = document.getElementById("mediaplayerrow");
+    //    mediaplayerbar.style.justifyContent = "center";
+    //    mediaplayerbar.style.alignContent = "center";
+    // }
   },
   created: function() {
     window.addEventListener("mouseup", () => {

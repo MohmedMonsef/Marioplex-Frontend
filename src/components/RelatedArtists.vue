@@ -23,14 +23,19 @@
 <script>
 import LibArtists from "@/components/LibArtists.vue";
 import { mapGetters } from "vuex";
+/**
+ * Displays Related Artists for a certain Artist
+ * @displayName Related Artists
+ * @example [none]
+ */
 export default {
   components: {
-    LibArtists,
+    LibArtists
   },
   computed: {
     ...mapGetters({
-      relatedartists: "ArtistPage/artist_relatedartists",
-    }),
+      relatedartists: "ArtistPage/artist_relatedartists"
+    })
   },
   created: function() {
     this.artistid = this.$route.params.artist_id;
@@ -41,6 +46,6 @@ export default {
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
-  },
+  }
 };
 </script>

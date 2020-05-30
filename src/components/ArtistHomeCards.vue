@@ -6,10 +6,6 @@
         id="cardlink"
         testid="album card link"
       >
-        <!-- <img
-      donot forget to change the image while connecting with back
-        :src="images"
-      /> -->
         <img
           class="card-img-top mx-auto d-block"
           :src="images"
@@ -18,22 +14,6 @@
           testid="album image"
         />
       </router-link>
-      <!-- <i
-        v-if="!this.play"
-        class="fa fa-play"
-        id="imageplayicon"
-        testid="imageplayicon"
-        @click="iSplaying()"
-      >
-      </i>
-      <i
-        v-if="this.play"
-        class="fa fa-pause"
-        id="imagepauseicon"
-        testid="imagepauseicon"
-        @click="Stopplaying()"
-      >
-      </i> -->
     </div>
     <div class="card-body" id="cardbody" testid="album card body">
       <h4 class="card-title" id="cardtitle" testid="album name">
@@ -73,23 +53,9 @@ i {
   align-content: center;
   display: flex;
   justify-content: center;
-  #imageplayicon,
-  #imagepauseicon {
-    opacity: 1;
-    position: absolute;
-    font-size: 30px;
-    font-weight: 2px;
-    top: 45%;
-    text-align: center;
-    color: white;
-  }
 }
 #cardimg:hover {
   opacity: 0.3;
-}
-#imageplayicon:hover,
-#imagepauseicon:hover {
-  transform: scale(1.12);
 }
 h4 {
   font-size: 14px;
@@ -109,66 +75,23 @@ h4 {
 </style>
 
 <script>
-import { mapGetters } from "vuex";
+/**
+ * Displays Albums of certain artist
+ * @displayName Artist Albums
+ * @example [none]
+ */
 export default {
-  data: function() {
-    return {
-      play: false,
-    };
-  },
   name: "Artisthomecards",
   props: {
     name: {
-      type: String,
+      type: String
     },
     albumId: {
-      type: String,
+      type: String
     },
     images: {
-      type: String,
-    },
-  },
-  methods: {
-    //  iSplaying() {
-    //   this.play = true;
-    //   if (!this.playicon) {
-    //     var albumimage = document.getElementById("cardimg");
-    //     var pausebutton = document.getElementById("imageplayicon");
-    //     albumimage.style.opacity = "0.3";
-    //     pausebutton.style.opacity = "1";
-    //   }
-    // },
-    // Stopplaying() {
-    //   this.play = false;
-    // },
-    //  onhoverImage: function() {
-    //   var albumimage = document.getElementById("cardimg");
-    //   albumimage.style.opacity = "0.3";
-    //   if (!this.play) {
-    //     var playbutton = document.getElementById("imageplayicon");
-    //     playbutton.style.opacity = "1";
-    //   } else {
-    //     var pausebutton = document.getElementById("imagepauseicon");
-    //     pausebutton.style.opacity = "1";
-    //   }
-    // },
-    // onleaveImage: function() {
-    //   var albumimage = document.getElementById("cardimg");
-    //   albumimage.style.opacity = "1";
-    //   if (!this.play) {
-    //     var playbutton = document.getElementById("imageplayicon");
-    //     playbutton.style.opacity = "0";
-    //   } else {
-    //     albumimage.style.opacity = "0.3";
-    //     var pausebutton = document.getElementById("imagepauseicon");
-    //     pausebutton.style.opacity = "1";
-    //   }
-    // },
-  },
-  computed: {
-    ...mapGetters({
-      playicon: "Mediaplayer/playicon",
-    }),
-  },
+      type: String
+    }
+  }
 };
 </script>
