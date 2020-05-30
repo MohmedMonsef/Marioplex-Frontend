@@ -1,6 +1,5 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
-import VueRouter from "vue-router";
 import playlist_info from "../../src/components/PlaylistInfo.vue";
 
 describe("playlist_info", () => {
@@ -8,8 +7,13 @@ describe("playlist_info", () => {
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
-  localVue.use(VueRouter);
-
+  const $route = {
+    params: {
+      playlist_id: "",
+    },
+  };
+  localVue.prototype.$route = $route;
+  let spy;
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
@@ -32,7 +36,7 @@ describe("playlist_info", () => {
             playlist_name: (state) => state.playlist_name,
             owner_name: (state) => state.owner_name,
             playlist_image: (state) => state.playlist_image,
-            likeplaylist: (state) => state.likedplaylist,
+            likeplaylist: (state) => state.likedplaylist
           },
           actions: {
             like_playlist: jest.fn(),
@@ -53,7 +57,7 @@ describe("playlist_info", () => {
         Mediaplayer: {
           namespaced: true,
           state: {
-            playicon: false,
+            playicon:true,
           },
           getters: {
             playicon: (state) => state.playicon,
@@ -61,225 +65,90 @@ describe("playlist_info", () => {
         }
       },
     });
-    // wrapper = shallowMount(playlist_info, {
-    //   localVue,
-    //   store,
-    //   propsData: {}
-    // });
-  });
-
-  it("renders", () => {
-    const wrapper = shallowMount(playlist_info, {
+    spy = jest.spyOn(document, 'getElementById');
+    wrapper = shallowMount(playlist_info, {
       localVue,
-      store,
+      store
     });
+  });
+  it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders playlist name", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
+  it("is playing function", () => {
+    wrapper.setData({
+      play:false
     });
-    const playlist_name = wrapper.find(".playlistname");
-    expect(playlist_name.text()).toBe("PlayList");
-  });
-  it("has a playlist owner page router", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    expect(wrapper.exists("#owner_name")).toBe(true);
-  });
 
-  it("renders playlist ownername", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    const owner_name = wrapper.find("#owner_name");
-    expect(owner_name.text()).toBe("User");
-  });
-  it("renders playlist length", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    const playlist_length = wrapper.find("#playlistlength");
-    expect(playlist_length.text()).toBe(3 + " SONGS");
-  });
+    let testId = "playlist_image";
+    let newDiv = document.createElement("div");
+    newDiv.setAttribute("id", testId);
+    document.body.appendChild(newDiv);
+    testId = "imageplayicon";
+    newDiv = document.createElement("div");
+    newDiv.setAttribute("id", testId);
+    document.body.appendChild(newDiv);
+    testId = "imagepauseicon";
+    newDiv = document.createElement("div");
+    newDiv.setAttribute("id", testId);
+    document.body.appendChild(newDiv);
+    store.state.Mediaplayer.playicon=true;
+    wrapper.vm.isplaying();
+    store.state.Mediaplayer.playicon=false;
+    wrapper.vm.isplaying();
 
-  it("if the playlist is liked button onclick", async () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: false,
-    });
-    const heart = wrapper.find(".emptyheartbutton");
-    const likecurrentplaylist = jest.fn();
-    wrapper.setMethods({
-      likecurrentplaylist: likecurrentplaylist,
-    });
-    heart.trigger("click");
-    await wrapper.vm.$nextTick();
-    const isnotliked = wrapper.find(".emptyheartbutton");
-    const isliked = wrapper.find(".filledheartbutton");
-    expect(isliked.exists()).toBe(false);
-    expect(isnotliked.exists()).toBe(true);
+    expect(wrapper.vm.play).toBe(true);
+
+    wrapper.vm.stopplaying();
+
+    wrapper.vm.stopplayingbutton();
+
+    expect(wrapper.vm.play).toBe(false);
+
   });
-  it("if the playlist is liked icon onclick", async () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: false,
-    });
-    const heart = wrapper.find("#emptyhearticon");
-    const likecurrentplaylist = jest.fn();
-    wrapper.setMethods({
-      likecurrentplaylist: likecurrentplaylist,
-    });
-    heart.trigger("click");
-    await wrapper.vm.$nextTick();
-    const isnotliked = wrapper.find("#emptyhearticon");
-    const isliked = wrapper.find("#filledhearticon");
-    expect(isliked.exists()).toBe(false);
-    expect(isnotliked.exists()).toBe(true);
+  it("test hover on image",() => {
+    let testId = "playlist_image";
+    let playlistimage = document.createElement("div");
+    playlistimage.setAttribute("id", testId);
+    document.body.appendChild(playlistimage);
+
+    testId = "imageplayicon";
+    let playbutton = document.createElement("div");
+    playbutton.setAttribute("id", testId);
+    document.body.appendChild(playbutton);
+
+    testId = "imagepauseicon";
+    let pausebutton = document.createElement("div");
+    pausebutton.setAttribute("id", testId);
+    document.body.appendChild(pausebutton);
+
+    let obj =wrapper.vm.onhoverimage();
+
+    expect(obj.img).toBe('0.3');
+    expect(obj.btn).toBe('1');
+    obj = wrapper.vm.onleaveimage();
+    expect(obj.img).toBe('1');
+    expect(obj.btn).toBe('0');
+    wrapper.vm.play=true;
+    obj = wrapper.vm.onhoverimage();
+    expect(obj.btn).toBe('1');
+    obj = wrapper.vm.onleaveimage();
+    expect(obj.img).toBe('0.3');
+    expect(obj.btn).toBe('1');
   });
-  it("likedplaylist method", async () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: false,
-    });
-    const heart = wrapper.find("#emptyhearticon");
-    const likecurrentplaylist = jest.fn();
-    wrapper.setMethods({
-      likecurrentplaylist: likecurrentplaylist,
-    });
-    heart.trigger("click");
-    await wrapper.vm.$nextTick();
-    expect(likecurrentplaylist).toHaveBeenCalled;
-  });
-  it("play button click", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: false,
-    });
-    const isplaying = jest.fn();
-    const playSong = jest.fn();
-    wrapper.setMethods({
-      isplaying: isplaying,
-      playSong: playSong,
-    });
-    const playbutton = wrapper.find(".playbutton");
-    playbutton.trigger("click");
-    expect(isplaying).toHaveBeenCalled;
-    expect(playSong).toHaveBeenCalled;
-  });
-  it("pause button click", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: true,
-    });
-    const stopplayingbutton = jest.fn();
-    const pauseSong = jest.fn();
-    wrapper.setMethods({
-      stopplayingbutton: stopplayingbutton,
-      pauseSong: pauseSong,
-    });
-    const pausebutton = wrapper.find(".pausebutton");
-    pausebutton.trigger("click");
-    expect(stopplayingbutton).toHaveBeenCalled;
-    expect(pauseSong).toHaveBeenCalled;
-  });
-  it("play icon click", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: false,
-    });
-    const isplaying = jest.fn();
-    const playSong = jest.fn();
-    wrapper.setMethods({
-      isplaying: isplaying,
-      playSong: playSong,
-    });
-    const playicon = wrapper.find("#imageplayicon");
-    playicon.trigger("click");
-    expect(isplaying).toHaveBeenCalled;
-    expect(playSong).toHaveBeenCalled;
-  });
-  it("pause icon click", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: true,
-    });
-    const stopplaying = jest.fn();
-    const pauseSong = jest.fn();
-    wrapper.setMethods({
-      stopplaying: stopplaying,
-      pauseSong: pauseSong,
-    });
-    const pauseicon = wrapper.find("#imagepauseicon");
-    pauseicon.trigger("click");
-    expect(stopplaying).toHaveBeenCalled;
-    expect(pauseSong).toHaveBeenCalled;
-  });
-  it("image on hover", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: true,
-    });
-    const onhoverimage = jest.fn();
-    wrapper.setMethods({
-      onhoverimage: onhoverimage,
-    });
-    const playbutton = wrapper.find(".playlist_image");
-    playbutton.trigger("mouseover");
-    expect(onhoverimage).toHaveBeenCalled;
-  });
-  it("image on leave", () => {
-    const wrapper = shallowMount(playlist_info, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      show: false,
-      play: true,
-    });
-    const onleaveimage = jest.fn();
-    wrapper.setMethods({
-      onleaveimage: onleaveimage,
-    });
-    const pausebutton = wrapper.find(".playlist_image");
-    pausebutton.trigger("mouseleave");
-    expect(onleaveimage).toHaveBeenCalled;
+  it("test like playlist", () => {
+    let testId = "playlistliketoast";
+    let toast = document.createElement("div");
+    toast.setAttribute("id", testId);
+    document.body.appendChild(toast);
+    wrapper.vm.likecurrentplaylist();
+    expect("like_playlist").toHaveBeenCalled;
+    expect("showplaylists").toHaveBeenCalled;
+    jest.useFakeTimers();
+    jest.runAllTimers(); 
+    store.state.Playlist.likedplaylist = true;
+    wrapper.vm.likecurrentplaylist();
+    expect("unlike_playist").toHaveBeenCalled;
+    expect("showplaylists").toHaveBeenCalled;
+    jest.runAllTimers();
   });
 });

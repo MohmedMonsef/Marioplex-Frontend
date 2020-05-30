@@ -105,7 +105,6 @@ import playlist from "@/components/Playlist.vue";
 import playlistinfo from "@/components/PlaylistInfo.vue";
 import { mapGetters } from "vuex";
 import draggable from "vuedraggable";
-import { mapState } from "vuex";
 import ColorThief from "colorthief";
 /**
  * Playlist page which contains some information like its name and the name of user made by and of course some tracks and some information about them here you can like the whole playlist and add it to your liked playlists
