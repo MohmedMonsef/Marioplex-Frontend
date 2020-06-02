@@ -7,8 +7,8 @@
       <h1>Notification settings</h1>
       <div class="edit_border"></div>
       <div class="white_div">
-        <h2>Your Notifications</h2>
-        <div class="card col-lg" 
+        <h2>Your Notifications :</h2>
+        <div class="card col-lg"
          v-for="(notification, index) in notifications" 
          :key="notification.data.title" 
          :class="{card2: index%2==1}" >
@@ -24,6 +24,9 @@
             </p>
           </div>
         </div>
+        <p v-if="notifications.length == 0" id="empty">
+          You can see your notifications here^^
+        </p> 
       </div>
     </div>
   </div>
@@ -43,7 +46,8 @@
 #grey_div {
   background: #f8f8f8;
   width: 68.5%;
-  height: 100%;
+  height:auto !important;        
+  height:600px;    
   padding-right: 5%;
   padding-bottom: 5%;
   position:relative;
@@ -64,6 +68,7 @@
   background-color: #f8f8f8;
   width: 100%;
   height: 100%;
+  min-height: 2000px;
   padding-right: 5%;
   padding-bottom: 5%;
   position:relative;
@@ -85,10 +90,12 @@ h1 {
 .white_div {
   margin-left: 7%;
   width: 90%;
-  height: 600px;
+  height:auto !important;        
+  height:600px;    
   background: white;
   padding-top: 6%;
   padding-left: 7%;
+  padding-bottom: 3%;
 }
 h2{
   font-size: 23px;
@@ -115,6 +122,11 @@ h4{
     visibility: hidden;
     position: absolute;
   }
+}
+#empty{
+  font-size: 25px;
+  color: #b91d7d;
+  margin-left: 16%;
 }
 </style>
 <script>

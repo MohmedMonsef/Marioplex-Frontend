@@ -339,6 +339,25 @@ export default {
         { text: "1999", value: "29" },
         { text: "2000", value: "30" },
         { text: "2001", value: "31" },
+        { text: "2002", value: "32" },
+        { text: "2003", value: "33" },
+        { text: "2004", value: "34" },
+        { text: "2005", value: "35" },
+        { text: "2006", value: "36" },
+        { text: "2007", value: "37" },
+        { text: "2008", value: "38" },
+        { text: "2009", value: "39" },
+        { text: "2010", value: "40" },
+        { text: "2011", value: "41" },
+        { text: "2012", value: "42" },
+        { text: "2013", value: "43" },
+        { text: "2014", value: "44" },
+        { text: "2015", value: "45" },
+        { text: "2016", value: "46" },
+        { text: "2017", value: "47" },
+        { text: "2018", value: "48" },
+        { text: "2019", value: "49" },
+        { text: "2020", value: "50" },
       ],
       country: "Egypt",
       countries: [
@@ -359,10 +378,6 @@ export default {
   },
   methods: {
     saveEdit() {
-      console.log("email dai " ,this.email );
-      console.log("gender dai " , this.gender );
-      console.log("country dai " ,this.country );
-      console.log("pass dai " ,this.password );
       this.req_email();
       this.invalid_email();
       this.req_password();
@@ -380,16 +395,12 @@ export default {
         this.$store.dispatch("Authorization/saveEdit", edituser);
       } else {
         this.saved = false;
-        console.log("can not submit");
       }
     },
     req_email: function () {
-      console.log(this.email);
       if (this.email == "") {
-        console.log("required email not found");
         this.can_submit = false;
       } else {
-        console.log("required email found");
         this.can_submit = true;
       }
       return;
@@ -401,21 +412,18 @@ export default {
           this.email.indexOf("@") == this.email.length - 1 ||
           this.email.indexOf(".com") == -1 ||
           this.email.indexOf(".com") + 4 != this.email.length)
-      ) {
-        console.log("invalid email");
+      )
+      {
         this.can_submit = false;
       } else {
-        console.log("valid email");
         this.can_submit = true;
       }
       return;
     },
     req_password: function () {
       if (this.password == "") {
-        console.log("password not found");
         this.can_submit = false;
       } else {
-        console.log("password found");
         this.can_submit = true;
       }
       return;

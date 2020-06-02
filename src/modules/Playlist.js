@@ -306,6 +306,7 @@ export default {
         .put("/api/me/restoreplaylists?playlistsIds=" + ID)
         .then(() => {
           commit("isRestored", "success");
+          store.dispatch("Authorization/showDeletedPlaylists");
         })
         .catch((error) => {
           console.log(error);
