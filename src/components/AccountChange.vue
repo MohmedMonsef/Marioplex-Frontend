@@ -183,7 +183,10 @@ export default {
       password: "",
       newpassword: "",
       repeatedPassword: "",
-      canSet: false,
+      canSet1: false,
+      canSet2: false,
+      canSet3: false,
+      canSet4: false,
       saved: "0",
     };
   },
@@ -193,59 +196,51 @@ export default {
       this.req_newpassword();
       this.req_repeatpassword();
       this.equal_password();
-      if (this.canSet) {
-        let edituser = {
-          password: this.password,
-          newpassword: this.newpassword,
-          repeatedPassword: this.repeatedPassword,
-        };
-        this.saved = "1";
-        this.$store.dispatch("Authorization/saveEdit", edituser);
-      } 
-      else {
-        this.saved = "2";
-      }
+      setTimeout(() => {
+        if (this.canSet1 && this.canSet2 && this.canSet3 && this.canSet4) {
+          let edituser = {
+            password: this.password,
+            newpassword: this.newpassword,
+            repeatedPassword: this.repeatedPassword,
+          };
+          this.saved = "1";
+          this.$store.dispatch("Authorization/saveEdit", edituser);
+        } 
+        else {
+          this.saved = "2";
+        }
+      },200);
     },
     req_password: function () {
       if (this.password == "") {
-        this.canSet = false;
+        this.canSet1 = false;
       } else {
-        this.canSet = true;
+        this.canSet1 = true;
       }
       return;
     },
     req_newpassword: function () {
-      if (this.newpassword == "") {
-        this.canSet = false;
+      if (this.newpassword == "" || (this.newpassword != "" && this.newpassword.length < 8)) {
+        this.canSet2 = false;
       } else {
-        this.canSet = true;
-      }
-      if (this.newpassword.length < 4){
-        this.canSet = false;
-      } else {
-        this.canSet = true;
+        this.canSet2 = true;
       }
       return;
     },
     req_repeatpassword: function () {
-      if (this.repeatpassword == "") {
-        this.canSet = false;
+      if (this.repeatpassword == "" || (this.repeatpassword != "" && this.repeatpassword.length < 8) ) {
+        this.canSet3 = false;
       } else {
-        this.canSet = true;
-      }
-      if (this.newpassword.length < 4){
-        this.canSet = false;
-      } else {
-        this.canSet = true;
+        this.canSet3 = true;
       }
       return;
     },
     equal_password: function(){
       if (this.newpassword != this.repeatedPassword)
       {
-        this.canSet = false;
+        this.canSet4 = false;
       } else {
-        this.canSet = true;
+        this.canSet4 = true;
       }
       return;  
     }

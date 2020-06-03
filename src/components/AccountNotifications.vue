@@ -106,9 +106,11 @@ h2{
   margin-bottom: 3%;
   background-color: rgba(129, 238, 165, 0.2);
   padding-left: 1%;
+  cursor: pointer;
 }
 .card2{
   background-color: rgba(248, 136, 136, 0.2);
+  cursor: pointer;
 }
 h4{
   font-size: 20px;
@@ -144,6 +146,6 @@ export default {
     ...mapGetters({
       notifications: "Notifications/notifications"
     })
-  },
+  }
 };
 </script>

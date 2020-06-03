@@ -17,7 +17,6 @@ export default {
           .get("/api/me/notifications")
           .then((response) => {
             let notification = response.data;
-            console.log("notification : ");
             commit("setUserNotifications", notification);
           })
           .catch((error) => {

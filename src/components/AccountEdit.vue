@@ -12,9 +12,9 @@
           Sorry, wrong password
         </div>
         <h2>Email</h2>
-        <input type="text" class="in_text" v-model="email" />
+        <input type="text" class="in_text" id="myEmail" v-model="email" />
         <h2>Confirm password</h2>
-        <input type="password" class="in_text" v-model="password" />
+        <input type="password" class="in_text" id="myPassword" v-model="password" />
         <h2>Gender</h2>
         <select v-model="gender" class="select_gender">
           <option
@@ -60,7 +60,7 @@
               </router-link>
             </div>
             <div class="col-sm-30%">
-              <button class="save" @click="saveEdit()">SAVE PROFILE</button>
+              <button class="save" @click="checkEdit()">SAVE PROFILE</button>
             </div>
           <!-- </div> -->
       </div>
@@ -245,12 +245,12 @@ export default {
   data: function () {
     return {
       saved: false,
-      can_submit: false,
+      can_submit1: false,
+      can_submit2: false,
+      can_submit3: false,
       birthday: "",
       email: "",
       password: "",
-      newpassword: "",
-      repeatpassword: "",
       gender: "f",
       genders: [
         { text: "Female", value: "f" },
@@ -377,31 +377,33 @@ export default {
     };
   },
   methods: {
-    saveEdit() {
+    checkEdit() {
       this.req_email();
       this.invalid_email();
       this.req_password();
-      if (this.can_submit) {
-        var birthDate = new Date(this.year + "-" + this.month + "-" + this.day);
-        this.birthday = birthDate;
-        let edituser = {
-          email: this.email,
-          password: this.password,
-          country: this.country,
-          gender: this.gender,
-          birthday: this.birthday,
-        };
-        this.saved = true;
-        this.$store.dispatch("Authorization/saveEdit", edituser);
-      } else {
-        this.saved = false;
-      }
+      setTimeout(() => {
+        if (this.can_submit1 && this.can_submit2 && this.can_submit3) {
+          var birthDate = new Date(this.year + "-" + this.month + "-" + this.day);
+          this.birthday = birthDate;
+          let edituser = {
+            email: this.email,
+            password: this.password,
+            country: this.country,
+            gender: this.gender,
+            birthday: this.birthday,
+          };
+          this.saved = true;
+          this.$store.dispatch("Authorization/saveEdit", edituser);
+        } else {
+          this.saved = false;
+        }
+      },200);
     },
     req_email: function () {
       if (this.email == "") {
-        this.can_submit = false;
+        this.can_submit1 = false;
       } else {
-        this.can_submit = true;
+        this.can_submit1 = true;
       }
       return;
     },
@@ -414,17 +416,17 @@ export default {
           this.email.indexOf(".com") + 4 != this.email.length)
       )
       {
-        this.can_submit = false;
+        this.can_submit2 = false;
       } else {
-        this.can_submit = true;
+        this.can_submit2 = true;
       }
       return;
     },
     req_password: function () {
       if (this.password == "") {
-        this.can_submit = false;
+        this.can_submit3 = false;
       } else {
-        this.can_submit = true;
+        this.can_submit3 = true;
       }
       return;
     },
@@ -432,7 +434,6 @@ export default {
   computed: {
     ...mapGetters({
       isEdited: "Authorization/isEdited",
-      user: "Authorization/user",
     }),
   },
 };
