@@ -3,7 +3,7 @@
     <div class="row navbar-inner  justify-content-center">
       <div class=" navbar navbar-expand-sm  justify-content-center ">
         <span>
-          <ul>
+          <ul class="my_pages">
             <router-link to="/ArtistPersonalPage" tag="li">
               <a>home</a>
             </router-link>
@@ -47,8 +47,7 @@
           </a>
           <input v-if="showinput"
            id="in_rename"
-            v-model="newname" 
-           
+            v-model="newname"   
             @keyup.enter="ChangeArtistName(),showinputfield()"
           />
         </div>
@@ -121,11 +120,11 @@
   text-decoration: none;
   color: white;
   outline: none;
-  position: absolute;
+  position: absolute; 
   padding-bottom: 5px;
   padding-top: 2px;
-  position:absolute;
-  top:15%;
+  top:22%;
+  right:10%;
 }
 .dropdown-menu {
   background: #313030;
@@ -152,6 +151,11 @@
   height: 30px;
   z-index:50px;
 }
+}
+.my_pages{
+  // position:absolute;
+   position: relative;
+  right:50%;
 }
 </style>
 <script>
@@ -180,21 +184,21 @@ export default {
   showinputfield() {
         this.$store.dispatch("ArtistProperties/showinputfield");
       //this.showinput = !this.showinput;
-      this.$nextTick(function() {
-        var i = document.getElementById("in_rename");
-        console.log("the element", this.posy);
-        if (i) {
-          i.style.top = this.posy;
+      // this.$nextTick(function() {
+      //   var i = document.getElementById("in_rename");
+      //   console.log("the element", this.posy);
+      //   if (i) {
+      //     i.style.top = this.posy;
 
-          // this.showinput = true;
-        }
+      //     // this.showinput = true;
+      //   }
        
-      });
+      // });
     },
-    getpos() {
-      this.posy = event.screenY - 110 + "px";
-      console.log(" posy", this.posy);
-    },
+    // getpos() {
+    //   this.posy = event.screenY - 110 + "px";
+    //   console.log(" posy", this.posy);
+    // },
     ChangeArtistName(){
       let payload = {
         // Name: this.Name,

@@ -1,19 +1,19 @@
 <template>
   <span>
-    <div>
+    <div class="to_contain">
       <!-- <div>
-      <ul>
-        <li v-for="(playlist, id) in Playlists" :key="playlist.id">
-          {{ playlist.playlistname }}
-          <span
-            class="Deleteplaylist"
-            testid="delete_playlist"
-            @click="DeletePlaylist(id)"
-            >x</span
-          >
-        </li>
-      </ul>
-    </div> -->
+        <ul>
+          <li v-for="(playlist, id) in Playlists" :key="playlist.id">
+            {{ playlist.playlistname }}
+            <span
+              class="Deleteplaylist"
+              testid="delete_playlist"
+              @click="DeletePlaylist(id)"
+              >x</span
+            >
+          </li>
+        </ul>
+      </div> -->
       <transition name="fade" appear>
         <div
           class="modal-overlay"
@@ -40,7 +40,7 @@
             </svg>
           </button>
 
-          <h1 class="title">Are you sure,you want to delete this song!!</h1>
+          <h1 class="title">Are you sure,you want to delete this Playlist!!</h1>
 
           <button
             class="cancel_button"
@@ -141,15 +141,15 @@ div {
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
+  width: 12%;
+  height: 7%;
+  /* padding: 8px 34px; */
   background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
 
   color: #fff;
-  font-size: 18px;
+  font-size: 90%;
   font-weight: 700;
   outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
@@ -165,15 +165,15 @@ div {
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
+  width: 12%;
+  height: 7%;
+  /* padding: 8px 34px; */
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
 
   color: #fff;
-  font-size: 18px;
+  font-size: 90%;
   font-weight: 700;
   outline: none;
   transition: 0.4s ease-out;
@@ -223,10 +223,15 @@ div {
   visibility: visible;
   opacity: 1;
 }
+.to_contain {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 /**
  * Delete Playlist Pop Up to confirm delete action
@@ -241,19 +246,19 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
+    mytoast.classList.remove("toast--visible");
     }, 2000);
-  }
+  },
 };
 export default {
   computed: {
-    ...mapState({
-      Playlists: state => state.Playlist.Playlists
-    }),
+    // ...mapState({
+    //   Playlists: (state) => state.Playlist.Playlists,
+    // }),
     ...mapGetters({
       showModalDelete: "Playlist/showModalDelete",
-      todelete: "Playlist/todelete"
-    })
+      todelete: "Playlist/todelete",
+    }),
   },
   methods: {
     /**
@@ -274,14 +279,14 @@ export default {
       this.$store.dispatch("Playlist/DeletePlaylist", this.todelete);
       toast.show("Removed from your library");
       //console.log("removed");
-    }
+    },
   },
   mixins: [song_functions],
-  created: function() {
-    window.addEventListener("click", this.hideshow);
-  },
-  destroyed: function() {
-    window.removeEventListener("click", this.hideshow);
-  }
+  // created: function() {
+  //   window.addEventListener("click", this.hideshow);
+  // },
+  // destroyed: function() {
+  //   window.removeEventListener("click", this.hideshow);
+  // },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="to_contain">
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -70,113 +70,80 @@ body {
   overflow-y: hidden;
 }
 
-div {
-  /* relative */
+/* div {
+
   position: relative;
   display: block;
   width: 500%;
   height: 100vh;
   overflow: hidden;
-}
+} */
 
 .creat_button {
   /* fixed */
   /* absolute */
   position: absolute;
   top: 70%;
-  left: 48%;
+  left: 50%;
   appearance: none;
   outline: none;
   border: none;
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 6%;
-  width: 25%;
-  padding: 8px 34px;
+  height: 7%;
+  width: 12%;
+  /* padding: 8px 34px; */
   background-color: #1ed760;
   border-radius: 500px;
   border-color: transparent;
   color: #fff;
-  font-size: 12px;
+  font-size: 90%;
   font-weight: 700;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  line-height: 18px;
-  letter-spacing: 1.76px;
-  text-transform: uppercase;
-  border: 2px solid transparent;
-  will-change: transform;
-  white-space: nowrap;
-  display: inline-block;
-  text-align: center;
-  max-width: 130px;
-  max-height: 50px;
-  z-index: 4;
-  margin-left: 1%;
+  
 }
 .cancel_button {
-  /* fixed */
-  /* absolute */
   position: absolute;
   top: 70%;
-  left: 35%;
-  right: 50%;
+  left: 33%;
   appearance: none;
   outline: none;
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 6%;
-  width: 25%;
-  padding: 8px 34px;
+  height: 7%;
+  width: 12%;
+  /* padding: 8px 34px; */
   background-color: transparent;
-  border-radius: 500px;
+  border-radius: 26px;
   border-color: #fff;
   color: #fff;
-  font-size: 12px;
+  font-size: 90%;
   font-weight: 700;
   transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
-  overflow-y: hidden;
-  overflow-x: hidden;
-  z-index: 5;
-  line-height: 18px;
-  letter-spacing: 1.76px;
-  text-transform: uppercase;
-  border: 2px solid;
-  will-change: transform;
-  white-space: nowrap;
-  display: inline-block;
-  text-align: center;
-  max-width: 130px;
-  max-height: 50px;
-  margin-right: 1%;
-  /* margin-block-end: 200px; */
 }
 
 .modal-overlay {
-  /* fixed */
+
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: none;
-
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
   width: 100%;
-  height: 200%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0);
   overflow: hidden;
 }
 
 .modal {
-  /* fixed */
   position: fixed;
   z-index: 2;
   top: 0;
@@ -237,7 +204,7 @@ ul {
 .cancel {
   position: absolute;
   left: 50%;
-  top: 20%;
+  top: 15%;
   display: inline-block;
   background-color: transparent;
   color: #fff;
@@ -247,7 +214,7 @@ ul {
 }
 .title {
   position: absolute;
-  top: 25%;
+  top: 20%;
   display: block;
   font-size: 48px;
   line-height: 56px;
@@ -273,6 +240,7 @@ ul {
 .child {
   position: fixed;
   height: 30%;
+  width:100%;
   top: 40%;
   bottom: 50%;
   background-color: #424242;
@@ -291,12 +259,17 @@ ul {
   max-height: 50px;
   z-index: 4;
 }
+.to_contain {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 </style>
 
 <script>
 // @ is an alias to /src
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 /**
  * Create Playlist Pop Up to input the new playlist name
  * @displayName Create Playlist Pop Up
@@ -306,21 +279,21 @@ export default {
   name: "CreatePlaylist",
   data: function() {
     return {
-      playlistname: ""
+      playlistname: "",
       // withtrack:false
     };
   },
   //showModal:false,
   components: {},
   computed: {
-    ...mapState({
-      Playlists: state => state.Playlist.Playlists
-    }),
+    // ...mapState({
+    //   Playlists: (state) => state.Playlist.Playlists,
+    // }),
     ...mapGetters({
       showModal: "Playlist/showModal",
       username: "Authorization/Username",
-      withtrack: "Playlist/withtrack"
-    })
+      withtrack: "Playlist/withtrack",
+    }),
   },
   methods: {
     /**
@@ -341,17 +314,17 @@ export default {
         payload = {
           name: this.playlistname,
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username
+          owner: this.username,
         };
       } else {
         payload = {
           name: "New Playlist",
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username
+          owner: this.username,
         };
       }
       this.$store.dispatch("Playlist/CreatePlaylist", payload);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="to_contain">
     <CreatePlaylist v-if="show" />
     <transition name="fade" appear>
       <div
@@ -52,9 +52,11 @@
   margin: 10;
   padding: 10;
   box-sizing: border-box;
+  overflow: hidden;
 }
 body {
   font-family: "montserrat", sans-serif;
+  overflow-y: hidden;
 }
 
 // div {    //DONKEY!!!!!!!!!!!!!!
@@ -63,9 +65,18 @@ body {
 //   width: 500%;
 //   height: 100vh;
 // }
+.to_contain {
+  position: relative;
+  // display: block;
+   width: 100vw;
+  height: 100vh;
+  // height: 100%;
+  // height:auto;
+  // overflow-y: hidden;
+}
 .cratenewplaylist {
-  position: fixed;
-  top: 20%;
+  position: absolute;
+  top: 25%;
   left: 40%;
   appearance: none;
   outline: none;
@@ -73,21 +84,21 @@ body {
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 250px;
-  padding: 8px 34px;
+  height: 7%;
+  width: 17%;
+  // padding: 8px 34px;
   background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
   color: #fff;
-  font-size: 18px;
+  font-size: 90%;
   font-weight: 700;
   outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
 }
 .modal-overlay {
-  position: fixed;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,46 +107,55 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 98;
+   z-index: 999999;
   width: 100%;
-  height: 200%;
-  background-color: rgba(0, 0, 0, 0);
+  height: 100%;
+  background-color: black;
+  overflow: hidden;
 }
+
 .modal {
   position: fixed;
-  z-index: 9998;
+  z-index: 999999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: black;
   display: table;
   transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
+  overflow: hidden;
 }
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+  overflow: hidden;
 }
 .slide-enter-active,
 .slide-leave-active {
   transition: transform 0.5s;
+  overflow: hidden;
 }
 .slide-enter,
 .slide-leave-to {
   transform: translateY(-50%) translateX(100vw);
+  overflow: hidden;
 }
 .cancel {
   position: absolute;
   left: 48%;
-  top: 3%;
+  top: 20%;
   display: inline-block;
   background-color: transparent;
   color: #fff;
   border: none;
+  overflow: hidden;
+  z-index: 4;
 }
 .title {
   position: absolute;
@@ -149,6 +169,8 @@ body {
   text-align: center;
   margin: 16px 0;
   width: 100%;
+  overflow: hidden;
+  z-index: 6;
 }
 h2 {
   position: fixed;
@@ -159,23 +181,31 @@ h2 {
   margin-left: 30px;
   margin-top: 38px;
   top: 30%;
+  z-index: 6;
   //z-index:9998;
 }
 .container {
   margin-left: 15px;
+  // overflow: scroll;
+  // height: auto;
   //position: fixed;
   //top: 40%;
   //z-index:9998;
 }
-// .row{
-//     z-index:9998;
-// }
+.row {
+  // overflow: scroll;
+  z-index: 9998;
+  // height: auto;
+}
 .playlistscards {
   position: fixed;
-  top: 40%;
+  top: 35%;
+  // height: auto !important;
+  // overflow: scroll;
+  z-index: 6;
 }
 .userplaylists {
-  z-index: 99999;
+  z-index: 8;
 }
 </style>
 <script>
@@ -195,14 +225,14 @@ export default {
   name: "AddTrackPopup",
   computed: {
     ...mapState({
-      show: state => state.Playlist.showModal
+      show: (state) => state.Playlist.showModal,
     }),
     ...mapGetters({
       showModalAdd: "Playlist/showModalAdd",
       playlists: "Playlist/playlists",
       trackid: "Playlist/trackid",
-      playlistoftrack: "Playlist/playlistoftrack"
-    })
+      playlistoftrack: "Playlist/playlistoftrack",
+    }),
   },
   methods: {
     changeModalStateAdd() {
@@ -227,19 +257,19 @@ export default {
       this.withtrack = true;
       console.log("in add track pop up the bool", this.withtrack);
       this.$store.dispatch("Playlist/toggleModal", this.withtrack);
-    }
+    },
   },
   components: {
     CreatePlaylist,
-    PlaylistsToTracks
+    PlaylistsToTracks,
   },
   mounted() {
     this.$store.dispatch("Playlist/showplaylists");
   },
   data: function() {
     return {
-      withtrack: true
+      withtrack: true,
     };
-  }
+  },
 };
 </script>
