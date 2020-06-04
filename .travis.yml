@@ -15,7 +15,7 @@ deploy:
   region: us-east-1
   app: FrontEnd
   env: Frontend-env-1
-  bucket_name: marioplexfront
+  bucket_name: mariofront
   bucket_path: front
   on:
     branch: master
