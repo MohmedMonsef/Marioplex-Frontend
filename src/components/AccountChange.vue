@@ -9,12 +9,12 @@
       <div class="white_div">
         <div class="saved" v-if="isEdited == 'success' && this.saved == '1'">Password updated</div>
         <h2>Current password</h2>
-        <input type="password" class="in_text" v-model="password" />
+        <input type="password" class="in_text" id="current" v-model="password" />
         <p class="wrong" v-if="isEdited == 'faild' || this.saved == '2'">Sorry, wrong password</p>
         <h2>New password</h2>
-        <input type="password" class="in_text" v-model="newpassword" />
+        <input type="password" class="in_text" id="new" v-model="newpassword" />
         <h2>Repeat new password</h2>
-        <input type="password" class="in_text" v-model="repeatedPassword" />
+        <input type="password" class="in_text" id="repeat" v-model="repeatedPassword" />
         <div class="end_border"></div>
         <router-link to="/UserAccount/Account-overview">
           <button class="cancel">CANCEL</button>

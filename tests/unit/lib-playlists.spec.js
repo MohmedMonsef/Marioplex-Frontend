@@ -1,10 +1,11 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
 import LibPlaylists from "@/components/LibPlaylists.vue";
+import {shorten} from "@/components/LibPlaylists.vue";
 import Vuex from "vuex";
 describe("LibPlaylists.vue", () => {
   const localVue = createLocalVue();
-  // localVue.filter('shorten', shorten);
+  localVue.filter('shorten', shorten);
   localVue.use(VueRouter);
   localVue.use(Vuex);
   let store;
@@ -51,8 +52,16 @@ describe("LibPlaylists.vue", () => {
   });
   it("test playlist namekk & owner", () => {
     store.state.Playlist.likedplaylist = false;
-    const name = wrapper.find("#cardtitle");
-    const ownerName = wrapper.find("#carddescribtion");
+    let wrapper2 = shallowMount(LibPlaylists, {
+      localVue,
+      store,
+      propsData: {
+        name: "playlist name",
+        ownerName: "dai",
+      },
+    });
+    const name = wrapper2.find("#cardtitle");
+    const ownerName = wrapper2.find("#carddescribtion");
     expect(name.text()).toBe("playlist name");
     expect(ownerName.text()).toBe("By user name");
   });

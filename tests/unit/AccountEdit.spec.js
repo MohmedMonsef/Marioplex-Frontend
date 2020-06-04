@@ -28,18 +28,16 @@ describe("AccountEdit", () => {
     });
     wrapper = shallowMount(AccountEdit, {
       localVue,
-      store,
-      data() {
-        return {
-        saved: false,
+      store
+    });
+    wrapper.setData({
+      saved: false,
         can_submit1: false,
         can_submit2: false,
         can_submit3: false,
         email: "",
         password: ""
-        }
-      }
-    });
+    })
   });
   it("call validation functions", () => {
     const editButton = wrapper.find(".save");
@@ -100,32 +98,35 @@ describe("AccountEdit", () => {
     expect(wrapper.vm.can_submit3).toBe(false);
   });
 
-  it("toggel saved to true", () => {
-    wrapper = shallowMount(AccountEdit, {
+  // it("toggel saved to true", () => {
+  //   let wrapper2 = shallowMount(AccountEdit, {
+  //     localVue,
+  //     store,
+  //   });
+  //   wrapper2.setData({
+  //     can_submit1: true,
+  //     can_submit2: true,
+  //     can_submit3: true,
+  //   });
+  //   expect(wrapper.vm.saved).toBe(true);
+  // });
+  it("has saved profile div", () => {
+    store.state.Authorization.isEdited = 'success';
+    let wrapper2 = shallowMount(AccountEdit, {
       localVue,
       store,
-      data() {
-        return {
-        can_submit1: true,
-        can_submit2: true,
-        can_submit3: true,
-        }
-      }
     });
-    expect(wrapper.vm.saved).toBe(true);
+    expect(wrapper2.exists(".saved")).toBe(true);
+  });
+  it("has wrong password div", () => {
+    store.state.Authorization.isEdited = 'faild';
+    let wrapper3 = shallowMount(AccountEdit, {
+      localVue,
+      store,
+    });
+    expect(wrapper3.exists(".wrong")).toBe(true);
   });
   it("toggel saved to false", () => {
-    wrapper = shallowMount(AccountEdit, {
-      localVue,
-      store,
-      data() {
-        return {
-        can_submit1: false,
-        can_submit2: false,
-        can_submit3: false,
-        }
-      }
-    });
     expect(wrapper.vm.saved).toBe(false);
   });
   it("renders", () => {
