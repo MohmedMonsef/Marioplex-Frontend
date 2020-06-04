@@ -14,7 +14,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-1
   app: FrontEnd
-  env: Frontend-env
+  env: Frontend-env-1
   bucket_name: marioplexfront
   bucket_path: front
   on:
