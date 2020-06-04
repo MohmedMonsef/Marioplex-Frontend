@@ -8,7 +8,7 @@ export default {
     album_name: "",
     artist_name: "",
     album_image: "",
-    artist_id:"",
+    artist_id: "",
     likedalbum: Boolean,
   },
   mutations: {
@@ -33,9 +33,9 @@ export default {
     set_likedalbum(state, like) {
       state.likedalbum = like;
     },
-    set_artist_id(state,id){
-      state.artist_id=id;
-    }
+    set_artist_id(state, id) {
+      state.artist_id = id;
+    },
   },
   actions: {
     album_tracks({ commit }, album_id) {
@@ -44,20 +44,16 @@ export default {
         .get("/api/albums/" + album_id)
         .then((response) => {
           let album = response.data;
-          console.log("nihal id", album_id);
           commit("set_album", album.track);
           commit("set_album_loaded", true);
           commit("set_album_length", response.data.track.length);
           commit("set_album_name", album.name);
           commit("set_artist_name", album.artistName);
           commit("set_artist_id", album.artistId);
-          if(typeof album.images[0] =="undefined")
-              commit("set_album_image","5eb52f1863eea332d416b9fa" );
-          else
-              commit("set_album_image", album.images[0]._id);
+          if (typeof album.images[0] == "undefined")
+            commit("set_album_image", "5eb52f1863eea332d416b9fa");
+          else commit("set_album_image", album.images[0]._id);
           commit("set_likedalbum", album.isSaved);
-          console.log("data album object", album);
-          console.log("my album", album.isSaved);
         })
         .catch((error) => {
           console.log(error);
@@ -99,6 +95,6 @@ export default {
     artist_name: (state) => state.artist_name,
     album_image: (state) => state.album_image,
     likealbum: (state) => state.likedalbum,
-    artist_id:(state)=>state.artist_id
+    artist_id: (state) => state.artist_id,
   },
 };

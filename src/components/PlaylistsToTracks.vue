@@ -91,7 +91,7 @@ const toast = {
   },
 };
 export default {
-  data: function () {
+  data: function() {
     return {
       hover: false,
     };

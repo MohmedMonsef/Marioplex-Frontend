@@ -11,10 +11,11 @@
           <lib-artists
             v-for="artist in artists1"
             :key="artist.id"
-            :images="$url+
-              '/api/images/' +
-              artist.images[0]._id +
-              '?belongs_to=artist'
+            :images="
+              $url +
+                '/api/images/' +
+                artist.images[0]._id +
+                '?belongs_to=artist'
             "
             :name="artist.Name"
             :artistId="artist._id"

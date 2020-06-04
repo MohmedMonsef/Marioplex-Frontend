@@ -17,7 +17,7 @@ import artistcoverphoto from "@/components/ArtistPageCoverPhoto.vue";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       artistid: "",
     };
@@ -26,7 +26,7 @@ export default {
   components: {
     artistcoverphoto,
   },
-  created: function () {
+  created: function() {
     this.artistid = this.$route.params.artist_id;
     this.$store.dispatch(
       "ArtistPage/artist_page",

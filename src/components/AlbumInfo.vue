@@ -6,13 +6,8 @@
       @mouseover="onhoverimage()"
       @mouseleave="onleaveimage()"
     >
-
       <img
-       :src="
-          $url +'/api/images/' +
-          album_image +
-            '?belongs_to=album'
-        "
+        :src="$url + '/api/images/' + album_image + '?belongs_to=album'"
         alt="album_image"
         class="album_image"
         id="album_image"
@@ -91,13 +86,6 @@
           ></i>
         </span>
       </button>
-      <!-- <span data-toggle="tooltip" title="More">
-            <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
-            </span>
-            <div id="mydropdown" class="db" v-show="show">
-        <p v-if="!isLiked">Add to Liked Songs</p>
-        <p v-if="isLiked">Remove from Liked Songs</p>
-      </div>-->
       <p testid="albumlength" id="albumlength">{{ album_length }} SONGS</p>
       <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
     </div>
@@ -239,6 +227,29 @@ p {
   visibility: visible;
   opacity: 1;
 }
+@media screen and (max-width: 1000px) {
+  .album_image {
+    height: 250px;
+    width: 250px;
+  }
+  .playbutton {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .pausebutton {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .albumname {
+    margin-top: 15px;
+  }
+  .image {
+    #imageplayicon,
+    #imagepauseicon {
+      top: 90px;
+    }
+  }
+}
 </style>
 
 <script>
@@ -265,18 +276,12 @@ const toast = {
 export default {
   data: function() {
     return {
-      show: false,
       play: false
     };
   },
   mixins: [song_functions],
   name: "album_info",
   methods: {
-    toggleShow() {
-      var x = this.show;
-      window.Element.show = false;
-      this.show = !x;
-    },
     /**
      * checks if song in currently playing
      * @public This is a public method
@@ -318,9 +323,16 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "1";
+        return {
+          img: albumimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          btn: pausebutton.style.opacity
+        };
       }
     },
     /**
@@ -334,10 +346,18 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "0";
+        return {
+          img: albumimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         albumimage.style.opacity = "0.3";
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          img: albumimage.style.opacity,
+          btn: pausebutton.style.opacity
+        };
       }
     },
     /**
@@ -350,7 +370,6 @@ export default {
         this.$store.dispatch("Album/like_album", this.$route.params.album_id);
       } else {
         toast.show("Removed from Your Library");
-        console.log("ggg", this.$route.params.album_id);
         this.$store.dispatch("Album/unlike_album", this.$route.params.album_id);
       }
     }

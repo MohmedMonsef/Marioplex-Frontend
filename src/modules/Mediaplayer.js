@@ -9,7 +9,6 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-    console.log("message", message);
   },
 };
 import axios from "axios";
@@ -27,7 +26,20 @@ import {
 export default {
   namespaced: true,
   state: {
-    currentsong:"",
+    currentsong:{
+      track:
+      {_id:"5eb0a55eec0c444e9c48982f",
+       images:[
+         {"_id":"5eb0b3f2de66c65e34c18b7a"}],
+         "duration":60,
+         "name":"track21",
+         "artistId":"5eb0a4559b15d854c08f7365",
+         "albumId":"5eb0a55cec0c444e9c48982d","type":"Track","like":1},
+         "isLiked":false,
+         "album":{"name":"Criss cross","_id":"5eb0a55cec0c444e9c48982d","artist":{"name":"artist4",
+         "_id":"5eb0a4559b15d854c08f7365"}},
+        "isPlaylist":true,"playlistId":"5eb5248b680ef51b4c4492a1","isPlayable":true},
+  
     //component info
     currentSongIndex: 0,
     //flag weather the song is playing or not
@@ -115,7 +127,7 @@ export default {
       let trackroute;
       if(user.product != "premium"){
       trackroute =
-        "http://52.87.106.56/api/tracks/web-player/" +
+      "http://52.87.106.56/api/tracks/web-player/" +
         id +
         "/?type=medium&token=" +
         token;
@@ -231,13 +243,11 @@ export default {
       }
     },
     prevsong_state({ state, commit, dispatch }) {
-      console.log("in prev action", state.progress);
       if (state.progress <= 5) {
         axios
           .post("/api/me/player/prev-playing")
           .then(response => {
             var prevsong = response.data;
-            console.log("in get currentsong", prevsong);
             commit("set_currentsong", prevsong);
             var i =state.currentSongIndex == 0 ? 0 : state.currentSongIndex - 1;
             state.currentSongIndex = i;
@@ -269,7 +279,6 @@ export default {
       }
     },
     repeatsong_state({ dispatch }, flag) {
-      console.log("kkk", flag);
       if (flag == 1) currentaudio_repeat(true);
       else if (flag == 0) {
         currentaudio_repeat(false);
@@ -345,7 +354,6 @@ export default {
           state.trackduration = get_currentaudio().duration;
           state.progress = get_currentaudio().currentTime;
           if (state.progress == state.trackduration) {
-            console.log("p", state.progress, "d", state.trackduration);
             dispatch("nextsong_state");
           }
         }

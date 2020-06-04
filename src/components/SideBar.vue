@@ -1,7 +1,7 @@
 <template>
   <div class="SideBar" testid="sidebar component">
     <!-- spotify logo -->
-    <router-link to="/HomeWebPlayer" testid="logo in sidebar">
+    <router-link to="/HomeWebPlayer" class="smallbar" testid="logo in sidebar">
       <img
         src="../assets/spotify logo.png"
         alt="Logo"
@@ -18,7 +18,8 @@
             class="homepage"
             id="homepage1"
           >
-            <i class="fa fa-home"></i>Home
+            <i class="fa fa-home"></i>
+            <span class="smallbar"> Home </span>
           </router-link>
         </div>
       </li>
@@ -33,7 +34,8 @@
             testid="searchpage link"
             class="searchpage"
           >
-            <i class="fa fa-search"></i>Search
+            <i class="fa fa-search"></i>
+            <span class="smallbar"> Search</span>
           </router-link>
           <!-- router link should navigate to search page -->
         </div>
@@ -45,14 +47,15 @@
             testid="librarypage link"
             class="librarypage"
           >
-            <i class="fa fa-bars"></i> Your Library
+            <i class="fa fa-bars"></i>
+            <span class="smallbar"> Your Library</span>
           </router-link>
           <!-- router link should navigate to library page -->
         </div>
       </li>
     </ul>
     <div class="loggedin" v-if="isLoggedIn == 'success'">
-      <label testid="PLAYLISTS lable">PLAYLISTS</label>
+      <label testid="PLAYLISTS lable" class="smallbar">PLAYLISTS</label>
       <!-- creat play lists or show liked songs -->
       <ul>
         <li>
@@ -62,7 +65,8 @@
             testid="create button"
             class="createbutton"
           >
-            <i class="fa fa-plus-square" id="CreatePlaylist"></i>Creat Playlist
+            <i class="fa fa-plus-square" id="CreatePlaylist"></i>
+            <span class="smallbar">Create Playlist</span>
           </button>
           <!-- router link should navigate to pop up -->
           <!-- </CreatePlaylist> -->
@@ -73,50 +77,58 @@
             testid="likedsongs link"
             class="likedsongs"
           >
-            <img
-              src="../assets/like.png"
-              style="width: 30px; height: 30px; margin-right: 15px;"
-            />Liked Songs
+            <img src="../assets/like.png" class="likedimg" />
+            <span class="smallbar">Liked Songs</span>
           </router-link>
           <!-- router link should navigate to liked songs page -->
         </li>
       </ul>
       <!-- lower border -->
-      <div testid="border in sidebar" class="border"></div>
+      <div testid="border in sidebar" class="border smallbar"></div>
       <!-- user's play lists -->
       <!-- <div id="demo" @contextmenu="openMenu('click')">  -->
-      <ul>
+      <ul class="smallbar">
         <li
           v-for="(playlist, i) in playlists1"
           :key="i"
           @click.right="
-              (playlistid = playlist),
-              toggleSideMenu(),
+            (playlistid = playlist),
+              toggleSideMenu(playlist.type, playlist.isPublic),
               getpos(),
               (p_id = playlist.id)
           "
         >
           <router-link
-        :to="{ path: '/HomeWebPlayer/playlist/' + playlist.id}"
-         testid="userplaylists"
-          class="userplaylists">
-          {{playlist.name}}
+            :to="{ path: '/HomeWebPlayer/playlist/' + playlist.id }"
+            testid="userplaylists"
+            class="userplaylists"
+          >
+            {{ playlist.name }}
           </router-link>
           <!-- router link should navigate to play list page-->
         </li>
       </ul>
 
-        <!-- try -->
+      <!-- try -->
 
       <div id="mydropdown" class="db" v-if="showSideMenu">
-        <p class="rename_input" @click="showinputfield()">
+        <p
+          v-if="type == 'created'"
+          class="rename_input"
+          id="renameInput"
+          @click="showinputfield(true)"
+        >
           Rename
         </p>
         <p class="delete_div" @click="changeModalStateDelete()">
           Delete
         </p>
-        <p  @click="PubPriChange()">Secret</p>
-        <p  @click="PubPriChange()">Public</p>
+        <p v-if="isPublic && type == 'created'" @click="PubPriChange()">
+          Secret
+        </p>
+        <p v-if="!isPublic && type == 'created'" @click="PubPriChange()">
+          Public
+        </p>
       </div>
 
       <!-- try -->
@@ -124,14 +136,8 @@
         v-if="showinput"
         id="in_rename"
         v-model="newname"
-        @keyup.enter="ChangePlaylistName(), showinputfield()"
+        @keyup.enter="ChangePlaylistName(), showinputfield(false)"
       />
-      <!-- <ul v-if="showdelete" id="right-click-menu">
-        <li class="rename_input" @click="showinputfield()">Rename</li>
-        <li class="delete_div" @click="changeModalStateDelete()">Delete</li>
-        <li class="rename_input" @click="PubPriChange()">Secret</li>
-        <li class="rename_input" @click="PubPriChange()">Public</li>
-      </ul> -->
     </div>
   </div>
 </template>
@@ -144,12 +150,14 @@
   text-decoration: none;
 }
 .SideBar {
-  position: fixed;
+  position: absolute;
   width: 235px;
-  height: 100%;
+  height: calc(100vh - 90px);
   background-color: black;
   top: 0%;
   z-index: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 label {
   font-size: 11px;
@@ -270,16 +278,13 @@ label {
 #in_rename {
   position: fixed;
   top: 0px;
-  left: 0px;
+  left: 10px;
   background-color: white;
   color: black;
   height: 20px;
 }
-// #mydropdown {
-//   position: fixed;
-// }
 .db {
- position: absolute;
+  position: absolute;
   background-color: #282828;
   width: 203px;
   padding: 5px 0;
@@ -303,6 +308,35 @@ label {
 .song:hover {
   background-color: #313030;
 }
+.likedimg {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+@media screen and (max-width: 1000px) {
+  .smallbar {
+    display: none;
+  }
+  .SideBar {
+    width: 60px;
+    padding-top: 20px;
+  }
+  .divOnFocus {
+    width: 45px;
+    text-align: center;
+    a {
+      padding-left: 12px;
+    }
+  }
+  .createbutton {
+    width: 60px;
+    margin-left: 8px;
+  }
+  .likedimg {
+    margin-left: -10px;
+    width: 30px;
+  }
+}
 </style>
 
 <script>
@@ -313,17 +347,18 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       show: false,
       showdelete: false,
       playlistid: 0,
-      //showinput: false,
       posy: "",
       newname: "",
       p_id: "",
       public: true,
-      showSideMenu:false
+      showSideMenu: false,
+      type: "",
+      isPublic: false,
     };
   },
   mounted() {
@@ -336,7 +371,7 @@ export default {
       showModalDelete: "Playlist/showModalDelete",
       isLoggedIn: "Authorization/GetStatus",
       showinput: "Playlist/showinput",
-      sideMenu:"UserLibrary/sideMenu"
+      sideMenu: "UserLibrary/sideMenu",
       // renamepl:"creatplaylist/renamepl"
     }),
   },
@@ -372,10 +407,10 @@ export default {
       this.searchfocus = true;
       this.$store.dispatch("Search/searchfocus", this.searchfocus);
     },
-    showinputfield() {
-      this.$store.dispatch("Playlist/showinputfield");
+    showinputfield(flag) {
+      this.$store.dispatch("Playlist/showinputfield", flag);
       //this.showinput = !this.showinput;
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         var i = document.getElementById("in_rename");
         console.log("the element", this.posy);
         if (i) {
@@ -386,8 +421,7 @@ export default {
       });
     },
     getpos() {
-      this.posy = event.screenY - 110 + "px";
-      console.log(" posy", this.posy);
+      this.posy = event.screenY - 87 + "px";
     },
     ChangePlaylistName() {
       // this.showinput = false;
@@ -395,10 +429,8 @@ export default {
         name: this.newname,
         playlist_id: this.p_id,
       };
-      console.log("inputstaplaylistids", this.showinput);
-      console.log("playlistname", this.newname);
-      console.log("id", this.p_id);
       this.$store.dispatch("Playlist/ChangePlaylistName", payload);
+      this.newname = "";
     },
     PubPriChange() {
       if (this.public) {
@@ -412,21 +444,19 @@ export default {
       };
       this.$store.dispatch("Playlist/PubPriChange", payload);
     },
-    toggleSideMenu() {
-      console.log("7mada");
+    toggleSideMenu(type, isPublic) {
+      this.type = type;
+      this.isPublic = isPublic;
       var x = this.showSideMenu;
       this.$store.dispatch("UserLibrary/sideMenu", true);
       window.Element.showSideMenu = false;
       this.showSideMenu = !x;
       if (!x) {
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           var div = document.getElementById("mydropdown");
           var left;
-          console.log("my xxxx",event.screenX)
-          if(event.screenX > 68)
-              left = event.screenX -70 + "px";
-          else
-              left = event.screenX - 30+ "px";
+          if (event.screenX > 68) left = event.screenX - 70 + "px";
+          else left = event.screenX - 30 + "px";
           var top = event.screenY - 70 + "px";
           if (div) {
             div.style.left = left;
@@ -436,18 +466,19 @@ export default {
       }
     },
     hideMenu(event) {
-    // var targetId = event.target.id;
-    console.log("whaaaaaaaaaaaaaattt");
-     this.showSideMenu = false;
-     if (!this.$el.contains(event.target)) {
+      var targetId = event.target.id;
+      this.showSideMenu = false;
+      if (targetId != "renameInput" && targetId != "in_rename")
+        this.$store.dispatch("Playlist/showinputfield", false);
+      if (!this.$el.contains(event.target)) {
         this.showSideMenu = false;
       }
     },
   },
-  created: function () {
+  created: function() {
     document.addEventListener("click", this.hideMenu);
-   },
-   destroyed: function () {
+  },
+  destroyed: function() {
     document.removeEventListener("click", this.hideMenu);
   },
 };

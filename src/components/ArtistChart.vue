@@ -1,6 +1,11 @@
 <script>
 import { mapGetters } from "vuex";
 import { Bar } from "vue-chartjs";
+/**
+ * Displays Artist number of Followers Chart
+ * @displayName Artist Followers Chart
+ * @example [none]
+ */
 export default {
   extends: Bar,
   data() {
@@ -14,9 +19,9 @@ export default {
             backgroundColor: "#172847",
             pointBackgroundColor: "white",
             borderWidth: 1,
-            pointBorderColor: "#249EBF"
-          }
-        ]
+            pointBorderColor: "#249EBF",
+          },
+        ],
       },
       //Chart.js options that controls the appearance of the chart
       options: {
@@ -24,27 +29,27 @@ export default {
           yAxes: [
             {
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
               },
               gridLines: {
-                display: true
-              }
-            }
+                display: true,
+              },
+            },
           ],
           xAxes: [
             {
               gridLines: {
-                display: false
-              }
-            }
-          ]
+                display: false,
+              },
+            },
+          ],
         },
         legend: {
-          display: true
+          display: true,
         },
         responsive: true,
-        maintainAspectRatio: false
-      }
+        maintainAspectRatio: false,
+      },
     };
   },
   async created() {
@@ -52,24 +57,26 @@ export default {
       "ArtistPage/numberoffollowers",
       this.$route.params.artist_id
     );
-    console.log("the response", this.artist_followers);
     this.datacollection.datasets[0].data = this.artist_followers;
     this.numFollowers();
-    console.log("chart loaded", this.loadedchart);
   },
   methods: {
+    /**
+     * get number of followers for the artist for the current day, month and year
+     * @public This is a public method
+     */
     numFollowers() {
       this.options.update;
       this.datacollection.update;
       if (this.loadedchart == true)
         this.renderChart(this.datacollection, this.options);
-    }
+    },
   },
   computed: {
     ...mapGetters({
       artist_followers: "ArtistPage/artist_followers",
-      loadedchart: "ArtistPage/loadedchart"
-    })
-  }
+      loadedchart: "ArtistPage/loadedchart",
+    }),
+  },
 };
 </script>

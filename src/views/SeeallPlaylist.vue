@@ -6,10 +6,11 @@
         <LibPlaylists
           v-for="match_playlist in match_playlists"
           :key="match_playlist.id"
-          :images="$url+
-            '/api/images/' +
-            match_playlist.images[0]._id +
-            '?belongs_to=playlist'
+          :images="
+            $url +
+              '/api/images/' +
+              match_playlist.images[0]._id +
+              '?belongs_to=playlist'
           "
           :name="match_playlist.name"
           :ownerName="match_playlist.ownerName"

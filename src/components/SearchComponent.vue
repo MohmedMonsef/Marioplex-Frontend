@@ -107,7 +107,7 @@ export default {
       }
       this.awaitingSearch = true;
       this.$store.dispatch("Search/clear");
-    }
+    },
   },
   methods: {
     check(value) {
@@ -157,7 +157,7 @@ export default {
         //  this.$store.dispatch("Search/searchaboutartist",this.Value);
       }
       this.$store.dispatch("Search/searchfocus", false);
-    }
+    },
     // ,
     // /**
     //  * When confirm search reset
@@ -172,18 +172,18 @@ export default {
   computed: {
     ...mapGetters({
       insearch: "Search/insearch",
-      searchfocus: "Search/searchfocus"
-    })
+      searchfocus: "Search/searchfocus",
+    }),
   },
   props: {
     search_value: {
-      type: String
-    }
+      type: String,
+    },
   },
   mounted() {
     const searchinput = document.getElementById("search-box");
     searchinput.addEventListener("focus", this.focus, true);
     searchinput.addEventListener("blur", this.leave, true);
-  }
+  },
 };
 </script>

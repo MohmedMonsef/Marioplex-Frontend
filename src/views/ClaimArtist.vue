@@ -336,7 +336,7 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       Name: "",
       Genre: "",

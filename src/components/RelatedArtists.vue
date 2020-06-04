@@ -4,10 +4,8 @@
       <lib-artists
         v-for="artist in relatedartists"
         :key="artist.id"
-        :images="$url+
-          '/api/images/' +
-          artist.images[0]._id +
-          '?belongs_to=artist'
+        :images="
+          $url + '/api/images/' + artist.images[0]._id + '?belongs_to=artist'
         "
         :name="artist.Name"
         :artistId="artist._id"
@@ -25,16 +23,21 @@
 <script>
 import LibArtists from "@/components/LibArtists.vue";
 import { mapGetters } from "vuex";
+/**
+ * Displays Related Artists for a certain Artist
+ * @displayName Related Artists
+ * @example [none]
+ */
 export default {
   components: {
-    LibArtists,
+    LibArtists
   },
   computed: {
     ...mapGetters({
-      relatedartists: "ArtistPage/artist_relatedartists",
-    }),
+      relatedartists: "ArtistPage/artist_relatedartists"
+    })
   },
-  created: function () {
+  created: function() {
     this.artistid = this.$route.params.artist_id;
     this.$store.dispatch(
       "ArtistPage/artist_relatedartists",
@@ -43,6 +46,6 @@ export default {
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
-  },
+  }
 };
 </script>

@@ -39,25 +39,32 @@
             />
           </div>
         </div>
-
-        <button class="cancel_button" @click="changeModalState()">
-          cancle
-        </button>
-        <!--<input @keyup.enter="CreatePlaylist()" />-->
-        <button
-          class="creat_button"
-          testid="confirm_create"
-          @click.prevent="CreatePlaylist()"
-          @click="changeModalState()"
-        >
-          create
-        </button>
+        <div class="myrow">
+          <div class="buttonWrapper">
+            <button
+              class="customButton cancel_button"
+              @click="changeModalState()"
+            >
+              cancel
+            </button>
+          </div>
+          <div class="buttonWrapper">
+            <button
+              class="customButton creat_button"
+              testid="confirm_create"
+              @click.prevent="CreatePlaylist()"
+              @click="changeModalState()"
+            >
+              create
+            </button>
+          </div>
+        </div>
       </div>
     </transition>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 * {
   margin: 10;
   padding: 10;
@@ -74,55 +81,59 @@ body {
 
   position: relative;
   display: block;
-  width: 500%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
-} */
-
-.creat_button {
-  /* fixed */
-  /* absolute */
-  position: absolute;
+  }*/
+// }
+.myrow {
+  display: block;
+  width: 100vw;
+  height: 200px;
+  position: fixed;
   top: 70%;
-  left: 50%;
+}
+.customButton {
+  position: absolute;
   appearance: none;
   outline: none;
-  border: none;
-  background: none;
   cursor: pointer;
-  margin: 20px;
-  height: 7%;
-  width: 12%;
-  /* padding: 8px 34px; */
-  background-color: #1ed760;
+  height: 10%;
+  width: 30%;
   border-radius: 500px;
   border-color: transparent;
   color: #fff;
   font-size: 90%;
   font-weight: 700;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  line-height: 18px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  white-space: nowrap;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  text-align: center;
+  z-index: 4;
+  background: none;
+}
+.creat_button {
+  border: none;
+  background-color: #1ed760;
   transition: 0.4s ease-out;
-  
+  border: 2px solid transparent;
 }
 .cancel_button {
-  position: absolute;
-  top: 70%;
-  left: 33%;
-  appearance: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-  margin: 20px;
-  height: 7%;
-  width: 12%;
-  /* padding: 8px 34px; */
-  background-color: transparent;
-  border-radius: 26px;
   border-color: #fff;
-  color: #fff;
-  font-size: 90%;
-  font-weight: 700;
   transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
+  border: 2px solid;
+  margin-left: 30%;
+}
+.buttonWrapper {
+  width: 50%;
+  height: 500px;
+  display: inline-block;
+  padding: 3% 10% 3% 10%;
 }
 
 .modal-overlay {
@@ -173,11 +184,6 @@ input {
   z-index: 6;
   overflow: hidden;
 }
-ul {
-  color: red;
-  overflow: hidden;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -259,10 +265,32 @@ ul {
   max-height: 50px;
   z-index: 4;
 }
-.to_contain {
-  width: 100%;
-  height: 100%;
-  position: relative;
+@media screen and (max-width: 700px) {
+  .customButton {
+    height: 10%;
+    width: 43%;
+    border-radius: 500px;
+    font-size: 10px;
+  }
+  .cancel_button {
+    margin-left: 43%;
+  }
+  .buttonWrapper {
+    width: 50%;
+    height: 500px;
+    display: inline-block;
+    padding: 3% 5% 3% 5%;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  .name_input {
+    font-size: 33px;
+  }
+  .title {
+    font-size: 38px;
+    line-height: 40px;
+  }
 }
 </style>
 

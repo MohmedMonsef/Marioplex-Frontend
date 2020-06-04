@@ -2,7 +2,7 @@
   <div class="card rounded col-lg-20%">
     <img
       class="card-img-top mx-auto d-block"
-      src="http://dummyimage.com/250x400.jpg/dddddd/000000"
+      :src="$url + '/api/images/' + image + '?belongs_to=playlist'"
       alt="Card image"
       id="cardimg"
     />
@@ -59,14 +59,14 @@ export default {
   name: "category",
   props: {
     image: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     categoryId: {
-      type: String
-    }
+      type: String,
+    },
   },
   methods: {
     setcategoryname() {
@@ -75,7 +75,7 @@ export default {
         "Categorys/categoryname",
         document.getElementById("categoryname").innerHTML
       );
-    }
-  }
+    },
+  },
 };
 </script>

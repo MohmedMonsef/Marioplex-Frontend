@@ -9,7 +9,6 @@
 
 <style lang="scss">
 #loadingscreen {
-  // height: 200%;
   background-color: black;
   color: white;
   display: flex;
@@ -28,7 +27,6 @@ export default {
   beforeCreate() {
     window.localStorage.isMySessionActive = "false";
     const token = localStorage.getItem("x-auth-token");
-    console.log("nada" + token);
     if (token) {
       this.$store.dispatch("Authorization/get_user", false);
       setTimeout(() => {

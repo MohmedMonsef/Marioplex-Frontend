@@ -65,7 +65,6 @@ export default {
         Genre: payload.Genre,
         Description: payload.Description,
       });
-      console.log("nori", this.users);
     },
     OnUpload(state, data) {
       state.Artist_Songs.push({
@@ -99,7 +98,6 @@ export default {
     },
     Get_Artist_Name(state, ArtistName) {
       state.ArtistName = ArtistName;
-      console.log("in mutations artistname", state.ArtistName);
     },
     Get_Artist_Bio(state, ArtistBIO) {
       state.ArtistBio = ArtistBIO;
@@ -123,7 +121,6 @@ export default {
       commit("toggleModalClaim");
     },
     ClaimArtistProfile({ commit }, payload) {
-      console.log("wslllllll", payload);
       axios
         .post("/api/me/ToArtist", payload)
         .then((response) => {
@@ -132,7 +129,6 @@ export default {
             commit("logout");
             localStorage.removeItem("x-auth-token");
             delete axios.defaults.headers.common["x-auth-token"];
-            //console.log("wsl", claim);
             commit("ClaimArtistProfile");
           }
         })
@@ -141,18 +137,13 @@ export default {
         });
     },
     OnUpload({ commit }, payload) {
-      console.log(payload, "in OnUpload js");
       const songdata = new FormData();
-      console.log(songdata, "in OnUpload js");
       songdata.append("URL", payload.selectedfile);
       songdata.get("URL");
       songdata.append("PreviewURL", payload.previewfile);
       songdata.append("Name", payload.Name);
-      console.log(payload.Name, "in OnUpload js");
       songdata.append("TrackNumber", payload.TrackNumber);
       songdata.append("AvailableMarket", payload.AvailableMarket);
-      // console.log(songdata.getAll());
-
       axios
 
         .post("/api/uploadsong", songdata, {
@@ -161,23 +152,18 @@ export default {
             // 'Content-Type': 'multipart/form-data'
           },
         })
-        .then((res) => {
-          console.log(res);
-          console.log("SUCCESS!!");
+        .then(() => {
           const song = this.res.data;
           commit("OnUpload", song);
         })
         .catch((error) => {
-          console.log("FAILURE!!");
           console.log(error);
         });
     },
     DeleteSong({ commit }, id) {
       axios
         .delete(`/api/song/${id}`)
-        .then((response) => {
-          console.log(response.data);
-          console.log("wsl");
+        .then(() => {
           commit("DeleteSong", id);
         })
         .catch((error) => {
@@ -188,11 +174,9 @@ export default {
 
     },*/
     EditBio({ commit }, payload) {
-      console.log("in artist properties module", payload.Description);
       axios
         .put("/api/Artist/update", { info: payload.Description })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           commit("EditBio");
           store.dispatch("ArtistProperties/Get_Artist_Bio");
         })
@@ -203,8 +187,7 @@ export default {
     EditGenre({ commit }, payload) {
       axios
         .put("/api/Artist/update", { genre: payload.genre })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           commit("EditGenre");
           store.dispatch("ArtistProperties/Get_Artist_Genre");
         })
@@ -215,8 +198,7 @@ export default {
     EditName({ commit }, payload) {
       axios
         .put("/api/Artist/update", { name: payload.name })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           commit("EditName");
           store.dispatch("ArtistProperties/Get_Artist_Name");
         })
@@ -225,25 +207,8 @@ export default {
         });
     },
     UploadPhoto({ commit }, payload) {
-      console.log("in artist properties module artist id", payload.artist_id);
-      console.log(
-        "in artist properties module belongs to ",
-        payload.belongs_to
-      );
-      console.log("in artist properties module height", payload.height);
-      console.log("in artist properties module width", payload.width);
-      console.log("in artist properties module formdata", payload.selphoto);
       const photo = new FormData();
       photo.append("image", payload.selphoto);
-      for (var key of photo.entries()) {
-        console.log("in artist properties module formdata", key[0], key[1]);
-      }
-      // const config = {
-      //   headers: {
-      //       'content-type': 'multipart/form-data'
-      //   }
-      //}
-      //console.log
       axios({
         method: "post",
         url:
@@ -258,15 +223,9 @@ export default {
         data: photo,
       })
         .then((res) => {
-          console.log(res);
           commit("UploadPhoto");
-
           const image_id = res.data.imageId;
           commit("Get_Latest_Image_ID", image_id);
-          // let payload={
-          //   image_id:res.imageId,
-          //   belongs_to:"artist",
-          // }
           store.dispatch("ArtistProperties/Show_Photo", image_id);
         })
         .catch((error) => {
@@ -274,28 +233,17 @@ export default {
         });
     },
     Show_Photo({ commit }, image_id) {
-      console.log("image id in artist properties module", image_id);
       axios
         .get("/api/images/" + image_id + "?belongs_to=artist")
-        .response((res) => {
-          console.log(res);
-          // const image=res
+        .response(() => {
           commit("Show_Photo");
         });
     },
     Get_Artist_ID({ commit }) {
-      console.log("should call in module get the artist id here");
       axios
         .get("/api/me/artist")
         .then((res) => {
-          console.log("should get the artist id here", res);
           const ArtistID = res.data._id;
-          // const ArtistName=res.data.Name;
-          // commit("Get_Artist_Name",ArtistName);
-          console.log(
-            " should in module artistproperties artist id from get artist id function",
-            ArtistID
-          );
           commit("Get_Artist_ID", ArtistID);
           store.dispatch("ArtistProperties/Get_Latest_Image_ID", ArtistID);
           store.dispatch("ArtistProperties/Get_Album_ID", ArtistID);
@@ -305,18 +253,12 @@ export default {
         });
     },
     Get_Latest_Image_ID({ commit }, artist_id) {
-      console.log("i'm gitting image id in module");
-      console.log("i'm gitting image id in module the artist id is", artist_id);
       axios
         .get("/api/images/get_id/" + artist_id + "?belongs_to=artist")
         .then((res) => {
-          console.log("i'm gitting image id in module res", res);
           const imageid = res.data.imageId;
-          console.log("the image id from db in module", imageid);
           commit("Get_Latest_Image_ID", imageid);
           store.dispatch("ArtistProperties/Show_Photo", imageid);
-
-          // dispatch("")
         })
         .catch((err) => {
           console.log(err);
@@ -326,34 +268,21 @@ export default {
       commit("showinputfield");
     },
     Get_Artist_Name({ commit }) {
-      console.log("should call in module get the artist id here");
       axios
-        //.get("http://localhost:3000/api/me/artist")
         .get("/api/me/artist")
         .then((res) => {
-          console.log("should get the artist id here", res);
           const ArtistName = res.data.Name;
-          console.log(
-            "in module artistproperties artist id from get artist id function",
-            ArtistName
-          );
           commit("Get_Artist_Name", ArtistName);
         })
         .catch((err) => {
-          console.lod(err);
+          console.log(err);
         });
     },
     Get_Artist_Bio({ commit }) {
-      console.log("should call in module get the artist id here");
       axios
         .get("/api/me/artist")
         .then((res) => {
-          console.log("should get the artist id here", res);
           const ArtistBIO = res.data.info;
-          console.log(
-            "in module artistproperties artist id from get artist id function",
-            ArtistBIO
-          );
           commit("Get_Artist_Bio", ArtistBIO);
         })
         .catch((err) => {
@@ -361,20 +290,14 @@ export default {
         });
     },
     Get_Artist_Genre({ commit }) {
-      console.log("should call in module get the artist id here");
       axios
         .get("/api/me/artist")
         .then((res) => {
-          console.log("should get the artist id here", res);
           const ArtistGenre = res.data.genre;
-          console.log(
-            "in module artistproperties artist id from get artist id function",
-            ArtistGenre
-          );
           commit("Get_Artist_Genre", ArtistGenre);
         })
         .catch((err) => {
-          console.lod(err);
+          console.log(err);
         });
     },
     UploadTrack({ commit }, payload) {
@@ -413,8 +336,7 @@ export default {
           review,
         },
       })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           commit("UploadTrack");
         })
         .catch((error) => {

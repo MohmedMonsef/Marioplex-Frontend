@@ -89,19 +89,24 @@ button:focus {
 import ArtistOverview from "@/components/ArtistOverview.vue";
 import RelatedArtists from "@/components/RelatedArtists.vue";
 import About from "@/components/AboutArtist.vue";
+/**
+ * Artist page navbar for navigating between different artist pages profile
+ * @displayName Artist Page Navbar
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
       overview: true,
       relatedartists: false,
-      about: false
+      about: false,
     };
   },
   name: "Artistnavbar",
   components: {
     ArtistOverview,
     RelatedArtists,
-    About
-  }
+    About,
+  },
 };
 </script>

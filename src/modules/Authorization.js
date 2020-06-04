@@ -10,6 +10,7 @@ export default {
     User: {},
     isEdited: "",
     deleted_playlists: [],
+    emailConfirmed: Boolean
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -38,8 +39,6 @@ export default {
         Genre: payload.Genre,
         Description: payload.Description,
       });
-      //state.User +=payload
-      console.log("nori", payload.Name);
     },
     is_edit(state, msg) {
       state.isEdited = msg;
@@ -60,11 +59,8 @@ export default {
           country: user.country,
           birthday: user.birthday,
         })
-        .then((response) => {
-          const token = response.data.token;
-          localStorage.setItem("x-auth-token", token);
-          axios.defaults.headers.common["x-auth-token"] = token;
-          store.dispatch("Authorization/get_user", true);
+        .then(() => {
+
         })
         .catch((error) => {
           commit("auth_error", "signup_err");
@@ -119,7 +115,6 @@ export default {
           password: user.password,
         })
         .then((response) => {
-          console.log(response.data.token);
           const token = response.data.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
@@ -129,11 +124,9 @@ export default {
           console.log(error);
           commit("auth_error", "login_err");
           localStorage.removeItem("x-auth-token");
-          console.log(error);
         });
     },
     toPremium({ commit, state }, payload) {
-      console.log("payload", payload.cardNumber);
       axios
         .put("api/me/promote", {
           expiresDate: payload.expiresDate,
@@ -164,10 +157,8 @@ export default {
           console.log(error);
           localStorage.removeItem("x-auth-token");
         });
-      console.log(Request.headers);
     },
     resetPassword({ commit }, payload) {
-      console.log("reset", payload.token);
       axios.defaults.headers.common["x-auth-token"] = payload.token;
       axios
         .post("api/login/reset_password", {
@@ -181,7 +172,6 @@ export default {
           console.log(error);
           delete axios.defaults.headers.common["x-auth-token"];
         });
-      console.log(Request.headers);
     },
     logout({ commit, state }) {
       commit("logout");
@@ -191,12 +181,10 @@ export default {
       });
     },
     ClaimArtistProfile({ commit }, payload) {
-      console.log("wslllllll", payload);
       axios
         .put("/api/me/ToArtist", payload)
         .then((response) => {
           const claim = response.data;
-          console.log("wsl", claim);
           commit("ClaimArtistProfile", claim);
         })
         .catch((error) => {
@@ -204,13 +192,11 @@ export default {
         });
     },
     saveEdit({ commit }, user) {
-      console.log("user in save edit", user);
       axios
         .put("/api/me/update", {
           user,
         })
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
           commit("is_edit", "success");
         })
         .catch((error) => {
@@ -222,13 +208,17 @@ export default {
       axios
         .get("/api/me/deletedplaylists")
         .then((response) => {
-          console.log("deleted playlists dai", response);
           let playlists = response.data;
           commit("setDeletedPlaylists", playlists);
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    ConfirmEmail({ state } , userId) {
+      axios
+        .post("/api/login/confirm?id=" + userId)
+        state.emailConfirmed = true;
     },
   },
   getters: {

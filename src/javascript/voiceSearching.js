@@ -3,6 +3,10 @@ const SpeechRecognition =
 
 export default {
   methods: {
+    /**
+     * Voice Detection Method for searching in web player by using microphone
+     * @public This is a public method
+     */
     detectvoice() {
       if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
@@ -22,19 +26,16 @@ export default {
         recognition.addEventListener("start", () => {
           const searchinput = document.getElementById("search-box");
           searchinput.focus();
-          console.log("VoiceRecognition is active Nihal!");
         });
 
         recognition.addEventListener("end", () => {
           const searchinput = document.getElementById("search-box");
           searchinput.focus();
-          console.log("VoiceRecognition is inactive Nihal!");
         });
 
         recognition.addEventListener("result", event => {
           const currentindex = event.resultIndex;
           const searchinput = document.getElementById("search-box");
-          console.log(event);
           const transcript = event.results[currentindex][0].transcript;
           if (transcript.toLowerCase().trim() === "reset") {
             searchinput.value = "";

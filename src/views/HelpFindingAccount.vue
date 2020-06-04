@@ -3,7 +3,8 @@
     <ul class="nav">
       <li>
         <a href="/Help">Home</a>
-      </li>/
+      </li>
+      /
       <li>
         <a href="/HelpFixed/HelpAccountHelp">Account Help</a>
       </li>
@@ -11,28 +12,33 @@
     <div class="article-content">
       <h1 class="article-header">Finding accounts</h1>
 
-      <p>Some tips for if you’ve lost track of an account, or are unsure you even have one.</p>
+      <p>
+        Some tips for if you’ve lost track of an account, or are unsure you even
+        have one.
+      </p>
 
       <p>
-        <strong>Note:</strong> It’s possible to create multiple accounts which can lead to unexpected charges or missing music, playlists, etc. Be sure to try all these steps to find all possible accounts.
+        <strong>Note:</strong> It’s possible to create multiple accounts which
+        can lead to unexpected charges or missing music, playlists, etc. Be sure
+        to try all these steps to find all possible accounts.
       </p>
 
       <h2>Check email addresses&nbsp;</h2>
 
       <p>
         Enter any email addresses you use into our
-        <a
-          href="/password-reset"
-          target="_blank"
-        >password reset form</a>. If there's an account associated with it, we’ll let you know. You can continue to
-        <a
-          href="/change-password"
-          target="_blank"
-        >reset the account’s password</a>, then use that email address and the new password to log in.
+        <a href="/password-reset" target="_blank">password reset form</a>. If
+        there's an account associated with it, we’ll let you know. You can
+        continue to
+        <a href="/change-password" target="_blank"
+          >reset the account’s password</a
+        >, then use that email address and the new password to log in.
       </p>
 
       <p>
-        <strong>Tip:</strong>Check your email inboxes (including junk/spam folders) for emails from Spotify. If you have any, it’s likely there’s an account associated with that email address.
+        <strong>Tip:</strong>Check your email inboxes (including junk/spam
+        folders) for emails from Spotify. If you have any, it’s likely there’s
+        an account associated with that email address.
       </p>
 
       <h2>Check Facebook</h2>
@@ -48,15 +54,20 @@
           Choose
           <strong>Apps and Websites</strong>.
         </li>
-        <li>If you see the Spotify icon, you have a Spotify account connected to Facebook.</li>
+        <li>
+          If you see the Spotify icon, you have a Spotify account connected to
+          Facebook.
+        </li>
       </ol>
       <p>
         If you find an account this way, choose
-        <strong>LOG IN WITH FACEBOOK</strong>to log in. If you don’t want your Spotify linked to Facebook,
+        <strong>LOG IN WITH FACEBOOK</strong>to log in. If you don’t want your
+        Spotify linked to Facebook,
         <a
           href="https://support.spotify.com/article/i-want-to-use-spotify-without-facebook/"
           target="_blank"
-        >learn how to disconnect it here</a>.
+          >learn how to disconnect it here</a
+        >.
       </p>
 
       <p></p>
@@ -65,7 +76,10 @@
 
       <p>Check your SMS messages for a text from Spotify.</p>
 
-      <p>If you created an account with your phone number, you’ll have received an SMS message with a pin code to log in.</p>
+      <p>
+        If you created an account with your phone number, you’ll have received
+        an SMS message with a pin code to log in.
+      </p>
 
       <p>
         If you find an account this way, choose
@@ -79,11 +93,13 @@
         <a
           href="https://support.spotify.com/article/finding-usernames-from-cache/"
           target="_blank"
-        >find your username with information stored on your device</a>. You can
+          >find your username with information stored on your device</a
+        >. You can
         <a
           href="https://support.spotify.com/article/change-password/"
           target="_blank"
-        >reset the account’s password</a>, then use that username and the new password to log in.
+          >reset the account’s password</a
+        >, then use that username and the new password to log in.
       </p>
     </div>
     <div class="related">
@@ -94,7 +110,7 @@
 </template>
 <script>
 export default {
-  name: "HelpFindingAccount"
+  name: "HelpFindingAccount",
 };
 </script>
 <style scoped>

@@ -35,9 +35,9 @@
           </svg>
           {{ this.ArtistName }}
         </button>
-         <div class="dropdown-menu">
+        <div class="dropdown-menu">
           <a
-            class="dropdown-item" 
+            class="dropdown-item"
             target="_blank"
             testid="userprofilr link"
             id="account-link"
@@ -64,7 +64,7 @@
   /* display: block; */
   display: block;
   justify-content: space-around;
-  z-index:50;
+  z-index: 50;
   .navbar-inner {
     padding: 0px 15px;
     display: flex;
@@ -167,22 +167,22 @@
 import { mapGetters } from "vuex";
 export default {
   name: "ArtistHeader",
-  data:function(){ 
+  data: function() {
     return {
       posy: "",
       newname: "",
-    }
+    };
   },
   computed: {
     ...mapGetters({
-      showinput:"ArtistProperties/showinput",
-      ArtistName:"ArtistProperties/ArtistName"
+      showinput: "ArtistProperties/showinput",
+      ArtistName: "ArtistProperties/ArtistName",
       // renamepl:"creatplaylist/renamepl"
-    })
+    }),
   },
-  methods:{
-  showinputfield() {
-        this.$store.dispatch("ArtistProperties/showinputfield");
+  methods: {
+    showinputfield() {
+      this.$store.dispatch("ArtistProperties/showinputfield");
       //this.showinput = !this.showinput;
       // this.$nextTick(function() {
       //   var i = document.getElementById("in_rename");
@@ -203,15 +203,15 @@ export default {
       let payload = {
         // Name: this.Name,
         // Genre: this.Genre,
-        name: this.newname
+        name: this.newname,
       };
-      console.log("in aEDIT BIO POPUP",payload.name)
+      console.log("in aEDIT BIO POPUP", payload.name);
       console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditName", payload);
-    }
+    },
   },
-  beforeCreate:function(){
-   this.$store.dispatch("ArtistProperties/Get_Artist_Name");
-  }
+  beforeCreate: function() {
+    this.$store.dispatch("ArtistProperties/Get_Artist_Name");
+  },
 };
 </script>

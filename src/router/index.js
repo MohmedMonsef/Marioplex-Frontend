@@ -51,8 +51,10 @@ import  HelpFindingAccount from "../views/HelpFindingAccount.vue"
 import HelpMadeForYou from "../views/HelpMadeForYou.vue"
 import HelpMangePaymentDetail from "../views/HelpMangePaymentDetail.vue"
 import  HelpAccountHelp from "../views/HelpAccountHelp.vue"
-
+import  EmailConfirmation from "../views/ConfirmEmail.vue"
+import  ThanksForConfirmation from "../views/ThanksForConfirmation.vue"
 import UnAuthorized from "../views/UnAuthorized.vue"
+import UserAuthorization from "../views/UserAuthorization.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -282,17 +284,22 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login,
-    children:[
+   component: UserAuthorization,
+   children:[
       {
-        path: "/reset_password",
+        path: "",
+        name: "Login",
+        component: Login,
+      },
+      {
+        path: "reset_password",
         name: "ResetPassword",
         component: ResetPassword,
         props: (route) => ({
           token: route.query.token,
         }),
       }
-    ],
+  ],
     meta: { 
       isLogged:true
     }
@@ -326,7 +333,22 @@ const routes = [
     path: "/UnAuthorized",
     name: "UnAuthorized",
     component: UnAuthorized
+  },
+  {
+    path: "/EmailConfirmation",
+    name: "EmailConfirmation",
+    component: EmailConfirmation
+
+  },
+  {
+    path: "/confirm",
+    name: "ThanksForConfirmation",
+    component: ThanksForConfirmation,
+    props: (route) => ({
+      id: route.query.id,
+    }),
   }
+
 ];
 
 const router = new VueRouter({

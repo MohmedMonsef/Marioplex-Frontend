@@ -1,5 +1,5 @@
 <template>
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+  <div>
     <div class="emptyplaylist">
       <div class="defaultimage">
         <svg
@@ -148,6 +148,20 @@ button:focus {
     cursor: pointer;
   }
 }
+.left {
+  display: inline;
+  position: absolute;
+  width: 40%;
+  left: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .left {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
@@ -157,7 +171,7 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       show: false,
     };

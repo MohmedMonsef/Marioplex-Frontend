@@ -16,23 +16,20 @@
               class="col-lg-10% col-md-60% col-xs-6"
               v-for="category in categorys"
               :key="category.id"
+              :image="category.images[0]._id"
               :name="category.name"
               :categoryId="category._id"
             />
-            <!-- <category
-              class="col-lg-10% col-md-60% col-xs-6"
-              v-for="category in categorys"
-              :key="category.id"
-              :image="category.images"
-              :name="category.name"
-              :categoryId="category._id"
-              />-->
           </div>
         </div>
       </div>
     </div>
 
-    <div class="loading" v-if="!loadingsearch && search_value !== ''" style="backgrou">
+    <div
+      class="loading"
+      v-if="!loadingsearch && search_value !== ''"
+      style="backgrou"
+    >
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <div v-if="showresl == 'h' && search_value !== ''">
@@ -46,7 +43,7 @@
   margin-bottom: 200px;
 }
 .img-card {
- width: 100%;
+  width: 100%;
   height: 80px;
 }
 .card-top {
@@ -64,10 +61,9 @@
   height: 100vh;
 }
 .scroll {
- // width: 2000;
   height: 100%;
   overflow-x: visible;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .all {
   width: 100%;
@@ -105,7 +101,7 @@ h2 {
 .container {
   margin-left: 15px;
   height: 100vh;
- width: 100%;
+  width: 100%;
 }
 .loading {
   display: flex;

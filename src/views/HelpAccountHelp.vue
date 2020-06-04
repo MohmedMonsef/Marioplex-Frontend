@@ -1,44 +1,39 @@
 <template>
-<div class="col-sm-9 col-md-7 col-md-offset-4 content" id="article">
-  <ul class="nav">
+  <div class="col-sm-9 col-md-7 col-md-offset-4 content" id="article">
+    <ul class="nav">
       <li>
         <a href="/Help">Home</a>
-      </li>/
+      </li>
+      /
       <li>
         <a href="HelpAccountHelp">Account Help</a>
       </li>
     </ul>
-  <div class=" article ">
+    <div class=" article ">
       <h1 class="article-header">Account Help</h1>
-    <ul class="list-unstyled">
-      <li>
-        <a href="/HelpFixed/HelpCantLogIn">Can't log in</a>
-      </li>
-      <li>
-        <a
-          href="/HelpFixed/HelpRestPassword"
-        >Reset your password</a>
-      </li>
-      <li>
-        <a href="/HelpFixed/HelpFindingAccount">Finding accounts</a>
-      </li>
-      <li>
-        <a
-          href="/HelpFixed/HelpMangePaymentDetail"
-        >Manage payment details</a>
-      </li>
-      <li>
-        <a
-          href="/HelpFixed/HelpMadeForYou"
-        >Made for you</a>
-      </li>
-    </ul>
+      <ul class="list-unstyled">
+        <li>
+          <a href="/HelpFixed/HelpCantLogIn">Can't log in</a>
+        </li>
+        <li>
+          <a href="/HelpFixed/HelpRestPassword">Reset your password</a>
+        </li>
+        <li>
+          <a href="/HelpFixed/HelpFindingAccount">Finding accounts</a>
+        </li>
+        <li>
+          <a href="/HelpFixed/HelpMangePaymentDetail">Manage payment details</a>
+        </li>
+        <li>
+          <a href="/HelpFixed/HelpMadeForYou">Made for you</a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 <script>
 export default {
-  name: "HelpAccountHelp"
+  name: "HelpAccountHelp",
 };
 </script>
 <style scoped>

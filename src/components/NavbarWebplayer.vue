@@ -1,13 +1,59 @@
 <template>
-  <div class="home-navbar" id="navBar">
+  <div
+    class="home-navbar"
+    :class="[
+      {
+        notScrolled: scrolling <= 20,
+        scrolled: scrolling > 20,
+      },
+    ]"
+    id="navBar"
+  >
     <button class="prev" @click="goprev()">
       <i class="fa fa-angle-left"></i>
     </button>
     <button class="next" @click="gonext()">
       <i class="fa fa-angle-right"></i>
     </button>
+
+    <div class="dropdown large" v-if="inlibrary && isLoggedIn == 'success'">
+      <button
+        type="button"
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        id="drop_library"
+        testid="dropdown list"
+      >
+        <span>
+          Library
+        </span>
+      </button>
+      <div class="dropdown-menu">
+        <router-link
+          to="/HomeWebPlayer/library/library-playlists"
+          class="dropdown-item"
+        >
+          Playlists
+        </router-link>
+        <div class="divider">________________________</div>
+        <router-link
+          to="/HomeWebPlayer/library/library-artists"
+          class="dropdown-item"
+        >
+          Artists
+        </router-link>
+        <div class="divider large">________________________</div>
+        <router-link
+          to="/HomeWebPlayer/library/library-albums"
+          class="dropdown-item large"
+        >
+          Albums
+        </router-link>
+      </div>
+    </div>
+
     <div class="login" v-if="isLoggedIn == 'success'">
-      <div class="library-navbar" v-if="inlibrary">
+      <div class="library-navbar  small" v-if="inlibrary">
         <ul class="nav">
           <li class="nav-item active">
             <div class="divOnFocus">
@@ -66,7 +112,9 @@
               fill-rule="evenodd"
             ></path>
           </svg>
-          {{ Username }}
+          <span class="small">
+            {{ Username }}
+          </span>
         </button>
         <div class="dropdown-menu">
           <a
@@ -89,13 +137,20 @@
               Log out
             </a>
           </router-link>
+          <div class="divider large">________________________</div>
+          <router-link to="/Premium" class="dropdown-item large">
+            Upgrade
+          </router-link>
         </div>
       </div>
-      <a href="/Premium" target="_blank" v-if="!inlibrary && !insearch">
-        <button class="upgrade_button" testid="upgrade_button">
-          UPGRADE
-        </button>
-      </a>
+      <router-link
+        to="/Premium"
+        class="upgrade_button small"
+        v-if="!inlibrary && !insearch"
+        tag="button"
+      >
+        UPGRADE
+      </router-link>
     </div>
     <div class="logout" v-if="isLoggedIn == '' || isLoggedIn == 'error'">
       <router-link to="/Login">
@@ -112,7 +167,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .home-navbar ul a {
   font-size: 18px;
   color: white;
@@ -131,10 +186,9 @@
   position: fixed;
   width: 100%;
   height: 60px;
-  /* background-color: #161516; */
   top: 0%;
   z-index: 0;
-  /* background:transparent; */
+  transition: background-color 0.2s linear;
 }
 .divOnFocus {
   width: 100px;
@@ -151,20 +205,37 @@
   background: #313030;
   display: block;
 }
-#drop_button {
+#drop_library {
   border: none;
   border-radius: 20px;
-  width: 120px;
+  width: 100px;
   height: 30px;
   background-color: black;
-  margin-left: 70%;
   margin-top: 15px;
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
   color: white;
   outline: none;
-  position: absolute;
+  position: fixed;
+  left: calc(115px + 10%);
+  padding-bottom: 5px;
+  padding-top: 2px;
+}
+#drop_button {
+  border: none;
+  border-radius: 20px;
+  width: 120px;
+  height: 30px;
+  background-color: black;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  outline: none;
+  position: fixed;
+  right: 5%;
   padding-bottom: 5px;
   padding-top: 2px;
 }
@@ -174,7 +245,8 @@ svg {
 }
 .dropdown-menu {
   background: #313030;
-  margin-right: 35px;
+  position: fixed;
+  right: 5%;
   margin-top: 7px;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -196,18 +268,18 @@ svg {
   background: #4e4e4e;
 }
 .upgrade_button {
+  position: fixed;
   outline: none;
   background: none;
   height: 38px;
   width: 135px;
-  /* background-color: #161516; */
   background: transparent;
   border-radius: 26px;
   border-color: white;
   color: #fff;
   font-size: 12px;
   font-weight: bold;
-  margin-left: 59%;
+  right: 18%;
   margin-top: 10px;
 }
 .upgrade_button:hover {
@@ -223,40 +295,41 @@ svg {
   width: 120px;
   height: 38px;
   background-color: white;
-  margin-left: 70%;
+  position: fixed;
+  right: 6%;
   margin-top: 10px;
   font-size: 12px;
   font-weight: bold;
   text-decoration: none;
   color: rgb(31, 31, 31);
   outline: none;
-  position: absolute;
 }
 .signup_botton {
   border: none;
   border-radius: 20px;
-  width: 120px;
+  width: 65px;
   height: 38px;
-  /* background-color: #161516; */
   background: transparent;
-  margin-left: 61%;
+  position: fixed;
+  right: calc(120px + 8%);
   margin-top: 10px;
   font-size: 12px;
   font-weight: bold;
   text-decoration: none;
   color: white;
   outline: none;
+  text-align: center;
 }
 .login_botton:hover {
   width: 125px;
   height: 40px;
 }
 .signup_botton:hover {
-  width: 120px;
+  font-size: 13px;
+  width: 70px;
   height: 40px;
 }
 .prev {
-  margin-left: 3%;
   margin-top: 15px;
   background-color: rgb(8, 8, 8);
   border-radius: 50%;
@@ -264,11 +337,11 @@ svg {
   height: 30px;
   outline: none;
   text-decoration: none;
-  position: absolute;
+  position: fixed;
+  left: calc(235px + 2%);
   border: none;
 }
 .next {
-  margin-left: 90px;
   margin-top: 15px;
   background-color: rgb(8, 8, 8);
   border-radius: 50%;
@@ -276,7 +349,8 @@ svg {
   height: 30px;
   outline: none;
   text-decoration: none;
-  position: absolute;
+  position: fixed;
+  left: calc(235px + 5%);
   border: none;
 }
 i {
@@ -290,6 +364,37 @@ i {
 i:hover {
   color: rgb(202, 202, 202);
 }
+.notScrolled {
+  background-color: transparent;
+  transition: background-color 0.2s linear;
+}
+.scrolled {
+  background-color: black;
+  transition: background-color 0.2s linear;
+}
+.large {
+  display: none;
+}
+@media screen and (max-width: 1000px) {
+  .small {
+    display: none;
+  }
+  .large {
+    display: block;
+  }
+  #drop_button {
+    width: 48px;
+  }
+  .user_icon {
+    margin: 0;
+  }
+  .prev {
+    left: calc(60px + 2%);
+  }
+  .next {
+    left: calc(80px + 8%);
+  }
+}
 </style>
 
 <script>
@@ -299,10 +404,11 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       inlibrary: false,
       insearch: false,
+      scrollPosition: null,
     };
   },
   name: "NavbarWebplayer",
@@ -310,6 +416,7 @@ export default {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
       Username: "Authorization/Username",
+      scrolling: "UserLibrary/scrolling",
     }),
   },
   methods: {
@@ -324,7 +431,7 @@ export default {
      * Go to previous router page
      * @public This is a public method
      */
-    goprev: function () {
+    goprev: function() {
       if (this.$router.currentRoute.path !== "/HomeWebPlayer/search") {
         this.$store.dispatch("Search/showresult", "h");
       }
@@ -334,23 +441,12 @@ export default {
      * Go to next router page
      * @public This is a public method
      */
-    gonext: function () {
+    gonext: function() {
       this.$router.go(1);
     },
-    handleScroll() {
-      console.log("transparent dai");
-      var n = document.getElementById("navBar");
-      if (window.scrollY > 20) {
-        n.style.background = "#161516";
-      } else {
-        n.style.background = "transparent";
-      }
-    },
-    /**
-     * Update navbar component based on current router
-     * @public This is a public method
-     */
-    check() {
+  },
+  watch: {
+    $route: function() {
       if (
         this.$router.currentRoute.path ==
           "/HomeWebPlayer/library/library-playlists" ||
@@ -370,16 +466,23 @@ export default {
       }
     },
   },
-  created() {
-    // this.handleScroll();
-  },
-  destroyed() {
-    window.removeEventListener("click", this.check);
-    window.removeEventListener("scroll", this.handleScroll);
-  },
   mounted() {
-    window.addEventListener("click", this.check);
-    window.addEventListener("scroll", this.handleScroll);
+    if (
+      this.$router.currentRoute.path ==
+        "/HomeWebPlayer/library/library-playlists" ||
+      this.$router.currentRoute.path ==
+        "/HomeWebPlayer/library/library-artists" ||
+      this.$router.currentRoute.path == "/HomeWebPlayer/library/library-albums"
+    ) {
+      this.inlibrary = true;
+    } else {
+      this.inlibrary = false;
+    }
+    if (this.$router.currentRoute.path == "/HomeWebPlayer/search") {
+      this.insearch = true;
+    } else {
+      this.insearch = false;
+    }
   },
 };
 </script>
