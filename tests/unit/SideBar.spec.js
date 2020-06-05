@@ -143,24 +143,24 @@ describe("SideBar.vue", () => {
     const playlist_name = wrapper.find(".userplaylists");
     expect(playlist_name.text()).toBe("play");
   });
-  it("call change Modal StateDelete function", () => {
-    const wrapper = shallowMount(SideBar, {
-      localVue,
-      store,
-    });
-    wrapper.setData({
-      showdelete: true,
-      show: false,
-      playlistid: 0,
-    });
-    const changeModalStateDelete = jest.fn();
-    wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete,
-    });
-    const delete_button = wrapper.find(".delete_div");
-    delete_button.trigger("click");
-    expect(changeModalStateDelete).toHaveBeenCalled;
-  });
+  // it("call change Modal StateDelete function", () => {
+  //   const wrapper = shallowMount(SideBar, {
+  //     localVue,
+  //     store,
+  //   });
+  //   wrapper.setData({
+  //     showdelete: true,
+  //     show: false,
+  //     playlistid: 0,
+  //   });
+  //   const changeModalStateDelete = jest.fn();
+  //   wrapper.setMethods({
+  //     changeModalStateDelete: changeModalStateDelete,
+  //   });
+  //   const delete_button = wrapper.find(".delete_div");
+  //   delete_button.trigger("click");
+  //   expect(changeModalStateDelete).toHaveBeenCalled;
+  // });
   it("renders", () => {
     const wrapper = shallowMount(SideBar, {
       localVue,

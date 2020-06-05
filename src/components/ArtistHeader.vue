@@ -3,7 +3,7 @@
     <div class="row navbar-inner  justify-content-center">
       <div class=" navbar navbar-expand-sm  justify-content-center ">
         <span>
-          <ul>
+          <ul class="my_pages">
             <router-link to="/ArtistPersonalPage" tag="li">
               <a>home</a>
             </router-link>
@@ -45,11 +45,10 @@
           >
             Rename
           </a>
-          <input
-            v-if="showinput"
-            id="in_rename"
-            v-model="newname"
-            @keyup.enter="ChangeArtistName(), showinputfield()"
+          <input v-if="showinput"
+           id="in_rename"
+            v-model="newname"   
+            @keyup.enter="ChangeArtistName(),showinputfield()"
           />
         </div>
       </div>
@@ -109,49 +108,54 @@
     }
   }
   #drop_button {
-    border: none;
-    border-radius: 20px;
-    width: 120px;
-    height: 30px;
-    background-color: black;
-    margin-left: 70%;
-    margin-top: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    outline: none;
-    position: absolute;
-    padding-bottom: 5px;
-    padding-top: 2px;
-    position: absolute;
-    top: 15%;
-  }
-  .dropdown-menu {
-    background: #313030;
-    margin-right: 35px;
-    margin-top: 7px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    position: absolute;
-    top: 47%;
-    left: 80%;
-  }
-  .dropdown-item {
-    background: #313030;
-    color: rgb(165, 165, 165);
-    font-size: 14px;
-    cursor: pointer;
-  }
-  #in_rename {
-    position: fixed;
-    top: 5%;
-    left: 55%;
-    background-color: white;
-    color: black;
-    height: 30px;
-    z-index: 50px;
-  }
+  border: none;
+  border-radius: 20px;
+  width: 120px;
+  height: 30px;
+  background-color: black;
+  margin-left: 70%;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  outline: none;
+  position: absolute; 
+  padding-bottom: 5px;
+  padding-top: 2px;
+  top:22%;
+  right:10%;
+}
+.dropdown-menu {
+  background: #313030;
+  margin-right: 35px;
+  margin-top: 7px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  position:absolute;
+  top:47%;
+  left:80%
+}
+.dropdown-item {
+  background: #313030;
+  color: rgb(165, 165, 165);
+  font-size: 14px;
+  cursor: pointer;
+}
+#in_rename {
+  position: fixed;
+  top: 5%;
+  left: 55%;
+  background-color: white;
+  color: black;
+  height: 30px;
+  z-index:50px;
+}
+}
+.my_pages{
+  // position:absolute;
+   position: relative;
+  right:50%;
 }
 </style>
 <script>
@@ -180,21 +184,22 @@ export default {
     showinputfield() {
       this.$store.dispatch("ArtistProperties/showinputfield");
       //this.showinput = !this.showinput;
-      this.$nextTick(function() {
-        var i = document.getElementById("in_rename");
-        console.log("the element", this.posy);
-        if (i) {
-          i.style.top = this.posy;
+      // this.$nextTick(function() {
+      //   var i = document.getElementById("in_rename");
+      //   console.log("the element", this.posy);
+      //   if (i) {
+      //     i.style.top = this.posy;
 
-          // this.showinput = true;
-        }
-      });
+      //     // this.showinput = true;
+      //   }
+       
+      // });
     },
-    getpos() {
-      this.posy = event.screenY - 110 + "px";
-      console.log(" posy", this.posy);
-    },
-    ChangeArtistName() {
+    // getpos() {
+    //   this.posy = event.screenY - 110 + "px";
+    //   console.log(" posy", this.posy);
+    // },
+    ChangeArtistName(){
       let payload = {
         // Name: this.Name,
         // Genre: this.Genre,

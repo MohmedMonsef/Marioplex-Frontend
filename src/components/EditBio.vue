@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="to_contain">
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -88,19 +88,22 @@ div {
 }
 
 .edit_button {
-  position: fixed;
-  top: 80%;
-  left: 50%;
+  position: absolute;
+  top: 83%;
+  left: 53%;
   appearance: none;
   outline: none;
   border: none;
   background: none;
   cursor: pointer;
-  margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
-  background-color: #1ed760;
+  // margin-left: 20px;
+  margin-left:auto;
+  // height: 50px;
+  // width: 180px;
+  height: 8%;
+  width: 15%;
+  // padding: 8px 34px;
+ background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
 
@@ -112,18 +115,21 @@ div {
   transition: 0.4s ease-out;
 }
 .cancel_button {
-  position: fixed;
-  top: 80%;
-  left: 35%;
+  position: absolute;
+  top: 83%;
+  left: 27%;
   appearance: none;
   outline: none;
 
   background: none;
   cursor: pointer;
-  margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
+  // margin-right: 20px;
+  margin-right:auto;
+  // height: 50px;
+  // width: 180px;
+   height: 8%;
+  width: 15%;
+  // padding: 8px 34px;
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
@@ -242,6 +248,10 @@ ul {
 }
 .playlist_name {
   color: #fff;
+}
+.to_contain{
+  width:100%;
+  height:100%;
 }
 </style>
 <script>

@@ -53,12 +53,12 @@
         </div>
 
         <div class="drop">
-          <button class="item__title" @click="show1 = !show2">
+          <button class="item__title" @click="show2 = !show2">
             <span>Change billing date</span>
             <i class="fas fa-angle-down floatright" v-if="!show2"></i>
             <i class="fas fa-angle-up floatright" v-if="show2"></i>
           </button>
-          <div class="accordion__item__content">
+          <div class="item__content" v-if="show2">
             <p>
               You can view your billing date and manage your plan on
               <a href="/login">your account page</a>.

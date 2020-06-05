@@ -1,4 +1,5 @@
 <template>
+    <!--eslint-disable-->
     <div class="justify-content-center">
         <div class="front-search front-box">
             <div class="container justify-content-center">
@@ -78,8 +79,7 @@
                                             tag="li"
                                             class="ard-link link col"
                                             id="insmall"
-                                            class-active="active"
-                                            to="/"
+                                            to="/HelpFixed/HelpCantLogIn"
                                             testid="song"
                                             >Can't log in</router-link
                                         >
@@ -104,8 +104,7 @@
                                             tag="li"
                                             class="ard-link link col"
                                             id="insmall"
-                                            class-active="active"
-                                            to="/"
+                                            to="/HelpFixed/HelpRestPassword"
                                             testid="song"
                                             >Reset your password</router-link
                                         >
@@ -130,8 +129,7 @@
                                             tag="li"
                                             class="ard-link link col"
                                             id="insmall"
-                                            class-active="active"
-                                            to="/"
+                                            to="/HelpFixed/HelpFindingAccount"
                                             testid="song"
                                             >Finding accounts</router-link
                                         >
@@ -142,7 +140,6 @@
                                             >Account &amp; Payment &gt; Account
                                             Help</span
                                         >
-                                        <!--<li v-for="result in results">{{result.name}}</li>-->
                                     </div>
                                 </div>
                             </div>
@@ -157,8 +154,7 @@
                                             tag="li"
                                             class="ard-link link col"
                                             id="insmall"
-                                            class-active="active"
-                                            to="/"
+                                            to="/HelpFixed/HelpMangePaymentDetail"
                                             testid="song"
                                             >Manage payment details</router-link
                                         >
@@ -184,9 +180,9 @@
                                             class="ard-link link col"
                                             id="insmall"
                                             class-active="active"
-                                            to="/"
+                                            to="/HelpFixed/HelpMadeForYou"
                                             testid="song"
-                                            >Premium</router-link
+                                            >Made for you</router-link
                                         >
                                     </div>
                                     <div>
@@ -196,7 +192,6 @@
                                             >Account &amp; Payment &gt; Account
                                             Help</span
                                         >
-                                        <!--<li v-for="result in results">{{result.name}}</li>-->
                                     </div>
                                 </div>
                             </div>
@@ -263,32 +258,32 @@
                         </div>
                     </div>
                 </div>
-                <!--<Button class="btn btn-prima "></Button>-->
             </div>
         </div>
 
         <div class="background">
             <div class="container">
-                <a class="scroll-button pull-left" href="#navigation">
-                    <use xlink:href="#scroll-down">
-                        <svg
-                            id="scroll-down"
-                            width="20"
-                            height="20"
-                            viewBox="643.5 386 22.1 21.9"
-                        >
-                            <path
-                                d="M665.6,396.3c0,0.3-0.1,0.7-0.4,0.9l-9.8,10.4c-0.5,0.5-1.3,0.5-1.7,0l-9.8-10.4c-0.5-0.5-0.5-1.3,0-1.8
-      s1.3-0.5,1.7,0l8.9,9.5l8.9-9.5c0.5-0.5,1.3-0.5,1.7,0C665.5,395.6,665.6,396,665.6,396.3z"
-                            />
-                        </svg>
-                    </use>
+                <a class="scroll-button pull-left" href="#community">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fas"
+                        data-icon="chevron-down"
+                        class="svg-inline--fa fa-chevron-down fa-w-14"
+                        role="img"
+                        viewBox="0 0 448 512"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                        />
+                    </svg>
                 </a>
-
                 <div class="row justify-content-center">
-                    <div class="col-sm-offset-1 col-sm-10">
+                    <div class="col-xs-offset-1 col-xs-10">
                         <div class="row margins">
-                            <div class="col-sm-4">
+                            <div class="col-xs-3 col-lg-4">
                                 <h3 class="front-navigation__header">
                                     Account&amp;Payment
                                 </h3>
@@ -307,7 +302,7 @@
                                     </li>
                                     <li>
                                         <a href="/" class="item__link"
-                                            >Subscription Options</a
+                                            >SubscriptionOptions</a
                                         >
                                     </li>
                                     <li>
@@ -322,14 +317,9 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-xs-3 col-md-4">
                                 <h3 class="front-navigation__header">
                                     Using Spotify
-                                    <!-- <div class="arrow-container svg-container">
-                    <svg class="svg-arrow">
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow" />
-                    </svg>
-                  </div>-->
                                 </h3>
                                 <ul class="list-unstyled">
                                     <li>
@@ -354,7 +344,7 @@
                                     </li>
                                     <li>
                                         <a href="/" class="item__link"
-                                            >System &amp; Settings</a
+                                            >System&amp;Settings</a
                                         >
                                     </li>
                                     <li class="visible-xs" v-if="show1">
@@ -370,14 +360,9 @@
                                     >Show all</a
                                 >
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-xs-3 col-lg-4">
                                 <h3 class="front-navigation__header">
                                     Listen Everywhere
-                                    <!-- <div class="arrow-container svg-container">
-                    <svg class="svg-arrow">
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow" />
-                    </svg>
-                  </div>-->
                                 </h3>
                                 <ul class="list-unstyled">
                                     <li>
@@ -433,9 +418,21 @@
 
         <div class="front-box front-community" id="community">
             <div class="container justify-content-center">
-                <a class="scroll-button pull-left" href="#community">
-                    <svg>
-                        <use xlink:href="#scroll-down" />
+                <a class="scroll-button pull-left" href="#how-to-use">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fas"
+                        data-icon="chevron-down"
+                        class="svg-inline--fa fa-chevron-down fa-w-14"
+                        role="img"
+                        viewBox="0 0 448 512"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                        />
                     </svg>
                 </a>
 
@@ -445,16 +442,14 @@
                             <h1 style="font-size:50px;">Visit the Community</h1>
                         </div>
                         <div
-                            class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-lg-12 marginbottom"
+                            class="col-xs-10 col-xs-offset-1 col-lg-12 marginbottom"
                         >
                             <p id="bigsize">
                                 Have questions? Find answers from our worldwide
                                 Community of expert fans!
                             </p>
                         </div>
-                        <div
-                            class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-lg-12"
-                        >
+                        <div class="col-xs-10 col-xs-offset-2 col-lg-12">
                             <p id="bigsize">
                                 <span>1785</span>
                                 members online right now.
@@ -472,11 +467,23 @@
                 </div>
             </div>
         </div>
-        <div class="front-how-to-use front-box front-box-dark" id="how-to-use">
+        <div class="front-how-to-use front-box " id="how-to-use">
             <div class="container">
-                <a class="scroll-button pull-left" href="#how-to-use">
-                    <svg>
-                        <use xlink:href="#scroll-down" />
+                <a class="scroll-button pull-left" href="#how-to-use-half">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fas"
+                        data-icon="chevron-down"
+                        class="svg-inline--fa fa-chevron-down fa-w-14"
+                        role="img"
+                        viewBox="0 0 448 512"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                        />
                     </svg>
                 </a>
                 <div class="padding">
@@ -492,21 +499,11 @@
                             <div class="col-sm-6 feature-container">
                                 <h3 class="bottomborder">
                                     GET STARTED
-                                    <!-- <div class="arrow-container svg-container">
-                    <svg class="svg-arrow">
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow" />
-                    </svg>
-                  </div>-->
                                 </h3>
                             </div>
                             <div class="col-sm-6 feature-container">
                                 <h3 class="bottomborder">
                                     AND CHECK THESE OUT
-                                    <!-- <div class="arrow-container svg-container">
-                    <svg class="svg-arrow">
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow" />
-                    </svg>
-                  </div>-->
                                 </h3>
                             </div>
                         </div>
@@ -573,9 +570,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 feature-container">
+                            <div
+                                class="col-sm-6 feature-container"
+                                id="how-to-use-half"
+                            >
                                 <div class="feature-box">
-                                    <a href="/"></a>
+                                    <a href="/"> </a>
                                     <h2>Listen Offline</h2>
                                     <p>
                                         Play music anywhere, even without
@@ -617,124 +617,128 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-sm-12 col-md-10 col-md-offset-1 features-container visible-xs hidden-md">
-            <div class="col-sm-6 feature-container">
-              <h3>
-                Get Started
-                <div class="arrow-container svg-container">
-                  <svg class="svg-arrow">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow" />
-                  </svg>
-                </div>
-              </h3>
-              <div class="features">
-                <div class="feature-box">
-                  <a href="/">Search</a>
-                </div>
-
-                <div class="feature-box">
-                  <a href="/">Playlists</a>
-                </div>
-
-                <div class="feature-box">
-                  <a href="/">Listen Offline</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 feature-container">
-              <h3>
-                And check these out
-                <div class="arrow-container svg-container">
-                  <svg class="svg-arrow">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow" />
-                  </svg>
-                </div>
-              </h3>
-              <div class="features">
-                <div class="feature-box">
-                  <a href="/">Radio</a>
-                </div>
-
-                <div class="feature-box">
-                  <a href="/" class="js-ga-event">Discover Weekly</a>
-                </div>
-
-                <div class="feature-box">
-                  <a href="/">Spotify on Chromecast</a>
-                </div>
-
-                <div class="feature-box">
-                  <a href="/">Share</a>
-                </div>
-              </div>
-            </div>
-          </div>-->
                 </div>
             </div>
         </div>
-        <div class="front-box front-video" name="videos" id="videos">
-            <div class="container container-carousel">
-                <a class="scroll-button pull-left" href="#videos">
-                    <svg>
-                        <use xlink:href="#scroll-down" />
-                    </svg>
-                </a>
-
-                <div class="row">
-                    <div class="col-md-6 hidden-xs hidden-sm carousel-iphones">
-                        <div class="iphone-device">
-                            <div class="iphone-screen">
-                                <img
-                                    src="https://support.scdn.co/static/img/videos/video-offline.jpg"
-                                    class="slide img"
-                                    v-if="video1"
-                                />
-                                <img
-                                    src="https://support.scdn.co/static/img/videos/video-connect.jpg"
-                                    class="slide img"
-                                    v-if="video2"
-                                />
-                                <img
-                                    src="https://support.scdn.co/static/img/videos/video-chromecast.jpg"
-                                    class="slide img"
-                                    v-if="video3"
-                                />
-                                <img
-                                    src="https://support.scdn.co/static/img/videos/video-playlist.jpg"
-                                    class="slide img"
-                                    v-if="video4"
-                                />
-                                <img
-                                    src="https://support.scdn.co/static/img/videos/video-search.jpg"
-                                    class="slide img"
-                                    v-if="video5"
-                                />
+        <a
+            class="scroll-button pull-left"
+            id="specialnavg"
+            href="#using-spotify"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="chevron-down"
+                class="svg-inline--fa fa-chevron-down fa-w-14"
+                role="img"
+                viewBox="0 0 448 512"
+            >
+                <path
+                    fill="currentColor"
+                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                />
+            </svg>
+        </a>
+        <div id="allcontent">
+            <div class="front-box front-video" id="videos" v-if="!playingvideo">
+                <div class="container container-carousel">
+                    <div class="row">
+                        <div
+                            class="col-md-6 hidden-xs hidden-sm carousel-iphones"
+                        >
+                            <div class="iphone-device">
+                                <div class="iphone-screen">
+                                    <img
+                                        src="https://support.scdn.co/static/img/videos/video-offline.jpg"
+                                        class="slide img"
+                                        v-if="video1"
+                                    />
+                                    <img
+                                        src="https://support.scdn.co/static/img/videos/video-connect.jpg"
+                                        class="slide img"
+                                        v-if="video2"
+                                    />
+                                    <img
+                                        src="https://support.scdn.co/static/img/videos/video-chromecast.jpg"
+                                        class="slide img"
+                                        v-if="video3"
+                                    />
+                                    <img
+                                        src="https://support.scdn.co/static/img/videos/video-playlist.jpg"
+                                        class="slide img"
+                                        v-if="video4"
+                                    />
+                                    <img
+                                        src="https://support.scdn.co/static/img/videos/video-search.jpg"
+                                        class="slide img"
+                                        v-if="video5"
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 video-info-container">
-                        <div
-                            id="carousel-videos"
-                            class="carousel slide"
-                            data-ride="carousel"
-                        >
-                            <div class="carousel-inner" id="trans">
-                                <div class="video-info item" v-if="video1">
-                                    <h1>Listen Offline</h1>
-                                    <div class="row">
-                                        <div
-                                            class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
-                                        >
-                                            <p>
-                                                How to take your music with you
-                                                in the car, on the plane, or
-                                                wherever you may not be able to
-                                                access the internet
-                                            </p>
-                                            <div id="videobuttom">
-                                                <a
+                        <div class="col-md-6 video-info-container">
+                            <div class="carousel slide">
+                                <div class="carousel-inner" id="trans">
+                                    <div class="video-info item" v-if="video1">
+                                        <h1>Listen Offline</h1>
+                                        <div class="row">
+                                            <div
+                                                class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
+                                            >
+                                                <p>
+                                                    How to take your music with
+                                                    you in the car, on the
+                                                    plane, or wherever you may
+                                                    not be able to access the
+                                                    internet
+                                                </p>
+                                                <div id="videobuttom">
+                                                    <div
+                                                        class="btn"
+                                                        id="btnstyle1"
+                                                        @click="
+                                                            playingvideo1 = true;
+                                                            playingvideo = true;
+                                                        "
+                                                    >
+                                                        <svg
+                                                            width="15"
+                                                            height="15"
+                                                            viewBox="0 0 39 48"
+                                                        >
+                                                            <path
+                                                                d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
+                                                                fill="#000"
+                                                                fill-rule="evenodd"
+                                                            />
+                                                        </svg>
+                                                        Watch video
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-info item" v-if="video2">
+                                        <h1>Spotify Connect</h1>
+                                        <div class="row">
+                                            <div
+                                                class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
+                                            >
+                                                <p>
+                                                    Play Spotify on your
+                                                    speaker, sound system, or TV
+                                                    with Spotify Connect. Here's
+                                                    how!
+                                                </p>
+                                                <div
                                                     class="btn"
-                                                    href="https://player.vimeo.com/video/122512075"
+                                                    id="btnstyle2"
+                                                    @click="
+                                                        playingvideo2 = true;
+                                                        playingvideo = true;
+                                                    "
                                                 >
                                                     <svg
                                                         width="15"
@@ -748,189 +752,219 @@
                                                         />
                                                     </svg>
                                                     Watch video
-                                                </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-info item" v-if="video3">
+                                        <h1>Spotify on Chromecast</h1>
+                                        <div class="row">
+                                            <div
+                                                class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
+                                            >
+                                                <p>
+                                                    Spotify on your Chromecast?
+                                                    You heard us right! Here's
+                                                    how to team them up!
+                                                </p>
+                                                <div
+                                                    class="btn"
+                                                    id="btnstyle3"
+                                                    @click="
+                                                        playingvideo3 = true;
+                                                        playingvideo = true;
+                                                    "
+                                                >
+                                                    <svg
+                                                        width="15"
+                                                        height="15"
+                                                        viewBox="0 0 39 48"
+                                                    >
+                                                        <path
+                                                            d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
+                                                            fill="#000"
+                                                            fill-rule="evenodd"
+                                                        />
+                                                    </svg>
+                                                    Watch video
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-info item" v-if="video4">
+                                        <h1>Make a Playlist</h1>
+                                        <div class="row">
+                                            <div
+                                                class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
+                                            >
+                                                <p>
+                                                    Playlists are your personal
+                                                    mixtapes that you can share
+                                                    or collaborate on with
+                                                    friends. Here's how to get
+                                                    started.
+                                                </p>
+                                                <div
+                                                    class="btn"
+                                                    id="btnstyle4"
+                                                    @click="
+                                                        playingvideo4 = true;
+                                                        playingvideo = true;
+                                                    "
+                                                >
+                                                    <svg
+                                                        width="15"
+                                                        height="15"
+                                                        viewBox="0 0 39 48"
+                                                    >
+                                                        <path
+                                                            d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
+                                                            fill="#000"
+                                                            fill-rule="evenodd"
+                                                        />
+                                                    </svg>
+                                                    Watch video
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="video-info item active"
+                                        v-if="video5"
+                                    >
+                                        <h1>Search</h1>
+                                        <div class="row">
+                                            <div
+                                                class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
+                                            >
+                                                <p>
+                                                    Search is the key to
+                                                    Spotify's vast library of
+                                                    music, whether you're
+                                                    looking for a particular
+                                                    artist, album, or song; or
+                                                    if you want Spotify to find
+                                                    music to match a mood,
+                                                    activity, or time of day.
+                                                </p>
+                                                <div
+                                                    class="btn"
+                                                    id="btnstyle5"
+                                                    @click="
+                                                        playingvideo5 = true;
+                                                        playingvideo = true;
+                                                    "
+                                                >
+                                                    <svg
+                                                        width="15"
+                                                        height="15"
+                                                        viewBox="0 0 39 48"
+                                                    >
+                                                        <path
+                                                            d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
+                                                            fill="#000"
+                                                            fill-rule="evenodd"
+                                                        />
+                                                    </svg>
+                                                    Watch video
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-info item" v-if="video2">
-                                    <h1>Spotify Connect</h1>
-                                    <div class="row">
-                                        <div
-                                            class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
-                                        >
-                                            <p>
-                                                Play Spotify on your speaker,
-                                                sound system, or TV with Spotify
-                                                Connect. Here's how!
-                                            </p>
-                                            <a
-                                                class="btn js-ga-event"
-                                                href="https://player.vimeo.com/video/126925524"
-                                            >
-                                                <svg
-                                                    width="15"
-                                                    height="15"
-                                                    viewBox="0 0 39 48"
-                                                >
-                                                    <path
-                                                        d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
-                                                        fill="#000"
-                                                        fill-rule="evenodd"
-                                                    />
-                                                </svg>
-                                                Watch video
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="video-info item" v-if="video3">
-                                    <h1>Spotify on Chromecast</h1>
-                                    <div class="row">
-                                        <div
-                                            class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
-                                        >
-                                            <p>
-                                                Spotify on your Chromecast? You
-                                                heard us right! Here's how to
-                                                team them up!
-                                            </p>
-                                            <a
-                                                class="btn js-ga-event"
-                                                href="https://player.vimeo.com/video/143256102"
-                                            >
-                                                <svg
-                                                    width="15"
-                                                    height="15"
-                                                    viewBox="0 0 39 48"
-                                                >
-                                                    <path
-                                                        d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
-                                                        fill="#000"
-                                                        fill-rule="evenodd"
-                                                    />
-                                                </svg>
-                                                Watch video
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="video-info item" v-if="video4">
-                                    <h1>Make a Playlist</h1>
-                                    <div class="row">
-                                        <div
-                                            class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
-                                        >
-                                            <p>
-                                                Playlists are your personal
-                                                mixtapes that you can share or
-                                                collaborate on with friends.
-                                                Here's how to get started.
-                                            </p>
-                                            <a
-                                                class="btn js-ga-event"
-                                                href="https://player.vimeo.com/video/122512074"
-                                            >
-                                                <svg
-                                                    width="15"
-                                                    height="15"
-                                                    viewBox="0 0 39 48"
-                                                >
-                                                    <path
-                                                        d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
-                                                        fill="#000"
-                                                        fill-rule="evenodd"
-                                                    />
-                                                </svg>
-                                                Watch video
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="video-info item active"
-                                    v-if="video5"
-                                >
-                                    <h1>Search</h1>
-                                    <div class="row">
-                                        <div
-                                            class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
-                                        >
-                                            <p>
-                                                Search is the key to Spotify's
-                                                vast library of music, whether
-                                                you're looking for a particular
-                                                artist, album, or song; or if
-                                                you want Spotify to find music
-                                                to match a mood, activity, or
-                                                time of day.
-                                            </p>
-                                            <a
-                                                class="btn js-ga-event"
-                                                href="https://player.vimeo.com/video/122512076"
-                                                data-open="modal"
-                                                data-vimeo-id="122512076"
-                                            >
-                                                <svg
-                                                    width="15"
-                                                    height="15"
-                                                    viewBox="0 0 39 48"
-                                                >
-                                                    <path
-                                                        d="M0 3.225V44.72c0 2.57 1.936 3.487 4.302 2.035L37.14 26.61c2.364-1.45 2.364-3.825 0-5.277L4.3 1.19C1.936-.263 0 .653 0 3.224z"
-                                                        fill="#000"
-                                                        fill-rule="evenodd"
-                                                    />
-                                                </svg>
-                                                Watch video
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div
-                                    class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
-                                >
-                                    <ol>
-                                        <li
-                                            class="inline"
-                                            @click="showvideo1"
-                                        ></li>
-                                        <li
-                                            class="inline"
-                                            @click="showvideo2"
-                                        ></li>
-                                        <li
-                                            class="inline"
-                                            @click="showvideo3"
-                                        ></li>
-                                        <li
-                                            class="inline"
-                                            @click="showvideo4"
-                                        ></li>
-                                        <li
-                                            class="inline"
-                                            @click="showvideo5"
-                                        ></li>
-                                    </ol>
+                                <div class="row">
+                                    <div
+                                        class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0"
+                                    >
+                                        <ol>
+                                            <li
+                                                class="inline"
+                                                @click="showvideo1"
+                                            ></li>
+                                            <li
+                                                class="inline"
+                                                @click="showvideo2"
+                                            ></li>
+                                            <li
+                                                class="inline"
+                                                @click="showvideo3"
+                                            ></li>
+                                            <li
+                                                class="inline"
+                                                @click="showvideo4"
+                                            ></li>
+                                            <li
+                                                class="inline"
+                                                @click="showvideo5"
+                                            ></li>
+                                        </ol>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="video-contaner" v-if="playingvideo">
+                <plyrVideo>
+                    <div class="plyr__video-embed">
+                        <iframe
+                            v-if="playingvideo1"
+                            src="https://player.vimeo.com/video/122512075"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>
+                        <iframe
+                            v-if="playingvideo2"
+                            src="https://player.vimeo.com/video/126925524"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>
+                        <iframe
+                            v-if="playingvideo3"
+                            src="https://player.vimeo.com/video/143256102"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>
+                        <iframe
+                            v-if="playingvideo4"
+                            src="https://player.vimeo.com/video/122512074"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>
+                        <iframe
+                            v-if="playingvideo5"
+                            src="https://player.vimeo.com/video/122512076"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>
+                    </div>
+                </plyrVideo>
+            </div>
         </div>
-        <div
-            class="front-box front-using-spotify"
-            name="using-spotify"
-            id="using-spotify"
-        >
+        <div class="front-box front-using-spotify" id="using-spotify">
             <div class="container">
                 <a class="scroll-button pull-left" href="#using-spotify">
-                    <svg>
-                        <use xlink:href="#scroll-down" />
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fas"
+                        data-icon="chevron-down"
+                        class="svg-inline--fa fa-chevron-down fa-w-14"
+                        role="img"
+                        viewBox="0 0 448 512"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                        />
                     </svg>
                 </a>
 
@@ -960,10 +994,19 @@
     </div>
 </template>
 <script>
+/* eslint-disable */
+import plyrVideo from "vue-plyr";
 export default {
     name: "Help",
+    components: { plyrVideo },
     data() {
         return {
+            playingvideo: false,
+            playingvideo1: false,
+            playingvideo2: false,
+            playingvideo3: false,
+            playingvideo4: false,
+            playingvideo5: false,
             search: "",
             apear: false,
             contant1: false,
@@ -982,6 +1025,22 @@ export default {
         };
     },
     methods: {
+        disable(event) {
+            var Id = event.target.id;
+            if (
+                Id == "allcontent" ||
+                Id == "how-to-use" ||
+                Id == "community" ||
+                Id == "using-spotify"
+            ) {
+                this.playingvideo = false;
+                this.playingvideo1 = false;
+                this.playingvideo2 = false;
+                this.playingvideo3 = false;
+                this.playingvideo4 = false;
+                this.playingvideo5 = false;
+            }
+        },
         showvideo1() {
             this.video1 = true;
             this.video2 = false;
@@ -1030,6 +1089,7 @@ export default {
             } else {
                 this.apear = true;
                 if (
+                    search.includes("C") ||
                     search.includes("ca") ||
                     search.includes("can") ||
                     search.includes("can'") ||
@@ -1043,8 +1103,9 @@ export default {
                     this.contant1 = false;
                 }
                 if (
-                    search.includes("Re") ||
-                    search.includes("Res") ||
+                    search.includes("R") ||
+                    search.includes("re") ||
+                    search.includes("res") ||
                     search.includes("et") ||
                     search.includes("yo") ||
                     search.includes("ur") ||
@@ -1058,6 +1119,7 @@ export default {
                     this.contant2 = false;
                 }
                 if (
+                    search.includes("F") ||
                     search.includes("fi") ||
                     search.includes("nd") ||
                     search.includes("ing") ||
@@ -1072,6 +1134,7 @@ export default {
                     this.contant3 = false;
                 }
                 if (
+                    search.includes("M") ||
                     search.includes("ma") ||
                     search.includes("nge") ||
                     search.includes("ing") ||
@@ -1086,10 +1149,13 @@ export default {
                     this.contant4 = false;
                 }
                 if (
-                    search.includes("Pr") ||
-                    search.includes("em") ||
-                    search.includes("iu") ||
-                    search.includes("um")
+                    search.includes("M") ||
+                    search.includes("ma") ||
+                    search.includes("d") ||
+                    search.includes("e") ||
+                    search.includes("for") ||
+                    search.includes("yo") ||
+                    search.includes("you")
                 ) {
                     this.contant5 = true;
                 } else {
@@ -1116,9 +1182,40 @@ export default {
             this.contants = false;
         },
     },
+    created: function() {
+        window.addEventListener("click", this.disable);
+    },
+    destroyed: function() {
+        window.removeEventListener("click", this.disable);
+    },
 };
 </script>
 <style scoped>
+/* eslint-disable */
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+#btnstyle1,
+#btnstyle2,
+#btnstyle3,
+#btnstyle4,
+#btnstyle5 {
+    width: 80%;
+    border: solid 5px black;
+    border-radius: 40px;
+}
+#specialnavg {
+    margin-left: 190px;
+}
+#allcontent {
+    padding-top: 80px;
+}
+#video-contaner {
+    width: 70%;
+    height: 100%;
+    margin-left: 15%;
+}
 #trans {
     height: 400px;
     /* animation-name: mymove;
@@ -1230,6 +1327,7 @@ export default {
 .margins {
     margin-top: 80px;
     margin-bottom: 80px;
+    width: 100%;
 }
 .front-how-to-use {
     color: white;
@@ -1277,10 +1375,21 @@ p {
 .background {
     background-color: #efefef;
 }
+@media (max-width: 1000px) {
+    .iphone-device {
+        display: none;
+    }
+}
 @media (min-width: 768px) {
     .front-navigation {
         background-color: #efefef;
         padding-bottom: 40px;
+    }
+    .front-search .top-solutions .container a {
+        line-height: 20px;
+        padding: 0;
+        font-size: 18px;
+        font-weight: 400;
     }
 }
 .scroll-button {
@@ -1293,20 +1402,13 @@ p {
     transition: all 0.3s ease-in-out;
     border-radius: 52px;
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
-    padding: 5px;
+    padding: 15px;
     position: relative;
+    text-align: center;
     z-index: 2;
 }
 :not(svg) {
     transform-origin: 0px 0px;
-}
-@media (min-width: 768px) {
-    .front-search .top-solutions .container a {
-        line-height: 20px;
-        padding: 0;
-        font-size: 18px;
-        font-weight: 400;
-    }
 }
 .front-search a {
     line-height: 1.5;
@@ -1332,6 +1434,8 @@ a:hover {
 }
 .info {
     margin-top: 1%;
+    font-size: 14px;
+    font-weight: 500;
 }
 @media (max-width: 1250px) {
     #insmall {
@@ -1364,9 +1468,6 @@ a:hover {
 .white {
     color: white;
 }
-.link {
-    font-weight: unset;
-}
 li {
     list-style-type: none;
     cursor: pointer;
@@ -1380,7 +1481,7 @@ li {
     padding: 0;
 }
 .link {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
     margin-bottom: 5px;

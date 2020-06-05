@@ -7,14 +7,14 @@
       <h1>Change your password</h1>
       <div class="edit_border"></div>
       <div class="white_div">
-        <div class="saved" v-if="isEdited == 'success'">Password updated</div>
+        <div class="saved" v-if="isEdited == 'success' && this.saved == '1'">Password updated</div>
         <h2>Current password</h2>
-        <input type="password" class="in_text" v-model="password" />
-        <p class="wrong" v-if="isEdited == 'faild'">Sorry, wrong password</p>
+        <input type="password" class="in_text" id="current" v-model="password" />
+        <p class="wrong" v-if="isEdited == 'faild' || this.saved == '2'">Sorry, wrong password</p>
         <h2>New password</h2>
-        <input type="password" class="in_text" v-model="newpassword" />
+        <input type="password" class="in_text" id="new" v-model="newpassword" />
         <h2>Repeat new password</h2>
-        <input type="password" class="in_text" v-model="repeatedPassword" />
+        <input type="password" class="in_text" id="repeat" v-model="repeatedPassword" />
         <div class="end_border"></div>
         <router-link to="/UserAccount/Account-overview">
           <button class="cancel">CANCEL</button>
@@ -183,8 +183,11 @@ export default {
       password: "",
       newpassword: "",
       repeatedPassword: "",
-      canSet: false,
-      saved: false,
+      canSet1: false,
+      canSet2: false,
+      canSet3: false,
+      canSet4: false,
+      saved: "0",
     };
   },
   methods: {
@@ -192,49 +195,55 @@ export default {
       this.req_password();
       this.req_newpassword();
       this.req_repeatpassword();
-      if (this.canSet) {
-        let edituser = {
-          password: this.password,
-          newpassword: this.newpassword,
-          repeatedPassword: this.repeatedPassword,
-        };
-        this.saved = true;
-        this.$store.dispatch("Authorization/saveEdit", edituser);
-      } else {
-        this.saved = false;
-        console.log("can not set password");
-      }
+      this.equal_password();
+      setTimeout(() => {
+        if (this.canSet1 && this.canSet2 && this.canSet3 && this.canSet4) {
+          let edituser = {
+            password: this.password,
+            newpassword: this.newpassword,
+            repeatedPassword: this.repeatedPassword,
+          };
+          this.saved = "1";
+          this.$store.dispatch("Authorization/saveEdit", edituser);
+        } 
+        else {
+          this.saved = "2";
+        }
+      },200);
     },
     req_password: function() {
       if (this.password == "") {
-        console.log("password not found");
-        this.canSet = false;
+        this.canSet1 = false;
       } else {
-        console.log("password found");
-        this.canSet = true;
+        this.canSet1 = true;
       }
       return;
     },
-    req_newpassword: function() {
-      if (this.newpassword == "") {
-        console.log("newpassword not found");
-        this.canSet = false;
+    req_newpassword: function () {
+      if (this.newpassword == "" || (this.newpassword != "" && this.newpassword.length < 8)) {
+        this.canSet2 = false;
       } else {
-        console.log("newpassword found");
-        this.canSet = true;
+        this.canSet2 = true;
       }
       return;
     },
-    req_repeatpassword: function() {
-      if (this.repeatpassword == "") {
-        console.log("repeat password not found");
-        this.canSet = false;
+    req_repeatpassword: function () {
+      if (this.repeatpassword == "" || (this.repeatpassword != "" && this.repeatpassword.length < 8) ) {
+        this.canSet3 = false;
       } else {
-        console.log("repeat password found");
-        this.canSet = true;
+        this.canSet3 = true;
       }
       return;
     },
+    equal_password: function(){
+      if (this.newpassword != this.repeatedPassword)
+      {
+        this.canSet4 = false;
+      } else {
+        this.canSet4 = true;
+      }
+      return;  
+    }
   },
   computed: {
     ...mapGetters({

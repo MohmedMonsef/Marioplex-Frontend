@@ -27,7 +27,7 @@
             </svg>
           </button>
 
-          <h1 class="title">Are you sure,you want to delete this song!!</h1>
+          <h1 class="title">Are you sure,you want to delete this Playlist!!</h1>
 
           <div class="myrow">
             <div class="buttonWrapper">
@@ -246,7 +246,7 @@ div {
 </style>
 <script>
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 /**
  * Delete Playlist Pop Up to confirm delete action
@@ -261,15 +261,15 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
+    mytoast.classList.remove("toast--visible");
     }, 2000);
   },
 };
 export default {
   computed: {
-    ...mapState({
-      Playlists: (state) => state.Playlist.Playlists,
-    }),
+    // ...mapState({
+    //   Playlists: (state) => state.Playlist.Playlists,
+    // }),
     ...mapGetters({
       showModalDelete: "Playlist/showModalDelete",
       todelete: "Playlist/todelete",
@@ -297,11 +297,11 @@ export default {
     },
   },
   mixins: [song_functions],
-  created: function() {
-    window.addEventListener("click", this.hideshow);
-  },
-  destroyed: function() {
-    window.removeEventListener("click", this.hideshow);
-  },
+  // created: function() {
+  //   window.addEventListener("click", this.hideshow);
+  // },
+  // destroyed: function() {
+  //   window.removeEventListener("click", this.hideshow);
+  // },
 };
 </script>

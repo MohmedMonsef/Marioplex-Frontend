@@ -35,20 +35,22 @@
 <style lang="scss" scoped>
 .card {
   background: transparent;
-  width: 250px;
-  height: 200px;
+  width:100%;
+  height: 100%;
   margin-left: 15px;
   margin-top: 15px;
 }
 #cardimg {
-  width: 250px;
-  height: 150px;
+  width: 100%;
+  height:80%;
 }
 h4 {
+  position:relative;
+  top:0%;
   font-size: 14px;
   font-weight: bold;
   color: white;
-  margin-bottom: 4px;
+  // margin-bottom: 4px;
 }
 .toast {
   visibility: hidden;
@@ -84,7 +86,7 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
+    mytoast.classList.remove("toast--visible");
     }, 2000);
   },
 };
@@ -117,11 +119,11 @@ export default {
       toast.show("Added to your library");
     },
   },
-  created: function() {
-    window.addEventListener("click", this.hideshow);
-  },
-  destroyed: function() {
-    window.removeEventListener("click", this.hideshow);
-  },
+  // created: function () {
+  //   window.addEventListener("click", this.hideshow);
+  // },
+  // destroyed: function () {
+  //   window.removeEventListener("click", this.hideshow);
+  // },
 };
 </script>
