@@ -94,7 +94,8 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.vue",
-      "!**/node_modules/**"
+      "!**/node_modules/**",
+      "!**/App.vue"
     ]
   }
 }

@@ -84,13 +84,11 @@
 <script>
 import { default as voice_Recognition } from "../javascript/voiceSearching.js";
 import { mapGetters } from "vuex";
-// let insearch = insearch;
 /**
  * Search bar where user writes a word to search
  * @displayName Search Bar
  * @example [none]
  */
-let insearch = insearch;
 export default {
   name: "searchcomponent",
   data() {
@@ -136,7 +134,7 @@ export default {
       this.$store.dispatch("Search/search_V", this.Value);
     },
     isinsearch() {
-      if (insearch) {
+      if (this.insearch) {
         this.Value = "";
       }
     },

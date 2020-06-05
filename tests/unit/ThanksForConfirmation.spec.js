@@ -30,7 +30,8 @@ describe("ThanksForConfirmation", () => {
       localVue,
       propsData: {
         id: ""
-      }
+      },
+      stubs: ['router-link', 'router-view']
     });
   });
   it("renders", () => {

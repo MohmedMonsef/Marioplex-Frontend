@@ -490,7 +490,6 @@ export default {
       );
     },
   },
-
   created: function() {
     window.addEventListener("click", this.hideshow);
   },

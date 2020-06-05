@@ -36,55 +36,69 @@ describe("HomeNavigationBar", () => {
           },
         },
       });
-  
+    wrapper = shallowMount(HomeNavigationBar, {
+      localVue,
+      store,
+      stubs: ['router-link', 'router-view']
+    });
   });
   it("renders premium page", () => {
     $route.path="/premium"
-    wrapper = shallowMount(HomeNavigationBar, {
+    let premiumWrapper =  shallowMount(HomeNavigationBar, {
       localVue,
-      store
+      store,
+      stubs: ['router-link', 'router-view']
     });
-    expect(wrapper.exists()).toBe(true);
-    $route.path="/"
-    expect(wrapper.exists()).toBe(true);
+    expect( premiumWrapper.exists()).toBe(true);
+    $route={
+      path:"/login"
+    };
+    expect( premiumWrapper.exists()).toBe(true);
   });
   it("renders in home page", () => {
     $route.path="/"
-    wrapper = shallowMount(HomeNavigationBar, {
-      localVue,
-      store
-    });
     expect(wrapper.exists()).toBe(true);
-  
   });
   it("logout function", () => {
-    wrapper = shallowMount(HomeNavigationBar, {
-      localVue,
-      store
-    });
     wrapper.vm.logout();
     expect("logout").toHaveBeenCalled;
   });
-  //  it("collapsed menu function", () => {
-  //   wrapper = shallowMount(HomeNavigationBar, {
-  //     localVue,
-  //     store
-  //   });
+   it("collapsed menu function", () => {
+    let testId = "menu-icon";
+    let newDiv = document.createElement("div");
+    newDiv.setAttribute("id", testId);
+    document.body.appendChild(newDiv);
 
-  //   window.resizeTo(700, 700);
+    testId = "collapsed";
+    newDiv = document.createElement("div");
+    newDiv.setAttribute("id", testId);
+    document.body.appendChild(newDiv);
 
-  //   wrapper.setData({
-  //     togglelength: true,
-  //   });
+    testId = "collapsed-div";
+    newDiv = document.createElement("div");
+    newDiv.setAttribute("id", testId);
+    document.body.appendChild(newDiv);
 
-  //   wrapper.vm.collapseBar();
-  //   expect(togglelength).toBe(false);
-  // });
-  it("destroy life hook test", () => {
-    wrapper = shallowMount(HomeNavigationBar, {
-      localVue,
-      store
+    testId = "disable-page";
+    newDiv = document.createElement("div");
+    newDiv.setAttribute("id", testId);
+    document.body.appendChild(newDiv);
+
+    wrapper.setData({
+      togglelength: true,
     });
+    wrapper.vm.collapseBar();
+    expect(wrapper.vm.togglelength).toBe(false);
+    wrapper.vm.collapseBar();
+    expect(wrapper.vm.togglelength).toBe(true);
+  });
+  it("scroll position test", () => {
+    window.scrollY = 200;
+    wrapper.vm.updateScroll();
+    expect(wrapper.vm.scrollPosition).toBe(200);
+  });
+  
+  it("destroy life hook test", () => {
     wrapper.destroy();
   });
 });
