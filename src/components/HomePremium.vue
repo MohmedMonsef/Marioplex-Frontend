@@ -281,7 +281,5 @@ h3 {
  * @displayName HomeBody
  * @example [none]
  */
-export default {
-
-};
+export default {};
 </script>

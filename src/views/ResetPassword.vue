@@ -2,7 +2,7 @@
   <div>
     <div class="conatiner px-0">
       <div class="row header m-0">
-        <router-link to="/"> <img src="../assets/logo.png" /></router-link>
+        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
       </div>
     </div>
     <div class="row justify-content-center m-0">
@@ -128,7 +128,7 @@ p {
  */
 export default {
   name: "resetPassword",
-  data: function () {
+  data: function() {
     return {
       //User's data that will be passed from the v-model
       trigger_validation: false,
@@ -158,9 +158,8 @@ export default {
             password: this.password,
             token: this.$route.query.token,
           };
-          this.$store.dispatch("Authorization/resetPassword", payload);} 
-        else 
-            return;
+          this.$store.dispatch("Authorization/resetPassword", payload);
+        } else return;
       }, 200);
     },
     /**
@@ -179,7 +178,7 @@ export default {
     },
   },
   computed: {
-    req_password: function () {
+    req_password: function() {
       if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();
@@ -192,7 +191,7 @@ export default {
         return false;
       }
     },
-    req_confirm_password: function () {
+    req_confirm_password: function() {
       if (this.trigger_validation) {
         if (this.password_confirmation == "") {
           this.cannotSubmit();
@@ -205,7 +204,7 @@ export default {
         return false;
       }
     },
-    short_password: function () {
+    short_password: function() {
       if (this.trigger_validation) {
         if (this.password.length <= 7 && this.password != "") {
           this.cannotSubmit();
@@ -218,7 +217,7 @@ export default {
         return false;
       }
     },
-    matched_password: function () {
+    matched_password: function() {
       if (this.trigger_validation) {
         if (
           this.password_confirmation != "" &&

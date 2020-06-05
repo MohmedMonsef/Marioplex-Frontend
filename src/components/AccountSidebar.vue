@@ -238,7 +238,7 @@ svg {
 </style>
 <script>
 export default {
-  data: function () {
+  data: function() {
     return {
       show1: false,
       show2: false,

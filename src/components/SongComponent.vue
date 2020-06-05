@@ -124,7 +124,7 @@
 
 <style lang="scss" scoped>
 .song {
-  min-width: 300px;
+  min-width: 350px;
   height: 64px;
   margin: 0%;
   padding: 0%;

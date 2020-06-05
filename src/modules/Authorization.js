@@ -10,6 +10,7 @@ export default {
     User: {},
     isEdited: "",
     deleted_playlists: [],
+    emailConfirmed: Boolean
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -58,11 +59,8 @@ export default {
           country: user.country,
           birthday: user.birthday,
         })
-        .then((response) => {
-          const token = response.data.token;
-          localStorage.setItem("x-auth-token", token);
-          axios.defaults.headers.common["x-auth-token"] = token;
-          store.dispatch("Authorization/get_user", true);
+        .then(() => {
+
         })
         .catch((error) => {
           commit("auth_error", "signup_err");
@@ -216,6 +214,11 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    ConfirmEmail({ state } , userId) {
+      axios
+        .post("/api/login/confirm?id=" + userId)
+        state.emailConfirmed = true;
     },
   },
   getters: {

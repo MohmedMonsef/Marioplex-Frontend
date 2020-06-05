@@ -77,9 +77,9 @@ describe("HomeNavigationBar", () => {
   //     togglelength: true,
   //   });
 
-    wrapper.vm.collapseBar();
-    expect(togglelength).toBe(false);
-  });
+  //   wrapper.vm.collapseBar();
+  //   expect(togglelength).toBe(false);
+  // });
   it("destroy life hook test", () => {
     wrapper = shallowMount(HomeNavigationBar, {
       localVue,

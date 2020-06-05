@@ -102,29 +102,29 @@ i {
 export default {
   data: function() {
     return {
-      hover: false
+      hover: false,
     };
   },
   name: "lib-artists",
   props: {
     images: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     artistId: {
-      type: String
+      type: String,
     },
     type: {
-      type: String
-    }
+      type: String,
+    },
   },
   filters: {
     shorten: function(value) {
       if (value.length > 17) return value.substring(0, 17) + " ...";
       else return value;
-    }
-  }
+    },
+  },
 };
 </script>

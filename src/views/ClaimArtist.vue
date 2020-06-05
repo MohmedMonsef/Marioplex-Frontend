@@ -113,29 +113,31 @@
   background-color: black;
 }
 svg {
-  position: fixed;
+  position: absolute;
   top: 2%;
   left: 10%;
 }
 .access_header {
-  position: fixed;
-  top: 20%;
-  left: 25%;
-  right: 45%;
-  width: 800px;
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  /* right: 45%; */
+  width: 70%;
   color: white;
-  font-size: 50px;
+  font-size: 250%;
   text-align: center;
+  /* margin-bottom: 7%; */
 }
 .access_paragraph {
-  position: fixed;
-  top: 38%;
-  left: 35%;
-  right: 45%;
-  width: 400px;
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  /* right: 45%; */
+  width: 50%;
   color: white;
-  font-size: 18px;
+  font-size: 150%;
   text-align: center;
+  /* margin-top: 7%; */
 }
 .claim_input {
   position: fixed;
@@ -148,7 +150,7 @@ svg {
 }
 .back_button {
   position: fixed;
-  top: 60%;
+  top: 75%;
   left: 20%;
   appearance: none;
   outline: none;
@@ -170,20 +172,20 @@ svg {
 }
 .popup_button {
   position: fixed;
-  top: 50%;
+  top: 65%;
   left: 43%;
   border: none;
   cursor: pointer;
   margin: 20px;
   height: 50px;
   width: 180px;
-  padding: 8px 34px;
+  /* padding: 8px 34px; */
   background-color: #7f80fa;
   border-radius: 26px;
   border-color: transparent;
 
   color: #fff;
-  font-size: 18px;
+  font-size: 90%;
   font-weight: 700;
   outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
@@ -198,15 +200,15 @@ svg {
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
+ height:7%;
+ width:12%;
+  /* padding: 8px 34px; */
   background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
   outline: none;
   color: #fff;
-  font-size: 18px;
+  font-size: 90%;
   font-weight: 700;
 
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
@@ -222,15 +224,15 @@ svg {
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
+  height: 7%;
+  width: 12%;
+  /* padding: 8px 34px; */
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
   outline: none;
   color: #fff;
-  font-size: 18px;
+  font-size: 90%;
   font-weight: 700;
 
   transition: 0.4s ease-out;
@@ -304,7 +306,7 @@ svg {
 .child {
   position: fixed;
   height: 30%;
-  top: 30%;
+  top: 20%;
   bottom: 50%;
   background-color: #424242;
 }
@@ -322,6 +324,9 @@ input {
   text-transform: none;
   outline: none;
 }
+.artist_Genre{
+  margin-bottom: 2%;
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
@@ -331,7 +336,7 @@ import { mapGetters } from "vuex";
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       Name: "",
       Genre: "",

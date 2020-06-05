@@ -3,7 +3,7 @@
     <div class="row navbar-inner  justify-content-center">
       <div class=" navbar navbar-expand-sm  justify-content-center ">
         <span>
-          <ul>
+          <ul class="my_pages">
             <router-link to="/ArtistPersonalPage" tag="li">
               <a>home</a>
             </router-link>
@@ -35,9 +35,9 @@
           </svg>
           {{ this.ArtistName }}
         </button>
-         <div class="dropdown-menu">
+        <div class="dropdown-menu">
           <a
-            class="dropdown-item" 
+            class="dropdown-item"
             target="_blank"
             testid="userprofilr link"
             id="account-link"
@@ -47,8 +47,7 @@
           </a>
           <input v-if="showinput"
            id="in_rename"
-            v-model="newname" 
-           
+            v-model="newname"   
             @keyup.enter="ChangeArtistName(),showinputfield()"
           />
         </div>
@@ -65,7 +64,7 @@
   /* display: block; */
   display: block;
   justify-content: space-around;
-  z-index:50;
+  z-index: 50;
   .navbar-inner {
     padding: 0px 15px;
     display: flex;
@@ -121,11 +120,11 @@
   text-decoration: none;
   color: white;
   outline: none;
-  position: absolute;
+  position: absolute; 
   padding-bottom: 5px;
   padding-top: 2px;
-  position:absolute;
-  top:15%;
+  top:22%;
+  right:10%;
 }
 .dropdown-menu {
   background: #313030;
@@ -153,6 +152,11 @@
   z-index:50px;
 }
 }
+.my_pages{
+  // position:absolute;
+   position: relative;
+  right:50%;
+}
 </style>
 <script>
 /**
@@ -163,51 +167,51 @@
 import { mapGetters } from "vuex";
 export default {
   name: "ArtistHeader",
-  data:function(){ 
+  data: function() {
     return {
       posy: "",
       newname: "",
-    }
+    };
   },
   computed: {
     ...mapGetters({
-      showinput:"ArtistProperties/showinput",
-      ArtistName:"ArtistProperties/ArtistName"
+      showinput: "ArtistProperties/showinput",
+      ArtistName: "ArtistProperties/ArtistName",
       // renamepl:"creatplaylist/renamepl"
-    })
+    }),
   },
-  methods:{
-  showinputfield() {
-        this.$store.dispatch("ArtistProperties/showinputfield");
+  methods: {
+    showinputfield() {
+      this.$store.dispatch("ArtistProperties/showinputfield");
       //this.showinput = !this.showinput;
-      this.$nextTick(function() {
-        var i = document.getElementById("in_rename");
-        console.log("the element", this.posy);
-        if (i) {
-          i.style.top = this.posy;
+      // this.$nextTick(function() {
+      //   var i = document.getElementById("in_rename");
+      //   console.log("the element", this.posy);
+      //   if (i) {
+      //     i.style.top = this.posy;
 
-          // this.showinput = true;
-        }
+      //     // this.showinput = true;
+      //   }
        
-      });
+      // });
     },
-    getpos() {
-      this.posy = event.screenY - 110 + "px";
-      console.log(" posy", this.posy);
-    },
+    // getpos() {
+    //   this.posy = event.screenY - 110 + "px";
+    //   console.log(" posy", this.posy);
+    // },
     ChangeArtistName(){
       let payload = {
         // Name: this.Name,
         // Genre: this.Genre,
-        name: this.newname
+        name: this.newname,
       };
-      console.log("in aEDIT BIO POPUP",payload.name)
+      console.log("in aEDIT BIO POPUP", payload.name);
       console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditName", payload);
-    }
+    },
   },
-  beforeCreate:function(){
-   this.$store.dispatch("ArtistProperties/Get_Artist_Name");
-  }
+  beforeCreate: function() {
+    this.$store.dispatch("ArtistProperties/Get_Artist_Name");
+  },
 };
 </script>

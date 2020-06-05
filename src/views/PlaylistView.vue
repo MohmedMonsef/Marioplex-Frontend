@@ -103,10 +103,8 @@ import SongComponent from "@/components/SongComponent.vue";
 import emptytracks from "@/components/EmptyTracks.vue";
 import playlist from "@/components/Playlist.vue";
 import playlistinfo from "@/components/PlaylistInfo.vue";
-//  import playlistpopup from "@/components/playlistpopup.vue";
 import { mapGetters } from "vuex";
 import draggable from "vuedraggable";
-import { mapState } from "vuex";
 import ColorThief from "colorthief";
 /**
  * Playlist page which contains some information like its name and the name of user made by and of course some tracks and some information about them here you can like the whole playlist and add it to your liked playlists
@@ -122,7 +120,7 @@ export default {
   },
   data: function() {
     return {
-      show: false,
+      // show: false,
       oldIndex: "",
       newIndex: "",
       playlist_id: "",
@@ -134,14 +132,13 @@ export default {
     playlist,
     emptytracks,
     playlistinfo,
-    // playlistpopup
   },
   methods: {
-    toggleShow() {
-      var x = this.show;
-      window.Element.show = false;
-      this.show = !x;
-    },
+    // toggleShow() {
+    //   var x = this.show;
+    //   window.Element.show = false;
+    //   this.show = !x;
+    // },
     /**
      * Reorder tracks function used to reorder the tracks inside user's playlist in the library with the order he want (not completed yet)
      * @public This is a public method
@@ -163,9 +160,9 @@ export default {
     },
   },
   computed: {
-    ...mapState({
-      showpopup: (state) => state.playlistpopup.showModal,
-    }),
+    // ...mapState({
+    //   showpopup: (state) => state.playlistpopup.showModal,
+    // }),
     ...mapGetters({
       playlist_tracks: "Playlist/playlist_tracks",
       playlist_length: "Playlist/playlist_length",

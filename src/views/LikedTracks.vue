@@ -48,7 +48,7 @@
 .likedtracks {
   min-height: 300px;
   background-image: linear-gradient(0deg, #161516, rgb(20, 1, 59));
-  margin-top:-80px;
+  margin-top: -80px;
   padding-top: 80px;
 }
 .left {

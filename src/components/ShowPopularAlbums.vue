@@ -96,7 +96,7 @@ i {
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       hover: false,
     };
@@ -117,7 +117,7 @@ export default {
     },
   },
   filters: {
-    shorten: function (value) {
+    shorten: function(value) {
       if (value.length > 17) return value.substring(0, 17) + " ...";
       else return value;
     },

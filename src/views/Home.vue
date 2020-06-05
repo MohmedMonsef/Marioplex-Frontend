@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 // @ is an alias to /src
 import HomeNavigationBar from "@/components/HomeNavigationBar.vue";
 import HomeFooter from "@/components/HomeFooter.vue";

@@ -1,7 +1,7 @@
 <template>
   <div class="mediaplayer">
-    <div class="row">
-      <div class="col-sm-3" id="song_info_col">
+    <div class="row" id="mediaplayerrow">
+      <div class="col-sm-3 col-xs-6" id="song_info_col">
         <!-- here i need to link album image with mock server -->
         <div class="album_image" v-if="user == 'success'">
           <img src="../assets/cry.png" alt="album_image" testid="album_image" />
@@ -10,11 +10,11 @@
           and i need to change <a> to router link -->
         <div class="song_info" v-if="user == 'success'">
           <router-link
-           id="song_name" 
-           testid="song_name"
-           :to="{path:'/HomeWebPlayer/album/'+Get_Currentsong.album._id}"
-           >
-            {{Get_Currentsong.track.name}}
+            id="song_name"
+            testid="song_name"
+            :to="{ path: '/HomeWebPlayer/album/' + Get_Currentsong.album._id }"
+          >
+            {{ Get_Currentsong.track.name }}
           </router-link>
           <!-- this div is for like songs and them to the library of the user -->
           <!-- donot forget that the second icon is still weird -->
@@ -49,14 +49,19 @@
           </div>
           <br />
           <router-link
-           id="artist_name"
-           testid="artist_name" 
-           :to="{path:'/HomeWebPlayer/ArtistProfile/'+Get_Currentsong.album.artist._id}">
+            id="artist_name"
+            testid="artist_name"
+            :to="{
+              path:
+                '/HomeWebPlayer/ArtistProfile/' +
+                Get_Currentsong.album.artist._id,
+            }"
+          >
             {{ Get_Currentsong.album.artist.name }}
           </router-link>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-xs-12" id="mediaplayercontrollers">
         <div
           class="play_controllers"
           id="test_play_controllers"
@@ -183,7 +188,8 @@
         </div>
         <!-- the end of the new code  -->
       </div>
-      <div class="col-md-3 hidden-sm">
+      <!-- <div class="col-md-3 hidden-sm"> -->
+        <div class="col-md-3 col-xs-6" id="volumecontrollers">
         <div class="additional_actions" v-if="user == 'success'">
           <button id="queue_button" testid="queuebutton" @click="queue_alter()">
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
@@ -230,6 +236,7 @@
   transition: transform 0.25s cubic-bezier(0.3, 0, 0, 1);
   position: fixed;
   bottom: 0%;
+  min-width: 1090px;
 }
 .row {
   height: 90px;
@@ -473,6 +480,55 @@ input:focus {
 .disabledicon:active {
   color: #b3b3b3;
 }
+
+// @media screen and (max-width: 585px) {
+// .topcontrols{
+//   display: none;
+// }
+
+// .mediaplayer{
+// height: 100px;
+//   }
+//   #song_info_col{
+//     height: 30px;
+//     width: 50%;
+//     margin: 12px;
+//     margin-top:0; 
+//   }
+//   .album_image{
+//     display: none;
+//   }
+//   //heart
+//   .actionbuttons{
+//     right:500px;
+//   }
+//   .song_info{
+//     display: inline-block;
+//     margin: 4px;
+//   }
+//   .controllers{
+//     right: 20px;
+//   }
+//   .topcontrols{
+//   .seekbar,.progressbar{
+//     display: none;
+//   }
+
+//   .endtime{
+//     right: 300px;
+//   }
+//   }
+//   #randomicon,#playbackicon,#playforwardicon,#repeat_button{
+//     display: none;
+//   }
+//   #volumecontrollers{
+//     right: 20px;
+//   }
+// .row{
+//   display: flex;
+//    flex-flow:column-reverse;
+// }
+// }
 </style>
 
 <script type="module">
@@ -482,7 +538,7 @@ import { default as song_functions } from "../javascript/mediaplayer_script.js";
      * @displayName Media Player
      */
 export default {
-  data: function () {
+  data: function() {
     return {
       isRepeat: 0, //0=>no repeat 1=>repeat the song 2=>repeat playlist,album
       isShuffle: false,
@@ -494,8 +550,8 @@ export default {
     };
   },
   mixins: [song_functions],
-  mounted: function () {
-    this.$nextTick(function () {
+  mounted: function() {
+    this.$nextTick(function() {
       window.setInterval(() => {
         this.moving_song_bar();
       }, 300);
@@ -508,8 +564,13 @@ export default {
       }
       this.isShuffle = this.userinfo.player.is_shuffled;
     }, 1000);
+    // if (this.user != "success") {
+    //    var mediaplayerbar = document.getElementById("mediaplayerrow");
+    //    mediaplayerbar.style.justifyContent = "center";
+    //    mediaplayerbar.style.alignContent = "center";
+    // }
   },
-  created: function () {
+  created: function() {
     window.addEventListener("mouseup", () => {
       this.stopDrag();
       this.volumestopDrag();
@@ -519,7 +580,7 @@ export default {
         this.volumeisDrag();
       });
   },
-  destroyed: function () {
+  destroyed: function() {
     window.addEventListener("mouseup", () => {
       this.stopDrag();
       this.volumestopDrag();
@@ -535,7 +596,7 @@ export default {
      * changed song bar style when it is playing
      * @public This is a public method
      */
-    moving_song_bar: function () {
+    moving_song_bar: function() {
       //console.log("x")
       this.$store.dispatch("Mediaplayer/advance_progress");
       if (!this.drag) {
@@ -553,7 +614,7 @@ export default {
      * changed song bar style while draging
      * @public This is a public method
      */
-    isDrag: function () {
+    isDrag: function() {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
         var l = bar.getBoundingClientRect().left;
@@ -572,7 +633,7 @@ export default {
      * signals that the user is dragging song bar
      * @public This is a public method
      */
-    startDrag: function () {
+    startDrag: function() {
       this.drag = true;
       console.log("in start drag", this.drag);
     },
@@ -580,7 +641,7 @@ export default {
      * sets song current time on stop dragging
      * @public This is a public method
      */
-    stopDrag: function () {
+    stopDrag: function() {
       if (this.drag) {
         var bar = document.getElementById("seekbar");
         var l = bar.getBoundingClientRect().left;
@@ -596,7 +657,7 @@ export default {
      * signals that the user is dragging volume bar
      * @public This is a public method
      */
-    volumestartDrag: function () {
+    volumestartDrag: function() {
       this.volumedrag = true;
       console.log("in start volume drag", this.volumedrag);
     },
@@ -604,7 +665,7 @@ export default {
      * changed volume bar style while draging
      * @public This is a public method
      */
-    volumeisDrag: function () {
+    volumeisDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -623,7 +684,7 @@ export default {
      * sets currently playing track audio volume when we stop dragging it
      * @public This is a public method
      */
-    volumestopDrag: function () {
+    volumestopDrag: function() {
       if (this.volumedrag) {
         var bar = document.getElementById("volumeseekbar");
         var l = bar.getBoundingClientRect().left;
@@ -650,7 +711,7 @@ export default {
      * changes currently playing track audio volume
      * @public This is a public method
      */
-    volume_song: function () {
+    volume_song: function() {
       var volumeSlider = document.getElementById("volumeprogressbar");
       var changevolumeicon = document.getElementById("soundicon");
       if (
@@ -675,7 +736,7 @@ export default {
      * Alters shuffle mode for list of tracks
      * @public This is a public method
      */
-    shuffle: function () {
+    shuffle: function() {
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
@@ -687,7 +748,7 @@ export default {
      * Alters Repeat mode for tracks
      * @public This is a public method
      */
-    repeat_song: function () {
+    repeat_song: function() {
       if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglePopup");
       } else {
@@ -697,7 +758,7 @@ export default {
     },
   },
   computed: {
-    changeTime: function () {
+    changeTime: function() {
       if (!isNaN(this.currentPos)) {
         var min = Math.floor((this.currentPos % 3600) / 60);
         var sec = Math.floor(this.currentPos % 60);
@@ -706,7 +767,7 @@ export default {
       }
       return "0:00";
     },
-    totalDuration: function () {
+    totalDuration: function() {
       if (!isNaN(this.duration)) {
         var min = Math.floor((this.duration % 3600) / 60);
         var sec = Math.floor(this.duration % 60);

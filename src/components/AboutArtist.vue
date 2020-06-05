@@ -1,10 +1,10 @@
 <template>
   <div class="biography">
-    <h2 class="biotitle">Biography</h2>
+    <h2 class="biotitle" id="biotitle" testid="bioheader">Biography</h2>
     <p>
       {{ about }}
     </p>
-    <div class="barchart">
+    <div class="barchart" id="artistbarchart" testid="artistbarchart">
       <ArtistChart />
     </div>
   </div>
@@ -29,15 +29,20 @@ p {
 <script>
 import { mapGetters } from "vuex";
 import ArtistChart from "@/components/ArtistChart.vue";
+/**
+ * Displays Artist Biography information
+ * @displayName Artist Biography
+ * @example [none]
+ */
 export default {
   name: "aboutartist",
   components: {
-    ArtistChart
+    ArtistChart,
   },
   computed: {
     ...mapGetters({
-      about: "ArtistPage/artist_bio"
-    })
-  }
+      about: "ArtistPage/artist_bio",
+    }),
+  },
 };
 </script>

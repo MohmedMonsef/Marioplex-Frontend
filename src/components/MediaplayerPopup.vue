@@ -95,6 +95,7 @@ div {
   display: table;
   transition: opacity 0.3s ease;
   overflow: hidden;
+  justify-content: center;
   // animation: UpsellShowAnimation 0.2s 1;
   // animation-fill-mode: both;
 }
@@ -139,11 +140,14 @@ div {
   bottom: 50%;
   top: 17%;
   left: 22%;
+  align-content: center;
   background: url(https://open.scdn.co/cdn/images/improved-modal-bg.23e5dcb1.jpg);
   background-size: 100% 100%;
+  justify-content: center;
   .grandchild {
     position: relative;
-
+    justify-content: center;
+    align-content: center;
     margin: 35px;
     width: 100%;
     height: 100%;
@@ -243,25 +247,78 @@ button:focus {
 .closebutton:hover {
   text-decoration-line: underline;
 }
+@media screen and (max-width: 1030px) {
+  .child {
+    left: 10%;
+  }
+}
+@media screen and (max-width: 815px) {
+  .child {
+    left: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .child {
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    align-content: center;
+    padding: 20px;
+    .grandchild {
+      margin: 20px;
+      height: 100vh;
+      top: 0;
+      position: relative;
+      li {
+        padding: 2px;
+      }
+      .closebutton {
+        margin: 5px;
+      }
+      .info {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 320px;
+      }
+      .login_or_signup {
+        position: absolute;
+        display: block;
+        top: 320px;
+        width: 350px;
+        height: 300px;
+        left: 0;
+        right: 0;
+        float: right;
+      }
+    }
+  }
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Popup appear when there is no user asking him/her to signup first or to login if already has an account
+ * @displayName Mediaplayer Popup
+ * @example [none]
+ */
 export default {
   name: "mediaplayerpopup",
-  data: function () {
-    return {
-      // showModal: true
-    };
-  },
   computed: {
     ...mapGetters({
-      showModal: "CheckUserPopup/showModal",
-    }),
+      showModal: "CheckUserPopup/showModal"
+    })
   },
   methods: {
+    /**
+     * Toggle the state of mediaplayer to appear or not
+     * @public This is a public method
+     */
     changeModalState() {
       this.$store.dispatch("CheckUserPopup/togglePopup");
-    },
-  },
+    }
+  }
 };
 </script>

@@ -49,10 +49,10 @@
             <span class="p1">Date of birth</span>
             <span class="p4">{{
               user.birthDate.slice(8, 10) +
-              "/" +
-              user.birthDate.slice(5, 7) +
-              "/" +
-              user.birthDate.slice(0, 4)
+                "/" +
+                user.birthDate.slice(5, 7) +
+                "/" +
+                user.birthDate.slice(0, 4)
             }}</span>
           </li>
           <li>

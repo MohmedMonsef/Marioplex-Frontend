@@ -10,8 +10,8 @@ import axios from "axios";
 
 Vue.config.productionTip = true;
 
-axios.defaults.baseURL = "http://100.25.194.8/";
-Vue.prototype.$url="http://100.25.194.8/"
+axios.defaults.baseURL = "http://100.25.194.8";
+Vue.prototype.$url="http://100.25.194.8"
 var vm = new Vue({
   router,
   store,

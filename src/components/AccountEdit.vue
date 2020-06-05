@@ -242,7 +242,7 @@ export default {
   components: {
     AccountSidebar,
   },
-  data: function () {
+  data: function() {
     return {
       saved: false,
       can_submit1: false,
@@ -407,7 +407,7 @@ export default {
       }
       return;
     },
-    invalid_email: function () {
+    invalid_email: function() {
       if (
         this.email != "" &&
         (this.email.indexOf("@") == -1 ||
@@ -422,7 +422,7 @@ export default {
       }
       return;
     },
-    req_password: function () {
+    req_password: function() {
       if (this.password == "") {
         this.can_submit3 = false;
       } else {

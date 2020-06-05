@@ -313,7 +313,7 @@ label {
   height: 30px;
   margin-right: 15px;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
   .smallbar {
     display: none;
   }

@@ -12,10 +12,8 @@
             v-for="album in albums1"
             :key="album._id"
             :albumId="album._id"
-            :images="$url+
-              '/api/images/' +
-              album.images[0]._id +
-              '?belongs_to=album'
+            :images="
+              $url + '/api/images/' + album.images[0]._id + '?belongs_to=album'
             "
             :name="album.name"
             :artistname="album.artistName"

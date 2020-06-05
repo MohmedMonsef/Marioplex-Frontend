@@ -6,10 +6,11 @@
         <show-popularreleases
           v-for="POPnewrelease in POPnewreleases1.albums"
           :key="POPnewrelease.id"
-          :images="$url+
-            '/api/images/' +
-            POPnewrelease.images[0]._id +
-            '?belongs_to=album'
+          :images="
+            $url +
+              '/api/images/' +
+              POPnewrelease.images[0]._id +
+              '?belongs_to=album'
           "
           :name="POPnewrelease.name"
           :artistname="POPnewrelease.artist.name"

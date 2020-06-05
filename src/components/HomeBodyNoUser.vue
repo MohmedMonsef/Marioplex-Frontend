@@ -105,8 +105,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus"
-    })
-  }
+      isLoggedIn: "Authorization/GetStatus",
+    }),
+  },
 };
 </script>

@@ -1,23 +1,23 @@
 <template>
-<div class="row">
-    <HelpPagesSideBar class="col-4 hide top"/>
-    <div class="col-8 top"> <router-view ></router-view> </div>
-</div>    
+  <div class="row">
+    <HelpPagesSideBar class="col-4 hide top" />
+    <div class="col-8 top"><router-view></router-view></div>
+  </div>
 </template>
 <script>
-import HelpPagesSideBar from '@/components/HelpPagesSideBar'
+import HelpPagesSideBar from "@/components/HelpPagesSideBar";
 export default {
-    name:"HelpFixed",
-    components:{HelpPagesSideBar}
-}
+  name: "HelpFixed",
+  components: { HelpPagesSideBar },
+};
 </script>
 <style scoped>
-.top{
-    margin-top: 80px;
+.top {
+  margin-top: 80px;
 }
-@media (max-width: 900px){
-.hide{
+@media (max-width: 900px) {
+  .hide {
     display: none;
-}   
+  }
 }
 </style>

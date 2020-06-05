@@ -25,7 +25,7 @@
             <a>Help</a>
           </router-link>
           <li id="separator">|</li>
-          <router-link to="/SignUp" v-if="isLoggedIn != 'success'" tag="li">
+           <router-link to="/SignUp" v-if="isLoggedIn != 'success'" tag="li">
             <a> Sign up</a>
           </router-link>
           <router-link to="/Login" v-if="isLoggedIn != 'success'" tag="li">
@@ -43,7 +43,11 @@
               Profile
             </div>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <router-link to="/UserAccount/Account-overview" class="dropdown-item" tag="p">
+              <router-link
+                to="/UserAccount/Account-overview"
+                class="dropdown-item"
+                tag="p"
+              >
                 Account
               </router-link>
               <p to="/" @click="logout()" class="dropdown-item">

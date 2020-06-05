@@ -209,15 +209,10 @@ button:focus {
 import { mapGetters } from "vuex";
 export default {
   name: "playlistpopup",
-  data: function () {
-    return {
-      // showModal: true
-    };
-  },
   computed: {
     ...mapGetters({
-      showModal: "checkuserpopup/showpagesModal",
-    }),
+      showModal: "CheckUserPopup/showpagesModal"
+    })
   },
   methods: {
     /**
@@ -225,8 +220,8 @@ export default {
      * @public This is a public method
      */
     changeModalState() {
-      this.$store.dispatch("Playlist/toggleModal");
-    },
-  },
+      this.$store.dispatch("CheckUserPopup/togglepagespopup");
+    }
+  }
 };
 </script>

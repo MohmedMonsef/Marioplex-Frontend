@@ -197,7 +197,7 @@ export default {
     LogoHeader,
     Divider,
   },
-  data: function () {
+  data: function() {
     return {
       //User's data that will be passed from the v-model
       email: "",
@@ -255,7 +255,7 @@ export default {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
     }),
-    req_email: function () {
+    req_email: function() {
       if (this.trigger_validation) {
         if (this.email == "") {
           this.cannotSubmit();
@@ -268,7 +268,7 @@ export default {
         return false;
       }
     },
-    req_password: function () {
+    req_password: function() {
       if (this.trigger_validation) {
         if (this.password == "") {
           this.cannotSubmit();

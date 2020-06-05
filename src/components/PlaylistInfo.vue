@@ -24,11 +24,6 @@
         @click="pauseSong(), stopplaying()"
       >
       </i>
-
-      <!-- this comment to try to change the shape of play pause icon -->
-      <!-- <button v-if="!play" id="imageplayicon"  @click="playSong() , isplaying()">
-             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px"><title>MUSIC</title><path d="M41.37,71.64H36.88a2.51,2.51,0,0,1-2.5-2.5V34.84a2.51,2.51,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,41.37,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M60.92,71.64H56.43a2.5,2.5,0,0,1-2.5-2.5V34.84a2.5,2.5,0,0,1,2.5-2.5h4.49a2.5,2.5,0,0,1,2.5,2.5v34.3A2.5,2.5,0,0,1,60.92,71.64Zm-4.49-38.3a1.5,1.5,0,0,0-1.5,1.5v34.3a1.5,1.5,0,0,0,1.5,1.5h4.49a1.5,1.5,0,0,0,1.5-1.5V34.84a1.5,1.5,0,0,0-1.5-1.5Z"/><path d="M49.63,93.8A41.81,41.81,0,1,1,91.44,52,41.85,41.85,0,0,1,49.63,93.8Zm0-82.62A40.81,40.81,0,1,0,90.44,52,40.85,40.85,0,0,0,49.63,11.18Z"></path></svg>
-            </button> -->
     </div>
     <div>
       <span data-toggle="tooltip" :title="playlist_name">
@@ -276,11 +271,10 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-    console.log("message", message);
   },
 };
 /**
- *  * apperars when there is tracks in playlist
+ ** apperars when there is tracks in playlist
  * @displayName Playlist info
  * @example [none]
  */
@@ -294,28 +288,6 @@ export default {
   mixins: [song_functions],
   name: "playlist_info",
   methods: {
-    //    checkuserstate:function(){
-    //     if (this.user != "success")
-    //      {
-    //       this.changeModalState();
-    //      }
-    //      else{
-    //        this.playsong();
-    //        this.isplaying();
-    //      }
-    //    },
-    //      changeModalState() {
-    //   this.$store.dispatch("playlistpopup/toggleModal");
-    // },
-    /**
-     * Playlist list options(not implemnted yet)
-     * @public This is a public method
-     */
-    toggleShow() {
-      var x = this.show;
-      window.Element.show = false;
-      this.show = !x;
-    },
     /**
      * start playing song and changes style
      * @public This is a public method
@@ -353,9 +325,16 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "1";
+        return {
+          img: playlistimage.style.opacity,
+          btn: playbutton.style.opacity,
+        };
       } else {
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          btn: pausebutton.style.opacity,
+        };
       }
     },
     /**
@@ -365,14 +344,21 @@ export default {
     onleaveimage: function() {
       var playlistimage = document.getElementById("playlist_image");
       playlistimage.style.opacity = "1";
-
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "0";
+        return {
+          img: playlistimage.style.opacity,
+          btn: playbutton.style.opacity,
+        };
       } else {
         playlistimage.style.opacity = "0.3";
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          img: playlistimage.style.opacity,
+          btn: pausebutton.style.opacity,
+        };
       }
     },
     /**
@@ -381,24 +367,19 @@ export default {
      */
     likecurrentplaylist: function() {
       if (!this.liked) {
-        if (toast != null) {
-          toast.show("Saved to Your Library");
-        }
+        toast.show("Saved to Your Library");
         this.$store.dispatch(
           "Playlist/like_playlist",
           this.$route.params.playlist_id
         );
-        this.$store.dispatch("Playlist/showplaylists");
       } else {
-        if (toast != null) {
-          toast.show("Removed from Your Library");
-        }
+        toast.show("Removed from Your Library");
         this.$store.dispatch(
           "Playlist/unlike_playist",
           this.$route.params.playlist_id
         );
-        this.$store.dispatch("Playlist/showplaylists");
       }
+      this.$store.dispatch("Playlist/showplaylists");
     },
   },
   computed: {

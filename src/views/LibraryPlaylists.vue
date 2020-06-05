@@ -15,10 +15,11 @@
           <lib-playlists
             v-for="playlist in playlists1"
             :key="playlist.id"
-            :images="$url+
-              '/api/images/' +
-              playlist.images[0]._id +
-              '?belongs_to=playlist'
+            :images="
+              $url +
+                '/api/images/' +
+                playlist.images[0]._id +
+                '?belongs_to=playlist'
             "
             :name="playlist.name"
             :ownerName="playlist.owner"

@@ -1,19 +1,6 @@
 <template>
   <span>
     <div>
-      <!-- <div>
-      <ul>
-        <li v-for="(playlist, id) in Playlists" :key="playlist.id">
-          {{ playlist.playlistname }}
-          <span
-            class="Deleteplaylist"
-            testid="delete_playlist"
-            @click="DeletePlaylist(id)"
-            >x</span
-          >
-        </li>
-      </ul>
-    </div> -->
       <transition name="fade" appear>
         <div
           class="modal-overlay"
@@ -40,23 +27,29 @@
             </svg>
           </button>
 
-          <h1 class="title">Are you sure,you want to delete this song!!</h1>
+          <h1 class="title">Are you sure,you want to delete this Playlist!!</h1>
 
-          <button
-            class="cancel_button"
-            @click="changeModalStateDelete()"
-            @keyup.enter="DeletePlaylist()"
-          >
-            cancle
-          </button>
-          <button
-            class="delete_button"
-            testid="confirm_create"
-            @click.prevent="DeletePlaylist()"
-            @click="changeModalStateDelete()"
-          >
-            Delete
-          </button>
+          <div class="myrow">
+            <div class="buttonWrapper">
+              <button
+                class="customButton cancel_button"
+                @click="changeModalStateDelete()"
+                @keyup.enter="DeletePlaylist()"
+              >
+                cancel
+              </button>
+            </div>
+            <div class="buttonWrapper">
+              <button
+                class="customButton delete_button"
+                testid="confirm_create"
+                @click.prevent="DeletePlaylist()"
+                @click="changeModalStateDelete()"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
       </transition>
     </div>
@@ -81,7 +74,7 @@ body {
 div {
   position: relative;
   display: block;
-  width: 500%;
+  width: 100vw;
   height: 100vh;
 }
 .modal-overlay {
@@ -97,7 +90,7 @@ div {
   bottom: 0;
   z-index: 98;
   width: 100%;
-  height: 200%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -131,53 +124,56 @@ div {
 .slide-leave-to {
   transform: translateY(-50%) translateX(100vw);
 }
-.delete_button {
+.myrow {
+  display: block;
+  width: 100vw;
+  height: 200px;
   position: fixed;
-  top: 60%;
-  left: 50%;
+  top: 50%;
+}
+.customButton {
+  position: absolute;
   appearance: none;
   outline: none;
-  border: none;
-  background: none;
   cursor: pointer;
-  margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
-  background-color: #1ed760;
-  border-radius: 26px;
+  height: 10%;
+  width: 30%;
+  border-radius: 500px;
   border-color: transparent;
-
   color: #fff;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 700;
-  outline: none;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  line-height: 18px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  white-space: nowrap;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  text-align: center;
+  z-index: 4;
+  background: none;
+}
+.delete_button {
+  border: none;
+  background-color: #1ed760;
   transition: 0.4s ease-out;
+  border: 2px solid transparent;
 }
 .cancel_button {
-  position: fixed;
-  top: 60%;
-  left: 35%;
-  appearance: none;
-  outline: none;
-
-  background: none;
-  cursor: pointer;
-  margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
-  background-color: transparent;
-  border-radius: 26px;
   border-color: #fff;
-
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  outline: none;
-  transition: 0.4s ease-out;
+  transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
+  border: 2px solid;
+  margin-left: 30%;
 }
+.buttonWrapper {
+  width: 50%;
+  height: 500px;
+  display: inline-block;
+  padding: 3% 10% 3% 10%;
+}
+
 .title {
   position: absolute;
   top: 15%;
@@ -223,10 +219,34 @@ div {
   visibility: visible;
   opacity: 1;
 }
+@media screen and (max-width: 700px) {
+  .customButton {
+    height: 10%;
+    width: 43%;
+    border-radius: 500px;
+    font-size: 10px;
+  }
+  .cancel_button {
+    margin-left: 43%;
+  }
+  .buttonWrapper {
+    width: 50%;
+    height: 500px;
+    display: inline-block;
+    padding: 3% 5% 3% 5%;
+  }
+  .title {
+    font-size: 44px;
+    line-height: 50px;
+  }
+  .myrow {
+    top: 60%;
+  }
+}
 </style>
 <script>
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
 /**
  * Delete Playlist Pop Up to confirm delete action
@@ -241,19 +261,19 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
+    mytoast.classList.remove("toast--visible");
     }, 2000);
-  }
+  },
 };
 export default {
   computed: {
-    ...mapState({
-      Playlists: state => state.Playlist.Playlists
-    }),
+    // ...mapState({
+    //   Playlists: (state) => state.Playlist.Playlists,
+    // }),
     ...mapGetters({
       showModalDelete: "Playlist/showModalDelete",
-      todelete: "Playlist/todelete"
-    })
+      todelete: "Playlist/todelete",
+    }),
   },
   methods: {
     /**
@@ -274,14 +294,14 @@ export default {
       this.$store.dispatch("Playlist/DeletePlaylist", this.todelete);
       toast.show("Removed from your library");
       //console.log("removed");
-    }
+    },
   },
   mixins: [song_functions],
-  created: function() {
-    window.addEventListener("click", this.hideshow);
-  },
-  destroyed: function() {
-    window.removeEventListener("click", this.hideshow);
-  }
+  // created: function() {
+  //   window.addEventListener("click", this.hideshow);
+  // },
+  // destroyed: function() {
+  //   window.removeEventListener("click", this.hideshow);
+  // },
 };
 </script>

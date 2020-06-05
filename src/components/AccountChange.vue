@@ -178,7 +178,7 @@ export default {
   components: {
     AccountSidebar,
   },
-  data: function () {
+  data: function() {
     return {
       password: "",
       newpassword: "",
@@ -211,7 +211,7 @@ export default {
         }
       },200);
     },
-    req_password: function () {
+    req_password: function() {
       if (this.password == "") {
         this.canSet1 = false;
       } else {
@@ -247,7 +247,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isEdited: "Authorization/isEdited"
+      isEdited: "Authorization/isEdited",
     }),
   },
 };

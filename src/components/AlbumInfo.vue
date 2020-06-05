@@ -86,13 +86,6 @@
           ></i>
         </span>
       </button>
-      <!-- <span data-toggle="tooltip" title="More">
-            <i id="list_icon" class="fa fa-ellipsis-h dots_icon" @click="this.toggleShow"></i>
-            </span>
-            <div id="mydropdown" class="db" v-show="show">
-        <p v-if="!isLiked">Add to Liked Songs</p>
-        <p v-if="isLiked">Remove from Liked Songs</p>
-      </div>-->
       <p testid="albumlength" id="albumlength">{{ album_length }} SONGS</p>
       <div class="toast" id="albumliketoast" testid="albumliketoast"></div>
     </div>
@@ -273,7 +266,7 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  },
+  }
 };
 /**
  * Displays Album information
@@ -283,18 +276,12 @@ const toast = {
 export default {
   data: function() {
     return {
-      show: false,
-      play: false,
+      play: false
     };
   },
   mixins: [song_functions],
   name: "album_info",
   methods: {
-    toggleShow() {
-      var x = this.show;
-      window.Element.show = false;
-      this.show = !x;
-    },
     /**
      * checks if song in currently playing
      * @public This is a public method
@@ -336,9 +323,16 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "1";
+        return {
+          img: albumimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          btn: pausebutton.style.opacity
+        };
       }
     },
     /**
@@ -352,10 +346,18 @@ export default {
       if (!this.play) {
         var playbutton = document.getElementById("imageplayicon");
         playbutton.style.opacity = "0";
+        return {
+          img: albumimage.style.opacity,
+          btn: playbutton.style.opacity
+        };
       } else {
         albumimage.style.opacity = "0.3";
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
+        return {
+          img: albumimage.style.opacity,
+          btn: pausebutton.style.opacity
+        };
       }
     },
     /**
@@ -368,10 +370,9 @@ export default {
         this.$store.dispatch("Album/like_album", this.$route.params.album_id);
       } else {
         toast.show("Removed from Your Library");
-        console.log("ggg", this.$route.params.album_id);
         this.$store.dispatch("Album/unlike_album", this.$route.params.album_id);
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -380,8 +381,8 @@ export default {
       playicon: "Mediaplayer/playicon",
       artist_name: "Album/artist_name",
       album_image: "Album/album_image",
-      liked: "Album/likealbum",
-    }),
-  },
+      liked: "Album/likealbum"
+    })
+  }
 };
 </script>
