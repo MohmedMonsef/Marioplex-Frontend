@@ -292,11 +292,10 @@ input {
   }
 }
 </style>
-
 <script>
 // @ is an alias to /src
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 /**
  * Create Playlist Pop Up to input the new playlist name
  * @displayName Create Playlist Pop Up
@@ -313,9 +312,9 @@ export default {
   //showModal:false,
   components: {},
   computed: {
-    ...mapState({
-      Playlists: (state) => state.Playlist.Playlists,
-    }),
+    // ...mapState({
+    //   Playlists: (state) => state.Playlist.Playlists,
+    // }),
     ...mapGetters({
       showModal: "Playlist/showModal",
       username: "Authorization/Username",

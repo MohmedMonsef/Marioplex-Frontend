@@ -47,28 +47,28 @@ svg {
   left: 10%;
 }
 .access_header {
-  position: fixed;
+  position: absolute;
   top: 20%;
-  left: 30%;
+  left: 15%;
   right: 45%;
-  width: 600px;
+  width: 70%;
   color: white;
-  font-size: 50px;
+  font-size: 250%;
   text-align: center;
 }
 .access_paragraph {
-  position: fixed;
+  position: absolute;
   top: 38%;
-  left: 30%;
+  left: 15%;
   right: 45%;
-  width: 600px;
+  width:70%;
   color: white;
-  font-size: 15px;
+  font-size: 130%;
   text-align: center;
 }
 .access_button {
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 43%;
   border: none;
   cursor: pointer;

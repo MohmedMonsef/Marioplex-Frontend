@@ -31,6 +31,7 @@ describe("ResetPassword", () => {
       propsData: {
         token: "",
       },
+      stubs: ['router-link', 'router-view']
     });
   });
   it("renders", () => {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="to_contain">
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -32,10 +32,14 @@
             accept="audio/*"
             style="display:none"
             ref="heighinputfile"
-            @change="OnHeighFileSelected()"
+            @change="OnHeighFileSelected"
           />
-          <button class="uploadheighfile" @click="$refs.heighinputfile.click()">
-            Heigh Quality Track
+          <button
+            class="files"
+            id="uploadheighfile"
+            @click="$refs.heighinputfile.click()"
+          >
+            High Quality Track
           </button>
           <input
             type="file"
@@ -43,10 +47,12 @@
             accept="audio/*"
             style="display:none"
             ref="mediuminputfile"
-            @change="OnMediumFileSelected()"
+            id="medfile"
+            @change="OnMediumFileSelected"
           />
           <button
-            class="uploadmediumfile"
+            class="files"
+            id="uploadmediumfile"
             @click="$refs.mediuminputfile.click()"
           >
             Medium Quality Track
@@ -58,9 +64,14 @@
             accept="audio/*"
             style="display:none"
             ref="lowinputfile"
-            @change="OnLowFileSelected()"
+            id="lowfile"
+            @change="OnLowFileSelected"
           />
-          <button class="uploadlowfile" @click="$refs.lowinputfile.click()">
+          <button
+            class="files"
+            id="uploadlowfile"
+            @click="$refs.lowinputfile.click()"
+          >
             Low Quality Track
           </button>
           <input
@@ -69,13 +80,15 @@
             accept="audio/*"
             style="display:none"
             ref="heighencinputfile"
-            @change="OnHeigh_EncFileSelected()"
+            id="highenc"
+            @change="OnHeigh_EncFileSelected"
           />
           <button
-            class="uploadheighencfile"
+            class="files"
+            id="uploadheighencfile"
             @click="$refs.heighencinputfile.click()"
           >
-            Heigh_Enc Track
+            High_Enc Track
           </button>
 
           <input
@@ -84,10 +97,12 @@
             accept="audio/*"
             style="display:none"
             ref="mediumencinputfile"
-            @change="OnMedium_EncFileSelected()"
+            id="medenc"
+            @change="OnMedium_EncFileSelected"
           />
           <button
-            class="uploadmediumencfile"
+            class="files"
+            id="uploadmediumencfile"
             @click="$refs.mediumencinputfile.click()"
           >
             Medium_Enc Track
@@ -98,10 +113,12 @@
             accept="audio/*"
             style="display:none"
             ref="lowencinputfile"
-            @change="OnLow_EncFileSelected()"
+            id="lowenc"
+            @change="OnLow_EncFileSelected"
           />
           <button
-            class="uploadlowencfile"
+            class="files"
+            id="uploadlowencfile"
             @click="$refs.lowencinputfile.click()"
           >
             Low_Enc Track
@@ -112,23 +129,27 @@
             accept="audio/*"
             style="display:none"
             ref="previewinputfile"
-            @change="OnFilePreviewSelected()"
+            id="prefile"
+            @change="OnFilePreviewSelected"
           />
           <button
-            class="uploadpreviewfile"
+            class="files"
+            id="uploadpreviewfile"
             @click="$refs.previewinputfile.click()"
           >
             Preview Track
           </button>
-          <h4>Song Name</h4>
-          <input type="text" name="file" v-model="Name" />
-          <h4>Track Number</h4>
-          <input type="text" name="file" v-model="TrackNumber" />
+          <div class="track_info">
+            <h4>Song Name</h4>
+            <input type="text" name="file" v-model="Name" />
+            <h4>Track Number</h4>
+            <input type="text" name="file" v-model="TrackNumber" />
 
-          <h4>Available Market</h4>
-          <input type="text" name="file" v-model="AvailableMarket" />
-          <h4>Genre</h4>
-          <input type="text" name="file" v-model="Genre" />
+            <h4>Available Market</h4>
+            <input type="text" name="file" v-model="AvailableMarket" />
+            <h4>Genre</h4>
+            <input type="text" name="file" v-model="Genre" />
+          </div>
           <button class="cancel_button" @click="changeModalStateUpload">
             cancle
           </button>
@@ -146,7 +167,7 @@
     </transition>
   </div>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 * {
   margin: 10;
   padding: 10;
@@ -173,15 +194,18 @@ div {
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
-  background-color: #1ed760;
+  height: 6%;
+  width: 10%;
+  // height: 50px;
+  // width: 180px;
+  // padding: 8px 34px;
+  // background-color: #1ed760;
+  background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
 
   color: #fff;
-  font-size: 18px;
+  font-size: 85%;
   font-weight: 700;
   outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
@@ -197,15 +221,17 @@ div {
   background: none;
   cursor: pointer;
   margin: 20px;
-  height: 50px;
-  width: 180px;
-  padding: 8px 34px;
+  // height: 50px;
+  // width: 180px;
+  height: 6%;
+  width: 10%;
+  // padding: 8px 34px;
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
 
   color: #fff;
-  font-size: 18px;
+  font-size: 85%;
   font-weight: 700;
   outline: none;
   transition: 0.4s ease-out;
@@ -258,13 +284,13 @@ div {
   transform: translateY(-50%) translateX(100vw);
 }
 .cancel {
-  position: absolute;
-  left: 50%;
+  position: relative;
+  left: 40%;
   top: 10%;
   display: inline-block;
   background-color: transparent;
   color: #fff;
-  margin: 0;
+  margin: 5%;
   border: none;
 }
 h4 {
@@ -273,7 +299,7 @@ h4 {
   margin: 0;
 }
 .file_inputs {
-  position: absolute;
+  position: relative;
   top: 20%;
 }
 input {
@@ -290,6 +316,72 @@ input {
   text-transform: none;
   outline: none;
   font-weight: bold;
+}
+.to_contain {
+  width: 100%;
+  height: 100%;
+}
+.files {
+  position: absolute;
+  // position: relative;
+  // top: 70%;
+  /* left: 70%; */
+  // right: 0;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  // margin: 20px;
+  height: 7%;
+  width: 3%;
+  // padding: 8px 34px;
+  background: linear-gradient(to right, #f27914, #9c28d0);
+  border-radius: 26px;
+  border-color: transparent;
+  color: #fff;
+  font-size: 90%;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease-out;
+}
+#uploadheighfile {
+  top: 0%;
+  left: 0%;
+}
+#uploadmediumfile {
+  top: 0%;
+  left: 5%;
+}
+#uploadlowfile {
+  top: 0%;
+  left: 10%;
+}
+#uploadpreviewfile {
+  top: 0%;
+  left: 15%;
+}
+#uploadheighencfile {
+  top: 12%;
+  left: 2.5%;
+  // right:8.5%;
+}
+
+#uploadmediumencfile {
+  top: 12%;
+  left: 7.5%;
+}
+#uploadlowencfile {
+  top: 12%;
+  left: 12.5%;
+}
+.track_info {
+  position: relative;
+  top: 20%;
+}
+h4 {
+  background-color: transparent;
 }
 </style>
 
@@ -341,86 +433,32 @@ export default {
      * check track selected to upload(not implemnted yet)
      * @public This is a public method
      */
-    OnHeighFileSelected() {
+    OnHeighFileSelected(event) {
       this.Heighselectedfile = event.target.files[0];
-      console.log(this.Heighelectedfile, "noriHigh");
 
-      //        window.URL = window.URL || window.webkitURL;
-
-      //        this.myaudio.push(this.Heighselectedfile);
-      //         console.log("please tell me my audio ",this.myaudio)
-      //        let audioo = document.createElement('audioo');
-      //        audioo.preload = 'metadata';
-      //        audioo.src = URL.createObjectURL(this.Heighselectedfile);;
-      //        audioo.onloadedmetadata =()=>  {
-      //        window.URL.revokeObjectURL(audioo.src);
-      //        let duration = audioo.duration;
-      //        this.myaudio[this.myaudio.length - 1].duration = duration;
-      //        console.log("please tell me the duration ",duration)
-
-      //  }
-
-      // var myVideos = [];
-
-      // document.getElementById("fileUp").onchange = OnHeighFileSelected;
-      /////////////////////////////////////////////////////////////////////////////////////////////////
-      // console.log(this.Heighselectedfile, "noriHeigh");
-      // let reader = new FileReader();
-      // reader.readAsDataURL(this.Heighselectedfile);
-      // //this.audio.duration = reader.duration;
-      // console.log("noriHeighDuration", this.audio.duration);
-      // reader.onload = (evt) => {
-      //   let audiofile = new Audio();
-      //   //  let audiofile= new HTMLAudioElement;
-      //   //  this.audio.duration = audiofile.duration;
-      //    console.log("noriHeighaudiofile",audiofile);
-
-      //   // console.log( "noriHeighDuration",audiofile.duration );
-      //   audiofile.onload = () => {
-      //   //  console.log("noriHeighDuration");
-      //     // this.audio.duration = audiofile.duration;
-
-      //    // console.log("noriHeighDuration.......", audiofile.duration);
-      //   };
-
-      //   audiofile.src = evt.target.result;
-      //   console.log("in uploadsong popup the audio", audiofile);
-      //   // console.log("in uploadsong popup the audio src", audiofile.src);
-      // };
-      /////////////////////////////////////////////////////////////////////////////////////
     },
-    OnMediumFileSelected() {
+    OnMediumFileSelected(event) {
       this.Mediumselectedfile = event.target.files[0];
-
-      console.log(this.Mediumselectedfile, "noriMedium");
     },
-    OnLowFileSelected() {
+    OnLowFileSelected(event) {
       this.Lowselectedfile = event.target.files[0];
-
-      console.log(this.Lowselectedfile, "noriLow");
     },
-    OnHeigh_EncFileSelected() {
+    OnHeigh_EncFileSelected(event) {
       this.Heigh_Encselectedfile = event.target.files[0];
-
-      console.log(this.Heigh_Encselectedfile, "noriHeigh_Enc");
     },
-    OnMedium_EncFileSelected() {
+    OnMedium_EncFileSelected(event) {
       this.Medium_Encselectedfile = event.target.files[0];
 
-      console.log(this.Medium_Encselectedfile, "noriMedium_Enc");
     },
-    OnLow_EncFileSelected() {
+    OnLow_EncFileSelected(event) {
       this.Low_Encselectedfile = event.target.files[0];
-
-      console.log(this.Low_Encselectedfile, "noriLow_Enc");
     },
     /**
      * check track file before upload
      * @public This is a public method
      */
-    OnFilePreviewSelected() {
+    OnFilePreviewSelected(event) {
       this.selectedpreview = event.target.files[0];
-      console.log(this.selectedpreview, "noriPreview");
     },
     /**
      * Upload Song(not integerated yet)

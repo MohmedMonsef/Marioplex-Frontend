@@ -1,15 +1,13 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
-import Vuex from "vuex";
 import VueRouter from "vue-router";
-import ForArtist from "../../src/views/ForArtist";
-describe("ForArtist", () => {
+import AccountSidebar from "@/components/AccountSidebar.vue";
+
+describe("AccountSidebar", () => {
   let wrapper;
-  let store;
   const localVue = createLocalVue();
-  localVue.use(Vuex);
   localVue.use(VueRouter);
   beforeEach(() => {
-    wrapper = shallowMount(ForArtist, {
+    wrapper = shallowMount(AccountSidebar, {
       localVue,
     });
   });

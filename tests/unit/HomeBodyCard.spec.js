@@ -8,6 +8,7 @@ describe("HomeBodyCard", () => {
   beforeEach(() => {
     wrapper = shallowMount(HomeBodyCard, {
       localVue,
+      stubs: ['router-link', 'router-view']
     });
   });
   it("renders", () => {
