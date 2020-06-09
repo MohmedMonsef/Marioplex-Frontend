@@ -1,5 +1,5 @@
 <template>
-  <div class="to_contain">
+  <div>
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -77,15 +77,14 @@ body {
   overflow-y: hidden;
 }
 
-/* div {
-
+div {
+  /* relative */
   position: relative;
   display: block;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  }*/
-// }
+}
 .myrow {
   display: block;
   width: 100vw;
@@ -103,7 +102,7 @@ body {
   border-radius: 500px;
   border-color: transparent;
   color: #fff;
-  font-size: 90%;
+  font-size: 12px;
   font-weight: 700;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -137,7 +136,7 @@ body {
 }
 
 .modal-overlay {
-
+  /* fixed */
   position: relative;
   display: flex;
   justify-content: center;
@@ -155,6 +154,7 @@ body {
 }
 
 .modal {
+  /* fixed */
   position: fixed;
   z-index: 2;
   top: 0;
@@ -210,7 +210,7 @@ input {
 .cancel {
   position: absolute;
   left: 50%;
-  top: 15%;
+  top: 20%;
   display: inline-block;
   background-color: transparent;
   color: #fff;
@@ -220,7 +220,7 @@ input {
 }
 .title {
   position: absolute;
-  top: 20%;
+  top: 25%;
   display: block;
   font-size: 48px;
   line-height: 56px;
@@ -246,7 +246,6 @@ input {
 .child {
   position: fixed;
   height: 30%;
-  width:100%;
   top: 40%;
   bottom: 50%;
   background-color: #424242;

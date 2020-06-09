@@ -432,6 +432,7 @@ export default {
   created: function() {
     this.$store.dispatch("ArtistProperties/Get_Artist_ID");
     this.$store.dispatch("ArtistProperties/Get_Artist_Bio");
+    this.$store.dispatch("ArtistProperties/Get_Album_ID");
   },
 };
 </script>

@@ -11,15 +11,16 @@
       <div class="right">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
         <emptytracks class="right noinfo" v-if="this.playlist_length == 0" />
-        <draggable
+        <draggable 
           ghost-class="ghost"
           class="reordertracks right"
           @end="ReorderTracks"
           v-else
         >
-          <transition-group type="transition" name="flip-list">
+          <transition-group 
+           type="transition" name="flip-list">
             <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
-            <song-component
+            <song-component 
               testid="songcomponent"
               class="sortable"
               v-for="(p, i) in playlist_tracks"
@@ -36,6 +37,7 @@
               :playlistId="$route.params.playlist_id"
               :isPlaylist="true"
               :isPlayable="p.playable"
+              :type="p.type"
             />
           </transition-group>
         </draggable>
