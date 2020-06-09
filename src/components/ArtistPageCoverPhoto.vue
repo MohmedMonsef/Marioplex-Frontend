@@ -168,7 +168,7 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
+    mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
   },
@@ -201,10 +201,7 @@ export default {
         );
       } else {
         toast.show("Removed from Your Library");
-        this.$store.dispatch(
-          "ArtistPage/unfollow_artist",
-          this.$route.params.artist_id
-        );
+        this.$store.dispatch("ArtistPage/unfollow_artist",this.$route.params.artist_id);
       }
     },
     getImg() {

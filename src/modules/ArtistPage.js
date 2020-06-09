@@ -12,7 +12,7 @@ export default {
     artist_name: "",
     artistcover_image: "",
     userID: "",
-    followartist: Boolean,
+    followartist: false,
     loading: false,
   },
   mutations: {
