@@ -77,7 +77,7 @@
             JOIN PREMIUM
           </button>
         </router-link>
-        <button class="trans_button" testid="removeme" @click="remove">
+        <button class="trans_button" testid="removeme" id="removeme" @click="remove">
             Cancel my account
         </button>
         <div class="row" v-if="!deleted_Acount">

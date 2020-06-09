@@ -27,6 +27,9 @@ describe("AccountOverview", () => {
             Username: (state) => state.User.displayName,
             user: (state) => state.User
           },
+          actions:{
+            removeuser:jest.fn()
+          }
         },
       },
     });
@@ -38,4 +41,10 @@ describe("AccountOverview", () => {
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
+  it("test remove function function ", () => {
+    const input = wrapper.find("#removeme");
+    input.trigger("click");
+    wrapper.vm.remove();
+    expect("removeuser").toHaveBeenCalled;
+  }); 
 });
