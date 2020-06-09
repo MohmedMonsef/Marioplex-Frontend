@@ -371,36 +371,36 @@ export default {
      * @public This is a public method
      */
     addToQueue() {
-      if (this.user != "success") {
-        this.$store.dispatch("CheckUserPopup/togglepagespopup");
-      } else {
-        this.$store.dispatch("Queue/AddToQueue", {
-          trackId: this.song_id,
-          playlistId: this.playlistId,
-          isPlaylist: this.isPlaylist,
-          albumId: this.albumId
-        });
-      }
+      this.$store.dispatch("Queue/AddToQueue", {
+        trackId: this.song_id,
+        playlistId: this.playlistId,
+        isPlaylist: this.isPlaylist,
+        albumId: this.albumId
+      });
     },
     /**
      * toggles the state of the dropdown list (show/hide)
      * @public This is a public method
      */
     toggleShow(event) {
-      if (this.canPlay) {
-        var x = this.show;
-        window.Element.show = false;
-        this.show = !x;
-        if (!x) {
-          this.$nextTick(function() {
-            var div = document.getElementById("mydropdown");
-            var left = event.screenX - 203 + "px";
-            var top = event.screenY - 70 + "px";
-            if (div) {
-              div.style.left = left;
-              div.style.top = top;
-            }
-          });
+      if (this.user != "success") {
+        this.$store.dispatch("CheckUserPopup/togglepagespopup");
+      } else {
+        if (this.canPlay) {
+          var x = this.show;
+          window.Element.show = false;
+          this.show = !x;
+          if (!x) {
+            this.$nextTick(function() {
+              var div = document.getElementById("mydropdown");
+              var left = event.screenX - 203 + "px";
+              var top = event.screenY - 70 + "px";
+              if (div) {
+                div.style.left = left;
+                div.style.top = top;
+              }
+            });
+          }
         }
       }
     },
@@ -427,18 +427,14 @@ export default {
      * @public This is a public method
      */
     likecurrentsong: function() {
-      if (this.user != "success") {
-        this.$store.dispatch("CheckUserPopup/togglepagespopup");
+      if (!this.isLiked) {
+        this.$store.dispatch("Mediaplayer/Like", this.song_id);
+        toast.show("Added to your Liked Songs");
+        this.isLiked = true;
       } else {
-        if (!this.isLiked) {
-          this.$store.dispatch("Mediaplayer/Like", this.song_id);
-          toast.show("Added to your Liked Songs");
-          this.isLiked = true;
-        } else {
-          this.$store.dispatch("Mediaplayer/UnLike", this.song_id);
-          toast.show("Removed from your Liked Songs");
-          this.isLiked = false;
-        }
+        this.$store.dispatch("Mediaplayer/UnLike", this.song_id);
+        toast.show("Removed from your Liked Songs");
+        this.isLiked = false;
       }
     },
     /**
@@ -457,22 +453,14 @@ export default {
       }
     },
     changeModalStateAdd() {
-      if (this.user != "success") {
-        this.$store.dispatch("CheckUserPopup/togglepagespopup");
-      } else {
-        this.$store.dispatch("Playlist/toggleModalAdd", this.song_id);
-      }
+      this.$store.dispatch("Playlist/toggleModalAdd", this.song_id);
     },
     RemoveFromThisPlaylist() {
-      if (this.user != "success") {
-        this.$store.dispatch("CheckUserPopup/togglepagespopup");
-      } else {
-        let payload = {
-          playlist_id: this.playlistId,
-          song_id: this.song_id
-        };
-        this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
-      }
+      let payload = {
+        playlist_id: this.playlistId,
+        song_id: this.song_id
+      };
+      this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
     }
   },
   computed: {
