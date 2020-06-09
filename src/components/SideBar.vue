@@ -1,11 +1,12 @@
 <template>
   <div class="SideBar" testid="sidebar component">
     <!-- spotify logo -->
-    <router-link to="/HomeWebPlayer" class="smallbar" testid="logo in sidebar">
+    <router-link to="/HomeWebPlayer" testid="logo in sidebar">
       <img
-        src="../assets/spotify logo.png"
+        src="../assets/white Marioplex.png"
         alt="Logo"
-        style="width: 150px; height: 65px; margin: 20px;"
+        class="logoImg"
+       
       />
     </router-link>
     <!-- navigations to pages -->
@@ -313,6 +314,10 @@ label {
   height: 30px;
   margin-right: 15px;
 }
+.logoImg{
+  width: 140px; 
+  margin: 20px;
+}
 @media screen and (max-width: 1000px) {
   .smallbar {
     display: none;
@@ -336,6 +341,10 @@ label {
     margin-left: -10px;
     width: 30px;
   }
+  .logoImg{
+  width: 50px; 
+  margin: 5px;
+}
 }
 </style>
 

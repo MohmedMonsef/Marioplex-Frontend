@@ -8,6 +8,10 @@ export default {
   },
   mutations: {
     set_playlists(state, playlists) {
+      playlists.forEach((playlist) => {
+        if (playlist.images.length == 0)
+          playlist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
+      });
       state.playlists = playlists;
     },
     set_user(state, user) {

@@ -4,7 +4,7 @@
     <!-- login form -->
     <div class="conatiner login-form px-0">
       <div class="row justify-content-center m-0">
-        <div class="col-4 m-0" align="center">
+        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-8 m-0" align="center">
           <h2>To continue,log in to Spotify</h2>
           <div class="unlogged" v-if="isLoggedIn == 'login_err'">
             incorrect email or password

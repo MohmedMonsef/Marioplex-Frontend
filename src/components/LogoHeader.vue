@@ -1,7 +1,7 @@
 <template>
   <div class="conatiner px-0 bar">
     <div class="row justify-content-center logo-bar m-0">
-      <router-link to="/"> <img src="../assets/logo-black.png"/></router-link>
+      <router-link to="/"> <img src="../assets/black Marioplex.png"/></router-link>
     </div>
   </div>
 </template>

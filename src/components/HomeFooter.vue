@@ -2,7 +2,7 @@
   <div class="row justify-content-center footer px-0 m-0">
     <!-- <div class="col-9"> -->
     <div class="col-sm-2 logo-div">
-      <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+      <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
     </div>
     <!-- <div class="col-sm-6"> -->
     <div class="col-sm-2">
@@ -82,7 +82,7 @@ div {
 .logo-div {
   margin-bottom: 20px;
   img {
-    width: 150px;
+    width: 120px;
   }
 }
 .icon-div {

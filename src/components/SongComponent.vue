@@ -409,7 +409,7 @@ export default {
      */
     hideshow(event) {
       var targetId = event.target.id;
-      if (!this.$el.contains(event.target) || targetId != "list_icon") {
+      if (targetId != "list_icon" || !this.$el.contains(event.target)) {
         this.show = false;
         this.isclicked = false;
       }
@@ -501,7 +501,7 @@ export default {
     }
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function() {
+  beforeDestroy: function() {
     window.removeEventListener("click", this.hideshow);
   },
 };
