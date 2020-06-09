@@ -27,10 +27,10 @@
 
       <p>
         Enter any email addresses you use into our
-        <a href="/password-reset" target="_blank">password reset form</a>. If
+        <a href="/ForgetPassword" >password reset form</a>. If
         there's an account associated with it, we’ll let you know. You can
         continue to
-        <a href="/change-password" target="_blank"
+        <a href="/ForgetPassword" 
           >reset the account’s password</a
         >, then use that email address and the new password to log in.
       </p>

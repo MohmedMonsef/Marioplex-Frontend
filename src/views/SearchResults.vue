@@ -3,7 +3,7 @@
     <div v-if="search_value.length !== 0" class="cont last">
       <!--search results-->
       <div class="row">
-        <div v-if="match_top.length" class="col-4">
+        <div v-if="match_top.length" class="col-lg-4 ">
           <div v-if="match_top[0].type === 'Artist'">
             <top
               v-for="match_to in match_top"
@@ -107,8 +107,8 @@
               >SeeAll</router-link
             >
           </div>
-          <div class="col-12">
-            <trackcomponent
+          <div class="col-lg-12 col-md-6 col-xs-6 margan">
+            <SongComponent
               v-for="track in match_track"
               :key="track.id"
               :song_name="track.name"
@@ -117,7 +117,7 @@
               :song_id="track._id"
               :albumId="track.albumId"
               :song_album="track.albumName"
-            ></trackcomponent>
+            ></SongComponent>
           </div>
         </div>
       </div>
@@ -277,6 +277,9 @@
   </div>
 </template>
 <style scoped>
+.margan{
+  margin-top: 50px;
+}
 .track {
   margin-left: 2%;
 }
@@ -323,7 +326,7 @@ import LibArtists from "@/components/LibArtists.vue";
 import top from "@/components/TopresultCard.vue";
 import LibAlbums from "@/components/LibAlbums.vue";
 import LibPlaylists from "@/components/LibPlaylists.vue";
-import trackcomponent from "@/components/TrackComponent.vue";
+import SongComponent from "@/components/SongComponent.vue";
 import { mapGetters } from "vuex";
 /**
  * Here is the place where results of the search appear
@@ -337,7 +340,7 @@ export default {
     top,
     LibAlbums,
     LibPlaylists,
-    trackcomponent,
+    SongComponent,
   },
   data() {
     return { shower: true };
