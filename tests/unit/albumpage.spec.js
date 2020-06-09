@@ -46,6 +46,15 @@ describe("AlbumInfo", () => {
           getters: {
             playicon: state => state.playicon
           }
+        },
+        Authorization:{
+          namespaced: true,
+          state: {
+            status: "",
+          },
+          getters: {
+            GetStatus: state => state.status
+          },
         }
       }
     });
@@ -75,6 +84,9 @@ describe("AlbumInfo", () => {
     newDiv = document.createElement("div");
     newDiv.setAttribute("id", testId);
     document.body.appendChild(newDiv);
+    store.state.Authorization.status = "";
+    wrapper.vm.isplaying();
+    store.state.Authorization.status = "success";
     store.state.Mediaplayer.playicon = true;
     wrapper.vm.isplaying();
     store.state.Mediaplayer.playicon = false;
@@ -123,11 +135,17 @@ describe("AlbumInfo", () => {
     let toast = document.createElement("div");
     toast.setAttribute("id", testId);
     document.body.appendChild(toast);
+    store.state.Authorization.status = "";
+    wrapper.vm.likecurrentalbum();
+    store.state.Authorization.status = "success";
     wrapper.vm.likecurrentalbum();
     expect("like_album").toHaveBeenCalled;
     jest.useFakeTimers();
     jest.runAllTimers();
     store.state.Album.likedalbum = true;
+    store.state.Authorization.status = "";
+    wrapper.vm.likecurrentalbum();
+    store.state.Authorization.status = "success";
     wrapper.vm.likecurrentalbum();
     expect("unlike_album").toHaveBeenCalled;
     jest.runAllTimers();
