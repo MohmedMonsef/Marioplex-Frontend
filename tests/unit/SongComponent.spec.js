@@ -4,9 +4,7 @@ import VueRouter from "vue-router";
 import SongComponent from "../../src/components/SongComponent";
 
 describe("SongComponent", () => {
-  let wrapper;
-  let ifliked;
-  let ifnotliked;
+  let wrapper,wrapper2;
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
@@ -20,28 +18,11 @@ describe("SongComponent", () => {
           state: {
             currentsong: {
               track: {
-                availableMarkets: ["EG,US"],
                 _id: "5e80ceb853e67b1e284a0f15",
                 trackNumber: 1,
                 name: "HAVANA",
                 artistId: "5e80c9b614c8566d6cd9b40e",
                 albumId: "5e80cc2b14c8566d6cd9b40f",
-                discNumber: 1,
-                explicit: false,
-                type: "Track",
-                acousticness: 10,
-                danceability: 23,
-                energy: 100,
-                instrumentalness: 4,
-                key: 90,
-                liveness: 25,
-                loudness: 70,
-                mode: 56,
-                speechiness: 67,
-                tempo: 76,
-                timeSignature: "2020-03-29T16:37:12.554Z",
-                valence: 70,
-                __v: 0,
                 images: [],
               },
               isLiked: true,
@@ -64,105 +45,154 @@ describe("SongComponent", () => {
               return state.playicon;
             },
           },
+          actions:{
+            UnLike:jest.fn(),
+            Like:jest.fn()
+          }
         },
         Playlist:{
           namespaced:true,
           state:{
-            showModalAdd:false
+            showModalAdd:false,
+            withtrack:true
+          },
+          getters:{
+            withtrack: (state) => {
+              return state.withtrack;
+            },
+          },
+          actions:{
+            toggleModalAdd:jest.fn(),
+            RemoveFromThisPlaylist:jest.fn()
           }
+        },
+        Authorization:{
+          namespaced:true,
+          state:{
+            GetStatus:"",
+            Usename:""
+          },
+          getters:{
+            Usename: (state) => {
+              return state.Usename;
+            },
+            GetStatus:(state) => {
+              return state.GetStatus;
+            },
+          }
+        },
+        CheckUserPopup:{
+          namespaced:true,
+          actions:{
+            togglePopup:jest.fn()
+          }
+        },
+        Queue:{
+          namespaced:true,
+        actions:{
+          AddToQueue:jest.fn()
+        }
         }
       },
     });
     wrapper = shallowMount(SongComponent, {
       localVue,
-      store,
+      store,    
       propsData: {
         song_name: "my song",
         song_album: "burtonhollow",
         song_artists: "civil wars",
-        song_length: 500,
-      },
-    });
+        song_length: 0,
+        isPlayable:true,
+        song_id :"5e80ceb853e67b1e284a0f15",
+        albumId:"5e80cc2b14c8566d6cd9b40f",
+        isLiked:false
+      }, });
+      wrapper2 = shallowMount(SongComponent, {
+        localVue,
+        store,    
+        propsData: {
+          song_name: "my song",
+          song_album: "burtonhollow",
+          song_artists: "civil wars",
+          song_length: 0,
+          isPlayable:true,
+          song_id :"1",
+          albumId:"1",
+          isLiked:false
+        }, });
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
+    wrapper.destroy();
   });
-
-  it("renders song info", () => {
-    const song_name = wrapper.find(".song_name");
-    const song_album = wrapper.find(".song_album");
-    const song_artists = wrapper.find(".song_artist");
-    const song_length = wrapper.find(".song_length");
-    expect(song_name.text()).toBe("my song");
-    expect(song_album.text()).toBe("burtonhollow");
-    expect(song_artists.text()).toBe("civil wars");
-    expect(song_length.text()).toBe("8:20");
+  it("show options list", () => {
+    var event="";
+    let testId = "mydropdown";
+    let mydropdown = document.createElement("div");
+    mydropdown.setAttribute("id", testId);
+    document.body.appendChild(mydropdown);
+    wrapper.vm.toggleShow(event) 
+    
   });
-  it("if component is clicked ", async () => {
-    const music_icon = wrapper.find(".music_icon");
-    music_icon.trigger("click");
-    wrapper.setData({
-      isclicked: true,
-    });
-    const playSong = jest.fn();
-    wrapper.setMethods({
-      playSong: playSong,
-    });
-    expect("playSong").toHaveBeenCalled;
+  
+  it("test add to queue function ", () => {
+    wrapper.vm.addToQueue();
+    expect("AddToQueue").toHaveBeenCalled;
+  }); 
+  it("show add to playlist popup", () => {
+    wrapper.vm.changeModalStateAdd();
+    expect("toggleModalAdd").toHaveBeenCalled;
+  }); 
+  it("remove from playlist function ", () => {
+    wrapper.vm.RemoveFromThisPlaylist();
+    expect("RemoveFromThisPlaylist").toHaveBeenCalled;
+  }); 
+  it("click to toggle style ",() => {
+    wrapper.vm.clicked();
+    expect(wrapper.vm.isclicked).toBe(true);
   });
-  it("if the component is liked", async () => {
-    ifliked = shallowMount(SongComponent, {
-      localVue,
-      store,
-      propsData: {
-        isLiked: true,
-      },
-    });
-    ifliked.setData({
-      show: false,
-    });
-    const menu = ifliked.find("#icondiv");
-    menu.trigger("click");
+  it("play song on double click",() => {
+    wrapper2.vm.playOnDblCLk();
+    expect(wrapper2.vm.playSong()).toHaveBeenCalled;
+    wrapper.vm.playOnDblCLk();
+    expect(wrapper.vm.playSong()).toHaveBeenCalled;
 
-    await ifliked.vm.$nextTick();
+    store.state.Mediaplayer.playicon=false;
 
-    const isnotliked = ifliked.find("#ifnotliked");
-    const isliked = ifliked.find("#ifliked");
+    wrapper.vm.playOnDblCLk();
+    expect(wrapper.vm.playSong()).toHaveBeenCalled;
 
-    expect(isliked.exists()).toBe(true);
-    expect(isnotliked.exists()).toBe(false);
+    store.state.Mediaplayer.playicon=true;
+
+    wrapper.vm.playOnDblCLk();
+    expect(wrapper.vm.pauseSong()).toHaveBeenCalled;
+
   });
-  it("if the component is not liked", async () => {
-    ifnotliked = shallowMount(SongComponent, {
-      localVue,
-      store,
-      propsData: {
-        isLiked: false,
-      },
-    });
-    ifnotliked.setData({
-      show: false,
-    });
-    const menu = ifnotliked.find("#icondiv");
-    menu.trigger("click");
-
-    await ifnotliked.vm.$nextTick();
-
-    const isnotliked = ifnotliked.find("#ifnotliked");
-    const isliked = ifnotliked.find("#ifliked");
-
-    expect(isliked.exists()).toBe(false);
-    expect(isnotliked.exists()).toBe(true);
+  it("like and unlike current song ",() => 
+  {
+    let testId = "liketoast";
+    let toast = document.createElement("div");
+    toast.setAttribute("id", testId);
+    document.body.appendChild(toast);
+    wrapper.vm.likecurrentsong();
+    jest.useFakeTimers();
+    jest.runAllTimers(); 
+    expect("Like").toHaveBeenCalled;
+    expect(wrapper.vm.isLiked).toBe(true);
+    wrapper.vm.likecurrentsong();
+    jest.runAllTimers(); 
+    expect("UnLike").toHaveBeenCalled;
+    expect(wrapper.vm.isLiked).toBe(false);
   });
-  it("if mouse hover on component", async () => {
-    let icon = wrapper.find(".fa-music");
-    expect(icon.exists()).toBe(true);
-
-    wrapper.setData({
-      hover: true,
-    });
-    await wrapper.vm.$nextTick();
-    icon = wrapper.find(".fa-play");
-    expect(icon.exists()).toBe(true);
+  it("hide options list ",() => {
+    let event={
+       target:{
+         id:""
+        }
+    };
+    wrapper.vm.hideshow(event);
+    expect(wrapper.vm.isclicked).toBe(false);
+    expect(wrapper.vm.show).toBe(false);
   });
 });

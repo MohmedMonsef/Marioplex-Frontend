@@ -107,7 +107,7 @@ export default {
     },
     UploadTrack() {},
     Get_Album_ID(state, AlbumID) {
-      state.AlbumID = AlbumID;
+      state.Album_ID = AlbumID;
     },
   },
   actions: {
@@ -300,7 +300,7 @@ export default {
           console.log(err);
         });
     },
-    UploadTrack({ commit }, payload) {
+    UploadTrack({ commit, state }, payload) {
       const high = new FormData();
       high.append("image", payload.highselectedfile);
       const medium = new FormData();
@@ -315,10 +315,13 @@ export default {
       low_enc.append("image", payload.low_enc_selectedfile);
       const review = new FormData();
       review.append("image", payload.selectedpreview);
+      let allbum_id = state.Album_ID;
       axios({
         method: "post",
         url:
-          "/api/artists/me/albums/5eb0a7efec0c444e9c48985f/tracks?name=" +
+          "/api/artists/me/albums/" +
+          allbum_id +
+          "/tracks?name=" +
           payload.Name +
           "&availableMarkets=" +
           payload.AvailableMarket +
@@ -344,12 +347,14 @@ export default {
         });
       //post("/api/artists/me/albums/"+5eb0a8b4ec0c444e9c48986e+"/tracks?")
     },
-    Get_Album_ID(state, { commit }) {
+    Get_Album_ID({ state, commit }) {
       let Artist_ID = state.Artist_ID;
+      console.log("artist id in artist propertis:", Artist_ID);
       axios
         .get("api/Artists/" + Artist_ID + "/Albums")
         .then((res) => {
-          const AlbumID = res.data._id;
+          const AlbumID = res.data[0]._id;
+          console.log("album id in artist propertis:", AlbumID);
           commit("Get_Album_ID", AlbumID);
         })
         .catch((error) => {

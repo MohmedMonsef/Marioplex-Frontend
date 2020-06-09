@@ -12,6 +12,7 @@
     </div>
     <mediaplayer />
     <playlistpopup v-if="showuserpopup" />
+    <AddTrackPopup v-if="showAdd"></AddTrackPopup>
   </div>
 </template>
 <style scoped>
@@ -45,6 +46,7 @@ import mediaplayer from "@/components/Mediaplayer.vue";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import NavbarWebplayer from "@/components/NavbarWebplayer.vue";
 import PremiumAd from "@/components/PremiumAd.vue";
+import AddTrackPopup from "../components/AddTrackPopup";
 import { mapState, mapGetters } from "vuex";
 //import LibraryNavbar from "@/components/library-navbar.vue";
 /**
@@ -69,6 +71,7 @@ export default {
     PremiumAd,
     // LibraryNavbar
     NavbarWebplayer,
+    AddTrackPopup,
   },
   computed: {
     ...mapState({
@@ -76,6 +79,7 @@ export default {
       showmediaplayerpopup: (state) => state.CheckUserPopup.showModal,
       showuserpopup: (state) => state.CheckUserPopup.showpagesModal,
       showdelete: (state) => state.Playlist.showModalDelete,
+      showAdd: (state) => state.Playlist.showModalAdd,
     }),
     ...mapGetters({
       premiumPopup: "Mediaplayer/premiumPopup",
