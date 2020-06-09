@@ -24,7 +24,7 @@
               </router-link>
             </p>
           </div>
-          <button class="close" testid="closepopup" @click="showModal = false">
+          <button class="close" testid="closepopup" @click="changeModalState()">
             Close
           </button>
         </div>
