@@ -267,12 +267,12 @@
           />
         </div>
       </div>
-      <!-- <div
-        v-if="match_artists.length==0 &&  match_albums.length==0 && match_playlists.length==0 && match_users.length==0 && match_track.length==0"
+      <div
+        v-if="!flagfound"
       >
-        <p id="noresult">No Results </p>
-        <p>please try using a small key words</p>
-      </div> -->
+        <p id="noresult">No Results -_- </p>
+        <p >please try using a small key words</p>
+      </div>
     </div>
     <div></div>
   </div>
@@ -298,7 +298,7 @@
 }
 p {
   color: white;
-  font-size: 12px;
+  font-size: 20px;
   margin-left: 30%;
 }
 .row {
@@ -356,14 +356,12 @@ export default {
       search_value: "Search/get_value",
       match_users: "Search/getuser5",
       match_track: "Search/gettrack3",
-      //    showme:"Search/shower"
+      flagfound:"Search/getflagfound"
     }),
   },
   methods: {
     change() {
       this.shower = false;
-      // this.$store.dispatch("Search/actshower",false);
-      // this.$store.dispatch("Search/searchfocus",false);
       this.$store.dispatch("Search/showresult", "");
     },
     getImg(imgSrc) {
@@ -373,9 +371,6 @@ export default {
         return this.$url + "/api/images/" + imgSrc._id + "?belongs_to=user";
     },
   },
-  //  mounted() {
-  //   window.addEventListener('load', this.setshow);
-  // }
-  //props:["showme"]
+
 };
 </script>

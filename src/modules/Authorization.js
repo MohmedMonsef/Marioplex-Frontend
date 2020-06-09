@@ -10,8 +10,9 @@ export default {
     User: {},
     isEdited: "",
     deleted_playlists: [],
-    emailConfirmed: Boolean
+    emailConfirmed: Boolean,
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
+    deleted_Acount:true
   },
   mutations: {
     auth_request(state) {
@@ -46,6 +47,11 @@ export default {
     setDeletedPlaylists(state, playlists) {
       state.deleted_playlists = playlists;
     },
+    deleted(state){
+        state.status = "";
+        state.token = "";
+        state.User = {};
+    }
   },
   actions: {
     signUp({ commit }, user) {
@@ -220,6 +226,21 @@ export default {
         .post("/api/login/confirm?id=" + userId)
         state.emailConfirmed = true;
     },
+    removeuser({commit,state}){
+      axios
+      .delete("api/remove")
+      .then(() => {
+        state.deleted_Acount=true;
+        commit("deleted");
+        router.replace("/signup");
+        delete axios.defaults.headers.common["x-auth-token"];
+      })
+      .catch((error) => {
+        console.log(error.response.status);
+        if(error.response.status==400)
+        {state.deleted_Acount=false;}
+      });
+     }
   },
   getters: {
     Username: (state) => state.User.displayName,
@@ -228,5 +249,6 @@ export default {
     isEdited: (state) => state.isEdited,
     deleted_playlists: (state) => state.deleted_playlists,
     upgraded: (state) => state.upgraded,
+    deleted_Acountt: (state) => state.deleted_Acount
   },
 };

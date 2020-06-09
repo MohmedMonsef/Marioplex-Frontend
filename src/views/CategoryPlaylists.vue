@@ -50,7 +50,7 @@ h2 {
 }
 h1 {
   color: white;
-  font-size: 150px;
+  font-size: 100px;
   margin-left: 6%;
 }
 .cont {

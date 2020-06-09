@@ -77,6 +77,12 @@
             JOIN PREMIUM
           </button>
         </router-link>
+        <button class="trans_button" testid="removeme" @click="remove">
+            Cancel my account
+        </button>
+        <div class="row" v-if="!deleted_Acount">
+        <p  class="col-8 offset-4">YOU ARE A ARTIST ,SO YOU CAN'T</p>
+        </div>
         <h2>For Artist :</h2>
         <router-link to="/ArtistPersonalPage">
           <button type="button" class="trans_button">
@@ -353,7 +359,13 @@ export default {
     ...mapGetters({
       user: "Authorization/user",
       Username: "Authorization/Username",
+      deleted_Acount:"Authorization/deleted_Acountt"
     }),
   },
+  methods:{
+    remove(){
+       this.$store.dispatch("Authorization/removeuser");
+    }
+  }
 };
 </script>
