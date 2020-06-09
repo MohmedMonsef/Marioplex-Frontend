@@ -117,6 +117,7 @@
               :song_id="track._id"
               :albumId="track.albumId"
               :song_album="track.albumName"
+              :song_length="track.duration"
             ></SongComponent>
           </div>
         </div>
