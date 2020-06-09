@@ -2,9 +2,9 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 
-import category from "../../src/views/CategoryPlaylists";
+import categoryplaylist from "../../src/views/CategoryPlaylists";
 
-describe("category", () => {
+describe("categoryplaylist", () => {
   let wrapper;
   let store;
 
@@ -30,8 +30,8 @@ describe("category", () => {
     });
   });
 
-  it("when render dispatch", () => {
-    wrapper = shallowMount(category, {
+  it("when render", () => {
+    wrapper = shallowMount(categoryplaylist, {
       store,
       localVue,
     });

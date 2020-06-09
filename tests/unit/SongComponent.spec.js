@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 import SongComponent from "../../src/components/SongComponent";
 
 describe("SongComponent", () => {
-  let wrapper;
+  let wrapper,wrapper2;
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
@@ -46,7 +46,8 @@ describe("SongComponent", () => {
             },
           },
           actions:{
-            UnLike:jest.fn()
+            UnLike:jest.fn(),
+            Like:jest.fn()
           }
         },
         Playlist:{
@@ -68,12 +69,22 @@ describe("SongComponent", () => {
         Authorization:{
           namespaced:true,
           state:{
+            GetStatus:"",
             Usename:""
           },
           getters:{
             Usename: (state) => {
               return state.Usename;
             },
+            GetStatus:(state) => {
+              return state.GetStatus;
+            },
+          }
+        },
+        CheckUserPopup:{
+          namespaced:true,
+          actions:{
+            togglePopup:jest.fn()
           }
         },
         Queue:{
@@ -92,8 +103,24 @@ describe("SongComponent", () => {
         song_album: "burtonhollow",
         song_artists: "civil wars",
         song_length: 0,
-        isPlayable:true
+        isPlayable:true,
+        song_id :"5e80ceb853e67b1e284a0f15",
+        albumId:"5e80cc2b14c8566d6cd9b40f",
+        isLiked:false
       }, });
+      wrapper2 = shallowMount(SongComponent, {
+        localVue,
+        store,    
+        propsData: {
+          song_name: "my song",
+          song_album: "burtonhollow",
+          song_artists: "civil wars",
+          song_length: 0,
+          isPlayable:true,
+          song_id :"1",
+          albumId:"1",
+          isLiked:false
+        }, });
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
@@ -126,12 +153,10 @@ describe("SongComponent", () => {
     expect(wrapper.vm.isclicked).toBe(true);
   });
   it("play song on double click",() => {
+    wrapper2.vm.playOnDblCLk();
+    expect(wrapper2.vm.playSong()).toHaveBeenCalled;
     wrapper.vm.playOnDblCLk();
     expect(wrapper.vm.playSong()).toHaveBeenCalled;
-    wrapper.vm.playOnDblCLk();
-    expect(wrapper.vm.playSong()).toHaveBeenCalled;
-    wrapper.vm.song_id ="5e80ceb853e67b1e284a0f15";
-    wrapper.vm.albumId= "5e80cc2b14c8566d6cd9b40f";
 
     store.state.Mediaplayer.playicon=false;
 

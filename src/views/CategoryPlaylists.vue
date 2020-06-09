@@ -81,7 +81,7 @@ h1 {
 import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: "category",
+  name: "categoryplaylist",
   components: {
     LibPlaylists,
   },
