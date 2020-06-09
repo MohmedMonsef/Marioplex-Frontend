@@ -7,6 +7,7 @@ export default {
     status: "",
     upgraded: true,
     token: localStorage.getItem("x-auth-token") || "",
+    resendtoken: localStorage.getItem("X-token") || "",
     User: {},
     isEdited: "",
     deleted_playlists: [],
@@ -37,7 +38,7 @@ export default {
       state.User.update({
         Name: payload.Name,
         Genre: payload.Genre,
-        Description: payload.Description,
+        Description: payload.Description
       });
     },
     is_edit(state, msg) {
@@ -45,7 +46,7 @@ export default {
     },
     setDeletedPlaylists(state, playlists) {
       state.deleted_playlists = playlists;
-    },
+    }
   },
   actions: {
     signUp({ commit }, user) {
@@ -57,14 +58,18 @@ export default {
           username: user.username,
           gender: user.gender,
           country: user.country,
-          birthday: user.birthday,
+          birthday: user.birthday
         })
-        .then(() => {
-
+        .then(response => {
+          ///////////////////
+          const token = response.data.token;
+          localStorage.setItem("X-token", token);
+          console.log("Nihal", token);
+          ///////////////
         })
-        .catch((error) => {
+        .catch(error => {
           commit("auth_error", "signup_err");
-          localStorage.removeItem("x-auth-token");
+          localStorage.removeItem("X-token");
           console.log(error);
         });
     },
@@ -72,13 +77,13 @@ export default {
       commit("auth_request");
       axios
         .get("/api/auth/facebook")
-        .then((response) => {
+        .then(response => {
           const token = response.headers.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("Authorization/get_user", true);
         })
-        .catch((error) => {
+        .catch(error => {
           commit("auth_error", "facebook_err");
           localStorage.removeItem("x-auth-token");
           console.log(error);
@@ -90,18 +95,17 @@ export default {
       commit("auth_request");
       axios
         .get("/api/me-player")
-        .then((response) => {
+        .then(response => {
           const user = response.data[0];
-        if(!user.player.haveQueue){
-            dispatch("Queue/CreateQueue","", { root: true });
-          }
-          else{
-            dispatch("Mediaplayer/get_currentsong",2, { root: true });
+          if (!user.player.haveQueue) {
+            dispatch("Queue/CreateQueue", "", { root: true });
+          } else {
+            dispatch("Mediaplayer/get_currentsong", 2, { root: true });
           }
           commit("auth_success", { token, user });
           if (flag) router.replace("/");
         })
-        .catch((error) => {
+        .catch(error => {
           commit("auth_error", "user_err");
           localStorage.removeItem("x-auth-token");
           console.log(error);
@@ -112,15 +116,15 @@ export default {
       axios
         .post("/api/login", {
           email: user.email,
-          password: user.password,
+          password: user.password
         })
-        .then((response) => {
+        .then(response => {
           const token = response.data.token;
           localStorage.setItem("x-auth-token", token);
           axios.defaults.headers.common["x-auth-token"] = token;
           store.dispatch("Authorization/get_user", true);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
           commit("auth_error", "login_err");
           localStorage.removeItem("x-auth-token");
@@ -131,7 +135,7 @@ export default {
         .put("api/me/promote", {
           expiresDate: payload.expiresDate,
           cardNumber: payload.cardNumber,
-          isMonth: payload.isMonth,
+          isMonth: payload.isMonth
         })
         .then(() => {
           state.User.product = "premium";
@@ -139,7 +143,7 @@ export default {
           store.dispatch("Authorization/logout");
           router.replace("/login");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
           commit("upgrade", false);
         });
@@ -147,12 +151,12 @@ export default {
     reset({ commit }, user) {
       axios
         .post("/api/login/forgetpassword", {
-          email: user.email,
+          email: user.email
         })
         .then(() => {
           commit("logout");
         })
-        .catch((error) => {
+        .catch(error => {
           commit("auth_error", "reset_err");
           console.log(error);
           localStorage.removeItem("x-auth-token");
@@ -162,12 +166,12 @@ export default {
       axios.defaults.headers.common["x-auth-token"] = payload.token;
       axios
         .post("api/login/reset_password", {
-          password: payload.password,
+          password: payload.password
         })
         .then(() => {
           router.replace("/login");
         })
-        .catch((error) => {
+        .catch(error => {
           commit("logout");
           console.log(error);
           delete axios.defaults.headers.common["x-auth-token"];
@@ -183,23 +187,23 @@ export default {
     ClaimArtistProfile({ commit }, payload) {
       axios
         .put("/api/me/ToArtist", payload)
-        .then((response) => {
+        .then(response => {
           const claim = response.data;
           commit("ClaimArtistProfile", claim);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     saveEdit({ commit }, user) {
       axios
         .put("/api/me/update", {
-          user,
+          user
         })
         .then(() => {
           commit("is_edit", "success");
         })
-        .catch((error) => {
+        .catch(error => {
           commit("is_edit", "faild");
           console.log(error);
         });
@@ -207,26 +211,31 @@ export default {
     showDeletedPlaylists({ commit }) {
       axios
         .get("/api/me/deletedplaylists")
-        .then((response) => {
+        .then(response => {
           let playlists = response.data;
           commit("setDeletedPlaylists", playlists);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
-    ConfirmEmail({ state } , userId) {
-      axios
-        .post("/api/login/confirm?id=" + userId)
-        state.emailConfirmed = true;
+    ConfirmEmail({ state }, userId) {
+      axios.post("/api/login/confirm?id=" + userId);
+      state.emailConfirmed = true;
     },
+    ResendEmail({ state }) {
+      const resendtoken = localStorage.getItem("X-token");
+      axios.defaults.headers.common["x-auth-token"] = resendtoken;
+      axios.post("/api/sendmail");
+      state.emailConfirmed = true;
+    }
   },
   getters: {
-    Username: (state) => state.User.displayName,
-    GetStatus: (state) => state.status,
-    user: (state) => state.User,
-    isEdited: (state) => state.isEdited,
-    deleted_playlists: (state) => state.deleted_playlists,
-    upgraded: (state) => state.upgraded,
-  },
+    Username: state => state.User.displayName,
+    GetStatus: state => state.status,
+    user: state => state.User,
+    isEdited: state => state.isEdited,
+    deleted_playlists: state => state.deleted_playlists,
+    upgraded: state => state.upgraded
+  }
 };

@@ -13,6 +13,7 @@ describe("ArtistPageCoverPhoto", () => {
     }
   };
   localVue.prototype.$route = $route;
+  let spy;
 
   beforeEach(() => {
     store = new Vuex.Store({
@@ -51,6 +52,7 @@ describe("ArtistPageCoverPhoto", () => {
         }
       }
     });
+    spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(ArtistPageCoverPhoto, {
       store,
       localVue
