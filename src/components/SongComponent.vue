@@ -493,7 +493,6 @@ export default {
       );
     },
   },
-
   created: function() {
     if (this.type=="created"){
       this.ShowRemoveTrack=true;

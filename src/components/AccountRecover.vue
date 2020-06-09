@@ -24,22 +24,24 @@
                 </div>
                 <div class="edit_border2"></div>    
                     <!-- body -->
-                <div class="row playlist_row" 
-                 v-for="(playlist, index) in deleted_playlists"
-                 :class="{playlist_row2: index%2==0}" 
-                 :key="playlist.id">
-                    <div class="col-md">
-                        <h4 class="col1">{{playlist.deletedAt.slice(8,10) +"/"+ playlist.deletedAt.slice(5,7) +"/"+ playlist.deletedAt.slice(0,4)}}</h4>
-                    </div>
-                    <div class="col-md">
-                        <h4 class="col2">{{playlist.name}}</h4>
-                    </div>
-                    <div class="col-md">
-                        <h4 class="col3">{{playlist.songsNumber}}</h4>
-                    </div>
-                    <div class="col-md">
-                        <button class="restore" @click="(playlistid = playlist.id) , Restore()">RESTORE</button>
-                    </div>
+                <div  v-if="deleted_playlists.length">
+                  <div class="row playlist_row" 
+                  v-for="(playlist, index) in deleted_playlists"
+                  :class="{playlist_row2: index%2==0}" 
+                  :key="playlist.id">
+                      <div class="col-md">
+                          <h4 class="col1">{{playlist.deletedAt.slice(8,10) +"/"+ playlist.deletedAt.slice(5,7) +"/"+ playlist.deletedAt.slice(0,4)}}</h4>
+                      </div>
+                      <div class="col-md">
+                          <h4 class="col2">{{playlist.name}}</h4>
+                      </div>
+                      <div class="col-md">
+                          <h4 class="col3">{{playlist.songsNumber}}</h4>
+                      </div>
+                      <div class="col-md">
+                          <button class="restore" @click="(playlistid = playlist.id) , Restore()">RESTORE</button>
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -249,7 +251,8 @@ export default {
   name: "AccountRecover",
    data: function () {
     return {
-      playlistid: ""
+      playlistid: "",
+      myKey: 0
     };
   },
   components: {

@@ -10,7 +10,7 @@
           :images="
             $url +
               '/api/images/' +
-              match_track.images[0]._id +
+              match_track.albumImages[0]._id +
               '?belongs_to=album'
           "
           :name="match_track.name"

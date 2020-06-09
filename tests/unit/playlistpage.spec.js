@@ -68,7 +68,8 @@ describe("playlist_info", () => {
     spy = jest.spyOn(document, 'getElementById');
     wrapper = shallowMount(playlist_info, {
       localVue,
-      store
+      store,
+      stubs: ['router-link', 'router-view']
     });
   });
   it("renders", () => {

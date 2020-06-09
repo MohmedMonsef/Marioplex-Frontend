@@ -292,7 +292,6 @@ input {
   }
 }
 </style>
-
 <script>
 // @ is an alias to /src
 import { mapGetters } from "vuex";

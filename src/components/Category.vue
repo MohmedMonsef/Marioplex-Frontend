@@ -70,7 +70,6 @@ export default {
   },
   methods: {
     setcategoryname() {
-      console.log(document.getElementById("categoryname"));
       this.$store.dispatch(
         "Categorys/categoryname",
         document.getElementById("categoryname").innerHTML

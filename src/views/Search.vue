@@ -118,7 +118,7 @@ h2 {
 import category from "@/components/Category.vue";
 import searchcomponent from "@/components/SearchComponent.vue";
 import searchresults from "@/views/SearchResults";
-import { mapGetters, mapState } from "vuex";
+import { mapGetters} from "vuex";
 /**
  * Search Page is the place where you can search for certain playlist , album , artist or even certain category
  * @displayName Search Page
@@ -134,26 +134,13 @@ export default {
   mounted() {
     this.$store.dispatch("Categorys/showcategory");
   },
-  methods: {
-    /**
-     * This function is for seeall as part of search results will be hidden unless seeall button is pressed
-     * @public This is a public method
-     */
-    // change() {
-    //   this.showr = false;
-    // }
-  },
   computed: {
     ...mapGetters({
       categorys: "Categorys/getcategory",
       loadingcategory: "Categorys/loading",
       loadingsearch: "Search/loadingsearch",
       search_value: "Search/get_value",
-      showresl: "Search/showeres",
-    }),
-    ...mapState({
-      show: (state) => state.Playlist.showModal,
-      inartist: (state) => state.Search.in,
+      showresl: "Search/showeres"
     }),
   },
 };

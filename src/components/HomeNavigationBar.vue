@@ -25,7 +25,7 @@
             <a>Help</a>
           </router-link>
           <li id="separator">|</li>
-           <router-link to="/SignUp" v-if="isLoggedIn != 'success'" tag="li">
+          <router-link to="/SignUp" v-if="isLoggedIn != 'success'" tag="li">
             <a> Sign up</a>
           </router-link>
           <router-link to="/Login" v-if="isLoggedIn != 'success'" tag="li">
@@ -521,8 +521,7 @@ export default {
       this.ispremium = false;
     }
   },
-  beforeDestroy() {
-    console.log("destroy");
+  destroyed() {
     window.removeEventListener("scroll", this.updateScroll);
   },
 };

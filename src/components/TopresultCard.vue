@@ -15,8 +15,8 @@
         class="col-md-4 img-card rounded-circle"
         alt="..."
         style="
-          max-width: 40%;
-          max-height: 120px;
+          max-width: 50%;
+          max-height: 180px;
           display: block;
           margin-left: 0;
           margin-bottom: 15px;
@@ -28,8 +28,8 @@
         class="col-md-4 img-card"
         alt="..."
         style="
-          max-width: 40%;
-          max-height: 100px;
+          max-width: 50%;
+          max-height: 180px;
           display: block;
           margin-left: 0;
           margin-bottom: 15px;
@@ -123,42 +123,6 @@
   </div>
 </template>
 <style scoped>
-@media screen and (max-width: 700px) {
-  #top-card {
-    width: 80%;
-  }
-  #typecont {
-    width: auto;
-    border-radius: 0px;
-  }
-  p {
-    margin: 0px;
-  }
-}
-@media screen and (max-width: 650px) {
-  #top-card {
-    width: 70%;
-  }
-  #typecont {
-    width: auto;
-    border-radius: 0px;
-  }
-  i {
-    margin-left: 5px;
-  }
-  p {
-    font-size: 10px;
-    margin: 0px;
-  }
-}
-@media screen and (max-width: 500px) {
-  #top-card {
-    width: 55%;
-  }
-  #typecont {
-    width: 100%;
-  }
-}
 .playcon {
   background-color: transparent;
   float: right;
@@ -203,7 +167,6 @@ i {
 .typecont {
   background-color: rgb(41, 32, 32);
   border-radius: 15px;
-  width: 30%;
   height: 25px;
   float: left;
   z-index: 0;
