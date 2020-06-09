@@ -301,7 +301,7 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-      mytoast.classList.remove("toast--visible");
+     mytoast.classList.remove("toast--visible");
     }, 2000);
   },
 };
@@ -406,7 +406,7 @@ export default {
      */
     hideshow(event) {
       var targetId = event.target.id;
-      if (!this.$el.contains(event.target) || targetId != "list_icon") {
+      if ( targetId != "list_icon" || !this.$el.contains(event.target)) {
         this.show = false;
         this.isclicked = false;
       }
@@ -441,10 +441,12 @@ export default {
       if (this.isCurrent) {
         if (this.playicon) {
           this.pauseSong();
-        } else {
+        }
+        else {
           this.playSong();
         }
-      } else {
+      }
+      else {
         this.playSong();
       }
     },
@@ -493,7 +495,7 @@ export default {
   created: function() {
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function() {
+  beforeDestroy: function() {
     window.removeEventListener("click", this.hideshow);
   },
   components: {

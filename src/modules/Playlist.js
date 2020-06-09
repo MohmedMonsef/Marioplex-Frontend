@@ -104,7 +104,7 @@ export default {
           commit("set_playlist", playlist[0].tracks);
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
-          commit("set_owner_name", playlist[1].ownerName);
+         commit("set_owner_name", playlist[1].ownerName);
           if (typeof playlist[0].images[0] == "undefined")
             commit("set_playlist_image", "5eb52f1863eea332d416b9fa");
           else commit("set_playlist_image", playlist[0].images[0]._id);
@@ -276,7 +276,6 @@ export default {
         });
     },
     RemoveFromThisPlaylist({ commit }, payload) {
-
       axios
         .delete("/api/playlists/" + payload.playlist_id + "/tracks", {
           data: { track_ids: payload.song_id },

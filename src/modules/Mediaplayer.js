@@ -127,14 +127,14 @@ export default {
       let trackroute;
       if(user.product != "premium"){
       trackroute =
-      "http://100.25.194.8/api/tracks/web-player/" +
+      "http://52.70.203.73/api/tracks/web-player/" +
         id +
         "/?type=medium&token=" +
         token;
       }
       else{
         trackroute =
-        "http://100.25.194.8/api/tracks/web-player/" +
+        "http://52.70.203.73/api/tracks/web-player/" +
         id +
         "/?type=high&token=" +
         token;
