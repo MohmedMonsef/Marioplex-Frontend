@@ -29,19 +29,14 @@
         <button class="cratenewplaylist" @click="changeModalState()">
           New playlist
         </button>
-
-        <div class="playlistscards">
-          <div class="container">
-            <div class="row">
-              <PlaylistsToTracks
-                class="userplaylists"
-                v-for="playlist in playlists"
-                :key="playlist.id"
-                :name="playlist.name"
-                :playlist_id="playlist.id"
-              />
-            </div>
-          </div>
+        <div class="row">
+          <PlaylistsToTracks
+            class="userplaylists"
+            v-for="playlist in playlists"
+            :key="playlist.id"
+            :name="playlist.name"
+            :playlist_id="playlist.id"
+          />
         </div>
       </div>
     </transition>
@@ -52,11 +47,11 @@
   margin: 10;
   padding: 10;
   box-sizing: border-box;
-  overflow: hidden;
+  // overflow: hidden;
 }
 body {
   font-family: "montserrat", sans-serif;
-  overflow-y: hidden;
+  // overflow-y: hidden;
 }
 
 // div {    //DONKEY!!!!!!!!!!!!!!
@@ -68,11 +63,11 @@ body {
 .to_contain {
   position: relative;
   // display: block;
-   width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   // height: 100%;
   // height:auto;
-  // overflow-y: hidden;
+  // overflow-y: auto;
 }
 .cratenewplaylist {
   position: absolute;
@@ -107,7 +102,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-   z-index: 999999;
+  z-index: 999999;
   width: 100%;
   height: 100%;
   background-color: black;
@@ -184,28 +179,16 @@ h2 {
   z-index: 6;
   //z-index:9998;
 }
-.container {
-  margin-left: 15px;
-  // overflow: scroll;
-  // height: auto;
-  //position: fixed;
-  //top: 40%;
-  //z-index:9998;
-}
 .row {
-  // overflow: scroll;
-  z-index: 9998;
-  // height: auto;
-}
-.playlistscards {
-  position: fixed;
-  top: 35%;
-  // height: auto !important;
-  // overflow: scroll;
-  z-index: 6;
+  position: absolute;
+  top: 37%;
+  overflow-y: scroll;
+  width: 100%;
+  height: 63%;
 }
 .userplaylists {
-  z-index: 8;
+  z-index: 9998;
+  margin: 2%;
 }
 </style>
 <script>

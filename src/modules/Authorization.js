@@ -175,6 +175,7 @@ export default {
     },
     logout({ commit, state }) {
       commit("logout");
+      console.log("id when log out",state.User._id);
       axios.post("/api/user/logout/?id=" + state.User._id).then(() => {
         localStorage.removeItem("x-auth-token");
         delete axios.defaults.headers.common["x-auth-token"];
@@ -228,5 +229,6 @@ export default {
     isEdited: (state) => state.isEdited,
     deleted_playlists: (state) => state.deleted_playlists,
     upgraded: (state) => state.upgraded,
+    userid:(state) => state.User._id,
   },
 };
