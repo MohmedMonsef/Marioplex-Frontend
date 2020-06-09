@@ -363,7 +363,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    type:{
+    MyType:{
       type: String,
       default: "",
     }
@@ -481,6 +481,7 @@ export default {
       if (sec < 10) sec = "0" + sec;
       return min + ":" + sec;
     },
+    
     ...mapGetters({
       Get_Currentsong: "Mediaplayer/Get_Currentsong",
     }),
@@ -494,7 +495,8 @@ export default {
     },
   },
   created: function() {
-    if (this.type=="created"){
+     console.log("type",this.MyType)
+    if (this.MyType=="created"){
       this.ShowRemoveTrack=true;
     }
     window.addEventListener("click", this.hideshow);

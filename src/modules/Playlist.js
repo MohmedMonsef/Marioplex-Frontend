@@ -19,7 +19,8 @@ export default {
     owner_name: "",
     playlist_image: "",
     likedplaylist: Boolean,
-    restored: ""
+    restored: "",
+    playlist_type:""
   },
   mutations: {
     toggleModal(state, withtrack) {
@@ -92,6 +93,9 @@ export default {
     AddTrackToExsistPlaylist() {},
     isRestored(state, msg) {
       state.restored = msg;
+    },
+    set_playlist_type(state,type){
+      state.playlist_type=type;
     }
   },
   actions: {
@@ -101,6 +105,7 @@ export default {
         .get("/api/playlists/" + playlist_id)
         .then((response) => {
           let playlist = response.data;
+          console.log("in playlist.js playlist_track",playlist);
           commit("set_playlist", playlist[0].tracks);
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
@@ -110,6 +115,8 @@ export default {
           else commit("set_playlist_image", playlist[0].images[0]._id);
           commit("set_likedplaylist", playlist[0].isfollowed);
           commit("set_playlist_loaded", true);
+          commit("set_playlist_type", playlist[0].checkType);
+          console.log("in playlit.js", playlist[0].checkType)
         })
         .catch((error) => {
           console.log(error);
@@ -330,6 +337,7 @@ export default {
     trackid: (state) => state.trackid,
     withtrack: (state) => state.withtrack,
     showinput: (state) => state.showinput,
-    restored: (state) => state.restored
+    restored: (state) => state.restored,
+    playlist_type:(state)=>state.playlist_type
   },
 };
