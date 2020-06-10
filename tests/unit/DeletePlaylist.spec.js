@@ -2,20 +2,22 @@ import { shallowMount, createLocalVue } from "@vue/test-utils";
 import DeletePlaylist from "@/components/DeletePlaylist.vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
+
 describe("DeletePlaylist", () => {
+  let wrapper;
+  let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
   localVue.use(VueRouter);
-  let store;
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
         Playlist: {
           namespaced: true,
           state: {
+            status: "",
             showModalDelete: true,
-            todelete: 0,
-            Playlists: [],
+            todelete: "0",
           },
           getters: {
             todelete: (state) => {
@@ -25,89 +27,47 @@ describe("DeletePlaylist", () => {
               return state.showModalDelete;
             },
           },
-          mutations: {
-            toggleModalDelete: jest.fn(),
-          },
           actions: {
-            DeletePlaylist: jest.fn(),
             toggleModalDelete: jest.fn(),
+            DeletePlaylist: jest.fn(),
           },
         },
       },
     });
-  });
-  it("has a button", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    expect(wrapper.exists(".delete_button")).toBe(true);
-    //expect(true).toBe(true)
-  });
-  it("it's a vue instance ", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
-  it("it deletes a playlist", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    const Delete = jest.fn();
-    wrapper.setMethods({
-      DeletePlaylist: Delete,
+    wrapper = shallowMount(DeletePlaylist, {
+      localVue,
+      store,
     });
-    const btn = wrapper.find(".delete_button");
-    btn.trigger("click");
-    expect(Delete).toHaveBeenCalled();
   });
-  it("it close icon ", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    const changeModalStateDelete = jest.fn();
-    wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete,
-    });
-    const btn = wrapper.find(".cancel");
-    btn.trigger("click");
-    expect(changeModalStateDelete).toHaveBeenCalled();
-  });
-  it("it cancel button ", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    const changeModalStateDelete = jest.fn();
-    wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete,
-    });
-    const btn = wrapper.find(".cancel_button");
-    btn.trigger("click");
-    expect(changeModalStateDelete).toHaveBeenCalled();
-  });
-
   it("renders", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
     expect(wrapper.exists()).toBe(true);
   });
-  it("it deletes a playlist", () => {
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    const changeModalStateDelete = jest.fn();
-    wrapper.setMethods({
-      changeModalStateDelete: changeModalStateDelete,
-    });
-    const btn = wrapper.find(".delete_button");
-    btn.trigger("click");
-    expect(changeModalStateDelete).toHaveBeenCalled();
+  it("it show delete popup ", () => {
+    const input = wrapper.find(".cancel");
+    input.trigger("click");
+    wrapper.vm.changeModalStateDelete();
+    expect("toggleModalDelete").toHaveBeenCalled;
   });
-  it("it calls delete dispatch ti delete a playlist", () => {
-    //const store = new Vuex.Store();
-    store.dispatch = jest.fn();
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    const btn = wrapper.find(".delete_button");
-    btn.trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith(
-      "Playlist/DeletePlaylist",
-      0
-    );
+  it("it delete playlist  ", () => {
+    let testid = "liketoast";
+    let toast = document.createElement("div");
+    toast.setAttribute("id", testid);
+    document.body.appendChild(toast);
+    const input = wrapper.find(".cancel_button");
+    input.trigger("keyup.enter");
+    wrapper.vm.DeletePlaylist();
+    expect("DeletePlaylist").toHaveBeenCalled;
   });
-  it("it calls tooglemodal dispatch ti change modalstate", () => {
-    store.dispatch = jest.fn();
-    const wrapper = shallowMount(DeletePlaylist, { localVue, store });
-    const btn = wrapper.find(".delete_button");
-    btn.trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith(
-      "Playlist/toggleModalDelete"
-    );
+  it("it show modalstate ", () => {
+    let testid = "liketoast";
+    let toast = document.createElement("div");
+    toast.setAttribute("id", testid);
+    document.body.appendChild(toast);
+    const toggle_add = wrapper.find(".delete_button");
+    toggle_add.trigger("click");
+    wrapper.vm.changeModalStateDelete();
+    expect("toggleModalDelete").toHaveBeenCalled;
   });
+ 
 });
+

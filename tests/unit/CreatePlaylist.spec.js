@@ -4,158 +4,112 @@ import VueRouter from "vue-router";
 import Vuex from "vuex";
 
 describe("CreatePlaylist", () => {
+  let wrapper;
+  let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
   localVue.use(VueRouter);
-  // let wrapper
-  let store;
-  // let h
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
+        Authorization: {
+          namespaced: true,
+          state: {
+            User: {
+              displayName: "nerdeen",
+            },
+          },
+          getters: {
+            Username: (state) => {
+              return state.User.displayName;
+            },
+          },
+        },
         Playlist: {
           namespaced: true,
           state: {
+            status: "",
             showModal: true,
-            // Playlists: []
+            Playlists: [],
+            playlist_name: "Islamic",
           },
           getters: {
+            GetStatus: (state) => {
+              return state.status;
+            },
             showModal: (state) => {
               return state.showModal;
             },
-            playlists: (state) => state.Playlists,
+            withtrack: (state) => {
+              return state.withtrack;
+            },
+
           },
-          //     mutations:{
-          //         toggleModal(state) {
-          //             state.showModal = !state.showModal;
-          //           },
-          //           CreatePlaylist(state, playlists) {
-          //             state.Playlists.push(
-          //               //id: id,
-          //               // playlistname: i
-          //               playlists
-          //             );
-          //             console.log("nori");
-          //           },
-          //    },
           actions: {
             toggleModal: jest.fn(),
             CreatePlaylist: jest.fn(),
           },
         },
-        Authorization: {
-          namespaced: true,
-          state: {
-            User: {
-              displayName: "user name",
-            },
-          },
-          getters: {
-            Username: (state) => state.User.displayName,
-          },
-        },
+        
       },
     });
-  });
-
-  it("has a button", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.exists(".creat_button")).toBe(true);
-  });
-  it("it's a vue instance ", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.isVueInstance()).toBe(true);
-  });
-  it("it creates a playlist", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
+    wrapper = shallowMount(CreatePlaylist, {
+      localVue,
+      store,
     });
-    const btn = wrapper.find(".creat_button");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
-  });
-  it("input ", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    //   const data=  wrapper.setData({
-    //         playlistname:"hello"
-    //     });
-    let pname = wrapper.find(".name_input");
-    pname.element.value = "hello";
-    pname.trigger("input");
-    expect(wrapper.vm.playlistname).toBe("hello");
-    pname.trigger("keyup.enter");
-    expect(wrapper.vm.playlistname).toBe("hello");
-  });
-  it("it close icon ", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    const btn = wrapper.find(".cancel");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
-  });
-  it("it cancel button ", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    const btn = wrapper.find(".cancel_button");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
   });
   it("renders", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
     expect(wrapper.exists()).toBe(true);
   });
-  it("has a cancel button", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.exists(".cancel_button")).toBe(true);
+
+  it("it show modalstate ", () => {
+    const toggle_add = wrapper.find(".cancel");
+    toggle_add.trigger("click");
+    wrapper.vm.changeModalState();
+    expect("toggleModal").toHaveBeenCalled;
   });
-  it("has a close icon", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.exists(".cancel")).toBe(true);
+  it("it show modalstate ", () => {
+    const toggle_add = wrapper.find(".cancel_button");
+    toggle_add.trigger("click");
+    wrapper.vm.changeModalState();
+    expect("toggleModal").toHaveBeenCalled;
   });
-  it("has an input field", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.exists(".name_input")).toBe(true);
+  it("it rename artistname  ", () => {
+    const input = wrapper.find(".name_input");
+    input.trigger("keyup.enter");
+    wrapper.vm.CreatePlaylist();
+    expect("CreatePlaylist").toHaveBeenCalled;
   });
-  it("enter close the popup and create  input  ", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    let pname = wrapper.find(".name_input");
-    // pname.element.value="hello";
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    pname.trigger("keyup.enter");
-    // expect(wrapper.vm.playlistname).toBe("hello");
-    expect(changeModalState).toHaveBeenCalled();
+  it("it rename artistname  ", () => {
+    const input = wrapper.find(".name_input");
+    input.trigger("keyup.enter");
+    wrapper.vm.changeModalState();
+    expect("toggleModal").toHaveBeenCalled;
   });
-  it("input bind name when press enter", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    let pname = wrapper.find(".name_input");
-    pname.element.value = "hello";
-    pname.trigger("keyup.enter");
-    pname.trigger("input");
-    expect(wrapper.vm.playlistname).toBe("hello");
+  it("it rename artistname  ", () => {
+    const input = wrapper.find(".creat_button");
+    input.trigger("click");
+    wrapper.vm.changeModalState();
+    expect("toggleModal").toHaveBeenCalled;
   });
-  it("it creates a playlist", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    const btn = wrapper.find(".creat_button");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
+  it("it create a playlist ", () => {
+    const input = wrapper.find(".creat_button");
+    input.trigger("click.prevent");
+    wrapper.vm.CreatePlaylist();
+    expect("CreatePlaylist").toHaveBeenCalled;
   });
-  it("has a transition", () => {
-    const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    expect(wrapper.exists(".modal-overlay")).toBe(true);
+  it("it rename artistname  ", async () => {
+    const input = wrapper.find(".name_input");
+    input.element.value = "New Playlist";
+    input.trigger("input");
+    expect(wrapper.vm.playlistname).toBe("New Playlist");
+  });
+  it("it create playlistwith name  ", () => {
+    const input = wrapper.find(".name_input");
+    input.element.value = "Islamic";
+    input.trigger("input");
+    wrapper.vm.CreatePlaylist();
+    expect("CreatePlaylist").toHaveBeenCalled;
   });
 });
+

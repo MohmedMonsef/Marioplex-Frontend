@@ -2,7 +2,7 @@
   <div class="row justify-content-center footer px-0 m-0">
     <!-- <div class="col-9"> -->
     <div class="col-sm-2 logo-div">
-      <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+      <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
     </div>
     <!-- <div class="col-sm-6"> -->
     <div class="col-sm-2">
@@ -13,7 +13,7 @@
         <router-link class="able" to="/ForArtist" tag="li">
           For Artist
         </router-link>
-        <router-link class="able" to="/ArtistPersonalPage" tag="li">
+        <router-link class="able" to="/ArtistPersonalPage" v-if="isLoggedIn == 'success'&& user.userType=='Artist' " tag="li">
           ArtistPage
         </router-link>
       </ul>
@@ -79,10 +79,11 @@ div {
     }
   }
 }
+
 .logo-div {
   margin-bottom: 20px;
   img {
-    width: 150px;
+    width: 120px;
   }
 }
 .icon-div {
@@ -119,10 +120,18 @@ div {
 }
 </style>
 <script>
+import { mapGetters } from "vuex";
 /**
  * Staic Footer in homepage
  * @displayName Footer in homepage
  * @example [none]
  */
-export default {};
+export default {
+   computed: {
+    ...mapGetters({
+      isLoggedIn: "Authorization/GetStatus",
+      user: "Authorization/user",
+    })
+  },
+};
 </script>

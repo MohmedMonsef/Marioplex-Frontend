@@ -36,8 +36,6 @@ describe("ClaimArtist", () => {
             },
           },
           actions: {
-            facebook_signUp: jest.fn(),
-            signUp: jest.fn(),
             ClaimArtistProfile: jest.fn(),
           },
         },
@@ -48,61 +46,19 @@ describe("ClaimArtist", () => {
       store,
     });
   });
-  it("it claim artistpopup ", () => {
-    //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    const btn = wrapper.find(".popup_button");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
+  it("renders", () => {
+    expect(wrapper.exists()).toBe(true);
   });
-  it("it cancel artistpopup ", () => {
-    //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    const btn = wrapper.find(".cancel");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
+  it("it shows claim artist popup ", () => {
+    const input = wrapper.find(".popup_button");
+    input.trigger("click");
+    wrapper.vm.changeModalState();
+    expect("showModal").toHaveBeenCalled;
   });
-  it("it cancel button artistpopup ", () => {
-    //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    const btn = wrapper.find(".cancel_button");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
+  it("it claims artist profile ", () => {
+    const input = wrapper.find(".creat_button");
+    input.trigger("click");
+    wrapper.vm.ClaimArtistProfile();
+    expect("ClaimArtistProfile").toHaveBeenCalled;
   });
-  it("it claim button artistpopup ", () => {
-    //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const changeModalState = jest.fn();
-    wrapper.setMethods({
-      changeModalState: changeModalState,
-    });
-    const btn = wrapper.find(".creat_button");
-    btn.trigger("click");
-    expect(changeModalState).toHaveBeenCalled();
-  });
-  it("it claim function artistpopup ", () => {
-    //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-    const ClaimArtistProfile = jest.fn();
-    wrapper.setMethods({
-      ClaimArtistProfile: ClaimArtistProfile,
-    });
-    const btn = wrapper.find(".creat_button");
-    btn.trigger("click");
-    expect(ClaimArtistProfile).toHaveBeenCalled();
-  });
-  //   it("it calls toglemodalupload dispatch ti change modalstateupload", () => {
-  //     store.dispatch = jest.fn();
-  //     const btn = wrapper.find(".c_track");
-  //     btn.trigger("click");
-  //     expect(store.dispatch).toHaveBeenCalledWith(
-  //       "artistproperties/toggleModalUpload")
-  //   });
 });

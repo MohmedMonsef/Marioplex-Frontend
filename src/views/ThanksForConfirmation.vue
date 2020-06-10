@@ -91,6 +91,10 @@ export default {
     id: {
       type: String,
       required: true
+    },
+    type: {
+      type: String,
+      required: true
     }
   },
   methods: {
@@ -99,11 +103,29 @@ export default {
      * @public This is a public method
      */
     thanksForConfirmation() {
-      this.$store.dispatch("Authorization/ConfirmEmail", this.$route.query.id);
+      console.log("daaaaai : " , this.$route.query.type , " id : " ,this.$route.query.id );
+      if (this.$route.query.type == "signup")
+       {
+         this.$store.dispatch("Authorization/ConfirmEmail", this.$route.query.id);
+       }
+
+
+      else if (this.$route.query.type == "update")
+       {
+         this.$store.dispatch("Authorization/ConfirmUpdate", this.$route.query.id);
+         this.$store.dispatch("Authorization/logout", this.$route.query.id);
+       }
+      else
+      {
+        this.$store.dispatch("Authorization/ConfirmPremium", this.$route.query.id);
+        this.$store.dispatch("Authorization/logout", this.$route.query.id);
+      }
     }
   },
   mounted() {
+         
     this.id = this.$route.query.id;
+    this.type = this.$route.query.type;
   }
 };
 </script>

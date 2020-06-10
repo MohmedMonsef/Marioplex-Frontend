@@ -4,13 +4,14 @@
       <account-sidebar />
     </div>
     <div class="col-lg-70%" id="grey_div">
-      <h1>Notification settings</h1>
+      <h1>Notifications</h1>
       <div class="edit_border"></div>
       <div class="white_div">
-        <h2>Your Notifications</h2>
-        <div class="card col-lg" 
+        <h2>Your Notifications :</h2>
+        <div class="card col-lg"
          v-for="(notification, index) in notifications" 
-         :key="notification.data.title" 
+         @click="goRoute(notification)"
+         :key="index" 
          :class="{card2: index%2==1}" >
           <div class="card-body" id="cardbody">
             <h4 class="card-title" id="cardtitle">
@@ -24,6 +25,9 @@
             </p>
           </div>
         </div>
+        <p v-if="notifications.length == 0" id="empty">
+          You can see your notifications here^^
+        </p> 
       </div>
     </div>
   </div>
@@ -43,7 +47,8 @@
 #grey_div {
   background: #f8f8f8;
   width: 68.5%;
-  height: 100%;
+  height:auto !important;        
+  height:600px;    
   padding-right: 5%;
   padding-bottom: 5%;
   position:relative;
@@ -64,6 +69,7 @@
   background-color: #f8f8f8;
   width: 100%;
   height: 100%;
+  min-height: 2000px;
   padding-right: 5%;
   padding-bottom: 5%;
   position:relative;
@@ -85,10 +91,12 @@ h1 {
 .white_div {
   margin-left: 7%;
   width: 90%;
-  height: 600px;
+  height:auto !important;        
+  height:600px;    
   background: white;
   padding-top: 6%;
   padding-left: 7%;
+  padding-bottom: 3%;
 }
 h2{
   font-size: 23px;
@@ -99,9 +107,11 @@ h2{
   margin-bottom: 3%;
   background-color: rgba(129, 238, 165, 0.2);
   padding-left: 1%;
+  cursor: pointer;
 }
 .card2{
   background-color: rgba(248, 136, 136, 0.2);
+  cursor: pointer;
 }
 h4{
   font-size: 20px;
@@ -115,6 +125,11 @@ h4{
     visibility: hidden;
     position: absolute;
   }
+}
+#empty{
+  font-size: 25px;
+  color: #b91d7d;
+  margin-left: 16%;
 }
 </style>
 <script>
@@ -133,5 +148,23 @@ export default {
       notifications: "Notifications/notifications"
     })
   },
+  methods: {
+    goRoute(notification){
+      if (notification.data.title == "WOOOOOH NEW ALBUM")
+        { this.$router.push('/HomeWebPlayer/album/' + notification.data.albumId) }
+
+      if (notification.data.title == "WOOOOOH NEW SONG")
+        { this.$router.push('/HomeWebPlayer/ArtistProfile/' + notification.data.artistId) }
+
+      if (notification.data.title == " You seem to have a good musical taste ")
+        { this.$router.push('/HomeWebPlayer/UserProfile/' + notification.data.userId) }
+
+      if (notification.data.title == "Look who's getting more followers now ^^")
+        { this.$router.push('/HomeWebPlayer/UserProfile/' + notification.data.userId) }
+
+      if (notification.data.title == "Knock , Knock ! Who's There ?")
+        { this.$router.push('/HomeWebPlayer/UserProfile/' + notification.data.userId) }
+    }
+  }
 };
 </script>

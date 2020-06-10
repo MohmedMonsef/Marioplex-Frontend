@@ -12,7 +12,7 @@
     <div class="row navbar-inner">
       <!-- logo -->
       <div class="logo-div">
-        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+        <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
       </div>
       <!-- logo -->
       <!--nav items-->
@@ -25,7 +25,7 @@
             <a>Help</a>
           </router-link>
           <li id="separator">|</li>
-           <router-link to="/SignUp" v-if="isLoggedIn != 'success'" tag="li">
+          <router-link to="/SignUp" v-if="isLoggedIn != 'success'" tag="li">
             <a> Sign up</a>
           </router-link>
           <router-link to="/Login" v-if="isLoggedIn != 'success'" tag="li">
@@ -63,7 +63,7 @@
     <div id="nav-small">
       <!-- logo -->
       <div class="logo-small">
-        <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+        <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
       </div>
       <!-- logo -->
       <div id="disable-page"></div>
@@ -125,7 +125,7 @@
               <a> Account</a>
             </router-link>
           </ul>
-          <router-link to="/"> <img src="../assets/logo.png"/></router-link>
+          <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
         </div>
       </div>
     </div>
@@ -199,19 +199,19 @@
   }
 }
 .logo-small {
-  margin-top: -5px;
+  margin-top: -12px;
   position: fixed;
   left: 7%;
   img {
-    width: 95px;
+    width: 75px;
   }
 }
 .logo-div {
-  margin-top: 20px;
+  margin-top: 12px;
   position: fixed;
   left: 7%;
   img {
-    width: 150px;
+    width: 110px;
   }
 }
 //animating menu icon to turn into an x upon click
@@ -521,8 +521,7 @@ export default {
       this.ispremium = false;
     }
   },
-  beforeDestroy() {
-    console.log("destroy");
+  destroyed() {
     window.removeEventListener("scroll", this.updateScroll);
   },
 };

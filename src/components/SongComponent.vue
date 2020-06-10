@@ -115,9 +115,8 @@
         </p>
         <p @click="addToQueue()">Add to Queue</p>
         <p @click="changeModalStateAdd()">Add to Playlist</p>
-        <p @click="RemoveFromThisPlaylist()">Remove from this Playlist</p>
+        <p v-if="ShowRemoveTrack" @click="RemoveFromThisPlaylist()">Remove from this Playlist</p>
       </div>
-      <AddTrackPopup v-if="showAdd"></AddTrackPopup>
     </div>
   </div>
 </template>
@@ -291,8 +290,7 @@
 
 <script type="module">
 import { default as song_functions } from "../javascript/mediaplayer_script.js";
-import AddTrackPopup from "../components/AddTrackPopup";
-import { mapGetters, mapState } from "vuex";
+import  {mapGetters,mapState}  from "vuex";
 const toast = {
   show(message) {
     var mytoast = document.getElementById("liketoast");
@@ -315,7 +313,8 @@ export default {
     return {
       hover: false,
       show: false,
-      isclicked: false
+      isclicked: false,
+      ShowRemoveTrack:false
     };
   },
   mixins: [song_functions],
@@ -362,7 +361,11 @@ export default {
     },
     isQueue: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+    MyType:{
+      type: String,
+      default: "",
     }
   },
   methods: {
@@ -410,7 +413,7 @@ export default {
      */
     hideshow(event) {
       var targetId = event.target.id;
-      if (!this.$el.contains(event.target) || targetId != "list_icon") {
+      if (targetId != "list_icon" || !this.$el.contains(event.target)) {
         this.show = false;
         this.isclicked = false;
       }
@@ -482,6 +485,7 @@ export default {
       if (sec < 10) sec = "0" + sec;
       return min + ":" + sec;
     },
+    
     ...mapGetters({
       Get_Currentsong: "Mediaplayer/Get_Currentsong",
       user: "Authorization/GetStatus"
@@ -495,15 +499,14 @@ export default {
       );
     }
   },
-
   created: function() {
+    if (this.MyType=="created"){
+      this.ShowRemoveTrack=true;
+    }
     window.addEventListener("click", this.hideshow);
   },
-  destroyed: function() {
+  beforeDestroy: function() {
     window.removeEventListener("click", this.hideshow);
   },
-  components: {
-    AddTrackPopup
-  }
 };
 </script>

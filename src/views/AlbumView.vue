@@ -18,7 +18,7 @@
               :song_id="p._id"
               :song_artists="artist_name"
               :song_name="p.name"
-              :song_length="500"
+              :song_length="p.duration"
               :isLiked="true"
               :song_album="album_name"
               :albumId="albumid"

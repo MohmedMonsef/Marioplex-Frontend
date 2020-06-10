@@ -10,9 +10,6 @@
             Premium lets you play any song, anytime. You can even listen when
             you’re offline. No restrictions. No ads.
           </p>
-          <!-- <p id="paragraph2">
-            No restrictions. No ads.
-          </p> -->
           <router-link to="/GetPremium">
             <button class="premium" testid="premium button">
               GET PREMIUM
@@ -77,6 +74,12 @@
             JOIN PREMIUM
           </button>
         </router-link>
+        <button class="trans_button" testid="removeme" id="removeme" @click="remove">
+            Cancel my account
+        </button>
+        <div class="row" v-if="!deleted_Acount">
+        <p  class="col-8 offset-4">YOU ARE A ARTIST ,SO YOU CAN'T</p>
+        </div>
         <h2>For Artist :</h2>
         <router-link to="/ArtistPersonalPage">
           <button type="button" class="trans_button">
@@ -98,7 +101,6 @@
   width: 86%;
   height: 450px;
   margin-left: 7%;
-  /* padding-top: 70px; */
   position: relative;
 }
 @media only screen and (max-width:880px){
@@ -114,7 +116,6 @@
   font-size: 70px;
   font-family: Helvetica, Arial, sans-serif !important;
   margin-bottom: 5px;
-  /* margin-left: 12%; */
   position: absolute;
   left: 1%;
   right: 40%;
@@ -131,7 +132,6 @@
 #paragraph {
   color: white;
   margin-bottom: 0px;
-  /* margin-left: 12%; */
   position: absolute;
   left:6.5%;
   top:60%;
@@ -353,7 +353,13 @@ export default {
     ...mapGetters({
       user: "Authorization/user",
       Username: "Authorization/Username",
+      deleted_Acount:"Authorization/deleted_Acountt"
     }),
   },
+  methods:{
+    remove(){
+       this.$store.dispatch("Authorization/removeuser");
+    }
+  }
 };
 </script>

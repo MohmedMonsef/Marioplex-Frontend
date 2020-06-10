@@ -50,7 +50,7 @@ h2 {
 }
 h1 {
   color: white;
-  font-size: 150px;
+  font-size: 100px;
   margin-left: 6%;
 }
 .cont {
@@ -81,7 +81,7 @@ h1 {
 import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: "category",
+  name: "categoryplaylist",
   components: {
     LibPlaylists,
   },

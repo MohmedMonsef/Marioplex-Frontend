@@ -42,8 +42,8 @@
   margin-bottom: 10px;
 }
 h4 {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 790;
   color: white;
   margin-bottom: 4px;
 }
@@ -70,7 +70,6 @@ export default {
   },
   methods: {
     setcategoryname() {
-      console.log(document.getElementById("categoryname"));
       this.$store.dispatch(
         "Categorys/categoryname",
         document.getElementById("categoryname").innerHTML

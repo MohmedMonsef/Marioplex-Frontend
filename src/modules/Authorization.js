@@ -11,7 +11,10 @@ export default {
     User: {},
     isEdited: "",
     deleted_playlists: [],
-    emailConfirmed: Boolean
+    emailConfirmed: Boolean,
+    updateConfirmed: Boolean,
+    premiumConfirmed: Boolean,
+    deleted_Acount:true
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -46,6 +49,11 @@ export default {
     },
     setDeletedPlaylists(state, playlists) {
       state.deleted_playlists = playlists;
+    },
+    deleted(state){
+        state.status = "";
+        state.token = "";
+        state.User = {};
     }
   },
   actions: {
@@ -130,7 +138,7 @@ export default {
           localStorage.removeItem("x-auth-token");
         });
     },
-    toPremium({ commit, state }, payload) {
+    toPremium({ commit }, payload) {
       axios
         .put("api/me/promote", {
           expiresDate: payload.expiresDate,
@@ -138,10 +146,20 @@ export default {
           isMonth: payload.isMonth
         })
         .then(() => {
-          state.User.product = "premium";
-          store.dispatch("Authorization/get_user", true);
           store.dispatch("Authorization/logout");
-          router.replace("/login");
+          router.replace("/EmailConfirmation");
+        })
+        .catch((error) => {
+          console.log(error);
+          commit("upgrade", false);
+        });
+    },
+    toFree({ commit}) {
+      axios
+        .put("api/me/free")
+        .then(() => {
+          store.dispatch("Authorization/logout");
+          router.replace("/");
         })
         .catch(error => {
           console.log(error);
@@ -179,6 +197,7 @@ export default {
     },
     logout({ commit, state }) {
       commit("logout");
+      console.log("id when log out",state.User._id);
       axios.post("/api/user/logout/?id=" + state.User._id).then(() => {
         localStorage.removeItem("x-auth-token");
         delete axios.defaults.headers.common["x-auth-token"];
@@ -203,9 +222,11 @@ export default {
         .then(() => {
           commit("is_edit", "success");
         })
-        .catch(error => {
-          commit("is_edit", "faild");
-          console.log(error);
+        .catch((error) => {
+          if(error.response.data.error.details[0].message=='"cardNumber" must be a credit card')
+            commit("is_edit", "carderror");
+          else
+            commit("is_edit", "faild");
         });
     },
     showDeletedPlaylists({ commit }) {
@@ -228,14 +249,41 @@ export default {
       axios.defaults.headers.common["x-auth-token"] = resendtoken;
       axios.post("/api/sendmail");
       state.emailConfirmed = true;
-    }
+    },
+    ConfirmUpdate({ state } , userId) {
+      axios
+        .post("/api/me/confirmUpdate?id=" + userId)
+        state.updateConfirmed = true;
+    },
+    ConfirmPremium({ state } , userId) {
+      axios
+        .post("/api/premium/confirm?id=" + userId)
+        state.premiumConfirmed = true;
+    },
+    removeuser({commit,state}){
+      axios
+      .delete("api/remove")
+      .then(() => {
+        state.deleted_Acount=true;
+        commit("deleted");
+        router.replace("/signup");
+        delete axios.defaults.headers.common["x-auth-token"];
+      })
+      .catch((error) => {
+        console.log(error.response.status);
+        if(error.response.status==400)
+        {state.deleted_Acount=false;}
+      });
+     }
   },
   getters: {
-    Username: state => state.User.displayName,
-    GetStatus: state => state.status,
-    user: state => state.User,
-    isEdited: state => state.isEdited,
-    deleted_playlists: state => state.deleted_playlists,
-    upgraded: state => state.upgraded
-  }
+    Username: (state) => state.User.displayName,
+    GetStatus: (state) => state.status,
+    user: (state) => state.User,
+    isEdited: (state) => state.isEdited,
+    deleted_playlists: (state) => state.deleted_playlists,
+    upgraded: (state) => state.upgraded,
+    userid:(state) => state.User._id,
+    deleted_Acountt: (state) => state.deleted_Acount
+  },
 };

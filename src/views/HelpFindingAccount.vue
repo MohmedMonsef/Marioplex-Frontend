@@ -27,10 +27,10 @@
 
       <p>
         Enter any email addresses you use into our
-        <a href="/password-reset" target="_blank">password reset form</a>. If
+        <a href="/ForgetPassword" >password reset form</a>. If
         there's an account associated with it, we’ll let you know. You can
         continue to
-        <a href="/change-password" target="_blank"
+        <a href="/ForgetPassword" 
           >reset the account’s password</a
         >, then use that email address and the new password to log in.
       </p>
@@ -64,8 +64,7 @@
         <strong>LOG IN WITH FACEBOOK</strong>to log in. If you don’t want your
         Spotify linked to Facebook,
         <a
-          href="https://support.spotify.com/article/i-want-to-use-spotify-without-facebook/"
-          target="_blank"
+          href="/HelpFixed/HelpAccountHelp"
           >learn how to disconnect it here</a
         >.
       </p>
@@ -91,20 +90,18 @@
       <p>
         If you’ve used Spotify on desktop or Android, you can
         <a
-          href="https://support.spotify.com/article/finding-usernames-from-cache/"
-          target="_blank"
+          href="/HelpFixed/HelpAccountHelp"
           >find your username with information stored on your device</a
         >. You can
         <a
-          href="https://support.spotify.com/article/change-password/"
-          target="_blank"
+          href="/HelpFixed/HelpRestPassword"
           >reset the account’s password</a
         >, then use that username and the new password to log in.
       </p>
     </div>
     <div class="related">
       <h2>Related Articles</h2>
-      <a href="/HelpFixed/HelpFindingAccount">Reset your password</a>
+      <a href="/HelpFixed/HelpRestPassword">Reset your password</a>
     </div>
   </div>
 </template>

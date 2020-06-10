@@ -3,7 +3,7 @@
     <div v-if="search_value.length !== 0" class="cont last">
       <!--search results-->
       <div class="row">
-        <div v-if="match_top.length" class="col-4">
+        <div v-if="match_top.length" class="col-lg-4 ">
           <div v-if="match_top[0].type === 'Artist'">
             <top
               v-for="match_to in match_top"
@@ -107,8 +107,8 @@
               >SeeAll</router-link
             >
           </div>
-          <div class="col-12">
-            <trackcomponent
+          <div class="col-lg-12 col-md-6 col-xs-6 margan">
+            <SongComponent
               v-for="track in match_track"
               :key="track.id"
               :song_name="track.name"
@@ -117,7 +117,8 @@
               :song_id="track._id"
               :albumId="track.albumId"
               :song_album="track.albumName"
-            ></trackcomponent>
+              :song_length="track.duration"
+            ></SongComponent>
           </div>
         </div>
       </div>
@@ -266,17 +267,20 @@
           />
         </div>
       </div>
-      <!-- <div
-        v-if="match_artists.length==0 &&  match_albums.length==0 && match_playlists.length==0 && match_users.length==0 && match_track.length==0"
+      <div
+        v-if="!flagfound"
       >
-        <p id="noresult">No Results </p>
-        <p>please try using a small key words</p>
-      </div> -->
+        <p id="noresult">No Results -_- </p>
+        <p >please try using a small key words</p>
+      </div>
     </div>
     <div></div>
   </div>
 </template>
 <style scoped>
+.margan{
+  margin-top: 50px;
+}
 .track {
   margin-left: 2%;
 }
@@ -294,7 +298,7 @@
 }
 p {
   color: white;
-  font-size: 12px;
+  font-size: 20px;
   margin-left: 30%;
 }
 .row {
@@ -323,7 +327,7 @@ import LibArtists from "@/components/LibArtists.vue";
 import top from "@/components/TopresultCard.vue";
 import LibAlbums from "@/components/LibAlbums.vue";
 import LibPlaylists from "@/components/LibPlaylists.vue";
-import trackcomponent from "@/components/TrackComponent.vue";
+import SongComponent from "@/components/SongComponent.vue";
 import { mapGetters } from "vuex";
 /**
  * Here is the place where results of the search appear
@@ -337,7 +341,7 @@ export default {
     top,
     LibAlbums,
     LibPlaylists,
-    trackcomponent,
+    SongComponent,
   },
   data() {
     return { shower: true };
@@ -352,14 +356,12 @@ export default {
       search_value: "Search/get_value",
       match_users: "Search/getuser5",
       match_track: "Search/gettrack3",
-      //    showme:"Search/shower"
+      flagfound:"Search/getflagfound"
     }),
   },
   methods: {
     change() {
       this.shower = false;
-      // this.$store.dispatch("Search/actshower",false);
-      // this.$store.dispatch("Search/searchfocus",false);
       this.$store.dispatch("Search/showresult", "");
     },
     getImg(imgSrc) {
@@ -369,9 +371,6 @@ export default {
         return this.$url + "/api/images/" + imgSrc._id + "?belongs_to=user";
     },
   },
-  //  mounted() {
-  //   window.addEventListener('load', this.setshow);
-  // }
-  //props:["showme"]
+
 };
 </script>

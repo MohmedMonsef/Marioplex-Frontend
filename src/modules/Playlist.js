@@ -19,7 +19,8 @@ export default {
     owner_name: "",
     playlist_image: "",
     likedplaylist: Boolean,
-    restored: ""
+    restored: "",
+    playlist_type:""
   },
   mutations: {
     toggleModal(state, withtrack) {
@@ -92,6 +93,9 @@ export default {
     AddTrackToExsistPlaylist() {},
     isRestored(state, msg) {
       state.restored = msg;
+    },
+    set_playlist_type(state,type){
+      state.playlist_type=type;
     }
   },
   actions: {
@@ -101,15 +105,23 @@ export default {
         .get("/api/playlists/" + playlist_id)
         .then((response) => {
           let playlist = response.data;
+          console.log("in playlist.js playlist_track",playlist);
           commit("set_playlist", playlist[0].tracks);
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
-          commit("set_owner_name", playlist[1].ownerName);
+          if(localStorage.getItem('x-auth-token'))
+            { 
+              commit("set_owner_name", playlist[1].ownerName);
+            }
+          else
+             commit("set_owner_name", playlist[0].ownerName);
           if (typeof playlist[0].images[0] == "undefined")
             commit("set_playlist_image", "5eb52f1863eea332d416b9fa");
           else commit("set_playlist_image", playlist[0].images[0]._id);
           commit("set_likedplaylist", playlist[0].isfollowed);
           commit("set_playlist_loaded", true);
+          commit("set_playlist_type", playlist[0].checkType);
+         
         })
         .catch((error) => {
           console.log(error);
@@ -276,7 +288,6 @@ export default {
         });
     },
     RemoveFromThisPlaylist({ commit }, payload) {
-
       axios
         .delete("/api/playlists/" + payload.playlist_id + "/tracks", {
           data: { track_ids: payload.song_id },
@@ -306,6 +317,7 @@ export default {
         .put("/api/me/restoreplaylists?playlistsIds=" + ID)
         .then(() => {
           commit("isRestored", "success");
+          store.dispatch("Authorization/showDeletedPlaylists");
         })
         .catch((error) => {
           console.log(error);
@@ -317,6 +329,7 @@ export default {
     playlist_loaded: (state) => state.playlist_loaded,
     playlist_length: (state) => state.playlist_length,
     playlist_name: (state) => state.playlist_name,
+    playlist_type:(state) => state.playlist_type,
     owner_name: (state) => state.owner_name,
     playlist_image: (state) => state.playlist_image,
     likeplaylist: (state) => state.likedplaylist,
