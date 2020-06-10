@@ -107,8 +107,6 @@ export default {
        {
          this.$store.dispatch("Authorization/ConfirmEmail", this.$route.query.id);
        }
-
-
       else if (this.$route.query.type == "update")
        {
          this.$store.dispatch("Authorization/ConfirmUpdate", this.$route.query.id);
@@ -117,7 +115,6 @@ export default {
       else
       {
         this.$store.dispatch("Authorization/ConfirmPremium", this.$route.query.id);
-        this.$store.dispatch("Authorization/logout", this.$route.query.id);
       }
     }
   },
