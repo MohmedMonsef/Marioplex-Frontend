@@ -10,9 +10,6 @@
             Premium lets you play any song, anytime. You can even listen when
             you’re offline. No restrictions. No ads.
           </p>
-          <!-- <p id="paragraph2">
-            No restrictions. No ads.
-          </p> -->
           <router-link to="/GetPremium">
             <button class="premium" testid="premium button">
               GET PREMIUM
@@ -104,7 +101,6 @@
   width: 86%;
   height: 450px;
   margin-left: 7%;
-  /* padding-top: 70px; */
   position: relative;
 }
 @media only screen and (max-width:880px){
@@ -120,7 +116,6 @@
   font-size: 70px;
   font-family: Helvetica, Arial, sans-serif !important;
   margin-bottom: 5px;
-  /* margin-left: 12%; */
   position: absolute;
   left: 1%;
   right: 40%;
@@ -137,7 +132,6 @@
 #paragraph {
   color: white;
   margin-bottom: 0px;
-  /* margin-left: 12%; */
   position: absolute;
   left:6.5%;
   top:60%;

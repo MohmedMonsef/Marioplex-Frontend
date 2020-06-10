@@ -26,7 +26,16 @@ describe("AddTrackPopup", () => {
               },
               showModalAdd:(state)=>{
                 return state. showModalAdd;
-              }
+              },
+              playlists:(state)=>{
+                return  state.Playlists;
+              },
+              showModal:(state)=>{
+                return state. showModal;
+              },
+              withtrack:(state)=>{
+                return state. withtrack;
+              },
             },
             actions: {
                 toggleModalAdd: jest.fn(),

@@ -18,8 +18,8 @@
         :class="[
           {
             unPlayableIcon: !canPlay,
-            currently: this.isCurrent && this.canPlay,
-          },
+            currently: this.isCurrent && this.canPlay
+          }
         ]"
       ></i>
       <i
@@ -54,8 +54,8 @@
         :class="[
           {
             currently: this.isCurrent && this.canPlay,
-            unPlayableIcon: !canPlay,
-          },
+            unPlayableIcon: !canPlay
+          }
         ]"
       >
         {{ song_name }}
@@ -64,8 +64,8 @@
         class="song_info"
         :class="[
           {
-            songUnPlayable: !canPlay,
-          },
+            songUnPlayable: !canPlay
+          }
         ]"
       >
         <div class="s">
@@ -101,7 +101,7 @@
           v-show="hover"
           class="fa fa-ellipsis-h dots_icon"
           :class="{
-            unPlayableIcon: !canPlay,
+            unPlayableIcon: !canPlay
           }"
         ></i>
       </div>
@@ -301,7 +301,7 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 /**
  * Song component appearing in views(playlists,albums..etc)
@@ -320,44 +320,44 @@ export default {
   mixins: [song_functions],
   props: {
     song_name: {
-      type: String,
+      type: String
     },
     song_album: {
-      type: String,
+      type: String
     },
     song_artists: {
-      type: String,
+      type: String
     },
     artist_id: {
-      type: String,
+      type: String
     },
     song_length: {
-      type: Number,
+      type: Number
     },
     isLiked: {
-      type: Boolean,
+      type: Boolean
     },
     song_id: {
-      type: String,
+      type: String
     },
     index: {
-      type: Number,
+      type: Number
     },
     albumId: {
       type: String,
-      default: "0",
+      default: "0"
     },
     playlistId: {
       type: String,
-      default: "0",
+      default: "0"
     },
     isPlaylist: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isPlayable: {
       type: Boolean,
-      default: true,
+      default: true
     },
     isQueue: {
       type: Boolean,
@@ -378,7 +378,7 @@ export default {
         trackId: this.song_id,
         playlistId: this.playlistId,
         isPlaylist: this.isPlaylist,
-        albumId: this.albumId,
+        albumId: this.albumId
       });
     },
     /**
@@ -386,20 +386,24 @@ export default {
      * @public This is a public method
      */
     toggleShow(event) {
-      if (this.canPlay) {
-        var x = this.show;
-        window.Element.show = false;
-        this.show = !x;
-        if (!x) {
-          this.$nextTick(function() {
-            var div = document.getElementById("mydropdown");
-            var left = event.screenX - 203 + "px";
-            var top = event.screenY - 70 + "px";
-            if (div) {
-              div.style.left = left;
-              div.style.top = top;
-            }
-          });
+      if (this.user != "success") {
+        this.$store.dispatch("CheckUserPopup/togglepagespopup");
+      } else {
+        if (this.canPlay) {
+          var x = this.show;
+          window.Element.show = false;
+          this.show = !x;
+          if (!x) {
+            this.$nextTick(function() {
+              var div = document.getElementById("mydropdown");
+              var left = event.screenX - 203 + "px";
+              var top = event.screenY - 70 + "px";
+              if (div) {
+                div.style.left = left;
+                div.style.top = top;
+              }
+            });
+          }
         }
       }
     },
@@ -457,15 +461,15 @@ export default {
     RemoveFromThisPlaylist() {
       let payload = {
         playlist_id: this.playlistId,
-        song_id: this.song_id,
+        song_id: this.song_id
       };
       this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
-    },
+    }
   },
   computed: {
     isCurrentClass: function() {
       return {
-        currently: this.isCurrent && this.canPlay,
+        currently: this.isCurrent && this.canPlay
       };
     },
     isCurrent: function() {
@@ -484,18 +488,18 @@ export default {
     
     ...mapGetters({
       Get_Currentsong: "Mediaplayer/Get_Currentsong",
+      user: "Authorization/GetStatus"
     }),
     ...mapState({
-      showAdd: (state) => state.Playlist.showModalAdd,
+      showAdd: state => state.Playlist.showModalAdd
     }),
     canPlay: function() {
       return (
         (this.isPlayable || this.userinfo.product == "premium") && !this.isQueue
       );
-    },
+    }
   },
   created: function() {
-     console.log("type",this.MyType)
     if (this.MyType=="created"){
       this.ShowRemoveTrack=true;
     }

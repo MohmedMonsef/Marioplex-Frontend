@@ -1,5 +1,6 @@
 <template>
   <div class="playlist">
+    
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
@@ -33,7 +34,7 @@
               :song_name="p.name"
               :song_album="p.albumName"
               :albumId="p.albumId"
-              :song_length="500"
+              :song_length="p.duration"
               :isLiked="p.isLiked"
               :playlistId="$route.params.playlist_id"
               :isPlaylist="true"

@@ -4,7 +4,7 @@
       <div class="col-sm-3 col-xs-6" id="song_info_col">
         <!-- here i need to link album image with mock server -->
         <div class="album_image" v-if="user == 'success'">
-          <img src="../assets/cry.png" alt="album_image" testid="album_image" />
+          <img :src="$url +'/api/images/'+ Get_Currentsong.track.images[0]._id + '?belongs_to=album'" alt="album_image" testid="album_image" />
         </div>
         <!-- here i need to link both song name and artist name with mock server they navigate to another pages
           and i need to change <a> to router link -->
@@ -597,7 +597,6 @@ export default {
      * @public This is a public method
      */
     moving_song_bar: function() {
-      //console.log("x")
       this.$store.dispatch("Mediaplayer/advance_progress");
       if (!this.drag) {
         var SongSlider = document.getElementById("progressbar");

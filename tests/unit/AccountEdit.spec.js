@@ -15,10 +15,14 @@ describe("AccountEdit", () => {
         Authorization: {
           namespaced: true,
           state:{
-            isEdited: ""
+            isEdited: "",
+            user:{
+              product:""
+            }
           },
           getters: {
             isEdited: (state) => state.isEdited,
+            user: (state) => state.user,
           },
           actions: {
             saveEdit: jest.fn()

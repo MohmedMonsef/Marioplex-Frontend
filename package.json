@@ -96,7 +96,8 @@
     "collectCoverageFrom": [
       "**/*.vue",
       "!**/node_modules/**",
-      "!**/App.vue"
+      "!**/App.vue",
+      "!**/DeleteSong.vue"
     ]
   }
 }

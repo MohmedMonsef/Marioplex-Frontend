@@ -66,6 +66,7 @@
  padding-right: 5%;
  padding-bottom: 5%;
  position:relative;
+ height:auto !important;     
 }  
 @media only screen and (max-width: 880px){
   #grey_div{
@@ -125,6 +126,8 @@ h1{
     background: white;
     padding-top: 6%;
     padding-left: 7%;
+    height:auto !important;
+    padding-bottom: 6%;     
 }
 h2{
     color: black;
@@ -146,17 +149,14 @@ h4{
     font-weight: normal;
 }
 .head1{
-    /* margin-left: 6%; */
     position: absolute;
     left: 12%;
 }
 .head2{
-    /* margin-left: 7%; */
     position: absolute;
     left: 15%;
 }
 .head3{
-    /* margin-left: -2%; */
     position: absolute;
     left: 10%;
 }
@@ -168,7 +168,6 @@ h4{
     background: transparent;
     border: none;
     letter-spacing: 1px;
-    /* margin-left: 40%; */
     position: absolute;
     left: 42%;
 }
@@ -206,7 +205,6 @@ h4{
     background: #F8F8F8;
 }
 .col2{
-    /* margin-left: 20%; */
     position: absolute;
     left: 26%;
 }
@@ -217,7 +215,6 @@ h4{
   }
 }
 .col3{
-    /* margin-left: 30%; */
     position: absolute;
     left: 32%;
 }

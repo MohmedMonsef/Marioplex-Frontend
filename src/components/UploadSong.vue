@@ -146,9 +146,35 @@
             <input type="text" name="file" v-model="TrackNumber" />
 
             <h4>Available Market</h4>
-            <input type="text" name="file" v-model="AvailableMarket" />
+            <select
+              v-model="AvailableMarket"
+              class="AvailableMarket_select"
+              testid="country input"
+            >
+              <option
+                v-for="AvailableMarket in AvailableMarkets"
+                :key="AvailableMarket.value"
+                :value="AvailableMarket.value"
+                :disabled="AvailableMarket.disabled"
+                >{{ AvailableMarket.text }}
+              </option>
+            </select>
+            <!-- <input type="text" name="file" v-model="AvailableMarket" /> -->
             <h4>Genre</h4>
             <input type="text" name="file" v-model="Genre" />
+             <h4>Album</h4>
+            <select
+              v-model="id"
+              class="album_select"
+              testid="album input"
+            >
+              <option
+                v-for="(album,id) in albums"
+                :key="id"
+                :value="album._id"
+                >{{ album.name }}
+              </option>
+            </select>
           </div>
           <button class="cancel_button" @click="changeModalStateUpload">
             cancle
@@ -186,7 +212,7 @@ div {
 }
 .creat_button {
   position: fixed;
-  top: 80%;
+  top: 90%;
   left: 50%;
   appearance: none;
   outline: none;
@@ -196,14 +222,9 @@ div {
   margin: 20px;
   height: 6%;
   width: 10%;
-  // height: 50px;
-  // width: 180px;
-  // padding: 8px 34px;
-  // background-color: #1ed760;
   background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
-
   color: #fff;
   font-size: 85%;
   font-weight: 700;
@@ -213,23 +234,18 @@ div {
 }
 .cancel_button {
   position: fixed;
-  top: 80%;
+  top: 90%;
   left: 35%;
   appearance: none;
   outline: none;
-
   background: none;
   cursor: pointer;
   margin: 20px;
-  // height: 50px;
-  // width: 180px;
   height: 6%;
   width: 10%;
-  // padding: 8px 34px;
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
-
   color: #fff;
   font-size: 85%;
   font-weight: 700;
@@ -242,7 +258,6 @@ div {
   justify-content: center;
   align-items: center;
   margin: none;
-
   top: 0;
   left: 0;
   right: 0;
@@ -323,19 +338,13 @@ input {
 }
 .files {
   position: absolute;
-  // position: relative;
-  // top: 70%;
-  /* left: 70%; */
-  // right: 0;
   appearance: none;
   outline: none;
   border: none;
   background: none;
   cursor: pointer;
-  // margin: 20px;
   height: 7%;
   width: 3%;
-  // padding: 8px 34px;
   background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
@@ -365,7 +374,6 @@ input {
 #uploadheighencfile {
   top: 12%;
   left: 2.5%;
-  // right:8.5%;
 }
 
 #uploadmediumencfile {
@@ -382,6 +390,16 @@ input {
 }
 h4 {
   background-color: transparent;
+}
+.album_select {
+  width: 100%;
+  background: black;
+  border: transparent;
+}
+.AvailableMarket_select{
+  width: 100%;
+  background: black;
+  border: transparent;
 }
 </style>
 
@@ -411,6 +429,22 @@ export default {
         myduration: 0,
       },
       myaudio: [],
+      id:"",
+      AvailableMarkets: [
+        { text: "Choose a country", value: "0", disabled: true },
+        { text: "Egypt", value: "eg", disabled: false },
+        { text: "France", value: "fr", disabled: false },
+        { text: "USA", value: "us", disabled: false },
+        { text: "Britain", value: "uk", disabled: false },
+        { text: "Canada", value: "ca", disabled: false },
+        { text: "Australia", value: "au", disabled: false },
+        { text: "Saudi Arabia", value: "sa", disabled: false },
+        { text: "China", value: "cn", disabled: false },
+        { text: "Japan", value: "jp", disabled: false },
+        { text: "Korea", value: "kp", disabled: false },
+        { text: "Mexico", value: "mx", disabled: false },
+        { text: "Brazil", value: "br", disabled: false },
+      ],
     };
   },
   state: {
@@ -419,6 +453,7 @@ export default {
   computed: {
     ...mapGetters({
       showModalUpload: "ArtistProperties/showModalUpload",
+      albums:"ArtistProperties/Albums"
     }),
   },
   methods: {
@@ -477,6 +512,7 @@ export default {
         medium_enc_selectedfile: this.Medium_Encselectedfile,
         low_enc_selectedfile: this.Low_Encselectedfile,
         selectedpreview: this.selectedpreview,
+        AlbumID:this.id,
       };
       this.$store.dispatch("ArtistProperties/UploadTrack", payload);
     },

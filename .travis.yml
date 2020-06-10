@@ -1,9 +1,16 @@
 sudo: required
 services:
   - docker 
+
 script:
   - true
-  - echo " SCRIPT FINISHED " 
+notifications:
+  email:
+    recipients:
+      - belalelhossany12@gmail.com
+      - mohmedmonsef70@gmail.com
+    on_success: never 
+    on_failure: always 
 after_success:
   - docker build -t belalelhossany/frontend .
   # Log in to the docker CLI
@@ -13,9 +20,9 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: laFront
-  env: Lafront-env
-  bucket_name: mariofront
+  app: mariofront
+  env: Mariofront-env
+  bucket_name: frontfront
   bucket_path: front
   on:
     branch: master

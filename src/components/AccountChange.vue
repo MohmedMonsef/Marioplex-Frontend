@@ -112,7 +112,6 @@ h2 {
   color: black;
   width: 20%;
   height: 4%;
-  /* margin-left: 45%; */
   margin-top: -1%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
@@ -220,7 +219,7 @@ export default {
       return;
     },
     req_newpassword: function () {
-      if (this.newpassword == "" || (this.newpassword != "" && this.newpassword.length < 8)) {
+      if (this.newpassword == "") {
         this.canSet2 = false;
       } else {
         this.canSet2 = true;
@@ -228,7 +227,7 @@ export default {
       return;
     },
     req_repeatpassword: function () {
-      if (this.repeatpassword == "" || (this.repeatpassword != "" && this.repeatpassword.length < 8) ) {
+      if (this.repeatpassword == "") {
         this.canSet3 = false;
       } else {
         this.canSet3 = true;
