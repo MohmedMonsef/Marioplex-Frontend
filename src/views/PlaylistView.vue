@@ -32,12 +32,12 @@
               :song_name="p.name"
               :song_album="p.albumName"
               :albumId="p.albumId"
-              :song_length="500"
+              :song_length="p.duration"
               :isLiked="p.isLiked"
               :playlistId="$route.params.playlist_id"
               :isPlaylist="true"
               :isPlayable="p.playable"
-              :type="p.type"
+              :type="playlist_type"
             />
           </transition-group>
         </draggable>
@@ -170,6 +170,7 @@ export default {
       playlist_length: "Playlist/playlist_length",
       playlist_load: "Playlist/playlist_loaded",
       playlist_image: "Playlist/playlist_image",
+      playlist_type: "Playlist/playlist_type"
     }),
   },
   created: function() {

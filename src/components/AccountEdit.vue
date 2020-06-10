@@ -14,7 +14,12 @@
         <h2>Email</h2>
         <input type="text" class="in_text" id="myEmail" v-model="email" />
         <h2>Confirm password</h2>
-        <input type="password" class="in_text" id="myPassword" v-model="password" />
+        <input
+          type="password"
+          class="in_text"
+          id="myPassword"
+          v-model="password"
+        />
         <h2>Gender</h2>
         <select v-model="gender" class="select_gender">
           <option
@@ -53,30 +58,104 @@
           >
         </select>
         <div class="end_border"></div>
-          <!-- <div class="row"> -->
-            <div class="col-sm-60%">
-              <router-link to="/UserAccount/Account-overview">
-                <button class="cancel">CANCEL</button>
-              </router-link>
-            </div>
-            <div class="col-sm-30%">
-              <button class="save" @click="checkEdit()">SAVE PROFILE</button>
-            </div>
-          <!-- </div> -->
+        <div class="col-sm-60%">
+          <router-link to="/UserAccount/Account-overview">
+            <button class="cancel">CANCEL</button>
+          </router-link>
+        </div>
+        <div class="col-sm-30%">
+          <button class="save" @click="checkEdit()">SAVE PROFILE</button>
+        </div>
+      </div>
+      <br />
+
+      <div class="premium_div" v-if="user.product == 'premium'">
+        <div class="wrong" v-if="isEdited == 'carderror'">
+         Invalid creditcard number
+        </div>
+        <h2>Card number:</h2>
+        <input
+          type="text"
+          class="in_text"
+          v-model="CreditNumber"
+          placeholder="1111 2222 3333 4444"
+          maxlength="16"
+        />
+        <h2>Expiration date:</h2>
+        <select
+          v-model="expmonth"
+          class="select_month"
+          testid="month of expiration input"
+          id="month"
+        >
+          <option
+            v-for="month in Months"
+            :key="month.value"
+            :value="month.value"
+            :disabled="month.disabled"
+            >{{ month.text }}</option
+          >
+        </select>
+        <select
+          v-model="expyear"
+          class="select_month"
+          testid="year of expiration input"
+          id="month"
+        >
+          <option
+            v-for="year in expYear"
+            :key="year.value"
+            :value="year.value"
+            :disabled="year.disabled"
+            >{{ year.text }}</option
+          >
+        </select>
+
+        <h2>
+          Plan
+        </h2>
+        <!--plan -->
+        <div id="plan" class="input_field">
+          <input
+            type="radio"
+            class="plan_field plan-radio"
+            value="m"
+            v-model="Monthly"
+          />
+          <label for="Monthly" class="plan_field plan-radio">Monthly</label>
+          <input
+            type="radio"
+            class="plan_field plan-radio"
+            value="y"
+            v-model="Monthly"
+          />
+          <label for="Yearly" class="plan_field plan-label">Yearly</label>
+        </div>
+
+        <div class="col-sm-30%">
+          <button @click="updatePremium()" class="premium_update premium_btn">
+            Update Premium
+          </button>
+        </div>
+        <div class="col-sm-30%">
+          <button @click="deletePremium()" class="premium_del premium_btn">
+            Delete Premium
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 #row2 {
   margin-left: 7%;
 }
-@media only screen and (max-width:880px){
-  #row2{
-  width: 100%;
-  margin-left: 0%;
-  margin-right: 0%;
-  position: relative;
+@media only screen and (max-width: 880px) {
+  #row2 {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    position: relative;
   }
 }
 #grey_div {
@@ -85,27 +164,27 @@
   height: 100%;
   padding-right: 5%;
   padding-bottom: 5%;
-  position:relative;
+  position: relative;
 }
-@media only screen and (max-width: 880px){
-  #grey_div{
-  background-color: #f8f8f8;
-  width: 77%;
-  height: 100%;
-  padding-right: 5%;
-  padding-bottom: 5%;
-  position:relative;
-  margin-right: 0%;
+@media only screen and (max-width: 880px) {
+  #grey_div {
+    background-color: #f8f8f8;
+    width: 77%;
+    height: 100%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    position: relative;
+    margin-right: 0%;
   }
 }
-@media only screen and (max-width: 800px){
-  #grey_div{
-  background-color: #f8f8f8;
-  width: 100%;
-  height: 100%;
-  padding-right: 5%;
-  padding-bottom: 5%;
-  position:relative;
+@media only screen and (max-width: 800px) {
+  #grey_div {
+    background-color: #f8f8f8;
+    width: 100%;
+    height: 100%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    position: relative;
   }
 }
 h1 {
@@ -127,6 +206,13 @@ h1 {
   height: 730px;
   background: white;
   padding-top: 4%;
+}
+.premium_div {
+  margin-left: 7%;
+  width: 90%;
+  background: white;
+  padding-top: 4%;
+  height: 400px;
 }
 h2 {
   color: gray;
@@ -196,7 +282,6 @@ h2 {
   color: black;
   width: 20%;
   height: 4%;
-  /* margin-left: 50%; */
   margin-top: -1%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
@@ -212,23 +297,65 @@ h2 {
   color: white;
   width: 20%;
   height: 4%;
-  /* margin-left: 5%; */
   margin-top: -1%;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   position: absolute;
-  left:65%;
+  left: 65%;
 }
 .save:hover {
   background-color: #36e072;
 }
-.side_bar{
+.premium_btn {
+  background-color: #1db954;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  color: white;
+  width: 20%;
+  height: 4%;
+  margin-top: -1%;
+  font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  position: absolute;
+}
+.premium_btn:hover {
+  background-color: #36e072;
+}
+.premium_update {
+  left: 65%;
+}
+.premium_del {
+  left: 42%;
+}
+.side_bar {
   position: relative;
   width: 23%;
 }
-@media only screen and (max-width: 800px){
-  .side_bar{
+#plan {
+  display: inline-block;
+  margin-left: 5%;
+  input {
+    margin-top: 3px;
+    border-radius: 2px;
+  }
+  .plan_field {
+    display: inline-block;
+    float: left;
+  }
+  label {
+    color: #88898c;
+    font-size: 0.9375em;
+    text-align: left;
+    padding-top: 16px;
+    margin-right: 15px;
+    padding-left: 5px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .side_bar {
     visibility: hidden;
     position: absolute;
   }
@@ -374,6 +501,30 @@ export default {
         { text: "Mexico", value: "11" },
         { text: "Brazil", value: "12" },
       ],
+      //for premium
+      expmonth: "0",
+      Months: [
+        { text: "Month", value: "0", disabled: true },
+        { text: "January", value: "1", disabled: false },
+        { text: "Febuary", value: "2", disabled: false },
+        { text: "March", value: "3", disabled: false },
+        { text: "April", value: "4", disabled: false },
+        { text: "May", value: "5", disabled: false },
+        { text: "June", value: "6", disabled: false },
+        { text: "July", value: "7", disabled: false },
+        { text: "August", value: "8", disabled: false },
+        { text: "September", value: "9", disabled: false },
+        { text: "October", value: "10", disabled: false },
+        { text: "November", value: "11", disabled: false },
+        { text: "December", value: "12", disabled: false },
+      ],
+      CreditNumber: "",
+      Monthly: 'x',
+      nextMonth: "",
+      expYear: [{ text: "Year", value: 0, disabled: true }],
+      expyear: "0",
+      vsecurity: false,
+      validform: false,
     };
   },
   methods: {
@@ -383,7 +534,9 @@ export default {
       this.req_password();
       setTimeout(() => {
         if (this.can_submit1 && this.can_submit2 && this.can_submit3) {
-          var birthDate = new Date(this.year + "-" + this.month + "-" + this.day);
+          var birthDate = new Date(
+            this.year + "-" + this.month + "-" + this.day
+          );
           this.birthday = birthDate;
           let edituser = {
             email: this.email,
@@ -397,9 +550,9 @@ export default {
         } else {
           this.saved = false;
         }
-      },200);
+      }, 200);
     },
-    req_email: function () {
+    req_email: function() {
       if (this.email == "") {
         this.can_submit1 = false;
       } else {
@@ -414,8 +567,7 @@ export default {
           this.email.indexOf("@") == this.email.length - 1 ||
           this.email.indexOf(".com") == -1 ||
           this.email.indexOf(".com") + 4 != this.email.length)
-      )
-      {
+      ) {
         this.can_submit2 = false;
       } else {
         this.can_submit2 = true;
@@ -430,11 +582,62 @@ export default {
       }
       return;
     },
+    deletePremium: function() {
+      this.$store.dispatch("Authorization/toFree");
+    },
+    updatePremium: function() {
+      let update = {
+         password: this.password,
+      };
+      if(this.expyear!='0' && this.expmonth != '0'){
+      var today = new Date();
+      var day = today.getDate();
+      var d = new Date(this.expyear + "-" + this.expmonth + "-" + day);
+      update.expiresDate=d;
+      }
+      if(this.Monthly !='x'){
+        if(this.Monthly == 'm')
+        update.isMonth=true;
+        else
+        update.isMonth=false;
+      }
+      if(this.CreditNumber !=""){
+          update.cardNumber= this.CreditNumber;
+      }
+      this.$store.dispatch("Authorization/saveEdit", update);
+    },
   },
   computed: {
     ...mapGetters({
       isEdited: "Authorization/isEdited",
+      user: "Authorization/user",
     }),
+  },
+  watch: {
+    CreditNumber: function() {
+      var res = this.CreditNumber.replace(" ", "");
+      var len = res.length;
+      if (isNaN(res)) {
+        this.CreditNumber = this.CreditNumber.substr(0, len - 1);
+      }
+    },
+  },
+  mounted() {
+    var today = new Date();
+    var mon = (today.getMonth() + 2) % 13;
+    if (mon == 0) mon++;
+    this.nextMonth =
+      this.Months[mon].text + " " + today.getDate() + "," + today.getFullYear();
+    var begYear = today.getFullYear();
+    for (var i = 0; i < 10; i++) {
+      var yearObj = {
+        text: begYear.toString().substring(2, 4),
+        value: begYear,
+        disabled: false,
+      };
+      begYear++;
+      this.expYear.push(yearObj);
+    }
   },
 };
 </script>

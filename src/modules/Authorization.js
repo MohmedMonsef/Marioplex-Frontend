@@ -126,7 +126,7 @@ export default {
           localStorage.removeItem("x-auth-token");
         });
     },
-    toPremium({ commit, state }, payload) {
+    toPremium({ commit }, payload) {
       axios
         .put("api/me/promote", {
           expiresDate: payload.expiresDate,
@@ -134,10 +134,20 @@ export default {
           isMonth: payload.isMonth,
         })
         .then(() => {
-          state.User.product = "premium";
-          store.dispatch("Authorization/get_user", true);
           store.dispatch("Authorization/logout");
-          router.replace("/login");
+          router.replace("/EmailConfirmation");
+        })
+        .catch((error) => {
+          console.log(error);
+          commit("upgrade", false);
+        });
+    },
+    toFree({ commit}) {
+      axios
+        .put("api/me/free")
+        .then(() => {
+          store.dispatch("Authorization/logout");
+          router.replace("/");
         })
         .catch((error) => {
           console.log(error);
@@ -201,8 +211,10 @@ export default {
           commit("is_edit", "success");
         })
         .catch((error) => {
-          commit("is_edit", "faild");
-          console.log(error);
+          if(error.response.data.error.details[0].message=='"cardNumber" must be a credit card')
+            commit("is_edit", "carderror");
+          else
+            commit("is_edit", "faild");
         });
     },
     showDeletedPlaylists({ commit }) {

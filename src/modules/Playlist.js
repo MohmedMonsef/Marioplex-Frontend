@@ -16,6 +16,7 @@ export default {
     playlist_loaded: -1,
     playlist_length: "",
     playlist_name: "",
+    playlist_type:"",
     owner_name: "",
     playlist_image: "",
     likedplaylist: Boolean,
@@ -88,6 +89,9 @@ export default {
     set_likedplaylist(state, like) {
       state.likedplaylist = like;
     },
+    set_playlist_type(state, type) {
+      state.playlist_type = type;
+    },
     RemoveFromThisPlaylist() {},
     AddTrackToExsistPlaylist() {},
     isRestored(state, msg) {
@@ -104,7 +108,13 @@ export default {
           commit("set_playlist", playlist[0].tracks);
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
-         commit("set_owner_name", playlist[1].ownerName);
+          if(localStorage.getItem('x-auth-token'))
+            { 
+              commit("set_owner_name", playlist[1].ownerName);
+              commit("set_playlist_type", playlist[0].checkType);
+            }
+          else
+             commit("set_owner_name", playlist[0].ownerName);
           if (typeof playlist[0].images[0] == "undefined")
             commit("set_playlist_image", "5eb52f1863eea332d416b9fa");
           else commit("set_playlist_image", playlist[0].images[0]._id);
@@ -317,6 +327,7 @@ export default {
     playlist_loaded: (state) => state.playlist_loaded,
     playlist_length: (state) => state.playlist_length,
     playlist_name: (state) => state.playlist_name,
+    playlist_type:(state) => state.playlist_type,
     owner_name: (state) => state.owner_name,
     playlist_image: (state) => state.playlist_image,
     likeplaylist: (state) => state.likedplaylist,

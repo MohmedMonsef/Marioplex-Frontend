@@ -97,6 +97,7 @@
       "**/*.vue",
       "!**/node_modules/**",
       "!**/App.vue"
+
     ]
   }
 }
