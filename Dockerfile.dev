@@ -1,0 +1,13 @@
+FROM belalelhossany/start as builder
+WORKDIR /app
+
+COPY ./package.json /app/package.json
+
+WORKDIR /app
+
+RUN sudo npm install
+
+COPY . /app
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["testcommand.sh"]

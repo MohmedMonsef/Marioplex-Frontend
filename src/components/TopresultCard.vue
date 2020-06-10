@@ -2,7 +2,7 @@
   <div class="col-40%" id="top-card">
     <h2 style="margin-bottom: 15px;" class="col-lg-30%">TopResult</h2>
     <div
-      class="card rounded col-lg-30%"
+      class="card rounded col-lg-40%"
       testid="top card"
       @mouseover="hover = true"
       @mouseleave="hover = false"
@@ -16,7 +16,7 @@
         alt="..."
         style="
           max-width: 50%;
-          max-height: 180px;
+          height: 100px;
           display: block;
           margin-left: 0;
           margin-bottom: 15px;
@@ -29,14 +29,14 @@
         alt="..."
         style="
           max-width: 50%;
-          max-height: 180px;
+          height: 100px;
           display: block;
           margin-left: 0;
           margin-bottom: 15px;
         "
       />
-      <div class="row">
-        <div class="col-6">
+      <div class="row ">
+        <div class="col-12">
           <h2 class="card-title">{{ name }}</h2>
           <div class="row">
             <div class="typecont col-6">
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div class="playcon col-1" v-if="hover">
+        <div class="playcon col-4 offset-8" v-if="hover">
           <router-link
             v-if="type == 'playlist'"
             :to="{ path: '/HomeWebPlayer/playlist/' + playlist_id }"

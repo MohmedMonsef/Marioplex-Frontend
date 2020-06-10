@@ -4,12 +4,12 @@
       <account-sidebar />
     </div>
     <div class="col-lg-70%" id="grey_div">
-      <div class="saved" v-if="isEdited == 'success'">Profile saved</div>
+      <div class="saved" v-if="isEdited == 'success' && this.saved == '1'">Profile saved</div>
       <h1>Edit profile</h1>
       <div class="edit_border"></div>
       <div class="white_div">
-        <div class="wrong" v-if="isEdited == 'faild'">
-          Sorry, wrong password
+        <div class="wrong" v-if="isEdited == 'faild' || this.saved == '2'">
+          Sorry, wrong password or email
         </div>
         <h2>Email</h2>
         <input type="text" class="in_text" id="myEmail" v-model="email" />
@@ -58,6 +58,14 @@
           >
         </select>
         <div class="end_border"></div>
+            <div class="col-sm-60%">
+              <router-link to="/UserAccount/Account-overview">
+                <button class="cancel">CANCEL</button>
+              </router-link>
+            </div>
+            <div class="col-sm-30%">
+              <button class="save" @click="checkEdit()">SAVE PROFILE</button>
+            </div>
         <div class="col-sm-60%">
           <router-link to="/UserAccount/Account-overview">
             <button class="cancel">CANCEL</button>
@@ -371,7 +379,7 @@ export default {
   },
   data: function() {
     return {
-      saved: false,
+      saved: "0",
       can_submit1: false,
       can_submit2: false,
       can_submit3: false,
@@ -545,10 +553,12 @@ export default {
             gender: this.gender,
             birthday: this.birthday,
           };
-          this.saved = true;
+          this.saved = "1";
           this.$store.dispatch("Authorization/saveEdit", edituser);
+          this.$store.dispatch("Authorization/logout");
+          this.$router.replace("/EmailConfirmation");
         } else {
-          this.saved = false;
+          this.saved = "2";
         }
       }, 200);
     },

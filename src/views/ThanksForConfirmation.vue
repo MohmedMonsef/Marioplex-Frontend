@@ -91,6 +91,10 @@ export default {
     id: {
       type: String,
       required: true
+    },
+    type: {
+      type: String,
+      required: true
     }
   },
   methods: {
@@ -99,7 +103,11 @@ export default {
      * @public This is a public method
      */
     thanksForConfirmation() {
-      this.$store.dispatch("Authorization/ConfirmEmail", this.$route.query.id);
+      if (this.$route.query.type == "signup")
+       {this.$store.dispatch("Authorization/ConfirmEmail", this.$route.query.id);}
+
+      if (this.$route.query.type == "update")
+       {this.$store.dispatch("Authorization/ConfirmUpdate", this.$route.query.id);}
     }
   },
   mounted() {

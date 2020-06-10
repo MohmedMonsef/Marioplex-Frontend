@@ -23,6 +23,7 @@
             <song-component 
               testid="songcomponent"
               class="sortable"
+              :MyType="playlist_type" 
               v-for="(p, i) in playlist_tracks"
               :key="p.trackid"
               :index="i"
@@ -37,7 +38,7 @@
               :playlistId="$route.params.playlist_id"
               :isPlaylist="true"
               :isPlayable="p.playable"
-              :type="playlist_type"
+              
             />
           </transition-group>
         </draggable>
@@ -170,7 +171,7 @@ export default {
       playlist_length: "Playlist/playlist_length",
       playlist_load: "Playlist/playlist_loaded",
       playlist_image: "Playlist/playlist_image",
-      playlist_type: "Playlist/playlist_type"
+      playlist_type:"Playlist/playlist_type"
     }),
   },
   created: function() {

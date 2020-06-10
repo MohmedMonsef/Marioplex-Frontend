@@ -16,11 +16,11 @@ export default {
     playlist_loaded: -1,
     playlist_length: "",
     playlist_name: "",
-    playlist_type:"",
     owner_name: "",
     playlist_image: "",
     likedplaylist: Boolean,
-    restored: ""
+    restored: "",
+    playlist_type:""
   },
   mutations: {
     toggleModal(state, withtrack) {
@@ -89,13 +89,13 @@ export default {
     set_likedplaylist(state, like) {
       state.likedplaylist = like;
     },
-    set_playlist_type(state, type) {
-      state.playlist_type = type;
-    },
     RemoveFromThisPlaylist() {},
     AddTrackToExsistPlaylist() {},
     isRestored(state, msg) {
       state.restored = msg;
+    },
+    set_playlist_type(state,type){
+      state.playlist_type=type;
     }
   },
   actions: {
@@ -105,13 +105,13 @@ export default {
         .get("/api/playlists/" + playlist_id)
         .then((response) => {
           let playlist = response.data;
+          console.log("in playlist.js playlist_track",playlist);
           commit("set_playlist", playlist[0].tracks);
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
           if(localStorage.getItem('x-auth-token'))
             { 
               commit("set_owner_name", playlist[1].ownerName);
-              commit("set_playlist_type", playlist[0].checkType);
             }
           else
              commit("set_owner_name", playlist[0].ownerName);
@@ -120,6 +120,8 @@ export default {
           else commit("set_playlist_image", playlist[0].images[0]._id);
           commit("set_likedplaylist", playlist[0].isfollowed);
           commit("set_playlist_loaded", true);
+          commit("set_playlist_type", playlist[0].checkType);
+         
         })
         .catch((error) => {
           console.log(error);
