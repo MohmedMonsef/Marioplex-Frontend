@@ -18,8 +18,8 @@
         <div class="drop">
           <button class="item__title" @click="show1 = !show1">
             <span>Update payment details or change payment method</span>
-            <i class="fas fa-angle-down floatright" v-if="!show1"></i>
-            <i class="fas fa-angle-up floatright" v-if="show1"></i>
+            <i class="fa fa-angle-down floatright" v-if="!show1"></i>
+            <i class="fa fa-angle-up floatright" v-if="show1"></i>
           </button>
           <div class="item__content" v-if="show1">
             <p>
@@ -55,8 +55,8 @@
         <div class="drop">
           <button class="item__title" @click="show2 = !show2">
             <span>Change billing date</span>
-            <i class="fas fa-angle-down floatright" v-if="!show2"></i>
-            <i class="fas fa-angle-up floatright" v-if="show2"></i>
+            <i class="fa fa-angle-down floatright" v-if="!show2"></i>
+            <i class="fa fa-angle-up floatright" v-if="show2"></i>
           </button>
           <div class="item__content" v-if="show2">
             <p>
@@ -184,6 +184,7 @@ a:hover {
 }
 .floatright {
   float: right;
+  font-size:40px ;
 }
 .drops-contant {
   padding-bottom: 20px;

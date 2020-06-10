@@ -215,7 +215,7 @@ export default {
           commit("setfound", true);
         })
 
-        .catch((errors) => {
+        .catch(() => {
           commit("settopres", []);
           commit("setresult5", []);
           commit("setalbumres5", []);
@@ -228,9 +228,8 @@ export default {
           commit("setuser", []);
           commit("settrack", []);
           // react on errors.
-          if(errors.response.status==404){
           commit("set_load", true);
-          commit("setfound", false);}
+          commit("setfound", false);
         });
     },
     artistin({ commit }, set) {
