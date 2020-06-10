@@ -4,13 +4,14 @@
       <account-sidebar />
     </div>
     <div class="col-lg-70%" id="grey_div">
-      <h1>Notification settings</h1>
+      <h1>Notifications</h1>
       <div class="edit_border"></div>
       <div class="white_div">
         <h2>Your Notifications :</h2>
         <div class="card col-lg"
          v-for="(notification, index) in notifications" 
-         :key="notification.data.title" 
+         @click="goRoute(notification)"
+         :key="index" 
          :class="{card2: index%2==1}" >
           <div class="card-body" id="cardbody">
             <h4 class="card-title" id="cardtitle">
@@ -146,6 +147,24 @@ export default {
     ...mapGetters({
       notifications: "Notifications/notifications"
     })
+  },
+  methods: {
+    goRoute(notification){
+      if (notification.data.title == "WOOOOOH NEW ALBUM")
+        { this.$router.push('/HomeWebPlayer/album/' + notification.data.albumId) }
+
+      if (notification.data.title == "WOOOOOH NEW SONG")
+        { this.$router.push('/HomeWebPlayer/ArtistProfile/' + notification.data.artistId) }
+
+      if (notification.data.title == " You seem to have a good musical taste ")
+        { this.$router.push('/HomeWebPlayer/UserProfile/' + notification.data.userId) }
+
+      if (notification.data.title == "Look who's getting more followers now ^^")
+        { this.$router.push('/HomeWebPlayer/UserProfile/' + notification.data.userId) }
+
+      if (notification.data.title == "Knock , Knock ! Who's There ?")
+        { this.$router.push('/HomeWebPlayer/UserProfile/' + notification.data.userId) }
+    }
   }
 };
 </script>

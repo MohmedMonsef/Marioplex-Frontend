@@ -122,7 +122,7 @@ export default {
   },
   filters: {
     shorten: function(value) {
-      if (value.length > 17) return value.substring(0, 17) + " ...";
+      if (value && value.length > 17) return value.substring(0, 17) + " ...";
       else return value;
     },
   },

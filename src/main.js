@@ -13,11 +13,11 @@ Vue.config.productionTip = true;
 // axios.defaults.baseURL = "http://52.54.133.87";
 // Vue.prototype.$url="http://52.54.133.87"
 
-// axios.defaults.baseURL = "http://100.25.194.8";
-// Vue.prototype.$url="http://100.25.194.8"
+axios.defaults.baseURL = "http://100.25.194.8";
+Vue.prototype.$url="http://100.25.194.8"
 
-axios.defaults.baseURL = "http://52.70.203.73";
-Vue.prototype.$url="http://52.70.203.73";
+// axios.defaults.baseURL = "http://52.70.203.73";
+// Vue.prototype.$url="http://52.70.203.73";
 
 var vm = new Vue({
   router,

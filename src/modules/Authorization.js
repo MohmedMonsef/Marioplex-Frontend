@@ -10,7 +10,8 @@ export default {
     User: {},
     isEdited: "",
     deleted_playlists: [],
-    emailConfirmed: Boolean
+    emailConfirmed: Boolean,
+    updateConfirmed: Boolean
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
   mutations: {
@@ -219,6 +220,11 @@ export default {
       axios
         .post("/api/login/confirm?id=" + userId)
         state.emailConfirmed = true;
+    },
+    ConfirmUpdate({ state } , userId) {
+      axios
+        .post("/api/me/confirmUpdate?id=" + userId)
+        state.updateConfirmed = true;
     },
   },
   getters: {
