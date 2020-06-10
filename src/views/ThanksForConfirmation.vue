@@ -110,7 +110,7 @@ export default {
        }
 
 
-      if (this.$route.query.type == "update")
+      else if (this.$route.query.type == "update")
        {
          this.$store.dispatch("Authorization/ConfirmUpdate", this.$route.query.id);
          this.$store.dispatch("Authorization/logout", this.$route.query.id);

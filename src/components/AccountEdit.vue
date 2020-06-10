@@ -613,7 +613,9 @@ export default {
       if(this.CreditNumber !=""){
           update.cardNumber= this.CreditNumber;
       }
+      this.saved = "1";
       this.$store.dispatch("Authorization/saveEdit", update);
+      this.$router.replace("/EmailConfirmation");
     },
   },
   computed: {
