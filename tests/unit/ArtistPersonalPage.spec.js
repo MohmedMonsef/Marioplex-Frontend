@@ -35,6 +35,7 @@ describe("ArtistPersonalPage", () => {
             toggleModal: jest.fn(),
             Get_Album_ID: jest.fn(),
             Get_Artist_Name: jest.fn(),
+            toggleModalCreate: jest.fn(),
           },
           getters: {
             showModal: (state) => {
@@ -57,6 +58,9 @@ describe("ArtistPersonalPage", () => {
             },
             Artist_ID: (state) => {
               return state.Artist_ID;
+            },
+            Albums: (state) => {
+              return state.Albums;
             },
           },
         },
