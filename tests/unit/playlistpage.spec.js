@@ -92,6 +92,9 @@ describe("playlist_info", () => {
     newDiv = document.createElement("div");
     newDiv.setAttribute("id", testId);
     document.body.appendChild(newDiv);
+    store.state.Authorization.status = "";
+    wrapper.vm.isplaying();
+    store.state.Authorization.status = "success";
     store.state.Mediaplayer.playicon=true;
     wrapper.vm.isplaying();
     store.state.Mediaplayer.playicon=false;
@@ -141,6 +144,9 @@ describe("playlist_info", () => {
     let toast = document.createElement("div");
     toast.setAttribute("id", testId);
     document.body.appendChild(toast);
+    store.state.Authorization.status = "";
+    wrapper.vm.likecurrentplaylist();
+    store.state.Authorization.status = "success";
     wrapper.vm.likecurrentplaylist();
     expect("like_playlist").toHaveBeenCalled;
     expect("showplaylists").toHaveBeenCalled;
