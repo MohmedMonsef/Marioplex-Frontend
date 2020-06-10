@@ -66,6 +66,7 @@
  padding-right: 5%;
  padding-bottom: 5%;
  position:relative;
+ height:auto !important;     
 }  
 @media only screen and (max-width: 880px){
   #grey_div{
@@ -125,6 +126,8 @@ h1{
     background: white;
     padding-top: 6%;
     padding-left: 7%;
+    height:auto !important;
+    padding-bottom: 6%;     
 }
 h2{
     color: black;

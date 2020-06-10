@@ -555,7 +555,6 @@ export default {
           };
           this.saved = "1";
           this.$store.dispatch("Authorization/saveEdit", edituser);
-          this.$store.dispatch("Authorization/logout");
           this.$router.replace("/EmailConfirmation");
         } else {
           this.saved = "2";
@@ -614,7 +613,9 @@ export default {
       if(this.CreditNumber !=""){
           update.cardNumber= this.CreditNumber;
       }
+      this.saved = "1";
       this.$store.dispatch("Authorization/saveEdit", update);
+      this.$router.replace("/EmailConfirmation");
     },
   },
   computed: {
