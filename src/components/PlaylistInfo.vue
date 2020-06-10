@@ -271,7 +271,7 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 /**
  ** apperars when there is tracks in playlist
@@ -282,7 +282,7 @@ export default {
   data: function() {
     return {
       show: false,
-      play: false,
+      play: false
     };
   },
   mixins: [song_functions],
@@ -293,12 +293,14 @@ export default {
      * @public This is a public method
      */
     isplaying() {
-      this.play = true;
-      if (this.playicon) {
-        var playlistimage = document.getElementById("playlist_image");
-        var pausebutton = document.getElementById("imageplayicon");
-        playlistimage.style.opacity = "0.3";
-        pausebutton.style.opacity = "1";
+      if (this.user == "success") {
+        this.play = true;
+        if (this.playicon) {
+          var playlistimage = document.getElementById("playlist_image");
+          var pausebutton = document.getElementById("imageplayicon");
+          playlistimage.style.opacity = "0.3";
+          pausebutton.style.opacity = "1";
+        }
       }
     },
     /**
@@ -327,13 +329,13 @@ export default {
         playbutton.style.opacity = "1";
         return {
           img: playlistimage.style.opacity,
-          btn: playbutton.style.opacity,
+          btn: playbutton.style.opacity
         };
       } else {
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
         return {
-          btn: pausebutton.style.opacity,
+          btn: pausebutton.style.opacity
         };
       }
     },
@@ -349,7 +351,7 @@ export default {
         playbutton.style.opacity = "0";
         return {
           img: playlistimage.style.opacity,
-          btn: playbutton.style.opacity,
+          btn: playbutton.style.opacity
         };
       } else {
         playlistimage.style.opacity = "0.3";
@@ -357,7 +359,7 @@ export default {
         pausebutton.style.opacity = "1";
         return {
           img: playlistimage.style.opacity,
-          btn: pausebutton.style.opacity,
+          btn: pausebutton.style.opacity
         };
       }
     },
@@ -366,21 +368,25 @@ export default {
      * @public This is a public method
      */
     likecurrentplaylist: function() {
-      if (!this.liked) {
-        toast.show("Saved to Your Library");
-        this.$store.dispatch(
-          "Playlist/like_playlist",
-          this.$route.params.playlist_id
-        );
+      if (this.user != "success") {
+        this.$store.dispatch("CheckUserPopup/togglepagespopup");
       } else {
-        toast.show("Removed from Your Library");
-        this.$store.dispatch(
-          "Playlist/unlike_playist",
-          this.$route.params.playlist_id
-        );
+        if (!this.liked) {
+          toast.show("Saved to Your Library");
+          this.$store.dispatch(
+            "Playlist/like_playlist",
+            this.$route.params.playlist_id
+          );
+        } else {
+          toast.show("Removed from Your Library");
+          this.$store.dispatch(
+            "Playlist/unlike_playist",
+            this.$route.params.playlist_id
+          );
+        }
+        this.$store.dispatch("Playlist/showplaylists");
       }
-      this.$store.dispatch("Playlist/showplaylists");
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -390,8 +396,8 @@ export default {
       playicon: "Mediaplayer/playicon",
       owner_name: "Playlist/owner_name",
       playlist_image: "Playlist/playlist_image",
-      liked: "Playlist/likeplaylist",
-    }),
-  },
+      liked: "Playlist/likeplaylist"
+    })
+  }
 };
 </script>

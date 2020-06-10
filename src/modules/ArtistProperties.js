@@ -15,6 +15,8 @@ export default {
     ArtistBio: "",
     ArtistGenre: "",
     Album_ID: "",
+    showModalCreate: false,
+    Albums: {},
   },
   getters: {
     showModal: (state) => {
@@ -46,6 +48,12 @@ export default {
     },
     Album_ID: (state) => {
       return state.Album_ID;
+    },
+    showModalCreate: (state) => {
+      return state.showModalCreate;
+    },
+    Albums: (state) => {
+      return state.Albums;
     },
   },
   mutations: {
@@ -109,6 +117,13 @@ export default {
     Get_Album_ID(state, AlbumID) {
       state.Album_ID = AlbumID;
     },
+    toggleModalCreate(state) {
+      state.showModalCreate = !state.showModalCreate;
+    },
+    Create_Album() {},
+    Get_Albums(state, albums) {
+      state.Albums = albums;
+    },
   },
   actions: {
     toggleModalUpload({ commit }) {
@@ -149,7 +164,6 @@ export default {
         .post("/api/uploadsong", songdata, {
           headers: {
             "Content-Type": "aplication/jason",
-            // 'Content-Type': 'multipart/form-data'
           },
         })
         .then(() => {
@@ -170,9 +184,6 @@ export default {
           console.log(error);
         });
     },
-    /* EditBio({commit},payload){
-
-    },*/
     EditBio({ commit }, payload) {
       axios
         .put("/api/Artist/update", { info: payload.Description })
@@ -246,7 +257,8 @@ export default {
           const ArtistID = res.data._id;
           commit("Get_Artist_ID", ArtistID);
           store.dispatch("ArtistProperties/Get_Latest_Image_ID", ArtistID);
-          store.dispatch("ArtistProperties/Get_Album_ID", ArtistID);
+          // store.dispatch("ArtistProperties/Get_Album_ID", ArtistID);
+          store.dispatch("ArtistProperties/Get_Albums", ArtistID);
         })
         .catch((err) => {
           console.log(err);
@@ -300,7 +312,7 @@ export default {
           console.log(err);
         });
     },
-    UploadTrack({ commit, state }, payload) {
+    UploadTrack({ commit }, payload) {
       const high = new FormData();
       high.append("image", payload.highselectedfile);
       const medium = new FormData();
@@ -315,12 +327,13 @@ export default {
       low_enc.append("image", payload.low_enc_selectedfile);
       const review = new FormData();
       review.append("image", payload.selectedpreview);
-      let allbum_id = state.Album_ID;
+      // let allbum_id = state.Album_ID;
+      console.log("hoho ho ho ho",payload.AlbumID);
       axios({
         method: "post",
         url:
           "/api/artists/me/albums/" +
-          allbum_id +
+          payload.AlbumID +
           "/tracks?name=" +
           payload.Name +
           "&availableMarkets=" +
@@ -347,15 +360,51 @@ export default {
         });
       //post("/api/artists/me/albums/"+5eb0a8b4ec0c444e9c48986e+"/tracks?")
     },
-    Get_Album_ID({ state, commit }) {
+    // Get_Album_ID({ state, commit }) {
+    //   let Artist_ID = state.Artist_ID;
+    //   console.log("artist id in artist propertis:", Artist_ID);
+    //   axios
+    //     .get("api/Artists/" + Artist_ID + "/Albums")
+    //     .then((res) => {
+    //       const AlbumID = res.data[0]._id;
+    //       console.log("album id in artist propertis:", AlbumID);
+    //       commit("Get_Album_ID", AlbumID);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
+    toggleModalCreate({ commit }) {
+      commit("toggleModalCreate");
+    },
+    Create_Album({ commit }, payload) {
+      axios
+        .put("api/Artists/me/Albums", {
+          name: payload.Name,
+          label: payload.label,
+          albumtype: payload.type,
+          releaseDate: payload.relasedate,
+          availablemarkets: payload.AvailableMarket,
+          genre: payload.Genre,
+        })
+        .then(() => {
+          // const Album=res.data;
+          commit("Create_Album");
+          store.dispatch("ArtistProperties/Get_Albums");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    Get_Albums({ state, commit }) {
       let Artist_ID = state.Artist_ID;
-      console.log("artist id in artist propertis:", Artist_ID);
+      console.log("artist idddddddd in artist propertis:", Artist_ID);
       axios
         .get("api/Artists/" + Artist_ID + "/Albums")
         .then((res) => {
-          const AlbumID = res.data[0]._id;
-          console.log("album id in artist propertis:", AlbumID);
-          commit("Get_Album_ID", AlbumID);
+          const Albums = res.data;
+          console.log("albums in artist propertis:", Albums);
+          commit("Get_Albums", Albums);
         })
         .catch((error) => {
           console.log(error);

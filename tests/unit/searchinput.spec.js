@@ -29,6 +29,7 @@ describe("searchcomponent", () => {
           actions: {
             searchaboutartist: jest.fn(),
             search_V: jest.fn(),
+            clear:jest.fn()
           },
         },
       },

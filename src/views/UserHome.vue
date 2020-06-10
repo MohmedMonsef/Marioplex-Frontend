@@ -1,5 +1,10 @@
 <template>
   <div class="home">
+    <div class="loading" v-if="!loading">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+
+    <div v-if="loading">
     <div class="section">
       <h2 v-if="POPplaylists1.playlists.length">Popular playlists</h2>
       <router-link to="/AllLists" class="seeall" v-if="POPplaylists1.playlists.length"
@@ -116,10 +121,20 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.loading {
+  display: flex;
+  justify-content: center;
+  i {
+    font-size: 70px;
+    margin-top: 100px;
+    color: white;
+  }
+}
 .home {
   min-height: 2000px;
 }
@@ -271,6 +286,7 @@ export default {
       POPnewreleases1: "ShowWebPlayer/POPnewreleases",
       playlists1: "Playlist/playlists",
       isLoggedIn: "Authorization/GetStatus",
+      loading: "ShowWebPlayer/loading"
     }),
   },
 };

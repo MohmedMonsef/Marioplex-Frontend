@@ -11,7 +11,7 @@
             $url +
               '/api/images/' +
               match_album.images[0]._id +
-              '?belongs_to=artist'
+              '?belongs_to=album'
           "
           :name="match_album.name"
           :albumId="match_album._id"

@@ -114,16 +114,10 @@ export default {
        * @displayName Search
        * @public This is a public method
        */
-      //console.log(value);
-      console.log(value, "in component");
       this.$store.dispatch("Search/search_V", this.Value);
-      if (value !== "") {
-        //  this.$store.dispatch("Search/searchaboutartist",this.Value);
-        this.$store.dispatch("Search/should", "yes");
-      } else {
-        this.$store.dispatch("Search/should", "no");
-        this.$router.currentRoute.path == "/HomeWebPlayer/search";
-      }
+      if (value == "") {
+     this.$router.currentRoute.path == "/HomeWebPlayer/search";
+      } 
     },
     /**
      * Exiting this search
@@ -139,33 +133,16 @@ export default {
       }
     },
     focus() {
-      if (this.Value !== "") {
-        // this.$store.dispatch("Search/searchaboutartist",this.Value);
-      }
-
       this.$store.dispatch("Search/searchfocus", true);
       if (this.$router.currentRoute.path !== "/HomeWebPlayer/search") {
         this.$store.dispatch("Search/showresult", "h");
         this.$router.go(-1);
-        //      this.$store.dispatch("Search/actshower",true);
       }
     },
     leave() {
-      if (this.Value !== "") {
-        //  this.$store.dispatch("Search/searchaboutartist",this.Value);
-      }
       this.$store.dispatch("Search/searchfocus", false);
     },
-    // ,
-    // /**
-    //  * When confirm search reset
-    //  * @public This is a public method
-    //  */
-    // isinsearch() {
-    //   if (insearch) {
-    //     this.Value = "";
-    //   }
-    // }
+ 
   },
   computed: {
     ...mapGetters({

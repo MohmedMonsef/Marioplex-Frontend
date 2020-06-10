@@ -1,5 +1,6 @@
 <template>
   <div class="playlist">
+    
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
