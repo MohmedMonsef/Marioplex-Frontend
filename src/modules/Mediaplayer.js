@@ -102,10 +102,16 @@ export default {
     },
     //get the current song from backend
    get_currentsong({ commit, dispatch }, getTrack) {
+    
       axios
         .get("/api/me/player/currently-playing")
         .then(response => {
           var currentsong = response.data;
+          console.log("gggttt",currentsong)
+          if(currentsong.track.images.length == 0)
+          currentsong.track.images.push({
+            _id:"1"
+          });
           commit("set_currentsong", currentsong);
           var id = currentsong.track._id;
           if (getTrack == 1) {
@@ -127,14 +133,14 @@ export default {
       let trackroute;
       if(user.product != "premium"){
       trackroute =
-      "http://100.25.194.8/api/tracks/web-player/" +
+      "http://34.206.123.67/api/tracks/web-player/" +
         id +
         "/?type=medium&token=" +
         token;
       }
       else{
         trackroute =
-        "http://100.25.194.8/api/tracks/web-player/" +
+        "http://34.206.123.67/api/tracks/web-player/" +
         id +
         "/?type=high&token=" +
         token;
