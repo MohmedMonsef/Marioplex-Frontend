@@ -25,18 +25,15 @@
             >
               change cover photo
             </button>
-             <!-- v-if="choosebutton" -->
-            <button
-              class="uploadbutton"
-             
-              @click="UploadPhoto()"
-            >
+            <!-- v-if="choosebutton" -->
+            <button class="uploadbutton" @click="UploadPhoto()">
               Upload
             </button>
           </div>
           <div class="page_content">
             <EditBio v-if="show" />
             <UploadSong v-if="showupload"></UploadSong>
+            <CreateAlbum v-if="showCreate"></CreateAlbum>
             <div class="bio">
               <div class="A_Image"></div>
               <div>
@@ -111,12 +108,13 @@
                   </button>
                 </div>
                 <div class="col-2-sm">
-                  <button class="c_album">Create Album</button>
+                  <button class="c_album" @click="changeModalStateCreate()">
+                    Create Album
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-
           <!--<DeleteSong></DeleteSong>-->
         </div>
       </span>
@@ -261,7 +259,7 @@ svg {
   outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
-  z-index:10;
+  z-index: 10;
 }
 .uploadbutton {
   position: absolute;
@@ -284,7 +282,7 @@ svg {
   outline: none;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
-  z-index:0;
+  z-index: 0;
 }
 .to_contain {
   width: 100%;
@@ -310,6 +308,7 @@ import UploadSong from "../components/UploadSong";
 //import DeleteSong from "../components/DeleteSong";
 import ArtistHeader from "../components/ArtistHeader";
 import EditBio from "../components/EditBio";
+import CreateAlbum from "../components/CreateAlbum";
 /**
  * Artist personal page to upload or delete songs or even edit artist bio and photo
  * @displayName Artist Personal Page
@@ -334,11 +333,13 @@ export default {
     // DeleteSong,
     ArtistHeader,
     EditBio,
+    CreateAlbum,
   },
   computed: {
     ...mapState({
       show: (state) => state.ArtistProperties.showModal,
       showupload: (state) => state.ArtistProperties.showModalUpload,
+      showCreate: (state) => state.ArtistProperties.showModalCreate,
       // currentimage:state=>state.artistproperties.currentimage
     }),
     ...mapGetters({
@@ -366,20 +367,7 @@ export default {
     },
     OnPhotoUpload(event) {
       this.choosebutton = true;
-      console.log("in artist personal page event", event);
-      console.log("in artist personal page artist id", this.Artist_ID);
       this.selectedphoto = event.target.files[0];
-      console.log("......", event.target.files);
-      // this.
-      //console.log("in artist personal page photo",this.selectedphoto);
-      //  this.imageLoaded = false;
-
-      //this.selectedphoto = this.$refs.inputfile.files[0];
-      console.log("in artist personal page photo", this.selectedphoto);
-      console.log(
-        "in artist personal page photo name",
-        this.selectedphoto.name
-      );
       if (
         !this.selectedphoto ||
         this.selectedphoto.type.indexOf("image/") !== 0
@@ -391,29 +379,19 @@ export default {
       let reader = new FileReader();
 
       reader.readAsDataURL(this.selectedphoto);
-      console.log("in artist personal page the reader", reader);
       reader.onload = (evt) => {
         let img = new Image();
         img.onload = () => {
           this.image.width = img.width;
           this.image.height = img.height;
-         // console.log("in artist personal page width", img.width);
-          //this.imageLoaded = true;
         };
-         img.src = evt.target.result;
-        // console.log("in artist personal page the img", img);
+        img.src = evt.target.result;
       };
-      //console.log("in artist personal page the img",img)
-      // reader.onerror = (evt) => {
-      //   console.error(evt);
-      // };
       this.persist(this.selectedphoto);
     },
     persist(image) {
       const data = new FormData();
-
       data.append("image", image);
-
       // Send the image to the API (e.g., with a Vuex action)
     },
 
@@ -427,6 +405,9 @@ export default {
         artist_id: this.Artist_ID,
       };
       this.$store.dispatch("ArtistProperties/UploadPhoto", payload);
+    },
+    changeModalStateCreate() {
+      this.$store.dispatch("ArtistProperties/toggleModalCreate");
     },
   },
   created: function() {

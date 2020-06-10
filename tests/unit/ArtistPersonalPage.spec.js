@@ -25,6 +25,7 @@ describe("ArtistPersonalPage", () => {
             currentimage: "",
             image_id: "",
             Artist_ID: "",
+            showModalCreate:true,
           },
           actions: {
             toggleModalUpload: jest.fn(),
@@ -60,10 +61,6 @@ describe("ArtistPersonalPage", () => {
           },
         },
       },
-      // data:{
-
-      //   choosebutton:true,
-      // }
     });
     wrapper = shallowMount(ArtistPersonalPage, {
       localVue,
@@ -104,31 +101,16 @@ describe("ArtistPersonalPage", () => {
         ],
       },
     };
-    // wrapper.vm.OnPhotoUpload(event);
-    // expect(wrapper.vm.selectedphoto).toBe(event.target.files[0]);
-
-    // const callback = jest.fn(status => {
-    //   expect(status).toBe(true);
+    // jest.mock('image.png', () => 'image.png');
+    // wrapper.vm.load((error) => {
+    //   expect(wrapper.emitted().ready.length).toBe(1);
+    //   done(error);
     // });
-    // const imageUrl = 'https://github.com/mrdulin';
-    // const img = OnPhotoUpload(imageUrl, callback);
-    // if (img.onload) {
-    //   //const event: any = {};
-    //   img.onload(event);
-    // }
-
     const fileReaderSpy = jest.spyOn(FileReader.prototype, 'readAsDataURL').mockImplementation(() => null)
-    // const myfileReaderSpy = jest.spyOn(FileReader.prototype, 'onload').mockImplementation(() => null)
-    // Spy on the component’s persist() method
     const persistSpy = jest.spyOn(wrapper.vm, 'persist')
  
-    // Manually trigger the component’s onChange() method
     wrapper.vm.OnPhotoUpload(event)
- 
-    // Assert that the FileReader object was called with the uploaded image
     expect(fileReaderSpy).toHaveBeenCalledWith(event.target.files[0])
-    // expect(myfileReaderSpy).toHaveBeenCalledWith(event.target.files[0])
-    // Assert that the component’s persist() method was called with the uploaded image
     expect(persistSpy).toHaveBeenCalledWith(event.target.files[0])
   });
   it("it shows upload cover photo popup ", () => {
@@ -137,70 +119,16 @@ describe("ArtistPersonalPage", () => {
     wrapper.vm.UploadPhoto();
     expect("UploadPhoto").toHaveBeenCalled;
   });
+  it("it shows create track popup ", () => {
+    const input = wrapper.find(".c_album");
+    input.trigger("click");
+    wrapper.vm.changeModalStateCreate();
+    expect("showModalCreate").toHaveBeenCalled;
+  });
   
   // it('onload', done => {
   //   const callback = jest.fn(status => {
   //     expect(status).toBe(true);
   //     done();
   //   });
-
-    // const imageUrl = 'https://github.com/mrdulin';
-    // const img = OnPhotoUpload(imageUrl, callback);
-    // if (img.onload) {
-    //   // const event: any = {};
-    //   img.onload(event);
-    // }
-  // });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // it("it editbio ", () => {
-  //   //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-  //   const changeModalState = jest.fn();
-  //   wrapper.setMethods({
-  //     changeModalState: changeModalState,
-  //   });
-  //   const btn = wrapper.find(".svg-container");
-  //   btn.trigger("click");
-  //   expect(changeModalState).toHaveBeenCalled();
-  // });
-  // it("it create track ", () => {
-  //   //const wrapper = shallowMount(CreatePlaylist, { localVue, store });
-  //   const changeModalStateUpload = jest.fn();
-  //   wrapper.setMethods({
-  //     changeModalStateUpload: changeModalStateUpload,
-  //   });
-  //   const btn = wrapper.find(".c_track");
-  //   btn.trigger("click");
-  //   expect(changeModalStateUpload).toHaveBeenCalled();
-  // });
-
-  // it("it calls togglemodal dispatch ti change modalstate", () => {
-  //   store.dispatch = jest.fn();
-  //   const btn = wrapper.find(".svg-container");
-  //   btn.trigger("click");
-  //   expect(store.dispatch).toHaveBeenCalledWith("ArtistProperties/toggleModal");
-  // });
-  // it("it calls toglemodalupload dispatch ti change modalstateupload", () => {
-  //   store.dispatch = jest.fn();
-  //   const btn = wrapper.find(".c_track");
-  //   btn.trigger("click");
-  //   expect(store.dispatch).toHaveBeenCalledWith(
-  //     "ArtistProperties/toggleModalUpload"
-  //   );
-  // });
 });

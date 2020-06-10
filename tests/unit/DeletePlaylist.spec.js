@@ -68,6 +68,11 @@ describe("DeletePlaylist", () => {
     wrapper.vm.changeModalStateDelete();
     expect("toggleModalDelete").toHaveBeenCalled;
   });
- 
+  it("it toast ", () => {
+    let testid = "liketoast";
+    let toast = document.createElement("div");
+    toast.setAttribute("id", testid);
+    document.body.appendChild(toast);
+  });
 });
 

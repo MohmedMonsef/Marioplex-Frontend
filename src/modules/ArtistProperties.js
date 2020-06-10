@@ -15,6 +15,7 @@ export default {
     ArtistBio: "",
     ArtistGenre: "",
     Album_ID: "",
+    showModalCreate: false,
   },
   getters: {
     showModal: (state) => {
@@ -46,6 +47,9 @@ export default {
     },
     Album_ID: (state) => {
       return state.Album_ID;
+    },
+    showModalCreate: (state) => {
+      return state.showModalCreate;
     },
   },
   mutations: {
@@ -109,6 +113,10 @@ export default {
     Get_Album_ID(state, AlbumID) {
       state.Album_ID = AlbumID;
     },
+    toggleModalCreate(state) {
+      state.showModalCreate = !state.showModalCreate;
+    },
+    Create_Album() {},
   },
   actions: {
     toggleModalUpload({ commit }) {
@@ -149,7 +157,6 @@ export default {
         .post("/api/uploadsong", songdata, {
           headers: {
             "Content-Type": "aplication/jason",
-            // 'Content-Type': 'multipart/form-data'
           },
         })
         .then(() => {
@@ -170,9 +177,6 @@ export default {
           console.log(error);
         });
     },
-    /* EditBio({commit},payload){
-
-    },*/
     EditBio({ commit }, payload) {
       axios
         .put("/api/Artist/update", { info: payload.Description })
@@ -359,6 +363,27 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+        });
+    },
+    toggleModalCreate({ commit }) {
+      commit("toggleModalCreate");
+    },
+    Create_Album({ commit }, payload) {
+      axios
+        .put("api/Artists/me/Albums", {
+          name: payload.Name,
+          label: payload.label,
+          albumtype: payload.type,
+          releaseDate: payload.relasedate,
+          availablemarkets: payload.AvailableMarket,
+          genre: payload.Genre,
+        })
+        .then(() => {
+          // const Album=res.data;
+          commit("Create_Album");
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
