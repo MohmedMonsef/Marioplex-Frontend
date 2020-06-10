@@ -287,15 +287,15 @@ export default {
      * @public This is a public method
      */
     isplaying() {
-       if (this.user == "success") {
-      this.play = true;
-      if (this.playicon) {
-        var albumimage = document.getElementById("album_image");
-        var pausebutton = document.getElementById("imageplayicon");
-        albumimage.style.opacity = "0.3";
-        pausebutton.style.opacity = "1";
+      if (this.user == "success") {
+        this.play = true;
+        if (this.playicon) {
+          var albumimage = document.getElementById("album_image");
+          var pausebutton = document.getElementById("imageplayicon");
+          albumimage.style.opacity = "0.3";
+          pausebutton.style.opacity = "1";
+        }
       }
-       }
     },
     /**
      * pause current playing song
@@ -367,17 +367,20 @@ export default {
      * @public This is a public method
      */
     likecurrentalbum: function() {
-        if (this.user != "success") {
+      if (this.user != "success") {
         this.$store.dispatch("CheckUserPopup/togglepagespopup");
       } else {
-      if (!this.liked) {
-        toast.show("Saved to Your Library");
-        this.$store.dispatch("Album/like_album", this.$route.params.album_id);
-      } else {
-        toast.show("Removed from Your Library");
-        this.$store.dispatch("Album/unlike_album", this.$route.params.album_id);
+        if (!this.liked) {
+          toast.show("Saved to Your Library");
+          this.$store.dispatch("Album/like_album", this.$route.params.album_id);
+        } else {
+          toast.show("Removed from Your Library");
+          this.$store.dispatch(
+            "Album/unlike_album",
+            this.$route.params.album_id
+          );
+        }
       }
-    }
     }
   },
   computed: {

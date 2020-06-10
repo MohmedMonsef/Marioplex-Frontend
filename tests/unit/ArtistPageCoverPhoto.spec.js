@@ -49,6 +49,15 @@ describe("ArtistPageCoverPhoto", () => {
           getters: {
             playicon: state => state.playicon
           }
+        },
+        Authorization:{
+          namespaced: true,
+          state: {
+            status: "",
+          },
+          getters: {
+            GetStatus: state => state.status
+          },
         }
       }
     });
@@ -70,8 +79,14 @@ describe("ArtistPageCoverPhoto", () => {
     let toast = document.createElement("div");
     toast.setAttribute("id", testId);
     document.body.appendChild(toast);
+    store.state.Authorization.status = "";
+    wrapper.vm.isplaying();
+    store.state.Authorization.status = "success";
     wrapper.vm.isplaying();
     wrapper.vm.stopplaying();
+    store.state.Authorization.status = "";
+    wrapper.vm.followartist();
+    store.state.Authorization.status = "success";
     wrapper.vm.followartist();
     expect("follow_artist").toHaveBeenCalled;
     jest.useFakeTimers();

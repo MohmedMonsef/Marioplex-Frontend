@@ -168,40 +168,49 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-    mytoast.classList.remove("toast--visible");
+      mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  },
+  }
 };
 export default {
   data: function() {
     return {
       play: false,
-      imgId: "",
+      imgId: ""
     };
   },
   components: {
-    artistnavbar,
+    artistnavbar
   },
   mixins: [song_functions],
   name: "artist_coverimage",
   methods: {
     isplaying: function() {
-      this.play = true;
+      if (this.user == "success") {
+        this.play = true;
+      }
     },
     stopplaying: function() {
       this.play = false;
     },
     followartist: function() {
-      if (!this.followed) {
-        toast.show("Saved to Your Library");
-        this.$store.dispatch(
-          "ArtistPage/follow_artist",
-          this.$route.params.artist_id
-        );
+      if (this.user != "success") {
+        this.$store.dispatch("CheckUserPopup/togglepagespopup");
       } else {
-        toast.show("Removed from Your Library");
-        this.$store.dispatch("ArtistPage/unfollow_artist",this.$route.params.artist_id);
+        if (!this.followed) {
+          toast.show("Saved to Your Library");
+          this.$store.dispatch(
+            "ArtistPage/follow_artist",
+            this.$route.params.artist_id
+          );
+        } else {
+          toast.show("Removed from Your Library");
+          this.$store.dispatch(
+            "ArtistPage/unfollow_artist",
+            this.$route.params.artist_id
+          );
+        }
       }
     },
     getImg() {
@@ -212,7 +221,7 @@ export default {
         "/api/images/" +
         this.imgId +
         "?belongs_to=artist)";
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -220,12 +229,13 @@ export default {
       artist_name: "ArtistPage/artist_name",
       album_image: "ArtistPage/artistcover_image",
       followed: "ArtistPage/followartist",
-    }),
+      user: "Authorization/GetStatus"
+    })
   },
   mounted() {
     setTimeout(() => {
       (this.imgId = this.album_image._id), this.getImg();
     }, 2000);
-  },
+  }
 };
 </script>

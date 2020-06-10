@@ -95,7 +95,7 @@ div {
 
 .slide-enter,
 .slide-leave-to {
-  transform: translateZ(-50%) translateX(100vw);
+  transform: translateY(-50%) translateX(100vw);
   // transition: transform 0.5s;
 }
 
