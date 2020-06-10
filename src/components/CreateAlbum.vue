@@ -34,7 +34,20 @@
             <h4>Relase Date</h4>
             <input type="text" name="file" v-model="relasedate" />
             <h4>Available Market</h4>
-            <input type="text" name="file" v-model="AvailableMarket" />
+            <select
+              v-model="AvailableMarket"
+              class="AvailableMarket_select"
+              testid="country input"
+            >
+              <option
+                v-for="AvailableMarket in AvailableMarkets"
+                :key="AvailableMarket.value"
+                :value="AvailableMarket.value"
+                :disabled="AvailableMarket.disabled"
+                >{{ AvailableMarket.text }}
+              </option>
+            </select>
+            <!-- <input type="text" name="file" v-model="AvailableMarket" /> -->
             <h4>Genre</h4>
             <input type="text" name="file" v-model="Genre" />
           </div>
@@ -228,6 +241,11 @@ input {
   position: absolute;
   top: 17%;
 }
+.AvailableMarket_select{
+  width: 100%;
+  background: black;
+  border:transparent;
+}
 </style>
 
 <script>
@@ -247,6 +265,21 @@ export default {
       relasedate:"",
       AvailableMarket: "",
       Genre: "",
+      AvailableMarkets: [
+        { text: "Choose a country", value: "0", disabled: true },
+        { text: "Egypt", value: "eg", disabled: false },
+        { text: "France", value: "fr", disabled: false },
+        { text: "USA", value: "us", disabled: false },
+        { text: "Britain", value: "uk", disabled: false },
+        { text: "Canada", value: "ca", disabled: false },
+        { text: "Australia", value: "au", disabled: false },
+        { text: "Saudi Arabia", value: "sa", disabled: false },
+        { text: "China", value: "cn", disabled: false },
+        { text: "Japan", value: "jp", disabled: false },
+        { text: "Korea", value: "kp", disabled: false },
+        { text: "Mexico", value: "mx", disabled: false },
+        { text: "Brazil", value: "br", disabled: false },
+      ],
     };
   },
   computed: {
