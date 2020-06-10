@@ -24,7 +24,7 @@ describe("LikedTracks", () => {
           getters: {
             likedtracks_tracks: state => state.likedtracks_tracks,
             likedtracks_length: state => state.likedtracks_length,
-            likedtracks_load: state => state.likedtracks_load,
+            likedtracks_loaded: state => state.likedtracks_loaded,
             playlist_id: state => state.playlist_id,
           },
           actions: {

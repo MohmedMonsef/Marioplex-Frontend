@@ -58,6 +58,13 @@ describe("ArtistPageCoverPhoto", () => {
           getters: {
             GetStatus: state => state.status
           },
+
+        },
+        CheckUserPopup:{
+          namespaced: true,
+          actions:{
+            togglepagespopup: jest.fn(),
+          }
         }
       }
     });
