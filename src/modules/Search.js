@@ -18,6 +18,7 @@ export default {
     user5: [],
     track: [],
     track3: [],
+    flagfound:true
   },
   mutations: {
     setclear(state) {
@@ -116,6 +117,9 @@ export default {
     settrack3(state, match_valuetrack3) {
       state.track3 = match_valuetrack3;
     },
+    setfound(state, status) {
+      state.flagfound = status;
+    },
   },
   actions: {
     clear({ commit }) {
@@ -127,7 +131,7 @@ export default {
     showresult({ commit }, val) {
       commit("setshower", val);
     },
-    // when integrate with back
+  
     searchaboutartist({ commit }, search_value) {
       commit("settopres", []);
       commit("setresult5", []);
@@ -208,8 +212,9 @@ export default {
           commit("setuser", match_valueu);
           commit("settrack", match_valuetrack);
           commit("set_load", true);
+          commit("setfound", true);
         })
-        //)
+
         .catch((errors) => {
           commit("settopres", []);
           commit("setresult5", []);
@@ -223,7 +228,9 @@ export default {
           commit("setuser", []);
           commit("settrack", []);
           // react on errors.
-          console.error(errors);
+          if(errors.response.status==404){
+          commit("set_load", true);
+          commit("setfound", false);}
         });
     },
     artistin({ commit }, set) {
@@ -274,5 +281,8 @@ export default {
     gettrack(state) {
       return state.track;
     },
+    getflagfound(state){
+      return state.flagfound;
+    }
   },
 };

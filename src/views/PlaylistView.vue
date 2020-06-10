@@ -33,7 +33,7 @@
               :song_name="p.name"
               :song_album="p.albumName"
               :albumId="p.albumId"
-              :song_length="500"
+              :song_length="p.duration"
               :isLiked="p.isLiked"
               :playlistId="$route.params.playlist_id"
               :isPlaylist="true"

@@ -6,6 +6,7 @@ import AccountNotifications from "@/components/AccountNotifications.vue";
 describe("AccountNotifications", () => {
   let wrapper;
   let store;
+  let router = new VueRouter();
   const localVue = createLocalVue();
   localVue.use(Vuex);
   localVue.use(VueRouter);
@@ -15,7 +16,15 @@ describe("AccountNotifications", () => {
         Notifications: {
           namespaced: true,
           state: {
-            userNotifications: [],
+            userNotifications: [
+              {
+                data: {
+                    albumId: "5ececb4ceedca51f5079346b",
+                    title: "WOOOOOH NEW ALBUM",
+                    body: "Nada Uploaded a New Album -- CHECK IT OUT !"
+                }
+            }
+            ],
           },
           getters: {
             notifications: (state) => state.userNotifications
@@ -29,8 +38,15 @@ describe("AccountNotifications", () => {
     wrapper = shallowMount(AccountNotifications, {
       localVue,
       store,
+      router
     });
   });
+  // it("got to album route", () => {
+  //   const myCard = wrapper.find(".card");
+  //   myCard.trigger("click");
+  //   wrapper.vm.goRoute();
+  //   expect(push).toHaveBeenCalledWith('/HomeWebPlayer/album/5ececb4ceedca51f5079346b');
+  // });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });

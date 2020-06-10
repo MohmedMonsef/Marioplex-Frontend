@@ -346,6 +346,7 @@ const routes = [
     component: ThanksForConfirmation,
     props: (route) => ({
       id: route.query.id,
+      type: route.query.type
     }),
   }
 

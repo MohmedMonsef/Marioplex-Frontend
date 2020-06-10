@@ -495,7 +495,6 @@ export default {
     },
   },
   created: function() {
-     console.log("type",this.MyType)
     if (this.MyType=="created"){
       this.ShowRemoveTrack=true;
     }

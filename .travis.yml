@@ -1,9 +1,16 @@
 sudo: required
 services:
   - docker 
+
 script:
   - true
-  - echo " SCRIPT FINISHED " 
+notifications:
+  email:
+    recipients:
+      - belalelhossany12@gmail.com
+      - mohmedmonsef70@gmail.com
+    on_success: never 
+    on_failure: always 
 after_success:
   - docker build -t belalelhossany/frontend .
   # Log in to the docker CLI

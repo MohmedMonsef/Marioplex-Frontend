@@ -4,7 +4,7 @@
     <input
       testid="search-box"
       id="search-box"
-      placeholder="Search for artist or album"
+      placeholder="Search for artist or album .."
       v-model="Value"
       autocomplete="off"
       @keydown.esc="reset"

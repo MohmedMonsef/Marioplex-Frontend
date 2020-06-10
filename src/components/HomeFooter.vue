@@ -13,7 +13,7 @@
         <router-link class="able" to="/ForArtist" tag="li">
           For Artist
         </router-link>
-        <router-link class="able" to="/ArtistPersonalPage" tag="li">
+        <router-link class="able" to="/ArtistPersonalPage" v-if="isLoggedIn == 'success'&& user.userType=='Artist' " tag="li">
           ArtistPage
         </router-link>
       </ul>
@@ -79,6 +79,7 @@ div {
     }
   }
 }
+
 .logo-div {
   margin-bottom: 20px;
   img {
@@ -119,10 +120,18 @@ div {
 }
 </style>
 <script>
+import { mapGetters } from "vuex";
 /**
  * Staic Footer in homepage
  * @displayName Footer in homepage
  * @example [none]
  */
-export default {};
+export default {
+   computed: {
+    ...mapGetters({
+      isLoggedIn: "Authorization/GetStatus",
+      user: "Authorization/user",
+    })
+  },
+};
 </script>
