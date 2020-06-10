@@ -475,7 +475,9 @@ export default {
       this.valid_year();
       this.valid_security();
       this.valid_month();
-      var d = new Date(this.year + "-" + this.month + "-01");
+      var today = new Date();
+      var day = today.getDate();
+      var d = new Date(this.year + "-" + this.month + "-" + day);
       let newuser = {
         expiresDate: d,
         cardNumber: this.CreditNumber,

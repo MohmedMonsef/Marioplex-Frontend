@@ -16,8 +16,9 @@ Vue.config.productionTip = true;
 axios.defaults.baseURL = "http://100.25.194.8";
 Vue.prototype.$url="http://100.25.194.8"
 
-// axios.defaults.baseURL = "http://52.70.203.73";
-// Vue.prototype.$url="http://52.70.203.73";
+// axios.defaults.baseURL = "http://localhost:3000";
+// Vue.prototype.$url="http://localhost:3000"
+
 
 var vm = new Vue({
     router,

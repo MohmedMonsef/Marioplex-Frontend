@@ -25,6 +25,9 @@ describe("PlaylistsToTracks", () => {
             toggleModalAdd: (state) => {
               return state.toggleModalAdd;
             },
+            trackid: (state) => {
+              return state.trackid;
+            },
           },
           actions: {
             toggleModalAdd: jest.fn(),

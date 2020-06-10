@@ -17,11 +17,13 @@ describe("NavbarWebplayer.vue", () => {
             status: "success",
             User: {
               displayName: "user name",
+              product:""
             },
           },
           getters: {
             Username: (state) => state.User.displayName,
             GetStatus: (state) => state.status,
+            user:(state) => state.User
           },
           actions: {
             logout: jest.fn(),
