@@ -103,7 +103,6 @@ export default {
      * @public This is a public method
      */
     thanksForConfirmation() {
-      console.log("daaaaai : " , this.$route.query.type , " id : " ,this.$route.query.id );
       if (this.$route.query.type == "signup")
        {
          this.$store.dispatch("Authorization/ConfirmEmail", this.$route.query.id);

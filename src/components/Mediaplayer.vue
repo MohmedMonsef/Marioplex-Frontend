@@ -597,7 +597,6 @@ export default {
      * @public This is a public method
      */
     moving_song_bar: function() {
-      //console.log("x")
       this.$store.dispatch("Mediaplayer/advance_progress");
       if (!this.drag) {
         var SongSlider = document.getElementById("progressbar");

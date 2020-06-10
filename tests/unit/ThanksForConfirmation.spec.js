@@ -7,10 +7,11 @@ describe("ThanksForConfirmation", () => {
   let store;
   const localVue = createLocalVue();
   localVue.use(Vuex);
-  const $route = {
+  let $route = {
     query: {
-      id: ""
-    }
+      id: "",
+      type:""
+    },
   };
   localVue.prototype.$route = $route;
 
@@ -20,7 +21,10 @@ describe("ThanksForConfirmation", () => {
         Authorization: {
           namespaced: true,
           actions: {
-            ConfirmEmail: jest.fn()
+            ConfirmEmail: jest.fn(),
+            ConfirmUpdate: jest.fn(),
+            logout: jest.fn(),
+            ConfirmPremium: jest.fn()
           }
         }
       }
@@ -29,7 +33,8 @@ describe("ThanksForConfirmation", () => {
       store,
       localVue,
       propsData: {
-        id: ""
+        id: "",
+        type:""
       },
       stubs: ['router-link', 'router-view']
     });
@@ -38,7 +43,20 @@ describe("ThanksForConfirmation", () => {
     expect(wrapper.exists()).toBe(true);
   });
   it("Thanks for Email Confirmation", () => {
+    $route.query.type == "signup";
     wrapper.vm.thanksForConfirmation();
     expect("ConfirmEmail").toHaveBeenCalled;
+
+    $route.query.type == "update";
+    wrapper.vm.thanksForConfirmation();
+    expect("ConfirmUpdate").toHaveBeenCalled;
+    expect("logout").toHaveBeenCalled;
+
+    $route.query.type == "";
+    wrapper.vm.thanksForConfirmation();
+    expect("ConfirmPremium").toHaveBeenCalled;
+    expect("logout").toHaveBeenCalled;
+
+    
   });
 });
