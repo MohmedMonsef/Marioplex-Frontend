@@ -12,6 +12,7 @@ export default {
     deleted_playlists: [],
     emailConfirmed: Boolean,
     updateConfirmed: Boolean,
+    premiumConfirmed: Boolean,
     deleted_Acount:true
     //short cicuit evaluation if the first argument return anything but null it will be stored if not token=''
   },
@@ -232,6 +233,11 @@ export default {
       axios
         .post("/api/me/confirmUpdate?id=" + userId)
         state.updateConfirmed = true;
+    },
+    ConfirmPremium({ state } , userId) {
+      axios
+        .post("/api/premium/confirm?id=" + userId)
+        state.premiumConfirmed = true;
     },
     removeuser({commit,state}){
       axios

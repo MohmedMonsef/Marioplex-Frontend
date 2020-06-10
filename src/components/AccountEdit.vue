@@ -392,7 +392,6 @@ export default {
           };
           this.saved = "1";
           this.$store.dispatch("Authorization/saveEdit", edituser);
-          this.$store.dispatch("Authorization/logout");
           this.$router.replace("/EmailConfirmation");
         } else {
           this.saved = "2";
