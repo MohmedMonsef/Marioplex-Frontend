@@ -49,10 +49,6 @@ describe("playlist", () => {
     });
     const listicon = wrapper.find("#list_icon");
     listicon.trigger("click");
-    const toggleShow = jest.fn();
-    wrapper.setMethods({
-      toggleShow: toggleShow,
-    });
-    expect(toggleShow).toHaveBeenCalled;
+    wrapper.vm.toggleShow();
   });
 });
