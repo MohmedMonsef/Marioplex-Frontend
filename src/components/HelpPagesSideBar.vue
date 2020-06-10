@@ -75,7 +75,8 @@
       <div class="external">
         <div>
           <p>Get the full Spotify experience!</p>
-          <a href="/GetPremium" class="big-underline">Upgrade to premium</a>
+          <router-link to="/GetPremium" class="big-underline" v-if="isLoggedIn == 'success' && user.product != 'premium'">Upgrade to premium</router-link>
+          <router-link to="/premium" class="big-underline" v-if="isLoggedIn != 'success' ">Upgrade to premium</router-link>
         </div>
         <div>
           <p>
@@ -108,8 +109,15 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "HelpPagesSideBar",
+  computed: {
+    ...mapGetters({
+      isLoggedIn: "Authorization/GetStatus",
+      user: "Authorization/user",
+    })
+    }
 };
 </script>
 <style scoped>

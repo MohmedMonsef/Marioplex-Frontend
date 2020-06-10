@@ -20,9 +20,9 @@ Vue.prototype.$url="http://100.25.194.8"
 // Vue.prototype.$url="http://52.70.203.73";
 
 var vm = new Vue({
-  router,
-  store,
-  render: (h) => h(App),
+    router,
+    store,
+    render: (h) => h(App),
 }).$mount("#app");
 
 global.vm = vm;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="card rounded col-lg-16.5%"
+      class="card rounded col-lg-25%"
       testid="playlist card"
       @mouseover="hover = true"
       @mouseleave="hover = false"
@@ -25,7 +25,7 @@
         <div
           class="stretched-link"
           id="carglink"
-          testid="playlist card link"
+          testid="playlistcard "
         ></div>
       </div>
     </div>

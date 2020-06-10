@@ -52,7 +52,8 @@ describe("AlbumInfo", () => {
     spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(AlbumInfo, {
       localVue,
-      store
+      store,
+      stubs: ['router-link', 'router-view']
     });
   });
   it("renders", () => {

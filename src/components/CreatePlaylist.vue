@@ -113,7 +113,7 @@ div {
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   display: inline-block;
   text-align: center;
-  z-index: 4;
+  z-index: 40;
   background: none;
 }
 .creat_button {
@@ -146,7 +146,7 @@ div {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 20;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0);
@@ -156,7 +156,7 @@ div {
 .modal {
   /* fixed */
   position: fixed;
-  z-index: 2;
+  z-index: 20;
   top: 0;
   left: 0;
   width: 100%;
@@ -181,7 +181,7 @@ input {
   outline: none;
   font-weight: bold;
   overflow-y: hidden;
-  z-index: 6;
+  z-index: 60;
   overflow: hidden;
 }
 .fade-enter-active,
@@ -216,7 +216,7 @@ input {
   color: #fff;
   border: none;
   overflow: hidden;
-  z-index: 4;
+  z-index: 40;
 }
 .title {
   position: absolute;
@@ -231,7 +231,7 @@ input {
   margin: 16px 0;
   width: 100%;
   overflow: hidden;
-  z-index: 6;
+  z-index: 60;
 }
 .grandchild {
   position: fixed;
@@ -241,7 +241,7 @@ input {
   left: 15%;
   padding: 32px 0px;
   overflow: hidden;
-  z-index: 6;
+  z-index: 60;
 }
 .child {
   position: fixed;
@@ -250,19 +250,19 @@ input {
   bottom: 50%;
   background-color: #424242;
   overflow: hidden;
-  z-index: 6;
+  z-index: 60;
 }
 .playlist_name {
   color: #fff;
   overflow: hidden;
-  z-index: 6;
+  z-index: 60;
 }
 .column {
   position: absolute;
   top: 70%;
   max-width: 160px;
   max-height: 50px;
-  z-index: 4;
+  z-index: 40;
 }
 @media screen and (max-width: 700px) {
   .customButton {

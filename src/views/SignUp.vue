@@ -4,7 +4,7 @@
     <!-- Sign Up form -->
     <div class="conatiner signup-form px-0">
       <div class="row justify-content-center m-0">
-        <div class="col-4" align="center">
+        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-8" align="center">
           <button
             class="costum-btn"
             id="facebook-btn"
