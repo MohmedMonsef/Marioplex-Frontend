@@ -32,6 +32,8 @@ describe("ArtistPersonalPage", () => {
             Get_Artist_Bio: jest.fn(),
             UploadPhoto: jest.fn(),
             toggleModal: jest.fn(),
+            Get_Album_ID: jest.fn(),
+            Get_Artist_Name: jest.fn(),
           },
           getters: {
             showModal: (state) => {
@@ -39,6 +41,21 @@ describe("ArtistPersonalPage", () => {
             },
             showModalUpload: (state) => {
               return state.showModalUpload;
+            },
+            image_id: (state) => {
+              return state.image_id;
+            },
+            ArtistBio: (state) => {
+              return state.ArtistBio;
+            },
+            ArtistName: (state) => {
+              return state.ArtistName;
+            },
+            showinput: (state) => {
+              return state.showinput;
+            },
+            Artist_ID: (state) => {
+              return state.Artist_ID;
             },
           },
         },

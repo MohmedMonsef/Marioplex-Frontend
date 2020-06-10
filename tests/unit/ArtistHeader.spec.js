@@ -23,11 +23,15 @@ describe("ArtistHeader", () => {
               },
               showinput:(state)=>{
                 return state.showinput;
-              }
+              },
+              ArtistName:(state)=>{
+                return state.ArtistName;
+              },
             },
             actions: {
                 Get_Artist_Name: jest.fn(),
                 EditName: jest.fn(),
+                showinputfield:jest.fn(),
             },
           },
         },

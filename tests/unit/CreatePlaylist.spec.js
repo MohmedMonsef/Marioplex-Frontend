@@ -12,6 +12,19 @@ describe("CreatePlaylist", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
+        Authorization: {
+          namespaced: true,
+          state: {
+            User: {
+              displayName: "nerdeen",
+            },
+          },
+          getters: {
+            Username: (state) => {
+              return state.User.displayName;
+            },
+          },
+        },
         Playlist: {
           namespaced: true,
           state: {
@@ -27,24 +40,17 @@ describe("CreatePlaylist", () => {
             showModal: (state) => {
               return state.showModal;
             },
+            withtrack: (state) => {
+              return state.withtrack;
+            },
+
           },
           actions: {
             toggleModal: jest.fn(),
             CreatePlaylist: jest.fn(),
           },
         },
-        Authorization: {
-          state: {
-            User: {
-              displayName: "nerdeen",
-            },
-          },
-          getters: {
-            Username: (state) => {
-              return state.User.displayName;
-            },
-          },
-        },
+        
       },
     });
     wrapper = shallowMount(CreatePlaylist, {
