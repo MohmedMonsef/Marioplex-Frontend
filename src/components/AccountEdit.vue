@@ -81,6 +81,9 @@
         <div class="wrong" v-if="isEdited == 'carderror'">
          Invalid creditcard number
         </div>
+         <div class="wrong" v-if="isEdited == 'dateerror'">
+         The expiration date must be upcoming!
+        </div>
         <h2>Card number:</h2>
         <input
           type="text"
@@ -615,7 +618,7 @@ export default {
       }
       this.saved = "1";
       this.$store.dispatch("Authorization/saveEdit", update);
-      this.$router.replace("/EmailConfirmation");
+      
     },
   },
   computed: {
