@@ -5,7 +5,7 @@ export default {
   namespaced: true,
   state: {
     status: "",
-    upgraded: true,
+    upgraded: "",
     token: localStorage.getItem("x-auth-token") || "",
     User: {},
     isEdited: "",
@@ -134,7 +134,7 @@ export default {
           localStorage.removeItem("x-auth-token");
         });
     },
-    toPremium({ commit }, payload) {
+    toPremium({ commit}, payload) {
       axios
         .put("api/me/promote", {
           expiresDate: payload.expiresDate,
@@ -142,19 +142,25 @@ export default {
           isMonth: payload.isMonth,
         })
         .then(() => {
-          store.dispatch("Authorization/logout");
           router.replace("/EmailConfirmation");
+          commit("upgrade", "success");
         })
         .catch((error) => {
           console.log(error);
-          commit("upgrade", false);
+          if(error.response.data.error.details[0].message=='"cardNumber" must be a credit card' ||
+          error.response.data.error.details[0].message=='"cardNumber" is not allowed to be empty')
+            commit("upgrade", "carderror");
+          else if(error.response.data.error.details[0].message.includes('"expiresDate" must be larger than or equal to'))
+             commit("upgrade", "dateerror");
+          else
+            commit("upgrade", "failed");
         });
     },
-    toFree({ commit}) {
+    toFree({ commit ,state}) {
       axios
         .put("api/me/free")
         .then(() => {
-          store.dispatch("Authorization/logout");
+          store.dispatch("Authorization/logout",state.User._id);
           router.replace("/");
         })
         .catch((error) => {
@@ -217,10 +223,13 @@ export default {
         })
         .then(() => {
           commit("is_edit", "success");
+          router.replace("/EmailConfirmation");
         })
         .catch((error) => {
           if(error.response.data.error.details[0].message=='"cardNumber" must be a credit card')
             commit("is_edit", "carderror");
+          else if(error.response.data.error.details[0].message.includes('"expiresDate" must be larger than or equal to'))
+             commit("is_edit", "dateerror");
           else
             commit("is_edit", "faild");
         });
@@ -249,6 +258,9 @@ export default {
     ConfirmPremium({ state } , userId) {
       axios
         .post("/api/premium/confirm?id=" + userId)
+        .then(()=>{
+          router.replace("/login");
+        })
         state.premiumConfirmed = true;
     },
     removeuser({commit,state}){
