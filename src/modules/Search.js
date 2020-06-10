@@ -112,6 +112,10 @@ export default {
       state.user = match_valueu;
     },
     settrack(state, match_valuetrack) {
+      match_valuetrack.forEach((match) => {
+        if (match.albumImages.length == 0)
+          match.albumImages.push({ _id: "5eb52f1863eea332d416b9fa" });
+      });
       state.track = match_valuetrack;
     },
     settrack3(state, match_valuetrack3) {

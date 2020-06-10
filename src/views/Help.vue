@@ -264,21 +264,7 @@
         <div class="background">
             <div class="container">
                 <a class="scroll-button pull-left" href="#community">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fas"
-                        data-icon="chevron-down"
-                        class="svg-inline--fa fa-chevron-down fa-w-14"
-                        role="img"
-                        viewBox="0 0 448 512"
-                    >
-                        <path
-                            fill="currentColor"
-                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-                        />
-                    </svg>
+                 <i class="fa fa-angle-double-down weight "></i>
                 </a>
                 <div class="row justify-content-center">
                     <div class="col-xs-offset-1 col-xs-10">
@@ -419,21 +405,7 @@
         <div class="front-box front-community" id="community">
             <div class="container justify-content-center">
                 <a class="scroll-button pull-left" href="#how-to-use">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fas"
-                        data-icon="chevron-down"
-                        class="svg-inline--fa fa-chevron-down fa-w-14"
-                        role="img"
-                        viewBox="0 0 448 512"
-                    >
-                        <path
-                            fill="currentColor"
-                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-                        />
-                    </svg>
+                <i class="fa fa-angle-double-down weight "></i>
                 </a>
 
                 <div class="row text-center">
@@ -470,21 +442,7 @@
         <div class="front-how-to-use front-box " id="how-to-use">
             <div class="container">
                 <a class="scroll-button pull-left" href="#how-to-use-half">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fas"
-                        data-icon="chevron-down"
-                        class="svg-inline--fa fa-chevron-down fa-w-14"
-                        role="img"
-                        viewBox="0 0 448 512"
-                    >
-                        <path
-                            fill="currentColor"
-                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-                        />
-                    </svg>
+                <i class="fa fa-angle-double-down weight "></i>
                 </a>
                 <div class="padding">
                     <h1 class="text-center" style="font-size:50px;">
@@ -625,21 +583,7 @@
             id="specialnavg"
             href="#using-spotify"
         >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="chevron-down"
-                class="svg-inline--fa fa-chevron-down fa-w-14"
-                role="img"
-                viewBox="0 0 448 512"
-            >
-                <path
-                    fill="currentColor"
-                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-                />
-            </svg>
+        <i class="fa fa-angle-double-down weight "></i>
         </a>
         <div id="allcontent">
             <div class="front-box front-video" id="videos" v-if="!playingvideo">
@@ -951,21 +895,7 @@
         <div class="front-box front-using-spotify" id="using-spotify">
             <div class="container">
                 <a class="scroll-button pull-left" href="#using-spotify">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fas"
-                        data-icon="chevron-down"
-                        class="svg-inline--fa fa-chevron-down fa-w-14"
-                        role="img"
-                        viewBox="0 0 448 512"
-                    >
-                        <path
-                            fill="currentColor"
-                            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-                        />
-                    </svg>
+                   <i class="fa fa-angle-double-down weight " style="scroll-behavior: smooth; "></i>
                 </a>
 
                 <div class="text-center content">
@@ -1393,6 +1323,7 @@ p {
     }
 }
 .scroll-button {
+    scroll-behavior: smooth; 
     background-color: #fff;
     width: 52px;
     height: 52px;
@@ -1402,7 +1333,7 @@ p {
     transition: all 0.3s ease-in-out;
     border-radius: 52px;
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
-    padding: 15px;
+    padding: 10px 10px;
     position: relative;
     text-align: center;
     z-index: 2;
@@ -1582,5 +1513,8 @@ body {
     font-size: 18px;
     line-height: 1.5;
     color: #222326;
+}
+.weight{
+font-size: 36px;
 }
 </style>

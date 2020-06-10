@@ -14,7 +14,7 @@
               '?belongs_to=album'
           "
           :name="match_track.name"
-          :albumId="match_track._id"
+          :albumId="match_track.albumId"
           :artistname="match_track.artistName"
           :artistId="match_track.artistId"
         />
