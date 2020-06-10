@@ -1,9 +1,12 @@
 sudo: required
 services:
   - docker 
+before_install:
+  - docker build -t belalelhossany/fronttest -f ./Dockerfile.dev ./
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push belalelhossany/fronttest
 script:
-  - true
-  - echo " SCRIPT FINISHED " 
+  - docker run belalelhossany/fronttest
 after_success:
   - docker build -t belalelhossany/frontend .
   # Log in to the docker CLI
