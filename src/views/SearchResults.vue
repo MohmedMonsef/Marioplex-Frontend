@@ -68,6 +68,7 @@
               :type="match_to.type"
               :artistName="match_to.artistName"
               :artistId="match_to.artistId"
+              :albumId="match_to.albumId"
               :track_id="match_to._id"
             ></top>
           </div>

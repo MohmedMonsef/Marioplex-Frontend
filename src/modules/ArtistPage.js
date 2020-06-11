@@ -59,7 +59,8 @@ export default {
     }
   },
   actions: {
-    artist_page({ commit }, artist_id) {
+    artist_page({ commit ,state }, artist_id) {
+      state.loading=false;
       axios
         .get("api/Artists/" + artist_id)
         .then(response => {
@@ -68,9 +69,11 @@ export default {
           commit("set_artistcover_image", artist.images[0]);
           commit("set_bio", artist.info);
           commit("set_artist_ID", artist.userId);
+          state.loading=true;
         })
         .catch(error => {
           console.log(error);
+          state.loading=true;
         });
     },
 
@@ -187,6 +190,7 @@ export default {
     artist_relatedartists: state => state.artist_relatedartists,
     tracks_length: state => state.tracks_length,
     loadedchart: state => state.loadedchart,
-    artist_followers: state => state.artist_followers
+    artist_followers: state => state.artist_followers,
+    loading: state =>state.loading
   }
 };

@@ -313,21 +313,33 @@ const routes = [
     path: "/ForArtist",
     name: "ForArtist",
     component: ForArtist,
+    meta: { 
+      toArtist:true
+    }
   },
   {
     path: "/ClaimArtist",
     name: "ClaimArtist",
     component: ClaimArtist,
+    meta: { 
+      toArtist:true
+    }
   },
   {
     path: "/AccessArtist",
     name: "AccessArtist",
     component: AccessArtist,
+    meta: { 
+      toArtist:true
+    }
   },
   {
     path: "/ArtistPersonalPage",
     name: "ArtistPersonalPage",
     component: ArtistPersonalPage,
+    meta: { 
+      isArtist:true
+    }
   },
   {
     path: "/UnAuthorized",
@@ -374,6 +386,25 @@ else {
   if(to.matched.some(record => record.meta.toPremium)) {
     if (store.getters["Authorization/GetStatus"] != "success") {
       next('/login')
+      return
+    }
+  } 
+  else {
+    next() 
+  }
+
+  if(to.matched.some(record => record.meta.toArtist)) {
+    if (store.getters["Authorization/GetStatus"] != "success") {
+      next('/login')
+      return
+    }
+  } 
+  else {
+    next() 
+  }
+  if(to.matched.some(record => record.meta.isArtist)) {
+    if (store.getters["Authorization/GetStatus"] != "success" || store.getters["Authorization/user"].userType != "Artist"  ) {
+      next('/UnAuthorized')
       return
     }
   } 

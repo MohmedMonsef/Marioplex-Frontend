@@ -10,10 +10,10 @@
         <li class="disabled">
           Communities
         </li>
-        <router-link class="able" to="/ForArtist" tag="li">
+        <router-link class="able" to="/ForArtist" tag="li" v-if="user.userType !='Artist' ">
           For Artist
         </router-link>
-        <router-link class="able" to="/ArtistPersonalPage" v-if="isLoggedIn == 'success'&& user.userType=='Artist' " tag="li">
+        <router-link class="able" to="/ArtistPersonalPage" v-if="isLoggedIn == 'success' && user.userType=='Artist' " tag="li">
           ArtistPage
         </router-link>
       </ul>

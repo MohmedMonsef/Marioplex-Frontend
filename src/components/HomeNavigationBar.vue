@@ -470,10 +470,10 @@ export default {
       var element = document.getElementById("menu-icon");
       element.classList.toggle("change");
       element = document.getElementById("collapsed");
-      if (this.togglelength) element.style.width = 430 + "px";
+      if (this.togglelength) element.style.width = 50 + "vw";
       else element.style.width = 0 + "px";
       element = document.getElementById("collapsed-div");
-      if (this.togglelength) element.style.width = 430 + "px";
+      if (this.togglelength) element.style.width = 50 + "vw";
       else element.style.width = 0 + "px";
       element = document.getElementById("disable-page");
       if (this.togglelength) element.style.width = 100 + "vw";

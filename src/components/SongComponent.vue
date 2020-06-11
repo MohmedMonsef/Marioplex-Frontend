@@ -77,13 +77,13 @@
           >
             {{ song_artists }}
           </router-link>
-          <span>
+          <span v-if="song_artists != ''" class="inSmall">
             .
           </span>
         </div>
         <router-link
           tag="p"
-          class="song_album"
+          class="song_album inSmall"
           testid="album name"
           :to="{ path: '/HomeWebPlayer/album/' + albumId }"
         >
@@ -123,7 +123,7 @@
 
 <style lang="scss" scoped>
 .song {
-  min-width: 350px;
+  min-width: 250px;
   height: 64px;
   margin: 0%;
   padding: 0%;
@@ -286,6 +286,16 @@
 .unPlayableIcon {
   color: rgb(150, 141, 141);
 }
+@media screen and (max-width: 675px) {
+  .inSmall {
+    display: none;
+  }
+  .song_info{
+  .song_album {
+    display: none;
+  }
+  }
+}
 </style>
 
 <script type="module">
@@ -321,12 +331,14 @@ export default {
   props: {
     song_name: {
       type: String
+     
     },
     song_album: {
       type: String
     },
     song_artists: {
-      type: String
+      type: String,
+      default:""
     },
     artist_id: {
       type: String
@@ -396,8 +408,13 @@ export default {
           if (!x) {
             this.$nextTick(function() {
               var div = document.getElementById("mydropdown");
+              var top;
+              if(event.screenY > 490)
+                 top =  event.screenY - 250 + "px";
+              else
+                top =  event.screenY- 70 + "px";
               var left = event.screenX - 203 + "px";
-              var top = event.screenY - 70 + "px";
+              
               if (div) {
                 div.style.left = left;
                 div.style.top = top;

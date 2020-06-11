@@ -26,7 +26,7 @@
           {{ "By " + Username }}
         </p>
         <p
-          v-if="likedplaylist"
+          v-if="likedplaylist || Username == undefined"
           class="card-text"
           id="carddescribtion"
           testid="playlist owner"
