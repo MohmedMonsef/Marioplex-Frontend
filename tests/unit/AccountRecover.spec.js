@@ -13,36 +13,36 @@ describe("AccountRecover", () => {
     store = new Vuex.Store({
       modules: {
         Authorization: {
-            namespaced: true,
-            state: {
+          namespaced: true,
+          state: {
             deleted_playlists: [
-                {
-                    id: "1",
-                    name: "wow",
-                    songsNumber : 5,
-                    deletedAt: "1999-09-04T00:00:00.000Z"
-                }
+              {
+                id: "1",
+                name: "wow",
+                songsNumber: 5,
+                deletedAt: "1999-09-04T00:00:00.000Z",
+              },
             ],
-            },
-            getters: {
-            deleted_playlists: (state) => state.deleted_playlists
-            },
-            actions:{
-            showDeletedPlaylists: jest.fn()
-            }
+          },
+          getters: {
+            deleted_playlists: (state) => state.deleted_playlists,
+          },
+          actions: {
+            showDeletedPlaylists: jest.fn(),
+          },
         },
-        Playlist:{
-            namespaced: true,
-            state: {
-                restored: ""
-            },
-            getters: {
-                restored: (state) => state.restored
-            },
-            actions:{
-                restorePlaylist: jest.fn()
-            }
-        }
+        Playlist: {
+          namespaced: true,
+          state: {
+            restored: "",
+          },
+          getters: {
+            restored: (state) => state.restored,
+          },
+          actions: {
+            restorePlaylist: jest.fn(),
+          },
+        },
       },
     });
     wrapper = shallowMount(AccountRecover, {

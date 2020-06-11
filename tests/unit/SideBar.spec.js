@@ -55,7 +55,7 @@ describe("SideBar.vue", () => {
           actions: {
             searchfocus: jest.fn(),
             search_V: jest.fn(),
-            clear:jest.fn()
+            clear: jest.fn(),
           },
         },
       },

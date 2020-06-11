@@ -10,17 +10,17 @@ describe("ResetPassword", () => {
   localVue.use(Vuex);
   const $route = {
     query: {
-       token: "",
+      token: "",
     },
   };
   localVue.prototype.$route = $route;
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-       Authorization: {
+        Authorization: {
           namespaced: true,
           actions: {
-            resetPassword: jest.fn()
+            resetPassword: jest.fn(),
           },
         },
       },
@@ -31,7 +31,7 @@ describe("ResetPassword", () => {
       propsData: {
         token: "",
       },
-      stubs: ['router-link', 'router-view']
+      stubs: ["router-link", "router-view"],
     });
   });
   it("renders", () => {
@@ -55,10 +55,10 @@ describe("ResetPassword", () => {
     wrapper.vm.reset();
     wrapper.vm.canSubmit();
     wrapper.vm.cannotSubmit();
-  
+
     wrapper.setData({
       trigger_validation: true,
-      can_submit:true
+      can_submit: true,
     });
     //valid password and confirm
     let pass = wrapper.find("#passwordInput");
@@ -71,7 +71,7 @@ describe("ResetPassword", () => {
 
     reset_btn.trigger("click");
     wrapper.vm.canSubmit();
-  
+
     //invalid password and cofirmation
 
     pass = wrapper.find("#passwordInput");
@@ -91,8 +91,8 @@ describe("ResetPassword", () => {
 
     wrapper.setData({
       trigger_validation: true,
-      can_submit:true,
-      password: "12345678"  
+      can_submit: true,
+      password: "12345678",
     });
     //valid password and confirm
     let pass = wrapper.find("#passwordInput");
@@ -102,20 +102,20 @@ describe("ResetPassword", () => {
     pass = wrapper.find("#confirmInput");
     pass.element.value = "12345678";
     pass.trigger("input");
-    
+
     reset_btn.trigger("click");
-    jest.runAllTimers(); 
+    jest.runAllTimers();
     expect(wrapper.exists()).toBe(true);
   });
   it("set time out to call dispatch reset password", () => {
     const reset_btn = wrapper.find("#reset-btn");
     reset_btn.trigger("click");
-    
+
     wrapper.setData({
-      can_submit:false,
-    });    
+      can_submit: false,
+    });
     reset_btn.trigger("click");
-    jest.runAllTimers(); 
+    jest.runAllTimers();
     expect(wrapper.exists()).toBe(true);
   });
 });

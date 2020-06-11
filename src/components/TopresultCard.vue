@@ -41,7 +41,7 @@
           <div class="row">
             <div class="typecont col-4 offset-2">
               <p class="card-text p" testid="type" id="typecont">
-                {{ type}}
+                {{ type }}
               </p>
             </div>
             <div class="col-5">

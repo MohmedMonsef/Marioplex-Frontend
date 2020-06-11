@@ -16,10 +16,10 @@ describe("ConfirmEmail", () => {
         Authorization: {
           namespaced: true,
           actions: {
-            ResendEmail: jest.fn()
-          }
-        }
-      }
+            ResendEmail: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(ConfirmEmail, {
       store,

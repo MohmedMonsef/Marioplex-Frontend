@@ -18,12 +18,12 @@ describe("seeallcategoryplaylists", () => {
         Categorys: {
           namespaced: true,
           state: {
-            categoryplaylists:[]
+            categoryplaylists: [],
           },
           getters: {
             getcategoryplaylists(state) {
               return state.categoryplaylists;
-            }
+            },
           },
         },
       },

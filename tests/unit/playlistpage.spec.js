@@ -36,7 +36,7 @@ describe("playlist_info", () => {
             playlist_name: (state) => state.playlist_name,
             owner_name: (state) => state.owner_name,
             playlist_image: (state) => state.playlist_image,
-            likeplaylist: (state) => state.likedplaylist
+            likeplaylist: (state) => state.likedplaylist,
           },
           actions: {
             like_playlist: jest.fn(),
@@ -57,25 +57,25 @@ describe("playlist_info", () => {
         Mediaplayer: {
           namespaced: true,
           state: {
-            playicon:true,
+            playicon: true,
           },
           getters: {
             playicon: (state) => state.playicon,
           },
         },
-        CheckUserPopup:{
+        CheckUserPopup: {
           namespaced: true,
-          actions:{
+          actions: {
             togglepagespopup: jest.fn(),
-          }
-        }
+          },
+        },
       },
     });
-    spy = jest.spyOn(document, 'getElementById');
+    spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(playlist_info, {
       localVue,
       store,
-      stubs: ['router-link', 'router-view']
+      stubs: ["router-link", "router-view"],
     });
   });
   it("renders", () => {
@@ -83,7 +83,7 @@ describe("playlist_info", () => {
   });
   it("is playing function", () => {
     wrapper.setData({
-      play:false
+      play: false,
     });
 
     let testId = "playlist_image";
@@ -101,9 +101,9 @@ describe("playlist_info", () => {
     store.state.Authorization.status = "";
     wrapper.vm.isplaying();
     store.state.Authorization.status = "success";
-    store.state.Mediaplayer.playicon=true;
+    store.state.Mediaplayer.playicon = true;
     wrapper.vm.isplaying();
-    store.state.Mediaplayer.playicon=false;
+    store.state.Mediaplayer.playicon = false;
     wrapper.vm.isplaying();
 
     expect(wrapper.vm.play).toBe(true);
@@ -113,9 +113,8 @@ describe("playlist_info", () => {
     wrapper.vm.stopplayingbutton();
 
     expect(wrapper.vm.play).toBe(false);
-
   });
-  it("test hover on image",() => {
+  it("test hover on image", () => {
     let testId = "playlist_image";
     let playlistimage = document.createElement("div");
     playlistimage.setAttribute("id", testId);
@@ -131,19 +130,19 @@ describe("playlist_info", () => {
     pausebutton.setAttribute("id", testId);
     document.body.appendChild(pausebutton);
 
-    let obj =wrapper.vm.onhoverimage();
+    let obj = wrapper.vm.onhoverimage();
 
-    expect(obj.img).toBe('0.3');
-    expect(obj.btn).toBe('1');
+    expect(obj.img).toBe("0.3");
+    expect(obj.btn).toBe("1");
     obj = wrapper.vm.onleaveimage();
-    expect(obj.img).toBe('1');
-    expect(obj.btn).toBe('0');
-    wrapper.vm.play=true;
+    expect(obj.img).toBe("1");
+    expect(obj.btn).toBe("0");
+    wrapper.vm.play = true;
     obj = wrapper.vm.onhoverimage();
-    expect(obj.btn).toBe('1');
+    expect(obj.btn).toBe("1");
     obj = wrapper.vm.onleaveimage();
-    expect(obj.img).toBe('0.3');
-    expect(obj.btn).toBe('1');
+    expect(obj.img).toBe("0.3");
+    expect(obj.btn).toBe("1");
   });
   it("test like playlist", () => {
     let testId = "playlistliketoast";
@@ -157,7 +156,7 @@ describe("playlist_info", () => {
     expect("like_playlist").toHaveBeenCalled;
     expect("showplaylists").toHaveBeenCalled;
     jest.useFakeTimers();
-    jest.runAllTimers(); 
+    jest.runAllTimers();
     store.state.Playlist.likedplaylist = true;
     wrapper.vm.likecurrentplaylist();
     expect("unlike_playist").toHaveBeenCalled;

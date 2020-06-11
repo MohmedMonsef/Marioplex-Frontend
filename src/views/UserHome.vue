@@ -5,122 +5,131 @@
     </div>
 
     <div v-if="loading">
-    <div class="section">
-      <h2 v-if="POPplaylists1.playlists.length">Popular playlists</h2>
-      <router-link to="/AllLists" class="seeall" v-if="POPplaylists1.playlists.length"
-        >SEE All</router-link
-      >
-      <div class="container">
-        <div class="row">
-          <show-popularplaylists
-            v-for="POPplaylist in POPplaylists1.playlists.slice(0, 5)"
-            :key="POPplaylist.id"
-            :images="
-              $url +
-                '/api/images/' +
-                POPplaylist.images[0]._id +
-                '?belongs_to=playlist'
-            "
-            :name="POPplaylist.name"
-            :Description="POPplaylist.Description"
-            :playlist_id="POPplaylist.id"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <h2 v-if="POPartists1.artists.length">Popular artists</h2>
-      <router-link to="/AllArtists" class="seeall1" v-if="POPartists1.artists.length"
-        >SEE All</router-link
-      >
-      <div class="container">
-        <div class="row">
-          <show-popularartists
-            v-for="POPartist in POPartists1.artists.slice(0, 5)"
-            :key="POPartist.id"
-            :images="
-              $url +
-                '/api/images/' +
-                POPartist.images[0]._id +
-                '?belongs_to=artist'
-            "
-            :name="POPartist.name"
-            :artistId="POPartist.id"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <h2 v-if="POPalbums1.albums.length">Popular albums</h2>
-      <router-link to="/AllAlbums" class="seeall2" v-if="POPalbums1.albums.length"
-        >SEE All</router-link
-      >
-      <div class="container">
-        <div class="row">
-          <show-popularalbums
-            v-for="POPalbum in POPalbums1.albums.slice(0, 5)"
-            :key="POPalbum.id"
-            :images="
-              $url +
-                '/api/images/' +
-                POPalbum.images[0]._id +
-                '?belongs_to=album'
-            "
-            :name="POPalbum.name"
-            :artistname="POPalbum.artist.name"
-            :albumId="POPalbum.id"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <h2 v-if="POPnewreleases1.albums.length">Popular new releases</h2>
-      <router-link
-        to="/AllReleases"
-        class="seeall3"
-        v-if="POPnewreleases1.albums.length"
-        >SEE All</router-link
-      >
-      <div class="container">
-        <div class="row">
-          <show-popularreleases
-            v-for="POPnewrelease in POPnewreleases1.albums.slice(0, 5)"
-            :key="POPnewrelease.id"
-            :images="
-              $url +
-                '/api/images/' +
-                POPnewrelease.images[0]._id +
-                '?belongs_to=album'
-            "
-            :name="POPnewrelease.name"
-            :artistname="POPnewrelease.artist.name"
-            :albumId="POPnewrelease.id"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="login" v-if="isLoggedIn == 'success'">
       <div class="section">
-        <h2 v-if="playlists1.length">Your playlists</h2>
+        <h2 v-if="POPplaylists1.playlists.length">Popular playlists</h2>
+        <router-link
+          to="/AllLists"
+          class="seeall"
+          v-if="POPplaylists1.playlists.length"
+          >SEE All</router-link
+        >
         <div class="container">
           <div class="row">
-            <lib-playlists
-              v-for="playlist in playlists1.slice(0, 5)"
-              :key="playlist.id"
+            <show-popularplaylists
+              v-for="POPplaylist in POPplaylists1.playlists.slice(0, 5)"
+              :key="POPplaylist.id"
               :images="
                 $url +
                   '/api/images/' +
-                  playlist.images[0]._id +
+                  POPplaylist.images[0]._id +
                   '?belongs_to=playlist'
               "
-              :name="playlist.name"
-              :ownerName="playlist.owner"
-              :playlist_id="playlist.id"
+              :name="POPplaylist.name"
+              :Description="POPplaylist.Description"
+              :playlist_id="POPplaylist.id"
             />
           </div>
         </div>
       </div>
-    </div>
+      <div class="section">
+        <h2 v-if="POPartists1.artists.length">Popular artists</h2>
+        <router-link
+          to="/AllArtists"
+          class="seeall1"
+          v-if="POPartists1.artists.length"
+          >SEE All</router-link
+        >
+        <div class="container">
+          <div class="row">
+            <show-popularartists
+              v-for="POPartist in POPartists1.artists.slice(0, 5)"
+              :key="POPartist.id"
+              :images="
+                $url +
+                  '/api/images/' +
+                  POPartist.images[0]._id +
+                  '?belongs_to=artist'
+              "
+              :name="POPartist.name"
+              :artistId="POPartist.id"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h2 v-if="POPalbums1.albums.length">Popular albums</h2>
+        <router-link
+          to="/AllAlbums"
+          class="seeall2"
+          v-if="POPalbums1.albums.length"
+          >SEE All</router-link
+        >
+        <div class="container">
+          <div class="row">
+            <show-popularalbums
+              v-for="POPalbum in POPalbums1.albums.slice(0, 5)"
+              :key="POPalbum.id"
+              :images="
+                $url +
+                  '/api/images/' +
+                  POPalbum.images[0]._id +
+                  '?belongs_to=album'
+              "
+              :name="POPalbum.name"
+              :artistname="POPalbum.artist.name"
+              :albumId="POPalbum.id"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h2 v-if="POPnewreleases1.albums.length">Popular new releases</h2>
+        <router-link
+          to="/AllReleases"
+          class="seeall3"
+          v-if="POPnewreleases1.albums.length"
+          >SEE All</router-link
+        >
+        <div class="container">
+          <div class="row">
+            <show-popularreleases
+              v-for="POPnewrelease in POPnewreleases1.albums.slice(0, 5)"
+              :key="POPnewrelease.id"
+              :images="
+                $url +
+                  '/api/images/' +
+                  POPnewrelease.images[0]._id +
+                  '?belongs_to=album'
+              "
+              :name="POPnewrelease.name"
+              :artistname="POPnewrelease.artist.name"
+              :albumId="POPnewrelease.id"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="login" v-if="isLoggedIn == 'success'">
+        <div class="section">
+          <h2 v-if="playlists1.length">Your playlists</h2>
+          <div class="container">
+            <div class="row">
+              <lib-playlists
+                v-for="playlist in playlists1.slice(0, 5)"
+                :key="playlist.id"
+                :images="
+                  $url +
+                    '/api/images/' +
+                    playlist.images[0]._id +
+                    '?belongs_to=playlist'
+                "
+                :name="playlist.name"
+                :ownerName="playlist.owner"
+                :playlist_id="playlist.id"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -193,40 +202,40 @@ h2 {
   position: relative;
   left: 68%;
 }
-@media only screen and (max-width: 1260px){
+@media only screen and (max-width: 1260px) {
   .seeall,
   .seeall1,
   .seeall2,
-  .seeall3{
-  left: 93%;
-  position: absolute;
+  .seeall3 {
+    left: 93%;
+    position: absolute;
   }
 }
-@media only screen and (max-width: 980px){
+@media only screen and (max-width: 980px) {
   .seeall,
   .seeall1,
   .seeall2,
-  .seeall3{
-  left: 91%;
-  position: absolute;
+  .seeall3 {
+    left: 91%;
+    position: absolute;
   }
 }
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 850px) {
   .seeall,
   .seeall1,
   .seeall2,
-  .seeall3{
-  left: 89%;
-  position: absolute;
+  .seeall3 {
+    left: 89%;
+    position: absolute;
   }
 }
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
   .seeall,
   .seeall1,
   .seeall2,
-  .seeall3{
-  visibility: hidden;
-  position: absolute;
+  .seeall3 {
+    visibility: hidden;
+    position: absolute;
   }
 }
 </style>
@@ -286,7 +295,7 @@ export default {
       POPnewreleases1: "ShowWebPlayer/POPnewreleases",
       playlists1: "Playlist/playlists",
       isLoggedIn: "Authorization/GetStatus",
-      loading: "ShowWebPlayer/loading"
+      loading: "ShowWebPlayer/loading",
     }),
   },
 };

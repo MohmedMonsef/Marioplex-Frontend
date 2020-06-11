@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import HelpMadeForYou  from "../../src/views/HelpMadeForYou.vue"
+import HelpMadeForYou from "../../src/views/HelpMadeForYou.vue";
 
 describe("HelpMadeForYou", () => {
   let wrapper;

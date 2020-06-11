@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import HelpFindingAccount  from "../../src/views/HelpFindingAccount.vue"
+import HelpFindingAccount from "../../src/views/HelpFindingAccount.vue";
 
 describe("HelpFindingAccount", () => {
   let wrapper;

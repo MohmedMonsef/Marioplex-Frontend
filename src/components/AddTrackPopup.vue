@@ -200,7 +200,7 @@ export default {
       playlistoftrack: "Playlist/playlistoftrack",
     }),
   },
-  
+
   methods: {
     /**
  * methods to open and close popup of add track to exesting playlist 
@@ -210,10 +210,10 @@ export default {
     changeModalStateAdd() {
       this.$store.dispatch("Playlist/toggleModalAdd");
     },
-      /**
- * methods to open and close popup of add track to a newly created playlist 
- * @public This is a public method 
- */
+    /**
+     * methods to open and close popup of add track to a newly created playlist
+     * @public This is a public method
+     */
     changeModalState() {
       this.withtrack = true;
       console.log("in add track pop up the bool", this.withtrack);

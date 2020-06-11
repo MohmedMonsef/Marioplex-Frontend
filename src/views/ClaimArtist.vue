@@ -193,8 +193,8 @@ svg {
   background: none;
   cursor: pointer;
   margin: 20px;
- height:7%;
- width:12%;
+  height: 7%;
+  width: 12%;
   background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
@@ -311,7 +311,7 @@ input {
   text-transform: none;
   outline: none;
 }
-.artist_Genre{
+.artist_Genre {
   margin-bottom: 2%;
 }
 </style>

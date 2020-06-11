@@ -1,11 +1,11 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
 import LibPlaylists from "@/components/LibPlaylists.vue";
-import {shorten} from "@/components/LibPlaylists.vue";
+import { shorten } from "@/components/LibPlaylists.vue";
 import Vuex from "vuex";
 describe("LibPlaylists.vue", () => {
   const localVue = createLocalVue();
-  localVue.filter('shorten', shorten);
+  localVue.filter("shorten", shorten);
   localVue.use(VueRouter);
   localVue.use(Vuex);
   let store;
@@ -35,7 +35,7 @@ describe("LibPlaylists.vue", () => {
         },
       },
     });
-      wrapper = shallowMount(LibPlaylists, {
+    wrapper = shallowMount(LibPlaylists, {
       localVue,
       store,
       propsData: {

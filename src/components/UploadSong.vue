@@ -160,17 +160,15 @@
               </option>
             </select>
             <h4>Genre</h4>
-            <input type="text" name="file" v-model="Genre" @keyup.enter="UploadTrack(),changeModalStateUpload()" />
-             <h4>Album</h4>
-            <select
-              v-model="id"
-              class="album_select"
-              testid="album input"
-            >
-              <option
-                v-for="(album,id) in albums"
-                :key="id"
-                :value="album._id"
+            <input
+              type="text"
+              name="file"
+              v-model="Genre"
+              @keyup.enter="UploadTrack(), changeModalStateUpload()"
+            />
+            <h4>Album</h4>
+            <select v-model="id" class="album_select" testid="album input">
+              <option v-for="(album, id) in albums" :key="id" :value="album._id"
                 >{{ album.name }}
               </option>
             </select>
@@ -395,7 +393,7 @@ h4 {
   background: black;
   border: transparent;
 }
-.AvailableMarket_select{
+.AvailableMarket_select {
   width: 100%;
   background: black;
   border: transparent;
@@ -428,7 +426,7 @@ export default {
         myduration: 0,
       },
       myaudio: [],
-      id:"",
+      id: "",
       AvailableMarkets: [
         { text: "Choose a country", value: "0", disabled: true },
         { text: "Egypt", value: "eg", disabled: false },
@@ -452,7 +450,7 @@ export default {
   computed: {
     ...mapGetters({
       showModalUpload: "ArtistProperties/showModalUpload",
-      albums:"ArtistProperties/Albums"
+      albums: "ArtistProperties/Albums",
     }),
   },
   methods: {
@@ -469,8 +467,7 @@ export default {
      */
     OnHeighFileSelected(event) {
       this.Heighselectedfile = event.target.files[0];
-      console.log("high file",this.Heighselectedfile)
-
+      console.log("high file", this.Heighselectedfile);
     },
     /**
      * method to take the medium quality file
@@ -499,7 +496,6 @@ export default {
      */
     OnMedium_EncFileSelected(event) {
       this.Medium_Encselectedfile = event.target.files[0];
-
     },
     /**
      * method to take the low encrypted quality file
@@ -516,7 +512,7 @@ export default {
       this.selectedpreview = event.target.files[0];
     },
     /**
-     * Upload Song 
+     * Upload Song
      * @public This is a public method
      */
     UploadTrack() {
@@ -532,7 +528,7 @@ export default {
         medium_enc_selectedfile: this.Medium_Encselectedfile,
         low_enc_selectedfile: this.Low_Encselectedfile,
         selectedpreview: this.selectedpreview,
-        AlbumID:this.id,
+        AlbumID: this.id,
       };
       this.$store.dispatch("ArtistProperties/UploadTrack", payload);
     },

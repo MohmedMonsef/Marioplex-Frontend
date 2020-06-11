@@ -118,7 +118,7 @@ h2 {
 import category from "@/components/Category.vue";
 import searchcomponent from "@/components/SearchComponent.vue";
 import searchresults from "@/views/SearchResults";
-import { mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 /**
  * Search Page is the place where you can search for certain playlist , album , artist or even certain category
  * @displayName Search Page
@@ -140,7 +140,7 @@ export default {
       loadingcategory: "Categorys/loading",
       loadingsearch: "Search/loadingsearch",
       search_value: "Search/get_value",
-      showresl: "Search/showeres"
+      showresl: "Search/showeres",
     }),
   },
 };

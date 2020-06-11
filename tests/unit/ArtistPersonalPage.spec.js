@@ -25,7 +25,7 @@ describe("ArtistPersonalPage", () => {
             currentimage: "",
             image_id: "",
             Artist_ID: "",
-            showModalCreate:true,
+            showModalCreate: true,
           },
           actions: {
             toggleModalUpload: jest.fn(),
@@ -99,8 +99,8 @@ describe("ArtistPersonalPage", () => {
             name: "image.png",
             size: 50000,
             type: "image/png",
-            width:100,
-            height:5000,
+            width: 100,
+            height: 5000,
           },
         ],
       },
@@ -110,12 +110,14 @@ describe("ArtistPersonalPage", () => {
     //   expect(wrapper.emitted().ready.length).toBe(1);
     //   done(error);
     // });
-    const fileReaderSpy = jest.spyOn(FileReader.prototype, 'readAsDataURL').mockImplementation(() => null)
-    const persistSpy = jest.spyOn(wrapper.vm, 'persist')
- 
-    wrapper.vm.OnPhotoUpload(event)
-    expect(fileReaderSpy).toHaveBeenCalledWith(event.target.files[0])
-    expect(persistSpy).toHaveBeenCalledWith(event.target.files[0])
+    const fileReaderSpy = jest
+      .spyOn(FileReader.prototype, "readAsDataURL")
+      .mockImplementation(() => null);
+    const persistSpy = jest.spyOn(wrapper.vm, "persist");
+
+    wrapper.vm.OnPhotoUpload(event);
+    expect(fileReaderSpy).toHaveBeenCalledWith(event.target.files[0]);
+    expect(persistSpy).toHaveBeenCalledWith(event.target.files[0]);
   });
   it("it shows upload cover photo popup ", () => {
     const input = wrapper.find(".uploadbutton");
@@ -129,7 +131,7 @@ describe("ArtistPersonalPage", () => {
     wrapper.vm.changeModalStateCreate();
     expect("showModalCreate").toHaveBeenCalled;
   });
-  
+
   // it('onload', done => {
   //   const callback = jest.fn(status => {
   //     expect(status).toBe(true);

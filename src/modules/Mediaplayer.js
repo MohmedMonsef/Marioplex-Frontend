@@ -21,25 +21,33 @@ import {
   get_currentaudio,
   currentaudio_time,
   currentaudio_src,
-  currentaudio_repeat
+  currentaudio_repeat,
 } from "../javascript/play.js";
 export default {
   namespaced: true,
   state: {
-    currentsong:{
-      track:
-      {_id:"5eb0a55eec0c444e9c48982f",
-       images:[
-         {"_id":"5eb0b3f2de66c65e34c18b7a"}],
-         "duration":60,
-         "name":"track21",
-         "artistId":"5eb0a4559b15d854c08f7365",
-         "albumId":"5eb0a55cec0c444e9c48982d","type":"Track","like":1},
-         "isLiked":false,
-         "album":{"name":"Criss cross","_id":"5eb0a55cec0c444e9c48982d","artist":{"name":"artist4",
-         "_id":"5eb0a4559b15d854c08f7365"}},
-        "isPlaylist":true,"playlistId":"5eb5248b680ef51b4c4492a1","isPlayable":true},
-  
+    currentsong: {
+      track: {
+        _id: "5eb0a55eec0c444e9c48982f",
+        images: [{ _id: "5eb0b3f2de66c65e34c18b7a" }],
+        duration: 60,
+        name: "track21",
+        artistId: "5eb0a4559b15d854c08f7365",
+        albumId: "5eb0a55cec0c444e9c48982d",
+        type: "Track",
+        like: 1,
+      },
+      isLiked: false,
+      album: {
+        name: "Criss cross",
+        _id: "5eb0a55cec0c444e9c48982d",
+        artist: { name: "artist4", _id: "5eb0a4559b15d854c08f7365" },
+      },
+      isPlaylist: true,
+      playlistId: "5eb5248b680ef51b4c4492a1",
+      isPlayable: true,
+    },
+
     //component info
     currentSongIndex: 0,
     //flag weather the song is playing or not
@@ -48,7 +56,7 @@ export default {
     progress: 0,
     trackduration: 0,
     premiumPopup: false,
-    premiumAd: 1
+    premiumAd: 1,
   },
   mutations: {
     setPopup(state, value) {
@@ -94,64 +102,60 @@ export default {
         state.currentSongIndex = info.index;
       }
       state.playicon = true;
-    }
+    },
   },
   actions: {
     playicon_state({ commit }, status) {
       commit("setplayicon", status);
     },
     //get the current song from backend
-   get_currentsong({ commit, dispatch }, getTrack) {
-    
+    get_currentsong({ commit, dispatch }, getTrack) {
       axios
         .get("/api/me/player/currently-playing")
-        .then(response => {
+        .then((response) => {
           var currentsong = response.data;
-          if(currentsong.track.images.length == 0)
-          currentsong.track.images.push({
-            _id:"1"
-          });
+          if (currentsong.track.images.length == 0)
+            currentsong.track.images.push({
+              _id: "1",
+            });
           commit("set_currentsong", currentsong);
           var id = currentsong.track._id;
           if (getTrack == 1) {
-            dispatch("trackUrl", {id:id,playFlag:true});
+            dispatch("trackUrl", { id: id, playFlag: true });
+          } else if (getTrack == 2) {
+            dispatch("trackUrl", { id: id, playFlag: false });
           }
-          else if(getTrack == 2){
-            dispatch("trackUrl", {id:id,playFlag:false});
-          }
-
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
-    trackUrl({ state }, {id,playFlag}) {
+    trackUrl({ state }, { id, playFlag }) {
       var user = store.getters["Authorization/user"];
       let token = localStorage.getItem("x-auth-token");
       let keyRoute = "/api/tracks/encryption/" + id + "/keys";
       let trackroute;
-      if(user.product != "premium"){
-      trackroute =
-      "http://34.206.123.67/api/tracks/web-player/" +
-        id +
-        "/?type=medium&token=" +
-        token;
-      }
-      else{
+      if (user.product != "premium") {
         trackroute =
-        "http://34.206.123.67/api/tracks/web-player/" +
-        id +
-        "/?type=high&token=" +
-        token;
+          "http://34.206.123.67/api/tracks/web-player/" +
+          id +
+          "/?type=medium&token=" +
+          token;
+      } else {
+        trackroute =
+          "http://34.206.123.67/api/tracks/web-player/" +
+          id +
+          "/?type=high&token=" +
+          token;
       }
       axios
         .get(keyRoute)
-        .then(async response => {
+        .then(async (response) => {
           state.audioKey = response.data.key;
           state.audioKeyID = response.data.keyId;
-          setupPlayer(trackroute, state.audioKey, state.audioKeyID,playFlag);
+          setupPlayer(trackroute, state.audioKey, state.audioKeyID, playFlag);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log("get trackurl error", error);
         })
         .then(() => {});
@@ -182,7 +186,7 @@ export default {
           state.premiumPopup = false;
           axios
             .post("/api/me/player/next-playing")
-            .then(response => {
+            .then((response) => {
               var nextsong = response.data;
               commit("set_currentsong", nextsong);
               if (typeof nextsong.fristInSource == "undefined")
@@ -195,29 +199,35 @@ export default {
                 song_id: nextsong.track._id,
                 album_id: nextsong.album._id,
                 playlist_id: state.playlist_id,
-                is_playlist: state.currentsong.isPlaylist
+                is_playlist: state.currentsong.isPlaylist,
               };
-              if(state.playicon)
-              {
-                  dispatch("playsong_state", info);
-                  dispatch("trackUrl", { id:nextsong.track._id,playFlag:true});
-             }
-             else{
-                   dispatch("trackUrl", { id:nextsong.track._id,playFlag:false});
+              if (state.playicon) {
+                dispatch("playsong_state", info);
+                dispatch("trackUrl", {
+                  id: nextsong.track._id,
+                  playFlag: true,
+                });
+              } else {
+                dispatch("trackUrl", {
+                  id: nextsong.track._id,
+                  playFlag: false,
+                });
               }
               dispatch("Queue/Queue", null, { root: true });
             })
-            .catch(error => {
+            .catch((error) => {
               console.log(error);
-              if(error.response.status){
-                toast.show("Sorry,You can't click previous button for the next hour.");
-                }
+              if (error.response.status) {
+                toast.show(
+                  "Sorry,You can't click previous button for the next hour."
+                );
+              }
             });
         }, 17000);
       } else {
         axios
           .post("/api/me/player/next-playing")
-          .then(response => {
+          .then((response) => {
             var nextsong = response.data;
             commit("set_currentsong", nextsong);
             if (typeof nextsong.fristInSource == "undefined")
@@ -230,19 +240,17 @@ export default {
               song_id: nextsong.track._id,
               album_id: nextsong.album._id,
               playlist_id: state.playlist_id,
-              is_playlist: state.currentsong.isPlaylist
+              is_playlist: state.currentsong.isPlaylist,
             };
-            if(state.playicon)
-              {
-                  dispatch("playsong_state", info);
-                  dispatch("trackUrl", { id:nextsong.track._id,playFlag:true});
-             }
-             else{
-                   dispatch("trackUrl", { id:nextsong.track._id,playFlag:false});
-              }
+            if (state.playicon) {
+              dispatch("playsong_state", info);
+              dispatch("trackUrl", { id: nextsong.track._id, playFlag: true });
+            } else {
+              dispatch("trackUrl", { id: nextsong.track._id, playFlag: false });
+            }
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       }
@@ -251,33 +259,34 @@ export default {
       if (state.progress <= 5) {
         axios
           .post("/api/me/player/prev-playing")
-          .then(response => {
+          .then((response) => {
             var prevsong = response.data;
             commit("set_currentsong", prevsong);
-            var i =state.currentSongIndex == 0 ? 0 : state.currentSongIndex - 1;
+            var i =
+              state.currentSongIndex == 0 ? 0 : state.currentSongIndex - 1;
             state.currentSongIndex = i;
             let info = {
               index: i,
               song_id: prevsong.track._id,
               album_id: prevsong.album._id,
               playlist_id: prevsong.playlistId,
-              is_playlist: prevsong.isPlaylist
+              is_playlist: prevsong.isPlaylist,
             };
-            if(state.playicon)
-            { 
+            if (state.playicon) {
               dispatch("playsong_state", info);
-              dispatch("trackUrl",{id:prevsong.track._id,playFlag:true});
-            }
-            else{
-              dispatch("trackUrl",{id:prevsong.track._id,playFlag:false});
+              dispatch("trackUrl", { id: prevsong.track._id, playFlag: true });
+            } else {
+              dispatch("trackUrl", { id: prevsong.track._id, playFlag: false });
             }
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
-            if(error.response.status){
-              toast.show("Sorry,You can't click previous button for the next hour.");
-              }
+            if (error.response.status) {
+              toast.show(
+                "Sorry,You can't click previous button for the next hour."
+              );
+            }
           });
       } else {
         dispatch("update_progress", 0);
@@ -292,7 +301,7 @@ export default {
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       } else if (flag == 2) {
@@ -302,7 +311,7 @@ export default {
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       }
@@ -313,7 +322,7 @@ export default {
         .then(() => {
           dispatch("Queue/Queue", null, { root: true });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -331,7 +340,7 @@ export default {
             commit("setliked", true);
           dispatch("get_currentsong", 0);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -349,7 +358,7 @@ export default {
           dispatch("get_currentsong", 0);
           dispatch("LikedTracks/likedtracks_tracks", null, { root: true });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -375,35 +384,35 @@ export default {
         currentaudio_volume(pos);
         state.volumeprogress = pos;
       }
-    }
+    },
   },
   getters: {
-    Get_Currentsong: state => {
+    Get_Currentsong: (state) => {
       return state.currentsong;
     },
-    playicon: state => {
+    playicon: (state) => {
       return state.playicon;
     },
-    liked: state => {
+    liked: (state) => {
       return state.currentsong.isLiked;
     },
-    progress: state => {
+    progress: (state) => {
       return state.progress;
     },
-    duration: state => {
+    duration: (state) => {
       return state.trackduration;
     },
-    volume: state => {
+    volume: (state) => {
       return state.volumeprogress;
     },
-    Index: state => {
+    Index: (state) => {
       return state.currentSongIndex;
     },
-    premiumPopup: state => {
+    premiumPopup: (state) => {
       return state.premiumPopup;
     },
-    premiumAd: state => {
+    premiumAd: (state) => {
       return state.premiumAd;
-    }
-  }
+    },
+  },
 };

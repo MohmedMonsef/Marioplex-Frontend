@@ -70,7 +70,10 @@
           </router-link>
         </div>
       </div>
-      <div class="col-lg-6 col-md-40% col-sm-7 col-9" id="mediaplayercontrollers">
+      <div
+        class="col-lg-6 col-md-40% col-sm-7 col-9"
+        id="mediaplayercontrollers"
+      >
         <div
           class="play_controllers"
           id="test_play_controllers"
@@ -494,14 +497,14 @@ input:focus {
   .additional_actions {
     margin: 30px 15px 30px 30px;
   }
-  .album_image{
+  .album_image {
     display: none;
   }
-  #song_info_col{
+  #song_info_col {
     margin-left: 10px;
-    width:20%;
+    width: 20%;
   }
-  .song_info{
+  .song_info {
     margin: 20px 0px 20px 5px;
   }
 }
@@ -512,16 +515,16 @@ input:focus {
   .volumecontrollers {
     display: none;
   }
-    .album_image{
+  .album_image {
     display: none;
   }
-  #song_info_col{
+  #song_info_col {
     margin-left: 10px;
   }
-  .song_info{
+  .song_info {
     margin: 20px 0px 20px 5px;
   }
-  .mediaplayercontrollers{
+  .mediaplayercontrollers {
     width: 70%;
   }
 }
@@ -532,25 +535,24 @@ input:focus {
   .volumecontrollers {
     display: none;
   }
-    .album_image{
+  .album_image {
     display: none;
   }
-  #song_info_col{
+  #song_info_col {
     margin-left: 10px;
   }
-  .song_info{
+  .song_info {
     margin: 20px 0px 20px 5px;
   }
-  .mediaplayercontrollers{
+  .mediaplayercontrollers {
     width: 70%;
   }
-  #repeat_button{
- display: none;
-}
-.random_button{
- display: none;
-
-}
+  #repeat_button {
+    display: none;
+  }
+  .random_button {
+    display: none;
+  }
 }
 
 // @media screen and (max-width: 585px) {
@@ -636,21 +638,20 @@ export default {
       }
       this.isShuffle = this.userinfo.player.is_shuffled;
 
-      if(localStorage.getItem("set-volume")){
-      
-      var volumeSlider = document.getElementById("volumeprogressbar");
-      var curVol = localStorage.getItem("set-volume") * 100;
-      this.volumepos = curVol.toString() + "%";
-      volumeSlider.style.width = this.volumepos;
+      if (localStorage.getItem("set-volume")) {
+        var volumeSlider = document.getElementById("volumeprogressbar");
+        var curVol = localStorage.getItem("set-volume") * 100;
+        this.volumepos = curVol.toString() + "%";
+        volumeSlider.style.width = this.volumepos;
 
-      var changevolumeicon = document.getElementById("soundicon");
-      if (curVol == 0) changevolumeicon.className = "fa fa-volume-off";
-      else if (curVol > 0 && curVol <= 50)
-        changevolumeicon.className = "fa fa-volume-down";
-      else changevolumeicon.className = "fa fa-volume-up";
+        var changevolumeicon = document.getElementById("soundicon");
+        if (curVol == 0) changevolumeicon.className = "fa fa-volume-off";
+        else if (curVol > 0 && curVol <= 50)
+          changevolumeicon.className = "fa fa-volume-down";
+        else changevolumeicon.className = "fa fa-volume-up";
       }
-      
-      this.$store.dispatch("Mediaplayer/update_volume", curVol/100);
+
+      this.$store.dispatch("Mediaplayer/update_volume", curVol / 100);
     }, 1000);
     // if (this.user != "success") {
     //    var mediaplayerbar = document.getElementById("mediaplayerrow");
@@ -765,7 +766,7 @@ export default {
         var volumeSlider = document.getElementById("volumeprogressbar");
         this.volumepos = pos.toString() + "%";
         volumeSlider.style.width = this.volumepos;
-        localStorage.setItem("set-volume",pos/100);
+        localStorage.setItem("set-volume", pos / 100);
       }
     },
     /**
@@ -794,7 +795,7 @@ export default {
         else changevolumeicon.className = "fa fa-volume-up";
         this.volumedrag = false;
 
-        localStorage.setItem("set-volume",this.sound/100);
+        localStorage.setItem("set-volume", this.sound / 100);
       }
     },
     /**

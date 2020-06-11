@@ -92,8 +92,7 @@ export default {
     UploadPhoto(state, id) {
       state.image_id = id;
     },
-    Show_Photo() {
-    },
+    Show_Photo() {},
     Get_Artist_ID(state, ArtistID) {
       state.Artist_ID = ArtistID;
     },
@@ -339,13 +338,13 @@ export default {
           "&duration=21.7&key=a4631a153a443df9eed0593043db7519&keyId=f3c5e0361e6654b28f8049c778b23946&genres=" +
           payload.Genre,
         data: {
-          high:high,
-          medium:medium,
-          low:low,
-          heigh_enc:high_enc,
-          medium_enc:medium_enc,
-          low_enc:low_enc,
-          review:review,
+          high: high,
+          medium: medium,
+          low: low,
+          heigh_enc: high_enc,
+          medium_enc: medium_enc,
+          low_enc: low_enc,
+          review: review,
         },
       })
         .then(() => {

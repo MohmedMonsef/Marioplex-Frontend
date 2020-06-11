@@ -11,47 +11,46 @@ describe("HomeBodyUser", () => {
   localVue.use(VueRouter);
   beforeEach(() => {
     store = new Vuex.Store({
-        modules: {
-          Authorization: {
-            namespaced: true,
-            state: {
-                user:{
-                    product:"premium"
-                },
-                GetStatus:"success"
+      modules: {
+        Authorization: {
+          namespaced: true,
+          state: {
+            user: {
+              product: "premium",
             },
-            getters: {
-                user: (state) => state.user,
-                GetStatus: (state) => state.GetStatus,
-            },
+            GetStatus: "success",
           },
-          ShowWebPlayer:{
-              namespaced:true,
-              state:{
-                homePlaylists: [
-                    {
-                        images:"1",
-                        playlistId:"1",
-                        name:"name"
-                    }
-                ],
-              },
-              getters: {
-                homePlaylists: (state) => state.homePlaylists,
-             },
-              actions: {
-                homePlaylists: jest.fn()
-              },
-          }
+          getters: {
+            user: (state) => state.user,
+            GetStatus: (state) => state.GetStatus,
+          },
         },
-      });
+        ShowWebPlayer: {
+          namespaced: true,
+          state: {
+            homePlaylists: [
+              {
+                images: "1",
+                playlistId: "1",
+                name: "name",
+              },
+            ],
+          },
+          getters: {
+            homePlaylists: (state) => state.homePlaylists,
+          },
+          actions: {
+            homePlaylists: jest.fn(),
+          },
+        },
+      },
+    });
     wrapper = shallowMount(HomeBodyUser, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-
   });
 });

@@ -20,7 +20,7 @@ export default {
     playlist_image: "",
     likedplaylist: Boolean,
     restored: "",
-    playlist_type:""
+    playlist_type: "",
   },
   mutations: {
     toggleModal(state, withtrack) {
@@ -55,7 +55,7 @@ export default {
       state.showModalAdd = !state.showModalAdd;
       state.trackid = trackid;
     },
-    showinputfield(state,flag) {
+    showinputfield(state, flag) {
       state.showinput = flag;
     },
     set_playlist(state, playlist_tracks) {
@@ -94,9 +94,9 @@ export default {
     isRestored(state, msg) {
       state.restored = msg;
     },
-    set_playlist_type(state,type){
-      state.playlist_type=type;
-    }
+    set_playlist_type(state, type) {
+      state.playlist_type = type;
+    },
   },
   actions: {
     playlist_tracks({ commit }, playlist_id) {
@@ -105,23 +105,19 @@ export default {
         .get("/api/playlists/" + playlist_id)
         .then((response) => {
           let playlist = response.data;
-          console.log("in playlist.js playlist_track",playlist);
+          console.log("in playlist.js playlist_track", playlist);
           commit("set_playlist", playlist[0].tracks);
           commit("set_playlist_length", playlist[0].tracks.length);
           commit("set_playlist_name", playlist[0].name);
-          if(localStorage.getItem('x-auth-token'))
-            { 
-              commit("set_owner_name", playlist[1].ownerName);
-            }
-          else
-             commit("set_owner_name", playlist[0].ownerName);
+          if (localStorage.getItem("x-auth-token")) {
+            commit("set_owner_name", playlist[1].ownerName);
+          } else commit("set_owner_name", playlist[0].ownerName);
           if (typeof playlist[0].images[0] == "undefined")
             commit("set_playlist_image", "5eb52f1863eea332d416b9fa");
           else commit("set_playlist_image", playlist[0].images[0]._id);
           commit("set_likedplaylist", playlist[0].isfollowed);
           commit("set_playlist_loaded", true);
           commit("set_playlist_type", playlist[0].checkType);
-         
         })
         .catch((error) => {
           console.log(error);
@@ -146,10 +142,12 @@ export default {
             ownerId: playlists.ownerId,
             isPublic: playlists.isPublic,
             type: "created",
-            images:[{
-              _id:"1"
-            }],
-            owner:user.displayName
+            images: [
+              {
+                _id: "1",
+              },
+            ],
+            owner: user.displayName,
           };
           commit("CreatePlaylist", toAdd);
           if (state.withtrack == true) {
@@ -196,7 +194,7 @@ export default {
             console.log(error);
           });
       } else {
-        dispatch("unlike_playist",to_del);
+        dispatch("unlike_playist", to_del);
         store.dispatch("Playlist/showplaylists");
       }
     },
@@ -216,7 +214,7 @@ export default {
     },
     PubPriChange({ commit }, payload) {
       axios
-        .put("/api/playlists/" + payload.playlist_id+"/public", {
+        .put("/api/playlists/" + payload.playlist_id + "/public", {
           public: payload.public,
         })
         .then(() => {
@@ -227,15 +225,15 @@ export default {
           console.log(error);
         });
     },
-    showinputfield({ commit },flag) {
-      commit("showinputfield",flag);
+    showinputfield({ commit }, flag) {
+      commit("showinputfield", flag);
     },
     ReorderTracks({ commit }, payload) {
       axios
         .put("/api/playlists/" + payload.playlist_id + "/tracks", {
           range_start: payload.range_start,
           insert_before: payload.insert_before,
-          range_length:1
+          range_length: 1,
         })
         .then((response) => {
           if (status == 200) {
@@ -312,7 +310,7 @@ export default {
           console.log(error);
         });
     },
-    restorePlaylist({commit}, ID) {
+    restorePlaylist({ commit }, ID) {
       axios
         .put("/api/me/restoreplaylists?playlistsIds=" + ID)
         .then(() => {
@@ -322,14 +320,14 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
   getters: {
     playlist_tracks: (state) => state.playlist_tracks,
     playlist_loaded: (state) => state.playlist_loaded,
     playlist_length: (state) => state.playlist_length,
     playlist_name: (state) => state.playlist_name,
-    playlist_type:(state) => state.playlist_type,
+    playlist_type: (state) => state.playlist_type,
     owner_name: (state) => state.owner_name,
     playlist_image: (state) => state.playlist_image,
     likeplaylist: (state) => state.likedplaylist,
@@ -342,6 +340,6 @@ export default {
     trackid: (state) => state.trackid,
     withtrack: (state) => state.withtrack,
     showinput: (state) => state.showinput,
-    restored: (state) => state.restored
+    restored: (state) => state.restored,
   },
 };

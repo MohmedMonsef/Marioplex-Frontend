@@ -14,15 +14,15 @@ describe("AccountChange", () => {
       modules: {
         Authorization: {
           namespaced: true,
-          state:{
-            isEdited: ""
+          state: {
+            isEdited: "",
           },
           getters: {
             isEdited: (state) => state.isEdited,
           },
           actions: {
-            saveEdit: jest.fn()
-          }
+            saveEdit: jest.fn(),
+          },
         },
       },
     });
@@ -31,15 +31,15 @@ describe("AccountChange", () => {
       store,
     });
     wrapper.setData({
-        password: "",
-        newpassword: "",
-        repeatedPassword: "",
-        canSet1: false,
-        canSet2: false,
-        canSet3: false,
-        canSet4: false,
-        saved: "0", 
-      })
+      password: "",
+      newpassword: "",
+      repeatedPassword: "",
+      canSet1: false,
+      canSet2: false,
+      canSet3: false,
+      canSet4: false,
+      saved: "0",
+    });
   });
   it("call change Password functions", () => {
     const editButton = wrapper.find(".save");
@@ -80,20 +80,20 @@ describe("AccountChange", () => {
     expect(wrapper.vm.canSet2).toBe(false);
   });
 
-//   it("toggel canSet3 to true", () => {
-//     const repeatpassword = wrapper.find("#repeat");
-//     repeatpassword.element.value = "12345678";
-//     repeatpassword.trigger("input");
-//     wrapper.vm.req_repeatpassword();
-//     expect(wrapper.vm.canSet3).toBe(true);
-//   });
-//   it("toggel canSet3 to false", () => {
-//     const repeatpassword = wrapper.find("#repeat");
-//     repeatpassword.element.value = "";
-//     repeatpassword.trigger("input");
-//     wrapper.vm.req_repeatpassword();
-//     expect(wrapper.vm.canSet3).toBe(false);
-//   });
+  //   it("toggel canSet3 to true", () => {
+  //     const repeatpassword = wrapper.find("#repeat");
+  //     repeatpassword.element.value = "12345678";
+  //     repeatpassword.trigger("input");
+  //     wrapper.vm.req_repeatpassword();
+  //     expect(wrapper.vm.canSet3).toBe(true);
+  //   });
+  //   it("toggel canSet3 to false", () => {
+  //     const repeatpassword = wrapper.find("#repeat");
+  //     repeatpassword.element.value = "";
+  //     repeatpassword.trigger("input");
+  //     wrapper.vm.req_repeatpassword();
+  //     expect(wrapper.vm.canSet3).toBe(false);
+  //   });
 
   it("toggel canSet4 to true", () => {
     const newpassword = wrapper.find("#new");
@@ -116,25 +116,25 @@ describe("AccountChange", () => {
     expect(wrapper.vm.canSet4).toBe(false);
   });
   it("has saved div", () => {
-    store.state.Authorization.isEdited = 'success';
+    store.state.Authorization.isEdited = "success";
     let wrapper2 = shallowMount(AccountChange, {
       localVue,
       store,
     });
     wrapper2.setData({
-        saved: "1"
-    })
+      saved: "1",
+    });
     expect(wrapper2.exists(".saved")).toBe(true);
   });
   it("has wrong div", () => {
-    store.state.Authorization.isEdited = 'faild';
+    store.state.Authorization.isEdited = "faild";
     let wrapper3 = shallowMount(AccountChange, {
       localVue,
       store,
     });
     wrapper3.setData({
-        saved: "2"
-    })
+      saved: "2",
+    });
     expect(wrapper3.exists(".wrong")).toBe(true);
   });
   it("renders", () => {

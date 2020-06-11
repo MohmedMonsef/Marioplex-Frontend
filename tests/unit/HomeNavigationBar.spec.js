@@ -13,59 +13,59 @@ describe("HomeNavigationBar", () => {
   localVue.prototype.$route = $route;
   beforeEach(() => {
     store = new Vuex.Store({
-        modules: {
-          Authorization: {
-            namespaced: true,
-            state: {
-                GetStatus: "success",
-                user:{
-                    product:"premium"
-                }
-            },
-            getters: {
-                GetStatus(state) {
-                return state.GetStatus;
-              },
-              user(state) {
-                return state.user;
-              },
-            },
-            actions: {
-              logout: jest.fn(),
+      modules: {
+        Authorization: {
+          namespaced: true,
+          state: {
+            GetStatus: "success",
+            user: {
+              product: "premium",
             },
           },
+          getters: {
+            GetStatus(state) {
+              return state.GetStatus;
+            },
+            user(state) {
+              return state.user;
+            },
+          },
+          actions: {
+            logout: jest.fn(),
+          },
         },
-      });
+      },
+    });
     wrapper = shallowMount(HomeNavigationBar, {
       localVue,
       store,
-      stubs: ['router-link', 'router-view']
+      stubs: ["router-link", "router-view"],
     });
   });
   it("renders premium page", () => {
     wrapper.vm.$options.watch.$route.call(wrapper.vm);
-    $route.path="/premium"
+    $route.path = "/premium";
     wrapper.vm.$options.watch.$route.call(wrapper.vm);
-    let premiumWrapper =  shallowMount(HomeNavigationBar, {
+    let premiumWrapper = shallowMount(HomeNavigationBar, {
       localVue,
       store,
-      stubs: ['router-link', 'router-view']
+      stubs: ["router-link", "router-view"],
     });
-    expect( premiumWrapper.exists()).toBe(true);
-    $route={
-      path:"/login"
+    expect(premiumWrapper.exists()).toBe(true);
+    $route = {
+      path: "/login",
     };
-    expect( premiumWrapper.exists()).toBe(true);
+    expect(premiumWrapper.exists()).toBe(true);
   });
   it("renders in home page", () => {
-    $route.path="/"
+    $route.path = "/";
     expect(wrapper.exists()).toBe(true);
   });
   it("logout function", () => {
     wrapper.vm.logout();
     expect("logout").toHaveBeenCalled;
   });
-   it("collapsed menu function", () => {
+  it("collapsed menu function", () => {
     let testId = "menu-icon";
     let newDiv = document.createElement("div");
     newDiv.setAttribute("id", testId);
@@ -99,7 +99,7 @@ describe("HomeNavigationBar", () => {
     wrapper.vm.updateScroll();
     expect(wrapper.vm.scrollPosition).toBe(200);
   });
-  
+
   it("destroy life hook test", () => {
     wrapper.destroy();
   });

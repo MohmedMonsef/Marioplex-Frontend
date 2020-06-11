@@ -26,32 +26,32 @@ describe("Mediaplayer", () => {
                 artistId: "5eb0a4559b15d854c08f7365",
                 albumId: "5eb0a55cec0c444e9c48982d",
                 type: "Track",
-                like: 1
+                like: 1,
               },
               isLiked: false,
               album: {
                 name: "Criss cross",
                 _id: "5eb0a55cec0c444e9c48982d",
-                artist: { name: "artist4", _id: "5eb0a4559b15d854c08f7365" }
+                artist: { name: "artist4", _id: "5eb0a4559b15d854c08f7365" },
               },
               isPlaylist: true,
               playlistId: "5eb5248b680ef51b4c4492a1",
-              isPlayable: true
+              isPlayable: true,
             },
             progress: 0,
             trackduration: 0,
             volumeprogress: 0,
-            currentSongIndex: 0
+            currentSongIndex: 0,
           },
           getters: {
-            playicon: state => state.playicon,
-            Get_Currentsong: state => state.currentsong,
-            progress: state => state.progress,
-            duration: state => state.trackduration,
-            volumeprogress: state => state.volumeprogress,
-            Index: state => state.currentSongIndex,
-            duration: state => state.duration,
-            liked: state => state.currentsong.isLiked
+            playicon: (state) => state.playicon,
+            Get_Currentsong: (state) => state.currentsong,
+            progress: (state) => state.progress,
+            duration: (state) => state.trackduration,
+            volumeprogress: (state) => state.volumeprogress,
+            Index: (state) => state.currentSongIndex,
+            duration: (state) => state.duration,
+            liked: (state) => state.currentsong.isLiked,
           },
           actions: {
             advance_progress: jest.fn(),
@@ -64,50 +64,50 @@ describe("Mediaplayer", () => {
             prevsong_state: jest.fn(),
             nextsong_state: jest.fn(),
             shufflesong_state: jest.fn(),
-            Like: jest.fn()
-          }
+            Like: jest.fn(),
+          },
         },
         Authorization: {
           namespaced: true,
           state: {
             status: "",
-            User: {}
+            User: {},
           },
           getters: {
-            GetStatus: state => {
+            GetStatus: (state) => {
               return state.status;
             },
-            User: state => {
+            User: (state) => {
               return state.User;
-            }
-          }
+            },
+          },
         },
         CheckUserPopup: {
           namespaced: true,
           state: {
-            showModal: false
+            showModal: false,
           },
           getters: {
-            showModal: state => {
+            showModal: (state) => {
               return state.showModal;
-            }
+            },
           },
           actions: {
-            togglePopup: jest.fn()
-          }
+            togglePopup: jest.fn(),
+          },
         },
         Queue: {
           namespaced: true,
           actions: {
-            CreateQueue: jest.fn()
-          }
-        }
-      }
+            CreateQueue: jest.fn(),
+          },
+        },
+      },
     });
     spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(Mediaplayer, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {
@@ -122,7 +122,7 @@ describe("Mediaplayer", () => {
       currentPos: 0,
       volumepos: 0,
       sound: 0,
-      song_state: false
+      song_state: false,
     });
     ////moving song bar test
     wrapper.vm.moving_song_bar();

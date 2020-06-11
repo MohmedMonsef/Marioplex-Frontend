@@ -116,8 +116,8 @@ export default {
        */
       this.$store.dispatch("Search/search_V", this.Value);
       if (value == "") {
-     this.$router.currentRoute.path == "/HomeWebPlayer/search";
-      } 
+        this.$router.currentRoute.path == "/HomeWebPlayer/search";
+      }
     },
     /**
      * Exiting this search
@@ -142,7 +142,6 @@ export default {
     leave() {
       this.$store.dispatch("Search/searchfocus", false);
     },
- 
   },
   computed: {
     ...mapGetters({

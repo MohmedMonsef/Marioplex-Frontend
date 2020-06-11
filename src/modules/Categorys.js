@@ -13,7 +13,7 @@ export default {
     setcategory(state, rescategory) {
       rescategory.forEach((category) => {
         if (category.images.length == 0)
-         category.images.push({ _id: "5eb52f1863eea332d416b9fa" });
+          category.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.category = rescategory;
     },

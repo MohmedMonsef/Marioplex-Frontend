@@ -18,7 +18,7 @@ export default {
     user5: [],
     track: [],
     track3: [],
-    flagfound:true
+    flagfound: true,
   },
   mutations: {
     setclear(state) {
@@ -135,7 +135,7 @@ export default {
     showresult({ commit }, val) {
       commit("setshower", val);
     },
-  
+
     searchaboutartist({ commit }, search_value) {
       commit("settopres", []);
       commit("setresult5", []);
@@ -284,8 +284,8 @@ export default {
     gettrack(state) {
       return state.track;
     },
-    getflagfound(state){
+    getflagfound(state) {
       return state.flagfound;
-    }
+    },
   },
 };

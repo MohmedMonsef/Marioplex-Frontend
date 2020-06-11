@@ -29,27 +29,27 @@ describe("searchresults", () => {
           },
           getters: {
             get_value(state) {
-                return state.search_Value;
-              },
-              gettopres(state) {
-                return state.topres;
-              },
-              getresult5(state) {
-                return state.result5;
-              },
-              getalbumres5(state) {
-                return state.albumres5;
-              },
-              getplaylistsres5(state) {
-                return state.playlistres5;
-              },
-              loadingsearch: (state) => state.load,
-              getuser5(state) {
-                return state.user5;
-              },
-              gettrack3(state) {
-                return state.track3;
-              }
+              return state.search_Value;
+            },
+            gettopres(state) {
+              return state.topres;
+            },
+            getresult5(state) {
+              return state.result5;
+            },
+            getalbumres5(state) {
+              return state.albumres5;
+            },
+            getplaylistsres5(state) {
+              return state.playlistres5;
+            },
+            loadingsearch: (state) => state.load,
+            getuser5(state) {
+              return state.user5;
+            },
+            gettrack3(state) {
+              return state.track3;
+            },
           },
           actions: {
             showresult: jest.fn(),
@@ -64,9 +64,9 @@ describe("searchresults", () => {
       store,
       localVue,
     });
-    wrapper.vm.change()
+    wrapper.vm.change();
     expect("showresult").toHaveBeenCalled;
-    wrapper.vm.getImg()
+    wrapper.vm.getImg();
     expect("getImg").toHaveBeenCalled;
   });
 });

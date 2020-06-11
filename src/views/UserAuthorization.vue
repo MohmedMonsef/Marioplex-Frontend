@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
-    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -97,13 +97,10 @@
 </style>
 
 <script>
-
 /**
  * Parent page to login and reset password page for a user who forgot his password
  * @displayName User Authorization page
  * @example [none]
  */
-export default {
-
-};
+export default {};
 </script>

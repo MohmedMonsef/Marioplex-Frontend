@@ -44,7 +44,7 @@ describe("ForgetPassword", () => {
     const req_error = wrapper.find("#req_error");
     expect(req_error.exists()).toBe(true);
   });
-  it("valid input",() => {
+  it("valid input", () => {
     wrapper.vm.email = "mm@gmail.com";
     wrapper.vm.send();
     expect("reset").toHaveBeenCalled;

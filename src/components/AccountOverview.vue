@@ -74,19 +74,24 @@
             JOIN PREMIUM
           </button>
         </router-link>
-        <button class="trans_button" testid="removeme" id="removeme" @click="remove">
-            Cancel my account
+        <button
+          class="trans_button"
+          testid="removeme"
+          id="removeme"
+          @click="remove"
+        >
+          Cancel my account
         </button>
         <div class="row" v-if="!deleted_Acount">
-        <p  class="col-8 offset-4">YOU ARE A ARTIST ,SO YOU CAN'T</p>
+          <p class="col-8 offset-4">YOU ARE A ARTIST ,SO YOU CAN'T</p>
         </div>
         <h2>For Artist :</h2>
-        <router-link v-if="user.userType=='Artist'" to="/ArtistPersonalPage">
+        <router-link v-if="user.userType == 'Artist'" to="/ArtistPersonalPage">
           <button type="button" class="trans_button">
             ARTIST Page
           </button>
         </router-link>
-        <router-link v-if="user.userType !='Artist' " to="/ForArtist">
+        <router-link v-if="user.userType != 'Artist'" to="/ForArtist">
           <button class="trans_button">
             CLAIM ARTIST
           </button>
@@ -103,11 +108,11 @@
   margin-left: 7%;
   position: relative;
 }
-@media only screen and (max-width:880px){
-  .music{
-  width: 100%;
-  margin-left: 0%;
-  margin-right: 0%;
+@media only screen and (max-width: 880px) {
+  .music {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
   }
 }
 #header {
@@ -119,11 +124,11 @@
   position: absolute;
   left: 1%;
   right: 40%;
-  top:5%;
+  top: 5%;
   bottom: 60%;
 }
-@media only screen and (max-width: 988px){
-  #header{
+@media only screen and (max-width: 988px) {
+  #header {
     position: absolute;
     top: 1%;
     font-size: 66px;
@@ -133,9 +138,9 @@
   color: white;
   margin-bottom: 0px;
   position: absolute;
-  left:6.5%;
-  top:60%;
-  right:43%;
+  left: 6.5%;
+  top: 60%;
+  right: 43%;
   bottom: 40%;
 }
 .premium {
@@ -155,20 +160,20 @@
   top: 70%;
   bottom: 2%;
 }
-@media only screen and (max-width: 714px){
-  .premium{
+@media only screen and (max-width: 714px) {
+  .premium {
     position: absolute;
     margin-top: 6%;
   }
 }
-@media only screen and (max-width: 560px){
-  .premium{
+@media only screen and (max-width: 560px) {
+  .premium {
     position: absolute;
     margin-top: 10%;
   }
 }
-@media only screen and (max-width: 542px){
-  .premium{
+@media only screen and (max-width: 542px) {
+  .premium {
     position: absolute;
     margin-top: 12%;
   }
@@ -191,12 +196,12 @@
 #row2 {
   margin-left: 7%;
 }
-@media only screen and (max-width:880px){
-  #row2{
-  width: 100%;
-  margin-left: 0%;
-  margin-right: 0%;
-  position: relative;
+@media only screen and (max-width: 880px) {
+  #row2 {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    position: relative;
   }
 }
 #white_div {
@@ -205,27 +210,27 @@
   height: 100%;
   padding-right: 5%;
   padding-bottom: 5%;
-  position:relative;
+  position: relative;
 }
-@media only screen and (max-width: 880px){
-  #white_div{
-  background-color: white;
-  width: 77%;
-  height: 100%;
-  padding-right: 5%;
-  padding-bottom: 5%;
-  position:relative;
-  margin-right: 0%;
+@media only screen and (max-width: 880px) {
+  #white_div {
+    background-color: white;
+    width: 77%;
+    height: 100%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    position: relative;
+    margin-right: 0%;
   }
 }
-@media only screen and (max-width: 800px){
-  #white_div{
-  background-color: white;
-  width: 100%;
-  height: 100%;
-  padding-right: 5%;
-  padding-bottom: 5%;
-  position:relative;
+@media only screen and (max-width: 800px) {
+  #white_div {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    position: relative;
   }
 }
 h1 {
@@ -330,12 +335,12 @@ ul li {
   margin-left: 5%;
   margin-bottom: 4%;
 }
-.side_bar{
+.side_bar {
   position: relative;
   width: 23%;
 }
-@media only screen and (max-width: 800px){
-  .side_bar{
+@media only screen and (max-width: 800px) {
+  .side_bar {
     visibility: hidden;
     position: absolute;
   }
@@ -357,10 +362,10 @@ export default {
     ...mapGetters({
       user: "Authorization/user",
       Username: "Authorization/Username",
-      deleted_Acount:"Authorization/deleted_Acountt"
+      deleted_Acount: "Authorization/deleted_Acountt",
     }),
   },
-  methods:{
+  methods: {
     /**
 <<<<<<< HEAD
      * remove user function
@@ -369,9 +374,9 @@ export default {
 >>>>>>> 6a71774874108391fe3b87f4e113978f8b8de02f
      * @public This is a public method
      */
-    remove(){
-       this.$store.dispatch("Authorization/removeuser");
-    }
-  }
+    remove() {
+      this.$store.dispatch("Authorization/removeuser");
+    },
+  },
 };
 </script>

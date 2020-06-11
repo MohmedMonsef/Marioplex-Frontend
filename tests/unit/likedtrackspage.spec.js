@@ -19,19 +19,19 @@ describe("LikedTracks", () => {
             likedtracks_tracks: [],
             likedtracks_loaded: 0,
             likedtracks_length: "",
-            id: ""
+            id: "",
           },
           getters: {
-            likedtracks_tracks: state => state.likedtracks_tracks,
-            likedtracks_length: state => state.likedtracks_length,
-            likedtracks_loaded: state => state.likedtracks_loaded,
-            playlist_id: state => state.playlist_id,
+            likedtracks_tracks: (state) => state.likedtracks_tracks,
+            likedtracks_length: (state) => state.likedtracks_length,
+            likedtracks_loaded: (state) => state.likedtracks_loaded,
+            playlist_id: (state) => state.playlist_id,
           },
           actions: {
-            likedtracks_tracks: jest.fn()
-          }
-        }
-      }
+            likedtracks_tracks: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(LikedTracks, {
       store,

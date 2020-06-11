@@ -16,22 +16,22 @@ describe("PlaylistPopup", () => {
         CheckUserPopup: {
           namespaced: true,
           store: {
-            showpagesModal: false
+            showpagesModal: false,
           },
           getters: {
-            showpagesModal: state => {
+            showpagesModal: (state) => {
               return state.showpagesModal;
-            }
+            },
           },
           actions: {
-            togglepagespopup: jest.fn()
-          }
-        }
-      }
+            togglepagespopup: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(PlaylistPopup, {
       store,
-      localVue
+      localVue,
     });
   });
   it("renders", () => {

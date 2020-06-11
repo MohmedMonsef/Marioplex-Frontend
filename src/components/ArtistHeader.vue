@@ -45,10 +45,11 @@
           >
             Rename
           </a>
-          <input v-if="showinput"
-           id="in_rename"
-            v-model="newname"   
-            @keyup.enter="ChangeArtistName(),showinputfield()"
+          <input
+            v-if="showinput"
+            id="in_rename"
+            v-model="newname"
+            @keyup.enter="ChangeArtistName(), showinputfield()"
           />
         </div>
       </div>
@@ -108,53 +109,53 @@
     }
   }
   #drop_button {
-  border: none;
-  border-radius: 20px;
-  width: 120px;
-  height: 30px;
-  background-color: black;
-  margin-left: 70%;
-  margin-top: 15px;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
-  outline: none;
-  position: absolute; 
-  padding-bottom: 5px;
-  padding-top: 2px;
-  top:22%;
-  right:10%;
+    border: none;
+    border-radius: 20px;
+    width: 120px;
+    height: 30px;
+    background-color: black;
+    margin-left: 70%;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    outline: none;
+    position: absolute;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    top: 22%;
+    right: 10%;
+  }
+  .dropdown-menu {
+    background: #313030;
+    margin-right: 35px;
+    margin-top: 7px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    position: absolute;
+    top: 47%;
+    left: 45%;
+  }
+  .dropdown-item {
+    background: #313030;
+    color: rgb(165, 165, 165);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  #in_rename {
+    position: absolute;
+    bottom: 80%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 30px;
+    z-index: 50px;
+  }
 }
-.dropdown-menu {
-  background: #313030;
-  margin-right: 35px;
-  margin-top: 7px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  position:absolute;
-  top:47%;
-  left:45%
-}
-.dropdown-item {
-  background: #313030;
-  color: rgb(165, 165, 165);
-  font-size: 14px;
-  cursor: pointer;
-}
-#in_rename {
-  position: absolute;
-  bottom:80%;
-  width:100%;
-  background-color: black;
-  color: white;
-  height: 30px;
-  z-index:50px;
-}
-}
-.my_pages{
-   position: relative;
-  right:50%;
+.my_pages {
+  position: relative;
+  right: 50%;
 }
 </style>
 <script>
@@ -193,7 +194,7 @@ export default {
  * @public This is a public method 
 
  */
-    ChangeArtistName(){
+    ChangeArtistName() {
       let payload = {
         name: this.newname,
       };

@@ -35,7 +35,7 @@
               type="text"
               placeholder="Description"
               v-model="Description"
-              @keyup.enter="EditBio(),changeModalState()"
+              @keyup.enter="EditBio(), changeModalState()"
             />
           </div>
         </div>
@@ -82,10 +82,10 @@ div {
   border: none;
   background: none;
   cursor: pointer;
-  margin-left:auto;
+  margin-left: auto;
   height: 8%;
   width: 15%;
- background: linear-gradient(to right, #f27914, #9c28d0);
+  background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
   color: #fff;
@@ -103,8 +103,8 @@ div {
   outline: none;
   background: none;
   cursor: pointer;
-  margin-right:auto;
-   height: 8%;
+  margin-right: auto;
+  height: 8%;
   width: 15%;
   background-color: transparent;
   border-radius: 26px;
@@ -223,9 +223,9 @@ ul {
 .playlist_name {
   color: #fff;
 }
-.to_contain{
-  width:100%;
-  height:100%;
+.to_contain {
+  width: 100%;
+  height: 100%;
 }
 </style>
 <script>

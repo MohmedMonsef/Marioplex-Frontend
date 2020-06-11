@@ -16,7 +16,7 @@ describe("premiumAd", () => {
           namespaced: true,
           state: {
             premiumPopup: true,
-            premiumAd:0
+            premiumAd: 0,
           },
           getters: {
             premiumPopup: (state) => state.premiumPopup,
@@ -31,21 +31,19 @@ describe("premiumAd", () => {
     });
   });
   it("renders", () => {
-    store.state.Mediaplayer.premiumAd=0;
-    expect(wrapper.exists()).toBe(true);
-
-  });
-  it("renders", () => {
-    store.state.Mediaplayer.premiumAd=3;
+    store.state.Mediaplayer.premiumAd = 0;
     expect(wrapper.exists()).toBe(true);
   });
   it("renders", () => {
-    store.state.Mediaplayer.premiumAd=1;
+    store.state.Mediaplayer.premiumAd = 3;
     expect(wrapper.exists()).toBe(true);
-
   });
   it("renders", () => {
-    store.state.Mediaplayer.premiumAd=2;
+    store.state.Mediaplayer.premiumAd = 1;
+    expect(wrapper.exists()).toBe(true);
+  });
+  it("renders", () => {
+    store.state.Mediaplayer.premiumAd = 2;
     expect(wrapper.exists()).toBe(true);
   });
 });

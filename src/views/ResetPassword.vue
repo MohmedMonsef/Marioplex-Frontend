@@ -2,7 +2,9 @@
   <div>
     <div class="conatiner px-0">
       <div class="row header m-0">
-        <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
+        <router-link to="/">
+          <img src="../assets/white Marioplex.png"
+        /></router-link>
       </div>
     </div>
     <div class="row justify-content-center m-0">

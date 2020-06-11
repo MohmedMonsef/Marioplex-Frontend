@@ -454,8 +454,8 @@ export default {
       this.valid_year;
       setTimeout(() => {
         if (this.can_submit) {
-          if ( Number(this.day) >= 1 && Number(this.day) <= 9) 
-               this.day = "0" + this.day;
+          if (Number(this.day) >= 1 && Number(this.day) <= 9)
+            this.day = "0" + this.day;
           var d = new Date(this.year + "-" + this.month + "-" + this.day);
           this.birthday = d; //check date format with back
           let newuser = {

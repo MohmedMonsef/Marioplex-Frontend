@@ -4,7 +4,9 @@
       <account-sidebar />
     </div>
     <div class="col-lg-70%" id="grey_div">
-      <div class="saved" v-if="isEdited == 'success' && this.saved == '1'">Profile saved</div>
+      <div class="saved" v-if="isEdited == 'success' && this.saved == '1'">
+        Profile saved
+      </div>
       <h1>Edit profile</h1>
       <div class="edit_border"></div>
       <div class="white_div">
@@ -58,14 +60,14 @@
           >
         </select>
         <div class="end_border"></div>
-            <div class="col-sm-60%">
-              <router-link to="/UserAccount/Account-overview">
-                <button class="cancel">CANCEL</button>
-              </router-link>
-            </div>
-            <div class="col-sm-30%">
-              <button class="save" @click="checkEdit()">SAVE PROFILE</button>
-            </div>
+        <div class="col-sm-60%">
+          <router-link to="/UserAccount/Account-overview">
+            <button class="cancel">CANCEL</button>
+          </router-link>
+        </div>
+        <div class="col-sm-30%">
+          <button class="save" @click="checkEdit()">SAVE PROFILE</button>
+        </div>
         <div class="col-sm-60%">
           <router-link to="/UserAccount/Account-overview">
             <button class="cancel">CANCEL</button>
@@ -79,10 +81,10 @@
 
       <div class="premium_div" v-if="user.product == 'premium'">
         <div class="wrong" v-if="isEdited == 'carderror'">
-         Invalid creditcard number
+          Invalid creditcard number
         </div>
-         <div class="wrong" v-if="isEdited == 'dateerror'">
-         The expiration date must be upcoming!
+        <div class="wrong" v-if="isEdited == 'dateerror'">
+          The expiration date must be upcoming!
         </div>
         <h2>Card number:</h2>
         <input
@@ -503,18 +505,18 @@ export default {
       ],
       country: "Egypt",
       countries: [
-        { text: "Egypt", value: "eg"},
-        { text: "France", value: "fr"},
-        { text: "USA", value: "us"},
-        { text: "Britain", value: "uk"},
-        { text: "Canada", value: "ca"},
-        { text: "Australia", value: "au"},
-        { text: "Saudi Arabia", value: "sa"},
-        { text: "China", value: "cn"},
-        { text: "Japan", value: "jp"},
-        { text: "Korea", value: "kp"},
-        { text: "Mexico", value: "mx"},
-        { text: "Brazil", value: "br"},
+        { text: "Egypt", value: "eg" },
+        { text: "France", value: "fr" },
+        { text: "USA", value: "us" },
+        { text: "Britain", value: "uk" },
+        { text: "Canada", value: "ca" },
+        { text: "Australia", value: "au" },
+        { text: "Saudi Arabia", value: "sa" },
+        { text: "China", value: "cn" },
+        { text: "Japan", value: "jp" },
+        { text: "Korea", value: "kp" },
+        { text: "Mexico", value: "mx" },
+        { text: "Brazil", value: "br" },
       ],
       //for premium
       expmonth: "0",
@@ -534,7 +536,7 @@ export default {
         { text: "December", value: "12", disabled: false },
       ],
       CreditNumber: "",
-      Monthly: 'x',
+      Monthly: "x",
       nextMonth: "",
       expYear: [{ text: "Year", value: 0, disabled: true }],
       expyear: "0",
@@ -621,32 +623,29 @@ export default {
     deletePremium: function() {
       this.$store.dispatch("Authorization/toFree");
     },
-     /**
+    /**
      * update Premium function
      * @public This is a public method
      */
     updatePremium: function() {
       let update = {
-         password: this.password,
+        password: this.password,
       };
-      if(this.expyear!='0' && this.expmonth != '0'){
-      var today = new Date();
-      var day = today.getDate();
-      var d = new Date(this.expyear + "-" + this.expmonth + "-" + day);
-      update.expiresDate=d;
+      if (this.expyear != "0" && this.expmonth != "0") {
+        var today = new Date();
+        var day = today.getDate();
+        var d = new Date(this.expyear + "-" + this.expmonth + "-" + day);
+        update.expiresDate = d;
       }
-      if(this.Monthly !='x'){
-        if(this.Monthly == 'm')
-        update.isMonth=true;
-        else
-        update.isMonth=false;
+      if (this.Monthly != "x") {
+        if (this.Monthly == "m") update.isMonth = true;
+        else update.isMonth = false;
       }
-      if(this.CreditNumber !=""){
-          update.cardNumber= this.CreditNumber;
+      if (this.CreditNumber != "") {
+        update.cardNumber = this.CreditNumber;
       }
       this.saved = "1";
       this.$store.dispatch("Authorization/saveEdit", update);
-      
     },
   },
   computed: {

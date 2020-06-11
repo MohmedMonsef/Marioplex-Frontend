@@ -71,11 +71,11 @@ p {
  */
 export default {
   name: "lib-artists-default",
-  methods:{
+  methods: {
     setsearch() {
       this.$store.dispatch("Search/search_V", "");
       this.$store.dispatch("Search/clear");
     },
-  }
+  },
 };
 </script>

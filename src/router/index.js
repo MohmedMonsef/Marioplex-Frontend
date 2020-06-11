@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from "../store"
+import store from "../store";
 import Home from "../views/Home.vue";
 import HomeBody from "../components/HomeBody.vue";
 import SignUp from "../views/SignUp.vue";
@@ -44,17 +44,17 @@ import seealltrack from "../views/SeeallTrack";
 import UserProfile from "../views/UserProfile";
 import category from "../views/CategoryPlaylists.vue";
 import Help from "../views/Help.vue";
-import HelpFixed from "../views/HelpFixed.vue"
-import HelpCantLogIn from "../views/HelpCantLogIn.vue"
-import HelpRestPassword from "../views/HelpRestPassword.vue"
-import  HelpFindingAccount from "../views/HelpFindingAccount.vue"
-import HelpMadeForYou from "../views/HelpMadeForYou.vue"
-import HelpMangePaymentDetail from "../views/HelpMangePaymentDetail.vue"
-import  HelpAccountHelp from "../views/HelpAccountHelp.vue"
-import  EmailConfirmation from "../views/ConfirmEmail.vue"
-import  ThanksForConfirmation from "../views/ThanksForConfirmation.vue"
-import UnAuthorized from "../views/UnAuthorized.vue"
-import UserAuthorization from "../views/UserAuthorization.vue"
+import HelpFixed from "../views/HelpFixed.vue";
+import HelpCantLogIn from "../views/HelpCantLogIn.vue";
+import HelpRestPassword from "../views/HelpRestPassword.vue";
+import HelpFindingAccount from "../views/HelpFindingAccount.vue";
+import HelpMadeForYou from "../views/HelpMadeForYou.vue";
+import HelpMangePaymentDetail from "../views/HelpMangePaymentDetail.vue";
+import HelpAccountHelp from "../views/HelpAccountHelp.vue";
+import EmailConfirmation from "../views/ConfirmEmail.vue";
+import ThanksForConfirmation from "../views/ThanksForConfirmation.vue";
+import UnAuthorized from "../views/UnAuthorized.vue";
+import UserAuthorization from "../views/UserAuthorization.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -92,66 +92,70 @@ const routes = [
             component: AccountNotifications,
           },
         ],
-        meta: { 
-          requiresAuth: true
-        }
+        meta: {
+          requiresAuth: true,
+        },
       },
       { path: "", name: "HomePage", component: HomeBody },
       {
         path: "premium",
         name: "Premium",
         component: Premium,
-        meta: { 
-          isPremium:true
-        }
+        meta: {
+          isPremium: true,
+        },
       },
       {
         path: "/GetPremium",
         name: "GetPremium",
         component: GetPremium,
-        meta: { 
+        meta: {
           toPremium: true,
-          isPremium:true
-        }
+          isPremium: true,
+        },
       },
       {
         path: "/Help",
         name: "Help",
-        component: Help
+        component: Help,
       },
       {
         path: "/HelpFixed",
         name: "HelpFixed",
         component: HelpFixed,
-        children:[
-         {path:"HelpCantLogIn",
-          name:"HelpCantLogIn",
-          component:HelpCantLogIn},
+        children: [
           {
-          path:"HelpRestPassword",
-          name:"HelpRestPassword",
-          component:HelpRestPassword
-          },{
-            path:"HelpFindingAccount",
-            name:"HelpFindingAccount",
-            component: HelpFindingAccount
+            path: "HelpCantLogIn",
+            name: "HelpCantLogIn",
+            component: HelpCantLogIn,
           },
           {
-            path:"HelpMadeForYou",
-            name:"HelpMadeForYou",
-            component: HelpMadeForYou
-          },{
-            path:"HelpMangePaymentDetail",
-            name:"HelpMangePaymentDetail",
-            component: HelpMangePaymentDetail
+            path: "HelpRestPassword",
+            name: "HelpRestPassword",
+            component: HelpRestPassword,
           },
           {
-            path:"HelpAccountHelp",
-            name:"HelpAccountHelp",
-            component: HelpAccountHelp
-          }
-        ]
-      }
+            path: "HelpFindingAccount",
+            name: "HelpFindingAccount",
+            component: HelpFindingAccount,
+          },
+          {
+            path: "HelpMadeForYou",
+            name: "HelpMadeForYou",
+            component: HelpMadeForYou,
+          },
+          {
+            path: "HelpMangePaymentDetail",
+            name: "HelpMangePaymentDetail",
+            component: HelpMangePaymentDetail,
+          },
+          {
+            path: "HelpAccountHelp",
+            name: "HelpAccountHelp",
+            component: HelpAccountHelp,
+          },
+        ],
+      },
     ],
   },
   {
@@ -204,23 +208,24 @@ const routes = [
             component: LibraryAlbums,
           },
         ],
-        meta: { 
-          requiresAuth: true
-        }
-      },
-      { 
-        path: "liked-tracks",
-         component: LikedTracks,
-         meta: { 
-          requiresAuth: true
-        }
+        meta: {
+          requiresAuth: true,
         },
-      { path: "queue",
-       component: Queue,
-       meta: { 
-        requiresAuth: true
-      }
-       },
+      },
+      {
+        path: "liked-tracks",
+        component: LikedTracks,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "queue",
+        component: Queue,
+        meta: {
+          requiresAuth: true,
+        },
+      },
       {
         path: "playlist/:playlist_id",
         name: "playlist",
@@ -277,15 +282,15 @@ const routes = [
     path: "/signup",
     name: "SignUp",
     component: SignUp,
-    meta: { 
-      isLogged:true
-    }
+    meta: {
+      isLogged: true,
+    },
   },
   {
     path: "/login",
     name: "Login",
-   component: UserAuthorization,
-   children:[
+    component: UserAuthorization,
+    children: [
       {
         path: "",
         name: "Login",
@@ -298,11 +303,11 @@ const routes = [
         props: (route) => ({
           token: route.query.token,
         }),
-      }
-  ],
-    meta: { 
-      isLogged:true
-    }
+      },
+    ],
+    meta: {
+      isLogged: true,
+    },
   },
   {
     path: "/ForgetPassword",
@@ -313,44 +318,43 @@ const routes = [
     path: "/ForArtist",
     name: "ForArtist",
     component: ForArtist,
-    meta: { 
-      toArtist:true
-    }
+    meta: {
+      toArtist: true,
+    },
   },
   {
     path: "/ClaimArtist",
     name: "ClaimArtist",
     component: ClaimArtist,
-    meta: { 
-      toArtist:true
-    }
+    meta: {
+      toArtist: true,
+    },
   },
   {
     path: "/AccessArtist",
     name: "AccessArtist",
     component: AccessArtist,
-    meta: { 
-      toArtist:true
-    }
+    meta: {
+      toArtist: true,
+    },
   },
   {
     path: "/ArtistPersonalPage",
     name: "ArtistPersonalPage",
     component: ArtistPersonalPage,
-    meta: { 
-      isArtist:true
-    }
+    meta: {
+      isArtist: true,
+    },
   },
   {
     path: "/UnAuthorized",
     name: "UnAuthorized",
-    component: UnAuthorized
+    component: UnAuthorized,
   },
   {
     path: "/EmailConfirmation",
     name: "EmailConfirmation",
-    component: EmailConfirmation
-
+    component: EmailConfirmation,
   },
   {
     path: "/confirm",
@@ -358,78 +362,71 @@ const routes = [
     component: ThanksForConfirmation,
     props: (route) => ({
       id: route.query.id,
-      type: route.query.type
+      type: route.query.type,
     }),
-  }
-
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
-  store
+  store,
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(store.getters["Authorization/GetStatus"])
-  if(to.matched.some(record => record.meta.requiresAuth)) {
-    var status= localStorage.getItem("x-auth-token");
+  console.log(store.getters["Authorization/GetStatus"]);
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    var status = localStorage.getItem("x-auth-token");
     if (!status) {
-      next('/UnAuthorized')
-      return
+      next("/UnAuthorized");
+      return;
     }
-} 
-else {
-  next() 
-}
-  if(to.matched.some(record => record.meta.toPremium)) {
+  } else {
+    next();
+  }
+  if (to.matched.some((record) => record.meta.toPremium)) {
     if (store.getters["Authorization/GetStatus"] != "success") {
-      next('/login')
-      return
+      next("/login");
+      return;
     }
-  } 
-  else {
-    next() 
+  } else {
+    next();
   }
 
-  if(to.matched.some(record => record.meta.toArtist)) {
+  if (to.matched.some((record) => record.meta.toArtist)) {
     if (store.getters["Authorization/GetStatus"] != "success") {
-      next('/login')
-      return
+      next("/login");
+      return;
     }
-  } 
-  else {
-    next() 
+  } else {
+    next();
   }
-  if(to.matched.some(record => record.meta.isArtist)) {
-     status= localStorage.getItem("x-auth-token");
-     var isArtist = localStorage.getItem("is-artist");
-    if (!status || isArtist != "Artist"  ) {
-      next('/UnAuthorized')
-      return
+  if (to.matched.some((record) => record.meta.isArtist)) {
+    status = localStorage.getItem("x-auth-token");
+    var isArtist = localStorage.getItem("is-artist");
+    if (!status || isArtist != "Artist") {
+      next("/UnAuthorized");
+      return;
     }
-  } 
-  else {
-    next() 
+  } else {
+    next();
   }
-  if(to.matched.some(record => record.meta.isLogged)) {
+  if (to.matched.some((record) => record.meta.isLogged)) {
     if (store.getters["Authorization/GetStatus"] == "success") {
-      next('/')
-      return
+      next("/");
+      return;
     }
-  } 
-  else {
-    next() 
+  } else {
+    next();
   }
-  if(to.matched.some(record => record.meta.isPremium)) {
+  if (to.matched.some((record) => record.meta.isPremium)) {
     if (store.getters["Authorization/user"].product == "premium") {
-      next(from.path)
-      return
+      next(from.path);
+      return;
     }
-  } 
-  else {
-    next() 
+  } else {
+    next();
   }
-})
+});
 export default router;

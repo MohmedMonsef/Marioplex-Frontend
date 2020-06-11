@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import HelpMangePaymentDetail  from "../../src/views/HelpMangePaymentDetail.vue"
+import HelpMangePaymentDetail from "../../src/views/HelpMangePaymentDetail.vue";
 
 describe("HelpMangePaymentDetail", () => {
   let wrapper;

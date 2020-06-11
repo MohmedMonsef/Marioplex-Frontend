@@ -14,34 +14,34 @@ describe("AccountEdit", () => {
       modules: {
         Authorization: {
           namespaced: true,
-          state:{
+          state: {
             isEdited: "",
-            user:{
-              product:""
-            }
+            user: {
+              product: "",
+            },
           },
           getters: {
             isEdited: (state) => state.isEdited,
             user: (state) => state.user,
           },
           actions: {
-            saveEdit: jest.fn()
-          }
+            saveEdit: jest.fn(),
+          },
         },
       },
     });
     wrapper = shallowMount(AccountEdit, {
       localVue,
-      store
+      store,
     });
     wrapper.setData({
       saved: false,
-        can_submit1: false,
-        can_submit2: false,
-        can_submit3: false,
-        email: "",
-        password: ""
-    })
+      can_submit1: false,
+      can_submit2: false,
+      can_submit3: false,
+      email: "",
+      password: "",
+    });
   });
   it("call validation functions", () => {
     const editButton = wrapper.find(".save");
@@ -115,7 +115,7 @@ describe("AccountEdit", () => {
   //   expect(wrapper.vm.saved).toBe(true);
   // });
   it("has saved profile div", () => {
-    store.state.Authorization.isEdited = 'success';
+    store.state.Authorization.isEdited = "success";
     let wrapper2 = shallowMount(AccountEdit, {
       localVue,
       store,
@@ -123,7 +123,7 @@ describe("AccountEdit", () => {
     expect(wrapper2.exists(".saved")).toBe(true);
   });
   it("has wrong password div", () => {
-    store.state.Authorization.isEdited = 'faild';
+    store.state.Authorization.isEdited = "faild";
     let wrapper3 = shallowMount(AccountEdit, {
       localVue,
       store,

@@ -30,7 +30,7 @@
       </div>
       <div class="row" v-else>
         <emptylikedtracks testid="emptylikedtracks" />
-      </div> 
+      </div>
     </div>
   </div>
 </template>

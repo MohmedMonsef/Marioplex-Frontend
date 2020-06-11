@@ -2,7 +2,9 @@
   <body>
     <div class="conatiner px-0">
       <div class="row header m-0">
-        <router-link to="/"> <img src="../assets/white Marioplex.png" /></router-link>
+        <router-link to="/">
+          <img src="../assets/white Marioplex.png"
+        /></router-link>
       </div>
     </div>
 
@@ -141,7 +143,7 @@ h1 {
  * @example [none]
  */
 export default {
-  data: function () {
+  data: function() {
     return {
       isNormal: true,
       isError: false,
@@ -164,18 +166,18 @@ export default {
         this.isNormal = false;
         this.isSubmitted = true;
         this.isError = false;
-        this.$store.dispatch("Authorization/reset", { email: this.email })
+        this.$store.dispatch("Authorization/reset", { email: this.email });
       }
     },
   },
   computed: {
-    normal: function () {
+    normal: function() {
       return this.isNormal;
     },
-    error: function () {
+    error: function() {
       return this.isError;
     },
-    submitted: function () {
+    submitted: function() {
       return this.isSubmitted;
     },
   },

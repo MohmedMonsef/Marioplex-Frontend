@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 import SignUp from "../../src/views/SignUp";
 
 describe("SignUp", () => {
-
   let wrapper;
   let store;
   const localVue = createLocalVue();
@@ -208,7 +207,7 @@ describe("SignUp", () => {
     const signup_btn = wrapper.find("#signup-btn");
     signup_btn.trigger("click");
     jest.useFakeTimers();
-    jest.runAllTimers(); 
+    jest.runAllTimers();
     expect("signUp").toHaveBeenCalled;
     expect(wrapper.exists()).toBe(true);
   });

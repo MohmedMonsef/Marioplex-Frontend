@@ -16,22 +16,22 @@ describe("MediaplayerPopup", () => {
         CheckUserPopup: {
           namespaced: true,
           store: {
-            showModal: false
+            showModal: false,
           },
           getters: {
-            showModal: state => {
+            showModal: (state) => {
               return state.showModal;
-            }
+            },
           },
           actions: {
-            togglePopup: jest.fn()
-          }
-        }
-      }
+            togglePopup: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(MediaplayerPopup, {
       store,
-      localVue
+      localVue,
     });
   });
   it("renders", () => {

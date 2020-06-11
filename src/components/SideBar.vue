@@ -2,12 +2,7 @@
   <div class="SideBar" testid="sidebar component">
     <!-- spotify logo -->
     <router-link to="/HomeWebPlayer" testid="logo in sidebar">
-      <img
-        src="../assets/white Marioplex.png"
-        alt="Logo"
-        class="logoImg"
-       
-      />
+      <img src="../assets/white Marioplex.png" alt="Logo" class="logoImg" />
     </router-link>
     <!-- navigations to pages -->
     <ul>
@@ -314,8 +309,8 @@ label {
   height: 30px;
   margin-right: 15px;
 }
-.logoImg{
-  width: 140px; 
+.logoImg {
+  width: 140px;
   margin: 20px;
 }
 @media screen and (max-width: 1000px) {
@@ -341,10 +336,10 @@ label {
     margin-left: -10px;
     width: 30px;
   }
-  .logoImg{
-  width: 50px; 
-  margin: 5px;
-}
+  .logoImg {
+    width: 50px;
+    margin: 5px;
+  }
 }
 </style>
 
@@ -430,12 +425,12 @@ export default {
       });
     },
     getpos() {
-      this.posy = (event.screenY - 105) + "px";
+      this.posy = event.screenY - 105 + "px";
     },
     ChangePlaylistName() {
       let payload = {
         name: this.newname,
-        playlist_id: this.p_id
+        playlist_id: this.p_id,
       };
       this.$store.dispatch("Playlist/ChangePlaylistName", payload);
       this.newname = "";

@@ -9,8 +9,8 @@ describe("PlaylistView", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      id: ""
-    }
+      id: "",
+    },
   };
   localVue.prototype.$route = $route;
 
@@ -26,32 +26,32 @@ describe("PlaylistView", () => {
             playlist_image: "",
           },
           getters: {
-            playlist_tracks: state => {
+            playlist_tracks: (state) => {
               return state.playlist_tracks;
             },
-            playlist_length: state => {
-                return state.playlist_length;
-              },
-              playlist_loaded: state => {
-                return state.playlist_loaded;
-              },
-              playlist_image: state => {
-                return state.playlist_image;
-              },
+            playlist_length: (state) => {
+              return state.playlist_length;
+            },
+            playlist_loaded: (state) => {
+              return state.playlist_loaded;
+            },
+            playlist_image: (state) => {
+              return state.playlist_image;
+            },
           },
           actions: {
             playlist_tracks: jest.fn(),
-            ReorderTracks: jest.fn()
-          }
-        }
-      }
+            ReorderTracks: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(PlaylistView, {
       store,
       localVue,
       propsData: {
-        id: ""
-      }
+        id: "",
+      },
     });
   });
   it("renders", () => {
@@ -59,11 +59,11 @@ describe("PlaylistView", () => {
   });
   it("Playlist View", () => {
     wrapper.setData({
-        oldIndex: "",
-        newIndex: "",
-        playlist_id: "",
+      oldIndex: "",
+      newIndex: "",
+      playlist_id: "",
     }),
-    window.dispatchEvent(new Event('load'));
+      window.dispatchEvent(new Event("load"));
     expect("playlist_tracks").toHaveBeenCalled;
     // wrapper.vm.ReorderTracks();
     // expect("ReorderTracks").toHaveBeenCalled;

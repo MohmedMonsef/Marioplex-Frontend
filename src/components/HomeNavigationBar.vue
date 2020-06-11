@@ -12,7 +12,9 @@
     <div class="row navbar-inner">
       <!-- logo -->
       <div class="logo-div">
-        <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
+        <router-link to="/">
+          <img src="../assets/white Marioplex.png"
+        /></router-link>
       </div>
       <!-- logo -->
       <!--nav items-->
@@ -63,7 +65,9 @@
     <div id="nav-small">
       <!-- logo -->
       <div class="logo-small">
-        <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
+        <router-link to="/">
+          <img src="../assets/white Marioplex.png"
+        /></router-link>
       </div>
       <!-- logo -->
       <div id="disable-page"></div>
@@ -125,7 +129,9 @@
               <a> Account</a>
             </router-link>
           </ul>
-          <router-link to="/"> <img src="../assets/white Marioplex.png"/></router-link>
+          <router-link to="/">
+            <img src="../assets/white Marioplex.png"
+          /></router-link>
         </div>
       </div>
     </div>

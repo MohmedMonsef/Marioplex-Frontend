@@ -14,24 +14,24 @@ describe("AccountOverview", () => {
       modules: {
         Authorization: {
           namespaced: true,
-          state:{
+          state: {
             User: {
-                birthDate:"1999-09-04T00:00:00.000Z",
-                country:"eg",
-                displayName:"Nerdeen",
-                email:"nerdeen.ahmad15@gmail.com",
-                gender:"female"
-              },
-              deleted_Acount:true  
+              birthDate: "1999-09-04T00:00:00.000Z",
+              country: "eg",
+              displayName: "Nerdeen",
+              email: "nerdeen.ahmad15@gmail.com",
+              gender: "female",
+            },
+            deleted_Acount: true,
           },
           getters: {
             Username: (state) => state.User.displayName,
             user: (state) => state.User,
-            deleted_Acountt:(state)=>state.deleted_Acount
+            deleted_Acountt: (state) => state.deleted_Acount,
           },
-          actions:{
-            removeuser:jest.fn()
-          }
+          actions: {
+            removeuser: jest.fn(),
+          },
         },
       },
     });
@@ -48,5 +48,5 @@ describe("AccountOverview", () => {
     input.trigger("click");
     wrapper.vm.remove();
     expect("removeuser").toHaveBeenCalled;
-  }); 
+  });
 });

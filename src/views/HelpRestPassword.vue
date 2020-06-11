@@ -75,7 +75,7 @@
                 If you don’t have access to an email address associated with
                 your Spotify account, you’re unable to reset the password, so
                 you need to
-                <a href="/signup" >create a new account</a>.
+                <a href="/signup">create a new account</a>.
               </p>
 
               <p></p>

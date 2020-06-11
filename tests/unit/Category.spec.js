@@ -15,19 +15,19 @@ describe("Category", () => {
       modules: {
         Categorys: {
           namespaced: true,
-          actions:{
-            categoryname:jest.fn()
-          }
-        }
-      }
+          actions: {
+            categoryname: jest.fn(),
+          },
+        },
+      },
     });
     let Id = "categoryname";
     let Div = document.createElement("div");
-    Div.setAttribute("id",Id);
+    Div.setAttribute("id", Id);
     document.body.appendChild(Div);
     wrapper = shallowMount(Category, {
       store,
-      localVue
+      localVue,
     });
   });
   it("renders category name", () => {

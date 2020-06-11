@@ -21,37 +21,37 @@ describe("HomeWebPlayer", () => {
           },
         },
         CheckUserPopup: {
-            namespaced: true,
-            state: {
-                showModal: false,
-                showpagesModal: false,
-            },
+          namespaced: true,
+          state: {
+            showModal: false,
+            showpagesModal: false,
+          },
         },
         Mediaplayer: {
-            namespaced: true,
-            state: {
-                premiumPopup: false,
+          namespaced: true,
+          state: {
+            premiumPopup: false,
+          },
+          getters: {
+            premiumPopup: (state) => {
+              return state.premiumPopup;
             },
-            getters: {
-                premiumPopup: state => {
-                    return state.premiumPopup;
-                  },
-            }
+          },
         },
         UserLibrary: {
-            state:{
-                sideMenu:false,
-                scrolling:0
-            },
-            getters: {
-                sideMenu:(state)=>state.sideMenu,
-                scrolling: state => state.scrolling
-            },
-            actions: {
-                sideMenu: jest.fn(),
-                scrolling: jest.fn(),
-            }
-        }
+          state: {
+            sideMenu: false,
+            scrolling: 0,
+          },
+          getters: {
+            sideMenu: (state) => state.sideMenu,
+            scrolling: (state) => state.scrolling,
+          },
+          actions: {
+            sideMenu: jest.fn(),
+            scrolling: jest.fn(),
+          },
+        },
       },
     });
     wrapper = shallowMount(HomeWebPlayer, {
@@ -59,8 +59,8 @@ describe("HomeWebPlayer", () => {
       store,
     });
     wrapper.setData({
-        componentKey: 0,
-    })
+      componentKey: 0,
+    });
   });
   it("call side menu", () => {
     const close = wrapper.find(".home_webplayer");

@@ -260,7 +260,7 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-    mytoast.classList.remove("toast--visible");
+      mytoast.classList.remove("toast--visible");
     }, 2000);
   },
 };

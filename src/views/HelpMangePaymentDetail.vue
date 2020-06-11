@@ -189,7 +189,7 @@ a:hover {
 }
 .floatright {
   float: right;
-  font-size:40px ;
+  font-size: 40px;
 }
 .drops-contant {
   padding-bottom: 20px;

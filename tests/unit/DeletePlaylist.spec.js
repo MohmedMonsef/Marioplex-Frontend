@@ -49,7 +49,6 @@ describe("DeletePlaylist", () => {
     expect("toggleModalDelete").toHaveBeenCalled;
   });
   it("it delete playlist  ", () => {
-   
     let testid = "liketoast";
     let toast = document.createElement("div");
     toast.setAttribute("id", testid);
@@ -67,6 +66,4 @@ describe("DeletePlaylist", () => {
     wrapper.vm.changeModalStateDelete();
     expect("toggleModalDelete").toHaveBeenCalled;
   });
- 
 });
-

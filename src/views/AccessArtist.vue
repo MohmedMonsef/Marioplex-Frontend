@@ -61,7 +61,7 @@ svg {
   top: 38%;
   left: 15%;
   right: 45%;
-  width:70%;
+  width: 70%;
   color: white;
   font-size: 130%;
   text-align: center;

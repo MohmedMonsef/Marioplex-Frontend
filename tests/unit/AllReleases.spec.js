@@ -16,15 +16,15 @@ describe("AllReleases", () => {
           namespaced: true,
           state: {
             POPnewreleases: {
-                albums: [],
-            }
+              albums: [],
+            },
           },
           getters: {
-            POPnewreleases: (state) => state.POPnewreleases
+            POPnewreleases: (state) => state.POPnewreleases,
           },
           actions: {
-            showPopularNewreleases: jest.fn()
-          }
+            showPopularNewreleases: jest.fn(),
+          },
         },
       },
     });

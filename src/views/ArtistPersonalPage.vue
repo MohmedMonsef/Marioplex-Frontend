@@ -353,7 +353,7 @@ export default {
     OnPhotoUpload(event) {
       this.choosebutton = true;
       this.selectedphoto = event.target.files[0];
-      console.log("artist photo",this.selectedphoto)
+      console.log("artist photo", this.selectedphoto);
       if (
         !this.selectedphoto ||
         this.selectedphoto.type.indexOf("image/") !== 0
@@ -377,7 +377,7 @@ export default {
       data.append("image", image);
       // Send the image to the API (e.g., with a Vuex action)
     },
-     /**
+    /**
      *  toupload Cover photo
      * @public This is a public method
      */
@@ -392,7 +392,7 @@ export default {
       };
       this.$store.dispatch("ArtistProperties/UploadPhoto", payload);
     },
-     /**
+    /**
      * open pop up to create album
      * @public This is a public method
      */

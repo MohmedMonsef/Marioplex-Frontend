@@ -29,15 +29,15 @@ describe("searchcomponent", () => {
           actions: {
             searchaboutartist: jest.fn(),
             search_V: jest.fn(),
-            showresult:jest.fn(),
-            searchfocus:jest.fn(),
-            clear:jest.fn()
+            showresult: jest.fn(),
+            searchfocus: jest.fn(),
+            clear: jest.fn(),
           },
         },
       },
     });
   });
-  
+
   let testId = "search-box";
   let newDiv = document.createElement("div");
   newDiv.setAttribute("id", testId);
@@ -74,7 +74,7 @@ describe("searchcomponent", () => {
     textInput.setValue("some value");
     expect(Wrapper.contains("button")).toBe(true);
     expect(Wrapper.find(".close").html()).toContain(
-     "<button type=\"button\" aria-label=\"Close\" class=\"close\"><span aria-hidden=\"true\" style=\"font-size: 25px;\">×</span></button>"
+      '<button type="button" aria-label="Close" class="close"><span aria-hidden="true" style="font-size: 25px;">×</span></button>'
     );
   });
 

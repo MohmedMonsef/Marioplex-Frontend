@@ -16,19 +16,19 @@ describe("AboutArtist", () => {
         ArtistPage: {
           namespaced: true,
           store: {
-            bio: ""
+            bio: "",
           },
           getters: {
-            artist_bio: state => {
+            artist_bio: (state) => {
               return state.artist_bio;
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     });
     wrapper = shallowMount(AboutArtist, {
       store,
-      localVue
+      localVue,
     });
   });
   it("renders", () => {

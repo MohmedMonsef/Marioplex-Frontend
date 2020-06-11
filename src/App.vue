@@ -47,11 +47,11 @@ export default {
     window.localStorage.isMySessionActive = "true";
     initializeFirebase();
   },
-  data: function () {
+  data: function() {
     return {
       loading: true,
-      componentKey:0
+      componentKey: 0,
     };
-  }
+  },
 };
 </script>

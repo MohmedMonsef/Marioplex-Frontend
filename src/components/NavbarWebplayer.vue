@@ -137,12 +137,17 @@
               Log out
             </a>
           </router-link>
-          <div v-if="!inlibrary && !insearch && user.product!= 'premium'" class="divider large">________________________</div>
+          <div
+            v-if="!inlibrary && !insearch && user.product != 'premium'"
+            class="divider large"
+          >
+            ________________________
+          </div>
           <router-link
-           to="/Premium" 
-           class="dropdown-item large"
-           v-if="!inlibrary && !insearch && user.product!= 'premium'"
-           >
+            to="/Premium"
+            class="dropdown-item large"
+            v-if="!inlibrary && !insearch && user.product != 'premium'"
+          >
             Upgrade
           </router-link>
         </div>
@@ -150,7 +155,7 @@
       <router-link
         to="/Premium"
         class="upgrade_button small"
-        v-if="!inlibrary && !insearch && user.product!= 'premium'"
+        v-if="!inlibrary && !insearch && user.product != 'premium'"
         tag="button"
       >
         UPGRADE
@@ -421,7 +426,7 @@ export default {
       isLoggedIn: "Authorization/GetStatus",
       Username: "Authorization/Username",
       scrolling: "UserLibrary/scrolling",
-      user: "Authorization/user"
+      user: "Authorization/user",
     }),
   },
   methods: {

@@ -70,33 +70,33 @@ export default {
     },
     async CreateQueue({ commit }, info) {
       commit("demo");
-      var firstTime=1;
+      var firstTime = 1;
       if (info == "") {
-        firstTime=2;
+        firstTime = 2;
         var albumId;
         await axios
-        .get("/api/browse/new-releases")
-        .then((response) => {
-          albumId = response.data.albums[0].id;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+          .get("/api/browse/new-releases")
+          .then((response) => {
+            albumId = response.data.albums[0].id;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         await axios
-        .get("/api/albums/" + albumId)
-        .then((response) => {
-          let album = response.data;
-          info = {
-            index: 0,
-            song_id: album.track[0]._id,
-            album_id: albumId,
-            playlist_id: "0",
-            is_playlist: false,
-          };
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+          .get("/api/albums/" + albumId)
+          .then((response) => {
+            let album = response.data;
+            info = {
+              index: 0,
+              song_id: album.track[0]._id,
+              album_id: albumId,
+              playlist_id: "0",
+              is_playlist: false,
+            };
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
       if (info.playlist_id != "0") {
         axios
@@ -109,9 +109,8 @@ export default {
               info.is_playlist
           )
           .then(() => {
-            store.dispatch("Mediaplayer/get_currentsong",firstTime);
+            store.dispatch("Mediaplayer/get_currentsong", firstTime);
             store.dispatch("Mediaplayer/playsong_state", info);
-            
           })
           .catch((error) => {
             console.log(error);
@@ -127,10 +126,9 @@ export default {
               info.is_playlist
           )
           .then(() => {
-          
-            store.dispatch("Mediaplayer/get_currentsong",firstTime);
-            if(firstTime !=2)
-            store.dispatch("Mediaplayer/playsong_state", info);
+            store.dispatch("Mediaplayer/get_currentsong", firstTime);
+            if (firstTime != 2)
+              store.dispatch("Mediaplayer/playsong_state", info);
           })
           .catch((error) => {
             console.log(error);

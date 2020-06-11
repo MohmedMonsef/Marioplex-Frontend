@@ -16,15 +16,15 @@ describe("AllLists", () => {
           namespaced: true,
           state: {
             POPplaylists: {
-                playlists: [],
-            }
+              playlists: [],
+            },
           },
           getters: {
-            POPplaylists: (state) => state.POPplaylists
+            POPplaylists: (state) => state.POPplaylists,
           },
           actions: {
-            showPopularPlaylists: jest.fn()
-          }
+            showPopularPlaylists: jest.fn(),
+          },
         },
       },
     });

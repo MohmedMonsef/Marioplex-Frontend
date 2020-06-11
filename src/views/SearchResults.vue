@@ -268,18 +268,16 @@
           />
         </div>
       </div>
-      <div
-        v-if="!flagfound"
-      >
-        <p id="noresult">No Results -_- </p>
-        <p >please try using a small key words</p>
+      <div v-if="!flagfound">
+        <p id="noresult">No Results -_-</p>
+        <p>please try using a small key words</p>
       </div>
     </div>
     <div></div>
   </div>
 </template>
 <style scoped>
-.margan{
+.margan {
   margin-top: 50px;
 }
 .track {
@@ -357,7 +355,7 @@ export default {
       search_value: "Search/get_value",
       match_users: "Search/getuser5",
       match_track: "Search/gettrack3",
-      flagfound:"Search/getflagfound"
+      flagfound: "Search/getflagfound",
     }),
   },
   methods: {
@@ -380,6 +378,5 @@ export default {
         return this.$url + "/api/images/" + imgSrc._id + "?belongs_to=user";
     },
   },
-
 };
 </script>

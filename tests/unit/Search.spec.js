@@ -15,36 +15,36 @@ describe("Search", () => {
       modules: {
         Categorys: {
           namespaced: true,
-          state:{
-            getcategory:[],
-            loading:false,
+          state: {
+            getcategory: [],
+            loading: false,
           },
-          getters:{
-            getcategory:state=> state.getcategory,
-            loading:(state) =>state.loading
+          getters: {
+            getcategory: (state) => state.getcategory,
+            loading: (state) => state.loading,
           },
-          actions:{
-            showcategory:jest.fn()
-          }
+          actions: {
+            showcategory: jest.fn(),
+          },
         },
         Search: {
-            namespaced: true,
-            state:{
-              get_value:'',
-              loadingsearch:false,
-              showeres:''
-            },
-            getters:{
-              get_value:state=> state.get_value,
-              loadingsearch:(state) =>state.loadingsearch,
-              showeres:(state) =>state.showeres
-            }
-          }
-      }
+          namespaced: true,
+          state: {
+            get_value: "",
+            loadingsearch: false,
+            showeres: "",
+          },
+          getters: {
+            get_value: (state) => state.get_value,
+            loadingsearch: (state) => state.loadingsearch,
+            showeres: (state) => state.showeres,
+          },
+        },
+      },
     });
     wrapper = shallowMount(Search, {
       store,
-      localVue
+      localVue,
     });
   });
   it("renders", () => {

@@ -83,20 +83,33 @@
 
     <div class="row justify-content-center m-0" v-if="!choosingPlan">
       <div class="premiumForm">
-        <div v-if="upgraded =='carderror' || upgraded =='dateerror' || upgraded =='failed'" class="invalid">
+        <div
+          v-if="
+            upgraded == 'carderror' ||
+              upgraded == 'dateerror' ||
+              upgraded == 'failed'
+          "
+          class="invalid"
+        >
           <div id="error-icon">
             <i class="fa fa-exclamation-circle"></i>
           </div>
           <div id="errors">
-            <p v-if="upgraded=='carderror'">Enter a valid credit card number.</p>
+            <p v-if="upgraded == 'carderror'">
+              Enter a valid credit card number.
+            </p>
             <p v-if="vsecurity">
               Please enter the last 3 numbers on the back of your card (or 4
               numbers on the front if Amex).
             </p>
             <p v-if="vmonth">Select the expiration month.</p>
             <p v-if="vyear">Select the expiration year.</p>
-            <p v-if="upgraded =='dateerror'"> The expiration date must be upcoming!</p>
-            <p v-if="upgraded =='failed'">There was an error,you should try again</p>
+            <p v-if="upgraded == 'dateerror'">
+              The expiration date must be upcoming!
+            </p>
+            <p v-if="upgraded == 'failed'">
+              There was an error,you should try again
+            </p>
           </div>
         </div>
         <p>Card number:</p>

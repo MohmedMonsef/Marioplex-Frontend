@@ -1,33 +1,33 @@
 <template>
-    <div class="to_contain">
-      <home-navigation-bar class="artist_nav_bar" />
-        <div class="info">        
-            <h1 class="motiv">Make Spotify Yours.</h1>
-            <p class="a_name">Kota The Friend</p>
-            <span class="a_listeners">2.06 M Monthly Listeners </span>
-        </div>
-        <div class="claiming">
-          <p class="accessing">
-            250+ million fans are wating for you.Claim your profile to access
-            Spotify for Artists.
-          </p>
-          <router-link to="AccessArtist">
-            <button class="claim_access">CLAIM YOUR PROFILE</button>
-          </router-link>
-        </div>
-      </div>
+  <div class="to_contain">
+    <home-navigation-bar class="artist_nav_bar" />
+    <div class="info">
+      <h1 class="motiv">Make Spotify Yours.</h1>
+      <p class="a_name">Kota The Friend</p>
+      <span class="a_listeners">2.06 M Monthly Listeners </span>
+    </div>
+    <div class="claiming">
+      <p class="accessing">
+        250+ million fans are wating for you.Claim your profile to access
+        Spotify for Artists.
+      </p>
+      <router-link to="AccessArtist">
+        <button class="claim_access">CLAIM YOUR PROFILE</button>
+      </router-link>
+    </div>
+  </div>
 </template>
 <style scoped>
 .artist_nav_bar {
-  position:absolute;
-  width:100%;
+  position: absolute;
+  width: 100%;
 }
 .to_contain {
   background-color: black;
   color: white;
   position: absolute;
   width: 100%;
-  height:100%;
+  height: 100%;
 }
 .info {
   position: relative;
@@ -45,30 +45,30 @@
   width: 50%;
   background-color: black;
   padding: 5%;
-  margin:0;
+  margin: 0;
 }
 .a_name {
-  position:absolute;
-  top:60%;
+  position: absolute;
+  top: 60%;
   left: 60%;
-  width:20%;
- margin:0;
- padding:0;
+  width: 20%;
+  margin: 0;
+  padding: 0;
 }
 .a_listeners {
-  position:absolute;
+  position: absolute;
   top: 65%;
   left: 60%;
 }
 .claiming {
-  position:absolute;
+  position: absolute;
   width: 70%;
   height: 9%;
-  top:88%;
+  top: 88%;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 .accessing {
-  position:relative;
+  position: relative;
   font-size: 160%;
   width: 70%;
   margin: 0;

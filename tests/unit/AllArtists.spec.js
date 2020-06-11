@@ -16,15 +16,15 @@ describe("AllArtists", () => {
           namespaced: true,
           state: {
             POPartists: {
-                artists: [],
-            }
+              artists: [],
+            },
           },
           getters: {
-            POPartists: (state) => state.POPartists
+            POPartists: (state) => state.POPartists,
           },
           actions: {
-            showPopularArtists: jest.fn()
-          }
+            showPopularArtists: jest.fn(),
+          },
         },
       },
     });

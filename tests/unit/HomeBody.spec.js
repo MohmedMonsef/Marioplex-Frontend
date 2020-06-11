@@ -11,25 +11,24 @@ describe("HomeBody", () => {
   localVue.use(Vuex);
   beforeEach(() => {
     store = new Vuex.Store({
-        modules: {
-                Authorization: {
-                  namespaced: true,
-                  state: {
-                      GetStatus:"success"
-                  },
-                  getters: {
-                      GetStatus: (state) => state.GetStatus,
-                  },
-                },
+      modules: {
+        Authorization: {
+          namespaced: true,
+          state: {
+            GetStatus: "success",
+          },
+          getters: {
+            GetStatus: (state) => state.GetStatus,
+          },
         },
-      });
+      },
+    });
     wrapper = shallowMount(HomeBody, {
       localVue,
-      store
+      store,
     });
   });
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
-
   });
 });

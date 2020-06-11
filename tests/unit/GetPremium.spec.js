@@ -13,18 +13,18 @@ describe("GetPremium", () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-       Authorization: {
+        Authorization: {
           namespaced: true,
-          store:{
-            upgraded:true
+          store: {
+            upgraded: true,
           },
-          getters:{
+          getters: {
             upgraded: (state) => {
-                return state.upgraded;
-              },
+              return state.upgraded;
+            },
           },
-          actions: {      
-            toPremium: jest.fn()
+          actions: {
+            toPremium: jest.fn(),
           },
         },
       },
@@ -59,7 +59,7 @@ describe("GetPremium", () => {
   it("input date and invalid security code", () => {
     wrapper.vm.SecurityCode = "11111";
     wrapper.vm.valid_security();
-    
+
     expect(wrapper.vm.vsecurity).toBe(false);
   });
   it("invalid year", () => {
@@ -75,5 +75,4 @@ describe("GetPremium", () => {
     signup_btn.trigger("click");
     expect("toPremium").toHaveBeenCalled;
   });
-
 });

@@ -39,9 +39,9 @@ describe("UploadSong", () => {
     wrapper = shallowMount(UploadSong, {
       localVue,
       store,
-      fileReaderSpy : jest
-      .spyOn(FileReader.prototype, "readAsDataURL")
-      .mockImplementation(() => null),
+      fileReaderSpy: jest
+        .spyOn(FileReader.prototype, "readAsDataURL")
+        .mockImplementation(() => null),
     });
   });
   it("renders", () => {
@@ -102,20 +102,20 @@ describe("UploadSong", () => {
     expect("UploadTrack").toHaveBeenCalled;
   });
   it("High file upload  ", () => {
-     let event = {
-        target: {
-          files: [
-            {
-              name: "audio.webm",
-              size: 50000,
-              type: "audio/webm",
-            },
-          ],
-        },
-      };
-      
-     wrapper.vm.OnHeighFileSelected(event);
-     expect(wrapper.vm.Heighselectedfile ).toBe(event.target.files[0]);
+    let event = {
+      target: {
+        files: [
+          {
+            name: "audio.webm",
+            size: 50000,
+            type: "audio/webm",
+          },
+        ],
+      },
+    };
+
+    wrapper.vm.OnHeighFileSelected(event);
+    expect(wrapper.vm.Heighselectedfile).toBe(event.target.files[0]);
   });
   it("medium file upload ", () => {
     const event = {
@@ -130,7 +130,7 @@ describe("UploadSong", () => {
       },
     };
     wrapper.vm.OnMediumFileSelected(event);
-    expect(wrapper.vm.Mediumselectedfile ).toBe(event.target.files[0]);
+    expect(wrapper.vm.Mediumselectedfile).toBe(event.target.files[0]);
   });
   it("low file upload  ", () => {
     const event = {
@@ -144,9 +144,9 @@ describe("UploadSong", () => {
         ],
       },
     };
-    
+
     wrapper.vm.OnLowFileSelected(event);
-    expect(wrapper.vm.Lowselectedfile ).toBe(event.target.files[0]);
+    expect(wrapper.vm.Lowselectedfile).toBe(event.target.files[0]);
   });
   it("high encrypted file upload  ", () => {
     const event = {
@@ -160,9 +160,9 @@ describe("UploadSong", () => {
         ],
       },
     };
-    
+
     wrapper.vm.OnHeigh_EncFileSelected(event);
-    expect(wrapper.vm.Heigh_Encselectedfile ).toBe(event.target.files[0]);
+    expect(wrapper.vm.Heigh_Encselectedfile).toBe(event.target.files[0]);
   });
   it("medium file encrypted upload  ", () => {
     const event = {
@@ -176,7 +176,7 @@ describe("UploadSong", () => {
         ],
       },
     };
-    
+
     wrapper.vm.OnMedium_EncFileSelected(event);
     expect(wrapper.vm.Medium_Encselectedfile).toBe(event.target.files[0]);
   });
@@ -191,7 +191,7 @@ describe("UploadSong", () => {
           },
         ],
       },
-    };;
+    };
     wrapper.vm.OnLow_EncFileSelected(event);
     expect(wrapper.vm.Low_Encselectedfile).toBe(event.target.files[0]);
   });

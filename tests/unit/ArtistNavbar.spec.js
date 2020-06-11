@@ -12,11 +12,11 @@ describe("ArtistNavbar", () => {
 
   beforeEach(() => {
     store = new Vuex.Store({
-      modules: {}
+      modules: {},
     });
     wrapper = shallowMount(ArtistNavbar, {
       store,
-      localVue
+      localVue,
     });
   });
   it("renders", () => {

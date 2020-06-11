@@ -9,8 +9,8 @@ describe("ArtistProfile", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      id: ""
-    }
+      id: "",
+    },
   };
   localVue.prototype.$route = $route;
 
@@ -21,17 +21,17 @@ describe("ArtistProfile", () => {
           namespaced: true,
           actions: {
             artist_page: jest.fn(),
-            checkisfollowed: jest.fn()
-          }
-        }
-      }
+            checkisfollowed: jest.fn(),
+          },
+        },
+      },
     });
     wrapper = shallowMount(ArtistProfile, {
       store,
       localVue,
       propsData: {
-        id: ""
-      }
+        id: "",
+      },
     });
   });
   it("renders", () => {

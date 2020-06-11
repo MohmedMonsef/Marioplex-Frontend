@@ -18,5 +18,4 @@ describe("ShowPopularartists.vue", () => {
     const wrapper = shallowMount(ShowPopularartists, { localVue });
     expect(wrapper.exists()).toBe(true);
   });
-
 });

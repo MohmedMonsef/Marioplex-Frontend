@@ -28,7 +28,7 @@ describe("Login", () => {
           },
           actions: {
             facebook_signUp: jest.fn(),
-            login: jest.fn()
+            login: jest.fn(),
           },
         },
       },
@@ -64,7 +64,6 @@ describe("Login", () => {
     wrapper.vm.cannotSubmit();
     expect(wrapper.find("#req_email").exists()).toBe(true);
     expect(wrapper.find("#req_password").exists()).toBe(true);
-   
   });
   it("facebook login", () => {
     wrapper.vm.facebook_login();
@@ -78,7 +77,7 @@ describe("Login", () => {
     let email = wrapper.find("#email");
     email.element.value = "mm@gmail.com";
     email.trigger("input");
-   
+
     let password = wrapper.find("#password");
     password.element.value = "1010";
     password.trigger("input");

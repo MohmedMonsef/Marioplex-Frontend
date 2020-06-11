@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import Help  from "../../src/views/Help.vue"
+import Help from "../../src/views/Help.vue";
 describe("Help", () => {
   let wrapper;
   let store;
@@ -12,7 +12,7 @@ describe("Help", () => {
     wrapper = shallowMount(Help, {
       localVue,
       store,
-      stubs: ['Plyr','plyrVideo']
+      stubs: ["Plyr", "plyrVideo"],
     });
   });
   it("renders", () => {

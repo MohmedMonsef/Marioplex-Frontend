@@ -18,11 +18,7 @@
         <h4 class="card-title" id="cardtitle" testid="playlist name">
           {{ name }}
         </h4>
-        <div
-          class="stretched-link"
-          id="carglink"
-          testid="playlistcard "
-        ></div>
+        <div class="stretched-link" id="carglink" testid="playlistcard "></div>
       </div>
     </div>
     <div class="toast" id="addtracktoast" testid="addtracktoast"></div>
@@ -31,18 +27,18 @@
 <style lang="scss" scoped>
 .card {
   background: transparent;
-  width:100%;
+  width: 100%;
   height: 100%;
   margin-left: 15px;
   margin-top: 15px;
 }
 #cardimg {
   width: 100%;
-  height:80%;
+  height: 80%;
 }
 h4 {
-  position:relative;
-  top:0%;
+  position: relative;
+  top: 0%;
   font-size: 14px;
   font-weight: bold;
   color: white;
@@ -82,7 +78,7 @@ const toast = {
     mytoast.textContent = message;
     mytoast.className = "toast toast--visible";
     mytoast.hideTimeout = setTimeout(() => {
-    mytoast.classList.remove("toast--visible");
+      mytoast.classList.remove("toast--visible");
     }, 2000);
   },
 };
@@ -105,7 +101,7 @@ export default {
     }),
   },
   methods: {
-     /**
+    /**
      * Add track to existing playlist
      * @public This is a public method
      */
@@ -118,7 +114,7 @@ export default {
       console.log("in card playlist", payload.playlistid);
       this.$store.dispatch("Playlist/AddTrackToExsistPlaylist", payload);
     },
-     /**
+    /**
      * Closes popup of adding track
      * @public This is a public method
      */

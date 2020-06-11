@@ -105,8 +105,7 @@
         <img
           src="https://spotifysupport.freetls.fastly.net/article-gallery/articles2/inline_icons/icon_heart.png"
         />&nbsp;on a playlist to save it to
-        <a href="/HelpFixed/HelpAccountHelp">
-          <strong>Your Library</strong> </a
+        <a href="/HelpFixed/HelpAccountHelp"> <strong>Your Library</strong> </a
         >.&nbsp;
       </p>
 

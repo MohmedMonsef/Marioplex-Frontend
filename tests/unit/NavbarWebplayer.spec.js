@@ -17,13 +17,13 @@ describe("NavbarWebplayer.vue", () => {
             status: "success",
             User: {
               displayName: "user name",
-              product:""
+              product: "",
             },
           },
           getters: {
             Username: (state) => state.User.displayName,
             GetStatus: (state) => state.status,
-            user:(state) => state.User
+            user: (state) => state.User,
           },
           actions: {
             logout: jest.fn(),
@@ -36,7 +36,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists("#playlist-link")).toBe(true);
   });
@@ -45,7 +45,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists("#album-link")).toBe(true);
   });
@@ -53,7 +53,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists("#artist-link")).toBe(true);
   });
@@ -61,7 +61,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists("#account-link")).toBe(true);
   });
@@ -69,7 +69,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists(".upgrade_button")).toBe(true);
   });
@@ -77,7 +77,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists(".login_botton")).toBe(true);
   });
@@ -85,7 +85,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists(".signup_botton")).toBe(true);
   });
@@ -93,7 +93,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists("#drop_button")).toBe(true);
   });
@@ -119,7 +119,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     const goprev = jest.fn();
     wrapper.setMethods({
@@ -134,7 +134,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
 
     const gonext = jest.fn();
@@ -157,7 +157,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
 
     const logout = jest.fn();
@@ -172,7 +172,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router
+      router,
     });
     expect(wrapper.exists()).toBe(true);
   });

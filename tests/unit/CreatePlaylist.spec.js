@@ -43,14 +43,12 @@ describe("CreatePlaylist", () => {
             withtrack: (state) => {
               return state.withtrack;
             },
-
           },
           actions: {
             toggleModal: jest.fn(),
             CreatePlaylist: jest.fn(),
           },
         },
-        
       },
     });
     wrapper = shallowMount(CreatePlaylist, {
@@ -112,4 +110,3 @@ describe("CreatePlaylist", () => {
     expect("CreatePlaylist").toHaveBeenCalled;
   });
 });
-

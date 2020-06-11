@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import HelpCantLogIn  from "../../src/views/HelpCantLogIn.vue"
+import HelpCantLogIn from "../../src/views/HelpCantLogIn.vue";
 
 describe("HelpCantLogIn", () => {
   let wrapper;

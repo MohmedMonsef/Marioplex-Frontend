@@ -5,7 +5,9 @@
       <div class="col-lg-8" id="confirmheader">
         <h1>Please, Confirm Your Email</h1>
         <h6>Check Your Email For Confirmation</h6>
-        <button class="resend" @click="ResendConfirmationEmail()">Resend</button>
+        <button class="resend" @click="ResendConfirmationEmail()">
+          Resend
+        </button>
       </div>
     </div>
   </div>
@@ -81,14 +83,14 @@ button:focus {
  */
 export default {
   name: "EmailConfirmation",
-  methods:{
-     /**
+  methods: {
+    /**
      * this function is used to resend confirmation email in case the first one faced problem and not sent
      * @public This is a public method
      */
-    ResendConfirmationEmail(){
-    this.$store.dispatch("Authorization/ResendEmail");
-    }
-  }
+    ResendConfirmationEmail() {
+      this.$store.dispatch("Authorization/ResendEmail");
+    },
+  },
 };
 </script>

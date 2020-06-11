@@ -27,12 +27,10 @@
 
       <p>
         Enter any email addresses you use into our
-        <a href="/ForgetPassword" >password reset form</a>. If
-        there's an account associated with it, we’ll let you know. You can
-        continue to
-        <a href="/ForgetPassword" 
-          >reset the account’s password</a
-        >, then use that email address and the new password to log in.
+        <a href="/ForgetPassword">password reset form</a>. If there's an account
+        associated with it, we’ll let you know. You can continue to
+        <a href="/ForgetPassword">reset the account’s password</a>, then use
+        that email address and the new password to log in.
       </p>
 
       <p>
@@ -63,9 +61,7 @@
         If you find an account this way, choose
         <strong>LOG IN WITH FACEBOOK</strong>to log in. If you don’t want your
         Spotify linked to Facebook,
-        <a
-          href="/HelpFixed/HelpAccountHelp"
-          >learn how to disconnect it here</a
+        <a href="/HelpFixed/HelpAccountHelp">learn how to disconnect it here</a
         >.
       </p>
 
@@ -89,14 +85,11 @@
 
       <p>
         If you’ve used Spotify on desktop or Android, you can
-        <a
-          href="/HelpFixed/HelpAccountHelp"
+        <a href="/HelpFixed/HelpAccountHelp"
           >find your username with information stored on your device</a
         >. You can
-        <a
-          href="/HelpFixed/HelpRestPassword"
-          >reset the account’s password</a
-        >, then use that username and the new password to log in.
+        <a href="/HelpFixed/HelpRestPassword">reset the account’s password</a>,
+        then use that username and the new password to log in.
       </p>
     </div>
     <div class="related">

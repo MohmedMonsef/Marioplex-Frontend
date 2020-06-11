@@ -42,7 +42,7 @@ describe("seealluser", () => {
       store,
       localVue,
     });
-    wrapper.vm.inartist()
+    wrapper.vm.inartist();
     expect("inartist").toHaveBeenCalled;
   });
 });

@@ -27,14 +27,14 @@ describe("UserHome", () => {
             POPnewreleases: {
               albums: [],
             },
-            loading:true
+            loading: true,
           },
           getters: {
             POPplaylists: (state) => state.POPplaylists,
             POPartists: (state) => state.POPartists,
             POPalbums: (state) => state.POPalbums,
             POPnewreleases: (state) => state.POPnewreleases,
-            loading: (state) => state.loading
+            loading: (state) => state.loading,
           },
           actions: {
             showPopularPlaylists: jest.fn(),

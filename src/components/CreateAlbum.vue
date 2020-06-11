@@ -23,44 +23,49 @@
               fill-rule="evenodd"
             />
           </svg>
-        </button>      
-          <div class="album_info">
-            <h4>Album Name</h4>
-            <input type="text" name="file" v-model="Name" />
-            <h4>Album Label</h4>
-            <input type="text" name="file" v-model="label" />
-            <h4>Album Type</h4>
-            <input type="text" name="file" v-model="type" />
-            <h4>Relase Date</h4>
-            <input type="text" name="file" v-model="relasedate" />
-            <h4>Available Market</h4>
-            <select
-              v-model="AvailableMarket"
-              class="AvailableMarket_select"
-              testid="country input"
-            >
-              <option
-                v-for="AvailableMarket in AvailableMarkets"
-                :key="AvailableMarket.value"
-                :value="AvailableMarket.value"
-                :disabled="AvailableMarket.disabled"
-                >{{ AvailableMarket.text }}
-              </option>
-            </select>
-            <h4>Genre</h4>
-            <input type="text" name="file" v-model="Genre" @keyup.enter="Create_Album(),changeModalStateCreate()" />
-          </div>
-          <button class="cancel_button" @click="changeModalStateCreate">
-            cancle
-          </button>
-          <button
-            class="creat_button"
-            testid="confirm_create"
-            @click.prevent="Create_Album()"
-            @click="changeModalStateCreate"
+        </button>
+        <div class="album_info">
+          <h4>Album Name</h4>
+          <input type="text" name="file" v-model="Name" />
+          <h4>Album Label</h4>
+          <input type="text" name="file" v-model="label" />
+          <h4>Album Type</h4>
+          <input type="text" name="file" v-model="type" />
+          <h4>Relase Date</h4>
+          <input type="text" name="file" v-model="relasedate" />
+          <h4>Available Market</h4>
+          <select
+            v-model="AvailableMarket"
+            class="AvailableMarket_select"
+            testid="country input"
           >
-            create
-          </button>
+            <option
+              v-for="AvailableMarket in AvailableMarkets"
+              :key="AvailableMarket.value"
+              :value="AvailableMarket.value"
+              :disabled="AvailableMarket.disabled"
+              >{{ AvailableMarket.text }}
+            </option>
+          </select>
+          <h4>Genre</h4>
+          <input
+            type="text"
+            name="file"
+            v-model="Genre"
+            @keyup.enter="Create_Album(), changeModalStateCreate()"
+          />
+        </div>
+        <button class="cancel_button" @click="changeModalStateCreate">
+          cancle
+        </button>
+        <button
+          class="creat_button"
+          testid="confirm_create"
+          @click.prevent="Create_Album()"
+          @click="changeModalStateCreate"
+        >
+          create
+        </button>
       </div>
     </transition>
   </div>
@@ -185,7 +190,7 @@ h4 {
   color: white;
   background-color: transparent;
   margin: 0;
-  height:5%;
+  height: 5%;
 }
 .file_inputs {
   position: relative;
@@ -233,10 +238,10 @@ input {
   position: absolute;
   top: 17%;
 }
-.AvailableMarket_select{
+.AvailableMarket_select {
   width: 100%;
   background: black;
-  border:transparent;
+  border: transparent;
 }
 </style>
 
@@ -250,11 +255,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "CreateAlbum",
   data() {
-    return { 
+    return {
       Name: "",
-      label:"",
-      type:"",
-      relasedate:"",
+      label: "",
+      type: "",
+      relasedate: "",
       AvailableMarket: "",
       Genre: "",
       AvailableMarkets: [
@@ -295,8 +300,8 @@ export default {
       let payload = {
         Name: this.Name,
         label: this.label,
-        type:this.type,
-        relasedate:this.relasedate,
+        type: this.type,
+        relasedate: this.relasedate,
         AvailableMarket: this.AvailableMarket,
         Genre: this.Genre,
       };

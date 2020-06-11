@@ -9,7 +9,7 @@ export default {
     popular_newreleases: [],
     recently_played: [],
     homePlaylists: [],
-    loading:true
+    loading: true,
   },
   mutations: {
     setPopularPlaylists(state, POPplaylists) {
@@ -49,74 +49,74 @@ export default {
     },
   },
   actions: {
-    async showPopularPlaylists({ commit , state }) {
-      state.loading =false;
+    async showPopularPlaylists({ commit, state }) {
+      state.loading = false;
       await axios
         .get("/api/browse/popular-playlists")
         .then((response) => {
           let POPplaylists = response.data;
           commit("setPopularPlaylists", POPplaylists);
-          state.loading=true;
+          state.loading = true;
         })
         .catch((error) => {
           console.log(error);
-          state.loading= true;
+          state.loading = true;
         });
     },
-    showPopularArtists({ commit , state}) {
+    showPopularArtists({ commit, state }) {
       state.loading = false;
       axios
         .get("/api/browse/popular-artists")
         .then((response) => {
           let POPartists = response.data;
           commit("setPopularArtists", POPartists);
-          state.loading= true;
+          state.loading = true;
         })
         .catch((error) => {
           console.log(error);
-          state.loading= true;
+          state.loading = true;
         });
     },
-    showPopularAlbums({ commit , state }) {
+    showPopularAlbums({ commit, state }) {
       state.loading = false;
       axios
         .get("/api/browse/popular-albums")
         .then((response) => {
           let POPalbums = response.data;
           commit("setPopularAlbums", POPalbums);
-          state.loading= true;
+          state.loading = true;
         })
         .catch((error) => {
           console.log(error);
-          state.loading= true;
+          state.loading = true;
         });
     },
-    showPopularNewreleases({ commit , state}) {
-      state.loading= false;
+    showPopularNewreleases({ commit, state }) {
+      state.loading = false;
       axios
         .get("/api/browse/new-releases")
         .then((response) => {
           let POPnewreleases = response.data;
           commit("setPopularNewreleases", POPnewreleases);
-          state.loading= true;
+          state.loading = true;
         })
         .catch((error) => {
           console.log(error);
-          state.loading= true;
+          state.loading = true;
         });
     },
-    async RecenlyPlayed({ commit ,state }) {
-      state.loading= false;
+    async RecenlyPlayed({ commit, state }) {
+      state.loading = false;
       await axios
         .get("api/me/player/recently-played")
         .then((response) => {
           let recently_played = response.data;
           commit("setRecentlyPlayed", recently_played);
-          state.loading= true;
+          state.loading = true;
         })
         .catch((error) => {
           console.log(error);
-          state.loading= true;
+          state.loading = true;
         });
     },
     async homePlaylists({ state, dispatch }) {
@@ -137,6 +137,6 @@ export default {
     POPnewreleases: (state) => state.popular_newreleases,
     RecenlyPlayed: (state) => state.recently_played,
     homePlaylists: (state) => state.homePlaylists,
-    loading:(state) => state.loading
+    loading: (state) => state.loading,
   },
 };

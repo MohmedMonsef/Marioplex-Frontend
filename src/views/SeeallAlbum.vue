@@ -53,7 +53,7 @@ export default {
     LibAlbums,
   },
   methods: {
-     /**
+    /**
      * check if not in searchpage
      * @public This is a public method
      */

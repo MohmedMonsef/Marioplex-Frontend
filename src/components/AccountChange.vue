@@ -7,14 +7,28 @@
       <h1>Change your password</h1>
       <div class="edit_border"></div>
       <div class="white_div">
-        <div class="saved" v-if="isEdited == 'success' && this.saved == '1'">Password updated</div>
+        <div class="saved" v-if="isEdited == 'success' && this.saved == '1'">
+          Password updated
+        </div>
         <h2>Current password</h2>
-        <input type="password" class="in_text" id="current" v-model="password" />
-        <p class="wrong" v-if="isEdited == 'faild' || this.saved == '2'">Sorry, wrong password</p>
+        <input
+          type="password"
+          class="in_text"
+          id="current"
+          v-model="password"
+        />
+        <p class="wrong" v-if="isEdited == 'faild' || this.saved == '2'">
+          Sorry, wrong password
+        </p>
         <h2>New password</h2>
         <input type="password" class="in_text" id="new" v-model="newpassword" />
         <h2>Repeat new password</h2>
-        <input type="password" class="in_text" id="repeat" v-model="repeatedPassword" />
+        <input
+          type="password"
+          class="in_text"
+          id="repeat"
+          v-model="repeatedPassword"
+        />
         <div class="end_border"></div>
         <router-link to="/UserAccount/Account-overview">
           <button class="cancel">CANCEL</button>
@@ -28,12 +42,12 @@
 #row2 {
   margin-left: 7%;
 }
-@media only screen and (max-width:880px){
-  #row2{
-  width: 100%;
-  margin-left: 0%;
-  margin-right: 0%;
-  position: relative;
+@media only screen and (max-width: 880px) {
+  #row2 {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    position: relative;
   }
 }
 #grey_div {
@@ -42,27 +56,27 @@
   height: 100%;
   padding-right: 5%;
   padding-bottom: 5%;
-  position:relative;
+  position: relative;
 }
-@media only screen and (max-width: 880px){
-  #grey_div{
-  background-color: #f8f8f8;
-  width: 77%;
-  height: 100%;
-  padding-right: 5%;
-  padding-bottom: 5%;
-  position:relative;
-  margin-right: 0%;
+@media only screen and (max-width: 880px) {
+  #grey_div {
+    background-color: #f8f8f8;
+    width: 77%;
+    height: 100%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    position: relative;
+    margin-right: 0%;
   }
 }
-@media only screen and (max-width: 800px){
-  #grey_div{
-  background-color: #f8f8f8;
-  width: 100%;
-  height: 100%;
-  padding-right: 5%;
-  padding-bottom: 5%;
-  position:relative;
+@media only screen and (max-width: 800px) {
+  #grey_div {
+    background-color: #f8f8f8;
+    width: 100%;
+    height: 100%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    position: relative;
   }
 }
 h1 {
@@ -117,7 +131,7 @@ h2 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   position: absolute;
-  left:42%;
+  left: 42%;
 }
 .save {
   background-color: #1db954;
@@ -158,12 +172,12 @@ h2 {
   font-size: 15px;
   margin-bottom: 3%;
 }
-.side_bar{
+.side_bar {
   position: relative;
   width: 23%;
 }
-@media only screen and (max-width: 800px){
-  .side_bar{
+@media only screen and (max-width: 800px) {
+  .side_bar {
     visibility: hidden;
     position: absolute;
   }
@@ -212,11 +226,10 @@ export default {
           };
           this.saved = "1";
           this.$store.dispatch("Authorization/saveEdit", edituser);
-        } 
-        else {
+        } else {
           this.saved = "2";
         }
-      },200);
+      }, 200);
     },
     /**
      * required password function
@@ -234,7 +247,7 @@ export default {
      * required new password function
      * @public This is a public method
      */
-    req_newpassword: function () {
+    req_newpassword: function() {
       if (this.newpassword == "") {
         this.canSet2 = false;
       } else {
@@ -246,7 +259,7 @@ export default {
      * required rpeat password function
      * @public This is a public method
      */
-    req_repeatpassword: function () {
+    req_repeatpassword: function() {
       if (this.repeatpassword == "") {
         this.canSet3 = false;
       } else {
@@ -258,15 +271,14 @@ export default {
      * passwords should be equal function
      * @public This is a public method
      */
-    equal_password: function(){
-      if (this.newpassword != this.repeatedPassword)
-      {
+    equal_password: function() {
+      if (this.newpassword != this.repeatedPassword) {
         this.canSet4 = false;
       } else {
         this.canSet4 = true;
       }
-      return;  
-    }
+      return;
+    },
   },
   computed: {
     ...mapGetters({

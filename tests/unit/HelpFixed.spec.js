@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import HelpFixed  from "../../src/views/HelpFixed.vue"
+import HelpFixed from "../../src/views/HelpFixed.vue";
 
 describe("HelpFixed", () => {
   let wrapper;
