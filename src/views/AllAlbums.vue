@@ -32,6 +32,10 @@ h2 {
 <script>
 import ShowPopularalbums from "@/components/ShowPopularAlbums.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName all albums view
+ * @example [none]
+ */
 export default {
   name: "AllAlbums",
   components: {

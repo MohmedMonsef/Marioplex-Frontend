@@ -225,7 +225,7 @@ export default {
     },
     ClaimArtistProfile({ commit }, payload) {
       axios
-        .post("/api/me/ToArtist", payload)
+        .post("/api/me/ToArtist", {name:payload.name,genre:payload.genre,info:payload.info})
         .then(response => {
           const claim = response.data;
           commit("ClaimArtistProfile", claim);

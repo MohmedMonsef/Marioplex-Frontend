@@ -237,6 +237,10 @@ svg {
 }
 </style>
 <script>
+/**
+ * @displayName account  sidebar
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -254,6 +258,10 @@ export default {
   },
   name: "AccountSidebar",
   methods: {
+    /**
+     * check route function
+     * @public This is a public method
+     */
     check() {
       if (this.$router.currentRoute.path == "/UserAccount/Account-overview") {
         this.show1 = true;

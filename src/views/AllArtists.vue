@@ -35,6 +35,10 @@ h2 {
 <script>
 import ShowPopularartists from "@/components/ShowPopularArtists.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName all artists view
+ * @example [none]
+ */
 export default {
   name: "AllArtists",
   components: {

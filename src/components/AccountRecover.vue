@@ -244,6 +244,10 @@ h4{
 <script>
 import AccountSidebar from "@/components/AccountSidebar.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName account  recover playlist
+ * @example [none]
+ */
 export default {
   name: "AccountRecover",
    data: function () {
@@ -265,6 +269,10 @@ export default {
     }),
   },
   methods:{
+    /**
+     * restore playlist function
+     * @public This is a public method
+     */
     Restore(){
       this.$store.dispatch("Playlist/restorePlaylist", this.playlistid)
     }

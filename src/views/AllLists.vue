@@ -35,6 +35,10 @@ h2 {
 <script>
 import ShowPopularplaylists from "@/components/ShowPopularPlaylists.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName all playlists view
+ * @example [none]
+ */
 export default {
   name: "AllLists",
   components: {

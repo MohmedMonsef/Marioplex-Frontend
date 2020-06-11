@@ -353,6 +353,7 @@ export default {
     OnPhotoUpload(event) {
       this.choosebutton = true;
       this.selectedphoto = event.target.files[0];
+      console.log("artist photo",this.selectedphoto)
       if (
         !this.selectedphoto ||
         this.selectedphoto.type.indexOf("image/") !== 0
