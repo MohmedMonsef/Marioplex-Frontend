@@ -20,9 +20,9 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: mariofront
-  env: Mariofront-env
-  bucket_name: frontfront
+  app: multifront
+  env: Multifront-env
+  bucket_name: multifront
   bucket_path: front
   on:
     branch: master

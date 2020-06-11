@@ -55,8 +55,8 @@
           <div class="drop">
             <button class="item__title" @click="show1 = !show1">
               <span>No account linked to email address?</span>
-              <i class="fas fa-angle-down floatright" v-if="!show1"></i>
-              <i class="fas fa-angle-up floatright" v-if="show1"></i>
+              <i class="fa fa-angle-down floatright" v-if="!show1"></i>
+              <i class="fa fa-angle-up floatright" v-if="show1"></i>
             </button>
             <div class="item__content" v-if="show1">
               <p>
@@ -85,8 +85,8 @@
           <div class="drop">
             <button class="item__title" @click="show2 = !show2">
               <span>I’ve not received the email to reset my password</span>
-              <i class="fas fa-angle-down floatright" v-if="!show2"></i>
-              <i class="fas fa-angle-up floatright" v-if="show2"></i>
+              <i class="fa fa-angle-down floatright" v-if="!show2"></i>
+              <i class="fa fa-angle-up floatright" v-if="show2"></i>
             </button>
             <div class="item__content" v-if="show2">
               <p>
@@ -113,8 +113,8 @@
           <div class="drop">
             <button class="item__title" @click="show3 = !show3">
               <span>The link in my email doesn’t work</span>
-              <i class="fas fa-angle-down floatright" v-if="!show3"></i>
-              <i class="fas fa-angle-up floatright" v-if="show3"></i>
+              <i class="fa fa-angle-down floatright" v-if="!show3"></i>
+              <i class="fa fa-angle-up floatright" v-if="show3"></i>
             </button>
             <div class="item__content" v-if="show3">
               <p>
@@ -265,6 +265,7 @@ a:hover {
 }
 .floatright {
   float: right;
+  font-size: 40px;
 }
 .drops-contant {
   margin-bottom: 50px;

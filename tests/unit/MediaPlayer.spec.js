@@ -39,9 +39,9 @@ describe("Mediaplayer", () => {
             playicon: state => state.playicon,
             currentsong: state => state.currentsong,
             progress: state => state.progress,
-            trackduration: state => state.trackduration,
+            duration: state => state.trackduration,
             volumeprogress: state => state.volumeprogress,
-            currentSongIndex: state => state.currentSongIndex,
+            Index: state => state.currentSongIndex,
             duration: state => state.duration,
           },
           actions:{
@@ -118,8 +118,24 @@ describe("Mediaplayer", () => {
     ////moving song bar test
     wrapper.vm.moving_song_bar();
     expect("advance_progress").toHaveBeenCalled;
+    wrapper.vm.drag = true;
+    wrapper.vm.moving_song_bar();
+    expect("advance_progress").toHaveBeenCalled;
     ///////////////////
-    wrapper.vm.isDrag();
+    // wrapper.vm.isDrag();
+    // let seekbar = wrapper.find("#seekbar");
+    // testId = "seekbar";
+    // newDiv = document.createElement("div");
+    // newDiv.setAttribute("id", testId);
+    // document.body.appendChild(newDiv);
+    // const getBoundingClientRectSpy = jest.fn(() => ({ left:0 }));
+    // global.document.getElementById = jest.fn(() => ({
+    //   getBoundingClientRect: getBoundingClientRectSpy  // <= add getBoundingClientRect
+    // }));
+    // const getBoundingClientRectSpy2 = jest.fn(() => ({ width:0 }));
+    // global.document.getElementById = jest.fn(() => ({
+    //   getBoundingClientRect: getBoundingClientRectSpy2  // <= add getBoundingClientRect
+    // }));
     wrapper.vm.startDrag();
     expect(wrapper.vm.drag).toBe(true);
     wrapper.vm.stopDrag();

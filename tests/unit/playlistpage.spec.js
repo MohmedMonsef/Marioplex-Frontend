@@ -62,6 +62,12 @@ describe("playlist_info", () => {
           getters: {
             playicon: (state) => state.playicon,
           },
+        },
+        CheckUserPopup:{
+          namespaced: true,
+          actions:{
+            togglepagespopup: jest.fn(),
+          }
         }
       },
     });

@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 import axios from "axios";
 
+
 Vue.config.productionTip = true;
 
 
