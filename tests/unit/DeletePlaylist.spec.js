@@ -49,20 +49,19 @@ describe("DeletePlaylist", () => {
     expect("toggleModalDelete").toHaveBeenCalled;
   });
   it("it delete playlist  ", () => {
+   
     let testid = "liketoast";
     let toast = document.createElement("div");
     toast.setAttribute("id", testid);
     document.body.appendChild(toast);
     const input = wrapper.find(".cancel_button");
     input.trigger("keyup.enter");
+    jest.useFakeTimers();
     wrapper.vm.DeletePlaylist();
+    jest.runAllTimers();
     expect("DeletePlaylist").toHaveBeenCalled;
   });
   it("it show modalstate ", () => {
-    let testid = "liketoast";
-    let toast = document.createElement("div");
-    toast.setAttribute("id", testid);
-    document.body.appendChild(toast);
     const toggle_add = wrapper.find(".delete_button");
     toggle_add.trigger("click");
     wrapper.vm.changeModalStateDelete();

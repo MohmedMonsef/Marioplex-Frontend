@@ -106,6 +106,11 @@
   </div>
 </template>
 <script>
+/**
+ * Spotify HelpFindingAccount page
+ * @displayName Spotify HelpFindingAccount Page
+ * @example [none]
+ */
 export default {
   name: "HelpFindingAccount",
 };

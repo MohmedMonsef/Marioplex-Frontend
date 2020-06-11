@@ -357,6 +357,10 @@ export default {
     }),
   },
   methods:{
+    /**
+     * This function to cancel the user account 
+     * @public This is a public method
+     */
     remove(){
        this.$store.dispatch("Authorization/removeuser");
     }

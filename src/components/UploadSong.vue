@@ -159,9 +159,8 @@
                 >{{ AvailableMarket.text }}
               </option>
             </select>
-            <!-- <input type="text" name="file" v-model="AvailableMarket" /> -->
             <h4>Genre</h4>
-            <input type="text" name="file" v-model="Genre" />
+            <input type="text" name="file" v-model="Genre" @keyup.enter="UploadTrack(),changeModalStateUpload()" />
              <h4>Album</h4>
             <select
               v-model="id"
@@ -465,38 +464,58 @@ export default {
       this.$store.dispatch("ArtistProperties/toggleModalUpload");
     },
     /**
-     * check track selected to upload(not implemnted yet)
+     * method to take the high quality file
      * @public This is a public method
      */
     OnHeighFileSelected(event) {
       this.Heighselectedfile = event.target.files[0];
 
     },
+    /**
+     * method to take the medium quality file
+     * @public This is a public method
+     */
     OnMediumFileSelected(event) {
       this.Mediumselectedfile = event.target.files[0];
     },
+    /**
+     * method to take thelow quality file
+     * @public This is a public method
+     */
     OnLowFileSelected(event) {
       this.Lowselectedfile = event.target.files[0];
     },
+    /**
+     * method to take the high encrypted quality file
+     * @public This is a public method
+     */
     OnHeigh_EncFileSelected(event) {
       this.Heigh_Encselectedfile = event.target.files[0];
     },
+    /**
+     * method to take the medium encrypted quality file
+     * @public This is a public method
+     */
     OnMedium_EncFileSelected(event) {
       this.Medium_Encselectedfile = event.target.files[0];
 
     },
+    /**
+     * method to take the low encrypted quality file
+     * @public This is a public method
+     */
     OnLow_EncFileSelected(event) {
       this.Low_Encselectedfile = event.target.files[0];
     },
     /**
-     * check track file before upload
+     * method to take the review file
      * @public This is a public method
      */
     OnFilePreviewSelected(event) {
       this.selectedpreview = event.target.files[0];
     },
     /**
-     * Upload Song(not integerated yet)
+     * Upload Song 
      * @public This is a public method
      */
     UploadTrack() {

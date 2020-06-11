@@ -145,8 +145,6 @@
 #in_rename {
   position: absolute;
   bottom:80%;
-  // top: 5%;
-  // right: 0%;
   width:100%;
   background-color: black;
   color: white;
@@ -155,7 +153,6 @@
 }
 }
 .my_pages{
-  // position:absolute;
    position: relative;
   right:50%;
 }
@@ -179,14 +176,23 @@ export default {
     ...mapGetters({
       showinput: "ArtistProperties/showinput",
       ArtistName: "ArtistProperties/ArtistName",
-      // renamepl:"creatplaylist/renamepl"
     }),
   },
+
   methods: {
+    /**
+ * methods to show input field of renaming artist
+ * @public This is a public method 
+
+ */
     showinputfield() {
       this.$store.dispatch("ArtistProperties/showinputfield");
-      // this.showinput =false;
     },
+    /**
+ * methods to change artistname 
+ * @public This is a public method 
+
+ */
     ChangeArtistName(){
       let payload = {
         name: this.newname,

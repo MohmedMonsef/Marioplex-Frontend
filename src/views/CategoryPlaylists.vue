@@ -80,6 +80,11 @@ h1 {
 <script>
 import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
+/**
+ * Spotify categoryplaylist page
+ * @displayName Spotify categoryplaylist Page
+ * @example [none]
+ */
 export default {
   name: "categoryplaylist",
   components: {

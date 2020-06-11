@@ -200,6 +200,11 @@
   </div>
 </template>
 <script>
+/**
+ * Spotify HelpRestPassword page
+ * @displayName Spotify HelpRestPassword Page
+ * @example [none]
+ */
 export default {
   name: "HelpRestPassword",
   data() {

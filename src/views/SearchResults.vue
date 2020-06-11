@@ -361,10 +361,18 @@ export default {
     }),
   },
   methods: {
+    /**
+     * flag to change to seeall pages
+     * @public This is a public method
+     */
     change() {
       this.shower = false;
       this.$store.dispatch("Search/showresult", "");
     },
+    /**
+     * to put image if it is empty
+     * @public This is a public method
+     */
     getImg(imgSrc) {
       if (typeof imgSrc == "undefined") {
         return "https://dummyimage.com/250x400.jpg/dddddd/000000";
