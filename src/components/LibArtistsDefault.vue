@@ -18,7 +18,7 @@
     <h1>Your artists will appear here.</h1>
     <p>Follow artists you love to add them to Your Library.</p>
     <router-link to="/HomeWebPlayer/search" class="search">
-      <button class="search_button" testid="search button">
+      <button class="search_button" testid="search button" @click="setsearch()">
         SEARCH
       </button>
     </router-link>
@@ -71,5 +71,11 @@ p {
  */
 export default {
   name: "lib-artists-default",
+  methods:{
+    setsearch() {
+      this.$store.dispatch("Search/search_V", "");
+      this.$store.dispatch("Search/clear");
+    },
+  }
 };
 </script>

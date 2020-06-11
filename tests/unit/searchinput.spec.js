@@ -29,13 +29,16 @@ describe("searchcomponent", () => {
           actions: {
             searchaboutartist: jest.fn(),
             search_V: jest.fn(),
-            clear:jest.fn()
           },
         },
       },
     });
   });
-
+  
+  let testId = "search-box";
+  let newDiv = document.createElement("div");
+  newDiv.setAttribute("id", testId);
+  document.body.appendChild(newDiv);
   Wrapper = shallowMount(searchcomponent, {
     localVue,
     store,
@@ -47,11 +50,16 @@ describe("searchcomponent", () => {
     methods: {
       check: jest.fn(),
       reset: jest.fn(),
+      focus: jest.fn()
     },
   });
 
   it("renders", () => {
     expect(Wrapper.exists()).toBe(true);
+    var el = document.getElementById('#search-box');
+   if(el){
+   el.addEventListener('focus', focus, true);
+}
   });
   it("the search icon apear", () => {
     expect(Wrapper.find(".search_contaner").html()).toContain(
