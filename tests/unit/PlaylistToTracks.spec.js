@@ -51,7 +51,9 @@ describe("PlaylistsToTracks", () => {
     document.body.appendChild(toast);
     const input = wrapper.find(".card");
     input.trigger("click");
+    jest.useFakeTimers();
     wrapper.vm.changeModalStateAdd();
+    jest.runAllTimers();
     expect("toggleModalAdd").toHaveBeenCalled;
   });
   it("it add track to a playlist ", () => {

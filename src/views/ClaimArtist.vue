@@ -25,7 +25,6 @@
           Only claim 1 profile at a time and wait until you get access before
           claiming another.
         </p>
-        <!--<input class="claim_input" type="url" placeholder="search for a user name or pase a user url" />-->
         <button class="popup_button" @click="changeModalState()">
           Claim Artist Profile
         </button>
@@ -52,7 +51,6 @@
                   fill-rule="evenodd"
                 ></path>
               </svg>
-              <!-- <i class="fa fa-times"  id="myicon" ></i>-->
             </button>
 
             <h1 class="title">Claim an Artist Profile</h1>
@@ -121,23 +119,19 @@ svg {
   position: absolute;
   top: 10%;
   left: 15%;
-  /* right: 45%; */
   width: 70%;
   color: white;
   font-size: 250%;
   text-align: center;
-  /* margin-bottom: 7%; */
 }
 .access_paragraph {
   position: absolute;
   top: 35%;
   left: 25%;
-  /* right: 45%; */
   width: 50%;
   color: white;
   font-size: 150%;
   text-align: center;
-  /* margin-top: 7%; */
 }
 .claim_input {
   position: fixed;
@@ -179,7 +173,6 @@ svg {
   margin: 20px;
   height: 50px;
   width: 180px;
-  /* padding: 8px 34px; */
   background-color: #7f80fa;
   border-radius: 26px;
   border-color: transparent;
@@ -202,7 +195,6 @@ svg {
   margin: 20px;
  height:7%;
  width:12%;
-  /* padding: 8px 34px; */
   background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
@@ -210,7 +202,6 @@ svg {
   color: #fff;
   font-size: 90%;
   font-weight: 700;
-
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
 }
@@ -220,13 +211,11 @@ svg {
   left: 35%;
   appearance: none;
   outline: none;
-
   background: none;
   cursor: pointer;
   margin: 20px;
   height: 7%;
   width: 12%;
-  /* padding: 8px 34px; */
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
@@ -234,7 +223,6 @@ svg {
   color: #fff;
   font-size: 90%;
   font-weight: 700;
-
   transition: 0.4s ease-out;
 }
 
@@ -244,7 +232,6 @@ svg {
   justify-content: center;
   align-items: center;
   margin: none;
-
   top: 0;
   left: 0;
   right: 0;

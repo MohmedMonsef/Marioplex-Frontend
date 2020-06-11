@@ -171,6 +171,11 @@
   </div>
 </template>
 <script>
+/**
+ * Spotify HelpMadeForYou page
+ * @displayName Spotify HelpMadeForYou Page
+ * @example [none]
+ */
 export default {
   name: "HelpMadeForYou",
 };

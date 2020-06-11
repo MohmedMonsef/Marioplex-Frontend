@@ -93,7 +93,6 @@ export default {
       state.image_id = id;
     },
     Show_Photo() {
-      // state.currentimage=image
     },
     Get_Artist_ID(state, ArtistID) {
       state.Artist_ID = ArtistID;
@@ -257,7 +256,6 @@ export default {
           const ArtistID = res.data._id;
           commit("Get_Artist_ID", ArtistID);
           store.dispatch("ArtistProperties/Get_Latest_Image_ID", ArtistID);
-          // store.dispatch("ArtistProperties/Get_Album_ID", ArtistID);
           store.dispatch("ArtistProperties/Get_Albums", ArtistID);
         })
         .catch((err) => {
@@ -314,21 +312,19 @@ export default {
     },
     UploadTrack({ commit }, payload) {
       const high = new FormData();
-      high.append("image", payload.highselectedfile);
+      high.append("audio", payload.highselectedfile);
       const medium = new FormData();
-      medium.append("image", payload.mediumselectedfile);
+      medium.append("audio0", payload.mediumselectedfile);
       const low = new FormData();
-      low.append("image", payload.lowselectedfile);
+      low.append("audio1", payload.lowselectedfile);
       const high_enc = new FormData();
-      high_enc.append("image", payload.high_enc_selectedfile);
+      high_enc.append("audio2", payload.high_enc_selectedfile);
       const medium_enc = new FormData();
-      medium_enc.append("image", payload.medium_enc_selectedfile);
+      medium_enc.append("audio3", payload.medium_enc_selectedfile);
       const low_enc = new FormData();
-      low_enc.append("image", payload.low_enc_selectedfile);
+      low_enc.append("audio4", payload.low_enc_selectedfile);
       const review = new FormData();
-      review.append("image", payload.selectedpreview);
-      // let allbum_id = state.Album_ID;
-      console.log("hoho ho ho ho",payload.AlbumID);
+      review.append("audio5", payload.selectedpreview);
       axios({
         method: "post",
         url:
@@ -343,13 +339,13 @@ export default {
           "&duration=21.7&key=a4631a153a443df9eed0593043db7519&keyId=f3c5e0361e6654b28f8049c778b23946&genres=" +
           payload.Genre,
         data: {
-          high,
-          medium,
-          low,
-          high_enc,
-          medium_enc,
-          low_enc,
-          review,
+          high:high,
+          medium:medium,
+          low:low,
+          heigh_enc:high_enc,
+          medium_enc:medium_enc,
+          low_enc:low_enc,
+          review:review,
         },
       })
         .then(() => {
@@ -358,22 +354,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      //post("/api/artists/me/albums/"+5eb0a8b4ec0c444e9c48986e+"/tracks?")
     },
-    // Get_Album_ID({ state, commit }) {
-    //   let Artist_ID = state.Artist_ID;
-    //   console.log("artist id in artist propertis:", Artist_ID);
-    //   axios
-    //     .get("api/Artists/" + Artist_ID + "/Albums")
-    //     .then((res) => {
-    //       const AlbumID = res.data[0]._id;
-    //       console.log("album id in artist propertis:", AlbumID);
-    //       commit("Get_Album_ID", AlbumID);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // },
     toggleModalCreate({ commit }) {
       commit("toggleModalCreate");
     },
@@ -388,7 +369,6 @@ export default {
           genre: payload.Genre,
         })
         .then(() => {
-          // const Album=res.data;
           commit("Create_Album");
           store.dispatch("ArtistProperties/Get_Albums");
         })

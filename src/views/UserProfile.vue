@@ -69,8 +69,8 @@ h1 {
 import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
 /**
- * Album page made by Artist and you can like and add it to your liked songs also it contains the artist name which will move you to the artist page where you can find more and more of songs you like
- * @displayName Album Page
+ * User page that shows his public playlists
+ * @displayName User Page
  * @example [none]
  */
 export default {
@@ -92,7 +92,7 @@ export default {
     })
   },
   /**
-   * Called at loading the page to display album tracks and send the id to get that specific album
+   * Before create lifehook to get user informtion and playlists from backend
    * @public This is a public method
    */
   beforeCreate: function() {

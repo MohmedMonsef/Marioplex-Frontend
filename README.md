@@ -1,4 +1,7 @@
-# spotifyfront
+# Marioplex
+
+Software Engineering project(a spotify mimic)
+Frontend Team Repo.
 
 ## Project setup
 
@@ -36,11 +39,4 @@ npm install --save-dev vue-styleguidist
 npm run styleguide
 ```
 
-### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-# Marioplex
-
-Software Engineering project(a spotify mimic)
-Frontend Team Repo.

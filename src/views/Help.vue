@@ -925,6 +925,11 @@
 </template>
 <script>
 /* eslint-disable */
+/**
+ * Spotify help page
+ * @displayName Spotify help Page
+ * @example [none]
+ */
 import plyrVideo from "vue-plyr";
 export default {
     name: "Help",
@@ -955,6 +960,11 @@ export default {
         };
     },
     methods: {
+        /**
+       * disable displaied vedio
+       * @displayName displaied vedio
+       * @public This is a public method
+       */
         disable(event) {
             var Id = event.target.id;
             if (
@@ -971,6 +981,11 @@ export default {
                 this.playingvideo5 = false;
             }
         },
+     /**
+       * Display video
+       * @displayName Display the 1st vedio
+       * @public This is a public method 
+       */
         showvideo1() {
             this.video1 = true;
             this.video2 = false;
@@ -978,6 +993,11 @@ export default {
             this.video4 = false;
             this.video5 = false;
         },
+      /**
+       * Display video
+       * @displayName Display the 2nd vedio
+       * @public This is a public method 
+       */
         showvideo2() {
             this.video1 = false;
             this.video2 = true;
@@ -985,6 +1005,11 @@ export default {
             this.video4 = false;
             this.video5 = false;
         },
+        /**
+       * Display video
+       * @displayName Display the 3rd vedio 
+       * @public This is a public method
+       */
         showvideo3() {
             this.video1 = false;
             this.video2 = false;
@@ -992,6 +1017,11 @@ export default {
             this.video4 = false;
             this.video5 = false;
         },
+     /**
+       * Display video
+       * @displayName Display the 4th vedio 
+       * @public This is a public method
+       */
         showvideo4() {
             this.video1 = false;
             this.video2 = false;
@@ -999,6 +1029,11 @@ export default {
             this.video4 = true;
             this.video5 = false;
         },
+     /**
+       * triggers search request
+       * @displayName Search
+       * @public This is a public method
+       */
         showvideo5() {
             this.video1 = false;
             this.video2 = false;
@@ -1006,12 +1041,27 @@ export default {
             this.video4 = false;
             this.video5 = true;
         },
+     /**
+       * triggers showmore on click
+       * @displayName showmore2
+       * @public This is a public method
+       */
         showmore1() {
             this.show1 = true;
         },
+     /**
+       * triggers showmore on click
+       * @displayName showmore2
+       * @public This is a public method
+       */
         showmore2() {
             this.show2 = true;
         },
+      /**
+       * Search In Help Page
+       * @displayName Search In Help Page
+       * @public This is a public method
+       */
         check(search) {
             console.log(search);
             if (search == "") {
@@ -1106,6 +1156,11 @@ export default {
                 }
             }
         },
+        /**
+       * triggers search request
+       * @displayName Search
+       * @public This is a public method
+       */
         reset() {
             this.search = "";
             this.apear = false;
@@ -1148,15 +1203,6 @@ export default {
 }
 #trans {
     height: 400px;
-    /* animation-name: mymove;
-  animation-delay: 2s;
-  animation-direction: alternate;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 2;
-  animation: mymove 5s infinite;
-  animation-play-state: paused;
-  animation-timing-function: linear; */
 }
 .video-info {
     padding-top: 80px;

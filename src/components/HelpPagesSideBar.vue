@@ -110,6 +110,11 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+/**
+ * Spotify HelpPagesSideBar 
+ * @displayName Spotify HelpPagesSideBar 
+ * @example [none]
+ */
 export default {
   name: "HelpPagesSideBar",
   computed: {

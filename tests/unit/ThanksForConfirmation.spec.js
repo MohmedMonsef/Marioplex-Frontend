@@ -40,23 +40,51 @@ describe("ThanksForConfirmation", () => {
     });
   });
   it("renders", () => {
+    let $route = {
+      query: {
+        id: "",
+        type:""
+      },
+    };
+    localVue.prototype.$route = $route;
     expect(wrapper.exists()).toBe(true);
   });
   it("Thanks for Email Confirmation", () => {
-    $route.query.type == "signup";
+    let $route = {
+      query: {
+        id: "",
+        type:"signup"
+      },
+    };
+    localVue.prototype.$route = $route;
     wrapper.vm.thanksForConfirmation();
     expect("ConfirmEmail").toHaveBeenCalled;
+   
+  });
+  it("Thanks for Email Confirmation", () => {
+    let $route = {
+      query: {
+        id: "",
+        type:"update"
+      },
+    };
+    localVue.prototype.$route = $route;
 
-    $route.query.type == "update";
     wrapper.vm.thanksForConfirmation();
     expect("ConfirmUpdate").toHaveBeenCalled;
     expect("logout").toHaveBeenCalled;
-
-    $route.query.type == "";
+    
+  });
+  it("Thanks for Email Confirmation", () => {
+    let $route = {
+      query: {
+        id: "",
+        type:""
+      },
+    };
+    localVue.prototype.$route = $route;
     wrapper.vm.thanksForConfirmation();
     expect("ConfirmPremium").toHaveBeenCalled;
-    expect("logout").toHaveBeenCalled;
-
     
   });
 });

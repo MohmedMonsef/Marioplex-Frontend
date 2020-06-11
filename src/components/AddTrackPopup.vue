@@ -47,27 +47,14 @@
   margin: 10;
   padding: 10;
   box-sizing: border-box;
-  // overflow: hidden;
 }
 body {
   font-family: "montserrat", sans-serif;
-  // overflow-y: hidden;
 }
-
-// div {    //DONKEY!!!!!!!!!!!!!!
-//   position: rel;
-//   display: block;
-//   width: 500%;
-//   height: 100vh;
-// }
 .to_contain {
   position: relative;
-  // display: block;
   width: 100%;
   height: 100%;
-  // height: 100%;
-  // height:auto;
-  // overflow-y: auto;
 }
 .cratenewplaylist {
   position: absolute;
@@ -81,7 +68,6 @@ body {
   margin: 20px;
   height: 7%;
   width: 17%;
-  // padding: 8px 34px;
   background-color: #1ed760;
   border-radius: 26px;
   border-color: transparent;
@@ -177,7 +163,6 @@ h2 {
   margin-top: 38px;
   top: 30%;
   z-index: 6;
-  //z-index:9998;
 }
 .row {
   position: absolute;
@@ -196,10 +181,8 @@ import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 import CreatePlaylist from "../components/CreatePlaylist";
 import PlaylistsToTracks from "@/components/PlaylistsToTracks.vue";
-
-//import LibPlaylistsDefault from "@/components/lib-playlists-default.vue"
 /**
- * Appears on trying to add new track to playlist(not implemented yet)
+ * Appears on trying to add new track to playlist
  * @displayName Add track popup
  * @example [none]
  */
@@ -217,25 +200,20 @@ export default {
       playlistoftrack: "Playlist/playlistoftrack",
     }),
   },
+  
   methods: {
+    /**
+ * methods to open and close popup of add track to exesting playlist 
+ * @public This is a public method 
+
+ */
     changeModalStateAdd() {
       this.$store.dispatch("Playlist/toggleModalAdd");
     },
-    // AddTrackToNewPlayList() {
-    //   console.log(
-    //     "to add track in a playlist the playlistid is",
-    //     this.trackid
-    //   );
-    //   // console.log(
-    //   //   "to add track in a playlist the track is",
-    //   //   this.trackofplaylist
-    //   // );
-    //   let payload = {
-    //    // playlistoftrack: this.playlistoftrack,
-    //     trackid: this.trackid
-    //   };
-    //   this.$store.dispatch("playlist/AddTrackToNewPlayList", payload);
-    // },
+      /**
+ * methods to open and close popup of add track to a newly created playlist 
+ * @public This is a public method 
+ */
     changeModalState() {
       this.withtrack = true;
       console.log("in add track pop up the bool", this.withtrack);

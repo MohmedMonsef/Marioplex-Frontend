@@ -2,8 +2,8 @@ let currentaudio = new Audio();
 let audioKeyID = "";
 let audioKey = "";
 /**
- * Album page made by Artist and you can like and add it to your liked songs also it contains the artist name which will move you to the artist page where you can find more and more of songs you like
- * @displayName Album Page
+ * helper to regenerate the url of the track after decoding it
+ * @displayName Play tracks
  * @example [none]
  */
 export default {};

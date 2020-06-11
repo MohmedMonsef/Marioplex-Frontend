@@ -278,7 +278,7 @@ h3 {
 <script>
 /**
  * Body of home page for premium functionalities
- * @displayName HomeBody
+ * @displayName Premium static page
  * @example [none]
  */
 export default {};

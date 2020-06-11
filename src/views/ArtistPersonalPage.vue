@@ -25,7 +25,6 @@
             >
               change cover photo
             </button>
-            <!-- v-if="choosebutton" -->
             <button class="uploadbutton" @click="UploadPhoto()">
               Upload
             </button>
@@ -166,7 +165,6 @@ svg {
 .c_track {
   position: absolute;
   top: 40%;
-  // left: 80%;
   right: 0;
   appearance: none;
   outline: none;
@@ -174,11 +172,8 @@ svg {
   background: none;
   cursor: pointer;
   margin: 20px;
-  // height: 50px;
-  // width: 220px;
   height: 8%;
   width: 17%;
-  // padding: 8px 34px;
   background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
@@ -192,7 +187,6 @@ svg {
 .c_album {
   position: absolute;
   top: 30%;
-  // left: 80%;
   right: 0;
   appearance: none;
   outline: none;
@@ -200,11 +194,8 @@ svg {
   background: none;
   cursor: pointer;
   margin: 20px;
-  // height: 50px;
-  // width: 220px;
   height: 8%;
   width: 17%;
-  // padding: 8px 34px;
   background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
@@ -218,9 +209,7 @@ svg {
 .coverphoto {
   position: absolute;
   top: 0%;
-  /* The image used */
   background-image: url("../assets/black_ground.png");
-  /* Full height */
   height: 50%;
   width: 100%;
   /* Center and scale the image nicely */
@@ -298,7 +287,6 @@ svg {
 }
 </style>
 <script>
-//import { mapGetters } from "vuex";
 import { mapState, mapGetters } from "vuex";
 import UploadSong from "../components/UploadSong";
 //import DeleteSong from "../components/DeleteSong";
@@ -321,7 +309,6 @@ export default {
         width: "",
       },
       choosebutton: false,
-      //imageLoaded:false
     };
   },
   components: {
@@ -336,12 +323,10 @@ export default {
       show: (state) => state.ArtistProperties.showModal,
       showupload: (state) => state.ArtistProperties.showModalUpload,
       showCreate: (state) => state.ArtistProperties.showModalCreate,
-      // currentimage:state=>state.artistproperties.currentimage
     }),
     ...mapGetters({
       userid: "Authorization/userid",
       image_id: "ArtistProperties/image_id",
-      // currentimage:"artistproperties/currentimage"
       Artist_ID: "ArtistProperties/Artist_ID",
       ArtistBio: "ArtistProperties/ArtistBio",
     }),
@@ -361,9 +346,14 @@ export default {
     changeModalStateUpload() {
       this.$store.dispatch("ArtistProperties/toggleModalUpload");
     },
+    /**
+     *  takes file toupload Cover photo
+     * @public This is a public method
+     */
     OnPhotoUpload(event) {
       this.choosebutton = true;
       this.selectedphoto = event.target.files[0];
+      console.log("artist photo",this.selectedphoto)
       if (
         !this.selectedphoto ||
         this.selectedphoto.type.indexOf("image/") !== 0
@@ -387,6 +377,10 @@ export default {
       data.append("image", image);
       // Send the image to the API (e.g., with a Vuex action)
     },
+     /**
+     *  toupload Cover photo
+     * @public This is a public method
+     */
     UploadPhoto() {
       this.choosebutton = false;
       let payload = {
@@ -398,6 +392,10 @@ export default {
       };
       this.$store.dispatch("ArtistProperties/UploadPhoto", payload);
     },
+     /**
+     * open pop up to create album
+     * @public This is a public method
+     */
     changeModalStateCreate() {
       this.$store.dispatch("ArtistProperties/toggleModalCreate");
     },
@@ -405,9 +403,6 @@ export default {
   created: function() {
     this.$store.dispatch("ArtistProperties/Get_Artist_ID");
     this.$store.dispatch("ArtistProperties/Get_Artist_Bio");
-    // this.$store.dispatch("ArtistProperties/Get_Album_ID");
-    // this.$store.dispatch("ArtistProperties/Get_Albums");
-    console.log("hi hihi hi");
   },
 };
 </script>

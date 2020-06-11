@@ -32,6 +32,11 @@
   </div>
 </template>
 <script>
+/**
+ * Spotify HelpAccountHelp page
+ * @displayName Spotify HelpAccountHelp Page
+ * @example [none]
+ */
 export default {
   name: "HelpAccountHelp",
 };
