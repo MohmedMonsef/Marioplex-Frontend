@@ -49,7 +49,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "seealluser",
   components: {
-    LibArtists,
+    LibArtists
   },
   methods: {
     /**
@@ -58,14 +58,14 @@ export default {
      */
     inartist() {
       this.$store.dispatch("Search/artistin", true);
-    },
+    }
   },
   computed: {
     ...mapGetters({
       match_users: "Search/getuser",
       search_value: "Search/get_value",
-      searchfocus: "Search/searchfocus",
-    }),
-  },
+      searchfocus: "Search/searchfocus"
+    })
+  }
 };
 </script>

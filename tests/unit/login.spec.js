@@ -19,27 +19,27 @@ describe("Login", () => {
           state: {
             status: "",
             token: "",
-            User: {},
+            User: {}
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
-            },
+            }
           },
           actions: {
             facebook_signUp: jest.fn(),
-            login: jest.fn(),
-          },
-        },
-      },
+            login: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(Login, {
       localVue,
       store,
       stubs: {
         LogoHeader,
-        Divider,
-      },
+        Divider
+      }
     });
   });
   it("renders", () => {

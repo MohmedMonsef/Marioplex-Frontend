@@ -9,8 +9,8 @@ describe("ArtistChart", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      id: "",
-    },
+      id: ""
+    }
   };
   localVue.prototype.$route = $route;
 
@@ -21,28 +21,28 @@ describe("ArtistChart", () => {
           namespaced: true,
           store: {
             artist_followers: [],
-            loadedchart: false,
+            loadedchart: false
           },
           getters: {
-            artist_followers: (state) => {
+            artist_followers: state => {
               return state.artist_followers;
             },
-            loadedchart: (state) => {
+            loadedchart: state => {
               return state.loadedchart;
-            },
+            }
           },
           actions: {
-            numberoffollowers: jest.fn(),
-          },
-        },
-      },
+            numberoffollowers: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(ArtistChart, {
       store,
       localVue,
       propsData: {
-        id: "",
-      },
+        id: ""
+      }
     });
   });
   it("renders", () => {

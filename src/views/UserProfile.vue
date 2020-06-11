@@ -77,19 +77,19 @@ export default {
   name: "albumview",
   data: function() {
     return {
-      userid: "",
+      userid: ""
     };
   },
   components: {
-    LibPlaylists,
+    LibPlaylists
   },
   computed: {
     ...mapGetters({
       // map `this.playlists1` to `this.$store.getters.playlists`
       user: "UserPage/user",
       playlists: "UserPage/playlists", // creat new object "playlists1" and map to it
-      loading: "UserPage/loading",
-    }),
+      loading: "UserPage/loading"
+    })
   },
   /**
    * Before create lifehook to get user informtion and playlists from backend
@@ -99,6 +99,6 @@ export default {
     this.userid = this.$route.params.user_id;
     this.$store.dispatch("UserPage/user_playlists", this.userid);
     this.$store.dispatch("UserPage/user_info", this.userid);
-  },
+  }
 };
 </script>

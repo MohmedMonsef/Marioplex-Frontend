@@ -88,19 +88,19 @@ import { mapGetters } from "vuex";
 export default {
   name: "categoryplaylist",
   components: {
-    LibPlaylists,
+    LibPlaylists
   },
   computed: {
     ...mapGetters({
       playlists: "Categorys/getcategoryplaylists5",
-      category_name: "Categorys/getcategory_name",
-    }),
+      category_name: "Categorys/getcategory_name"
+    })
   },
   created: function() {
     this.$store.dispatch(
       "Categorys/categoryplaylists",
       this.$route.params.categoryId
     );
-  },
+  }
 };
 </script>

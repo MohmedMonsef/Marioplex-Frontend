@@ -23,78 +23,78 @@ describe("SongComponent", () => {
                 name: "HAVANA",
                 artistId: "5e80c9b614c8566d6cd9b40e",
                 albumId: "5e80cc2b14c8566d6cd9b40f",
-                images: [],
+                images: []
               },
               isLiked: true,
               album: {
                 name: "HELLO KIDS",
                 _id: "5e80cc2b14c8566d6cd9b40f",
-                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" },
+                artist: { name: "nada", _id: "5e80c9b614c8566d6cd9b40e" }
               },
               isPlaylist: true,
               playlistId: "5e891c8edb96e26db4efc790",
-              isPlayable: true,
+              isPlayable: true
             },
-            playicon: "false",
+            playicon: "false"
           },
           getters: {
-            Get_Currentsong: (state) => {
+            Get_Currentsong: state => {
               return state.currentsong;
             },
-            playicon: (state) => {
+            playicon: state => {
               return state.playicon;
-            },
+            }
           },
           actions: {
             UnLike: jest.fn(),
-            Like: jest.fn(),
-          },
+            Like: jest.fn()
+          }
         },
         Playlist: {
           namespaced: true,
           state: {
             showModalAdd: false,
-            withtrack: true,
+            withtrack: true
           },
           getters: {
-            withtrack: (state) => {
+            withtrack: state => {
               return state.withtrack;
-            },
+            }
           },
           actions: {
             toggleModalAdd: jest.fn(),
-            RemoveFromThisPlaylist: jest.fn(),
-          },
+            RemoveFromThisPlaylist: jest.fn()
+          }
         },
         Authorization: {
           namespaced: true,
           state: {
             GetStatus: "",
-            Usename: "",
+            Usename: ""
           },
           getters: {
-            Usename: (state) => {
+            Usename: state => {
               return state.Usename;
             },
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.GetStatus;
-            },
-          },
+            }
+          }
         },
         CheckUserPopup: {
           namespaced: true,
           actions: {
             togglePopup: jest.fn(),
-            togglepagespopup: jest.fn(),
-          },
+            togglepagespopup: jest.fn()
+          }
         },
         Queue: {
           namespaced: true,
           actions: {
-            AddToQueue: jest.fn(),
-          },
-        },
-      },
+            AddToQueue: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(SongComponent, {
       localVue,
@@ -107,8 +107,8 @@ describe("SongComponent", () => {
         isPlayable: true,
         song_id: "5e80ceb853e67b1e284a0f15",
         albumId: "5e80cc2b14c8566d6cd9b40f",
-        isLiked: false,
-      },
+        isLiked: false
+      }
     });
     wrapper2 = shallowMount(SongComponent, {
       localVue,
@@ -122,8 +122,8 @@ describe("SongComponent", () => {
         song_id: "1",
         albumId: "1",
         isLiked: false,
-        MyType: "created",
-      },
+        MyType: "created"
+      }
     });
   });
   it("renders", () => {
@@ -191,8 +191,8 @@ describe("SongComponent", () => {
   it("hide options list ", () => {
     let event = {
       target: {
-        id: "",
-      },
+        id: ""
+      }
     };
     wrapper.vm.hideshow(event);
     expect(wrapper.vm.isclicked).toBe(false);

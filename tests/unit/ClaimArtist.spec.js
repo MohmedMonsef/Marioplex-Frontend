@@ -14,36 +14,36 @@ describe("ClaimArtist", () => {
         Playlist: {
           namespaced: true,
           state: {
-            showModal: true,
+            showModal: true
           },
           getters: {
-            showModal: (state) => {
+            showModal: state => {
               return state.showModal;
-            },
+            }
           },
           actions: {
-            toggleModal: jest.fn(),
-          },
+            toggleModal: jest.fn()
+          }
         },
         Authorization: {
           namespaced: true,
           state: {
-            status: "",
+            status: ""
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
-            },
+            }
           },
           actions: {
-            ClaimArtistProfile: jest.fn(),
-          },
-        },
-      },
+            ClaimArtistProfile: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(ClaimArtist, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

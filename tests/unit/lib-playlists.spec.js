@@ -17,31 +17,31 @@ describe("LibPlaylists.vue", () => {
           namespaced: true,
           state: {
             User: {
-              displayName: "user name",
-            },
+              displayName: "user name"
+            }
           },
           getters: {
-            Username: (state) => state.User.displayName,
-          },
+            Username: state => state.User.displayName
+          }
         },
         Playlist: {
           namespaced: true,
           state: {
-            likedplaylist: true,
+            likedplaylist: true
           },
           getters: {
-            likeplaylist: (state) => state.likedplaylist,
-          },
-        },
-      },
+            likeplaylist: state => state.likedplaylist
+          }
+        }
+      }
     });
     wrapper = shallowMount(LibPlaylists, {
       localVue,
       store,
       propsData: {
         name: "playlist name",
-        ownerName: "dai",
-      },
+        ownerName: "dai"
+      }
     });
   });
   it("test playlist name & owner", () => {
@@ -57,8 +57,8 @@ describe("LibPlaylists.vue", () => {
       store,
       propsData: {
         name: "playlist name",
-        ownerName: "dai",
-      },
+        ownerName: "dai"
+      }
     });
     const name = wrapper2.find("#cardtitle");
     const ownerName = wrapper2.find("#carddescribtion");
@@ -68,7 +68,7 @@ describe("LibPlaylists.vue", () => {
   it("renders", () => {
     const wrapper = shallowMount(LibPlaylists, {
       localVue,
-      store,
+      store
     });
     expect(wrapper.exists()).toBe(true);
   });

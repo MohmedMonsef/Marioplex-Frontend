@@ -275,14 +275,14 @@ export default {
         { text: "Japan", value: "jp", disabled: false },
         { text: "Korea", value: "kp", disabled: false },
         { text: "Mexico", value: "mx", disabled: false },
-        { text: "Brazil", value: "br", disabled: false },
-      ],
+        { text: "Brazil", value: "br", disabled: false }
+      ]
     };
   },
   computed: {
     ...mapGetters({
-      showModalCreate: "ArtistProperties/showModalCreate",
-    }),
+      showModalCreate: "ArtistProperties/showModalCreate"
+    })
   },
   methods: {
     /**
@@ -303,10 +303,10 @@ export default {
         type: this.type,
         relasedate: this.relasedate,
         AvailableMarket: this.AvailableMarket,
-        Genre: this.Genre,
+        Genre: this.Genre
       };
       this.$store.dispatch("ArtistProperties/Create_Album", payload);
-    },
-  },
+    }
+  }
 };
 </script>

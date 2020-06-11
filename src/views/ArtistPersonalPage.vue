@@ -306,9 +306,9 @@ export default {
       image: {
         size: "",
         height: "",
-        width: "",
+        width: ""
       },
-      choosebutton: false,
+      choosebutton: false
     };
   },
   components: {
@@ -316,20 +316,20 @@ export default {
     // DeleteSong,
     ArtistHeader,
     EditBio,
-    CreateAlbum,
+    CreateAlbum
   },
   computed: {
     ...mapState({
-      show: (state) => state.ArtistProperties.showModal,
-      showupload: (state) => state.ArtistProperties.showModalUpload,
-      showCreate: (state) => state.ArtistProperties.showModalCreate,
+      show: state => state.ArtistProperties.showModal,
+      showupload: state => state.ArtistProperties.showModalUpload,
+      showCreate: state => state.ArtistProperties.showModalCreate
     }),
     ...mapGetters({
       userid: "Authorization/userid",
       image_id: "ArtistProperties/image_id",
       Artist_ID: "ArtistProperties/Artist_ID",
-      ArtistBio: "ArtistProperties/ArtistBio",
-    }),
+      ArtistBio: "ArtistProperties/ArtistBio"
+    })
   },
   methods: {
     /**
@@ -353,7 +353,6 @@ export default {
     OnPhotoUpload(event) {
       this.choosebutton = true;
       this.selectedphoto = event.target.files[0];
-      console.log("artist photo", this.selectedphoto);
       if (
         !this.selectedphoto ||
         this.selectedphoto.type.indexOf("image/") !== 0
@@ -362,7 +361,7 @@ export default {
       this.image.size = this.selectedphoto.size;
       let reader = new FileReader();
       reader.readAsDataURL(this.selectedphoto);
-      reader.onload = (evt) => {
+      reader.onload = evt => {
         let img = new Image();
         img.onload = () => {
           this.image.width = img.width;
@@ -388,7 +387,7 @@ export default {
         width: this.image.width,
         height: this.image.height,
         belongs_to: "artist",
-        artist_id: this.Artist_ID,
+        artist_id: this.Artist_ID
       };
       this.$store.dispatch("ArtistProperties/UploadPhoto", payload);
     },
@@ -398,11 +397,11 @@ export default {
      */
     changeModalStateCreate() {
       this.$store.dispatch("ArtistProperties/toggleModalCreate");
-    },
+    }
   },
   created: function() {
     this.$store.dispatch("ArtistProperties/Get_Artist_ID");
     this.$store.dispatch("ArtistProperties/Get_Artist_Bio");
-  },
+  }
 };
 </script>

@@ -19,22 +19,22 @@ describe("searchcomponent", () => {
         Search: {
           namespaced: true,
           state: {
-            search_Value: "",
+            search_Value: ""
           },
           getters: {
             get_value(state) {
               return state.search_Value;
-            },
+            }
           },
           actions: {
             searchaboutartist: jest.fn(),
             search_V: jest.fn(),
             showresult: jest.fn(),
             searchfocus: jest.fn(),
-            clear: jest.fn(),
-          },
-        },
-      },
+            clear: jest.fn()
+          }
+        }
+      }
     });
   });
 
@@ -47,9 +47,9 @@ describe("searchcomponent", () => {
     store,
     data() {
       return {
-        Value: "",
+        Value: ""
       };
-    },
+    }
   });
 
   it("the search icon apear", () => {

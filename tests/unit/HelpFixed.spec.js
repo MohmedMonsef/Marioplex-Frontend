@@ -12,7 +12,7 @@ describe("HelpFixed", () => {
   beforeEach(() => {
     wrapper = shallowMount(HelpFixed, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

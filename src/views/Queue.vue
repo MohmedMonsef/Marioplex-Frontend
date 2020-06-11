@@ -116,15 +116,15 @@ export default {
     this.$store.dispatch("Queue/Queue");
   },
   components: {
-    SongComponent,
+    SongComponent
   },
   computed: {
     ...mapGetters({
       loading: "Queue/loading",
       currentSong: "Mediaplayer/Get_Currentsong",
       NextUp: "Queue/Get_Nextup",
-      Queued: "Queue/Get_Queued",
-    }),
-  },
+      Queued: "Queue/Get_Queued"
+    })
+  }
 };
 </script>

@@ -80,7 +80,7 @@ export default {
 
     changeModalState() {
       this.$store.dispatch("Playlist/toggleModal");
-    },
-  },
+    }
+  }
 };
 </script>

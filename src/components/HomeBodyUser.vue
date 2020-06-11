@@ -98,17 +98,17 @@ import homeBodyCard from "@/components/HomeBodyCards.vue";
  */
 export default {
   components: {
-    homeBodyCard,
+    homeBodyCard
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
       user: "Authorization/user",
-      homePlaylists: "ShowWebPlayer/homePlaylists",
-    }),
+      homePlaylists: "ShowWebPlayer/homePlaylists"
+    })
   },
   beforeCreate() {
     this.$store.dispatch("ShowWebPlayer/homePlaylists");
-  },
+  }
 };
 </script>

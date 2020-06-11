@@ -17,19 +17,19 @@ describe("playlist", () => {
           namespaced: true,
           state: {
             playlist_name: "NEW PlayList",
-            owner_name: "User",
+            owner_name: "User"
           },
           getters: {
-            playlist_name: (state) => state.playlist_name,
-            owner_name: (state) => state.owner_name,
-          },
-        },
-      },
+            playlist_name: state => state.playlist_name,
+            owner_name: state => state.owner_name
+          }
+        }
+      }
     });
     wrapper = shallowMount(playlist, {
       localVue,
       store,
-      propsData: {},
+      propsData: {}
     });
   });
   it("renders", () => {
@@ -45,7 +45,7 @@ describe("playlist", () => {
   });
   it("list icon click", () => {
     wrapper.setData({
-      show: false,
+      show: false
     });
     const listicon = wrapper.find("#list_icon");
     listicon.trigger("click");

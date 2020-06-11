@@ -103,7 +103,7 @@ import HomeNavigationBar from "../components/HomeNavigationBar";
 export default {
   name: "ForArtist",
   components: {
-    HomeNavigationBar,
-  },
+    HomeNavigationBar
+  }
 };
 </script>

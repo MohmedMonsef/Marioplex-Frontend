@@ -21,24 +21,24 @@ describe("AccountNotifications", () => {
                 data: {
                   albumId: "5ececb4ceedca51f5079346b",
                   title: "WOOOOOH NEW ALBUM",
-                  body: "Nada Uploaded a New Album -- CHECK IT OUT !",
-                },
-              },
-            ],
+                  body: "Nada Uploaded a New Album -- CHECK IT OUT !"
+                }
+              }
+            ]
           },
           getters: {
-            notifications: (state) => state.userNotifications,
+            notifications: state => state.userNotifications
           },
           actions: {
-            showUserNotifications: jest.fn(),
-          },
-        },
-      },
+            showUserNotifications: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(AccountNotifications, {
       localVue,
       store,
-      router,
+      router
     });
   });
   // it("got to album route", () => {

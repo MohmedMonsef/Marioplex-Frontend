@@ -211,8 +211,8 @@ export default {
   name: "playlistpopup",
   computed: {
     ...mapGetters({
-      showModal: "CheckUserPopup/showpagesModal",
-    }),
+      showModal: "CheckUserPopup/showpagesModal"
+    })
   },
   methods: {
     /**
@@ -221,7 +221,7 @@ export default {
      */
     changeModalState() {
       this.$store.dispatch("CheckUserPopup/togglepagespopup");
-    },
-  },
+    }
+  }
 };
 </script>

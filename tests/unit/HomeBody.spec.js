@@ -15,17 +15,17 @@ describe("HomeBody", () => {
         Authorization: {
           namespaced: true,
           state: {
-            GetStatus: "success",
+            GetStatus: "success"
           },
           getters: {
-            GetStatus: (state) => state.GetStatus,
-          },
-        },
-      },
+            GetStatus: state => state.GetStatus
+          }
+        }
+      }
     });
     wrapper = shallowMount(HomeBody, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

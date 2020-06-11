@@ -129,7 +129,7 @@ export default {
   components: {
     category,
     searchcomponent,
-    searchresults,
+    searchresults
   },
   mounted() {
     this.$store.dispatch("Categorys/showcategory");
@@ -140,8 +140,8 @@ export default {
       loadingcategory: "Categorys/loading",
       loadingsearch: "Search/loadingsearch",
       search_value: "Search/get_value",
-      showresl: "Search/showeres",
-    }),
-  },
+      showresl: "Search/showeres"
+    })
+  }
 };
 </script>

@@ -18,7 +18,7 @@ export default {
     user5: [],
     track: [],
     track3: [],
-    flagfound: true,
+    flagfound: true
   },
   mutations: {
     setclear(state) {
@@ -44,42 +44,42 @@ export default {
       state.topres = match_valuet;
     },
     setresult5(state, match_value5) {
-      match_value5.forEach((match) => {
+      match_value5.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.result5 = match_value5;
     },
     setresult(state, match_value) {
-      match_value.forEach((match) => {
+      match_value.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.result = match_value;
     },
     setalbumres5(state, match_valuea5) {
-      match_valuea5.forEach((match) => {
+      match_valuea5.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.albumres5 = match_valuea5;
     },
     setalbumres(state, match_valuea) {
-      match_valuea.forEach((match) => {
+      match_valuea.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.albumres = match_valuea;
     },
     setplaylistres5(state, match_valuep5) {
-      match_valuep5.forEach((match) => {
+      match_valuep5.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.playlistres5 = match_valuep5;
     },
     setplaylistres(state, match_valuep) {
-      match_valuep.forEach((match) => {
+      match_valuep.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
@@ -98,21 +98,21 @@ export default {
       state.showme = val;
     },
     setuser5(state, match_valueu5) {
-      match_valueu5.forEach((match) => {
+      match_valueu5.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.user5 = match_valueu5;
     },
     setuser(state, match_valueu) {
-      match_valueu.forEach((match) => {
+      match_valueu.forEach(match => {
         if (match.images.length == 0)
           match.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.user = match_valueu;
     },
     settrack(state, match_valuetrack) {
-      match_valuetrack.forEach((match) => {
+      match_valuetrack.forEach(match => {
         if (match.albumImages.length == 0)
           match.albumImages.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
@@ -123,7 +123,7 @@ export default {
     },
     setfound(state, status) {
       state.flagfound = status;
-    },
+    }
   },
   actions: {
     clear({ commit }) {
@@ -161,7 +161,7 @@ export default {
             search_value +
             "&type=top,artist,album,playlist,track,profile"
         )
-        .then((response) => {
+        .then(response => {
           const match_value = response.data.artist;
           const match_valuea = response.data.album;
           const match_valuep = response.data.playlist;
@@ -241,7 +241,7 @@ export default {
     },
     searchfocus({ commit }, val) {
       commit("searchfocus", val);
-    },
+    }
   },
   getters: {
     get_value(state) {
@@ -268,10 +268,10 @@ export default {
     getplaylistsres(state) {
       return state.playlistres;
     },
-    loadingsearch: (state) => state.load,
+    loadingsearch: state => state.load,
 
-    searchfocus: (state) => state.searchfocus,
-    showeres: (state) => state.showme,
+    searchfocus: state => state.searchfocus,
+    showeres: state => state.showme,
     getuser5(state) {
       return state.user5;
     },
@@ -286,6 +286,6 @@ export default {
     },
     getflagfound(state) {
       return state.flagfound;
-    },
-  },
+    }
+  }
 };

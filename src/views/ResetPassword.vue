@@ -137,14 +137,14 @@ export default {
       can_submit: true,
       password_confirmation: "",
       password: "",
-      resettoken: "",
+      resettoken: ""
     };
   },
   props: {
     token: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     reset() {
@@ -158,7 +158,7 @@ export default {
         if (this.can_submit) {
           let payload = {
             password: this.password,
-            token: this.$route.query.token,
+            token: this.$route.query.token
           };
           this.$store.dispatch("Authorization/resetPassword", payload);
         } else return;
@@ -177,7 +177,7 @@ export default {
      */
     canSubmit() {
       this.can_submit = this.can_submit && true;
-    },
+    }
   },
   computed: {
     req_password: function() {
@@ -234,10 +234,10 @@ export default {
       } else {
         return false;
       }
-    },
+    }
   },
   mounted() {
     this.resettoken = this.$route.query.token;
-  },
+  }
 };
 </script>

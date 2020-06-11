@@ -183,7 +183,7 @@ export default {
   name: "top",
   data: function() {
     return {
-      hover: false,
+      hover: false
     };
   },
   props: {
@@ -191,56 +191,56 @@ export default {
      * src for the img displayed
      */
     image: {
-      type: String,
+      type: String
     },
     name: {
-      type: String,
+      type: String
     },
     type: {
-      type: String,
+      type: String
     },
     /**
      *if artist to go his page
      */
     artistId: {
-      type: String,
+      type: String
     },
     artistName: {
-      type: String,
+      type: String
     },
     /**
      *to navigate to album page
      */
     albumId: {
       type: String,
-      default: "0",
+      default: "0"
     },
     playlist_id: {
       type: String,
 
-      default: "0",
+      default: "0"
     },
     track_id: {
-      type: String,
+      type: String
     },
     ownerId: {
-      type: String,
+      type: String
     },
     ownerName: {
-      type: String,
+      type: String
     },
     ownerType: {
-      type: String,
+      type: String
     },
     Id: {
-      type: String,
-    },
+      type: String
+    }
   },
   filters: {
     shorten: function(value) {
       if (value.length > 17) return value.substring(0, 17) + " ...";
       else return value;
-    },
-  },
+    }
+  }
 };
 </script>

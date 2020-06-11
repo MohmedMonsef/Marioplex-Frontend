@@ -69,7 +69,7 @@ export default {
   components: {
     LibPlaylistsDefault,
     LibPlaylists,
-    LibLikedsongs,
+    LibLikedsongs
   },
   mounted() {
     this.$store.dispatch("Playlist/showplaylists");
@@ -80,8 +80,8 @@ export default {
       // map `this.playlists1` to `this.$store.getters.playlists`
       playlists1: "Playlist/playlists", // creat new object "playlists1" and map to it
       songs1: "UserLibrary/songs",
-      loadingplaylists: "Playlist/loadingplaylists",
-    }),
-  },
+      loadingplaylists: "Playlist/loadingplaylists"
+    })
+  }
 };
 </script>

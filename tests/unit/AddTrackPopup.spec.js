@@ -18,40 +18,40 @@ describe("AddTrackPopup", () => {
           state: {
             status: "",
             showModal: true,
-            showModalAdd: true,
+            showModalAdd: true
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
             },
-            showModalAdd: (state) => {
+            showModalAdd: state => {
               return state.showModalAdd;
             },
-            playlists: (state) => {
+            playlists: state => {
               return state.Playlists;
             },
-            showModal: (state) => {
+            showModal: state => {
               return state.showModal;
             },
-            withtrack: (state) => {
+            withtrack: state => {
               return state.withtrack;
-            },
+            }
           },
           actions: {
             toggleModalAdd: jest.fn(),
             toggleModal: jest.fn(),
-            showplaylists: jest.fn(),
-          },
-        },
-      },
+            showplaylists: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(AddTrackPopup, {
       localVue,
       store,
       stubs: {
         CreatePlaylist,
-        PlaylistsToTracks,
-      },
+        PlaylistsToTracks
+      }
     });
   });
   it("renders", () => {

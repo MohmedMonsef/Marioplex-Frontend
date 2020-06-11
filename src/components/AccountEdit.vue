@@ -384,7 +384,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "Account-edit",
   components: {
-    AccountSidebar,
+    AccountSidebar
   },
   data: function() {
     return {
@@ -398,7 +398,7 @@ export default {
       gender: "f",
       genders: [
         { text: "Female", value: "f" },
-        { text: "Male", value: "m" },
+        { text: "Male", value: "m" }
       ],
       month: "01",
       months: [
@@ -413,7 +413,7 @@ export default {
         { text: "09", value: "8" },
         { text: "10", value: "9" },
         { text: "11", value: "10" },
-        { text: "12", value: "11" },
+        { text: "12", value: "11" }
       ],
       day: "01",
       days: [
@@ -447,7 +447,7 @@ export default {
         { text: "28", value: "27" },
         { text: "29", value: "28" },
         { text: "30", value: "29" },
-        { text: "31", value: "30" },
+        { text: "31", value: "30" }
       ],
       year: "2000",
       years: [
@@ -501,7 +501,7 @@ export default {
         { text: "2017", value: "47" },
         { text: "2018", value: "48" },
         { text: "2019", value: "49" },
-        { text: "2020", value: "50" },
+        { text: "2020", value: "50" }
       ],
       country: "Egypt",
       countries: [
@@ -516,7 +516,7 @@ export default {
         { text: "Japan", value: "jp" },
         { text: "Korea", value: "kp" },
         { text: "Mexico", value: "mx" },
-        { text: "Brazil", value: "br" },
+        { text: "Brazil", value: "br" }
       ],
       //for premium
       expmonth: "0",
@@ -533,7 +533,7 @@ export default {
         { text: "September", value: "9", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
-        { text: "December", value: "12", disabled: false },
+        { text: "December", value: "12", disabled: false }
       ],
       CreditNumber: "",
       Monthly: "x",
@@ -541,7 +541,7 @@ export default {
       expYear: [{ text: "Year", value: 0, disabled: true }],
       expyear: "0",
       vsecurity: false,
-      validform: false,
+      validform: false
     };
   },
   methods: {
@@ -564,7 +564,7 @@ export default {
             password: this.password,
             country: this.country,
             gender: this.gender,
-            birthday: this.birthday,
+            birthday: this.birthday
           };
           this.saved = "1";
           this.$store.dispatch("Authorization/saveEdit", edituser);
@@ -629,7 +629,7 @@ export default {
      */
     updatePremium: function() {
       let update = {
-        password: this.password,
+        password: this.password
       };
       if (this.expyear != "0" && this.expmonth != "0") {
         var today = new Date();
@@ -646,13 +646,13 @@ export default {
       }
       this.saved = "1";
       this.$store.dispatch("Authorization/saveEdit", update);
-    },
+    }
   },
   computed: {
     ...mapGetters({
       isEdited: "Authorization/isEdited",
-      user: "Authorization/user",
-    }),
+      user: "Authorization/user"
+    })
   },
   watch: {
     CreditNumber: function() {
@@ -661,7 +661,7 @@ export default {
       if (isNaN(res)) {
         this.CreditNumber = this.CreditNumber.substr(0, len - 1);
       }
-    },
+    }
   },
   mounted() {
     var today = new Date();
@@ -674,11 +674,11 @@ export default {
       var yearObj = {
         text: begYear.toString().substring(2, 4),
         value: begYear,
-        disabled: false,
+        disabled: false
       };
       begYear++;
       this.expYear.push(yearObj);
     }
-  },
+  }
 };
 </script>

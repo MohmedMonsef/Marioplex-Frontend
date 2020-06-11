@@ -17,22 +17,22 @@ describe("AccountEdit", () => {
           state: {
             isEdited: "",
             user: {
-              product: "",
-            },
+              product: ""
+            }
           },
           getters: {
-            isEdited: (state) => state.isEdited,
-            user: (state) => state.user,
+            isEdited: state => state.isEdited,
+            user: state => state.user
           },
           actions: {
-            saveEdit: jest.fn(),
-          },
-        },
-      },
+            saveEdit: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(AccountEdit, {
       localVue,
-      store,
+      store
     });
     wrapper.setData({
       saved: false,
@@ -40,7 +40,7 @@ describe("AccountEdit", () => {
       can_submit2: false,
       can_submit3: false,
       email: "",
-      password: "",
+      password: ""
     });
   });
   it("call validation functions", () => {
@@ -118,7 +118,7 @@ describe("AccountEdit", () => {
     store.state.Authorization.isEdited = "success";
     let wrapper2 = shallowMount(AccountEdit, {
       localVue,
-      store,
+      store
     });
     expect(wrapper2.exists(".saved")).toBe(true);
   });
@@ -126,7 +126,7 @@ describe("AccountEdit", () => {
     store.state.Authorization.isEdited = "faild";
     let wrapper3 = shallowMount(AccountEdit, {
       localVue,
-      store,
+      store
     });
     expect(wrapper3.exists(".wrong")).toBe(true);
   });

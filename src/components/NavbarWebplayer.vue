@@ -4,8 +4,8 @@
     :class="[
       {
         notScrolled: scrolling <= 20,
-        scrolled: scrolling > 20,
-      },
+        scrolled: scrolling > 20
+      }
     ]"
     id="navBar"
   >
@@ -417,7 +417,7 @@ export default {
     return {
       inlibrary: false,
       insearch: false,
-      scrollPosition: null,
+      scrollPosition: null
     };
   },
   name: "NavbarWebplayer",
@@ -426,8 +426,8 @@ export default {
       isLoggedIn: "Authorization/GetStatus",
       Username: "Authorization/Username",
       scrolling: "UserLibrary/scrolling",
-      user: "Authorization/user",
-    }),
+      user: "Authorization/user"
+    })
   },
   methods: {
     /**
@@ -453,7 +453,7 @@ export default {
      */
     gonext: function() {
       this.$router.go(1);
-    },
+    }
   },
   watch: {
     $route: function() {
@@ -474,7 +474,7 @@ export default {
       } else {
         this.insearch = false;
       }
-    },
+    }
   },
   mounted() {
     if (
@@ -493,6 +493,6 @@ export default {
     } else {
       this.insearch = false;
     }
-  },
+  }
 };
 </script>

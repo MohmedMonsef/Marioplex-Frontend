@@ -12,7 +12,7 @@ describe("Home", () => {
   beforeEach(() => {
     wrapper = shallowMount(Home, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

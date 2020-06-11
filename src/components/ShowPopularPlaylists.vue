@@ -96,29 +96,29 @@ i {
 export default {
   data: function() {
     return {
-      hover: false,
+      hover: false
     };
   },
   name: "ShowPopularplaylists",
   props: {
     images: {
-      type: String,
+      type: String
     },
     name: {
-      type: String,
+      type: String
     },
     Description: {
-      type: String,
+      type: String
     },
     playlist_id: {
-      type: String,
-    },
+      type: String
+    }
   },
   filters: {
     shorten: function(value) {
       if (value && value.length > 17) return value.substring(0, 17) + " ...";
       else return value;
-    },
-  },
+    }
+  }
 };
 </script>

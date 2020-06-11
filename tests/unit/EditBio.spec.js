@@ -15,26 +15,26 @@ describe("EditBio", () => {
           namespaced: true,
           state: {
             status: "",
-            showModal: true,
+            showModal: true
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
             },
-            showModal: (state) => {
+            showModal: state => {
               return state.showModal;
-            },
+            }
           },
           actions: {
             toggleModal: jest.fn(),
-            EditBio: jest.fn(),
-          },
-        },
-      },
+            EditBio: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(EditBio, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

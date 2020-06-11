@@ -50,12 +50,12 @@ import { mapGetters } from "vuex";
 export default {
   name: "seeallcategoryplaylists",
   components: {
-    LibPlaylists,
+    LibPlaylists
   },
   computed: {
     ...mapGetters({
-      playlists: "Categorys/getcategoryplaylists",
-    }),
-  },
+      playlists: "Categorys/getcategoryplaylists"
+    })
+  }
 };
 </script>

@@ -301,7 +301,7 @@ export default {
   name: "CreatePlaylist",
   data: function() {
     return {
-      playlistname: "",
+      playlistname: ""
     };
   },
   components: {},
@@ -309,8 +309,8 @@ export default {
     ...mapGetters({
       showModal: "Playlist/showModal",
       username: "Authorization/Username",
-      withtrack: "Playlist/withtrack",
-    }),
+      withtrack: "Playlist/withtrack"
+    })
   },
   methods: {
     /**
@@ -331,17 +331,17 @@ export default {
         payload = {
           name: this.playlistname,
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username,
+          owner: this.username
         };
       } else {
         payload = {
           name: "New Playlist",
           images: require("../assets/defaultplaylist.png"),
-          owner: this.username,
+          owner: this.username
         };
       }
       this.$store.dispatch("Playlist/CreatePlaylist", payload);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -271,11 +271,11 @@ export default {
   data: function() {
     return {
       playlistid: "",
-      myKey: 0,
+      myKey: 0
     };
   },
   components: {
-    AccountSidebar,
+    AccountSidebar
   },
   mounted() {
     this.$store.dispatch("Authorization/showDeletedPlaylists");
@@ -283,8 +283,8 @@ export default {
   computed: {
     ...mapGetters({
       deleted_playlists: "Authorization/deleted_playlists",
-      isRestored: "Playlist/restored",
-    }),
+      isRestored: "Playlist/restored"
+    })
   },
   methods: {
     /**
@@ -293,7 +293,7 @@ export default {
      */
     Restore() {
       this.$store.dispatch("Playlist/restorePlaylist", this.playlistid);
-    },
-  },
+    }
+  }
 };
 </script>

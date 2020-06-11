@@ -15,26 +15,26 @@ describe("CreateAlbum", () => {
           namespaced: true,
           state: {
             status: "",
-            showModalCreate: true,
+            showModalCreate: true
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
             },
-            showModalCreate: (state) => {
+            showModalCreate: state => {
               return state.showModalCreate;
-            },
+            }
           },
           actions: {
             toggleModalCreate: jest.fn(),
-            Create_Album: jest.fn(),
-          },
-        },
-      },
+            Create_Album: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(CreateAlbum, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

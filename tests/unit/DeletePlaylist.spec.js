@@ -17,26 +17,26 @@ describe("DeletePlaylist", () => {
           state: {
             status: "",
             showModalDelete: true,
-            todelete: "0",
+            todelete: "0"
           },
           getters: {
-            todelete: (state) => {
+            todelete: state => {
               return state.todelete;
             },
-            showModalDelete: (state) => {
+            showModalDelete: state => {
               return state.showModalDelete;
-            },
+            }
           },
           actions: {
             toggleModalDelete: jest.fn(),
-            DeletePlaylist: jest.fn(),
-          },
-        },
-      },
+            DeletePlaylist: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(DeletePlaylist, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

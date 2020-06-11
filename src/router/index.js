@@ -65,7 +65,7 @@ const routes = [
     children: [
       {
         path: "",
-        component: HomeBody,
+        component: HomeBody
       },
       {
         path: "UserAccount",
@@ -73,28 +73,28 @@ const routes = [
         children: [
           {
             path: "Account-overview",
-            component: AccountOverview,
+            component: AccountOverview
           },
           {
             path: "Account-edit",
-            component: AccountEdit,
+            component: AccountEdit
           },
           {
             path: "Account-change",
-            component: AccountChange,
+            component: AccountChange
           },
           {
             path: "Account-recover",
-            component: AccountRecover,
+            component: AccountRecover
           },
           {
             path: "Account-notifications",
-            component: AccountNotifications,
-          },
+            component: AccountNotifications
+          }
         ],
         meta: {
-          requiresAuth: true,
-        },
+          requiresAuth: true
+        }
       },
       { path: "", name: "HomePage", component: HomeBody },
       {
@@ -102,8 +102,8 @@ const routes = [
         name: "Premium",
         component: Premium,
         meta: {
-          isPremium: true,
-        },
+          isPremium: true
+        }
       },
       {
         path: "/GetPremium",
@@ -111,13 +111,13 @@ const routes = [
         component: GetPremium,
         meta: {
           toPremium: true,
-          isPremium: true,
-        },
+          isPremium: true
+        }
       },
       {
         path: "/Help",
         name: "Help",
-        component: Help,
+        component: Help
       },
       {
         path: "/HelpFixed",
@@ -127,36 +127,36 @@ const routes = [
           {
             path: "HelpCantLogIn",
             name: "HelpCantLogIn",
-            component: HelpCantLogIn,
+            component: HelpCantLogIn
           },
           {
             path: "HelpRestPassword",
             name: "HelpRestPassword",
-            component: HelpRestPassword,
+            component: HelpRestPassword
           },
           {
             path: "HelpFindingAccount",
             name: "HelpFindingAccount",
-            component: HelpFindingAccount,
+            component: HelpFindingAccount
           },
           {
             path: "HelpMadeForYou",
             name: "HelpMadeForYou",
-            component: HelpMadeForYou,
+            component: HelpMadeForYou
           },
           {
             path: "HelpMangePaymentDetail",
             name: "HelpMangePaymentDetail",
-            component: HelpMangePaymentDetail,
+            component: HelpMangePaymentDetail
           },
           {
             path: "HelpAccountHelp",
             name: "HelpAccountHelp",
-            component: HelpAccountHelp,
-          },
-        ],
-      },
-    ],
+            component: HelpAccountHelp
+          }
+        ]
+      }
+    ]
   },
   {
     path: "/HomeWebPlayer",
@@ -171,25 +171,25 @@ const routes = [
         children: [
           {
             path: "seeallartist",
-            component: seeallartist,
+            component: seeallartist
           },
           {
             path: "seeallalbum",
-            component: seeallalbum,
+            component: seeallalbum
           },
           {
             path: "seeallplaylist",
-            component: seeallplaylist,
+            component: seeallplaylist
           },
           {
             path: "seealluser",
-            component: seealluser,
+            component: seealluser
           },
           {
             path: "seealltrack",
-            component: seealltrack,
-          },
-        ],
+            component: seealltrack
+          }
+        ]
       },
       {
         path: "library",
@@ -197,94 +197,94 @@ const routes = [
         children: [
           {
             path: "library-playlists",
-            component: LibraryPlaylists,
+            component: LibraryPlaylists
           },
           {
             path: "library-artists",
-            component: LibraryArtists,
+            component: LibraryArtists
           },
           {
             path: "library-albums",
-            component: LibraryAlbums,
-          },
+            component: LibraryAlbums
+          }
         ],
         meta: {
-          requiresAuth: true,
-        },
+          requiresAuth: true
+        }
       },
       {
         path: "liked-tracks",
         component: LikedTracks,
         meta: {
-          requiresAuth: true,
-        },
+          requiresAuth: true
+        }
       },
       {
         path: "queue",
         component: Queue,
         meta: {
-          requiresAuth: true,
-        },
+          requiresAuth: true
+        }
       },
       {
         path: "playlist/:playlist_id",
         name: "playlist",
-        component: playlist,
+        component: playlist
       },
       {
         path: "album/:album_id",
         name: "album",
-        component: album,
+        component: album
       },
       {
         path: "ArtistProfile/:artist_id",
         name: "ArtistProfile",
-        component: ArtistProfile,
+        component: ArtistProfile
       },
       {
         path: "/AllLists",
         name: "AllLists",
-        component: AllLists,
+        component: AllLists
       },
       {
         path: "/AllArtists",
         name: "AllArtists",
-        component: AllArtists,
+        component: AllArtists
       },
       {
         path: "/AllAlbums",
         name: "AllAlbums",
-        component: AllAlbums,
+        component: AllAlbums
       },
       {
         path: "/AllReleases",
         name: "AllReleases",
-        component: AllReleases,
+        component: AllReleases
       },
       {
         path: "UserProfile/:user_id",
         name: "UserProfile",
-        component: UserProfile,
+        component: UserProfile
       },
       {
         path: "category/:categoryId/:name",
         name: "category",
-        component: category,
+        component: category
       },
       {
         path: "category/:categoryId/:name/seeallcategoryplaylists",
         name: "seeallcategoryplaylists",
-        component: seeallcategoryplaylists,
-      },
-    ],
+        component: seeallcategoryplaylists
+      }
+    ]
   },
   {
     path: "/signup",
     name: "SignUp",
     component: SignUp,
     meta: {
-      isLogged: true,
-    },
+      isLogged: true
+    }
   },
   {
     path: "/login",
@@ -294,89 +294,89 @@ const routes = [
       {
         path: "",
         name: "Login",
-        component: Login,
+        component: Login
       },
       {
         path: "reset_password",
         name: "ResetPassword",
         component: ResetPassword,
-        props: (route) => ({
-          token: route.query.token,
-        }),
-      },
+        props: route => ({
+          token: route.query.token
+        })
+      }
     ],
     meta: {
-      isLogged: true,
-    },
+      isLogged: true
+    }
   },
   {
     path: "/ForgetPassword",
     name: "ForgetPassword",
-    component: ForgetPassword,
+    component: ForgetPassword
   },
   {
     path: "/ForArtist",
     name: "ForArtist",
     component: ForArtist,
     meta: {
-      toArtist: true,
-    },
+      toArtist: true
+    }
   },
   {
     path: "/ClaimArtist",
     name: "ClaimArtist",
     component: ClaimArtist,
     meta: {
-      toArtist: true,
-    },
+      toArtist: true
+    }
   },
   {
     path: "/AccessArtist",
     name: "AccessArtist",
     component: AccessArtist,
     meta: {
-      toArtist: true,
-    },
+      toArtist: true
+    }
   },
   {
     path: "/ArtistPersonalPage",
     name: "ArtistPersonalPage",
     component: ArtistPersonalPage,
     meta: {
-      isArtist: true,
-    },
+      isArtist: true
+    }
   },
   {
     path: "/UnAuthorized",
     name: "UnAuthorized",
-    component: UnAuthorized,
+    component: UnAuthorized
   },
   {
     path: "/EmailConfirmation",
     name: "EmailConfirmation",
-    component: EmailConfirmation,
+    component: EmailConfirmation
   },
   {
     path: "/confirm",
     name: "ThanksForConfirmation",
     component: ThanksForConfirmation,
-    props: (route) => ({
+    props: route => ({
       id: route.query.id,
-      type: route.query.type,
-    }),
-  },
+      type: route.query.type
+    })
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
-  store,
+  store
 });
 
 router.beforeEach((to, from, next) => {
   console.log(store.getters["Authorization/GetStatus"]);
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
     var status = localStorage.getItem("x-auth-token");
     if (!status) {
       next("/UnAuthorized");
@@ -385,7 +385,7 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-  if (to.matched.some((record) => record.meta.toPremium)) {
+  if (to.matched.some(record => record.meta.toPremium)) {
     if (store.getters["Authorization/GetStatus"] != "success") {
       next("/login");
       return;
@@ -394,7 +394,7 @@ router.beforeEach((to, from, next) => {
     next();
   }
 
-  if (to.matched.some((record) => record.meta.toArtist)) {
+  if (to.matched.some(record => record.meta.toArtist)) {
     if (store.getters["Authorization/GetStatus"] != "success") {
       next("/login");
       return;
@@ -402,7 +402,7 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-  if (to.matched.some((record) => record.meta.isArtist)) {
+  if (to.matched.some(record => record.meta.isArtist)) {
     status = localStorage.getItem("x-auth-token");
     var isArtist = localStorage.getItem("is-artist");
     if (!status || isArtist != "Artist") {
@@ -412,7 +412,7 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-  if (to.matched.some((record) => record.meta.isLogged)) {
+  if (to.matched.some(record => record.meta.isLogged)) {
     if (store.getters["Authorization/GetStatus"] == "success") {
       next("/");
       return;
@@ -420,7 +420,7 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-  if (to.matched.some((record) => record.meta.isPremium)) {
+  if (to.matched.some(record => record.meta.isPremium)) {
     if (store.getters["Authorization/user"].product == "premium") {
       next(from.path);
       return;

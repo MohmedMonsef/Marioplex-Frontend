@@ -10,8 +10,8 @@ describe("ResetPassword", () => {
   localVue.use(Vuex);
   const $route = {
     query: {
-      token: "",
-    },
+      token: ""
+    }
   };
   localVue.prototype.$route = $route;
   beforeEach(() => {
@@ -20,18 +20,18 @@ describe("ResetPassword", () => {
         Authorization: {
           namespaced: true,
           actions: {
-            resetPassword: jest.fn(),
-          },
-        },
-      },
+            resetPassword: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(ResetPassword, {
       localVue,
       store,
       propsData: {
-        token: "",
+        token: ""
       },
-      stubs: ["router-link", "router-view"],
+      stubs: ["router-link", "router-view"]
     });
   });
   it("renders", () => {
@@ -58,7 +58,7 @@ describe("ResetPassword", () => {
 
     wrapper.setData({
       trigger_validation: true,
-      can_submit: true,
+      can_submit: true
     });
     //valid password and confirm
     let pass = wrapper.find("#passwordInput");
@@ -92,7 +92,7 @@ describe("ResetPassword", () => {
     wrapper.setData({
       trigger_validation: true,
       can_submit: true,
-      password: "12345678",
+      password: "12345678"
     });
     //valid password and confirm
     let pass = wrapper.find("#passwordInput");
@@ -112,7 +112,7 @@ describe("ResetPassword", () => {
     reset_btn.trigger("click");
 
     wrapper.setData({
-      can_submit: false,
+      can_submit: false
     });
     reset_btn.trigger("click");
     jest.runAllTimers();

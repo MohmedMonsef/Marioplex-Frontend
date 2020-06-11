@@ -19,7 +19,7 @@ describe("seeallplaylist", () => {
           namespaced: true,
           state: {
             search_Value: "",
-            playlistres: [],
+            playlistres: []
           },
           getters: {
             get_value(state) {
@@ -27,20 +27,20 @@ describe("seeallplaylist", () => {
             },
             getplaylistsres(state) {
               return state.playlistres;
-            },
+            }
           },
           actions: {
-            artistin: jest.fn(),
-          },
-        },
-      },
+            artistin: jest.fn()
+          }
+        }
+      }
     });
   });
 
   it("when render dispatch", () => {
     wrapper = shallowMount(seeallplaylist, {
       store,
-      localVue,
+      localVue
     });
     wrapper.vm.inartist();
     expect("inartist").toHaveBeenCalled;

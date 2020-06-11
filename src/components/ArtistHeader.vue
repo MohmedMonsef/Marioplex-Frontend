@@ -170,14 +170,14 @@ export default {
   data: function() {
     return {
       posy: "",
-      newname: "",
+      newname: ""
     };
   },
   computed: {
     ...mapGetters({
       showinput: "ArtistProperties/showinput",
-      ArtistName: "ArtistProperties/ArtistName",
-    }),
+      ArtistName: "ArtistProperties/ArtistName"
+    })
   },
 
   methods: {
@@ -196,13 +196,13 @@ export default {
  */
     ChangeArtistName() {
       let payload = {
-        name: this.newname,
+        name: this.newname
       };
       this.$store.dispatch("ArtistProperties/EditName", payload);
-    },
+    }
   },
   beforeCreate: function() {
     this.$store.dispatch("ArtistProperties/Get_Artist_Name");
-  },
+  }
 };
 </script>

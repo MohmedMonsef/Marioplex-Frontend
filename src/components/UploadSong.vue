@@ -423,7 +423,7 @@ export default {
       AvailableMarket: "",
       Genre: "",
       audio: {
-        myduration: 0,
+        myduration: 0
       },
       myaudio: [],
       id: "",
@@ -440,18 +440,18 @@ export default {
         { text: "Japan", value: "jp", disabled: false },
         { text: "Korea", value: "kp", disabled: false },
         { text: "Mexico", value: "mx", disabled: false },
-        { text: "Brazil", value: "br", disabled: false },
-      ],
+        { text: "Brazil", value: "br", disabled: false }
+      ]
     };
   },
   state: {
-    Artist_Songs: [],
+    Artist_Songs: []
   },
   computed: {
     ...mapGetters({
       showModalUpload: "ArtistProperties/showModalUpload",
-      albums: "ArtistProperties/Albums",
-    }),
+      albums: "ArtistProperties/Albums"
+    })
   },
   methods: {
     /**
@@ -467,7 +467,6 @@ export default {
      */
     OnHeighFileSelected(event) {
       this.Heighselectedfile = event.target.files[0];
-      console.log("high file", this.Heighselectedfile);
     },
     /**
      * method to take the medium quality file
@@ -528,10 +527,10 @@ export default {
         medium_enc_selectedfile: this.Medium_Encselectedfile,
         low_enc_selectedfile: this.Low_Encselectedfile,
         selectedpreview: this.selectedpreview,
-        AlbumID: this.id,
+        AlbumID: this.id
       };
       this.$store.dispatch("ArtistProperties/UploadTrack", payload);
-    },
-  },
+    }
+  }
 };
 </script>

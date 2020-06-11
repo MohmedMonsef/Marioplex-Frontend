@@ -9,8 +9,8 @@ describe("ShowPopularplaylists.vue", () => {
       localVue,
       propsData: {
         name: "playlist_name",
-        Description: "be happy",
-      },
+        Description: "be happy"
+      }
     });
     const name = wrapper.find("#cardtitle");
     const Description = wrapper.find(".card-text");

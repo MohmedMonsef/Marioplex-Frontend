@@ -193,7 +193,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "Account-change",
   components: {
-    AccountSidebar,
+    AccountSidebar
   },
   data: function() {
     return {
@@ -204,7 +204,7 @@ export default {
       canSet2: false,
       canSet3: false,
       canSet4: false,
-      saved: "0",
+      saved: "0"
     };
   },
   methods: {
@@ -222,7 +222,7 @@ export default {
           let edituser = {
             password: this.password,
             newpassword: this.newpassword,
-            repeatedPassword: this.repeatedPassword,
+            repeatedPassword: this.repeatedPassword
           };
           this.saved = "1";
           this.$store.dispatch("Authorization/saveEdit", edituser);
@@ -278,12 +278,12 @@ export default {
         this.canSet4 = true;
       }
       return;
-    },
+    }
   },
   computed: {
     ...mapGetters({
-      isEdited: "Authorization/isEdited",
-    }),
-  },
+      isEdited: "Authorization/isEdited"
+    })
+  }
 };
 </script>

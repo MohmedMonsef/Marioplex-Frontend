@@ -16,21 +16,21 @@ describe("libraryAlbums", () => {
           namespaced: true,
           state: {
             albums: [],
-            loadingalbums: 1,
+            loadingalbums: 1
           },
           getters: {
-            albums: (state) => state.albums,
-            loadingalbums: (state) => state.loadingalbums,
+            albums: state => state.albums,
+            loadingalbums: state => state.loadingalbums
           },
           actions: {
-            showUserAlbums: jest.fn(),
-          },
-        },
-      },
+            showUserAlbums: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(libraryAlbums, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

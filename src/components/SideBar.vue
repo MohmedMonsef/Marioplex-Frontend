@@ -362,7 +362,7 @@ export default {
       public: true,
       showSideMenu: false,
       type: "",
-      isPublic: false,
+      isPublic: false
     };
   },
   mounted() {
@@ -375,9 +375,9 @@ export default {
       showModalDelete: "Playlist/showModalDelete",
       isLoggedIn: "Authorization/GetStatus",
       showinput: "Playlist/showinput",
-      sideMenu: "UserLibrary/sideMenu",
+      sideMenu: "UserLibrary/sideMenu"
       // renamepl:"creatplaylist/renamepl"
-    }),
+    })
   },
   name: "SideBar",
   methods: {
@@ -430,7 +430,7 @@ export default {
     ChangePlaylistName() {
       let payload = {
         name: this.newname,
-        playlist_id: this.p_id,
+        playlist_id: this.p_id
       };
       this.$store.dispatch("Playlist/ChangePlaylistName", payload);
       this.newname = "";
@@ -443,7 +443,7 @@ export default {
       }
       let payload = {
         public: this.public,
-        playlist_id: this.p_id,
+        playlist_id: this.p_id
       };
       this.$store.dispatch("Playlist/PubPriChange", payload);
     },
@@ -476,13 +476,13 @@ export default {
       if (!this.$el.contains(event.target)) {
         this.showSideMenu = false;
       }
-    },
+    }
   },
   created: function() {
     document.addEventListener("click", this.hideMenu);
   },
   destroyed: function() {
     document.removeEventListener("click", this.hideMenu);
-  },
+  }
 };
 </script>

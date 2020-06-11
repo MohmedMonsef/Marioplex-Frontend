@@ -253,7 +253,7 @@ export default {
       hover2: false,
       hover3: false,
       hover4: false,
-      hover5: false,
+      hover5: false
     };
   },
   name: "AccountSidebar",
@@ -283,13 +283,13 @@ export default {
       } else {
         this.show5 = false;
       }
-    },
+    }
   },
   mounted() {
     window.addEventListener("click", this.check);
   },
   destroyed() {
     window.removeEventListener("click", this.check);
-  },
+  }
 };
 </script>

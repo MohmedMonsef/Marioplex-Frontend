@@ -12,7 +12,7 @@ describe("HelpMangePaymentDetail", () => {
   beforeEach(() => {
     wrapper = shallowMount(HelpMangePaymentDetail, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

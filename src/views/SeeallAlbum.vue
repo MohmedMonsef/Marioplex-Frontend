@@ -50,7 +50,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "seeallalbum",
   components: {
-    LibAlbums,
+    LibAlbums
   },
   methods: {
     /**
@@ -59,14 +59,14 @@ export default {
      */
     inartist() {
       this.$store.dispatch("Search/artistin", true);
-    },
+    }
   },
   computed: {
     ...mapGetters({
       match_albums: "Search/getalbumres",
       search_value: "Search/get_value",
-      searchfocus: "Search/searchfocus",
-    }),
-  },
+      searchfocus: "Search/searchfocus"
+    })
+  }
 };
 </script>

@@ -18,13 +18,13 @@ describe("category", () => {
         Categorys: {
           namespace: true,
           state: {
-            category: [],
+            category: []
           },
           getters: {
-            getcategory: (state) => state.category,
-          },
-        },
-      },
+            getcategory: state => state.category
+          }
+        }
+      }
     });
   });
 
@@ -33,8 +33,8 @@ describe("category", () => {
     store,
     propsData: {
       name: "pop",
-      categoryId: "123456",
-    },
+      categoryId: "123456"
+    }
   });
 
   it("renders", () => {

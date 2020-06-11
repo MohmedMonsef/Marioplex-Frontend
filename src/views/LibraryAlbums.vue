@@ -61,7 +61,7 @@ export default {
   name: "library-albums",
   components: {
     LibAlbumsDefault,
-    LibAlbums,
+    LibAlbums
   },
   mounted() {
     this.$store.dispatch("UserLibrary/showUserAlbums");
@@ -70,8 +70,8 @@ export default {
     ...mapGetters({
       // map `this.albums1` to `this.$store.getters.albums`
       albums1: "UserLibrary/albums",
-      loadingalbums: "UserLibrary/loadingalbums",
-    }),
-  },
+      loadingalbums: "UserLibrary/loadingalbums"
+    })
+  }
 };
 </script>

@@ -39,15 +39,15 @@ import { mapGetters } from "vuex";
 export default {
   name: "AllAlbums",
   components: {
-    ShowPopularalbums,
+    ShowPopularalbums
   },
   mounted() {
     this.$store.dispatch("ShowWebPlayer/showPopularAlbums");
   },
   computed: {
     ...mapGetters({
-      POPalbums1: "ShowWebPlayer/POPalbums",
-    }),
-  },
+      POPalbums1: "ShowWebPlayer/POPalbums"
+    })
+  }
 };
 </script>

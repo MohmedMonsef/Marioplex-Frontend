@@ -12,7 +12,7 @@ describe("HelpRestPassword", () => {
   beforeEach(() => {
     wrapper = shallowMount(HelpRestPassword, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

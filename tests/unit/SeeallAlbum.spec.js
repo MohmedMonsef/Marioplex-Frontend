@@ -19,7 +19,7 @@ describe("seeallalbum", () => {
           namespaced: true,
           state: {
             search_Value: "",
-            albumres: [],
+            albumres: []
           },
           getters: {
             get_value(state) {
@@ -27,20 +27,20 @@ describe("seeallalbum", () => {
             },
             getalbumres(state) {
               return state.albumres;
-            },
+            }
           },
           actions: {
-            artistin: jest.fn(),
-          },
-        },
-      },
+            artistin: jest.fn()
+          }
+        }
+      }
     });
   });
 
   it("when render dispatch", () => {
     wrapper = shallowMount(seeallalbum, {
       store,
-      localVue,
+      localVue
     });
     wrapper.vm.inartist();
     expect("inartist").toHaveBeenCalled;

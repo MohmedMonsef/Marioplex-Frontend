@@ -16,14 +16,14 @@ describe("CreatePlaylist", () => {
           namespaced: true,
           state: {
             User: {
-              displayName: "nerdeen",
-            },
+              displayName: "nerdeen"
+            }
           },
           getters: {
-            Username: (state) => {
+            Username: state => {
               return state.User.displayName;
-            },
-          },
+            }
+          }
         },
         Playlist: {
           namespaced: true,
@@ -31,29 +31,29 @@ describe("CreatePlaylist", () => {
             status: "",
             showModal: true,
             Playlists: [],
-            playlist_name: "Islamic",
+            playlist_name: "Islamic"
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
             },
-            showModal: (state) => {
+            showModal: state => {
               return state.showModal;
             },
-            withtrack: (state) => {
+            withtrack: state => {
               return state.withtrack;
-            },
+            }
           },
           actions: {
             toggleModal: jest.fn(),
-            CreatePlaylist: jest.fn(),
-          },
-        },
-      },
+            CreatePlaylist: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(CreatePlaylist, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

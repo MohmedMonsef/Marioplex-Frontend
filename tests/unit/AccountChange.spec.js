@@ -15,20 +15,20 @@ describe("AccountChange", () => {
         Authorization: {
           namespaced: true,
           state: {
-            isEdited: "",
+            isEdited: ""
           },
           getters: {
-            isEdited: (state) => state.isEdited,
+            isEdited: state => state.isEdited
           },
           actions: {
-            saveEdit: jest.fn(),
-          },
-        },
-      },
+            saveEdit: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(AccountChange, {
       localVue,
-      store,
+      store
     });
     wrapper.setData({
       password: "",
@@ -38,7 +38,7 @@ describe("AccountChange", () => {
       canSet2: false,
       canSet3: false,
       canSet4: false,
-      saved: "0",
+      saved: "0"
     });
   });
   it("call change Password functions", () => {
@@ -119,10 +119,10 @@ describe("AccountChange", () => {
     store.state.Authorization.isEdited = "success";
     let wrapper2 = shallowMount(AccountChange, {
       localVue,
-      store,
+      store
     });
     wrapper2.setData({
-      saved: "1",
+      saved: "1"
     });
     expect(wrapper2.exists(".saved")).toBe(true);
   });
@@ -130,10 +130,10 @@ describe("AccountChange", () => {
     store.state.Authorization.isEdited = "faild";
     let wrapper3 = shallowMount(AccountChange, {
       localVue,
-      store,
+      store
     });
     wrapper3.setData({
-      saved: "2",
+      saved: "2"
     });
     expect(wrapper3.exists(".wrong")).toBe(true);
   });

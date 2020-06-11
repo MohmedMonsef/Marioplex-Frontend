@@ -17,26 +17,35 @@ describe("NavbarWebplayer.vue", () => {
             status: "success",
             User: {
               displayName: "user name",
-              product: "",
-            },
+              product: ""
+            }
           },
           getters: {
-            Username: (state) => state.User.displayName,
-            GetStatus: (state) => state.status,
-            user: (state) => state.User,
+            Username: state => state.User.displayName,
+            GetStatus: state => state.status,
+            user: state => state.User
           },
           actions: {
-            logout: jest.fn(),
-          },
+            logout: jest.fn()
+          }
         },
-      },
+        UserLibrary: {
+          namespaced: true,
+          state: {
+            scrolling: true
+          },
+          getters: {
+            scrolling: state => state.scrolling
+          }
+        }
+      }
     });
   });
   it("has a playlist router", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists("#playlist-link")).toBe(true);
   });
@@ -45,7 +54,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists("#album-link")).toBe(true);
   });
@@ -53,7 +62,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists("#artist-link")).toBe(true);
   });
@@ -61,7 +70,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists("#account-link")).toBe(true);
   });
@@ -69,7 +78,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists(".upgrade_button")).toBe(true);
   });
@@ -77,7 +86,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists(".login_botton")).toBe(true);
   });
@@ -85,7 +94,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists(".signup_botton")).toBe(true);
   });
@@ -93,37 +102,20 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists("#drop_button")).toBe(true);
   });
-
-  // it("call check function", () => {
-  //   const wrapper = shallowMount(NavbarWebplayer, {
-  //     localVue,
-  //     store
-  //   });
-  //   const check = jest.fn();
-  //   wrapper.setData({
-  //     inlibrary: true,
-  //     insearch: true
-  //   })
-  //   wrapper.setMethods({
-  //     check: check
-  //   });
-  //   wrapper.trigger('click');
-  //   expect(check).toHaveBeenCalled;
-  // });
 
   it("call goprev function when previous button is clicked", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     const goprev = jest.fn();
     wrapper.setMethods({
-      goprev: goprev,
+      goprev: goprev
     });
     const prev_button = wrapper.find(".prev");
     prev_button.trigger("click");
@@ -134,35 +126,27 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
 
     const gonext = jest.fn();
     wrapper.setMethods({
-      gonext: gonext,
+      gonext: gonext
     });
     const next_button = wrapper.find(".next");
     next_button.trigger("click");
     expect(gonext).toHaveBeenCalled;
   });
-  // it("check dropdown list has user name", () => {
-  //     const wrapper = shallowMount(NavbarWebplayer , {
-  //         localVue,
-  //         store,
-  //     });
-  //     const dropdown = wrapper.find('#drop_button');
-  //     expect(dropdown.text()).toBe('User Icon user name');
-  //     });
   it("call logout function", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
 
     const logout = jest.fn();
     wrapper.setMethods({
-      logout: logout,
+      logout: logout
     });
     const anchor = wrapper.find("#logout");
     anchor.trigger("click");
@@ -172,7 +156,7 @@ describe("NavbarWebplayer.vue", () => {
     const wrapper = shallowMount(NavbarWebplayer, {
       localVue,
       store,
-      router,
+      router
     });
     expect(wrapper.exists()).toBe(true);
   });

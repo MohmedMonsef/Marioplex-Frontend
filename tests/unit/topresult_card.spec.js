@@ -18,15 +18,15 @@ describe("topresult_card", () => {
         Search: {
           namespace: true,
           state: {
-            topres: [],
+            topres: []
           },
           getters: {
             gettopres(state) {
               return state.topres;
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     });
   });
 
@@ -35,8 +35,8 @@ describe("topresult_card", () => {
     store,
     propsData: {
       name: "amr",
-      type: "artist",
-    },
+      type: "artist"
+    }
   });
 
   it("renders", () => {

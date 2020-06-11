@@ -176,7 +176,7 @@
  * @example [none]
  */
 export default {
-  name: "HelpMadeForYou",
+  name: "HelpMadeForYou"
 };
 </script>
 <style scoped>

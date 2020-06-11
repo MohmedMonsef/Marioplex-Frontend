@@ -34,5 +34,5 @@ export default new Vuex.Store({
     UserPage,
     CheckUserPopup,
     Notifications
-  },
+  }
 });

@@ -8,7 +8,7 @@ describe("HomeNavigationBar", () => {
   const localVue = createLocalVue();
   localVue.use(Vuex);
   let $route = {
-    path: "",
+    path: ""
   };
   localVue.prototype.$route = $route;
   beforeEach(() => {
@@ -19,8 +19,8 @@ describe("HomeNavigationBar", () => {
           state: {
             GetStatus: "success",
             user: {
-              product: "premium",
-            },
+              product: "premium"
+            }
           },
           getters: {
             GetStatus(state) {
@@ -28,18 +28,18 @@ describe("HomeNavigationBar", () => {
             },
             user(state) {
               return state.user;
-            },
+            }
           },
           actions: {
-            logout: jest.fn(),
-          },
-        },
-      },
+            logout: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(HomeNavigationBar, {
       localVue,
       store,
-      stubs: ["router-link", "router-view"],
+      stubs: ["router-link", "router-view"]
     });
   });
   it("renders premium page", () => {
@@ -49,11 +49,11 @@ describe("HomeNavigationBar", () => {
     let premiumWrapper = shallowMount(HomeNavigationBar, {
       localVue,
       store,
-      stubs: ["router-link", "router-view"],
+      stubs: ["router-link", "router-view"]
     });
     expect(premiumWrapper.exists()).toBe(true);
     $route = {
-      path: "/login",
+      path: "/login"
     };
     expect(premiumWrapper.exists()).toBe(true);
   });
@@ -87,7 +87,7 @@ describe("HomeNavigationBar", () => {
     document.body.appendChild(newDiv);
 
     wrapper.setData({
-      togglelength: true,
+      togglelength: true
     });
     wrapper.vm.collapseBar();
     expect(wrapper.vm.togglelength).toBe(false);

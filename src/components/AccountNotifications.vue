@@ -141,15 +141,15 @@ import { mapGetters } from "vuex";
 export default {
   name: "Account-notifications",
   components: {
-    AccountSidebar,
+    AccountSidebar
   },
   mounted() {
     this.$store.dispatch("Notifications/showUserNotifications");
   },
   computed: {
     ...mapGetters({
-      notifications: "Notifications/notifications",
-    }),
+      notifications: "Notifications/notifications"
+    })
   },
   methods: {
     /**
@@ -188,7 +188,7 @@ export default {
           "/HomeWebPlayer/UserProfile/" + notification.data.userId
         );
       }
-    },
-  },
+    }
+  }
 };
 </script>

@@ -42,15 +42,15 @@ import { mapGetters } from "vuex";
 export default {
   name: "AllArtists",
   components: {
-    ShowPopularartists,
+    ShowPopularartists
   },
   mounted() {
     this.$store.dispatch("ShowWebPlayer/showPopularArtists");
   },
   computed: {
     ...mapGetters({
-      POPartists1: "ShowWebPlayer/POPartists",
-    }),
-  },
+      POPartists1: "ShowWebPlayer/POPartists"
+    })
+  }
 };
 </script>

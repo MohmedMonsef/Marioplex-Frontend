@@ -20,24 +20,24 @@ describe("AccountOverview", () => {
               country: "eg",
               displayName: "Nerdeen",
               email: "nerdeen.ahmad15@gmail.com",
-              gender: "female",
+              gender: "female"
             },
-            deleted_Acount: true,
+            deleted_Acount: true
           },
           getters: {
-            Username: (state) => state.User.displayName,
-            user: (state) => state.User,
-            deleted_Acountt: (state) => state.deleted_Acount,
+            Username: state => state.User.displayName,
+            user: state => state.User,
+            deleted_Acountt: state => state.deleted_Acount
           },
           actions: {
-            removeuser: jest.fn(),
-          },
-        },
-      },
+            removeuser: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(AccountOverview, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

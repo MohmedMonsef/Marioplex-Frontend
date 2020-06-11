@@ -175,8 +175,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      showModal: "Playlist/showModal",
-    }),
+      showModal: "Playlist/showModal"
+    })
   },
   methods: {
     /**
@@ -195,7 +195,7 @@ export default {
       console.log(id);
       this.$store.dispatch("UserPropreties/DeletePlaylist", id);
       console.log("removed");
-    },
-  },
+    }
+  }
 };
 </script>

@@ -9,8 +9,8 @@ describe("ArtistPageCoverPhoto", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      artist_id: "",
-    },
+      artist_id: ""
+    }
   };
   localVue.prototype.$route = $route;
   let spy;
@@ -23,54 +23,54 @@ describe("ArtistPageCoverPhoto", () => {
           store: {
             followartist: false,
             artist_name: "",
-            artistcover_image: "",
+            artistcover_image: ""
           },
           getters: {
-            artist_name: (state) => {
+            artist_name: state => {
               return state.artist_name;
             },
-            artistcover_image: (state) => {
+            artistcover_image: state => {
               return state.artistcover_image;
             },
-            followartist: (state) => {
+            followartist: state => {
               return state.followartist;
-            },
+            }
           },
           actions: {
             follow_artist: jest.fn(),
-            unfollow_artist: jest.fn(),
-          },
+            unfollow_artist: jest.fn()
+          }
         },
         Mediaplayer: {
           namespaced: true,
           state: {
-            playicon: true,
+            playicon: true
           },
           getters: {
-            playicon: (state) => state.playicon,
-          },
+            playicon: state => state.playicon
+          }
         },
         Authorization: {
           namespaced: true,
           state: {
-            status: "",
+            status: ""
           },
           getters: {
-            GetStatus: (state) => state.status,
-          },
+            GetStatus: state => state.status
+          }
         },
         CheckUserPopup: {
           namespaced: true,
           actions: {
-            togglepagespopup: jest.fn(),
-          },
-        },
-      },
+            togglepagespopup: jest.fn()
+          }
+        }
+      }
     });
     spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(ArtistPageCoverPhoto, {
       store,
-      localVue,
+      localVue
     });
   });
   it("renders", () => {
@@ -79,7 +79,7 @@ describe("ArtistPageCoverPhoto", () => {
   it("Artist Page CoverPhoto", () => {
     wrapper.setData({
       play: false,
-      imgId: "",
+      imgId: ""
     });
     let testId = "artistliketoast";
     let toast = document.createElement("div");

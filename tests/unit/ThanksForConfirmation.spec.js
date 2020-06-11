@@ -10,8 +10,8 @@ describe("ThanksForConfirmation", () => {
   let $route = {
     query: {
       id: "",
-      type: "",
-    },
+      type: ""
+    }
   };
   localVue.prototype.$route = $route;
 
@@ -24,27 +24,27 @@ describe("ThanksForConfirmation", () => {
             ConfirmEmail: jest.fn(),
             ConfirmUpdate: jest.fn(),
             logout: jest.fn(),
-            ConfirmPremium: jest.fn(),
-          },
-        },
-      },
+            ConfirmPremium: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(ThanksForConfirmation, {
       store,
       localVue,
       propsData: {
         id: "",
-        type: "",
+        type: ""
       },
-      stubs: ["router-link", "router-view"],
+      stubs: ["router-link", "router-view"]
     });
   });
   it("renders", () => {
     let $route = {
       query: {
         id: "",
-        type: "",
-      },
+        type: ""
+      }
     };
     localVue.prototype.$route = $route;
     expect(wrapper.exists()).toBe(true);
@@ -53,8 +53,8 @@ describe("ThanksForConfirmation", () => {
     let $route = {
       query: {
         id: "",
-        type: "signup",
-      },
+        type: "signup"
+      }
     };
     localVue.prototype.$route = $route;
     wrapper.vm.thanksForConfirmation();
@@ -64,8 +64,8 @@ describe("ThanksForConfirmation", () => {
     let $route = {
       query: {
         id: "",
-        type: "update",
-      },
+        type: "update"
+      }
     };
     localVue.prototype.$route = $route;
 
@@ -77,8 +77,8 @@ describe("ThanksForConfirmation", () => {
     let $route = {
       query: {
         id: "",
-        type: "",
-      },
+        type: ""
+      }
     };
     localVue.prototype.$route = $route;
     wrapper.vm.thanksForConfirmation();

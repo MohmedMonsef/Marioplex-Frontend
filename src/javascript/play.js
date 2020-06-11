@@ -35,12 +35,12 @@ export function loadSourceBuffer(mediaSource, mediaURL, mediaMimeType) {
   ("use strict");
   let sourceBuffer = mediaSource.addSourceBuffer(mediaMimeType);
   // Promise to resolve when our source buffer has updateend
-  let fetchedPromise = new Promise((resolve) => {
+  let fetchedPromise = new Promise(resolve => {
     sourceBuffer.addEventListener("updateend", () => {
       resolve();
     });
   });
-  fetchArrayBuffer(mediaURL, (buf) => {
+  fetchArrayBuffer(mediaURL, buf => {
     sourceBuffer.appendBuffer(buf);
   });
   return fetchedPromise;
@@ -87,7 +87,7 @@ export function generateLicense(message) {
     kty: "oct",
     alg: "A128KW",
     kid: audioKeyID,
-    k: audioKey,
+    k: audioKey
   };
   return new TextEncoder().encode(
     JSON.stringify({
@@ -115,14 +115,14 @@ export function setupPlayer(audioURL, key, keyid, value) {
   let audioMimeType = opusMimeType;
   // EME handling
   let keySystemConfig = {
-    initDataTypes: ["webm"],
+    initDataTypes: ["webm"]
   };
   keySystemConfig.audioCapabilities = [{ contentType: audioMimeType }];
   let config = [keySystemConfig];
 
   let mediaSource = new MediaSource();
   console.log("Media source state: " + mediaSource.readyState); // Should be closed
-  mediaElement.addEventListener("error", (e) => {
+  mediaElement.addEventListener("error", e => {
     console.log(e.target.error.message);
   });
 
@@ -140,7 +140,7 @@ export function setupPlayer(audioURL, key, keyid, value) {
         });
       });
     },
-    (failureReason) => {
+    failureReason => {
       console.log("Failed to setup media keys: " + failureReason.message);
     }
   );

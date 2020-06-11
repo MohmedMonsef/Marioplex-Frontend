@@ -58,7 +58,7 @@ export default {
   name: "HomeWebPlayer",
   data: function() {
     return {
-      componentKey: 0,
+      componentKey: 0
     };
   },
   components: {
@@ -71,19 +71,19 @@ export default {
     PremiumAd,
     // LibraryNavbar
     NavbarWebplayer,
-    AddTrackPopup,
+    AddTrackPopup
   },
   computed: {
     ...mapState({
-      show: (state) => state.Playlist.showModal,
-      showmediaplayerpopup: (state) => state.CheckUserPopup.showModal,
-      showuserpopup: (state) => state.CheckUserPopup.showpagesModal,
-      showdelete: (state) => state.Playlist.showModalDelete,
-      showAdd: (state) => state.Playlist.showModalAdd,
+      show: state => state.Playlist.showModal,
+      showmediaplayerpopup: state => state.CheckUserPopup.showModal,
+      showuserpopup: state => state.CheckUserPopup.showpagesModal,
+      showdelete: state => state.Playlist.showModalDelete,
+      showAdd: state => state.Playlist.showModalAdd
     }),
     ...mapGetters({
-      premiumPopup: "Mediaplayer/premiumPopup",
-    }),
+      premiumPopup: "Mediaplayer/premiumPopup"
+    })
   },
   methods: {
     handler() {
@@ -92,12 +92,12 @@ export default {
     },
     closeMenu() {
       this.$store.dispatch("UserLibrary/sideMenu", false);
-    },
+    }
   },
   watch: {
     $route() {
       this.componentKey = (this.componentKey + 1) % 4;
-    },
-  },
+    }
+  }
 };
 </script>

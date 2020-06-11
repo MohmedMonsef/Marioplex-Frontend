@@ -15,30 +15,30 @@ describe("ArtistHeader", () => {
           namespaced: true,
           state: {
             status: "",
-            showinput: true,
+            showinput: true
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
             },
-            showinput: (state) => {
+            showinput: state => {
               return state.showinput;
             },
-            ArtistName: (state) => {
+            ArtistName: state => {
               return state.ArtistName;
-            },
+            }
           },
           actions: {
             Get_Artist_Name: jest.fn(),
             EditName: jest.fn(),
-            showinputfield: jest.fn(),
-          },
-        },
-      },
+            showinputfield: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(ArtistHeader, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

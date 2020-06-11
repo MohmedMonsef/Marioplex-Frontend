@@ -16,33 +16,33 @@ describe("libraryPlaylists", () => {
           namespaced: true,
           state: {
             playlists: [],
-            loadingplaylists: 1,
+            loadingplaylists: 1
           },
           getters: {
-            playlists: (state) => state.playlists,
-            loadingplaylists: (state) => state.loadingplaylists,
+            playlists: state => state.playlists,
+            loadingplaylists: state => state.loadingplaylists
           },
           actions: {
-            showplaylists: jest.fn(),
-          },
+            showplaylists: jest.fn()
+          }
         },
         UserLibrary: {
           namespaced: true,
           state: {
-            songs: [],
+            songs: []
           },
           getters: {
-            songs: (state) => state.songs,
+            songs: state => state.songs
           },
           actions: {
-            showUserSongs: jest.fn(),
-          },
-        },
-      },
+            showUserSongs: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(libraryPlaylists, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

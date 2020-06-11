@@ -19,7 +19,7 @@ describe("seealltrackt", () => {
           namespaced: true,
           state: {
             search_Value: "",
-            track: [],
+            track: []
           },
           getters: {
             get_value(state) {
@@ -27,20 +27,20 @@ describe("seealltrackt", () => {
             },
             gettrack(state) {
               return state.track;
-            },
+            }
           },
           actions: {
-            artistin: jest.fn(),
-          },
-        },
-      },
+            artistin: jest.fn()
+          }
+        }
+      }
     });
   });
 
   it("when render dispatch", () => {
     wrapper = shallowMount(seealltrackt, {
       store,
-      localVue,
+      localVue
     });
     wrapper.vm.inartist();
     expect("inartist").toHaveBeenCalled;

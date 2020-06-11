@@ -308,8 +308,8 @@ export default {
   name: "mediaplayerpopup",
   computed: {
     ...mapGetters({
-      showModal: "CheckUserPopup/showModal",
-    }),
+      showModal: "CheckUserPopup/showModal"
+    })
   },
   methods: {
     /**
@@ -318,7 +318,7 @@ export default {
      */
     changeModalState() {
       this.$store.dispatch("CheckUserPopup/togglePopup");
-    },
-  },
+    }
+  }
 };
 </script>

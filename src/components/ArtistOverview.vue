@@ -62,20 +62,20 @@ import { mapGetters } from "vuex";
 export default {
   data: function() {
     return {
-      artistid: "",
+      artistid: ""
     };
   },
   name: "ArtistProfile",
   components: {
     SongComponent,
-    homecards,
+    homecards
   },
   computed: {
     ...mapGetters({
       artist_tracks: "ArtistPage/artist_tracks",
       artist_albums: "ArtistPage/artist_albums",
-      tracks_length: "ArtistPage/tracks_length",
-    }),
+      tracks_length: "ArtistPage/tracks_length"
+    })
   },
   created: function() {
     this.artistid = this.$route.params.artist_id;
@@ -90,6 +90,6 @@ export default {
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
-  },
+  }
 };
 </script>

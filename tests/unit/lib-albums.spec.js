@@ -9,8 +9,8 @@ describe("LibAlbums.vue", () => {
       localVue,
       propsData: {
         name: "album name",
-        artistname: "artist name",
-      },
+        artistname: "artist name"
+      }
     });
     const name = wrapper.find("#cardtitle");
     const artistname = wrapper.find(".artistlink");

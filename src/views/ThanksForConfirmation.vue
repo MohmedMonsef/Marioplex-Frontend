@@ -90,12 +90,12 @@ export default {
   props: {
     id: {
       type: String,
-      required: true,
+      required: true
     },
     type: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     /**
@@ -121,11 +121,11 @@ export default {
         );
         this.$store.dispatch("Authorization/logout", this.$route.query.id);
       }
-    },
+    }
   },
   mounted() {
     this.id = this.$route.query.id;
     this.type = this.$route.query.type;
-  },
+  }
 };
 </script>

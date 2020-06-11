@@ -31,6 +31,7 @@ npm run test:unit
 ```
 The last version of the coverage test can be found on: coverage\lcov-report\index.html
 including our components and views
+open views and component tap to view details.
 
 ### Run the Documentation page
 

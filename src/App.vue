@@ -50,8 +50,8 @@ export default {
   data: function() {
     return {
       loading: true,
-      componentKey: 0,
+      componentKey: 0
     };
-  },
+  }
 };
 </script>

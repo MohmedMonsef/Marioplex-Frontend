@@ -38,7 +38,7 @@
  * @example [none]
  */
 export default {
-  name: "HelpAccountHelp",
+  name: "HelpAccountHelp"
 };
 </script>
 <style scoped>

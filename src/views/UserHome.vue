@@ -259,7 +259,7 @@ export default {
     ShowPopularartists,
     ShowPopularalbums,
     ShowPopularreleases,
-    LibPlaylists,
+    LibPlaylists
     //  NavbarWebplayer
   },
   created: function() {
@@ -284,7 +284,7 @@ export default {
     handler: function(e) {
       //do stuff
       e.preventDefault();
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -295,8 +295,8 @@ export default {
       POPnewreleases1: "ShowWebPlayer/POPnewreleases",
       playlists1: "Playlist/playlists",
       isLoggedIn: "Authorization/GetStatus",
-      loading: "ShowWebPlayer/loading",
-    }),
-  },
+      loading: "ShowWebPlayer/loading"
+    })
+  }
 };
 </script>

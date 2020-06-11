@@ -25,18 +25,18 @@ export function initializeFirebase() {
       storageBucket: "notif-demo-e8dae.appspot.com",
       messagingSenderId: "356913468865",
       appId: "1:356913468865:web:52bba10aea1a12265a4b40",
-      measurementId: "G-89JE5P29CZ",
+      measurementId: "G-89JE5P29CZ"
     };
     if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);
     }
     messaging = firebase.messaging();
-    messaging.onMessage((payload) => {
+    messaging.onMessage(payload => {
       console.log("Message received. ", payload);
       // var sender = JSON.parse(payload.data);
       var notificationTitle = payload.data.title;
       var notificationOptions = {
-        body: payload.data.body,
+        body: payload.data.body
         // title: payload.notification.title
         // icon: window.document.URL.replace(/^(.\/)./, "$1") + "../src/assets/icon.png",
       };
@@ -44,7 +44,7 @@ export function initializeFirebase() {
         notificationTitle,
         notificationOptions
       );
-      notification.onclick = function (event) {
+      notification.onclick = function(event) {
         event.preventDefault(); // prevent the browser from focusing the Notification's tab
         window.open(payload.data.click_action, "_blank");
         notification.close();
@@ -61,20 +61,20 @@ export function initializeFirebase() {
         console.log("token dai", token);
         return token;
       })
-      .then((token) => {
+      .then(token => {
         console.log(token);
         axios
           .post("api/notification/token", {
-            fcmToken: token,
+            fcmToken: token
           })
-          .then((response) => {
+          .then(response => {
             console.log("response", response);
           })
-          .catch((error) => {
+          .catch(error => {
             console.log("Error Occurred", error);
           });
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.code === "messaging/permission-blocked") {
           console.log("Please Unblock Notification Request Manually");
         } else {

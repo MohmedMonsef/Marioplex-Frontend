@@ -266,7 +266,7 @@ const toast = {
       mytoast.classList.remove("toast--visible");
     }, 2000);
     console.log("message", message);
-  },
+  }
 };
 /**
  * Displays Album information
@@ -276,7 +276,7 @@ const toast = {
 export default {
   data: function() {
     return {
-      play: false,
+      play: false
     };
   },
   mixins: [song_functions],
@@ -327,13 +327,13 @@ export default {
         playbutton.style.opacity = "1";
         return {
           img: albumimage.style.opacity,
-          btn: playbutton.style.opacity,
+          btn: playbutton.style.opacity
         };
       } else {
         var pausebutton = document.getElementById("imagepauseicon");
         pausebutton.style.opacity = "1";
         return {
-          btn: pausebutton.style.opacity,
+          btn: pausebutton.style.opacity
         };
       }
     },
@@ -350,7 +350,7 @@ export default {
         playbutton.style.opacity = "0";
         return {
           img: albumimage.style.opacity,
-          btn: playbutton.style.opacity,
+          btn: playbutton.style.opacity
         };
       } else {
         albumimage.style.opacity = "0.3";
@@ -358,7 +358,7 @@ export default {
         pausebutton.style.opacity = "1";
         return {
           img: albumimage.style.opacity,
-          btn: pausebutton.style.opacity,
+          btn: pausebutton.style.opacity
         };
       }
     },
@@ -381,7 +381,7 @@ export default {
           );
         }
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -391,8 +391,8 @@ export default {
       artist_name: "Album/artist_name",
       album_image: "Album/album_image",
       liked: "Album/likealbum",
-      user: "Authorization/GetStatus",
-    }),
-  },
+      user: "Authorization/GetStatus"
+    })
+  }
 };
 </script>

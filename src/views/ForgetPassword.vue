@@ -148,7 +148,7 @@ export default {
       isNormal: true,
       isError: false,
       isSubmitted: false,
-      email: "",
+      email: ""
     };
   },
   methods: {
@@ -168,7 +168,7 @@ export default {
         this.isError = false;
         this.$store.dispatch("Authorization/reset", { email: this.email });
       }
-    },
+    }
   },
   computed: {
     normal: function() {
@@ -179,7 +179,7 @@ export default {
     },
     submitted: function() {
       return this.isSubmitted;
-    },
-  },
+    }
+  }
 };
 </script>

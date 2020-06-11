@@ -25,7 +25,7 @@ describe("ArtistPersonalPage", () => {
             currentimage: "",
             image_id: "",
             Artist_ID: "",
-            showModalCreate: true,
+            showModalCreate: true
           },
           actions: {
             toggleModalUpload: jest.fn(),
@@ -35,36 +35,36 @@ describe("ArtistPersonalPage", () => {
             toggleModal: jest.fn(),
             Get_Album_ID: jest.fn(),
             Get_Artist_Name: jest.fn(),
-            toggleModalCreate: jest.fn(),
+            toggleModalCreate: jest.fn()
           },
           getters: {
-            showModal: (state) => {
+            showModal: state => {
               return state.showModal;
             },
-            showModalUpload: (state) => {
+            showModalUpload: state => {
               return state.showModalUpload;
             },
-            image_id: (state) => {
+            image_id: state => {
               return state.image_id;
             },
-            ArtistBio: (state) => {
+            ArtistBio: state => {
               return state.ArtistBio;
             },
-            ArtistName: (state) => {
+            ArtistName: state => {
               return state.ArtistName;
             },
-            showinput: (state) => {
+            showinput: state => {
               return state.showinput;
             },
-            Artist_ID: (state) => {
+            Artist_ID: state => {
               return state.Artist_ID;
             },
-            Albums: (state) => {
+            Albums: state => {
               return state.Albums;
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     });
     wrapper = shallowMount(ArtistPersonalPage, {
       localVue,
@@ -72,8 +72,8 @@ describe("ArtistPersonalPage", () => {
       stubs: {
         UploadSong,
         ArtistHeader,
-        EditBio,
-      },
+        EditBio
+      }
     });
   });
   it("renders", () => {
@@ -100,10 +100,10 @@ describe("ArtistPersonalPage", () => {
             size: 50000,
             type: "image/png",
             width: 100,
-            height: 5000,
-          },
-        ],
-      },
+            height: 5000
+          }
+        ]
+      }
     };
     // jest.mock('image.png', () => 'image.png');
     // wrapper.vm.load((error) => {

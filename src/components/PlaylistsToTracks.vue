@@ -80,7 +80,7 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 /**
  * @displayName Playlist To add Track
@@ -89,7 +89,7 @@ const toast = {
 export default {
   data: function() {
     return {
-      hover: false,
+      hover: false
     };
   },
   name: "PlaylistsToTracks",
@@ -97,8 +97,8 @@ export default {
   mixins: [song_functions],
   computed: {
     ...mapGetters({
-      trackid: "Playlist/trackid",
-    }),
+      trackid: "Playlist/trackid"
+    })
   },
   methods: {
     /**
@@ -108,10 +108,8 @@ export default {
     AddTrackToExsistPlaylist() {
       let payload = {
         trackid: this.trackid,
-        playlistid: this.playlist_id,
+        playlistid: this.playlist_id
       };
-      console.log("in card track", this.trackid);
-      console.log("in card playlist", payload.playlistid);
       this.$store.dispatch("Playlist/AddTrackToExsistPlaylist", payload);
     },
     /**
@@ -121,7 +119,7 @@ export default {
     changeModalStateAdd() {
       this.$store.dispatch("Playlist/toggleModalAdd");
       toast.show("Added to your library");
-    },
-  },
+    }
+  }
 };
 </script>

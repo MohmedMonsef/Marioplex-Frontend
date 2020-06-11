@@ -17,17 +17,17 @@ describe("LibArtistsDefault", () => {
           namespaced: true,
           actions: {
             search_V: jest.fn(),
-            clear: jest.fn(),
-          },
-        },
-      },
+            clear: jest.fn()
+          }
+        }
+      }
     });
   });
 
   it("when render ", () => {
     wrapper = shallowMount(LibArtistsDefault, {
       store,
-      localVue,
+      localVue
     });
     const btn = wrapper.find(".search_button");
     btn.trigger("click");

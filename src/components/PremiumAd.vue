@@ -9,8 +9,8 @@
               ad1: premiumAd == 0,
               ad2: premiumAd == 1,
               ad3: premiumAd == 2,
-              ad4: premiumAd == 3,
-            },
+              ad4: premiumAd == 3
+            }
           ]"
         >
           <h1>MarioPlex Premium</h1>
@@ -31,8 +31,8 @@
               {
                 btn1: premiumAd == 0 || premiumAd == 1,
                 btn2: premiumAd == 2,
-                btn3: premiumAd == 3,
-              },
+                btn3: premiumAd == 3
+              }
             ]"
           >
             Get Premium
@@ -204,8 +204,8 @@ export default {
   computed: {
     ...mapGetters({
       premiumPopup: "Mediaplayer/premiumPopup",
-      premiumAd: "Mediaplayer/premiumAd",
-    }),
-  },
+      premiumAd: "Mediaplayer/premiumAd"
+    })
+  }
 };
 </script>

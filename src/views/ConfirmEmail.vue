@@ -90,7 +90,7 @@ export default {
      */
     ResendConfirmationEmail() {
       this.$store.dispatch("Authorization/ResendEmail");
-    },
-  },
+    }
+  }
 };
 </script>

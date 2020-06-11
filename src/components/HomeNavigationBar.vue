@@ -5,8 +5,8 @@
       islogged ? 'nav-hover-user' : 'nav-hover',
       {
         classA: scrollPosition == 0 && ispremium,
-        classB: scrollPosition > 0 || !ispremium,
-      },
+        classB: scrollPosition > 0 || !ispremium
+      }
     ]"
   >
     <div class="row navbar-inner">
@@ -467,7 +467,7 @@ export default {
     return {
       togglelength: false,
       scrollPosition: null,
-      ispremium: true,
+      ispremium: true
     };
   },
   methods: {
@@ -498,17 +498,17 @@ export default {
      */
     updateScroll() {
       this.scrollPosition = window.scrollY;
-    },
+    }
   },
 
   computed: {
     ...mapGetters({
       isLoggedIn: "Authorization/GetStatus",
-      user: "Authorization/user",
+      user: "Authorization/user"
     }),
     islogged() {
       return this.isLoggedIn == "success";
-    },
+    }
   },
   watch: {
     $route: function() {
@@ -517,7 +517,7 @@ export default {
       } else {
         this.ispremium = false;
       }
-    },
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
@@ -529,6 +529,6 @@ export default {
   },
   destroyed() {
     window.removeEventListener("scroll", this.updateScroll);
-  },
+  }
 };
 </script>

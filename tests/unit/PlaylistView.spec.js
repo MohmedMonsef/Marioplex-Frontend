@@ -9,8 +9,8 @@ describe("PlaylistView", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      id: "",
-    },
+      id: ""
+    }
   };
   localVue.prototype.$route = $route;
 
@@ -23,35 +23,35 @@ describe("PlaylistView", () => {
             playlist_tracks: [],
             playlist_loaded: -1,
             playlist_length: "",
-            playlist_image: "",
+            playlist_image: ""
           },
           getters: {
-            playlist_tracks: (state) => {
+            playlist_tracks: state => {
               return state.playlist_tracks;
             },
-            playlist_length: (state) => {
+            playlist_length: state => {
               return state.playlist_length;
             },
-            playlist_loaded: (state) => {
+            playlist_loaded: state => {
               return state.playlist_loaded;
             },
-            playlist_image: (state) => {
+            playlist_image: state => {
               return state.playlist_image;
-            },
+            }
           },
           actions: {
             playlist_tracks: jest.fn(),
-            ReorderTracks: jest.fn(),
-          },
-        },
-      },
+            ReorderTracks: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(PlaylistView, {
       store,
       localVue,
       propsData: {
-        id: "",
-      },
+        id: ""
+      }
     });
   });
   it("renders", () => {
@@ -61,7 +61,7 @@ describe("PlaylistView", () => {
     wrapper.setData({
       oldIndex: "",
       newIndex: "",
-      playlist_id: "",
+      playlist_id: ""
     }),
       window.dispatchEvent(new Event("load"));
     expect("playlist_tracks").toHaveBeenCalled;

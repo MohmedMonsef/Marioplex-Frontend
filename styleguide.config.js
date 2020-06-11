@@ -5,24 +5,24 @@ module.exports = {
     {
       name: "Views",
       description: "Documentation for the views",
-      components: ["src/views/*.vue"],
+      components: ["src/views/*.vue"]
     },
 
     {
       name: "Components",
       description: "Documentation for the components",
-      components: ["src/components/*.vue"],
+      components: ["src/components/*.vue"]
     },
     {
       name: "Helpers",
       description: "Documentation for global helper functions",
-      components: ["src/javascript/*.js"],
-    },
+      components: ["src/javascript/*.js"]
+    }
   ],
   theme: {
     color: {
-      base: "black",
-    },
+      base: "black"
+    }
   },
-  exampleMode: "expand",
+  exampleMode: "expand"
 };

@@ -12,7 +12,7 @@ describe("HelpCantLogIn", () => {
   beforeEach(() => {
     wrapper = shallowMount(HelpCantLogIn, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

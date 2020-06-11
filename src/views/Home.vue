@@ -19,8 +19,8 @@ export default {
   name: "Home",
   components: {
     HomeNavigationBar,
-    HomeFooter,
-  },
+    HomeFooter
+  }
 };
 </script>
 

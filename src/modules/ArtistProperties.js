@@ -310,20 +310,14 @@ export default {
         });
     },
     UploadTrack({ commit }, payload) {
-      const high = new FormData();
-      high.append("high", payload.highselectedfile);
-      const medium = new FormData();
-      medium.append("medium", payload.mediumselectedfile);
-      const low = new FormData();
-      low.append("low", payload.lowselectedfile);
-      const high_enc = new FormData();
-      high_enc.append("high_enc", payload.high_enc_selectedfile);
-      const medium_enc = new FormData();
-      medium_enc.append("medium_enc", payload.medium_enc_selectedfile);
-      const low_enc = new FormData();
-      low_enc.append("low_enc", payload.low_enc_selectedfile);
-      const review = new FormData();
-      review.append("review", payload.selectedpreview);
+      const data = new FormData();
+      data.append("high", payload.highselectedfile);
+      data.append("medium", payload.mediumselectedfile);
+      data.append("low", payload.lowselectedfile);
+      data.append("high_enc", payload.high_enc_selectedfile);
+      data.append("medium_enc", payload.medium_enc_selectedfile);
+      data.append("low_enc", payload.low_enc_selectedfile);
+      data.append("review", payload.selectedpreview);
       axios({
         method: "post",
         url:
@@ -337,15 +331,7 @@ export default {
           payload.TrackNumber +
           "&duration=21.7&key=a4631a153a443df9eed0593043db7519&keyId=f3c5e0361e6654b28f8049c778b23946&genres=" +
           payload.Genre,
-        data: {
-          high: high,
-          medium: medium,
-          low: low,
-          heigh_enc: high_enc,
-          medium_enc: medium_enc,
-          low_enc: low_enc,
-          review: review,
-        },
+        data: data,
       })
         .then(() => {
           commit("UploadTrack");

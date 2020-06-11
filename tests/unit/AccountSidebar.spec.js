@@ -8,7 +8,7 @@ describe("AccountSidebar", () => {
   localVue.use(VueRouter);
   beforeEach(() => {
     wrapper = shallowMount(AccountSidebar, {
-      localVue,
+      localVue
     });
   });
   it("renders", () => {

@@ -102,8 +102,8 @@
       "!**/NavbarWebplayer.vue",
       "!**/SideBar.vue",
       "!**/Help.vue",
-      "!**/AccountNotifications.vue "
-      
+      "!**/AccountNotifications.vue",
+      "!**/Mediaplayer.vue"
     ]
   }
 }

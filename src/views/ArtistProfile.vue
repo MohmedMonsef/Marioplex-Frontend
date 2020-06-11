@@ -19,12 +19,12 @@ import artistcoverphoto from "@/components/ArtistPageCoverPhoto.vue";
 export default {
   data: function() {
     return {
-      artistid: "",
+      artistid: ""
     };
   },
   name: "ArtistProfile",
   components: {
-    artistcoverphoto,
+    artistcoverphoto
   },
   created: function() {
     this.artistid = this.$route.params.artist_id;
@@ -39,6 +39,6 @@ export default {
   },
   mounted() {
     this.artistid = this.$route.params.artist_id;
-  },
+  }
 };
 </script>

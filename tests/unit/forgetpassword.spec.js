@@ -17,14 +17,14 @@ describe("ForgetPassword", () => {
           namespaced: true,
           actions: {
             facebook_signUp: jest.fn(),
-            reset: jest.fn(),
-          },
-        },
-      },
+            reset: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(ForgetPassword, {
       store,
-      localVue,
+      localVue
     });
   });
   it("renders", () => {

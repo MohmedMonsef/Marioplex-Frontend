@@ -15,23 +15,23 @@ describe("SignUp", () => {
         Authorization: {
           namespaced: true,
           state: {
-            status: "",
+            status: ""
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
-            },
+            }
           },
           actions: {
             facebook_signUp: jest.fn(),
-            signUp: jest.fn(),
-          },
-        },
-      },
+            signUp: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(SignUp, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

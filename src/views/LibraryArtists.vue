@@ -63,7 +63,7 @@ export default {
   name: "library-artists",
   components: {
     LibArtistsDefault,
-    LibArtists,
+    LibArtists
   },
   mounted() {
     this.$store.dispatch("UserLibrary/showUserArtists");
@@ -72,8 +72,8 @@ export default {
     ...mapGetters({
       // map `this.artists1` to `this.$store.getters.artists`
       artists1: "UserLibrary/artists",
-      loadingartists: "UserLibrary/loadingartists",
-    }),
-  },
+      loadingartists: "UserLibrary/loadingartists"
+    })
+  }
 };
 </script>

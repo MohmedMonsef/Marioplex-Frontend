@@ -7,18 +7,18 @@ export default {
     NextUp: [],
     Queued: [],
     demo: true,
-    loading: 0,
+    loading: 0
   },
   mutations: {
     set_nextup(state, queue) {
       state.NextUp = [];
-      queue.forEach((q) => {
+      queue.forEach(q => {
         if (!q.isQueue) state.NextUp.push(q);
       });
     },
     set_queued(state, queue) {
       state.Queued = [];
-      queue.forEach((q) => {
+      queue.forEach(q => {
         if (q.isQueue) state.Queued.push(q);
       });
     },
@@ -30,13 +30,13 @@ export default {
     },
     set_loading(state, status) {
       state.loading = status;
-    },
+    }
   },
   actions: {
     Queue({ commit, state }) {
       axios
         .get("/api/me/queue")
-        .then((response) => {
+        .then(response => {
           const queue = response.data;
           commit("set_nextup", queue);
           commit("set_queued", queue);
@@ -44,7 +44,7 @@ export default {
             state.loading = 1;
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -64,7 +64,7 @@ export default {
         .then(() => {
           dispatch("Queue");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -76,25 +76,25 @@ export default {
         var albumId;
         await axios
           .get("/api/browse/new-releases")
-          .then((response) => {
+          .then(response => {
             albumId = response.data.albums[0].id;
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
         await axios
           .get("/api/albums/" + albumId)
-          .then((response) => {
+          .then(response => {
             let album = response.data;
             info = {
               index: 0,
               song_id: album.track[0]._id,
               album_id: albumId,
               playlist_id: "0",
-              is_playlist: false,
+              is_playlist: false
             };
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       }
@@ -112,7 +112,7 @@ export default {
             store.dispatch("Mediaplayer/get_currentsong", firstTime);
             store.dispatch("Mediaplayer/playsong_state", info);
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       } else {
@@ -130,15 +130,15 @@ export default {
             if (firstTime != 2)
               store.dispatch("Mediaplayer/playsong_state", info);
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       }
-    },
+    }
   },
   getters: {
-    Get_Queued: (state) => state.Queued,
-    Get_Nextup: (state) => state.NextUp,
-    loading: (state) => state.loading,
-  },
+    Get_Queued: state => state.Queued,
+    Get_Nextup: state => state.NextUp,
+    loading: state => state.loading
+  }
 };

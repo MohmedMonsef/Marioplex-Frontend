@@ -13,7 +13,7 @@
 import HelpPagesSideBar from "@/components/HelpPagesSideBar";
 export default {
   name: "HelpFixed",
-  components: { HelpPagesSideBar },
+  components: { HelpPagesSideBar }
 };
 </script>
 <style scoped>

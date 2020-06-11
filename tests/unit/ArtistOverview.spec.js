@@ -9,8 +9,8 @@ describe("ArtistOverview", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      id: "",
-    },
+      id: ""
+    }
   };
   localVue.prototype.$route = $route;
 
@@ -22,32 +22,32 @@ describe("ArtistOverview", () => {
           store: {
             artist_tracks: [],
             artist_albums: [],
-            tracks_length: "",
+            tracks_length: ""
           },
           getters: {
-            artist_tracks: (state) => {
+            artist_tracks: state => {
               return state.artist_tracks;
             },
-            artist_albums: (state) => {
+            artist_albums: state => {
               return state.artist_albums;
             },
-            tracks_length: (state) => {
+            tracks_length: state => {
               return state.tracks_length;
-            },
+            }
           },
           actions: {
             artist_tracks: jest.fn(),
-            artist_albums: jest.fn(),
-          },
-        },
-      },
+            artist_albums: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(ArtistOverview, {
       store,
       localVue,
       propsData: {
-        id: "",
-      },
+        id: ""
+      }
     });
   });
   it("renders", () => {

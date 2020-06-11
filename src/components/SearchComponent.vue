@@ -105,7 +105,7 @@ export default {
       }
       this.awaitingSearch = true;
       this.$store.dispatch("Search/clear");
-    },
+    }
   },
   methods: {
     check(value) {
@@ -127,7 +127,7 @@ export default {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
     },
-      /**
+    /**
      * clear in search
      * @public This is a public method
      */
@@ -137,7 +137,7 @@ export default {
       }
     },
     /**
-     * when focus search input 
+     * when focus search input
      * @public This is a public method
      */
     focus() {
@@ -148,28 +148,28 @@ export default {
       }
     },
     /**
-     * when leave search input 
+     * when leave search input
      * @public This is a public method
      */
     leave() {
       this.$store.dispatch("Search/searchfocus", false);
-    },
+    }
   },
   computed: {
     ...mapGetters({
       insearch: "Search/insearch",
-      searchfocus: "Search/searchfocus",
-    }),
+      searchfocus: "Search/searchfocus"
+    })
   },
   props: {
     search_value: {
-      type: String,
-    },
+      type: String
+    }
   },
   mounted() {
     const searchinput = document.getElementById("search-box");
     searchinput.addEventListener("focus", this.focus, true);
     searchinput.addEventListener("blur", this.leave, true);
-  },
+  }
 };
 </script>

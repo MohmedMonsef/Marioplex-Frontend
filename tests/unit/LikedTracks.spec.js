@@ -18,28 +18,28 @@ describe("LikedTracksInfo", () => {
           namespaced: true,
           state: {
             likedtracks_length: "",
-            owner_name: "",
+            owner_name: ""
           },
           getters: {
-            likedtracks_length: (state) => state.likedtracks_length,
-            owner_name: (state) => state.owner_name,
-          },
+            likedtracks_length: state => state.likedtracks_length,
+            owner_name: state => state.owner_name
+          }
         },
         Mediaplayer: {
           namespaced: true,
           state: {
-            playicon: true,
+            playicon: true
           },
           getters: {
-            playicon: (state) => state.playicon,
-          },
-        },
-      },
+            playicon: state => state.playicon
+          }
+        }
+      }
     });
     spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(LikedTracksInfo, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {
@@ -47,7 +47,7 @@ describe("LikedTracksInfo", () => {
   });
   it("is playing function", () => {
     wrapper.setData({
-      play: false,
+      play: false
     });
 
     let testId = "likedtracks_image";

@@ -195,7 +195,7 @@ export default {
   name: "Login",
   components: {
     LogoHeader,
-    Divider,
+    Divider
   },
   data: function() {
     return {
@@ -204,7 +204,7 @@ export default {
       password: "",
       //required for validation
       trigger_validation: false,
-      can_submit: true,
+      can_submit: true
     };
   },
   methods: {
@@ -223,7 +223,7 @@ export default {
         if (this.can_submit) {
           let user = {
             email: this.email,
-            password: this.password,
+            password: this.password
           };
           this.$store.dispatch("Authorization/login", user);
         }
@@ -249,11 +249,11 @@ export default {
      */
     facebook_login() {
       this.$store.dispatch("Authorization/facebook_signUp");
-    },
+    }
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus",
+      isLoggedIn: "Authorization/GetStatus"
     }),
     req_email: function() {
       if (this.trigger_validation) {
@@ -280,7 +280,7 @@ export default {
       } else {
         return false;
       }
-    },
-  },
+    }
+  }
 };
 </script>

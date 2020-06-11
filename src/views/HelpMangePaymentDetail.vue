@@ -151,9 +151,9 @@ export default {
   data() {
     return {
       show1: false,
-      show2: false,
+      show2: false
     };
-  },
+  }
 };
 </script>
 <style scoped>

@@ -84,14 +84,14 @@ export default {
   name: "Artisthomecards",
   props: {
     name: {
-      type: String,
+      type: String
     },
     albumId: {
-      type: String,
+      type: String
     },
     images: {
-      type: String,
-    },
-  },
+      type: String
+    }
+  }
 };
 </script>

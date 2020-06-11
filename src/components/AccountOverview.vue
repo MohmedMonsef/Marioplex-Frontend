@@ -356,14 +356,14 @@ import { mapGetters } from "vuex";
 export default {
   name: "Account-overview",
   components: {
-    AccountSidebar,
+    AccountSidebar
   },
   computed: {
     ...mapGetters({
       user: "Authorization/user",
       Username: "Authorization/Username",
-      deleted_Acount: "Authorization/deleted_Acountt",
-    }),
+      deleted_Acount: "Authorization/deleted_Acountt"
+    })
   },
   methods: {
     /**
@@ -372,7 +372,7 @@ export default {
      */
     remove() {
       this.$store.dispatch("Authorization/removeuser");
-    },
-  },
+    }
+  }
 };
 </script>

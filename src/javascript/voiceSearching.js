@@ -1,10 +1,10 @@
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
- /**
-* Voice Detection in search helper 
-* @public This is a public method
-* @example [none]
-*/
+/**
+ * Voice Detection in search helper
+ * @public This is a public method
+ * @example [none]
+ */
 export default {
   methods: {
     /**

@@ -10,8 +10,8 @@ describe("categoryplaylist", () => {
   const $route = {
     params: {
       categoryId: "",
-      name: "",
-    },
+      name: ""
+    }
   };
   localVue.prototype.$route = $route;
   beforeEach(() => {
@@ -20,33 +20,33 @@ describe("categoryplaylist", () => {
         Categorys: {
           namespaced: true,
           state: {
-            categoryplaylists5: [],
+            categoryplaylists5: []
           },
           getters: {
             getcategoryplaylists5(state) {
               return state.categoryplaylists5;
-            },
+            }
           },
           actions: {
-            categoryplaylists: jest.fn(),
-          },
-        },
-      },
+            categoryplaylists: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(categoryplaylist, {
       store,
       localVue,
       propsData: {
         categoryId: "",
-        name: "",
-      },
+        name: ""
+      }
     });
   });
 
   it("when render", () => {
     wrapper = shallowMount(categoryplaylist, {
       store,
-      localVue,
+      localVue
     });
   });
 });

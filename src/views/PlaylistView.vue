@@ -1,6 +1,5 @@
 <template>
   <div class="playlist">
-    
     <div class="loading" v-if="!playlist_load">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
@@ -12,19 +11,18 @@
       <div class="right">
         <!-- to make it apper when no tracks on playlist as draggable make it not appear-->
         <emptytracks class="right noinfo" v-if="this.playlist_length == 0" />
-        <draggable 
+        <draggable
           ghost-class="ghost"
           class="reordertracks right"
           @end="ReorderTracks"
           v-else
         >
-          <transition-group 
-           type="transition" name="flip-list">
+          <transition-group type="transition" name="flip-list">
             <!-- <emptytracks v-if="this.playlist_length == 0"/> -->
-            <song-component 
+            <song-component
               testid="songcomponent"
               class="sortable"
-              :MyType="playlist_type" 
+              :MyType="playlist_type"
               v-for="(p, i) in playlist_tracks"
               :key="p.trackid"
               :index="i"
@@ -39,7 +37,6 @@
               :playlistId="$route.params.playlist_id"
               :isPlaylist="true"
               :isPlayable="p.playable"
-              
             />
           </transition-group>
         </draggable>
@@ -127,7 +124,7 @@ export default {
       // show: false,
       oldIndex: "",
       newIndex: "",
-      playlist_id: "",
+      playlist_id: ""
     };
   },
   components: {
@@ -135,7 +132,7 @@ export default {
     draggable,
     playlist,
     emptytracks,
-    playlistinfo,
+    playlistinfo
   },
   methods: {
     // toggleShow() {
@@ -158,10 +155,10 @@ export default {
       let payload = {
         range_start: this.oldIndex,
         insert_before: this.newIndex,
-        playlist_id: this.playlist_id,
+        playlist_id: this.playlist_id
       };
       this.$store.dispatch("Playlist/ReorderTracks", payload);
-    },
+    }
   },
   computed: {
     // ...mapState({
@@ -172,8 +169,8 @@ export default {
       playlist_length: "Playlist/playlist_length",
       playlist_load: "Playlist/playlist_loaded",
       playlist_image: "Playlist/playlist_image",
-      playlist_type:"Playlist/playlist_type"
-    }),
+      playlist_type: "Playlist/playlist_type"
+    })
   },
   created: function() {
     this.$store.dispatch(
@@ -193,6 +190,6 @@ export default {
       element.style.backgroundSize = " 600% 600% 300% 300% ";
       element.style.height = "200px";
     });
-  },
+  }
 };
 </script>

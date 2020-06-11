@@ -63,7 +63,7 @@
             :to="{
               path:
                 '/HomeWebPlayer/ArtistProfile/' +
-                Get_Currentsong.album.artist._id,
+                Get_Currentsong.album.artist._id
             }"
           >
             {{ Get_Currentsong.album.artist.name }}
@@ -620,7 +620,7 @@ export default {
       drag: false,
       currentPos: 0,
       volumepos: 0,
-      sound: 0,
+      sound: 0
     };
   },
   mixins: [song_functions],
@@ -846,7 +846,7 @@ export default {
         this.isRepeat = (this.isRepeat + 1) % 3;
         this.$store.dispatch("Mediaplayer/repeatsong_state", this.isRepeat);
       }
-    },
+    }
   },
   computed: {
     changeTime: function() {
@@ -866,7 +866,7 @@ export default {
         return min + ":" + sec;
       }
       return "0:00";
-    },
-  },
+    }
+  }
 };
 </script>

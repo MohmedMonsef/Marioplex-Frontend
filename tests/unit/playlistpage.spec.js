@@ -9,8 +9,8 @@ describe("playlist_info", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      playlist_id: "",
-    },
+      playlist_id: ""
+    }
   };
   localVue.prototype.$route = $route;
   let spy;
@@ -29,53 +29,53 @@ describe("playlist_info", () => {
             showModal: false,
             todelete: 0,
             Playlists: [],
-            loadingplaylists: 0,
+            loadingplaylists: 0
           },
           getters: {
-            playlist_length: (state) => state.playlist_length,
-            playlist_name: (state) => state.playlist_name,
-            owner_name: (state) => state.owner_name,
-            playlist_image: (state) => state.playlist_image,
-            likeplaylist: (state) => state.likedplaylist,
+            playlist_length: state => state.playlist_length,
+            playlist_name: state => state.playlist_name,
+            owner_name: state => state.owner_name,
+            playlist_image: state => state.playlist_image,
+            likeplaylist: state => state.likedplaylist
           },
           actions: {
             like_playlist: jest.fn(),
             unlike_playist: jest.fn(),
             playlist_tracks: jest.fn(),
-            showplaylists: jest.fn(),
-          },
+            showplaylists: jest.fn()
+          }
         },
         Authorization: {
           namespaced: true,
           state: {
-            status: {},
+            status: {}
           },
           getters: {
-            GetStatus: (state) => state.status,
-          },
+            GetStatus: state => state.status
+          }
         },
         Mediaplayer: {
           namespaced: true,
           state: {
-            playicon: true,
+            playicon: true
           },
           getters: {
-            playicon: (state) => state.playicon,
-          },
+            playicon: state => state.playicon
+          }
         },
         CheckUserPopup: {
           namespaced: true,
           actions: {
-            togglepagespopup: jest.fn(),
-          },
-        },
-      },
+            togglepagespopup: jest.fn()
+          }
+        }
+      }
     });
     spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(playlist_info, {
       localVue,
       store,
-      stubs: ["router-link", "router-view"],
+      stubs: ["router-link", "router-view"]
     });
   });
   it("renders", () => {
@@ -83,7 +83,7 @@ describe("playlist_info", () => {
   });
   it("is playing function", () => {
     wrapper.setData({
-      play: false,
+      play: false
     });
 
     let testId = "playlist_image";

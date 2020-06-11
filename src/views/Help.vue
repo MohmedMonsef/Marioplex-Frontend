@@ -1,5 +1,5 @@
 <template>
-    <!--eslint-disable-->
+  <!--eslint-disable-->
     <div class="justify-content-center">
         <div class="front-search front-box">
             <div class="container justify-content-center">

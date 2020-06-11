@@ -92,13 +92,13 @@ export default {
   name: "albumview",
   data: function() {
     return {
-      albumid: "",
+      albumid: ""
     };
   },
   props: {},
   components: {
     SongComponent,
-    albuminfo,
+    albuminfo
   },
   computed: {
     ...mapGetters({
@@ -108,8 +108,8 @@ export default {
       artist_name: "Album/artist_name",
       album_name: "Album/album_name",
       artist_id: "Album/artist_id",
-      album_image: "Album/album_image",
-    }),
+      album_image: "Album/album_image"
+    })
   },
   /**
    * Called at loading the page to display album tracks and send the id to get that specific album
@@ -135,6 +135,6 @@ export default {
   },
   mounted() {
     this.albumid = this.$route.params.album_id;
-  },
+  }
 };
 </script>

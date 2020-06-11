@@ -9,8 +9,8 @@ describe("ShowPopularreleases.vue", () => {
       localVue,
       propsData: {
         name: "release_name",
-        artistname: "artist_name",
-      },
+        artistname: "artist_name"
+      }
     });
     const name = wrapper.find("#cardtitle");
     const artistname = wrapper.find(".card-text");

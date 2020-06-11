@@ -13,19 +13,19 @@ describe("LibPlaylistsDefault.vue", () => {
         Playlist: {
           namespaced: true,
           actions: {
-            toggleModal: jest.fn(),
-          },
-        },
-      },
+            toggleModal: jest.fn()
+          }
+        }
+      }
     });
   });
   it("test artist name", () => {
     const wrapper = shallowMount(LibPlaylistsDefault, {
-      localVue,
+      localVue
     });
     const changeModalState = jest.fn();
     wrapper.setMethods({
-      changeModalState: changeModalState,
+      changeModalState: changeModalState
     });
     const create = wrapper.find(".create_button");
     create.trigger("click");
@@ -35,7 +35,7 @@ describe("LibPlaylistsDefault.vue", () => {
     store.dispatch = jest.fn();
     const wrapper = shallowMount(LibPlaylistsDefault, {
       localVue,
-      store,
+      store
     });
     wrapper.find(".create_button").trigger("click");
     expect(store.dispatch).toHaveBeenCalledWith("Playlist/toggleModal");

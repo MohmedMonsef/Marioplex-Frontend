@@ -18,8 +18,8 @@
         :class="[
           {
             unPlayableIcon: !canPlay,
-            currently: this.isCurrent && this.canPlay,
-          },
+            currently: this.isCurrent && this.canPlay
+          }
         ]"
       ></i>
       <i
@@ -54,8 +54,8 @@
         :class="[
           {
             currently: this.isCurrent && this.canPlay,
-            unPlayableIcon: !canPlay,
-          },
+            unPlayableIcon: !canPlay
+          }
         ]"
       >
         {{ song_name }}
@@ -64,8 +64,8 @@
         class="song_info"
         :class="[
           {
-            songUnPlayable: !canPlay,
-          },
+            songUnPlayable: !canPlay
+          }
         ]"
       >
         <div class="s">
@@ -101,7 +101,7 @@
           v-show="hover"
           class="fa fa-ellipsis-h dots_icon"
           :class="{
-            unPlayableIcon: !canPlay,
+            unPlayableIcon: !canPlay
           }"
         ></i>
       </div>
@@ -313,7 +313,7 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 /**
  * Song component appearing in views(playlists,albums..etc)
@@ -326,60 +326,60 @@ export default {
       hover: false,
       show: false,
       isclicked: false,
-      ShowRemoveTrack: false,
+      ShowRemoveTrack: false
     };
   },
   mixins: [song_functions],
   props: {
     song_name: {
-      type: String,
+      type: String
     },
     song_album: {
-      type: String,
+      type: String
     },
     song_artists: {
       type: String,
-      default: "",
+      default: ""
     },
     artist_id: {
-      type: String,
+      type: String
     },
     song_length: {
-      type: Number,
+      type: Number
     },
     isLiked: {
-      type: Boolean,
+      type: Boolean
     },
     song_id: {
-      type: String,
+      type: String
     },
     index: {
-      type: Number,
+      type: Number
     },
     albumId: {
       type: String,
-      default: "0",
+      default: "0"
     },
     playlistId: {
       type: String,
-      default: "0",
+      default: "0"
     },
     isPlaylist: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isPlayable: {
       type: Boolean,
-      default: true,
+      default: true
     },
     isQueue: {
       type: Boolean,
-      default: false,
+      default: false
     },
     MyType: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   methods: {
     /**
@@ -391,7 +391,7 @@ export default {
         trackId: this.song_id,
         playlistId: this.playlistId,
         isPlaylist: this.isPlaylist,
-        albumId: this.albumId,
+        albumId: this.albumId
       });
     },
     /**
@@ -476,15 +476,15 @@ export default {
     RemoveFromThisPlaylist() {
       let payload = {
         playlist_id: this.playlistId,
-        song_id: this.song_id,
+        song_id: this.song_id
       };
       this.$store.dispatch("Playlist/RemoveFromThisPlaylist", payload);
-    },
+    }
   },
   computed: {
     isCurrentClass: function() {
       return {
-        currently: this.isCurrent && this.canPlay,
+        currently: this.isCurrent && this.canPlay
       };
     },
     isCurrent: function() {
@@ -503,13 +503,13 @@ export default {
 
     ...mapGetters({
       Get_Currentsong: "Mediaplayer/Get_Currentsong",
-      user: "Authorization/GetStatus",
+      user: "Authorization/GetStatus"
     }),
     canPlay: function() {
       return (
         (this.isPlayable || this.userinfo.product == "premium") && !this.isQueue
       );
-    },
+    }
   },
   created: function() {
     if (this.MyType == "created") {
@@ -519,6 +519,6 @@ export default {
   },
   beforeDestroy: function() {
     window.removeEventListener("click", this.hideshow);
-  },
+  }
 };
 </script>

@@ -9,7 +9,7 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 import axios from "axios";
 import store from "../store";
@@ -21,7 +21,7 @@ import {
   get_currentaudio,
   currentaudio_time,
   currentaudio_src,
-  currentaudio_repeat,
+  currentaudio_repeat
 } from "../javascript/play.js";
 export default {
   namespaced: true,
@@ -35,17 +35,17 @@ export default {
         artistId: "5eb0a4559b15d854c08f7365",
         albumId: "5eb0a55cec0c444e9c48982d",
         type: "Track",
-        like: 1,
+        like: 1
       },
       isLiked: false,
       album: {
         name: "Criss cross",
         _id: "5eb0a55cec0c444e9c48982d",
-        artist: { name: "artist4", _id: "5eb0a4559b15d854c08f7365" },
+        artist: { name: "artist4", _id: "5eb0a4559b15d854c08f7365" }
       },
       isPlaylist: true,
       playlistId: "5eb5248b680ef51b4c4492a1",
-      isPlayable: true,
+      isPlayable: true
     },
 
     //component info
@@ -56,7 +56,7 @@ export default {
     progress: 0,
     trackduration: 0,
     premiumPopup: false,
-    premiumAd: 1,
+    premiumAd: 1
   },
   mutations: {
     setPopup(state, value) {
@@ -102,7 +102,7 @@ export default {
         state.currentSongIndex = info.index;
       }
       state.playicon = true;
-    },
+    }
   },
   actions: {
     playicon_state({ commit }, status) {
@@ -112,11 +112,11 @@ export default {
     get_currentsong({ commit, dispatch }, getTrack) {
       axios
         .get("/api/me/player/currently-playing")
-        .then((response) => {
+        .then(response => {
           var currentsong = response.data;
           if (currentsong.track.images.length == 0)
             currentsong.track.images.push({
-              _id: "1",
+              _id: "1"
             });
           commit("set_currentsong", currentsong);
           var id = currentsong.track._id;
@@ -126,7 +126,7 @@ export default {
             dispatch("trackUrl", { id: id, playFlag: false });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -150,12 +150,12 @@ export default {
       }
       axios
         .get(keyRoute)
-        .then(async (response) => {
+        .then(async response => {
           state.audioKey = response.data.key;
           state.audioKeyID = response.data.keyId;
           setupPlayer(trackroute, state.audioKey, state.audioKeyID, playFlag);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log("get trackurl error", error);
         })
         .then(() => {});
@@ -186,7 +186,7 @@ export default {
           state.premiumPopup = false;
           axios
             .post("/api/me/player/next-playing")
-            .then((response) => {
+            .then(response => {
               var nextsong = response.data;
               commit("set_currentsong", nextsong);
               if (typeof nextsong.fristInSource == "undefined")
@@ -199,23 +199,23 @@ export default {
                 song_id: nextsong.track._id,
                 album_id: nextsong.album._id,
                 playlist_id: state.playlist_id,
-                is_playlist: state.currentsong.isPlaylist,
+                is_playlist: state.currentsong.isPlaylist
               };
               if (state.playicon) {
                 dispatch("playsong_state", info);
                 dispatch("trackUrl", {
                   id: nextsong.track._id,
-                  playFlag: true,
+                  playFlag: true
                 });
               } else {
                 dispatch("trackUrl", {
                   id: nextsong.track._id,
-                  playFlag: false,
+                  playFlag: false
                 });
               }
               dispatch("Queue/Queue", null, { root: true });
             })
-            .catch((error) => {
+            .catch(error => {
               console.log(error);
               if (error.response.status) {
                 toast.show(
@@ -227,7 +227,7 @@ export default {
       } else {
         axios
           .post("/api/me/player/next-playing")
-          .then((response) => {
+          .then(response => {
             var nextsong = response.data;
             commit("set_currentsong", nextsong);
             if (typeof nextsong.fristInSource == "undefined")
@@ -240,7 +240,7 @@ export default {
               song_id: nextsong.track._id,
               album_id: nextsong.album._id,
               playlist_id: state.playlist_id,
-              is_playlist: state.currentsong.isPlaylist,
+              is_playlist: state.currentsong.isPlaylist
             };
             if (state.playicon) {
               dispatch("playsong_state", info);
@@ -250,7 +250,7 @@ export default {
             }
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       }
@@ -259,7 +259,7 @@ export default {
       if (state.progress <= 5) {
         axios
           .post("/api/me/player/prev-playing")
-          .then((response) => {
+          .then(response => {
             var prevsong = response.data;
             commit("set_currentsong", prevsong);
             var i =
@@ -270,7 +270,7 @@ export default {
               song_id: prevsong.track._id,
               album_id: prevsong.album._id,
               playlist_id: prevsong.playlistId,
-              is_playlist: prevsong.isPlaylist,
+              is_playlist: prevsong.isPlaylist
             };
             if (state.playicon) {
               dispatch("playsong_state", info);
@@ -280,7 +280,7 @@ export default {
             }
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
             if (error.response.status) {
               toast.show(
@@ -301,7 +301,7 @@ export default {
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       } else if (flag == 2) {
@@ -311,7 +311,7 @@ export default {
           .then(() => {
             dispatch("Queue/Queue", null, { root: true });
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       }
@@ -322,7 +322,7 @@ export default {
         .then(() => {
           dispatch("Queue/Queue", null, { root: true });
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -340,7 +340,7 @@ export default {
             commit("setliked", true);
           dispatch("get_currentsong", 0);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -358,7 +358,7 @@ export default {
           dispatch("get_currentsong", 0);
           dispatch("LikedTracks/likedtracks_tracks", null, { root: true });
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -384,35 +384,35 @@ export default {
         currentaudio_volume(pos);
         state.volumeprogress = pos;
       }
-    },
+    }
   },
   getters: {
-    Get_Currentsong: (state) => {
+    Get_Currentsong: state => {
       return state.currentsong;
     },
-    playicon: (state) => {
+    playicon: state => {
       return state.playicon;
     },
-    liked: (state) => {
+    liked: state => {
       return state.currentsong.isLiked;
     },
-    progress: (state) => {
+    progress: state => {
       return state.progress;
     },
-    duration: (state) => {
+    duration: state => {
       return state.trackduration;
     },
-    volume: (state) => {
+    volume: state => {
       return state.volumeprogress;
     },
-    Index: (state) => {
+    Index: state => {
       return state.currentSongIndex;
     },
-    premiumPopup: (state) => {
+    premiumPopup: state => {
       return state.premiumPopup;
     },
-    premiumAd: (state) => {
+    premiumAd: state => {
       return state.premiumAd;
-    },
-  },
+    }
+  }
 };

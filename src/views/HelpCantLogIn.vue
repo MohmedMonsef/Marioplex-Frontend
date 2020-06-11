@@ -238,7 +238,7 @@
  * @example [none]
  */
 export default {
-  name: "HelpCantLogIn",
+  name: "HelpCantLogIn"
 };
 </script>
 <style scoped>

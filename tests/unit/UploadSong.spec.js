@@ -16,32 +16,32 @@ describe("UploadSong", () => {
           namespaced: true,
           state: {
             status: "",
-            showModalUpload: true,
+            showModalUpload: true
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
             },
-            showModalUpload: (state) => {
+            showModalUpload: state => {
               return state.showModalUpload;
             },
-            Albums: (state) => {
+            Albums: state => {
               return state.Albums;
-            },
+            }
           },
           actions: {
             toggleModalUpload: jest.fn(),
-            UploadTrack: jest.fn(),
-          },
-        },
-      },
+            UploadTrack: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(UploadSong, {
       localVue,
       store,
       fileReaderSpy: jest
         .spyOn(FileReader.prototype, "readAsDataURL")
-        .mockImplementation(() => null),
+        .mockImplementation(() => null)
     });
   });
   it("renders", () => {
@@ -108,10 +108,10 @@ describe("UploadSong", () => {
           {
             name: "audio.webm",
             size: 50000,
-            type: "audio/webm",
-          },
-        ],
-      },
+            type: "audio/webm"
+          }
+        ]
+      }
     };
 
     wrapper.vm.OnHeighFileSelected(event);
@@ -124,10 +124,10 @@ describe("UploadSong", () => {
           {
             name: "audio.webm",
             size: 50000,
-            type: "audio/webm",
-          },
-        ],
-      },
+            type: "audio/webm"
+          }
+        ]
+      }
     };
     wrapper.vm.OnMediumFileSelected(event);
     expect(wrapper.vm.Mediumselectedfile).toBe(event.target.files[0]);
@@ -139,10 +139,10 @@ describe("UploadSong", () => {
           {
             name: "audio.webm",
             size: 50000,
-            type: "audio/webm",
-          },
-        ],
-      },
+            type: "audio/webm"
+          }
+        ]
+      }
     };
 
     wrapper.vm.OnLowFileSelected(event);
@@ -155,10 +155,10 @@ describe("UploadSong", () => {
           {
             name: "audio.webm",
             size: 50000,
-            type: "audio/webm",
-          },
-        ],
-      },
+            type: "audio/webm"
+          }
+        ]
+      }
     };
 
     wrapper.vm.OnHeigh_EncFileSelected(event);
@@ -171,10 +171,10 @@ describe("UploadSong", () => {
           {
             name: "audio.webm",
             size: 50000,
-            type: "audio/webm",
-          },
-        ],
-      },
+            type: "audio/webm"
+          }
+        ]
+      }
     };
 
     wrapper.vm.OnMedium_EncFileSelected(event);
@@ -187,10 +187,10 @@ describe("UploadSong", () => {
           {
             name: "audio.webm",
             size: 50000,
-            type: "audio/webm",
-          },
-        ],
-      },
+            type: "audio/webm"
+          }
+        ]
+      }
     };
     wrapper.vm.OnLow_EncFileSelected(event);
     expect(wrapper.vm.Low_Encselectedfile).toBe(event.target.files[0]);
@@ -202,10 +202,10 @@ describe("UploadSong", () => {
           {
             name: "audio.webm",
             size: 50000,
-            type: "audio/webm",
-          },
-        ],
-      },
+            type: "audio/webm"
+          }
+        ]
+      }
     };
     wrapper.vm.OnFilePreviewSelected(event);
     expect(wrapper.vm.selectedpreview).toBe(event.target.files[0]);

@@ -25,7 +25,7 @@ describe("searchresults", () => {
             playlistres5: [],
             load: false,
             user5: [],
-            track3: [],
+            track3: []
           },
           getters: {
             get_value(state) {
@@ -43,26 +43,26 @@ describe("searchresults", () => {
             getplaylistsres5(state) {
               return state.playlistres5;
             },
-            loadingsearch: (state) => state.load,
+            loadingsearch: state => state.load,
             getuser5(state) {
               return state.user5;
             },
             gettrack3(state) {
               return state.track3;
-            },
+            }
           },
           actions: {
-            showresult: jest.fn(),
-          },
-        },
-      },
+            showresult: jest.fn()
+          }
+        }
+      }
     });
   });
 
   it("when render ", () => {
     wrapper = shallowMount(searchresults, {
       store,
-      localVue,
+      localVue
     });
     wrapper.vm.change();
     expect("showresult").toHaveBeenCalled;

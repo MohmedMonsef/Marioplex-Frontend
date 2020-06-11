@@ -378,7 +378,7 @@ export default {
   name: "SignUp",
   components: {
     LogoHeader,
-    Divider,
+    Divider
   },
   data: function() {
     return {
@@ -407,7 +407,7 @@ export default {
         { text: "September", value: "09", disabled: false },
         { text: "October", value: "10", disabled: false },
         { text: "November", value: "11", disabled: false },
-        { text: "December", value: "12", disabled: false },
+        { text: "December", value: "12", disabled: false }
       ],
       country: "0",
       countries: [
@@ -423,8 +423,8 @@ export default {
         { text: "Japan", value: "jp", disabled: false },
         { text: "Korea", value: "kp", disabled: false },
         { text: "Mexico", value: "mx", disabled: false },
-        { text: "Brazil", value: "br", disabled: false },
-      ],
+        { text: "Brazil", value: "br", disabled: false }
+      ]
     };
   },
   methods: {
@@ -464,7 +464,7 @@ export default {
             country: this.country,
             email: this.email,
             gender: this.gender,
-            birthday: this.birthday,
+            birthday: this.birthday
           };
           this.$store.dispatch("Authorization/signUp", newuser);
           this.$router.replace("/EmailConfirmation");
@@ -491,11 +491,11 @@ export default {
      */
     canSubmit() {
       this.can_submit = this.can_submit && true;
-    },
+    }
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "Authorization/GetStatus",
+      isLoggedIn: "Authorization/GetStatus"
     }),
     req_email: function() {
       if (this.trigger_validation) {
@@ -708,7 +708,7 @@ export default {
       } else {
         return false;
       }
-    },
-  },
+    }
+  }
 };
 </script>

@@ -16,29 +16,29 @@ describe("PlaylistsToTracks", () => {
           namespaced: true,
           state: {
             status: "",
-            toggleModalAdd: true,
+            toggleModalAdd: true
           },
           getters: {
-            GetStatus: (state) => {
+            GetStatus: state => {
               return state.status;
             },
-            toggleModalAdd: (state) => {
+            toggleModalAdd: state => {
               return state.toggleModalAdd;
             },
-            trackid: (state) => {
+            trackid: state => {
               return state.trackid;
-            },
+            }
           },
           actions: {
             toggleModalAdd: jest.fn(),
-            AddTrackToExsistPlaylist: jest.fn(),
-          },
-        },
-      },
+            AddTrackToExsistPlaylist: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(PlaylistsToTracks, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

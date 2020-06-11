@@ -20,34 +20,34 @@ describe("AccountRecover", () => {
                 id: "1",
                 name: "wow",
                 songsNumber: 5,
-                deletedAt: "1999-09-04T00:00:00.000Z",
-              },
-            ],
+                deletedAt: "1999-09-04T00:00:00.000Z"
+              }
+            ]
           },
           getters: {
-            deleted_playlists: (state) => state.deleted_playlists,
+            deleted_playlists: state => state.deleted_playlists
           },
           actions: {
-            showDeletedPlaylists: jest.fn(),
-          },
+            showDeletedPlaylists: jest.fn()
+          }
         },
         Playlist: {
           namespaced: true,
           state: {
-            restored: "",
+            restored: ""
           },
           getters: {
-            restored: (state) => state.restored,
+            restored: state => state.restored
           },
           actions: {
-            restorePlaylist: jest.fn(),
-          },
-        },
-      },
+            restorePlaylist: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(AccountRecover, {
       localVue,
-      store,
+      store
     });
   });
   it("call Restore functions", () => {

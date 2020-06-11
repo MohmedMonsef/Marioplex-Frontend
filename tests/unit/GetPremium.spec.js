@@ -16,22 +16,22 @@ describe("GetPremium", () => {
         Authorization: {
           namespaced: true,
           store: {
-            upgraded: true,
+            upgraded: true
           },
           getters: {
-            upgraded: (state) => {
+            upgraded: state => {
               return state.upgraded;
-            },
+            }
           },
           actions: {
-            toPremium: jest.fn(),
-          },
-        },
-      },
+            toPremium: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(GetPremium, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

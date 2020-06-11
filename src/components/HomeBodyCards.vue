@@ -86,26 +86,26 @@
 export default {
   data: function() {
     return {
-      hover: false,
+      hover: false
     };
   },
   props: {
     name: {
-      type: String,
+      type: String
     },
     images: {
-      type: String,
+      type: String
     },
     playlistId: {
-      type: String,
-    },
+      type: String
+    }
   },
   computed: {
     getImg() {
       let img =
         this.$url + "/api/images/" + this.images + "?belongs_to=playlist";
       return img;
-    },
-  },
+    }
+  }
 };
 </script>

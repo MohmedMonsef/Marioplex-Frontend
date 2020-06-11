@@ -15,16 +15,16 @@ describe("HomeBodyNoUser", () => {
         Authorization: {
           namespaced: true,
           state: {
-            GetStatus: "success",
+            GetStatus: "success"
           },
           getters: {
-            GetStatus: (state) => state.GetStatus,
-          },
-        },
-      },
+            GetStatus: state => state.GetStatus
+          }
+        }
+      }
     });
     wrapper = shallowMount(HomeBodyNoUser, {
-      localVue,
+      localVue
     });
   });
   it("renders", () => {

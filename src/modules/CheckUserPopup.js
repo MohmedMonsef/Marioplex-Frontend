@@ -2,15 +2,15 @@ export default {
   namespaced: true,
   state: {
     showModal: false,
-    showpagesModal: false,
+    showpagesModal: false
   },
   getters: {
-    showModal: (state) => {
+    showModal: state => {
       return state.showModal;
     },
-    showpagesModal: (state) => {
+    showpagesModal: state => {
       return state.showpagesModal;
-    },
+    }
   },
   mutations: {
     togglepopup(state) {
@@ -18,7 +18,7 @@ export default {
     },
     togglepagespopup(state) {
       state.showpagesModal = !state.showpagesModal;
-    },
+    }
   },
   actions: {
     togglePopup({ commit }) {
@@ -26,6 +26,6 @@ export default {
     },
     togglepagespopup({ commit }) {
       commit("togglepagespopup");
-    },
-  },
+    }
+  }
 };

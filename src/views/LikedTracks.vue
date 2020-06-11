@@ -96,18 +96,18 @@ export default {
   components: {
     SongComponent,
     LikedTracks,
-    emptylikedtracks,
+    emptylikedtracks
   },
   computed: {
     ...mapGetters({
       likedtracks_tracks: "LikedTracks/likedtracks_tracks",
       likedtracks_length: "LikedTracks/likedtracks_length",
       likedtracks_load: "LikedTracks/likedtracks_loaded",
-      playlist_id: "LikedTracks/playlist_id",
-    }),
+      playlist_id: "LikedTracks/playlist_id"
+    })
   },
   beforeCreate: function() {
     this.$store.dispatch("LikedTracks/likedtracks_tracks");
-  },
+  }
 };
 </script>

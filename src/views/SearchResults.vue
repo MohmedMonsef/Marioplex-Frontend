@@ -340,7 +340,7 @@ export default {
     top,
     LibAlbums,
     LibPlaylists,
-    SongComponent,
+    SongComponent
   },
   data() {
     return { shower: true };
@@ -355,8 +355,8 @@ export default {
       search_value: "Search/get_value",
       match_users: "Search/getuser5",
       match_track: "Search/gettrack3",
-      flagfound: "Search/getflagfound",
-    }),
+      flagfound: "Search/getflagfound"
+    })
   },
   methods: {
     /**
@@ -376,7 +376,7 @@ export default {
         return "https://dummyimage.com/250x400.jpg/dddddd/000000";
       } else
         return this.$url + "/api/images/" + imgSrc._id + "?belongs_to=user";
-    },
-  },
+    }
+  }
 };
 </script>

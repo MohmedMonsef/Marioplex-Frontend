@@ -20,7 +20,7 @@ export default {
     playlist_image: "",
     likedplaylist: Boolean,
     restored: "",
-    playlist_type: "",
+    playlist_type: ""
   },
   mutations: {
     toggleModal(state, withtrack) {
@@ -36,19 +36,19 @@ export default {
       state.Playlists.push(playlists);
     },
     setUserPlaylist(state, playlists) {
-      playlists.forEach((playlist) => {
+      playlists.forEach(playlist => {
         if (playlist.images.length == 0)
           playlist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.Playlists = playlists;
     },
     ChangePlaylistName(state, { name, id }) {
-      let obj = state.Playlists.find((f) => f.id == id);
+      let obj = state.Playlists.find(f => f.id == id);
       if (obj) obj.name = name;
     },
     PubPriChange(state, payload) {
       state.Playlists.push({
-        public: payload,
+        public: payload
       });
     },
     toggleModalAdd(state, trackid) {
@@ -66,12 +66,12 @@ export default {
     },
     ReorderTracks(state, track) {
       state.playlist_tracks.push({
-        track,
+        track
       });
     },
     AddTrackToNewPlayList(state, tracks) {
       state.playlist_tracks.push({
-        tracks,
+        tracks
       });
     },
     set_playlist_length(state, length) {
@@ -96,14 +96,14 @@ export default {
     },
     set_playlist_type(state, type) {
       state.playlist_type = type;
-    },
+    }
   },
   actions: {
     playlist_tracks({ commit }, playlist_id) {
       commit("set_playlist_loaded", false);
       axios
         .get("/api/playlists/" + playlist_id)
-        .then((response) => {
+        .then(response => {
           let playlist = response.data;
           console.log("in playlist.js playlist_track", playlist);
           commit("set_playlist", playlist[0].tracks);
@@ -119,7 +119,7 @@ export default {
           commit("set_playlist_loaded", true);
           commit("set_playlist_type", playlist[0].checkType);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -133,7 +133,7 @@ export default {
       var user = store.getters["Authorization/user"];
       axios
         .post("/api/users/playlists", { name: payload.name })
-        .then((response) => {
+        .then(response => {
           const playlists = response.data;
           let x = response.data._id;
           var toAdd = {
@@ -144,21 +144,21 @@ export default {
             type: "created",
             images: [
               {
-                _id: "1",
-              },
+                _id: "1"
+              }
             ],
-            owner: user.displayName,
+            owner: user.displayName
           };
           commit("CreatePlaylist", toAdd);
           if (state.withtrack == true) {
             let d = {
               trackid: state.trackid,
-              playlist_id: x,
+              playlist_id: x
             };
             store.dispatch("Playlist/AddTrackToNewPlayList", d);
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -168,14 +168,14 @@ export default {
     showplaylists({ commit, state }) {
       axios
         .get("/api/me/playlists")
-        .then((response) => {
+        .then(response => {
           let playlists = response.data;
           commit("setUserPlaylist", playlists);
           if (state.loadingplaylists == 0) {
             state.loadingplaylists = 1;
           }
         })
-        .catch((error) => {
+        .catch(error => {
           if (state.loadingplaylists == 0) {
             state.loadingplaylists = 1;
           }
@@ -190,7 +190,7 @@ export default {
           .then(() => {
             store.dispatch("Playlist/showplaylists");
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       } else {
@@ -204,24 +204,24 @@ export default {
         .then(() => {
           commit("ChangePlaylistName", {
             name: payload.name,
-            id: payload.playlist_id,
+            id: payload.playlist_id
           });
           store.dispatch("Playlist/showplaylists");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     PubPriChange({ commit }, payload) {
       axios
         .put("/api/playlists/" + payload.playlist_id + "/public", {
-          public: payload.public,
+          public: payload.public
         })
         .then(() => {
           commit("PubPriChange", payload.public);
           store.dispatch("Playlist/showplaylists");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -233,80 +233,80 @@ export default {
         .put("/api/playlists/" + payload.playlist_id + "/tracks", {
           range_start: payload.range_start,
           insert_before: payload.insert_before,
-          range_length: 1,
+          range_length: 1
         })
-        .then((response) => {
+        .then(response => {
           if (status == 200) {
             let track = response.data;
             commit("ReorderTracks", track);
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     AddTrackToNewPlayList({ commit }, payload) {
       axios
         .post("/api/playlists/" + payload.playlist_id + "/tracks", {
-          tracks: payload.trackid,
+          tracks: payload.trackid
         })
         .then(() => {
           commit("AddTrackToNewPlayList");
           store.dispatch("playlist_tracks", payload.playlist_id);
           store.dispatch("Playlist/toggleModalAdd");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     like_playlist({ commit }, playlist_id) {
       axios
         .put("/api/playlists/" + playlist_id + "/followers")
-        .then((response) => {
+        .then(response => {
           let playlist = response.status;
           if (playlist == 200) {
             commit("set_likedplaylist", true);
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     unlike_playist({ commit }, playlist_id) {
       axios
         .delete("/api/playlists/" + playlist_id + "/followers")
-        .then((response) => {
+        .then(response => {
           let playlist = response.status;
           if (playlist == 200) {
             commit("set_likedplaylist", false);
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     RemoveFromThisPlaylist({ commit }, payload) {
       axios
         .delete("/api/playlists/" + payload.playlist_id + "/tracks", {
-          data: { track_ids: payload.song_id },
+          data: { track_ids: payload.song_id }
         })
         .then(() => {
           commit("RemoveFromThisPlaylist");
           store.dispatch("Playlist/playlist_tracks", payload.playlist_id);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     async AddTrackToExsistPlaylist({ commit }, payload) {
       axios
         .post("/api/playlists/" + payload.playlistid + "/tracks", {
-          tracks: payload.trackid,
+          tracks: payload.trackid
         })
         .then(() => {
           commit("AddTrackToExsistPlaylist");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -317,29 +317,29 @@ export default {
           commit("isRestored", "success");
           store.dispatch("Authorization/showDeletedPlaylists");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
-    },
+    }
   },
   getters: {
-    playlist_tracks: (state) => state.playlist_tracks,
-    playlist_loaded: (state) => state.playlist_loaded,
-    playlist_length: (state) => state.playlist_length,
-    playlist_name: (state) => state.playlist_name,
-    playlist_type: (state) => state.playlist_type,
-    owner_name: (state) => state.owner_name,
-    playlist_image: (state) => state.playlist_image,
-    likeplaylist: (state) => state.likedplaylist,
-    showModal: (state) => state.showModal,
-    todelete: (state) => state.todelete,
-    showModalDelete: (state) => state.showModalDelete,
-    playlists: (state) => state.Playlists,
-    loadingplaylists: (state) => state.loadingplaylists,
-    showModalAdd: (state) => state.showModalAdd,
-    trackid: (state) => state.trackid,
-    withtrack: (state) => state.withtrack,
-    showinput: (state) => state.showinput,
-    restored: (state) => state.restored,
-  },
+    playlist_tracks: state => state.playlist_tracks,
+    playlist_loaded: state => state.playlist_loaded,
+    playlist_length: state => state.playlist_length,
+    playlist_name: state => state.playlist_name,
+    playlist_type: state => state.playlist_type,
+    owner_name: state => state.owner_name,
+    playlist_image: state => state.playlist_image,
+    likeplaylist: state => state.likedplaylist,
+    showModal: state => state.showModal,
+    todelete: state => state.todelete,
+    showModalDelete: state => state.showModalDelete,
+    playlists: state => state.Playlists,
+    loadingplaylists: state => state.loadingplaylists,
+    showModalAdd: state => state.showModalAdd,
+    trackid: state => state.trackid,
+    withtrack: state => state.withtrack,
+    showinput: state => state.showinput,
+    restored: state => state.restored
+  }
 };

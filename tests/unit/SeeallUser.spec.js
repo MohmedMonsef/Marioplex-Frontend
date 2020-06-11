@@ -19,7 +19,7 @@ describe("seealluser", () => {
           namespaced: true,
           state: {
             search_Value: "",
-            user: [],
+            user: []
           },
           getters: {
             get_value(state) {
@@ -27,20 +27,20 @@ describe("seealluser", () => {
             },
             getuser(state) {
               return state.user;
-            },
+            }
           },
           actions: {
-            artistin: jest.fn(),
-          },
-        },
-      },
+            artistin: jest.fn()
+          }
+        }
+      }
     });
   });
 
   it("when render dispatch", () => {
     wrapper = shallowMount(seealluser, {
       store,
-      localVue,
+      localVue
     });
     wrapper.vm.inartist();
     expect("inartist").toHaveBeenCalled;

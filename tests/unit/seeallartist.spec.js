@@ -23,9 +23,9 @@ describe("seeallartist", () => {
               {
                 name: "lala",
                 artistId: "1234",
-                images: [],
-              },
-            ],
+                images: []
+              }
+            ]
           },
           getters: {
             get_value(state) {
@@ -33,22 +33,22 @@ describe("seeallartist", () => {
             },
             getresult(state) {
               return state.result;
-            },
+            }
           },
           actions: {
-            artistin: jest.fn(),
-          },
-        },
-      },
+            artistin: jest.fn()
+          }
+        }
+      }
     });
   });
 
   it("when render dispatch", () => {
     wrapper = shallowMount(seeallartist, {
       store,
-      localVue,
+      localVue
     });
-    wrapper.vm.inartist()
+    wrapper.vm.inartist();
     expect("inartist").toHaveBeenCalled;
   });
 });

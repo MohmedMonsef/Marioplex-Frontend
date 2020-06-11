@@ -10,7 +10,7 @@ describe("ForArtist", () => {
   localVue.use(VueRouter);
   beforeEach(() => {
     wrapper = shallowMount(ForArtist, {
-      localVue,
+      localVue
     });
   });
   it("renders", () => {

@@ -16,21 +16,21 @@ describe("AllAlbums", () => {
           namespaced: true,
           state: {
             POPalbums: {
-              albums: [],
-            },
+              albums: []
+            }
           },
           getters: {
-            POPalbums: (state) => state.POPalbums,
+            POPalbums: state => state.POPalbums
           },
           actions: {
-            showPopularAlbums: jest.fn(),
-          },
-        },
-      },
+            showPopularAlbums: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(AllAlbums, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

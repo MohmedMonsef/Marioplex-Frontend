@@ -16,18 +16,18 @@ describe("premiumAd", () => {
           namespaced: true,
           state: {
             premiumPopup: true,
-            premiumAd: 0,
+            premiumAd: 0
           },
           getters: {
-            premiumPopup: (state) => state.premiumPopup,
-            premiumAd: (state) => state.premiumAd,
-          },
-        },
-      },
+            premiumPopup: state => state.premiumPopup,
+            premiumAd: state => state.premiumAd
+          }
+        }
+      }
     });
     wrapper = shallowMount(premiumAd, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

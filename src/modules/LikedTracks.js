@@ -6,7 +6,7 @@ export default {
     likedtracks_loaded: 0,
     likedtracks_length: "",
     owner_name: "",
-    id: "",
+    id: ""
   },
   mutations: {
     set_likedtracks(state, likedtracks_tracks) {
@@ -24,13 +24,13 @@ export default {
     },
     playlist_id(state, id) {
       state.id = id;
-    },
+    }
   },
   actions: {
     likedtracks_tracks({ state, commit }) {
       axios
         .get("/api/me/tracks")
-        .then((response) => {
+        .then(response => {
           let likedtracks = response.data;
           commit("set_likedtracks", likedtracks.tracks);
           commit("set_likedtracks_length", likedtracks.tracks.length);
@@ -40,17 +40,17 @@ export default {
             state.likedtracks_loaded = 1;
           }
         })
-        .catch((error) => {
+        .catch(error => {
           state.likedtracks_loaded = 1;
           console.log(error);
         });
-    },
+    }
   },
   getters: {
-    likedtracks_tracks: (state) => state.likedtracks_tracks,
-    likedtracks_loaded: (state) => state.likedtracks_loaded,
-    likedtracks_length: (state) => state.likedtracks_length,
-    owner_name: (state) => state.owner_name,
-    playlist_id: (state) => state.id,
-  },
+    likedtracks_tracks: state => state.likedtracks_tracks,
+    likedtracks_loaded: state => state.likedtracks_loaded,
+    likedtracks_length: state => state.likedtracks_length,
+    owner_name: state => state.owner_name,
+    playlist_id: state => state.id
+  }
 };

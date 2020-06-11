@@ -9,8 +9,8 @@ describe("AlbumInfo", () => {
   localVue.use(Vuex);
   const $route = {
     params: {
-      album_id: "",
-    },
+      album_id: ""
+    }
   };
   localVue.prototype.$route = $route;
   let spy;
@@ -24,51 +24,51 @@ describe("AlbumInfo", () => {
             album_name: "Album",
             artist_name: "Artist",
             album_image: "cry.png",
-            likedalbum: false,
+            likedalbum: false
           },
           getters: {
-            album_length: (state) => state.album_length,
-            album_name: (state) => state.album_name,
-            artist_name: (state) => state.artist_name,
-            album_image: (state) => state.album_image,
-            likealbum: (state) => state.likedalbum,
+            album_length: state => state.album_length,
+            album_name: state => state.album_name,
+            artist_name: state => state.artist_name,
+            album_image: state => state.album_image,
+            likealbum: state => state.likedalbum
           },
           actions: {
             unlike_album: jest.fn(),
-            like_album: jest.fn(),
-          },
+            like_album: jest.fn()
+          }
         },
         Mediaplayer: {
           namespaced: true,
           state: {
-            playicon: true,
+            playicon: true
           },
           getters: {
-            playicon: (state) => state.playicon,
-          },
+            playicon: state => state.playicon
+          }
         },
         Authorization: {
           namespaced: true,
           state: {
-            status: "",
+            status: ""
           },
           getters: {
-            GetStatus: (state) => state.status,
-          },
+            GetStatus: state => state.status
+          }
         },
         CheckUserPopup: {
           namespaced: true,
           actions: {
-            togglepagespopup: jest.fn(),
-          },
-        },
-      },
+            togglepagespopup: jest.fn()
+          }
+        }
+      }
     });
     spy = jest.spyOn(document, "getElementById");
     wrapper = shallowMount(AlbumInfo, {
       localVue,
       store,
-      stubs: ["router-link", "router-view"],
+      stubs: ["router-link", "router-view"]
     });
   });
   it("renders", () => {
@@ -76,7 +76,7 @@ describe("AlbumInfo", () => {
   });
   it("is playing function", () => {
     wrapper.setData({
-      play: false,
+      play: false
     });
 
     let testId = "album_image";

@@ -16,14 +16,14 @@ describe("HomeBodyUser", () => {
           namespaced: true,
           state: {
             user: {
-              product: "premium",
+              product: "premium"
             },
-            GetStatus: "success",
+            GetStatus: "success"
           },
           getters: {
-            user: (state) => state.user,
-            GetStatus: (state) => state.GetStatus,
-          },
+            user: state => state.user,
+            GetStatus: state => state.GetStatus
+          }
         },
         ShowWebPlayer: {
           namespaced: true,
@@ -32,22 +32,22 @@ describe("HomeBodyUser", () => {
               {
                 images: "1",
                 playlistId: "1",
-                name: "name",
-              },
-            ],
+                name: "name"
+              }
+            ]
           },
           getters: {
-            homePlaylists: (state) => state.homePlaylists,
+            homePlaylists: state => state.homePlaylists
           },
           actions: {
-            homePlaylists: jest.fn(),
-          },
-        },
-      },
+            homePlaylists: jest.fn()
+          }
+        }
+      }
     });
     wrapper = shallowMount(HomeBodyUser, {
       localVue,
-      store,
+      store
     });
   });
   it("renders", () => {

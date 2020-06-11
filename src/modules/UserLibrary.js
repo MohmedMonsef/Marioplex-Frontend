@@ -9,18 +9,18 @@ export default {
     loadingalbums: 0,
     loadingartists: 0,
     sideMenu: false,
-    scrolling: 0,
+    scrolling: 0
   },
   mutations: {
     setUserAlbums(state, albums) {
-      albums.forEach((album) => {
+      albums.forEach(album => {
         if (album.images.length == 0)
           album.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
       state.user_albums = albums;
     },
     setUserArtists(state, artists) {
-      artists.forEach((artist) => {
+      artists.forEach(artist => {
         if (artist.images.length == 0)
           artist.images.push({ _id: "5eb52f1863eea332d416b9fa" });
       });
@@ -34,20 +34,20 @@ export default {
     },
     set_loading_artists(state, status) {
       state.loadingartists = status;
-    },
+    }
   },
   actions: {
     showUserAlbums({ commit, state }) {
       axios
         .get("/api/me/albums")
-        .then((response) => {
+        .then(response => {
           let albums = response.data.savedAlbums;
           commit("setUserAlbums", albums);
           if (state.loadingalbums == 0) {
             state.loadingalbums = 1;
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
           let albums = [];
           commit("setUserAlbums", albums);
@@ -59,7 +59,7 @@ export default {
     showUserArtists({ commit, state }) {
       axios
         .get("/api/me/followingArtist")
-        .then((response) => {
+        .then(response => {
           let artists = response.data.Artists;
           if (response.status != 200) {
             artists = [];
@@ -69,7 +69,7 @@ export default {
             state.loadingartists = 1;
           }
         })
-        .catch((error) => {
+        .catch(error => {
           let artists = [];
           commit("setUserArtists", artists);
           if (state.loadingartists == 0) {
@@ -81,11 +81,11 @@ export default {
     showUserSongs({ commit }) {
       axios
         .get("/api/me/tracks")
-        .then((response) => {
+        .then(response => {
           let songs = response.data;
           commit("setUserSongs", songs.tracks);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -94,15 +94,15 @@ export default {
     },
     scrolling({ state }, value) {
       state.scrolling = value;
-    },
+    }
   },
   getters: {
-    albums: (state) => state.user_albums,
-    artists: (state) => state.user_artists,
-    songs: (state) => state.user_songs,
-    loadingalbums: (state) => state.loadingalbums,
-    loadingartists: (state) => state.loadingartists,
-    sideMenu: (state) => state.sideMenu,
-    scrolling: (state) => state.scrolling,
-  },
+    albums: state => state.user_albums,
+    artists: state => state.user_artists,
+    songs: state => state.user_songs,
+    loadingalbums: state => state.loadingalbums,
+    loadingartists: state => state.loadingartists,
+    sideMenu: state => state.sideMenu,
+    scrolling: state => state.scrolling
+  }
 };

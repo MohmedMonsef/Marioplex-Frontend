@@ -10,18 +10,16 @@ import axios from "axios";
 
 Vue.config.productionTip = true;
 
-axios.defaults.baseURL = "http://100.25.194.8";
-Vue.prototype.$url = "http://100.25.194.8";
+// axios.defaults.baseURL = "http://100.25.194.8";
+// Vue.prototype.$url = "http://100.25.194.8";
 
-// axios.defaults.baseURL = "http://34.206.123.67";
-// Vue.prototype.$url="http://34.206.123.67"
-
-// axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://34.206.123.67";
+Vue.prototype.$url = "http://34.206.123.67";
 
 var vm = new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");
 
 global.vm = vm;

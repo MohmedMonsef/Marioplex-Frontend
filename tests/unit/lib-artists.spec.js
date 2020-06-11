@@ -8,8 +8,8 @@ describe("LibArtists.vue", () => {
     const wrapper = shallowMount(LibArtists, {
       localVue,
       propsData: {
-        name: "artist name",
-      },
+        name: "artist name"
+      }
     });
     const name = wrapper.find("#cardtitle");
     expect(name.text()).toBe("artist name");

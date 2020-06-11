@@ -240,14 +240,14 @@ export default {
     return {
       Name: "",
       Genre: "",
-      Description: "",
+      Description: ""
     };
   },
   components: {},
   computed: {
     ...mapGetters({
-      showModal: "ArtistProperties/showModal",
-    }),
+      showModal: "ArtistProperties/showModal"
+    })
   },
   methods: {
     /**
@@ -263,12 +263,10 @@ export default {
      */
     EditBio() {
       let payload = {
-        Description: this.Description,
+        Description: this.Description
       };
-      console.log("in aEDIT BIO POPUP", payload.Description);
-      console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditBio", payload);
-    },
-  },
+    }
+  }
 };
 </script>

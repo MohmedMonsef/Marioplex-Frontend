@@ -262,14 +262,14 @@ const toast = {
     mytoast.hideTimeout = setTimeout(() => {
       mytoast.classList.remove("toast--visible");
     }, 2000);
-  },
+  }
 };
 export default {
   computed: {
     ...mapGetters({
       showModalDelete: "Playlist/showModalDelete",
-      todelete: "Playlist/todelete",
-    }),
+      todelete: "Playlist/todelete"
+    })
   },
   methods: {
     /**
@@ -287,8 +287,8 @@ export default {
     DeletePlaylist() {
       this.$store.dispatch("Playlist/DeletePlaylist", this.todelete);
       toast.show("Removed from your library");
-    },
+    }
   },
-  mixins: [song_functions],
+  mixins: [song_functions]
 };
 </script>
