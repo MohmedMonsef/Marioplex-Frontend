@@ -53,7 +53,7 @@
           <option
             v-for="country in countries"
             :key="country.value"
-            :value="country.text"
+            :value="country.value"
             >{{ country.text }}</option
           >
         </select>
@@ -499,18 +499,18 @@ export default {
       ],
       country: "Egypt",
       countries: [
-        { text: "Egypt", value: "1" },
-        { text: "France", value: "2" },
-        { text: "USA", value: "3" },
-        { text: "UK", value: "4" },
-        { text: "Canada", value: "5" },
-        { text: "Australia", value: "6" },
-        { text: "Saudi Arabia", value: "7" },
-        { text: "China", value: "8" },
-        { text: "Japan", value: "9" },
-        { text: "Tokio", value: "10" },
-        { text: "Mexico", value: "11" },
-        { text: "Brazil", value: "12" },
+        { text: "Egypt", value: "eg"},
+        { text: "France", value: "fr"},
+        { text: "USA", value: "us"},
+        { text: "Britain", value: "uk"},
+        { text: "Canada", value: "ca"},
+        { text: "Australia", value: "au"},
+        { text: "Saudi Arabia", value: "sa"},
+        { text: "China", value: "cn"},
+        { text: "Japan", value: "jp"},
+        { text: "Korea", value: "kp"},
+        { text: "Mexico", value: "mx"},
+        { text: "Brazil", value: "br"},
       ],
       //for premium
       expmonth: "0",
