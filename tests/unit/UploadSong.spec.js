@@ -25,6 +25,9 @@ describe("UploadSong", () => {
             showModalUpload: (state) => {
               return state.showModalUpload;
             },
+            Albums: (state) => {
+              return state.Albums;
+            },
           },
           actions: {
             toggleModalUpload: jest.fn(),
