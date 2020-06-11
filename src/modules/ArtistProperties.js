@@ -312,19 +312,19 @@ export default {
     },
     UploadTrack({ commit }, payload) {
       const high = new FormData();
-      high.append("audio", payload.highselectedfile);
+      high.append("high", payload.highselectedfile);
       const medium = new FormData();
-      medium.append("audio0", payload.mediumselectedfile);
+      medium.append("medium", payload.mediumselectedfile);
       const low = new FormData();
-      low.append("audio1", payload.lowselectedfile);
+      low.append("low", payload.lowselectedfile);
       const high_enc = new FormData();
-      high_enc.append("audio2", payload.high_enc_selectedfile);
+      high_enc.append("high_enc", payload.high_enc_selectedfile);
       const medium_enc = new FormData();
-      medium_enc.append("audio3", payload.medium_enc_selectedfile);
+      medium_enc.append("medium_enc", payload.medium_enc_selectedfile);
       const low_enc = new FormData();
-      low_enc.append("audio4", payload.low_enc_selectedfile);
+      low_enc.append("low_enc", payload.low_enc_selectedfile);
       const review = new FormData();
-      review.append("audio5", payload.selectedpreview);
+      review.append("review", payload.selectedpreview);
       axios({
         method: "post",
         url:

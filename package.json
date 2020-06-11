@@ -100,7 +100,9 @@
       "!**/DeleteSong.vue",
       "!**/AccountSidebar.vue",
       "!**/NavbarWebplayer.vue",
-      "!**/SideBar.vue"
+      "!**/SideBar.vue",
+      "!**/AccountNotifications.vue "
+      
     ]
   }
 }
