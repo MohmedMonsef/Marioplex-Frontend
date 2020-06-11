@@ -127,11 +127,19 @@ export default {
       this.Value = "";
       this.$store.dispatch("Search/search_V", this.Value);
     },
+      /**
+     * clear in search
+     * @public This is a public method
+     */
     isinsearch() {
       if (this.insearch) {
         this.Value = "";
       }
     },
+    /**
+     * when focus search input 
+     * @public This is a public method
+     */
     focus() {
       this.$store.dispatch("Search/searchfocus", true);
       if (this.$router.currentRoute.path !== "/HomeWebPlayer/search") {
@@ -139,6 +147,10 @@ export default {
         this.$router.go(-1);
       }
     },
+    /**
+     * when leave search input 
+     * @public This is a public method
+     */
     leave() {
       this.$store.dispatch("Search/searchfocus", false);
     },

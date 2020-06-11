@@ -367,11 +367,7 @@ export default {
   },
   methods: {
     /**
-<<<<<<< HEAD
      * remove user function
-=======
-     * This function to cancel the user account 
->>>>>>> 6a71774874108391fe3b87f4e113978f8b8de02f
      * @public This is a public method
      */
     remove() {

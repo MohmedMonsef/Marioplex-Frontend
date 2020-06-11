@@ -101,6 +101,7 @@
       "!**/AccountSidebar.vue",
       "!**/NavbarWebplayer.vue",
       "!**/SideBar.vue",
+      "!**/Help.vue",
       "!**/AccountNotifications.vue "
       
     ]

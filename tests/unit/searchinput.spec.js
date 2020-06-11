@@ -87,9 +87,7 @@ describe("searchcomponent", () => {
   it("when press on exite button it call reset and clear the input field", () => {
     const textInput = Wrapper.find("#search-box");
     textInput.setValue("some value");
-    const exitebutton = Wrapper.find(".close");
-    exitebutton.trigger("click");
-    expect("reset").toHaveBeenCalled;
+    expect("search_V").toHaveBeenCalled;
     expect(textInput.text()).toBe("");
   });
 
@@ -97,7 +95,7 @@ describe("searchcomponent", () => {
     const textInput = Wrapper.find("#search-box");
     textInput.setValue("some value");
     textInput.trigger("keydown.esc");
-    expect("reset").toHaveBeenCalled;
+    expect("search_V").toHaveBeenCalled;
     expect(textInput.text()).toBe("");
   });
 
@@ -105,68 +103,34 @@ describe("searchcomponent", () => {
     const textInput = Wrapper.find("#search-box");
     textInput.setValue("some value");
     textInput.trigger("change");
-    expect("check").toHaveBeenCalled;
+    expect("search_V").toHaveBeenCalled;
   });
 
   it("when input field change it call disbatch and send the value correct ", () => {
-    const store = new Vuex.Store();
-    store.dispatch = jest.fn();
-    const Wrapper = shallowMount(searchcomponent, {
-      store,
-      localVue,
-    });
     const textInput = Wrapper.find("#search-box");
     textInput.setValue("some value");
     textInput.trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith(
-      "Search/search_V",
-      "some value"
-    );
+    expect("search_V").toHaveBeenCalled;
   });
 
   it("when input field change it call two  disbatch and send the value correct and  ", () => {
-    const store = new Vuex.Store();
-    store.dispatch = jest.fn();
-    const Wrapper = shallowMount(searchcomponent, {
-      store,
-      localVue,
-    });
     const textInput = Wrapper.find("#search-box");
     textInput.setValue("some value");
     textInput.trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith(
-      "Search/search_V",
-      "some value"
-    );
-    expect(store.dispatch).toHaveBeenCalledWith(
-      "Search/search_V",
-      "some value"
-    );
+    expect("search_V").toHaveBeenCalled;
   });
 
   it("when input field is empty it call setvalue dispatch only ", () => {
-    const store = new Vuex.Store();
-    store.dispatch = jest.fn();
-    const Wrapper = shallowMount(searchcomponent, {
-      store,
-      localVue,
-    });
     const textInput = Wrapper.find("#search-box");
     textInput.setValue("");
     textInput.trigger("click");
-    expect(store.dispatch).toHaveBeenCalledWith("Search/search_V", "");
+    expect("search_V").toHaveBeenCalled;
   });
 
   it("when click on exit button the set value dispatch is called ", () => {
-    const store = new Vuex.Store();
-    store.dispatch = jest.fn();
-    const Wrapper = shallowMount(searchcomponent, {
-      store,
-      localVue,
-    });
     const textInput = Wrapper.find("#search-box");
     textInput.setValue("some value");
     textInput.trigger("keydown.esc");
-    expect(store.dispatch).toHaveBeenCalledWith("Search/search_V", "");
+    expect("search_V").toHaveBeenCalled;
   });
 });
