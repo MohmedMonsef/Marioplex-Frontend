@@ -47,14 +47,12 @@
                 >{{ AvailableMarket.text }}
               </option>
             </select>
-            <!-- <input type="text" name="file" v-model="AvailableMarket" /> -->
             <h4>Genre</h4>
-            <input type="text" name="file" v-model="Genre" />
+            <input type="text" name="file" v-model="Genre" @keyup.enter="Create_Album(),changeModalStateCreate()" />
           </div>
           <button class="cancel_button" @click="changeModalStateCreate">
             cancle
           </button>
-
           <button
             class="creat_button"
             testid="confirm_create"
@@ -99,7 +97,6 @@ div {
   background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
-
   color: #fff;
   font-size: 85%;
   font-weight: 700;
@@ -113,19 +110,14 @@ div {
   left: 35%;
   appearance: none;
   outline: none;
-
   background: none;
   cursor: pointer;
   margin: 20px;
-  // height: 50px;
-  // width: 180px;
   height: 6%;
   width: 10%;
-  // padding: 8px 34px;
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
-
   color: #fff;
   font-size: 85%;
   font-weight: 700;
@@ -251,8 +243,8 @@ input {
 <script>
 import { mapGetters } from "vuex";
 /**
- * Artist view to add song
- * @displayName Upload Song
+ * Artist view to create album
+ * @displayName Create Album
  * @example [none]
  */
 export default {
@@ -289,12 +281,16 @@ export default {
   },
   methods: {
     /**
-     * opens pop up to add song
+     * opens pop up to create album
      * @public This is a public method
      */
     changeModalStateCreate() {
       this.$store.dispatch("ArtistProperties/toggleModalCreate");
     },
+    /**
+     * method to create an album
+     * @public This is a public method
+     */
     Create_Album() {
       let payload = {
         Name: this.Name,

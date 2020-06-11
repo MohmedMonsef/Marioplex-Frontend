@@ -23,33 +23,19 @@
               fill-rule="evenodd"
             ></path>
           </svg>
-          <!-- <i class="fa fa-times"  id="myicon" ></i>-->
         </button>
 
         <h1 class="title">Update Info</h1>
 
         <div class="child">
           <div class="grandchild">
-            <!-- <h4 class="artist_name">Name</h4>
-            <input
-              class="name_input"
-              type="text"
-              placeholder="Name"
-              v-model="Name"
-            />
-            <h4 class="artist_Genre">Genre</h4>
-            <input
-              class="name_input"
-              type="text"
-              placeholder="Genre"
-              v-model="Genre"
-            /> -->
             <h4 class="artist_description">Description</h4>
             <input
               class="name_input"
               type="text"
               placeholder="Description"
               v-model="Description"
+              @keyup.enter="EditBio(),changeModalState()"
             />
           </div>
         </div>
@@ -96,17 +82,12 @@ div {
   border: none;
   background: none;
   cursor: pointer;
-  // margin-left: 20px;
   margin-left:auto;
-  // height: 50px;
-  // width: 180px;
   height: 8%;
   width: 15%;
-  // padding: 8px 34px;
  background: linear-gradient(to right, #f27914, #9c28d0);
   border-radius: 26px;
   border-color: transparent;
-
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -120,20 +101,14 @@ div {
   left: 27%;
   appearance: none;
   outline: none;
-
   background: none;
   cursor: pointer;
-  // margin-right: 20px;
   margin-right:auto;
-  // height: 50px;
-  // width: 180px;
    height: 8%;
   width: 15%;
-  // padding: 8px 34px;
   background-color: transparent;
   border-radius: 26px;
   border-color: #fff;
-
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -147,7 +122,6 @@ div {
   justify-content: center;
   align-items: center;
   margin: none;
-
   top: 0;
   left: 0;
   right: 0;
@@ -269,7 +243,6 @@ export default {
       Description: "",
     };
   },
-  //showModal:false,
   components: {},
   computed: {
     ...mapGetters({
@@ -290,8 +263,6 @@ export default {
      */
     EditBio() {
       let payload = {
-        // Name: this.Name,
-        // Genre: this.Genre,
         Description: this.Description,
       };
       console.log("in aEDIT BIO POPUP", payload.Description);
