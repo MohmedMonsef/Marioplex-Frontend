@@ -115,6 +115,7 @@ export default {
       else
       {
         this.$store.dispatch("Authorization/ConfirmPremium", this.$route.query.id);
+        this.$store.dispatch("Authorization/logout", this.$route.query.id);
       }
     }
   },
@@ -122,6 +123,6 @@ export default {
          
     this.id = this.$route.query.id;
     this.type = this.$route.query.type;
-  }
+  } 
 };
 </script>

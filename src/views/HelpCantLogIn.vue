@@ -232,6 +232,11 @@
   </div>
 </template>
 <script>
+/**
+ * Spotify HelpCantLogIn page
+ * @displayName Spotify HelpCantLogIn Page
+ * @example [none]
+ */
 export default {
   name: "HelpCantLogIn",
 };
