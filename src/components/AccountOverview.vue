@@ -81,12 +81,12 @@
         <p  class="col-8 offset-4">YOU ARE A ARTIST ,SO YOU CAN'T</p>
         </div>
         <h2>For Artist :</h2>
-        <router-link to="/ArtistPersonalPage">
+        <router-link v-if="user.userType=='Artist'" to="/ArtistPersonalPage">
           <button type="button" class="trans_button">
-            TO ARTIST
+            ARTIST Page
           </button>
         </router-link>
-        <router-link to="/ForArtist">
+        <router-link v-if="user.userType !='Artist' " to="/ForArtist">
           <button class="trans_button">
             CLAIM ARTIST
           </button>

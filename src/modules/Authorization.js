@@ -105,13 +105,19 @@ export default {
         .get("/api/me-player")
         .then(response => {
           const user = response.data[0];
+          if(!localStorage.getItem("set-volume")){
+            const setVol =user.player.volume/10;
+            dispatch("Mediaplayer/update_volume", setVol, { root: true });
+            localStorage.setItem("set-volume",setVol)
+          }
           if (!user.player.haveQueue) {
             dispatch("Queue/CreateQueue", "", { root: true });
           } else {
             dispatch("Mediaplayer/get_currentsong", 2, { root: true });
           }
           commit("auth_success", { token, user });
-          if (flag) router.replace("/");
+          if (flag)
+           router.replace("/");
         })
         .catch(error => {
           commit("auth_error", "user_err");
@@ -201,11 +207,17 @@ export default {
           delete axios.defaults.headers.common["x-auth-token"];
         });
     },
-    logout({ commit, state }) {
+    logout({ commit }) {
+      var vol = store.getters["Mediaplayer/volume"]*10;
+      var curTime = store.getters["Mediaplayer/progress"];
       commit("logout");
-      console.log("id when log out",state.User._id);
-      axios.post("/api/user/logout/?id=" + state.User._id).then(() => {
+      axios.post("/api/user/logout",{
+          currentTimeStampe:curTime,
+          isRepeatTrack:true,
+          volume:vol
+      } ).then(() => {
         localStorage.removeItem("x-auth-token");
+        localStorage.removeItem("set-volume");
         delete axios.defaults.headers.common["x-auth-token"];
       });
     },
