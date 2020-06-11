@@ -167,11 +167,11 @@ export default {
             commit("upgrade", "failed");
         });
     },
-    toFree({ commit ,state}) {
+    toFree({ commit}) {
       axios
         .put("api/me/free")
         .then(() => {
-          store.dispatch("Authorization/logout",state.User._id);
+          store.dispatch("Authorization/logout");
           router.replace("/");
         })
         .catch(error => {
@@ -225,10 +225,12 @@ export default {
     },
     ClaimArtistProfile({ commit }, payload) {
       axios
-        .put("/api/me/ToArtist", payload)
+        .post("/api/me/ToArtist", {name:payload.name,genre:payload.genre,info:payload.info})
         .then(response => {
           const claim = response.data;
           commit("ClaimArtistProfile", claim);
+          store.dispatch("Authorization/logout");
+          router.replace("/login");
         })
         .catch(error => {
           console.log(error);

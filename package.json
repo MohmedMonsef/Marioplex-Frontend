@@ -101,7 +101,9 @@
       "!**/AccountSidebar.vue",
       "!**/NavbarWebplayer.vue",
       "!**/SideBar.vue",
-      "!**/Help.vue"
+      "!**/Help.vue",
+      "!**/AccountNotifications.vue "
+      
     ]
   }
 }

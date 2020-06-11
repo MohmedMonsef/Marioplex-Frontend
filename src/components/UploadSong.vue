@@ -469,6 +469,7 @@ export default {
      */
     OnHeighFileSelected(event) {
       this.Heighselectedfile = event.target.files[0];
+      console.log("high file",this.Heighselectedfile)
 
     },
     /**
