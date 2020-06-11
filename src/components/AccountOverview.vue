@@ -344,6 +344,10 @@ ul li {
 <script>
 import AccountSidebar from "@/components/AccountSidebar.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName account  overview
+ * @example [none]
+ */
 export default {
   name: "Account-overview",
   components: {
@@ -357,6 +361,10 @@ export default {
     }),
   },
   methods:{
+    /**
+     * remove user function
+     * @public This is a public method
+     */
     remove(){
        this.$store.dispatch("Authorization/removeuser");
     }
