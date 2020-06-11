@@ -1,11 +1,16 @@
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
-
+ /**
+* Voice Detection in search helper 
+* @public This is a public method
+* @example [none]
+*/
 export default {
   methods: {
     /**
      * Voice Detection Method for searching in web player by using microphone
      * @public This is a public method
+     * @example [none]
      */
     detectvoice() {
       if (SpeechRecognition) {

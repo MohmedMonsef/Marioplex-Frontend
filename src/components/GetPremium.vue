@@ -413,8 +413,8 @@ input {
 <script>
 import { mapGetters } from "vuex";
 /**
- * Body of home page for premium functionalities
- * @displayName HomeBody
+ * Premium Form to upgrade account
+ * @displayName  Premium Form
  * @example [none]
  */
 export default {
