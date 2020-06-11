@@ -55,6 +55,12 @@ describe("AlbumInfo", () => {
           getters: {
             GetStatus: state => state.status
           },
+        },
+        CheckUserPopup:{
+          namespaced: true,
+          actions:{
+            togglepagespopup: jest.fn(),
+          }
         }
       }
     });

@@ -390,6 +390,7 @@ export default {
         .then(() => {
           // const Album=res.data;
           commit("Create_Album");
+          store.dispatch("ArtistProperties/Get_Albums");
         })
         .catch((err) => {
           console.log(err);

@@ -134,7 +134,7 @@
   padding-bottom: 0px;
   position:absolute;
   top:47%;
-  left:80%
+  left:45%
 }
 .dropdown-item {
   background: #313030;
@@ -143,11 +143,13 @@
   cursor: pointer;
 }
 #in_rename {
-  position: fixed;
-  top: 5%;
-  left: 55%;
-  background-color: white;
-  color: black;
+  position: absolute;
+  bottom:80%;
+  // top: 5%;
+  // right: 0%;
+  width:100%;
+  background-color: black;
+  color: white;
   height: 30px;
   z-index:50px;
 }
@@ -183,30 +185,12 @@ export default {
   methods: {
     showinputfield() {
       this.$store.dispatch("ArtistProperties/showinputfield");
-      //this.showinput = !this.showinput;
-      // this.$nextTick(function() {
-      //   var i = document.getElementById("in_rename");
-      //   console.log("the element", this.posy);
-      //   if (i) {
-      //     i.style.top = this.posy;
-
-      //     // this.showinput = true;
-      //   }
-       
-      // });
+      // this.showinput =false;
     },
-    // getpos() {
-    //   this.posy = event.screenY - 110 + "px";
-    //   console.log(" posy", this.posy);
-    // },
     ChangeArtistName(){
       let payload = {
-        // Name: this.Name,
-        // Genre: this.Genre,
         name: this.newname,
       };
-      console.log("in aEDIT BIO POPUP", payload.name);
-      console.log("nerd");
       this.$store.dispatch("ArtistProperties/EditName", payload);
     },
   },

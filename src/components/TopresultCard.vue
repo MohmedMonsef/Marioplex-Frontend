@@ -37,11 +37,11 @@
       />
       <div class="row ">
         <div class="col-12">
-          <h2 class="card-title">{{ name }}</h2>
+          <h2 class="card-title">{{ name | shorten }}</h2>
           <div class="row">
-            <div class="typecont col-6">
+            <div class="typecont col-4 offset-2">
               <p class="card-text p" testid="type" id="typecont">
-                {{ type }}
+                {{ type}}
               </p>
             </div>
             <div class="col-5">
@@ -52,7 +52,7 @@
                 class="stretched-link"
                 id="carglink"
                 testid="cardlink"
-                >{{ artistName }}</router-link
+                >{{ artistName | shorten }}</router-link
               >
               <router-link
                 style="color: white;"
@@ -61,7 +61,7 @@
                 class="stretched-link"
                 id="carglink"
                 testid="cardlink"
-                >{{ ownerName }}</router-link
+                >{{ ownerName | shorten }}</router-link
               >
               <router-link
                 style="color: white;"
@@ -70,7 +70,7 @@
                 class="stretched-link"
                 id="carglink"
                 testid="cardlink"
-                >{{ ownerName }}</router-link
+                >{{ ownerName | shorten }}</router-link
               >
             </div>
           </div>
@@ -84,7 +84,7 @@
             ><i class="fa fa-play-circle" testid="topplay icon"></i
           ></router-link>
           <router-link
-            v-if="type == 'album'"
+            v-if="type == 'Album'"
             :to="{ path: '/HomeWebPlayer/album/' + albumId }"
             id="carglink"
             testid="cardlink"
@@ -114,7 +114,7 @@
 
       <router-link
         v-if="type == 'user'"
-        :to="{ path: '/HomeWebPlayer/UserProfile/' + artistId }"
+        :to="{ path: '/HomeWebPlayer/UserProfile/' + Id }"
         class="stretched-link"
         id="carglink"
         testid="cardlink"
@@ -154,7 +154,6 @@ h2 {
   margin-bottom: 10px;
 }
 .p {
-  margin-left: 10px;
   color: white;
   margin-bottom: 15px;
 }
@@ -171,6 +170,7 @@ i {
   float: left;
   z-index: 0;
   margin-left: 15px;
+  text-align: center;
 }
 </style>
 <script>
@@ -234,6 +234,12 @@ export default {
     },
     Id: {
       type: String,
+    },
+  },
+  filters: {
+    shorten: function(value) {
+      if (value.length > 17) return value.substring(0, 17) + " ...";
+      else return value;
     },
   },
 };

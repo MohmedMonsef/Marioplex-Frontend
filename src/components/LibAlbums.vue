@@ -24,7 +24,7 @@
         </h4>
         <router-link
           class="ard-link artistlink"
-          to="/ArtistProfile"
+          :to="{ path:'/HomeWebPlayer/ArtistProfile/'+artistId}"
           testid="artist page link"
         >
           {{ artistname }}
