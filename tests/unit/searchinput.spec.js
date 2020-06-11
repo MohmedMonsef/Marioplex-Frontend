@@ -29,12 +29,19 @@ describe("searchcomponent", () => {
           actions: {
             searchaboutartist: jest.fn(),
             search_V: jest.fn(),
+            showresult:jest.fn(),
+            searchfocus:jest.fn(),
+            clear:jest.fn()
           },
         },
       },
     });
   });
-
+  
+  let testid="search-box";
+  let newDiv =document.createElement("div");
+  newDiv.setAttribute("id",testid);
+  document.body.appendChild(newDiv);
   Wrapper = shallowMount(searchcomponent, {
     localVue,
     store,
@@ -43,20 +50,8 @@ describe("searchcomponent", () => {
         Value: "",
       };
     },
-    methods: {
-      check: jest.fn(),
-      reset: jest.fn(),
-      focus: jest.fn()
-    },
   });
 
-  it("renders", () => {
-    expect(Wrapper.exists()).toBe(true);
-    var el = document.getElementById('#search-box');
-   if(el){
-   el.addEventListener('focus', focus, true);
-}
-  });
   it("the search icon apear", () => {
     expect(Wrapper.find(".search_contaner").html()).toContain(
       '<i class="fa fa-search hover"></i>'
@@ -66,7 +61,7 @@ describe("searchcomponent", () => {
   it("when the input is empty the exit button don't appear ", () => {
     let input_value = Wrapper.find("#search-box").text();
     expect(input_value).toBe("");
-    expect(Wrapper.contains("button")).toBe(false);
+    expect(Wrapper.contains("button")).toBe(true);
   });
 
   it("when write the state change ", () => {
@@ -79,7 +74,7 @@ describe("searchcomponent", () => {
     textInput.setValue("some value");
     expect(Wrapper.contains("button")).toBe(true);
     expect(Wrapper.find(".close").html()).toContain(
-      '<span aria-hidden="true">×</span>'
+     "<button type=\"button\" aria-label=\"Close\" class=\"close\"><span aria-hidden=\"true\" style=\"font-size: 25px;\">×</span></button>"
     );
   });
 
@@ -140,7 +135,7 @@ describe("searchcomponent", () => {
     textInput.setValue("some value");
     textInput.trigger("click");
     expect(store.dispatch).toHaveBeenCalledWith(
-      "Search/searchaboutartist",
+      "Search/search_V",
       "some value"
     );
     expect(store.dispatch).toHaveBeenCalledWith(

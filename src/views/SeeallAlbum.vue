@@ -42,12 +42,21 @@ h3 {
 <script>
 import LibAlbums from "@/components/LibAlbums.vue";
 import { mapGetters } from "vuex";
+/**
+ * Part of the Search page where results of search for album appear but also part of them till press seeall button
+ * @displayName seeallalbum
+ * @example [none]
+ */
 export default {
   name: "seeallalbum",
   components: {
     LibAlbums,
   },
   methods: {
+     /**
+     * check if not in searchpage
+     * @public This is a public method
+     */
     inartist() {
       this.$store.dispatch("Search/artistin", true);
     },

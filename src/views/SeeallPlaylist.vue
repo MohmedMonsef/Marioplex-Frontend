@@ -41,12 +41,21 @@ h3 {
 <script>
 import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
+/**
+ * Part of the Search page where results of search for playlist appear but also part of them till press seeall button
+ * @displayName seeallplaylist
+ * @example [none]
+ */
 export default {
   name: "seeallplaylist",
   components: {
     LibPlaylists,
   },
   methods: {
+   /**
+     * check if not in searchpage
+     * @public This is a public method
+     */
     inartist() {
       this.$store.dispatch("Search/artistin", true);
     },

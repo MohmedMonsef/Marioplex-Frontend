@@ -51,8 +51,8 @@ export default {
     LibArtists,
   },
   methods: {
-    /**
-     * check if there is Artists that is identical to the search requirments
+     /**
+     * check if not in searchpage
      * @public This is a public method
      */
     inartist() {

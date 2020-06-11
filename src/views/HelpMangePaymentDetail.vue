@@ -141,6 +141,11 @@
   </div>
 </template>
 <script>
+/**
+ * Spotify HelpMangePaymentDetail page
+ * @displayName Spotify HelpMangePaymentDetail Page
+ * @example [none]
+ */
 export default {
   name: "HelpMangePaymentDetail",
   data() {

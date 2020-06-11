@@ -42,6 +42,11 @@ h3 {
 <script>
 import LibPlaylists from "@/components/LibPlaylists.vue";
 import { mapGetters } from "vuex";
+/**
+ * Spotify seeallcategoryplaylists page
+ * @displayName Spotify seeallcategoryplaylists Page
+ * @example [none]
+ */
 export default {
   name: "seeallcategoryplaylists",
   components: {

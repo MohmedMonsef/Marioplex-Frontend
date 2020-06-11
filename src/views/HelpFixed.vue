@@ -5,6 +5,11 @@
   </div>
 </template>
 <script>
+/**
+ * Spotify HelpPagesSideBar page
+ * @displayName Spotify HelpPagesSideBar Page
+ * @example [none]
+ */
 import HelpPagesSideBar from "@/components/HelpPagesSideBar";
 export default {
   name: "HelpFixed",
