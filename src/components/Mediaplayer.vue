@@ -1,7 +1,7 @@
 <template>
   <div class="mediaplayer">
     <div class="row" id="mediaplayerrow">
-      <div class="col-sm-3 col-xs-6" id="song_info_col">
+      <div class="col-lg-3 col-md-20% col-sm-20% col-20%" id="song_info_col">
         <!-- here i need to link album image with mock server -->
         <div class="album_image" v-if="user == 'success'">
           <img
@@ -70,7 +70,7 @@
           </router-link>
         </div>
       </div>
-      <div class="col-sm-6 col-xs-12" id="mediaplayercontrollers">
+      <div class="col-lg-6 col-md-40% col-sm-7 col-9" id="mediaplayercontrollers">
         <div
           class="play_controllers"
           id="test_play_controllers"
@@ -198,7 +198,7 @@
         <!-- the end of the new code  -->
       </div>
       <!-- <div class="col-md-3 hidden-sm"> -->
-      <div class="col-md-3 col-xs-6" id="volumecontrollers">
+      <div class="col-lg-3 col-md-30%" id="volumecontrollers">
         <div class="additional_actions" v-if="user == 'success'">
           <button id="queue_button" testid="queuebutton" @click="queue_alter()">
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
@@ -245,7 +245,7 @@
   transition: transform 0.25s cubic-bezier(0.3, 0, 0, 1);
   position: fixed;
   bottom: 0%;
-  min-width: 1090px;
+  //min-width: 800px;
 }
 .row {
   height: 90px;
@@ -488,6 +488,69 @@ input:focus {
 }
 .disabledicon:active {
   color: #b3b3b3;
+}
+
+@media screen and (max-width: 992px) {
+  .additional_actions {
+    margin: 30px 15px 30px 30px;
+  }
+  .album_image{
+    display: none;
+  }
+  #song_info_col{
+    margin-left: 10px;
+    width:20%;
+  }
+  .song_info{
+    margin: 20px 0px 20px 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .additional_actions {
+    margin: 30px 15px 30px 30px;
+  }
+  .volumecontrollers {
+    display: none;
+  }
+    .album_image{
+    display: none;
+  }
+  #song_info_col{
+    margin-left: 10px;
+  }
+  .song_info{
+    margin: 20px 0px 20px 5px;
+  }
+  .mediaplayercontrollers{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 340px) {
+  .additional_actions {
+    margin: 30px 15px 30px 30px;
+  }
+  .volumecontrollers {
+    display: none;
+  }
+    .album_image{
+    display: none;
+  }
+  #song_info_col{
+    margin-left: 10px;
+  }
+  .song_info{
+    margin: 20px 0px 20px 5px;
+  }
+  .mediaplayercontrollers{
+    width: 70%;
+  }
+  #repeat_button{
+ display: none;
+}
+.random_button{
+ display: none;
+
+}
 }
 
 // @media screen and (max-width: 585px) {
