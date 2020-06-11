@@ -195,8 +195,8 @@ p {
 // @ is an alias to /src
 import { mapGetters } from "vuex";
 /**
- * Create Playlist Pop Up to input the new playlist name
- * @displayName Create Playlist Pop Up
+ * Advertisement Pop Up on clicking next
+ * @displayName Advertisement Pop Up
  * @example [none]
  */
 export default {

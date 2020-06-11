@@ -43,7 +43,9 @@ describe("HomeNavigationBar", () => {
     });
   });
   it("renders premium page", () => {
+    wrapper.vm.$options.watch.$route.call(wrapper.vm);
     $route.path="/premium"
+    wrapper.vm.$options.watch.$route.call(wrapper.vm);
     let premiumWrapper =  shallowMount(HomeNavigationBar, {
       localVue,
       store,

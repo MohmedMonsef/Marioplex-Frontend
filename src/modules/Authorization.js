@@ -116,6 +116,7 @@ export default {
             dispatch("Mediaplayer/get_currentsong", 2, { root: true });
           }
           commit("auth_success", { token, user });
+          localStorage.setItem("is-artist",user.userType);
           if (flag)
            router.replace("/");
         })
@@ -218,6 +219,7 @@ export default {
       } ).then(() => {
         localStorage.removeItem("x-auth-token");
         localStorage.removeItem("set-volume");
+        localStorage.removeItem("is-artist");
         delete axios.defaults.headers.common["x-auth-token"];
       });
     },

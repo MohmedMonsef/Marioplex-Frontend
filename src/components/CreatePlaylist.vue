@@ -78,7 +78,6 @@ body {
 }
 
 div {
-  /* relative */
   position: relative;
   display: block;
   width: 100vw;
@@ -136,7 +135,6 @@ div {
 }
 
 .modal-overlay {
-  /* fixed */
   position: relative;
   display: flex;
   justify-content: center;
@@ -154,7 +152,6 @@ div {
 }
 
 .modal {
-  /* fixed */
   position: fixed;
   z-index: 20;
   top: 0;
@@ -295,7 +292,6 @@ input {
 <script>
 // @ is an alias to /src
 import { mapGetters } from "vuex";
-// import { mapState } from "vuex";
 /**
  * Create Playlist Pop Up to input the new playlist name
  * @displayName Create Playlist Pop Up
@@ -306,15 +302,10 @@ export default {
   data: function() {
     return {
       playlistname: "",
-      // withtrack:false
     };
   },
-  //showModal:false,
   components: {},
   computed: {
-    // ...mapState({
-    //   Playlists: (state) => state.Playlist.Playlists,
-    // }),
     ...mapGetters({
       showModal: "Playlist/showModal",
       username: "Authorization/Username",

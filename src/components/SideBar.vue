@@ -430,13 +430,12 @@ export default {
       });
     },
     getpos() {
-      this.posy = event.screenY - 87 + "px";
+      this.posy = (event.screenY - 105) + "px";
     },
     ChangePlaylistName() {
-      // this.showinput = false;
       let payload = {
         name: this.newname,
-        playlist_id: this.p_id,
+        playlist_id: this.p_id
       };
       this.$store.dispatch("Playlist/ChangePlaylistName", payload);
       this.newname = "";

@@ -18,10 +18,6 @@
         <h4 class="card-title" id="cardtitle" testid="playlist name">
           {{ name }}
         </h4>
-        <!-- <h4 class="card-text" id="cardtext" testid="playlist name">
-          {{ tracksnum }}
-        </h4> -->
-        <!-- should navigate to playlist page -->
         <div
           class="stretched-link"
           id="carglink"
@@ -90,6 +86,10 @@ const toast = {
     }, 2000);
   },
 };
+/**
+ * @displayName Playlist To add Track
+ * @example [none]
+ */
 export default {
   data: function() {
     return {
@@ -105,6 +105,10 @@ export default {
     }),
   },
   methods: {
+     /**
+     * Add track to existing playlist
+     * @public This is a public method
+     */
     AddTrackToExsistPlaylist() {
       let payload = {
         trackid: this.trackid,
@@ -114,16 +118,14 @@ export default {
       console.log("in card playlist", payload.playlistid);
       this.$store.dispatch("Playlist/AddTrackToExsistPlaylist", payload);
     },
+     /**
+     * Closes popup of adding track
+     * @public This is a public method
+     */
     changeModalStateAdd() {
       this.$store.dispatch("Playlist/toggleModalAdd");
       toast.show("Added to your library");
     },
   },
-  // created: function () {
-  //   window.addEventListener("click", this.hideshow);
-  // },
-  // destroyed: function () {
-  //   window.removeEventListener("click", this.hideshow);
-  // },
 };
 </script>

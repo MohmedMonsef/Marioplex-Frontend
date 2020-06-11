@@ -38,9 +38,9 @@ describe("searchcomponent", () => {
     });
   });
   
-  let testid="search-box";
-  let newDiv =document.createElement("div");
-  newDiv.setAttribute("id",testid);
+  let testId = "search-box";
+  let newDiv = document.createElement("div");
+  newDiv.setAttribute("id", testId);
   document.body.appendChild(newDiv);
   Wrapper = shallowMount(searchcomponent, {
     localVue,

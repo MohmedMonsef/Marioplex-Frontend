@@ -84,7 +84,8 @@ describe("SongComponent", () => {
         CheckUserPopup:{
           namespaced:true,
           actions:{
-            togglePopup:jest.fn()
+            togglePopup:jest.fn(),
+            togglepagespopup:jest.fn()
           }
         },
         Queue:{
@@ -119,7 +120,8 @@ describe("SongComponent", () => {
           isPlayable:true,
           song_id :"1",
           albumId:"1",
-          isLiked:false
+          isLiked:false,
+          MyType:"created"
         }, });
   });
   it("renders", () => {
@@ -132,7 +134,9 @@ describe("SongComponent", () => {
     let mydropdown = document.createElement("div");
     mydropdown.setAttribute("id", testId);
     document.body.appendChild(mydropdown);
-    wrapper.vm.toggleShow(event) 
+    wrapper.vm.toggleShow(event);
+    store.state.Authorization.GetStatus="success";
+    wrapper.vm.toggleShow(event);
     
   });
   
@@ -196,3 +200,5 @@ describe("SongComponent", () => {
     expect(wrapper.vm.show).toBe(false);
   });
 });
+
+
