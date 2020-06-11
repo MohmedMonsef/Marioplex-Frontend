@@ -107,7 +107,6 @@ export default {
         .get("/api/me/player/currently-playing")
         .then(response => {
           var currentsong = response.data;
-          console.log("gggttt",currentsong)
           if(currentsong.track.images.length == 0)
           currentsong.track.images.push({
             _id:"1"

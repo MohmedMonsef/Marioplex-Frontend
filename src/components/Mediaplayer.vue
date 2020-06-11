@@ -1,10 +1,19 @@
 <template>
   <div class="mediaplayer">
     <div class="row" id="mediaplayerrow">
-      <div class="col-sm-3 col-xs-6" id="song_info_col">
+      <div class="col-lg-3 col-md-20% col-sm-20% col-20%" id="song_info_col">
         <!-- here i need to link album image with mock server -->
         <div class="album_image" v-if="user == 'success'">
-          <img :src="$url +'/api/images/'+ Get_Currentsong.track.images[0]._id + '?belongs_to=album'" alt="album_image" testid="album_image" />
+          <img
+            :src="
+              $url +
+                '/api/images/' +
+                Get_Currentsong.track.images[0]._id +
+                '?belongs_to=album'
+            "
+            alt="album_image"
+            testid="album_image"
+          />
         </div>
         <!-- here i need to link both song name and artist name with mock server they navigate to another pages
           and i need to change <a> to router link -->
@@ -61,7 +70,7 @@
           </router-link>
         </div>
       </div>
-      <div class="col-sm-6 col-xs-12" id="mediaplayercontrollers">
+      <div class="col-lg-6 col-md-40% col-sm-7 col-9" id="mediaplayercontrollers">
         <div
           class="play_controllers"
           id="test_play_controllers"
@@ -189,7 +198,7 @@
         <!-- the end of the new code  -->
       </div>
       <!-- <div class="col-md-3 hidden-sm"> -->
-        <div class="col-md-3 col-xs-6" id="volumecontrollers">
+      <div class="col-lg-3 col-md-30%" id="volumecontrollers">
         <div class="additional_actions" v-if="user == 'success'">
           <button id="queue_button" testid="queuebutton" @click="queue_alter()">
             <i class="fa fa-bars" id="queueicon" testid="queueicon"></i>
@@ -236,7 +245,7 @@
   transition: transform 0.25s cubic-bezier(0.3, 0, 0, 1);
   position: fixed;
   bottom: 0%;
-  min-width: 1090px;
+  //min-width: 800px;
 }
 .row {
   height: 90px;
@@ -481,6 +490,69 @@ input:focus {
   color: #b3b3b3;
 }
 
+@media screen and (max-width: 992px) {
+  .additional_actions {
+    margin: 30px 15px 30px 30px;
+  }
+  .album_image{
+    display: none;
+  }
+  #song_info_col{
+    margin-left: 10px;
+    width:20%;
+  }
+  .song_info{
+    margin: 20px 0px 20px 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .additional_actions {
+    margin: 30px 15px 30px 30px;
+  }
+  .volumecontrollers {
+    display: none;
+  }
+    .album_image{
+    display: none;
+  }
+  #song_info_col{
+    margin-left: 10px;
+  }
+  .song_info{
+    margin: 20px 0px 20px 5px;
+  }
+  .mediaplayercontrollers{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 340px) {
+  .additional_actions {
+    margin: 30px 15px 30px 30px;
+  }
+  .volumecontrollers {
+    display: none;
+  }
+    .album_image{
+    display: none;
+  }
+  #song_info_col{
+    margin-left: 10px;
+  }
+  .song_info{
+    margin: 20px 0px 20px 5px;
+  }
+  .mediaplayercontrollers{
+    width: 70%;
+  }
+  #repeat_button{
+ display: none;
+}
+.random_button{
+ display: none;
+
+}
+}
+
 // @media screen and (max-width: 585px) {
 // .topcontrols{
 //   display: none;
@@ -493,7 +565,7 @@ input:focus {
 //     height: 30px;
 //     width: 50%;
 //     margin: 12px;
-//     margin-top:0; 
+//     margin-top:0;
 //   }
 //   .album_image{
 //     display: none;
@@ -563,6 +635,22 @@ export default {
         this.isRepeat = 0;
       }
       this.isShuffle = this.userinfo.player.is_shuffled;
+
+      if(localStorage.getItem("set-volume")){
+      
+      var volumeSlider = document.getElementById("volumeprogressbar");
+      var curVol = localStorage.getItem("set-volume") * 100;
+      this.volumepos = curVol.toString() + "%";
+      volumeSlider.style.width = this.volumepos;
+
+      var changevolumeicon = document.getElementById("soundicon");
+      if (curVol == 0) changevolumeicon.className = "fa fa-volume-off";
+      else if (curVol > 0 && curVol <= 50)
+        changevolumeicon.className = "fa fa-volume-down";
+      else changevolumeicon.className = "fa fa-volume-up";
+      }
+      
+      this.$store.dispatch("Mediaplayer/update_volume", curVol/100);
     }, 1000);
     // if (this.user != "success") {
     //    var mediaplayerbar = document.getElementById("mediaplayerrow");
@@ -677,6 +765,7 @@ export default {
         var volumeSlider = document.getElementById("volumeprogressbar");
         this.volumepos = pos.toString() + "%";
         volumeSlider.style.width = this.volumepos;
+        localStorage.setItem("set-volume",pos/100);
       }
     },
     /**
@@ -704,6 +793,8 @@ export default {
           changevolumeicon.className = "fa fa-volume-down";
         else changevolumeicon.className = "fa fa-volume-up";
         this.volumedrag = false;
+
+        localStorage.setItem("set-volume",this.sound/100);
       }
     },
     /**
