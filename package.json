@@ -97,7 +97,10 @@
       "**/*.vue",
       "!**/node_modules/**",
       "!**/App.vue",
-      "!**/DeleteSong.vue"
+      "!**/DeleteSong.vue",
+      "!**/AccountSidebar.vue",
+      "!**/NavbarWebplayer.vue",
+      "!**/SideBar.vue"
     ]
   }
 }
