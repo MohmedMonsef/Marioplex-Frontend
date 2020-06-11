@@ -172,6 +172,10 @@ h2 {
 <script>
 import AccountSidebar from "@/components/AccountSidebar.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName account channge password
+ * @example [none]
+ */
 export default {
   name: "Account-change",
   components: {
@@ -190,6 +194,10 @@ export default {
     };
   },
   methods: {
+    /**
+     * change password function
+     * @public This is a public method
+     */
     changePassword() {
       this.req_password();
       this.req_newpassword();
@@ -210,6 +218,10 @@ export default {
         }
       },200);
     },
+    /**
+     * required password function
+     * @public This is a public method
+     */
     req_password: function() {
       if (this.password == "") {
         this.canSet1 = false;
@@ -218,6 +230,10 @@ export default {
       }
       return;
     },
+    /**
+     * required new password function
+     * @public This is a public method
+     */
     req_newpassword: function () {
       if (this.newpassword == "") {
         this.canSet2 = false;
@@ -226,6 +242,10 @@ export default {
       }
       return;
     },
+    /**
+     * required rpeat password function
+     * @public This is a public method
+     */
     req_repeatpassword: function () {
       if (this.repeatpassword == "") {
         this.canSet3 = false;
@@ -234,6 +254,10 @@ export default {
       }
       return;
     },
+    /**
+     * passwords should be equal function
+     * @public This is a public method
+     */
     equal_password: function(){
       if (this.newpassword != this.repeatedPassword)
       {

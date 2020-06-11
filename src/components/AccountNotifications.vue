@@ -135,6 +135,10 @@ h4{
 <script>
 import AccountSidebar from "@/components/AccountSidebar.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName account  notifications
+ * @example [none]
+ */
 export default {
   name: "Account-notifications",
   components: {
@@ -149,6 +153,10 @@ export default {
     })
   },
   methods: {
+    /**
+     * navigation function
+     * @public This is a public method
+     */
     goRoute(notification){
       if (notification.data.title == "WOOOOOH NEW ALBUM")
         { this.$router.push('/HomeWebPlayer/album/' + notification.data.albumId) }

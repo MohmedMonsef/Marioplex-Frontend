@@ -375,6 +375,10 @@ h2 {
 <script>
 import AccountSidebar from "@/components/AccountSidebar.vue";
 import { mapGetters } from "vuex";
+/**
+ * @displayName account edit profile
+ * @example [none]
+ */
 export default {
   name: "Account-edit",
   components: {
@@ -539,6 +543,10 @@ export default {
     };
   },
   methods: {
+    /**
+     * check edit function
+     * @public This is a public method
+     */
     checkEdit() {
       this.req_email();
       this.invalid_email();
@@ -564,6 +572,10 @@ export default {
         }
       }, 200);
     },
+    /**
+     * required email function
+     * @public This is a public method
+     */
     req_email: function() {
       if (this.email == "") {
         this.can_submit1 = false;
@@ -572,6 +584,10 @@ export default {
       }
       return;
     },
+    /**
+     * check invalid email function
+     * @public This is a public method
+     */
     invalid_email: function() {
       if (
         this.email != "" &&
@@ -586,6 +602,10 @@ export default {
       }
       return;
     },
+    /**
+     * required password password function
+     * @public This is a public method
+     */
     req_password: function() {
       if (this.password == "") {
         this.can_submit3 = false;
@@ -594,9 +614,17 @@ export default {
       }
       return;
     },
+    /**
+     * delete Premium function
+     * @public This is a public method
+     */
     deletePremium: function() {
       this.$store.dispatch("Authorization/toFree");
     },
+     /**
+     * update Premium function
+     * @public This is a public method
+     */
     updatePremium: function() {
       let update = {
          password: this.password,

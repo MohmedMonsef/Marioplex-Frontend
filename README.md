@@ -29,6 +29,8 @@ npm run build
 ```
 npm run test:unit
 ```
+The last version of the coverage test can be found on: coverage\lcov-report\index.html
+including our components and views
 
 ### Run the Documentation page
 

@@ -20,7 +20,7 @@
               :song_name="p.name"
               :song_album="p.albumName"
               :albumId="p.albumId"
-              :song_length="500"
+              :song_length="p.duration"
               :playlistId="playlist_id"
               :isLiked="true"
               :isPlaylist="true"
@@ -30,7 +30,7 @@
       </div>
       <div class="row" v-else>
         <emptylikedtracks testid="emptylikedtracks" />
-      </div>
+      </div> 
     </div>
   </div>
 </template>
