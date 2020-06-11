@@ -403,7 +403,9 @@ else {
     next() 
   }
   if(to.matched.some(record => record.meta.isArtist)) {
-    if (store.getters["Authorization/GetStatus"] != "success" || store.getters["Authorization/user"].userType != "Artist"  ) {
+     status= localStorage.getItem("x-auth-token");
+     var isArtist = localStorage.getItem("is-artist");
+    if (!status || isArtist != "Artist"  ) {
       next('/UnAuthorized')
       return
     }
